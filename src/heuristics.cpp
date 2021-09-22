@@ -1979,6 +1979,96 @@ void MemoryCheck(Ctree* tree, int* chstart, int*children, double const memory_si
     }
 }
 
+void MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> const memory_sizes, io_method_t method){//chstart, children are not modified
+    vector<Cnode*> subtreeRoots;
+    Cnode* currentnode;
+    Cnode* subtreeRoot;
+    int rootid;
+    tree->GetRoot()->BreakEdge();
+    
+    //cout<<"Subtrees' roots: ";
+    unsigned long treeSize=tree->GetNodes()->size();
+    for (unsigned int i=treeSize; i>=1; --i) {
+        currentnode=tree->GetNode(i);
+        if (currentnode->IsBorken()) {
+            //cout<<i<<" ";
+            subtreeRoots.push_back(currentnode);
+        }
+    }
+    //cout<<endl;
+    
+    double maxoutD, memory_required;
+    schedule_t * schedule_f = new schedule_t();
+    uint64_t count;
+    unsigned int com_freq;
+    unsigned long subtreeSize;
+    list<int>::iterator ite_sche;
+    vector<unsigned int> BrokenEdgesID;
+    double IO_volume;
+    while (!subtreeRoots.empty()) {
+        subtreeRoot=subtreeRoots.back();
+        subtreeRoots.pop_back();
+        
+        double *ewghts, *timewghts, *spacewghts;
+        int *prnts;
+        Ctree* subtree = BuildSubtree(tree, subtreeRoot, treeSize, &prnts, &ewghts, &timewghts, &spacewghts, chstart, children);
+        
+        subtreeSize=subtree->GetNodes()->size();
+        int * schedule_copy = new int[subtreeSize+1];
+        maxoutD = MaxOutDegree(subtree, true);
+        schedule_f->clear();
+        count=0;
+        MinMem(subtree, maxoutD, memory_required, *schedule_f, true, count);
+        
+        int * chstartsub,*chendsub,*childrensub;
+        po_construct(subtreeSize, prnts, &chstartsub,&chendsub,&childrensub, &rootid);
+        
+        //cout<<"Subtree "<<subtreeRoot->GetId()<<" needs memory "<<memory_required;
+        if (memory_required>memory_sizes[0]) {
+            //cout<<", larger than what is available: "<<memory_size<<endl;
+            
+            ite_sche = schedule_f->begin();
+            for (unsigned int i=subtreeSize; i>=1; --i) {
+                schedule_copy[i]=*ite_sche;
+                advance(ite_sche, 1);
+            }
+            schedule_copy[0]=subtreeSize+1;
+            
+            switch (method) {
+                case FIRST_FIT:
+                    IO_volume = IOCounter(subtree, subtreeSize+1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes[0], false, true, com_freq, &BrokenEdgesID, FIRST_FIT);
+                    break;
+                case LARGEST_FIT:
+                    IO_volume = IOCounter(subtree, subtreeSize+1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes[0], false, true, com_freq, &BrokenEdgesID, LARGEST_FIT);
+                    break;
+                case IMMEDIATELY:
+                    Immediately(subtree, subtreeSize+1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes[0], com_freq,&BrokenEdgesID);
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+        //cout<<endl;
+        
+        delete [] ewghts;
+        delete [] timewghts;
+        delete [] spacewghts;
+        delete [] prnts;
+        delete [] schedule_copy;
+        delete [] chstartsub;
+        delete [] chendsub;
+        delete [] childrensub;
+        delete subtree;
+    }
+    delete schedule_f;
+    
+    for (vector<unsigned int>::iterator iter=BrokenEdgesID.begin(); iter!=BrokenEdgesID.end(); ++iter) {
+        tree->GetNode(*iter)->BreakEdge();
+    }
+}
+
+
 unsigned int HowmanySubtrees(const Ctree* tree, bool quiet){
     unsigned int number_subtrees=0;
     tree->GetRoot()->BreakEdge();

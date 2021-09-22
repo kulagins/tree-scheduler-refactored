@@ -1979,7 +1979,7 @@ void MemoryCheck(Ctree* tree, int* chstart, int*children, double const memory_si
     }
 }
 
-void MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> const memory_sizes, io_method_t method){//chstart, children are not modified
+void MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> memory_sizes, io_method_t method){//chstart, children are not modified
     vector<Cnode*> subtreeRoots;
     Cnode* currentnode;
     Cnode* subtreeRoot;
@@ -1993,10 +1993,17 @@ void MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> const
         if (currentnode->IsBorken()) {
             //cout<<i<<" ";
             subtreeRoots.push_back(currentnode);
+            cout<<"root "<< currentnode->GetMSCost()<<endl;
         }
     }
     //cout<<endl;
-    
+    sort( subtreeRoots.begin( ), subtreeRoots.end( ), [ ]( Cnode* lhs, Cnode* rhs )
+    {
+        return lhs->GetMSCost() < rhs->GetMSCost();
+    }   );
+    sort( memory_sizes.begin( ), memory_sizes.end( ));
+    //std::sort(vec.begin(), vec.end());
+
     double maxoutD, memory_required;
     schedule_t * schedule_f = new schedule_t();
     uint64_t count;
@@ -2005,7 +2012,9 @@ void MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> const
     list<int>::iterator ite_sche;
     vector<unsigned int> BrokenEdgesID;
     double IO_volume;
+    int currentProcessor = 0;
     while (!subtreeRoots.empty()) {
+        double currentMem = memory_sizes[currentProcessor];
         subtreeRoot=subtreeRoots.back();
         subtreeRoots.pop_back();
         
@@ -2023,9 +2032,9 @@ void MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> const
         int * chstartsub,*chendsub,*childrensub;
         po_construct(subtreeSize, prnts, &chstartsub,&chendsub,&childrensub, &rootid);
         
-        //cout<<"Subtree "<<subtreeRoot->GetId()<<" needs memory "<<memory_required;
-        if (memory_required>memory_sizes[0]) {
-            //cout<<", larger than what is available: "<<memory_size<<endl;
+        cout<<"Subtree "<<subtreeRoot->GetId()<<" needs memory "<<memory_required;
+        if (memory_required>currentMem) {
+            cout<<", larger than what is available: "<<currentMem<<endl;
             
             ite_sche = schedule_f->begin();
             for (unsigned int i=subtreeSize; i>=1; --i) {
@@ -2050,6 +2059,7 @@ void MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> const
             }
         }
         //cout<<endl;
+        currentProcessor++;
         
         delete [] ewghts;
         delete [] timewghts;

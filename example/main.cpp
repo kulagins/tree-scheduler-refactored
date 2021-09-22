@@ -12,12 +12,13 @@
 
 vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processors)
 {
+    cout<<maxoutd<< " "<<minMem<<endl;
     vector<double> memSizes (num_processors);
     memSizes.resize(num_processors);
 
     for (int k = 0; k < num_processors / 3; k++)
     {
-        memSizes[k] = maxoutd/10; //memorySize / 4 + k * memorySize / num_processors;
+        memSizes[k] = maxoutd ; //memorySize / 4 + k * memorySize / num_processors;
     }
     for (int k = num_processors / 3; k < 2 * num_processors / 3; k++)
     {
@@ -65,15 +66,14 @@ int main(int argc, const char *argv[])
 
     unsigned int number_subtrees;
     unsigned int num_processors;
-    // int memory_constraint_options[3] = {1, 2, 3};
-    //int memory_constraint;
+   
     double  minMem;
     uint64_t count;
     string stage2heuristic;
     vector<double> memorySizes;
 
     cout.precision(2);
-//TreeName NPR CCR MemoryConstraint
+
     std::cout << " AmountSubtrees AmountProcessors Makespan Heuristic TimeConsuming" << std::endl;
 
     ifstream OpenFile(dir + argv[2]);
@@ -83,7 +83,7 @@ int main(int argc, const char *argv[])
     parse_tree((dir + treename).c_str(), &tree_size, &prnts, &spacewghts, &ewghts, &timewghts);
 
     num_processors = ceil(tree_size / NPR);
-     num_processors*=60;
+    num_processors*=60;
     if (num_processors < 3)
     {
         num_processors = 3;

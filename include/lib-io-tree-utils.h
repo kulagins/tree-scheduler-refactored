@@ -340,6 +340,12 @@ class Cnode{
         this->children->clear();
         this->~Cnode();
     }
+
+   // bool operator < (const Cnode& other) const
+   // {
+ //     double thiscost = GetMSCost();
+  //      return ( thiscost < other.GetMSCost());
+  //  }
     
     unsigned int Ci;
     double Mpeak;

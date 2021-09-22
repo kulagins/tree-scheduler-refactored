@@ -1,0 +1,77 @@
+{
+    // Verwendet IntelliSense zum Ermitteln möglicher Attribute.
+    // Zeigen Sie auf vorhandene Attribute, um die zugehörigen Beschreibungen anzuzeigen.
+    // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "g++ - Aktive Datei erstellen und debuggen",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/home/kulaginasv/workspace/MemComOriginal/res",
+           // "args": [],
+            //"args": ["-s", "-c", "0.001", "-n", "100", "-d", "../../realTrees/", "treesList.txt"],
+            //"-q"s
+            //[ "-s", "-c 0.001", "-n 1000", "-l","-d", "../../real_Trees/", "-b", "../../result/brokenEdges/brokenEdges","split_12.txt", "treesList.txt"],
+            //"dump.0.1.amd.Andrews.Andrews-924.tree.nf"
+            "args": [ "${workspaceFolder}/real_Trees/trees/", "dump.0.1.amd.Bova.rma10-374.tree.nf", "0.1", "10", "1"],
+            //, "-l","-d", "../../real_Trees/", "-b", "../../result/brokenEdges/brokenEdges","split_12.txt", "treesList.txt"],//, ">> output.txt"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Automatische Strukturierung und Einrückung für \"gdb\" aktivieren",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+           // "preLaunchTask": "C/C++: g++ Aktive Datei kompilieren",
+           // "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
+}
+
+
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++ Aktive Datei kompilieren",
+            "command": "/usr/bin/g++",
+			"args": [
+				//"-g",
+				"${file}",
+				"-o",
+				//"${fileDirname}/${fileBasenameNoExtension}",
+				"res",
+				"-I/home/kulaginasv/workspace/MemComOriginal/include",
+				"-Wall",
+				"-m64",
+				"-g",
+				"-DNOASSERT",
+				"-std=c++14",
+				"-fopenmp",
+				//"main.cpp",
+				"/home/kulaginasv/workspace/MemComOriginal/lib/heuristics.a",  
+				// -o 
+				//"/home/kulaginasv/workspace/MemComJournal/example/Makefile"
+				//call-heuristics
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Vom Debugger generierte Aufgabe."
+        }
+    ],
+    "version": "2.0.0"
+}

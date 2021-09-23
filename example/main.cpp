@@ -12,13 +12,15 @@
 
 vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processors)
 {
-    cout<<maxoutd<< " "<<minMem<<endl;
-    vector<double> memSizes (num_processors);
+    cout << maxoutd << " " << minMem << endl;
+    vector<double> memSizes(num_processors);
     memSizes.resize(num_processors);
-
+    maxoutd = maxoutd * 2 / 3;
+    cout << "minProc " << maxoutd << " " << (maxoutd + minMem) / 2 << " " << minMem << endl;
     for (int k = 0; k < num_processors / 3; k++)
     {
-        memSizes[k] = maxoutd ; //memorySize / 4 + k * memorySize / num_processors;
+
+        memSizes[k] = maxoutd; //memorySize / 4 + k * memorySize / num_processors;
     }
     for (int k = num_processors / 3; k < 2 * num_processors / 3; k++)
     {
@@ -28,6 +30,7 @@ vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processor
     {
         memSizes[k] = minMem; //memorySize / 4 + k * memorySize / num_processors;
     }
+
     return memSizes;
 }
 
@@ -66,13 +69,14 @@ int main(int argc, const char *argv[])
 
     unsigned int number_subtrees;
     unsigned int num_processors;
-   
-    double  minMem;
+
+    double minMem;
     uint64_t count;
     string stage2heuristic;
     vector<double> memorySizes;
 
-    cout.precision(2);
+    cout.precision(0); //2
+    cout.setf(ios::fixed);
 
     std::cout << " AmountSubtrees AmountProcessors Makespan Heuristic TimeConsuming" << std::endl;
 
@@ -83,12 +87,11 @@ int main(int argc, const char *argv[])
     parse_tree((dir + treename).c_str(), &tree_size, &prnts, &spacewghts, &ewghts, &timewghts);
 
     num_processors = ceil(tree_size / NPR);
-    num_processors*=60;
     if (num_processors < 3)
     {
         num_processors = 3;
     }
-   
+
     SetBandwidth(CCR, tree_size, ewghts, timewghts);
 
     Ctree *treeobj = new Ctree(tree_size, prnts, spacewghts, ewghts, timewghts);
@@ -111,13 +114,11 @@ int main(int argc, const char *argv[])
     memorySizes = buildMemorySizes(maxoutd, minMem, num_processors);
     for (int stage2Method = 0; stage2Method < 3; ++stage2Method)
     {
-        //for (int i = 0; i < 3; ++i)
-        // {
+        
         Ctree *treeobj = new Ctree(tree_size, prnts, spacewghts, ewghts, timewghts);
 
         time = clock();
-        //try
-        //{
+        
         switch (stage2Method)
         {
         case 0:
@@ -139,13 +140,15 @@ int main(int argc, const char *argv[])
             RunWithClusterConfig(clusterConfig, chstart, children, treeobj, memorySizes, IMMEDIATELY);
             break;
         }
-       
+
         time = clock() - time;
 
         makespan = treeobj->GetRoot()->GetMSCost(true, true);
         number_subtrees = HowmanySubtrees(treeobj, true);
+        std::cout << "after 2nd step "
+                  // << treename << " " << NPR << " " << CCR << " " << memory_constraint << " "
+                  << number_subtrees << " " << num_processors << " " << makespan << " " << stage2heuristic << "+Nothing " << 0 << endl;
 
-      
         if (number_subtrees > num_processors)
         {
             time = clock();

@@ -2012,7 +2012,9 @@ void MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> memor
     list<int>::iterator ite_sche;
     vector<unsigned int> BrokenEdgesID;
     double IO_volume;
-    int currentProcessor = 0;
+    int currentProcessor;
+    currentProcessor = 0;
+
     while (!subtreeRoots.empty()) {
         double currentMem = memory_sizes[currentProcessor];
         subtreeRoot=subtreeRoots.back();
@@ -2034,24 +2036,25 @@ void MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> memor
         
         cout<<"Subtree "<<subtreeRoot->GetId()<<" needs memory "<<memory_required;
         if (memory_required>currentMem) {
-            cout<<", larger than what is available: "<<currentMem<<endl;
-            
+            cout<<", larger than what is available: "<<currentMem <<" on proc "<< currentProcessor<<endl;
+                           
             ite_sche = schedule_f->begin();
-            for (unsigned int i=subtreeSize; i>=1; --i) {
+            for (unsigned int i=subtreeSize; i>=1; --i) {               
                 schedule_copy[i]=*ite_sche;
                 advance(ite_sche, 1);
             }
+            
             schedule_copy[0]=subtreeSize+1;
             
             switch (method) {
                 case FIRST_FIT:
-                    IO_volume = IOCounter(subtree, subtreeSize+1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes[0], false, true, com_freq, &BrokenEdgesID, FIRST_FIT);
+                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize+1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor, false, true, com_freq, &BrokenEdgesID, FIRST_FIT);
                     break;
                 case LARGEST_FIT:
-                    IO_volume = IOCounter(subtree, subtreeSize+1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes[0], false, true, com_freq, &BrokenEdgesID, LARGEST_FIT);
+                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize+1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy,  memory_sizes, currentProcessor, false, true, com_freq, &BrokenEdgesID, LARGEST_FIT);
                     break;
                 case IMMEDIATELY:
-                    Immediately(subtree, subtreeSize+1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes[0], com_freq,&BrokenEdgesID);
+                    Immediately(subtree, subtreeSize+1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, currentMem, com_freq,&BrokenEdgesID);
                     break;
                     
                 default:
@@ -2059,7 +2062,7 @@ void MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> memor
             }
         }
         //cout<<endl;
-        currentProcessor++;
+       // currentProcessor++;
         
         delete [] ewghts;
         delete [] timewghts;

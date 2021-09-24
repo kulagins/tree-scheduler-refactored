@@ -1979,7 +1979,7 @@ void MemoryCheck(Ctree* tree, int* chstart, int*children, double const memory_si
     }
 }
 
-void MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> memory_sizes, io_method_t method){//chstart, children are not modified
+std::map<int, int>  MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> memory_sizes, io_method_t method){//chstart, children are not modified
     vector<Cnode*> subtreeRoots;
     Cnode* currentnode;
     Cnode* subtreeRoot;
@@ -2003,6 +2003,12 @@ void MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> memor
     }   );
     sort( memory_sizes.begin( ), memory_sizes.end( ));
     //std::sort(vec.begin(), vec.end());
+
+    std::map<int, int> taskToPrc;
+
+    for(int i=0; i<treeSize; i++){
+        taskToPrc.insert(pair<int, int>(i, -1));
+    }
 
     double maxoutD, memory_required;
     schedule_t * schedule_f = new schedule_t();
@@ -2048,10 +2054,10 @@ void MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> memor
             
             switch (method) {
                 case FIRST_FIT:
-                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize+1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor, false, true, com_freq, &BrokenEdgesID, FIRST_FIT);
+                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize+1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor,  taskToPrc, false, true, com_freq, &BrokenEdgesID, FIRST_FIT);
                     break;
                 case LARGEST_FIT:
-                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize+1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy,  memory_sizes, currentProcessor, false, true, com_freq, &BrokenEdgesID, LARGEST_FIT);
+                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize+1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy,  memory_sizes, currentProcessor,   taskToPrc, false, true, com_freq, &BrokenEdgesID, LARGEST_FIT);
                     break;
                 case IMMEDIATELY:
                     Immediately(subtree, subtreeSize+1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, currentMem, com_freq,&BrokenEdgesID);
@@ -2061,8 +2067,12 @@ void MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> memor
                     break;
             }
         }
+        else{
+            taskToPrc.at(subtreeRoot->GetId()) = currentProcessor;
+            currentProcessor++;
+        }
         //cout<<endl;
-       // currentProcessor++;
+       // 
         
         delete [] ewghts;
         delete [] timewghts;
@@ -2079,6 +2089,13 @@ void MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> memor
     for (vector<unsigned int>::iterator iter=BrokenEdgesID.begin(); iter!=BrokenEdgesID.end(); ++iter) {
         tree->GetNode(*iter)->BreakEdge();
     }
+
+   // cout <<"task to proc "<<endl;
+    //for(int i=0; i<taskToPrc.size(); i++){
+      //  if(taskToPrc.at(i)!=-1)
+       // cout<< i<<" " <<taskToPrc.at(i)<< " \t ";
+    //}
+    return taskToPrc;
 }
 
 

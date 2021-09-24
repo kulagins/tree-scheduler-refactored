@@ -28,7 +28,7 @@ double Sequence(Cnode* root);
 
 Ctree* BuildQtree(Ctree* tree);
 void MemoryCheck(Ctree* tree, int* chstart, int*children, double const memory_size, io_method_t method);
-void MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> const memory_sizes, io_method_t method);
+std::map<int, int> MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> const memory_sizes, io_method_t method);
 unsigned int HowmanySubtrees(const Ctree* tree, bool quiet);
 void SetBandwidth(double CCR, unsigned long tree_size, double * ewghts, double * timewghts);
 

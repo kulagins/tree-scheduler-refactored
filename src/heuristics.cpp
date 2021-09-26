@@ -2302,10 +2302,14 @@ void MemoryCheck(Ctree *tree, int *chstart, int *children, double const memory_s
         tree->GetNode(*iter)->BreakEdge();
     }
 }
+void breakSubtreeFurther(int *schedule_copy, int subtreeSize)
+{
+}
 
-std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vector<double> memory_sizes, io_method_t method)
+std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vector<double> memory_sizes, io_method_t method, bool skipBig)
 { //chstart, children are not modified
     vector<Cnode *> subtreeRoots;
+    vector<Cnode *> subtreeRootsSkipped;
     Cnode *currentnode;
     Cnode *subtreeRoot;
     int rootid;
@@ -2346,7 +2350,7 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
     double IO_volume;
     int currentProcessor;
     currentProcessor = 0;
-
+    cout<<endl<<"first small trees"<<endl;
     while (!subtreeRoots.empty())
     {
         double currentMem = memory_sizes[currentProcessor];
@@ -2370,6 +2374,53 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
         cout << "Subtree " << subtreeRoot->GetId() << " needs memory " << memory_required;
         if (memory_required > currentMem)
         {
+            if (!skipBig)
+            {
+                cout << ", larger than what is available: " << currentMem << " on proc " << currentProcessor << endl;
+
+                ite_sche = schedule_f->begin();
+                for (unsigned int i = subtreeSize; i >= 1; --i)
+                {
+                    schedule_copy[i] = *ite_sche;
+                    advance(ite_sche, 1);
+                }
+
+                schedule_copy[0] = subtreeSize + 1;
+
+                switch (method)
+                {
+                case FIRST_FIT:
+                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor, taskToPrc, false, true, com_freq, &BrokenEdgesID, FIRST_FIT);
+                    break;
+                case LARGEST_FIT:
+                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor, taskToPrc, false, true, com_freq, &BrokenEdgesID, LARGEST_FIT);
+                    break;
+                case IMMEDIATELY:
+                    Immediately(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, currentMem, com_freq, &BrokenEdgesID);
+                    break;
+
+                default:
+                    break;
+                }
+            }
+            else
+            {
+                subtreeRootsSkipped.push_back(subtreeRoot);
+            }
+        }
+        else
+        {
+            taskToPrc.at(subtreeRoot->GetId()) = currentProcessor;
+            currentProcessor++;
+        }
+        //cout<<endl;
+        //
+        cout << "Now big trees" << endl;
+        while (!subtreeRootsSkipped.empty())
+        {
+            double currentMem = memory_sizes[currentProcessor];
+            subtreeRoot = subtreeRootsSkipped.back();
+            subtreeRootsSkipped.pop_back();
             cout << ", larger than what is available: " << currentMem << " on proc " << currentProcessor << endl;
 
             ite_sche = schedule_f->begin();
@@ -2397,13 +2448,6 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
                 break;
             }
         }
-        else
-        {
-            taskToPrc.at(subtreeRoot->GetId()) = currentProcessor;
-            currentProcessor++;
-        }
-        //cout<<endl;
-        //
 
         delete[] ewghts;
         delete[] timewghts;
@@ -2435,7 +2479,7 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
     int count5 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(5));
     int count6 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(6));
     int count7 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(7));
-    cout<<"counts "<< count1<<" "<< count2<<" "<<count3<< " "<< count4<<" "<<count5<<" "<< count6<<" "<<count7<< endl;
+    cout << "counts " << count1 << " " << count2 << " " << count3 << " " << count4 << " " << count5 << " " << count6 << " " << count7 << endl;
     return taskToPrc;
 }
 

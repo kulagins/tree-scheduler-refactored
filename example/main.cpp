@@ -34,7 +34,7 @@ vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processor
     return memSizes;
 }
 
-void RunWithClusterConfig(int clusterConfig, int *chstart, int *children, Ctree *treeobj, vector<double> memorySizesA2, io_method_t method)
+void RunWithClusterConfig(int clusterConfig, bool skipBigTrees, int *chstart, int *children, Ctree *treeobj, vector<double> memorySizesA2, io_method_t method)
 {
     switch (clusterConfig)
     {
@@ -42,7 +42,7 @@ void RunWithClusterConfig(int clusterConfig, int *chstart, int *children, Ctree 
         MemoryCheck(treeobj, chstart, children, memorySizesA2[0], method);
         break;
     case 2:
-        MemoryCheckA2(treeobj, chstart, children, memorySizesA2, method);
+        MemoryCheckA2(treeobj, chstart, children, memorySizesA2, method, skipBigTrees);
         break;
     case 3:
     default:
@@ -110,6 +110,8 @@ int main(int argc, const char *argv[])
     delete schedule_f;
     delete treeobj;
     int clusterConfig = atoi(argv[5]);
+    bool skipBigTrees = (atoi(argv[6]) == 1);
+    
 
     memorySizes = buildMemorySizes(maxoutd, minMem, num_processors);
     for (int stage2Method = 0; stage2Method < 3; ++stage2Method)
@@ -124,20 +126,20 @@ int main(int argc, const char *argv[])
         case 0:
             stage2heuristic = "FIRST_FIT";
             //   MemoryCheck(treeobj, chstart, children, memorySize, FIRST_FIT);
-            RunWithClusterConfig(clusterConfig, chstart, children, treeobj, memorySizes, FIRST_FIT);
+            RunWithClusterConfig(clusterConfig, skipBigTrees, chstart, children, treeobj, memorySizes, FIRST_FIT);
             break;
         case 1:
             stage2heuristic = "LARGEST_FIT";
-            RunWithClusterConfig(clusterConfig, chstart, children, treeobj, memorySizes, LARGEST_FIT);
+            RunWithClusterConfig(clusterConfig, skipBigTrees, chstart, children, treeobj, memorySizes, LARGEST_FIT);
             break;
         case 2:
             stage2heuristic = "IMMEDIATELY";
-            RunWithClusterConfig(clusterConfig, chstart, children, treeobj, memorySizes, IMMEDIATELY);
+            RunWithClusterConfig(clusterConfig, skipBigTrees, chstart, children, treeobj, memorySizes, IMMEDIATELY);
             break;
 
         default:
             stage2heuristic = "FIRST_FIT";
-            RunWithClusterConfig(clusterConfig, chstart, children, treeobj, memorySizes, IMMEDIATELY);
+            RunWithClusterConfig(clusterConfig, skipBigTrees, chstart, children, treeobj, memorySizes, IMMEDIATELY);
             break;
         }
 

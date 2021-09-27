@@ -13,11 +13,11 @@
 
 vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processors)
 {
-    cout << maxoutd << " " << minMem << endl;
+   // cout << maxoutd << " " << minMem << endl;
     vector<double> memSizes(num_processors);
     memSizes.resize(num_processors);
     maxoutd = maxoutd * 2 / 3;
-    cout << "minProc " << maxoutd << " " << (maxoutd + minMem) / 2 << " " << minMem << endl;
+    //cout << "minProc " << maxoutd << " " << (maxoutd + minMem) / 2 << " " << minMem << endl;
     for (int k = 0; k < num_processors / 3; k++)
     {
 
@@ -173,7 +173,10 @@ int main(int argc, const char *argv[])
         else
         {
             time = clock();
-            makespan = SplitAgain(treeobj, num_processors, number_subtrees, taskToPrc, isProcBusy);
+            if(clusterConfig==1){
+            makespan = SplitAgain(treeobj, num_processors, number_subtrees);
+            }
+            else  makespan = SplitAgainV2(treeobj, num_processors, number_subtrees, taskToPrc, isProcBusy);
             time = clock() - time;
             number_subtrees = HowmanySubtrees(treeobj, true);
             std::cout

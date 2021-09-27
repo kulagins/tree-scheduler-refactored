@@ -23,7 +23,8 @@ double ASAP(Ctree* tree, unsigned int num_processors, unsigned int depth);
 double ASAP(Ctree* tree, unsigned int num_processors);
 unsigned long AvoidChain(Ctree* tree);
 //double LarSav(Ctree* tree, unsigned int processor_number, unsigned int num_subtrees);
-double SplitAgain(Ctree* tree, unsigned int processor_number, unsigned int num_subtrees,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy);
+double SplitAgainV2(Ctree* tree, unsigned int processor_number, unsigned int num_subtrees,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy);
+double SplitAgain(Ctree* tree, unsigned int processor_number, unsigned int num_subtrees);
 double Sequence(Cnode* root);
 
 Ctree* BuildQtree(Ctree* tree);

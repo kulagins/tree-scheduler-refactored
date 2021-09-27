@@ -1191,15 +1191,15 @@ double IOCounter(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstar
 
                 if (memory_required > available_memory)
                 {
-                    cout << "memory required " << memory_required << ", is larger than what is available BLABLA " << available_memory << endl;
-                    cout << "----------------------Processing subtree!" << endl;
+                   // cout << "memory required " << memory_required << ", is larger than what is available BLABLA " << available_memory << endl;
+                   // cout << "----------------------Processing subtree!" << endl;
                     IO_sub = IOCounter(subtree, subtree_size + 1, spacewghtssub, ewghtssub, chstartsub, childrensub, schedule_copy, available_memory, divisible, quiet, com_freq, &subtreeBrokenEdges, method);
 
                     for (vector<unsigned int>::iterator iter = subtreeBrokenEdges.begin(); iter != subtreeBrokenEdges.end(); ++iter)
                     {
                         brokenEdges->push_back(tree->GetNode(*iter)->GetothersideID());
                     }
-                    cout << "----------------------Out of Processing subtree!" << endl;
+                 //   cout << "----------------------Out of Processing subtree!" << endl;
                 }
 
                 delete[] ewghtssub;
@@ -1428,28 +1428,28 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
 
                 if (memory_required > availableMemorySizesA2[currentProcessor])
                 {
-                    cout << "memory required " << memory_required << ", is larger than what is available " << availableMemorySizesA2[currentProcessor] << " on proc " << currentProcessor << endl;
-                    cout << "----------------------Processing subtree! " << cur_task_id << endl;
+                 //   cout << "memory required " << memory_required << ", is larger than what is available " << availableMemorySizesA2[currentProcessor] << " on proc " << currentProcessor << endl;
+                  //  cout << "----------------------Processing subtree! " << cur_task_id << endl;
                     currentProcessor++;
                     IO_sub = IOCounterWithVariableMem(subtree, subtree_size + 1, spacewghtssub, ewghtssub, chstartsub, childrensub, schedule_copy, availableMemorySizesA2, currentProcessor, taskToPrc, isProcBusy, divisible, quiet, com_freq, &subtreeBrokenEdges, method);
 
-                    cout << "subtree broken edges " << subtreeBrokenEdges.size() << endl;
+                //    cout << "subtree broken edges " << subtreeBrokenEdges.size() << endl;
 
                     for (vector<unsigned int>::iterator iter = subtreeBrokenEdges.begin(); iter != subtreeBrokenEdges.end(); ++iter)
                     {
                         brokenEdges->push_back(tree->GetNode(*iter)->GetothersideID());
                     }
-                    cout << "----------------------Out of Processing subtree!" << endl;
+                //    cout << "----------------------Out of Processing subtree!" << endl;
                 }
                 else
                 {
                     taskToPrc[cur_task_id] = currentProcessor;
                     isProcBusy.at(currentProcessor) = true;
                     currentProcessor++;
-                    cout << "just increase proc to " << currentProcessor << endl;
+                 //   cout << "just increase proc to " << currentProcessor << endl;
                 }
 
-                cout << "broken edges " << brokenEdges->size() << endl;
+             //   cout << "broken edges " << brokenEdges->size() << endl;
 
                 delete[] ewghtssub;
                 delete[] timewghtssub;

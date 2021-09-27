@@ -49,6 +49,7 @@ struct CompareMapEntries
     int val;
     CompareMapEntries(const int &val) : val(val) {}
 };
+
 bool operator==(const std::pair<int, int> &p, const CompareMapEntries &c)
 {
     return c.val == p.second;
@@ -1932,7 +1933,7 @@ bool EstimateDecrase(int idleP, Ctree *tree, vector<Cnode *> *criticalPath, bool
 //    return node_return;
 //}
 
-double SplitAgain(Ctree *tree, unsigned int processor_number, unsigned int num_subtrees)
+double SplitAgain(Ctree *tree, unsigned int processor_number, unsigned int num_subtrees,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy)
 {
     double MS_now;
     Cnode *root = tree->GetRoot();
@@ -1951,8 +1952,10 @@ double SplitAgain(Ctree *tree, unsigned int processor_number, unsigned int num_s
     vector<Cnode *> tempVector;
 
     int idleProcessors = processor_number - num_subtrees;
+    int currentIdleProcessor = isProcBusy[num_subtrees];
     while (idleProcessors > 0)
     {
+        
         //cout<<"******** root id "<<tree->GetRootId()<<" ********"<<endl;
         CriticalPath.clear();
         CriticalPath.push_back(Qroot);
@@ -1985,9 +1988,13 @@ double SplitAgain(Ctree *tree, unsigned int processor_number, unsigned int num_s
         {
             if (onLastSubtree == false)
             {
-                //cout<<"cut edge "<<node_i->GetId()<<endl;
+                cout<<"split again cut edge "<<node_i->GetId()<<endl;
                 node_i->BreakEdge(); //C<-C\cup C_k
                 idleProcessors--;
+                taskToPrc.at(node_i->GetId())= currentIdleProcessor;
+                isProcBusy.at(currentIdleProcessor) = true;
+                cout<<"is busy? "<< (isProcBusy.at(currentIdleProcessor)? "true": "false")<<endl;
+                currentIdleProcessor++;
 
                 node_i->SetothersideID(Qtreeobj->GetNodes()->size() + 1);
                 parent = node_i->GetParent();
@@ -2038,10 +2045,20 @@ double SplitAgain(Ctree *tree, unsigned int processor_number, unsigned int num_s
             }
             else
             {
-                //cout<<"cut edge "<<node_i->GetId()<<" and edge "<<node_j->GetId()<<endl;
+                cout<<"split again cut edge "<<node_i->GetId()<<" and edge "<<node_j->GetId()<<endl;
                 node_i->BreakEdge(); //C<-C\cup C_k
                 node_j->BreakEdge(); //C<-C\cup C_k
                 idleProcessors = idleProcessors - 2;
+
+                taskToPrc.at(node_i->GetId())= currentIdleProcessor;
+                isProcBusy.at(currentIdleProcessor) = true;
+                currentIdleProcessor++;
+                cout<<"is busy? "<<  (isProcBusy.at(currentIdleProcessor)? "true": "false")<<endl;
+
+                taskToPrc.at(node_j->GetId())= currentIdleProcessor;
+                isProcBusy.at(currentIdleProcessor) = true;
+                currentIdleProcessor++;
+                  cout<<"is busy? "<<  (isProcBusy.at(currentIdleProcessor)? "true": "false")<<endl;
 
                 node_i->SetothersideID(Qtreeobj->GetNodes()->size() + 1);
                 node_j->SetothersideID(Qtreeobj->GetNodes()->size() + 2);
@@ -2306,7 +2323,7 @@ void breakSubtreeFurther(int *schedule_copy, int subtreeSize)
 {
 }
 
-std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vector<double> memory_sizes, io_method_t method, bool skipBig)
+std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vector<double> memory_sizes, io_method_t method, bool skipBig, std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy)
 { //chstart, children are not modified
     vector<Cnode *> subtreeRoots;
     vector<Cnode *> subtreeRootsSkipped;
@@ -2333,11 +2350,14 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
     sort(memory_sizes.begin(), memory_sizes.end());
     //std::sort(vec.begin(), vec.end());
 
-    std::map<int, int> taskToPrc;
-
     for (int i = 0; i < treeSize; i++)
     {
         taskToPrc.insert(pair<int, int>(i, -1));
+    }
+
+    for (int i = 0; i < treeSize; i++)
+    {
+        isProcBusy.insert(pair<int, bool>(i, false));
     }
 
     double maxoutD, memory_required;
@@ -2350,7 +2370,8 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
     double IO_volume;
     int currentProcessor;
     currentProcessor = 0;
-    cout<<endl<<"first small trees"<<endl;
+    cout << endl
+         << "first small trees" << endl;
     while (!subtreeRoots.empty())
     {
         double currentMem = memory_sizes[currentProcessor];
@@ -2390,10 +2411,10 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
                 switch (method)
                 {
                 case FIRST_FIT:
-                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor, taskToPrc, false, true, com_freq, &BrokenEdgesID, FIRST_FIT);
+                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor, taskToPrc, isProcBusy, false, true, com_freq, &BrokenEdgesID, FIRST_FIT);
                     break;
                 case LARGEST_FIT:
-                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor, taskToPrc, false, true, com_freq, &BrokenEdgesID, LARGEST_FIT);
+                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor, taskToPrc, isProcBusy, false, true, com_freq, &BrokenEdgesID, LARGEST_FIT);
                     break;
                 case IMMEDIATELY:
                     Immediately(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, currentMem, com_freq, &BrokenEdgesID);
@@ -2411,6 +2432,7 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
         else
         {
             taskToPrc.at(subtreeRoot->GetId()) = currentProcessor;
+            isProcBusy.at(currentProcessor) = true;
             currentProcessor++;
         }
         //cout<<endl;
@@ -2435,10 +2457,10 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
             switch (method)
             {
             case FIRST_FIT:
-                IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor, taskToPrc, false, true, com_freq, &BrokenEdgesID, FIRST_FIT);
+                IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor, taskToPrc, isProcBusy, false, true, com_freq, &BrokenEdgesID, FIRST_FIT);
                 break;
             case LARGEST_FIT:
-                IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor, taskToPrc, false, true, com_freq, &BrokenEdgesID, LARGEST_FIT);
+                IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor, taskToPrc, isProcBusy, false, true, com_freq, &BrokenEdgesID, LARGEST_FIT);
                 break;
             case IMMEDIATELY:
                 Immediately(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, currentMem, com_freq, &BrokenEdgesID);

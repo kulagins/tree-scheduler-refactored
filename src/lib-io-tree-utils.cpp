@@ -1335,7 +1335,7 @@ double IOCounter(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstar
 
 //SKU hier
 double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule, vector<double> availableMemorySizesA2, int &currentProcessor,
-                                std::map<int, int> &taskToPrc, bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method)
+                                std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method)
 {
     double memory_occupation = ewghts[schedule[N - 1]];
     double io_volume = 0;
@@ -1367,7 +1367,8 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
         { //0 means this node is on other subtrees
             /*if the node was unloaded*/
             unloaded = find(unloaded_nodes.begin(), unloaded_nodes.end(), cur_task_id);
-            if (unloaded != unloaded_nodes.end()){ //find node cur_task_id unloaded
+            if (unloaded != unloaded_nodes.end())
+            { //find node cur_task_id unloaded
                 //cout<<", (break) "<<endl;
                 brokenEdges->push_back(tree->GetNode(cur_task_id)->GetothersideID());
                 ++com_freq;
@@ -1430,7 +1431,7 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
                     cout << "memory required " << memory_required << ", is larger than what is available " << availableMemorySizesA2[currentProcessor] << " on proc " << currentProcessor << endl;
                     cout << "----------------------Processing subtree! " << cur_task_id << endl;
                     currentProcessor++;
-                    IO_sub = IOCounterWithVariableMem(subtree, subtree_size + 1, spacewghtssub, ewghtssub, chstartsub, childrensub, schedule_copy, availableMemorySizesA2, currentProcessor, taskToPrc, divisible, quiet, com_freq, &subtreeBrokenEdges, method);
+                    IO_sub = IOCounterWithVariableMem(subtree, subtree_size + 1, spacewghtssub, ewghtssub, chstartsub, childrensub, schedule_copy, availableMemorySizesA2, currentProcessor, taskToPrc, isProcBusy, divisible, quiet, com_freq, &subtreeBrokenEdges, method);
 
                     cout << "subtree broken edges " << subtreeBrokenEdges.size() << endl;
 
@@ -1443,6 +1444,7 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
                 else
                 {
                     taskToPrc[cur_task_id] = currentProcessor;
+                    isProcBusy.at(currentProcessor) = true;
                     currentProcessor++;
                     cout << "just increase proc to " << currentProcessor << endl;
                 }
@@ -1573,9 +1575,9 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
                 }
                 // TODO UNDO HERE
                 //taskToPrc.at(cur_task_id) = currentProcessor;
-             
             }
             taskToPrc.at(cur_task_id) = currentProcessor;
+            isProcBusy.at(currentProcessor) = true;
         }
     }
     delete schedule_f;

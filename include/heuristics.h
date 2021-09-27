@@ -23,13 +23,14 @@ double ASAP(Ctree* tree, unsigned int num_processors, unsigned int depth);
 double ASAP(Ctree* tree, unsigned int num_processors);
 unsigned long AvoidChain(Ctree* tree);
 //double LarSav(Ctree* tree, unsigned int processor_number, unsigned int num_subtrees);
-double SplitAgain(Ctree* tree, unsigned int processor_number, unsigned int num_subtrees);
+double SplitAgain(Ctree* tree, unsigned int processor_number, unsigned int num_subtrees,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy);
 double Sequence(Cnode* root);
 
 Ctree* BuildQtree(Ctree* tree);
 void MemoryCheck(Ctree* tree, int* chstart, int*children, double const memory_size, io_method_t method);
-std::map<int, int> MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> const memory_sizes, io_method_t method, bool skipBig);
+std::map<int, int> MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> const memory_sizes, io_method_t method, bool skipBig,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy);
 unsigned int HowmanySubtrees(const Ctree* tree, bool quiet);
 void SetBandwidth(double CCR, unsigned long tree_size, double * ewghts, double * timewghts);
+
 
 #endif /* heuristics_h */

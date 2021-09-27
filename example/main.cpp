@@ -6,6 +6,7 @@
 #include <fstream>
 #include <string>
 #include <math.h>
+#include <algorithm>
 #include <stdlib.h>
 #include "lib-io-tree.h"
 #include "heuristics.h"
@@ -34,7 +35,7 @@ vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processor
     return memSizes;
 }
 
-void RunWithClusterConfig(int clusterConfig, bool skipBigTrees, int *chstart, int *children, Ctree *treeobj, vector<double> memorySizesA2, io_method_t method)
+void RunWithClusterConfig(int clusterConfig, bool skipBigTrees, int *chstart, int *children, Ctree *treeobj, vector<double> memorySizesA2, std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, io_method_t method)
 {
     switch (clusterConfig)
     {
@@ -42,7 +43,7 @@ void RunWithClusterConfig(int clusterConfig, bool skipBigTrees, int *chstart, in
         MemoryCheck(treeobj, chstart, children, memorySizesA2[0], method);
         break;
     case 2:
-        MemoryCheckA2(treeobj, chstart, children, memorySizesA2, method, skipBigTrees);
+        MemoryCheckA2(treeobj, chstart, children, memorySizesA2, method, skipBigTrees, taskToPrc, isProcBusy);
         break;
     case 3:
     default:
@@ -111,35 +112,36 @@ int main(int argc, const char *argv[])
     delete treeobj;
     int clusterConfig = atoi(argv[5]);
     bool skipBigTrees = (atoi(argv[6]) == 1);
-    
+    std::map<int, int> taskToPrc;
+    std::map<int, bool> isProcBusy;
 
     memorySizes = buildMemorySizes(maxoutd, minMem, num_processors);
     for (int stage2Method = 0; stage2Method < 3; ++stage2Method)
     {
-        
+
         Ctree *treeobj = new Ctree(tree_size, prnts, spacewghts, ewghts, timewghts);
 
         time = clock();
-        
+
         switch (stage2Method)
         {
         case 0:
             stage2heuristic = "FIRST_FIT";
             //   MemoryCheck(treeobj, chstart, children, memorySize, FIRST_FIT);
-            RunWithClusterConfig(clusterConfig, skipBigTrees, chstart, children, treeobj, memorySizes, FIRST_FIT);
+            RunWithClusterConfig(clusterConfig, skipBigTrees, chstart, children, treeobj, memorySizes, taskToPrc, isProcBusy, FIRST_FIT);
             break;
         case 1:
             stage2heuristic = "LARGEST_FIT";
-            RunWithClusterConfig(clusterConfig, skipBigTrees, chstart, children, treeobj, memorySizes, LARGEST_FIT);
+            RunWithClusterConfig(clusterConfig, skipBigTrees, chstart, children, treeobj, memorySizes, taskToPrc, isProcBusy, LARGEST_FIT);
             break;
         case 2:
             stage2heuristic = "IMMEDIATELY";
-            RunWithClusterConfig(clusterConfig, skipBigTrees, chstart, children, treeobj, memorySizes, IMMEDIATELY);
+            RunWithClusterConfig(clusterConfig, skipBigTrees, chstart, children, treeobj, memorySizes, taskToPrc, isProcBusy, IMMEDIATELY);
             break;
 
         default:
             stage2heuristic = "FIRST_FIT";
-            RunWithClusterConfig(clusterConfig, skipBigTrees, chstart, children, treeobj, memorySizes, IMMEDIATELY);
+            RunWithClusterConfig(clusterConfig, skipBigTrees, chstart, children, treeobj, memorySizes, taskToPrc, isProcBusy, IMMEDIATELY);
             break;
         }
 
@@ -171,13 +173,25 @@ int main(int argc, const char *argv[])
         else
         {
             time = clock();
-            makespan = SplitAgain(treeobj, num_processors, number_subtrees);
+            makespan = SplitAgain(treeobj, num_processors, number_subtrees, taskToPrc, isProcBusy);
             time = clock() - time;
             number_subtrees = HowmanySubtrees(treeobj, true);
             std::cout
                 // << treename << " " << NPR << " " << CCR << " " << memory_constraint << " "
                 << number_subtrees << " " << num_processors << " " << makespan << " " << stage2heuristic << "+SplitAgain " << time << endl;
         }
+
+        // int count1 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(1));
+        // int count2 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(2));
+        // int count3 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(3));
+        // int count4 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(4));
+        // int count5 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(5));
+        // int count6 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(6));
+        // int count7 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(7));
+        // int count8 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(8));
+        // int count9 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(9));
+        // int count10 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(10));
+        // cout << "counts " << count1 << " " << count2 << " " << count3 << " " << count4 << " " << count5 << " " << count6 << " " << count7 << count8 << count9 << count10 << endl;
 
         delete treeobj;
         //}

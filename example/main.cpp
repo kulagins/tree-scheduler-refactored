@@ -14,6 +14,7 @@
 vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processors)
 {
    // cout << maxoutd << " " << minMem << endl;
+    //Paul    
     vector<double> memSizes(num_processors);
     memSizes.resize(num_processors);
     maxoutd = maxoutd * 2 / 3;
@@ -34,7 +35,7 @@ vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processor
 
     return memSizes;
 }
-
+//Paul
 void RunWithClusterConfig(int clusterConfig, bool skipBigTrees, int *chstart, int *children, Ctree *treeobj, vector<double> memorySizesA2, std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, io_method_t method)
 {
     switch (clusterConfig)
@@ -65,6 +66,7 @@ int main(int argc, const char *argv[])
     //double CCRs[] = {1, 0.1, 0.001};//communication to computation
     double CCR = atof(argv[3]);
     //double NPR[] = {100000, 10000, 1000};//ratio of nodes' amount to processors
+   //Paul
     double NPR = atof(argv[4]);
     clock_t time;
 
@@ -82,9 +84,9 @@ int main(int argc, const char *argv[])
     std::cout << " AmountSubtrees AmountProcessors Makespan Heuristic TimeConsuming" << std::endl;
 
     ifstream OpenFile(dir + argv[2]);
-    // do{
+    do{
     OpenFile >> treename;
-    treename = argv[2];
+  //  treename = argv[2];
     parse_tree((dir + treename).c_str(), &tree_size, &prnts, &spacewghts, &ewghts, &timewghts);
 
     num_processors = ceil(tree_size / NPR);
@@ -122,7 +124,7 @@ int main(int argc, const char *argv[])
         Ctree *treeobj = new Ctree(tree_size, prnts, spacewghts, ewghts, timewghts);
 
         time = clock();
-
+        //Paul
         switch (stage2Method)
         {
         case 0:
@@ -172,6 +174,7 @@ int main(int argc, const char *argv[])
         }
         else
         {
+            //Paul
             time = clock();
             if(clusterConfig==1){
             makespan = SplitAgain(treeobj, num_processors, number_subtrees);
@@ -207,7 +210,7 @@ int main(int argc, const char *argv[])
     delete[] chstart;
     delete[] chend;
     delete[] children;
-    // }while (OpenFile.good());
+    }while (OpenFile.good());
     OpenFile.close();
 
     return 0;

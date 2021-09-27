@@ -1334,6 +1334,7 @@ double IOCounter(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstar
 }
 
 //SKU hier
+//Paul
 double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule, vector<double> availableMemorySizesA2, int &currentProcessor,
                                 std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method)
 {

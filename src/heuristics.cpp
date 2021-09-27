@@ -1932,7 +1932,7 @@ bool EstimateDecrase(int idleP, Ctree *tree, vector<Cnode *> *criticalPath, bool
 //
 //    return node_return;
 //}
-
+//Paul
 double SplitAgainV2(Ctree *tree, unsigned int processor_number, unsigned int num_subtrees,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy)
 {
     double MS_now;
@@ -2453,7 +2453,7 @@ void MemoryCheck(Ctree *tree, int *chstart, int *children, double const memory_s
 void breakSubtreeFurther(int *schedule_copy, int subtreeSize)
 {
 }
-
+//Paul
 std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vector<double> memory_sizes, io_method_t method, bool skipBig, std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy)
 { //chstart, children are not modified
     vector<Cnode *> subtreeRoots;
@@ -2472,7 +2472,7 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
         {
             //cout<<i<<" ";
             subtreeRoots.push_back(currentnode);
-            cout << "root " << currentnode->GetMSCost() << endl;
+            //cout << "root " << currentnode->GetMSCost() << endl;
         }
     }
     //cout<<endl;
@@ -2481,7 +2481,7 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
     sort(memory_sizes.begin(), memory_sizes.end());
     //std::sort(vec.begin(), vec.end());
 
-    for (int i = 0; i < treeSize; i++)
+    for (int i = 0; i < treeSize+1; i++)
     {
         taskToPrc.insert(pair<int, int>(i, -1));
     }
@@ -2538,7 +2538,7 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
                 }
 
                 schedule_copy[0] = subtreeSize + 1;
-
+                //Paul
                 switch (method)
                 {
                 case FIRST_FIT:

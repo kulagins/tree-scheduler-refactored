@@ -321,6 +321,167 @@ double SplitSubtrees(Cnode *root, unsigned long num_processor, double twolevel, 
     return *smallestMS_iter;
 }
 
+double SplitSubtreesV3(Cnode *root, unsigned long num_processor,  std::map<int, int> processor_speeds, double twolevel, list<Cnode *> &parallelRoots, unsigned long &sequentialLength)
+{
+    parallelRoots.clear();
+    parallelRoots.emplace_front(root);
+    //cout<<"   insert root"<<endl;
+    vector<double> MS(1, root->GetMSCost(true, true)); // take communication cost into account
+    double MS_sequential = root->GetEW() / BANDWIDTH, Weight_more, Weight_PQ;
+    unsigned long amountSubtrees;
+    vector<Cnode *> *children;
+
+    Cnode *currentNode = root;
+    double temp;
+    unsigned int mergetime;
+    //list<Cnode*>::iterator iter;
+    //unsigned int target;
+    //unsigned int round=0;
+    while (!currentNode->IsLeaf())
+    {
+        MS_sequential = MS_sequential + currentNode->GetMSW();
+
+        Weight_PQ = 0;
+        parallelRoots.remove(currentNode);
+        //cout<<"pop up "<<currentNode->GetId()<<endl;
+
+        children = currentNode->GetChildren();
+        for (vector<Cnode *>::iterator iter = children->begin(); iter != children->end(); iter++)
+        {
+            if ((*iter)->IsBorken())
+            {
+                temp = (*iter)->GetMSCost(true, false);
+                if (temp > Weight_PQ)
+                {
+                    Weight_PQ = temp;
+                }
+            }
+            else
+            {
+                parallelRoots.push_back(*iter);
+                //cout<<"   insert "<<(*iter)->GetId()<<endl;
+            }
+        }
+
+        if (parallelRoots.empty())
+        {
+            break;
+        }
+        else
+        {
+            currentNode = *max_element(parallelRoots.begin(), parallelRoots.end(), cmp_nodecreasing); //non-decreasing
+        }
+
+        temp = currentNode->GetMSCost(true, false);
+        if (temp > Weight_PQ)
+        {
+            Weight_PQ = temp;
+        }
+
+        Weight_more = 0;
+        amountSubtrees = parallelRoots.size() + 1;
+        if (amountSubtrees > num_processor)
+        {
+            parallelRoots.sort(cmp_noIn_noCommu); //non-increasing sort, computation weight, no communication
+            list<Cnode *>::reverse_iterator iter = parallelRoots.rbegin();
+            mergetime = amountSubtrees - num_processor;
+            for (unsigned int i = 0; i < mergetime; ++i, ++iter)
+            {
+                Weight_more += (*iter)->GetMSCost(false, false); // no comunication cost, ImprovedSplit never goes to here.
+            }
+        }
+
+        //round++;
+        //cout<<"round "<<round<<"---MS Now "<<MS_sequential+Weight_more+Weight_PQ<<", edges broken{ ";
+        //        iter=parallelRoots.begin();
+        //        if (parallelRoots.size()>(num_processor-1)) {
+        //            target = num_processor-1;
+        //        }else{
+        //            target = parallelRoots.size();
+        //        }
+        //        if (!parallelRoots.empty()) {
+        //            for (unsigned int count=0; count<target; ++iter, ++count) {
+        //                cout<<(*iter)->GetId()<<" ";
+        //            }
+        //        }
+        //        cout<<"}"<<endl;
+
+        //cout<<"makespan "<<MS_sequential+Weight_more+Weight_PQ<<endl;
+        MS.push_back(MS_sequential + Weight_more + Weight_PQ);
+    }
+
+    if (twolevel == true)
+    {
+        double makespan;
+        makespan = *std::min_element(MS.begin(), MS.end());
+        return makespan;
+    }
+
+    //return broken edges, i.e., root of subtrees
+    vector<double>::iterator smallestMS_iter = min_element(MS.begin(), MS.end());
+    unsigned long minMS_step = smallestMS_iter - MS.begin();
+    //cout<<"minMS_step "<<minMS_step<<endl;
+    sequentialLength = minMS_step;
+    unsigned int i = 0;
+    parallelRoots.clear();
+    parallelRoots.push_back(root);
+    currentNode = root;
+    while (i < minMS_step)
+    {
+        parallelRoots.remove(currentNode);
+
+        children = currentNode->GetChildren();
+        for (vector<Cnode *>::iterator iter = children->begin(); iter != children->end(); iter++)
+        {
+            if (!(*iter)->IsBorken())
+            {
+                parallelRoots.push_back(*iter);
+            }
+        }
+
+        currentNode = *max_element(parallelRoots.begin(), parallelRoots.end(), cmp_nodecreasing); //non-decreasing
+        i++;
+    }
+
+    if (parallelRoots.size() > 1)
+    {
+        amountSubtrees = parallelRoots.size() + 1;
+    }
+    else
+    {
+        amountSubtrees = 1;
+    }
+
+    if (amountSubtrees > num_processor)
+    {
+        parallelRoots.sort(cmp_noIn_noCommu); //non-increasing sort, computation weight, no communication cost
+        mergetime = amountSubtrees - num_processor;
+        for (unsigned int i = 0; i < mergetime; ++i)
+        {
+            parallelRoots.pop_back();
+        }
+    }
+
+    root->BreakEdge(); //root should always be broken
+    for (list<Cnode *>::iterator iter = parallelRoots.begin(); iter != parallelRoots.end(); ++iter)
+    {
+        (*iter)->BreakEdge();
+    }
+
+    //    cout<<"   broken edges: ";
+    //    for (list<Cnode*>::iterator iter=parallelRoots.begin(); iter!=parallelRoots.end(); ++iter) {
+    //        cout<<(*iter)->GetId()<<" ";
+    //        if (!(*iter)->IsBorken()) {
+    //            cout<<"(error) ";
+    //        }
+    //    }
+    //    cout<<endl;
+
+    //    cout<<"makespan from the tree root "<<root->GetMSCost(true,true)<<endl;
+
+    return *smallestMS_iter;
+}
+
 void ISCore(Cnode *root, unsigned long num_processors, bool sequentialPart)
 { //number of processors here assumed to the same as tree'size
     list<Cnode *> parallelRoots;

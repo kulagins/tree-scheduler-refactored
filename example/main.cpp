@@ -35,6 +35,26 @@ vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processor
 
     return memSizes;
 }
+
+ std::map<int, int> buildProcessorSpeeds(int num_processors){
+     std::map<int, int> procSpeeds;
+   //  procSpeeds.resize(numProcessor);
+  for (int k = 0; k < num_processors / 3; k++)
+    {
+      procSpeeds.insert(pair<int, int>(k, 1));
+     
+    }
+    for (int k = num_processors / 3; k < 2 * num_processors / 3; k++)
+    {
+       procSpeeds.insert(pair<int, int>(k, 2));
+    }
+    for (int k = 2* num_processors / 3 + 1; k < num_processors; k++)
+    {
+        procSpeeds.insert(pair<int, int>(k, 3));
+    }
+
+    return procSpeeds;
+ }
 //Paul
 void RunWithClusterConfig(int clusterConfig, bool skipBigTrees, int *chstart, int *children, Ctree *treeobj, vector<double> memorySizesA2, std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, io_method_t method)
 {
@@ -77,6 +97,8 @@ int main(int argc, const char *argv[])
     uint64_t count;
     string stage2heuristic;
     vector<double> memorySizes;
+    list<Cnode*> parallelSubtrees;
+    unsigned long sequentialLen;
 
     cout.precision(0); //2
     cout.setf(ios::fixed);
@@ -94,15 +116,24 @@ int main(int argc, const char *argv[])
     {
         num_processors = 3;
     }
+    
+    std::map<int, int> processor_speeds = buildProcessorSpeeds(num_processors);
+    std::map<int, int> taskToPrc;
+    std::map<int, bool> isProcBusy;
 
     SetBandwidth(CCR, tree_size, ewghts, timewghts);
 
     Ctree *treeobj = new Ctree(tree_size, prnts, spacewghts, ewghts, timewghts);
     maxoutd = MaxOutDegree(treeobj, true);
+
     po_construct(tree_size, prnts, &chstart, &chend, &children, &root);
+         
 
     time = clock();
-    makespan = treeobj->GetRoot()->GetMSCost();
+  //  makespan = ImprovedSplit(treeobj, num_processors, chstart, children);
+   makespan = SplitSubtreesV3( treeobj->GetRoot(), num_processors, processor_speeds, taskToPrc, busyProfalse, parallelSubtrees,sequentialLen);
+  
+   // makespan = treeobj->GetRoot()->GetMSCost();
     number_subtrees = 1;
     time = clock() - time;
     cout << treename << " " << NPR << " " << CCR << " NA " << number_subtrees << " " << num_processors << " " << makespan << " Sequence " << time << endl;
@@ -114,8 +145,7 @@ int main(int argc, const char *argv[])
     delete treeobj;
     int clusterConfig = atoi(argv[5]);
     bool skipBigTrees = (atoi(argv[6]) == 1);
-    std::map<int, int> taskToPrc;
-    std::map<int, bool> isProcBusy;
+
 
     memorySizes = buildMemorySizes(maxoutd, minMem, num_processors);
     for (int stage2Method = 0; stage2Method < 3; ++stage2Method)

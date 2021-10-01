@@ -2780,11 +2780,7 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
         tree->GetNode(*iter)->BreakEdge();
     }
 
-    // cout <<"task to proc "<<endl;
-    //for(int i=0; i<taskToPrc.size(); i++){
-    //  if(taskToPrc.at(i)!=-1)
-    // cout<< i<<" " <<taskToPrc.at(i)<< " \t ";
-    //}
+   
 
     int count1 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(1));
     int count2 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(2));
@@ -2793,7 +2789,7 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
     int count5 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(5));
     int count6 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(6));
     int count7 = std::count(taskToPrc.begin(), taskToPrc.end(), CompareMapEntries(7));
-    cout << "counts " << count1 << " " << count2 << " " << count3 << " " << count4 << " " << count5 << " " << count6 << " " << count7 << endl;
+  //  cout << "counts " << count1 << " " << count2 << " " << count3 << " " << count4 << " " << count5 << " " << count6 << " " << count7 << endl;
     return taskToPrc;
 }
 

@@ -507,11 +507,33 @@ double unload_largest_first_fit(Ctree *tree, vector<unsigned int> &unloaded_node
 double unload_furthest_nodes(Ctree *tree, vector<unsigned int> &unloaded_nodes, list<node_sche> &loaded_nodes, const double data_to_unload, double *ewghts, bool divisible)
 {
     double unloaded_data = 0.0;
+    // cout << "loaded nodes: size " << loaded_nodes.size();
+    // list<node_sche>::iterator loaded_iterator = loaded_nodes.begin();
+    // if (loaded_nodes.size() < 20)
+    // {
+    //     while (loaded_iterator != loaded_nodes.end())
+    //     {
+    //         cout << loaded_iterator->first << endl;
+    //     }
+    //     cout << endl;
+    // }
+    // else
+    // {
+    //     cout << "big loaded nodes";
+    // }
+    // cout << "unloaded nodes: ";
+    // for (int i = 0; i < unloaded_nodes.size(); i++)
+    // {
+    //     cout << unloaded_nodes[i] << endl;
+    // }
+    // cout << endl;
 
     /*unload furthest non unloaded node which is NOT in current_node children first*/
+    list<node_sche> old_loaded_nodes = loaded_nodes;
     list<node_sche>::iterator far_node = loaded_nodes.begin();
     while ((far_node != loaded_nodes.end()) && (unloaded_data < data_to_unload))
     {
+        // cout << far_node->first << " " << far_node->second << endl;
         /*try to unload this node*/
         far_node = loaded_nodes.begin();
         double remaining_loaded_data = ewghts[(*far_node).first];
@@ -533,8 +555,34 @@ double unload_furthest_nodes(Ctree *tree, vector<unsigned int> &unloaded_nodes, 
 
         ////cout<<"-------LSNF remove "<<local_data_to_unload<<endl;
         ////cout<<"break edge "<<far_node->first<<endl;
-        tree->GetNode(far_node->first)->BreakEdge(); //break this edge
-        loaded_nodes.pop_front();
+        if (far_node->first == 0)
+        {
+            cout << "Problem! loaded nodes " << endl;
+            list<node_sche>::iterator loaded_iterator = loaded_nodes.begin();
+            if (loaded_nodes.size() < 20)
+            {
+                while (loaded_iterator != loaded_nodes.end())
+                {
+                    cout << loaded_iterator->first << endl;
+                }
+            }
+            else
+            {
+                cout << "big loaded nodes";
+            }
+            cout << "unloaded nodes: ";
+            for (int i = 0; i < unloaded_nodes.size(); i++)
+            {
+                cout << unloaded_nodes[i] << endl;
+            }
+
+            cout << "old loaded nodes size " << old_loaded_nodes.size() << endl;
+            cout << "old loaded nodes first " << old_loaded_nodes.begin()->first << endl;
+            tree->GetNode(far_node->first)->BreakEdge(); //break this edge
+            loaded_nodes.pop_front();
+        }
+
+        // cout << "after pop " << far_node->first << " " << far_node->second << endl;
     }
 
     return unloaded_data;
@@ -1173,6 +1221,7 @@ double IOCounter(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstar
                 Ctree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub, &timewghtssub, &spacewghtssub, chstart, children);
 
                 subtree_size = subtree->GetNodes()->size();
+                cout << "subtree size " << subtree_size << endl;
 
                 int *schedule_copy = new int[subtree_size + 1];
                 maxoutD = MaxOutDegree(subtree, true);
@@ -1191,15 +1240,15 @@ double IOCounter(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstar
 
                 if (memory_required > available_memory)
                 {
-                   // cout << "memory required " << memory_required << ", is larger than what is available BLABLA " << available_memory << endl;
-                   // cout << "----------------------Processing subtree!" << endl;
+                    // cout << "memory required " << memory_required << ", is larger than what is available BLABLA " << available_memory << endl;
+                    // cout << "----------------------Processing subtree!" << endl;
                     IO_sub = IOCounter(subtree, subtree_size + 1, spacewghtssub, ewghtssub, chstartsub, childrensub, schedule_copy, available_memory, divisible, quiet, com_freq, &subtreeBrokenEdges, method);
 
                     for (vector<unsigned int>::iterator iter = subtreeBrokenEdges.begin(); iter != subtreeBrokenEdges.end(); ++iter)
                     {
                         brokenEdges->push_back(tree->GetNode(*iter)->GetothersideID());
                     }
-                 //   cout << "----------------------Out of Processing subtree!" << endl;
+                    //   cout << "----------------------Out of Processing subtree!" << endl;
                 }
 
                 delete[] ewghtssub;
@@ -1429,28 +1478,28 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
 
                 if (memory_required > availableMemorySizesA2[currentProcessor])
                 {
-                 //   cout << "memory required " << memory_required << ", is larger than what is available " << availableMemorySizesA2[currentProcessor] << " on proc " << currentProcessor << endl;
-                  //  cout << "----------------------Processing subtree! " << cur_task_id << endl;
+                    //   cout << "memory required " << memory_required << ", is larger than what is available " << availableMemorySizesA2[currentProcessor] << " on proc " << currentProcessor << endl;
+                    //  cout << "----------------------Processing subtree! " << cur_task_id << endl;
                     currentProcessor++;
                     IO_sub = IOCounterWithVariableMem(subtree, subtree_size + 1, spacewghtssub, ewghtssub, chstartsub, childrensub, schedule_copy, availableMemorySizesA2, currentProcessor, taskToPrc, isProcBusy, divisible, quiet, com_freq, &subtreeBrokenEdges, method);
 
-                //    cout << "subtree broken edges " << subtreeBrokenEdges.size() << endl;
+                    //    cout << "subtree broken edges " << subtreeBrokenEdges.size() << endl;
 
                     for (vector<unsigned int>::iterator iter = subtreeBrokenEdges.begin(); iter != subtreeBrokenEdges.end(); ++iter)
                     {
                         brokenEdges->push_back(tree->GetNode(*iter)->GetothersideID());
                     }
-                //    cout << "----------------------Out of Processing subtree!" << endl;
+                    //    cout << "----------------------Out of Processing subtree!" << endl;
                 }
                 else
                 {
                     taskToPrc[cur_task_id] = currentProcessor;
                     isProcBusy.at(currentProcessor) = true;
                     currentProcessor++;
-                 //   cout << "just increase proc to " << currentProcessor << endl;
+                    //   cout << "just increase proc to " << currentProcessor << endl;
                 }
 
-             //   cout << "broken edges " << brokenEdges->size() << endl;
+                //   cout << "broken edges " << brokenEdges->size() << endl;
 
                 delete[] ewghtssub;
                 delete[] timewghtssub;

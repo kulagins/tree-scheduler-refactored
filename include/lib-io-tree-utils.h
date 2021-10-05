@@ -340,6 +340,12 @@ class Cnode{
         this->children->clear();
         this->~Cnode();
     }
+
+   // bool operator < (const Cnode& other) const
+   // {
+ //     double thiscost = GetMSCost();
+  //      return ( thiscost < other.GetMSCost());
+  //  }
     
     unsigned int Ci;
     double Mpeak;
@@ -564,6 +570,8 @@ void NextValley(Cnode * node, double available_memory,  double & cut_value, list
 //double IOCounter(Ctree & tree, schedule_t & sub_schedule, double available_memory,bool divisible,int quiet);
 //double IOCounter(int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, double available_memory,bool divisible,int quiet, io_method_t method=FURTHEST_NODE);
 double IOCounter(Ctree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, double available_memory,bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
+double IOCounterWithVariableMem(Ctree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, vector<double> availableMemorySizesA2, int &currentProcessor,
+                                         std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
 Ctree* BuildSubtree(Ctree* tree, Cnode* SubtreeRoot, unsigned int new_tree_size, int** prnts, double** ewghts, double** timewghts, double** spacewghts, int * chstart, int * children);
 
 #endif

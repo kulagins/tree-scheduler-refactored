@@ -1,0 +1,13 @@
+First way: 
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nfmax deg 1384793, MinMem 1529484
+cumulative mem in system: 12638886
+11 11 271705
+Print broken edges
+81920 66956 49004 48878 34510 21391 21244 801 723 80 1 End
+dump.0.1.metis.Bova.rma10-374.tree.nfmax deg 381938, MinMem 439734
+cumulative mem in system: 1892109
+Problem! loaded nodes 
+
+unloaded nodes: 151
+0
+

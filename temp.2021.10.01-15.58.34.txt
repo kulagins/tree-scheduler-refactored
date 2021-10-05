@@ -1,0 +1,75 @@
+First way: 
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nfmax deg 1384793, MinMem 1529484
+cumulative mem in system: 12638886
+subtree size 14964
+subtree size 48155
+subtree size 27634
+11 11 271705
+Print broken edges
+81920 66956 49004 48878 34510 21391 21244 801 723 80 1 End
+dump.0.1.metis.Bova.rma10-374.tree.nfmax deg 381938, MinMem 439734
+cumulative mem in system: 1892109
+subtree size 608
+subtree size 2630
+subtree size 581
+subtree size 1279
+subtree size 6530
+subtree size 3292
+subtree size 692
+subtree size 1621
+subtree size 762
+subtree size 10446
+subtree size 24129
+subtree size 6137
+subtree size 12795
+subtree size 3102
+subtree size 6640
+subtree size 817
+subtree size 3191
+subtree size 755
+subtree size 1491
+subtree size 717
+8 6 -1
+Print broken edges
+29860 27435 24629 24366 428 319 241 1 End
+dump.0.1.metis.Bova.rma10-374.tree.nfmax deg 381938, MinMem 439734
+cumulative mem in system: 1892109
+subtree size 608
+subtree size 2630
+subtree size 581
+subtree size 1279
+subtree size 6530
+subtree size 3292
+subtree size 692
+subtree size 1621
+subtree size 762
+subtree size 10446
+subtree size 24129
+subtree size 6137
+subtree size 12795
+subtree size 3102
+subtree size 6640
+subtree size 817
+subtree size 3191
+subtree size 755
+subtree size 1491
+subtree size 717
+8 6 -1
+Print broken edges
+29860 27435 24629 24366 428 319 241 1 End
+Second way: 
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nfmax deg 1384793, MinMem 1529484
+cumulative mem in system: 12638886
+11 11 271705
+Print broken edges
+81920 66956 49004 48878 34510 21391 21244 801 723 80 1 End
+dump.0.1.metis.Bova.rma10-374.tree.nfmax deg 381938, MinMem 439734
+cumulative mem in system: 1892109
+7 6 -1
+Print broken edges
+36390 29860 27435 24629 642 165 1 End
+dump.0.1.metis.Bova.rma10-374.tree.nfmax deg 381938, MinMem 439734
+cumulative mem in system: 1892109
+7 6 -1
+Print broken edges
+36390 29860 27435 24629 642 165 1 End

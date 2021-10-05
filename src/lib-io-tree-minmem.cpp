@@ -145,6 +145,7 @@ void explore(Cnode * node, double available_memory,list<Cnode*> * L_init, schedu
       list<Cnode *> Lj;
       schedule_t Sj;
 
+
 #ifdef DEBUG_USING_MINMEM
       explore(*current_node, (*current_node)->Mavail,NULL,NULL, m_j, Lj,Sj,(*current_node)->Mpeak,quiet,depth+1,count,minmem_trace,N);
 #else

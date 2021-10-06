@@ -1,0 +1,128 @@
+double SplitSubtrees(Cnode* root, unsigned long num_processor,  double twolevel, list<Cnode*>& parallelRoots, unsigned long & sequentialLength);
+double SplitSubtreesV3(Cnode* root, unsigned long num_processor,  std::map<int, int> processor_speeds, double twolevel, list<Cnode*>& parallelRoots, unsigned long & sequentialLength);
+double ImprovedSplit(Ctree* tree, unsigned int number_processor, int* chstart, int* childrenID);
+//double ImprovedSplit(Ctree* tree, unsigned int number_processor);
+double Merge(Ctree* tree, unsigned int num_subtrees, unsigned int processor_number, double const memory_size,int * chstart,int * childrenID, bool CheckMemory);
+double MergeV2(Ctree* tree, unsigned int num_subtrees, unsigned int processor_number, 
+                vector<double> memory_sizes, std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, int * chstart,int * childrenID, bool CheckMemory);
+
+double ASAP(Ctree* tree, unsigned int num_processors, unsigned int depth);
+double ASAP(Ctree* tree, unsigned int num_processors);
+unsigned long AvoidChain(Ctree* tree);
+//double LarSav(Ctree* tree, unsigned int processor_number, unsigned int num_subtrees);
+double SplitAgainV2(Ctree* tree, unsigned int processor_number, unsigned int num_subtrees,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy);
+double SplitAgain(Ctree* tree, unsigned int processor_number, unsigned int num_subtrees);
+double Sequence(Cnode* root);
+
+Ctree* BuildQtree(Ctree* tree);
+void MemoryCheck(Ctree* tree, int* chstart, int*children, double const memory_size, io_method_t method);
+std::map<int, int> MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> const memory_sizes, io_method_t method, bool skipBig,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy);
+unsigned int HowmanySubtrees(const Ctree* tree, bool quiet);
+void SetBandwidth(double CCR, unsigned long tree_size, double * ewghts, double * timewghts);
+
+
+void PebbleOrderingRecur(Ctree * tree,unsigned int sub_root, OrdoLiu_t & SubSchedule, int quiet, int & count);
+double PebbleOrderingIter(const int N,const int *prnts,const double *nwghts,const double *ewghts,const int * chstart, const int * chend, int * children, const int root, int *schedule);
+
+
+void MinMem(Ctree * tree,double MaxOutDeg, double & Required_memory, schedule_t & Schedule, int quiet, uint64_t & count);//added by Changjiang
+
+void MinMemArray(int N,int root, double * nwghts, double * ewghts, int * chstart, int * children,double MaxOutDeg, double & Required_memory, int * Schedule, int quiet, int & count);
+
+
+
+class Cnode
+class Ctree
+struct s_node_t 
+struct s_io_t 
+typedef list<int> schedule_t;
+typedef list<Cnode*> cut_t;
+
+typedef pair<unsigned int, double> io_t;
+typedef map<unsigned int, double> io_map;
+typedef pair<unsigned int, unsigned int> node_sche;
+typedef pair<unsigned int, double> node_ew;
+
+struct OrdoLiu_t ;
+struct val_seg_t 
+struct OrdoLiu_t 
+
+
+
+void ConvertToLiu(const Ctree * tree_us, Ctree * tree_liu) ;
+void ConvertToLiu(const int * oldprnts,const double * oldnwghts,const double * oldewghts, int N,const int* chstart,const int * children, int ** pprnts, double ** pnwghts, double ** pewghts);
+void parse_tree(const char *filename,Ctree * tree);
+void parse_tree(const char *filename,int * N ,int **prnts,double **nwghts,double **ewghts, double **mswghts);
+
+
+extern "C" {
+#endif
+  void po_construct(const int N, const int * prnts, int **chstart,int **chend,int **children, int * root);
+  void poaux(const int * chstart, const int * children, int N, int r, int * por, int * label);
+#ifdef __cplusplus
+} /* closing brace for extern "C" */
+
+
+
+bool check_schedule(int * prnts,int * sched,int N);
+
+double MaxOutDegree(Ctree * tree,int quiet);
+double MaxOutDegree(int N, double * nwghts, double * ewghts, int * chstart,int * children);
+
+void NextValley(Cnode * node, double available_memory,  double & cut_value, list<Cnode*> & min_sub_cut, list<unsigned int> & sub_schedule, double & Inc, int quiet, int depth,int & count);
+//double IOCounter(Ctree & tree, schedule_t & sub_schedule, double available_memory,bool divisible,int quiet);
+//double IOCounter(int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, double available_memory,bool divisible,int quiet, io_method_t method=FURTHEST_NODE);
+double IOCounter(Ctree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, double available_memory,bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
+double IOCounterWithVariableMem(Ctree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, vector<double> availableMemorySizesA2, int &currentProcessor,
+                                         std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
+Ctree* BuildSubtree(Ctree* tree, Cnode* SubtreeRoot, unsigned int new_tree_size, int** prnts, double** ewghts, double** timewghts, double** spacewghts, int * chstart, int * children);
+
+
+
+
+double MaxOutDegree(int N, int * prnts, double * nwghts, double * ewghts);
+#ifndef __cplusplus
+//double IOCounter(int N, int * prnts, double * nwghts, double * ewghts, int * schedule, double available_memory,int divisible,io_method_t method);
+#else
+//double IOCounter(int N, int * prnts, double * nwghts, double * ewghts, int * schedule, double available_memory,int divisible,io_method_t method=FURTHEST_NODE);
+#endif
+
+double PostOrderRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts, int *schedule);
+double PostOrderRecurAlgorithm_timed(int N, int *prnts, double *nwghts, double *ewghts, int *schedule,double * usec,int quiet);
+
+
+double PostOrderIterAlgorithm(int N, int *prnts, double *nwghts, double *ewghts, int *schedule);
+double PostOrderIterAlgorithm_timed(int N, int *prnts, double *nwghts, double *ewghts, int *schedule, double * usec,int quiet);
+
+double PebbleOrderingRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts, int *schedule);
+double PebbleOrderingRecurAlgorithm_timed(int N, int *prnts, double *nwghts, double *ewghts, int *schedule,double * usec,int quiet);
+
+double PebbleOrderingIterAlgorithm(int N, int *prnts, double *nwghts, double *ewghts, int *schedule);
+double PebbleOrderingIterAlgorithm_timed(int N, int *prnts, double *nwghts, double *ewghts, int *schedule,double * usec,int quiet);
+
+#ifndef DEBUG_USING_MINMEM
+double MinMemRecurAlgorithm( int N, int *prnts, double *nwghts, double *ewghts, int *schedule);
+double MinMemRecurAlgorithm_timed(int N, int *prnts, double *nwghts, double *ewghts, int *schedule,double * usec,int quiet);
+#else
+double MinMemRecurAlgorithm( int N, int *prnts, double *nwghts, double *ewghts, int *schedule,iter_node_t * minmem_trace);
+double MinMemRecurAlgorithm_timed(int N, int *prnts, double *nwghts, double *ewghts, int *schedule,double * usec,int quiet,iter_node_t * minmem_trace);
+#endif
+	
+double MinMemArrayRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts, int *schedule);
+double MinMemArrayRecurAlgorithm_timed(int N, int *prnts, double *nwghts, double *ewghts, int *schedule,double * usec,int quiet);
+
+
+
+vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processors, double &cumulativeMemoryInSystem)
+
+std::map<int, int> buildProcessorSpeeds(int num_processors)
+void RunWithClusterConfig(int clusterConfig, bool skipBigTrees, int *chstart, int *children, Ctree *treeobj, vector<double> memorySizesA2, double singularMemory, std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, io_method_t method)
+
+
+void printBrokenEdges(Ctree *tree)
+
+
+void actualActions(double CCR, double NPR, unsigned int num_processors, double *ewghts, double *spacewghts, double *timewghts, int *prnts, int tree_size, bool skipBigTrees, int clusterConfig)
+
+
+int main(int argc, const char *argv[])

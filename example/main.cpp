@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include "lib-io-tree.h"
 #include "heuristics.h"
+#include "cluster.h"
 
 vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processors)
 {
@@ -250,6 +251,8 @@ int main(int argc, const char *argv[])
             {
                 num_processors = 3;
             }
+            
+            Cluster * cluster = new Cluster(num_processors, clusterConfig==1);
 
             actualActions(CCR, NPR, num_processors, ewghts, spacewghts, timewghts, prnts, tree_size, skipBigTrees, clusterConfig);
             delete[] prnts;

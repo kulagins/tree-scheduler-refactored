@@ -15,6 +15,7 @@ class Processor
 protected:
     double memorySize;
     double processorSpeed;
+    int assignedTask;
 
 public:
     bool isBusy;
@@ -23,18 +24,21 @@ public:
         this->memorySize = 0;
         this->processorSpeed = 1;
         isBusy = false;
+        assignedTask = -1;
     }
     Processor(double memorySize)
     {
         this->memorySize = memorySize;
         this->processorSpeed = 1;
         isBusy = false;
+        assignedTask = -1;
     }
     Processor(double memorySize, double processorSpeed)
     {
         this->memorySize = memorySize;
         this->processorSpeed = processorSpeed;
         isBusy = false;
+        assignedTask = -1;
     }
     double getMemorySize()
     {
@@ -43,6 +47,10 @@ public:
     double getProcessorSpeed()
     {
         return processorSpeed;
+    }
+    void assignTask(int taskId){
+        this->assignedTask = taskId;
+        this->isBusy = true;
     }
 };
 
@@ -113,4 +121,14 @@ public:
     {
         return isMemoryHomogeneous && isProcessorHomogeneous && isBandwidthHomogenenous;
     }
+
+    vector<Processor *> getProcessors()
+    {
+        return this->processors;
+    }
+    double getBandwidthBetween(int firstProcessor, int secondProcessor)
+    {
+        return this->bandwidths.at(firstProcessor).at(secondProcessor);
+    }
+    Processor * getFirstFreeProcessor();
 };

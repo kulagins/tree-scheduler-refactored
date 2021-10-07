@@ -18,7 +18,7 @@ class Processor {
 protected:
     double memorySize;
     double processorSpeed;
-    Cnode* assignedTask;
+    Task* assignedTask;
 
 public:
     bool isBusy;
@@ -48,7 +48,7 @@ public:
     {
         return processorSpeed;
     }
-    void assignTask(Cnode* assignedTask)
+    void assignTask(Task* assignedTask)
     {
         this->assignedTask = assignedTask;
         this->isBusy = true;
@@ -126,14 +126,6 @@ public:
         return this->bandwidths.at(firstProcessor).at(secondProcessor);
     }
     Processor* getFirstFreeProcessor();
-   /* {
-        for (vector<Processor*>::iterator iter = this->processors.begin(); iter < this->processors.end(); iter++) {
-            if (!(*iter)->isBusy)
-                return (*iter);
-        }
-        throw std::out_of_range("No free processor available anymore!");
-    } */
-
     void printProcessors()
     {
         for (vector<Processor*>::iterator iter = this->processors.begin(); iter < processors.end(); iter++) {

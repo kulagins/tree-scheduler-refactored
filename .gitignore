@@ -1,5 +1,8 @@
 *.o
 *.log
+*.a
 *.vscode
 example/call-heuristics
 res
+*.dSYM
+.DS_Store

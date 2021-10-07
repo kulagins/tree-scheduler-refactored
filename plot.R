@@ -308,7 +308,7 @@ for(i in 0:2){#NPR
 }
 
 ggplot(long.ms,aes(x=x,y=y,fill=makespan))+geom_raster()+
-  scale_x_reverse(name="Processor to Node Ratio",breaks=c(4.5,12.5,20.5),labels=c(0.01,0.001,1e-04))+
+  scale_x_reverse(name="Processor to Task Ratio",breaks=c(4.5,12.5,20.5),labels=c(0.01,0.001,1e-04))+
   scale_y_continuous(breaks=c(2.5,6.5,10.5,14.5),labels = c("ASAPnochain","ImprovedSplit","Sequence","SplitSubtrees"),name="Heuristic")+
   scale_fill_gradient2(low = "green", midpoint=1, mid="white",high = "red",limits=c(0,6),breaks=c(0.2,0.4,0.8,1,2,4,6),guide = "legend")+
   theme_bw()+

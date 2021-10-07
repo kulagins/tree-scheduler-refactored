@@ -11,6 +11,8 @@
 #include "lib-io-tree.h"
 #include "heuristics.h"
 
+
+
 vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processors)
 {
     cout << "max deg " << maxoutd << ", MinMem " << minMem << endl;
@@ -59,20 +61,14 @@ std::map<int, int> buildProcessorSpeeds(int num_processors)
     return procSpeeds;
 }
 //Paul
-void RunWithClusterConfig(int clusterConfig, bool skipBigTrees, int *chstart, int *children, Tree *treeobj, vector<double> memorySizesA2, std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, io_method_t method)
+void RunWithClusterConfig(bool skipBigTrees, int *chstart, int *children, Tree *treeobj,
+                          Cluster *cluster, io_method_t method)
+
 {
-    switch (clusterConfig)
-    {
-    case 1:
-        MemoryCheck(treeobj, chstart, children, memorySizesA2[0], method);
-        break;
-    case 2:
-        MemoryCheckA2(treeobj, chstart, children, memorySizesA2, method, skipBigTrees, taskToPrc, isProcBusy);
-        break;
-    case 3:
-    default:
-        throw std::invalid_argument("not implemented");
-    }
+    if (cluster->isHomogeneous())
+        MemoryCheck(treeobj, chstart, children, cluster, method);
+    else
+        MemoryCheckA2(treeobj, chstart, children,  cluster, method, skipBigTrees);
 }
 
 void printBrokenEdges(Tree *tree)
@@ -139,6 +135,7 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
     delete treeobj;
 
     memorySizes = buildMemorySizes(maxoutd, minMem, num_processors);
+    Cluster *cluster = new Cluster(memorySizes);
     for (int stage2Method = 0; stage2Method < 1; ++stage2Method)
     {
 
@@ -150,20 +147,20 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
         case 0:
             stage2heuristic = "FIRST_FIT";
             //   MemoryCheck(treeobj, chstart, children, memorySize, FIRST_FIT);
-            RunWithClusterConfig(clusterConfig, skipBigTrees, chstart, children, treeobj, memorySizes, taskToPrc, isProcBusy, FIRST_FIT);
+            RunWithClusterConfig(skipBigTrees, chstart, children, treeobj, cluster, FIRST_FIT);
             break;
         case 1:
             stage2heuristic = "LARGEST_FIT";
-            RunWithClusterConfig(clusterConfig, skipBigTrees, chstart, children, treeobj, memorySizes, taskToPrc, isProcBusy, LARGEST_FIT);
+            RunWithClusterConfig(skipBigTrees, chstart, children, treeobj, cluster, LARGEST_FIT);
             break;
         case 2:
             stage2heuristic = "IMMEDIATELY";
-            RunWithClusterConfig(clusterConfig, skipBigTrees, chstart, children, treeobj, memorySizes, taskToPrc, isProcBusy, IMMEDIATELY);
+            RunWithClusterConfig(skipBigTrees, chstart, children, treeobj, cluster, IMMEDIATELY);
             break;
 
         default:
             stage2heuristic = "FIRST_FIT";
-            RunWithClusterConfig(clusterConfig, skipBigTrees, chstart, children, treeobj, memorySizes, taskToPrc, isProcBusy, IMMEDIATELY);
+            RunWithClusterConfig(skipBigTrees, chstart, children, treeobj, cluster, IMMEDIATELY);
             break;
         }
 
@@ -242,7 +239,7 @@ int main(int argc, const char *argv[])
         for (int clusterConfig = 1; clusterConfig <= 2; clusterConfig++)
         {
             cout << "clusterConfig: " << clusterConfig << endl;
-            
+
             parse_tree((dir + treename).c_str(), &tree_size, &prnts, &spacewghts, &ewghts, &timewghts);
 
             num_processors = ceil(tree_size / NPR);

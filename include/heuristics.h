@@ -11,8 +11,13 @@
 
 #include "lib-io-tree.h"
 #include "lib-io-tree-minmem.h"
+#include "cluster.h"
 
-typedef enum {TIME=1,SPACE} subtreeType;
+typedef enum
+{
+    TIME = 1,
+    SPACE
+} subtreeType;
 
 double SplitSubtrees(Task* root, unsigned long num_processor,  double twolevel, list<Task*>& parallelRoots, unsigned long & sequentialLength);
 double SplitSubtreesV3(Task* root, unsigned long num_processor,  std::map<int, int> processor_speeds, double twolevel, list<Task*>& parallelRoots, unsigned long & sequentialLength);
@@ -29,8 +34,8 @@ double SplitAgain(Tree* tree, unsigned int processor_number, unsigned int num_su
 double Sequence(Task* root);
 
 Tree* BuildQtree(Tree* tree);
-void MemoryCheck(Tree* tree, int* chstart, int*children, double const memory_size, io_method_t method);
-std::map<int, int> MemoryCheckA2(Tree* tree, int* chstart, int*children, vector<double> const memory_sizes, io_method_t method, bool skipBig,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy);
+void MemoryCheck(Tree* tree, int* chstart, int*children,  Cluster *cluster, io_method_t method);
+std::map<int, int> MemoryCheckA2(Tree* tree, int* chstart, int*children,  Cluster *cluster,io_method_t method, bool skipBig);
 unsigned int HowmanySubtrees(const Tree* tree, bool quiet);
 void SetBandwidth(double CCR, unsigned long tree_size, double * ewghts, double * timewghts);
 

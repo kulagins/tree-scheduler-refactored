@@ -1,0 +1,4 @@
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf
+clusterConfig: 1
+max deg 1384793, MinMem 1529484
+cumulative mem in system: 77494615

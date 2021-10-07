@@ -21,6 +21,7 @@
 #include <assert.h>
 #include <map>
 
+
 #ifndef DEBUG_MEMUSAGE
 #define DEBUG_MEMUSAGE 0
 #endif
@@ -31,7 +32,6 @@
 #define STRONG_ASSERT 0
 #endif
 
-
 using namespace std;
 
 #ifndef MAX_COMBI_SIZE
@@ -40,12 +40,23 @@ using namespace std;
 
 extern double BANDWIDTH;
 
-typedef enum {FURTHEST_NODE=1, BEST_K_COMBI, BEST_FIT_ABS, FIRST_FIT_ABS, BEST_FIT, FIRST_FIT,BEST_INC_COMBI, BEST_COMBI,LARGEST_FIT,IMMEDIATELY} io_method_t;
-
+typedef enum
+{
+  FURTHEST_NODE = 1,
+  BEST_K_COMBI,
+  BEST_FIT_ABS,
+  FIRST_FIT_ABS,
+  BEST_FIT,
+  FIRST_FIT,
+  BEST_INC_COMBI,
+  BEST_COMBI,
+  LARGEST_FIT,
+  IMMEDIATELY
+} io_method_t;
 
 double u_wseconds(void);
 
-class Task{
+     class Task{
   protected:
     bool cost_computed;
     double cost;
@@ -522,7 +533,10 @@ class Tree{
     }
 };
 
-struct s_node_t {
+
+
+struct s_node_t
+{
   int parent;
   vector<int> children;
   double edge_weight;
@@ -531,12 +545,11 @@ struct s_node_t {
   double Mavail;
 };
 
-struct s_io_t {
+struct s_io_t
+{
   unsigned int node;
   double unloaded_data;
 };
-
-
 
 typedef list<int> schedule_t;
 typedef list<Task*> cut_t;
@@ -546,17 +559,19 @@ typedef map<unsigned int, double> io_map;
 typedef pair<unsigned int, unsigned int> node_sche;
 typedef pair<unsigned int, double> node_ew;
 
-struct OrdoLiu_t ;
-struct val_seg_t {
+struct OrdoLiu_t;
+struct val_seg_t
+{
   schedule_t::iterator begin;
   unsigned int begin_index;
   schedule_t::iterator end;
   unsigned int end_index;
-  OrdoLiu_t * orig_ordo;
+  OrdoLiu_t *orig_ordo;
   double value;
 };
 
-struct OrdoLiu_t {
+struct OrdoLiu_t
+{
   double max_pebble_cost;
   double fi;
   list<val_seg_t> val_seg;
@@ -569,15 +584,13 @@ void ConvertToLiu(const int * oldprnts,const double * oldnwghts,const double * o
 void parse_tree(const char *filename,Tree * tree);
 void parse_tree(const char *filename,int * N ,int **prnts,double **nwghts,double **ewghts, double **mswghts);
 
-
-extern "C" {
+extern "C"
+{
 #endif
-  void po_construct(const int N, const int * prnts, int **chstart,int **chend,int **children, int * root);
-  void poaux(const int * chstart, const int * children, int N, int r, int * por, int * label);
+  void po_construct(const int N, const int *prnts, int **chstart, int **chend, int **children, int *root);
+  void poaux(const int *chstart, const int *children, int N, int r, int *por, int *label);
 #ifdef __cplusplus
 } /* closing brace for extern "C" */
-
-
 
 bool check_schedule(int * prnts,int * sched,int N);
 

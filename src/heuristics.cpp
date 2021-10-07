@@ -476,66 +476,6 @@ double ImprovedSplit(Ctree *tree, unsigned int number_processor, int *chstart, i
     return makespan;
 }
 
-//double ImprovedSplit(Ctree* tree, unsigned int processor_number){//first implementation
-//    unsigned long tree_size=tree->GetNodes()->size();
-//    Cnode* root=tree->GetRoot();
-//    ISCore(root, tree_size, false, 0);
-//
-////    cout<<"Broken Edges: ";
-////    for (unsigned int i=1; i<=tree_size; ++i) {
-////        if (tree->GetNode(i)->IsBroken()) {
-////            cout<<i<<" ";
-////        }
-////    }
-////    cout<<endl;
-//
-//    unsigned int num_subtrees=0;
-//    num_subtrees=HowmanySubtrees(tree,true);
-//
-//    if (processor_number>=num_subtrees) {
-//        return root->GetMSCost(true, true);
-//    }
-//
-//    Ctree* Qtreeobj = BuildQtree(tree);//makespan will also be updated in BuildQtree //root->GetMSCost(true, true);
-//    Cnode* currentNode;
-//    double temp;
-//    unsigned int shortage=num_subtrees-processor_number;
-//    unsigned int subtree_root_id;
-//    double smallestParaPart;
-//    vector<Cnode*>* Children;
-//    while (shortage>0) {
-//        currentNode=Qtreeobj->GetRoot();
-//        smallestParaPart=currentNode->GetMSCost(true, true);
-//        while (!currentNode->IsLeaf()) {
-//            Children=currentNode->GetChildren();
-//            for (vector<Cnode*>::iterator iter=Children->begin(); iter!=Children->end(); iter++) {
-//                temp=(*iter)->GetMSCost(true, false);
-//                if (temp<smallestParaPart) {
-//                    smallestParaPart=temp;
-//                    currentNode=(*iter);
-//                }
-//            }
-//        }//now current node is the leaf node and is the smallest one from the smallest one iteratively
-//
-//        subtree_root_id = currentNode->GetothersideID();
-//        tree->GetNode(subtree_root_id)->RestoreEdge();
-//        currentNode->MergetoParent();
-//        shortage--;
-//
-////        for (unsigned int i=1; i<=Qtreeobj->GetNodes()->size(); ++i) {
-////            cout<<i<<" "<<Qtreeobj->GetNode(i)->GetParentId()<<" "<<Qtreeobj->GetNode(i)->GetMSW()<<" "<<Qtreeobj->GetNode(i)->GetEW()<<endl;
-////        }
-////        cout<<"-----------------------------"<<endl;
-////        cout<<"Restore edge "<<subtree_root_id<<", shortage "<<shortage<<endl;
-//    }
-//
-//    double Makespan=root->GetMSCost(true, true);
-//
-//    delete Qtreeobj;
-//
-//    return Makespan;
-//}
-
 bool MemoryEnough(Ctree *tree, Cnode *Qrootone, Cnode *Qroottwo, bool leaf, double memory_size, int *chstart, int *children)
 {
     bool enough = false;
@@ -1454,42 +1394,6 @@ double ASAP(Ctree *tree, unsigned int num_processors)
 
     return minimumMS;
 }
-
-//unsigned long AvoidChain(Ctree* tree){//it works, the first implementation
-//    Cnode* root=tree->GetRoot();
-//
-//    root->BreakEdge();
-//    unsigned long num_subtrees=0;
-//    num_subtrees = HowmanySubtrees(tree, true);
-//
-//    Ctree* Qtreeobj = BuildQtree(tree);
-//
-//    //find the chain
-//    Cnode* currentNode;
-//    forward_list<Cnode*> Que;
-//    Que.push_front(Qtreeobj->GetRoot());
-//    vector<Cnode*>* children;
-//    while (!Que.empty()) {
-//        currentNode=Que.front();
-//        Que.pop_front();
-//
-//        while (currentNode->GetChildren()->size()==1) {
-//            currentNode=currentNode->GetChildren()->front();
-//            tree->GetNode(currentNode->GetothersideID())->RestoreEdge();// Restore Edge
-//            //cout<<"Restore edge "<<currentNode->GetothersideID()<<endl;
-//            num_subtrees--;
-//        }
-//
-//        children=currentNode->GetChildren();
-//        for (vector<Cnode*>::iterator iter=children->begin();iter!=children->end();iter++){
-//            Que.push_front((*iter));
-//        }
-//    }
-//
-//    delete Qtreeobj;
-//
-//    return num_subtrees;
-//}
 
 unsigned long AvoidChain(Ctree *tree)
 {

@@ -1514,24 +1514,6 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
     //    cerr<<"IO Volume "<<io_volume<<endl;
 }
 
-//double IOCounter(Ctree* tree, int N, int * prnts, double * nwghts, double * ewghts, int * schedule, double available_memory,int divisible, unsigned int & com_freq, io_method_t method){
-//    bool div = (divisible==0);
-//
-//    int * chstart,*chend,*children;
-//    int root;
-//
-//    po_construct(N, prnts, &chstart,&chend,&children, &root);
-//    double io_volume = IOCounter(tree,N, nwghts, ewghts, chstart,children,schedule, available_memory,div,true,com_freq, method);
-//
-//
-//    delete[] chstart;
-//    delete[] chend;
-//    delete[] children;
-//
-//    return io_volume;
-//    //    cerr<<"IO Volume "<<io_volume<<endl;
-//}
-
 bool check_schedule(int *prnts, int *sched, int N)
 {
     bool valid = true;

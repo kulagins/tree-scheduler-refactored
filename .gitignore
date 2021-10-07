@@ -4,3 +4,5 @@
 example/call-heuristics
 res
 Makefile
+*.dSYM
+.DS_Store

@@ -1642,7 +1642,7 @@ Ctree *SubtreeRooted(Cnode *node)
         visit_next = *(node->GetChildren());
         while (!visit_next.empty())
         {
-            if (!visit_next.back()->IsBorken())
+            if (!visit_next.back()->IsBroken())
             { // this child has not been cut
                 subtree->AddNode(visit_next.back());
                 end_node = visit_next.back();
@@ -1693,7 +1693,7 @@ Ctree *BuildSubtree(Ctree *tree, Cnode *SubtreeRoot, unsigned int new_tree_size,
         for (int j = chstart[originalID]; j < chstart[originalID + 1]; j++)
         {
             currentNode = tree->GetNode(children[j]);
-            if (!currentNode->IsBorken())
+            if (!currentNode->IsBroken())
             { // broken edge means node is on aother subtree
                 nodeID++;
                 originalIDs[nodeID] = children[j];

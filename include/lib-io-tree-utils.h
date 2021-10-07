@@ -223,7 +223,7 @@ class Cnode{
         broken=false;//resotre this edge
     }
     
-    bool IsBorken(){
+    bool IsBroken(){
         if (broken==true) {
             return true;
         }else{
@@ -252,7 +252,7 @@ class Cnode{
         MS_parallelPart=0;
         double temp;
         for (vector<Cnode*>::iterator iter=this->GetChildren()->begin(); iter!=this->GetChildren()->end(); ++iter) {
-            if ((*iter)->IsBorken()) {
+            if ((*iter)->IsBroken()) {
                 //cout<<"edge "<<(*iter)->GetId()<<" broken"<<endl;
                 temp=(*iter)->GetMSCost(true, updateEnforce);
                 if (temp>MS_parallelPart) {

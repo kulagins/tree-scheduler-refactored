@@ -80,7 +80,7 @@ void printBrokenEdges(Ctree *tree)
     for (unsigned int i = treeSize; i >= 1; --i)
     {
         Cnode *currentnode = tree->GetNode(i);
-        if (currentnode->IsBorken())
+        if (currentnode->IsBroken())
         {
             cout << i << " ";
 

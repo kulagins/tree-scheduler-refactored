@@ -159,7 +159,7 @@ double SplitSubtrees(Cnode *root, unsigned long num_processor, double twolevel, 
         children = currentNode->GetChildren();
         for (vector<Cnode *>::iterator iter = children->begin(); iter != children->end(); iter++)
         {
-            if ((*iter)->IsBorken())
+            if ((*iter)->IsBroken())
             {
                 temp = (*iter)->GetMSCost(true, false);
                 if (temp > Weight_PQ)
@@ -228,7 +228,7 @@ double SplitSubtrees(Cnode *root, unsigned long num_processor, double twolevel, 
         children = currentNode->GetChildren();
         for (vector<Cnode *>::iterator iter = children->begin(); iter != children->end(); iter++)
         {
-            if (!(*iter)->IsBorken())
+            if (!(*iter)->IsBroken())
             {
                 parallelRoots.push_back(*iter);
             }
@@ -291,7 +291,7 @@ double SplitSubtreesV3(Cnode *root, unsigned long num_processor,  std::map<int, 
         children = currentNode->GetChildren();
         for (vector<Cnode *>::iterator iter = children->begin(); iter != children->end(); iter++)
         {
-            if ((*iter)->IsBorken())
+            if ((*iter)->IsBroken())
             {
                 temp = (*iter)->GetMSCost(true, false);
                 if (temp > Weight_PQ)
@@ -361,7 +361,7 @@ double SplitSubtreesV3(Cnode *root, unsigned long num_processor,  std::map<int, 
         children = currentNode->GetChildren();
         for (vector<Cnode *>::iterator iter = children->begin(); iter != children->end(); iter++)
         {
-            if (!(*iter)->IsBorken())
+            if (!(*iter)->IsBroken())
             {
                 parallelRoots.push_back(*iter);
             }
@@ -483,7 +483,7 @@ double ImprovedSplit(Ctree *tree, unsigned int number_processor, int *chstart, i
 //
 ////    cout<<"Broken Edges: ";
 ////    for (unsigned int i=1; i<=tree_size; ++i) {
-////        if (tree->GetNode(i)->IsBorken()) {
+////        if (tree->GetNode(i)->IsBroken()) {
 ////            cout<<i<<" ";
 ////        }
 ////    }
@@ -614,7 +614,7 @@ Ctree *BuildQtree(Ctree *tree)
     for (unsigned int i = 2; i <= tree_size; ++i)
     {
         currentNode = tree->GetNode(i);
-        if (currentNode->IsBorken())
+        if (currentNode->IsBroken())
         {
             currentNode->SetothersideID(j); //corresponding node's ID on Qtree
             brokenEdges[j] = i;
@@ -627,7 +627,7 @@ Ctree *BuildQtree(Ctree *tree)
     for (unsigned int i = 2; i <= num_subtrees; ++i)
     {
         currentNode = tree->GetNode(brokenEdges[i])->GetParent();
-        while (!currentNode->IsBorken())
+        while (!currentNode->IsBroken())
         {
             currentNode = currentNode->GetParent();
         }
@@ -676,7 +676,7 @@ bool increaseMS(Ctree *tree, Ctree *Qtree, Cnode *&smallestNode, int *chstart, i
     {
         currentNode = (*iter);
 
-        if (tree->GetNode(currentNode->GetothersideID())->IsBorken() == true)
+        if (tree->GetNode(currentNode->GetothersideID())->IsBroken() == true)
         { //this subtree has not been merged yet
             children = currentNode->GetChildren();
 
@@ -845,7 +845,7 @@ bool estimateMS(Ctree *tree, Ctree *Qtree, Cnode *&smallestNode, int *chstart, i
     {
         currentQNode = *(iter + step);
 
-        if (tree->GetNode(currentQNode->GetothersideID())->IsBorken() == true)
+        if (tree->GetNode(currentQNode->GetothersideID())->IsBroken() == true)
         { //this subtree has not been merged yet
             children = currentQNode->GetChildren();
             if (children->empty())
@@ -1618,7 +1618,7 @@ bool EstimateDecrase(int idleP, Ctree *tree, vector<Cnode *> *criticalPath, bool
                 tempQue.pop_back();
                 for (vector<Cnode *>::iterator it = children->begin(); it != children->end(); ++it)
                 {
-                    if ((*it)->GetId() != nodeOnPath->GetId() && (!(*it)->IsBorken()))
+                    if ((*it)->GetId() != nodeOnPath->GetId() && (!(*it)->IsBroken()))
                     {
                         //cout<<"    "<<(*it)->GetId()<<" W_i "<<(*it)->GetSequentialPart()<<", MS(t) "<<MS_t<<", W_t "<<W_t<<", MS_tj "<<(*it)->GetParallelPart()<<endl;
                         tempQue.push_back((*it));
@@ -1631,7 +1631,7 @@ bool EstimateDecrase(int idleP, Ctree *tree, vector<Cnode *> *criticalPath, bool
                     }
                 }
             }
-        } while (!currentNode->IsBorken());
+        } while (!currentNode->IsBroken());
         //cout<<"   }"<<endl;
     } while (subtreeRoot->GetId() != tree->GetRootId());
     //cout<<endl;
@@ -1725,7 +1725,7 @@ double SplitAgainV2(Ctree *tree, unsigned int processor_number, unsigned int num
 
                 node_i->SetothersideID(Qtreeobj->GetNodes()->size() + 1);
                 parent = node_i->GetParent();
-                while (!parent->IsBorken())
+                while (!parent->IsBroken())
                 {
                     parent = parent->GetParent();
                 }
@@ -1753,7 +1753,7 @@ double SplitAgainV2(Ctree *tree, unsigned int processor_number, unsigned int num
                         tempVector.pop_back();
                         for (vector<Cnode *>::iterator iter = Children->begin(); iter != Children->end(); ++iter)
                         {
-                            if ((*iter)->IsBorken())
+                            if ((*iter)->IsBroken())
                             {
                                 //cout<<"went to here2."<<endl;
                                 Qchild = Qtreeobj->GetNode((*iter)->GetothersideID());
@@ -1878,7 +1878,7 @@ double SplitAgain(Ctree* tree, unsigned int processor_number, unsigned int num_s
                 
                 node_i->SetothersideID(Qtreeobj->GetNodes()->size()+1);
                 parent=node_i->GetParent();
-                while (!parent->IsBorken()) {
+                while (!parent->IsBroken()) {
                     parent=parent->GetParent();
                 }
                 Cnode* Qparent = Qtreeobj->GetNode(parent->GetothersideID());
@@ -1902,7 +1902,7 @@ double SplitAgain(Ctree* tree, unsigned int processor_number, unsigned int num_s
                         Children = tempVector.back()->GetChildren();
                         tempVector.pop_back();
                         for (vector<Cnode*>::iterator iter=Children->begin(); iter!=Children->end(); ++iter){
-                            if ((*iter)->IsBorken()) {
+                            if ((*iter)->IsBroken()) {
                                 //cout<<"went to here2."<<endl;
                                 Qchild = Qtreeobj->GetNode((*iter)->GetothersideID());
                                 newNode->AddChild(Qchild);
@@ -2091,7 +2091,7 @@ void MemoryCheck(Ctree *tree, int *chstart, int *children, double const memory_s
     for (unsigned int i = treeSize; i >= 1; --i)
     {
         currentnode = tree->GetNode(i);
-        if (currentnode->IsBorken())
+        if (currentnode->IsBroken())
         {
             //cout<<i<<" ";
             subtreeRoots.push_back(currentnode);
@@ -2191,7 +2191,7 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
     for (unsigned int i = treeSize; i >= 1; --i)
     {
         currentnode = tree->GetNode(i);
-        if (currentnode->IsBorken())
+        if (currentnode->IsBroken())
         {
             //cout<<i<<" ";
             subtreeRoots.push_back(currentnode);
@@ -2354,7 +2354,7 @@ unsigned int HowmanySubtrees(const Ctree *tree, bool quiet)
     }
     for (auto it = Nodes->begin(); it != Nodes->end(); ++it)
     {
-        if ((*it)->IsBorken())
+        if ((*it)->IsBroken())
         {
             number_subtrees++;
             if (quiet == false)

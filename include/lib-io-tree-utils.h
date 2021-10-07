@@ -274,7 +274,6 @@ class Cnode{
     }
     
     double GetMSminusComu(){
-        //return(this->GetMSCost(false,false)-this->GetEW()/BANDWIDTH);
         return (makespan_nocommu-edge_weight/BANDWIDTH);
     }
     
@@ -340,12 +339,6 @@ class Cnode{
         this->children->clear();
         this->~Cnode();
     }
-
-   // bool operator < (const Cnode& other) const
-   // {
- //     double thiscost = GetMSCost();
-  //      return ( thiscost < other.GetMSCost());
-  //  }
     
     unsigned int Ci;
     double Mpeak;
@@ -405,16 +398,6 @@ class Ctree{
             this->SetTreeId(i);
         }
       }
-        // test 
-        //    Cnode* currentNode;
-        //    for (unsigned int i=2; i<=tree_size; ++i) {
-        //        currentNode=treeobj->GetNode(i);
-        //        std::cout<<currentNode->GetId()<<" "<<currentNode->GetParent()->GetId()<<"\n";
-        //        for (vector<Cnode*>::iterator iter=currentNode->GetChildren()->begin(); iter!=currentNode->GetChildren()->end();
-        //             ++iter) {
-        //            std::cout<<"   "<<(*iter)->GetId()<<"\n";
-        //        }
-        //    }
     }
 
 
@@ -426,15 +409,8 @@ class Ctree{
       delete nodes;
     }
 
-    //TODO recoder ca en recursif
-    void Print(ostream & out) const{
-      //		if(root_index!=0 && nodes->size()>0){
-      //			out<<nodes->size()<<endl;
-      //			
-      //			GetRoot()->Print(out);
-      //		}
-      //		
 
+    void Print(ostream & out) const{
       out<<nodes->size()<<endl;
 
       for(vector<Cnode*>::iterator iter = nodes->begin();iter!=nodes->end();iter++){
@@ -567,8 +543,6 @@ double MaxOutDegree(Ctree * tree,int quiet);
 double MaxOutDegree(int N, double * nwghts, double * ewghts, int * chstart,int * children);
 
 void NextValley(Cnode * node, double available_memory,  double & cut_value, list<Cnode*> & min_sub_cut, list<unsigned int> & sub_schedule, double & Inc, int quiet, int depth,int & count);
-//double IOCounter(Ctree & tree, schedule_t & sub_schedule, double available_memory,bool divisible,int quiet);
-//double IOCounter(int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, double available_memory,bool divisible,int quiet, io_method_t method=FURTHEST_NODE);
 double IOCounter(Ctree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, double available_memory,bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
 double IOCounterWithVariableMem(Ctree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, vector<double> availableMemorySizesA2, int &currentProcessor,
                                          std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);

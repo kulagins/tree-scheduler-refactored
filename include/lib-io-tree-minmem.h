@@ -295,17 +295,6 @@ void copy(MinMemDLL * otherDLL){
     this->items[cur_item->node->index].pPrev = &this->items[cur_item->pPrev->node->index];
     cur_item = cur_item->pNext;
   }
-
-
-//  cur_item = otherDLL->begin(); 
-//  cerr<<endl;
-//  while(cur_item!=otherDLL->end()){
-//    cerr<<" "<<this->items[cur_item->node->index].node->index<<"("<<this->items[cur_item->node->index].pPrev->node->index<<"|"<<this->items[cur_item->node->index].pNext->node->index<<")";
-//    cur_item = cur_item->pNext;
-//  }
-//  cerr<<endl;
-
-
 }
 
 s_list_item_t * getItem(iter_node_t * node){
@@ -315,9 +304,6 @@ s_list_item_t * getItem(iter_node_t * node){
 #endif
 };
 
-
-
-//void MinMem(Ctree * tree, double MaxOutDeg , double & Required_memory, list<unsigned int> & Schedule, int quiet, int & count);
         
 void MinMem(Ctree * tree,double MaxOutDeg, double & Required_memory, schedule_t & Schedule, int quiet, uint64_t & count);//added by Changjiang
 

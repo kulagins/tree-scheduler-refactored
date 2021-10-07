@@ -258,8 +258,6 @@ void MinMem(Ctree * tree,double MaxOutDeg, double & Required_memory, schedule_t 
   }
   count = 0;
   list<Cnode*> L;
-  //	list<Cnode*> * L = new list<Cnode*>();
-  //	list<Cnode*> * prevL = new list<Cnode*>();
   Schedule.clear();
   while(Mpeak<numeric_limits<double>::infinity()){
     Required_memory = Mpeak;
@@ -269,17 +267,10 @@ void MinMem(Ctree * tree,double MaxOutDeg, double & Required_memory, schedule_t 
     explore(root, Required_memory, &L, &Schedule,  M, L, Schedule, Mpeak, quiet,0,count);
 #endif
 
-    //		list<Cnode*> * tmp = prevL;
-    //		prevL = L;
-    //		L = tmp;
 #if VERBOSE
     cerr<<"[MinMemO] Available memory = "<<Required_memory<<"  Mpeak returned by explore = "<<Mpeak<<"  cutvalue = "<<M<<" cutsize = "<<L.size()<<endl;
 #endif
   }
-
-  //	tree->Print(cerr);	
-  //	delete L;
-  //	delete prevL;
 }
 
 #ifdef DEBUG_USING_MINMEM
@@ -311,40 +302,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
 
       return Mr;
     }
-
-//#ifdef DEBUG_USING_MINMEM
-//    double MinMemRecurAlgorithm_timed(int N, int *prnts, double *nwghts, double *ewghts, int *schedule,double * usec,int quiet,iter_node_t * minmem_trace)
-//#else
-//      double MinMemRecurAlgorithm_timed(int N, int *prnts, double *nwghts, double *ewghts, int *schedule,double * usec,int quiet)
-//#endif
-//      {
-//        Ctree * tree = new Ctree(N,prnts,nwghts,ewghts);
-//
-//        double Mr;
-//        double Mp = MaxOutDegree(tree,quiet);
-//        uint64_t count = 0;
-//        schedule_t * sub_sched = new schedule_t();
-//
-//        *usec = -u_wseconds();
-//#ifdef DEBUG_USING_MINMEM
-//        MinMem(tree,Mp, Mr, *sub_sched, quiet, count,minmem_trace);
-//#else
-//        MinMem(tree,Mp, Mr, *sub_sched, quiet, count);
-//#endif
-//        *usec += u_wseconds();
-//
-//
-//
-//        unsigned int i = 0;
-//        for (schedule_t::reverse_iterator last=sub_sched->rbegin(); last!=sub_sched->rend(); ++last){
-//          schedule[i++] = (int)(*last);
-//        }
-//
-//        delete sub_sched;
-//        delete tree;
-//
-//        return Mr;
-//      }
 
     void exploreArray(int N,double * nwghts, double * ewghts, int * chstart, int *children,int nd, double available_memory,list<node_peak_t> * L_init,int * S_init,  double & cut_value, list<node_peak_t> & min_sub_cut, int * sub_schedule,int & sched_head, double & Mpeak, int quiet, int depth,uint64_t & count){
       count++;
@@ -406,7 +363,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
           cut_value += ewghts[children[j]];
         }
         begin++;
-        //		begin = min_sub_cut.begin();		
       }
 
       int sub_cut_size = distance(begin,min_sub_cut.end());
@@ -418,8 +374,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
         int local_count = 0;
         while(local_count++<sub_cut_size){
           double m_j = numeric_limits<double>::infinity();
-          //			list<node_peak_t> Lj;
-          //schedule_t Sj;
           int tmp_sched_head = sched_head;
           double mp = current_node->mpeak;
           if(available_memory - cut_value + ewghts[current_node->index] >= current_node->mpeak ){
@@ -427,8 +381,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
             double l_mavail = available_memory - cut_value + ewghts[current_node->index];
 
             if(!quiet){fprintf(stderr,"%ssubroot %d subtree avail mem %lf\n",spacing,current_node->index, l_mavail);}
-            //				exploreArray(nwghts,ewghts,chstart,children,current_node->index, l_mavail,NULL,NULL, m_j, Lj,Sj,current_node->mpeak,quiet,depth+1,count);
-            //				exploreArray(N,nwghts,ewghts,chstart,children,current_node->index, l_mavail,NULL,NULL, m_j, Lj,sub_schedule,tmp_sched_head,current_node->mpeak,quiet,depth+1,count);				
 
             list<node_peak_t>::iterator current_subcut_end = min_sub_cut.end();
             current_subcut_end--;
@@ -452,7 +404,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
           }
 
           if (m_j <= ewghts[current_node->index]){
-            //cut_value = cut_value - ewghts[current_node->index] + m_j;
             list<node_peak_t>::iterator to_erase = current_node;
             current_node--;
             local_count--;
@@ -487,14 +438,9 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
           if(available_memory - cut_value + ewghts[node->index] >= node->mpeak ){
             candidates_count++;
           }
-
-          //				cerr<<"Mpeak "<<Mpeak<<" vs "<<new_node->mpeak + cut_value - ewghts[new_node->index]<<endl;
           Mpeak = min(Mpeak,node->mpeak + cut_value - ewghts[node->index]);
           ++node;
         }
-        //		}
-        //		Mpeak += cut_value;
-        //		cerr<<endl<<Mpeak<<endl;
         if(!quiet){ cerr<<spacing<<candidates_count<<" candidates left"<<endl; }		
       }
 
@@ -592,9 +538,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
 #endif
           return;
         }
-
-        //#define DEBUG_USING_LIU
-
         /* if this is a leaf, return 0 */
         if (chstart[subroot->index]==chstart[subroot->index+1]){
 #if VERBOSE
@@ -708,8 +651,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
 #endif
 
         }
-
-//TODO CONTINUE HERE
         int cut_size = candidates_count;
 #if defined(DEBUG_LIU_RANK) or VERBOSE
         if (chstart[subroot->index] != chstart[subroot->index+1]-1) {
@@ -805,7 +746,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
                 }
 #endif
 
-                //          for(int i = tmp_sched_head+1;i<=sched_head;i++){sub_schedule[i]=-100000;}
               }
               else if (m_j <= ewghts[current_node->index] ){
                 //erase node
@@ -1023,7 +963,6 @@ void MinMemArray(int N, int root, double * nwghts, double * ewghts, int * chstar
 
 #ifdef DEBUG_LIU
   double time_liu = 0;
-  //double mem_liu = PebbleOrderingIterAlgorithm_timed( N, prnts, nwghts, ewghts, Schedule, &time_liu,1);
   double mem_liu = PostOrderIterAlgorithm_timed( N, prnts, nwghts, ewghts, Schedule, &time_liu,1);
   //schedule now contains liu's schedule
 #endif
@@ -1115,16 +1054,6 @@ void MinMemArray(int N, int root, double * nwghts, double * ewghts, int * chstar
     exploreArray2(N,nwghts,ewghts,chstart,children,&NodeArray[root],half_mem, initialize_cut,NodeArray, Cut_value, current_cut, Schedule, sched_head,0,count);
 
 
-//  s_list_item_t * cur_item = current_cut->begin(); 
-//  cerr<<endl;
-//  while(cur_item!=current_cut->end()){
-//    cerr<<" "<<cur_item->node->index;
-//    cur_item = cur_item->pNext;
-//  }
-//  cerr<<endl;
-
-
-
 
 
 #if VERBOSE
@@ -1141,32 +1070,18 @@ void MinMemArray(int N, int root, double * nwghts, double * ewghts, int * chstar
     }
 
     if(NodeArray[root].mpeak==numeric_limits<double>::infinity()){
-      //      sched_head = N-1;
-      //      initialize_cut = false;
       initialize_cut = true;
       sched_head = prev_sched_head;
 
       current_cut->copy(prev_cut);
-      //prev_cut->copy(current_cut);
-      //          MinMemDLL * tmp = current_cut;
-      //        current_cut = prev_cut;
-      //      prev_cut = tmp;
       max_memory = half_mem;
       half_mem = min_memory + ceil((max_memory-min_memory)/2);
-      //      if(half_mem< prev_valid_peak){
-      //        half_mem = prev_valid_peak;
-      //      }
-
     }
     else{
       prev_cut->copy(current_cut);
       prev_sched_head = sched_head;
-      //      min_memory = NodeArray[root].mpeak;
       min_memory = half_mem;
       half_mem = min_memory + ceil((max_memory-min_memory)/2);
-//      if(half_mem< NodeArray[root].mpeak){
-//        half_mem = NodeArray[root].mpeak;
-//      }
 
       initialize_cut = true;
 

@@ -75,8 +75,6 @@ void parse_tree(const char *filename, Ctree *tree)
                     {
                         cur_char = OpenFile.get();
                     } while (cur_char != '\n' && OpenFile.good());
-
-                    //OpenFile.get(cur_char);
                     nodes_cnt_read = true;
                     /*allocate space for nodes*/
                     tree->AllocateNodes(nb_of_nodes);
@@ -153,8 +151,6 @@ void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, doub
                     OpenFile.clear();
                     OpenFile.seekg(0, ios::beg);
                     *N = nb_of_nodes;
-
-                    //OpenFile.get(cur_char);
                     nodes_cnt_read = true;
                     /*allocate space for nodes*/
                     *prnts = new int[nb_of_nodes + 1];
@@ -170,7 +166,6 @@ void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, doub
                     double ew, nw, msw;
 
                     OpenFile >> id >> parent >> nw >> msw >> ew;
-                    //OpenFile >> id >> parent >> nw >> ew >> msw;
                     do
                     {
                         cur_char = OpenFile.get();
@@ -190,99 +185,6 @@ void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, doub
 
     OpenFile.close();
 }
-
-//void ConvertToLiu(const Ctree * tree_us, Ctree * tree_liu) {
-//
-//    tree_liu->AllocateNodes(2*tree_us->GetNodes()->size());
-//
-//
-//    tree_liu->SetRootId(tree_us->GetRootId());
-//
-//
-//
-//    unsigned int last_node = tree_us->GetNodes()->size()+1;
-//
-//    for(unsigned int node_index=1;node_index< tree_us->GetNodes()->size()+1;node_index++){
-//        double ew, nw ;
-//
-//        Cnode * us_node = tree_us->GetNode(node_index);
-//        Cnode * liu_edgenode = tree_liu->GetNode(node_index);
-//        Cnode * liu_peaknode = tree_liu->GetNode(last_node);
-//
-//        liu_edgenode->SetId(node_index);
-//        liu_peaknode->SetId(last_node);
-//
-//        nw = us_node->GetNW();
-//        ew = us_node->GetEW();
-//
-//        liu_peaknode->SetParentId(liu_edgenode->GetId());
-//        liu_peaknode->SetEW(0);
-//        double lnw = ew+nw;
-//        /*copy and compute weight of children*/
-//        for(unsigned int j =0;j<us_node->GetChildren()->size();j++){
-//            lnw+= us_node->GetChild(j)->GetEW();
-//            liu_peaknode->AddChild(tree_liu->GetNode(us_node->GetChild(j)->GetId()));
-//            tree_liu->GetNode(us_node->GetChild(j)->GetId())->SetParentId(liu_peaknode->GetId());
-//        }
-//        liu_peaknode->SetNW(lnw);
-//
-//        liu_edgenode->SetParentId(us_node->GetParentId());
-//        liu_edgenode->AddChild(liu_peaknode);
-//        liu_edgenode->SetEW(0);
-//        liu_edgenode->SetNW(ew);
-//
-//        last_node++;
-//    }
-//}
-
-//void ConvertToLiu(const int * oldprnts,const double * oldnwghts,const double * oldewghts, int N,const int* chstart,const int * children, int ** pprnts, double ** pnwghts, double ** pewghts) {
-//
-//
-//    *pprnts = new int[2*N+1];
-//    memcpy(*pprnts,oldprnts,(N+1)*sizeof(int));
-//    *pnwghts = new double[2*N+1];
-//    *pewghts = new double[2*N+1];
-//
-//    //double max_weight = 0;
-//    unsigned int last_node = N+1;
-//    for(int node_index=1;node_index< N + 1;node_index++){
-//        double ew, nw ;
-//
-//        int liu_enode = node_index;
-//        int liu_pnode = last_node;
-//
-//
-//        nw = oldnwghts[node_index];
-//        ew = oldewghts[node_index];
-//
-//        (*pprnts)[liu_pnode] = liu_enode;
-//
-//        double lnw = ew+nw;
-//        /*copy and compute weight of children*/
-//        for(int j = chstart[node_index]; j<chstart[node_index+1];j++){
-//            int ch = children[j];
-//            lnw+=oldewghts[ch];
-//            (*pprnts)[ch] = liu_pnode;
-//        }
-//
-//        (*pewghts)[liu_pnode] = 0;
-//        (*pnwghts)[liu_pnode] = lnw;
-//        //max_weight=max(max_weight,lnw);
-//        (*pewghts)[liu_enode] = 0;
-//        (*pnwghts)[liu_enode] = ew;
-//
-//        //if(liu_enode==308){
-//        //cerr<<liu_pnode<<"("<< (*pnwghts)[liu_pnode]<<") >> "<<liu_enode<<"("<<(*pnwghts)[liu_enode]<<") children = {";
-//        //        for(int j = chstart[node_index]; j<chstart[node_index+1];j++){
-//        //            int ch = children[j];
-//        //            cerr<<ch<<"("<<oldewghts[ch]<<") ";
-//        //        }
-//        //cerr<<"}"<<endl;
-//        //}
-//        last_node++;
-//    }
-//    //cerr<<"max "<<max_weight<<endl;
-//}
 
 void poaux(const int *chstart, const int *children, int N, int r, int *por, int *label)
 {
@@ -705,12 +607,6 @@ double unload_furthest_best_fit(io_map &unloaded_nodes, schedule_t &loaded_nodes
             break;
         }
     }
-    /*if we did not unloaded enough data, call furthest node*/
-    if (unloaded_data < data_to_unload)
-    {
-        //unloaded_data += unload_furthest_nodes(unloaded_nodes, loaded_nodes,data_to_unload - unloaded_data, ewghts, divisible);
-    }
-
     return unloaded_data;
 }
 
@@ -839,17 +735,6 @@ double unload_furthest_best_fit_abs(io_map &unloaded_nodes, schedule_t &loaded_n
     return unloaded_data;
 }
 
-/*
- next_comb(int comb[], int k, int n)
- Generates the next combination of n elements as k after comb
- 
- comb => the previous combination ( use (0, 1, 2, ..., k) for first)
- k => the size of the subsets to generate
- n => the size of the original set
- 
- Returns: 1 if a valid combination was found
- 0, otherwise
- */
 int next_comb(int comb[], int k, int n)
 {
     int i = k - 1;
@@ -1381,9 +1266,6 @@ double IOCounter(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstar
     return io_volume;
     //    cerr<<"IO Volume "<<io_volume<<endl;
 }
-
-//SKU hier
-//Paul
 double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule, vector<double> availableMemorySizesA2, int &currentProcessor,
                                 std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method)
 {
@@ -1515,7 +1397,6 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
             }
             else
             {
-                // currentProcessor++;
                 double node_cost = ewghts[cur_task_id] + nwghts[cur_task_id];
                 for (int j = chstart[cur_task_id]; j < chstart[cur_task_id + 1]; j++)
                 {
@@ -1528,7 +1409,6 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
                 {
                     cerr << "min data to unload " << data_to_unload << endl;
                 }
-                //!!!!!
                 if (data_to_unload > 0)
                 {
                     //cerr<<"We must commit I/O in order to process node "<<cur_task_id<<" which requires "<< memory_occupation + node_cost - ewghts[cur_task_id]<< " but has "<<available_memory<<"available"<<endl;
@@ -1623,8 +1503,6 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
                 {
                     cerr << "New occupation after processing " << memory_occupation << endl;
                 }
-                // TODO UNDO HERE
-                //taskToPrc.at(cur_task_id) = currentProcessor;
             }
             taskToPrc.at(cur_task_id) = currentProcessor;
             isProcBusy.at(currentProcessor) = true;
@@ -1709,14 +1587,9 @@ double MaxOutDegree(Ctree *tree, int quiet)
 double MaxOutDegree(int N, double *nwghts, double *ewghts, int *chstart, int *children)
 {
     double max_out = 0;
-    //    double leaves =0;
-    //    double max_j = 0;
     for (int j = 1; j < N + 1; j++)
     {
         double cur_out = nwghts[j] + ewghts[j];
-        //         if(chstart[j]==chstart[j+1]){
-        //            leaves++;
-        //         }
 
         for (int ch = chstart[j]; ch < chstart[j + 1]; ch++)
         {
@@ -1726,7 +1599,6 @@ double MaxOutDegree(int N, double *nwghts, double *ewghts, int *chstart, int *ch
         if (cur_out >= max_out)
         {
             max_out = cur_out;
-            //            max_j = j;
         }
     }
     ////cout<<leaves<<" leaves"<<endl;
@@ -1837,10 +1709,6 @@ Ctree *BuildSubtree(Ctree *tree, Cnode *SubtreeRoot, unsigned int new_tree_size,
     real_tree_size = nodeID;
 
     SubtreeRoot->SetothersideID(tempid);
-
-    //    for (int i=1; i<=real_tree_size; ++i) {
-    //        //cout<<i<<" "<<prnts[i]<<" "<<timewghts[i]<<" "<<ewghts[i]<<endl;
-    //    }
 
     Ctree *treeobj = new Ctree(real_tree_size, *prnts, *spacewghts, *ewghts, *timewghts);
 

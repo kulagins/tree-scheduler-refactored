@@ -59,7 +59,7 @@ std::map<int, int> buildProcessorSpeeds(int num_processors)
     return procSpeeds;
 }
 //Paul
-void RunWithClusterConfig(int clusterConfig, bool skipBigTrees, int *chstart, int *children, Ctree *treeobj, vector<double> memorySizesA2, std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, io_method_t method)
+void RunWithClusterConfig(int clusterConfig, bool skipBigTrees, int *chstart, int *children, Tree *treeobj, vector<double> memorySizesA2, std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, io_method_t method)
 {
     switch (clusterConfig)
     {
@@ -75,13 +75,13 @@ void RunWithClusterConfig(int clusterConfig, bool skipBigTrees, int *chstart, in
     }
 }
 
-void printBrokenEdges(Ctree *tree)
+void printBrokenEdges(Tree *tree)
 {
     cout << "Print broken edges" << endl;
     unsigned long treeSize = tree->GetNodes()->size();
     for (unsigned int i = treeSize; i >= 1; --i)
     {
-        Cnode *currentnode = tree->GetNode(i);
+        Node *currentnode = tree->GetNode(i);
         if (currentnode->IsBorken())
         {
             cout << i << " ";
@@ -104,7 +104,7 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
     uint64_t count;
     string stage2heuristic;
     vector<double> memorySizes;
-    list<Cnode *> parallelSubtrees;
+    list<Node *> parallelSubtrees;
     unsigned long sequentialLen;
     std::map<int, int> processor_speeds = buildProcessorSpeeds(num_processors);
     std::map<int, int> taskToPrc;
@@ -115,11 +115,12 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
 
     SetBandwidth(CCR, tree_size, ewghts, timewghts);
 
-    Ctree *treeobj = new Ctree(tree_size, prnts, spacewghts, ewghts, timewghts);
+    Tree *treeobj = new Tree(tree_size, prnts, spacewghts, ewghts, timewghts);
+    treeobj->setOriginalTree(treeobj);
+
     maxoutd = MaxOutDegree(treeobj, true);
 
     po_construct(tree_size, prnts, &chstart, &chend, &children, &root);
-
     time = clock();
     makespan = treeobj->GetRoot()->GetMSCost();
     //ImprovedSplit(treeobj, num_processors, chstart, children);
@@ -141,8 +142,7 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
     for (int stage2Method = 0; stage2Method < 1; ++stage2Method)
     {
 
-        Ctree *treeobj = new Ctree(tree_size, prnts, spacewghts, ewghts, timewghts);
-
+        Tree *treeobj = new Tree(tree_size, prnts, spacewghts, ewghts, timewghts);
         time = clock();
         //Paul
         switch (stage2Method)
@@ -389,7 +389,7 @@ int main(int argc, const char *argv[])
 //    int tree_size=0;
 //    int *prnts;
 //    double *ewghts, *spacewghts, *timewghts;
-//    list<Cnode*> parallelSubtrees;
+//    list<Node*> parallelSubtrees;
 //    int *chstart,*chend,*children,root=1;
 //    string treename,buffer;
 //    char cur_char;
@@ -410,7 +410,7 @@ int main(int argc, const char *argv[])
 //    do{
 //        OpenFile>>treename;
 //        parse_tree((dir+treename).c_str(), &tree_size, &prnts, &spacewghts, &ewghts,&timewghts);
-//        Ctree *treeobj = new Ctree(tree_size,prnts,spacewghts,ewghts,timewghts);
+//        Tree *treeobj = new Tree(tree_size,prnts,spacewghts,ewghts,timewghts);
 //
 //        num_processors=ceil(tree_size/NPR);
 //        if (num_processors<3) {
@@ -460,9 +460,9 @@ int main(int argc, const char *argv[])
 //            delete schedule_f;
 //            po_construct(tree_size, prnts, &chstart, &chend, &children, &root);
 //
-//            vector<Ctree*> trees;
-//            Ctree *treeobj2 = new Ctree(tree_size,prnts,spacewghts,ewghts,timewghts);
-//            Ctree *treeobj3 = new Ctree(tree_size,prnts,spacewghts,ewghts,timewghts);
+//            vector<Tree*> trees;
+//            Tree *treeobj2 = new Tree(tree_size,prnts,spacewghts,ewghts,timewghts);
+//            Tree *treeobj3 = new Tree(tree_size,prnts,spacewghts,ewghts,timewghts);
 //            trees.push_back(treeobj3);
 //            trees.push_back(treeobj2);
 //            trees.push_back(treeobj);
@@ -567,7 +567,7 @@ int main(int argc, const char *argv[])
 //    do {
 //        OpenFile>>treename;
 //        parse_tree((dir+treename).c_str(), &tree_size, &prnts, &spacewghts, &ewghts,&timewghts);
-//        Ctree *treeobj = new Ctree(tree_size,prnts,spacewghts,ewghts,timewghts);
+//        Tree *treeobj = new Tree(tree_size,prnts,spacewghts,ewghts,timewghts);
 //        SetBandwidth(1, tree_size, ewghts, timewghts);
 //
 //        do{
@@ -576,15 +576,15 @@ int main(int argc, const char *argv[])
 //            cur_char = BrokenEdgesFile.get();
 //        }while(cur_char != '\n' && BrokenEdgesFile.good());
 //
-//        Ctree* Qtree = BuildQtree(treeobj);
-//        Cnode* currentSubtree = Qtree->GetRoot();
+//        Tree* Qtree = BuildQtree(treeobj);
+//        Node* currentSubtree = Qtree->GetRoot();
 //
 //        cout<<"------------------------------------------------------------------------------------"<<endl;
 //        cout<<"tree name: "<<treename<<", tree size: "<<treeobj->GetNodes()->size()<<", Qtree size: "<<Qtree->GetNodes()->size()<<", MS "<<currentSubtree->GetMSCost(true,true)<<endl;
 //        unsigned int number_subtrees = HowmanySubtrees(treeobj, false);
 //
-//        list<Cnode*> tempQue;
-//        vector<Cnode*>* Qchildren;
+//        list<Node*> tempQue;
+//        vector<Node*>* Qchildren;
 //        tempQue.push_back(currentSubtree);
 //        while (!tempQue.empty()) {
 //            currentSubtree = tempQue.front();
@@ -592,7 +592,7 @@ int main(int argc, const char *argv[])
 //            cout<<"node "<<currentSubtree->GetId()<<", size "<<currentSubtree->GetMSW()<<", communication cost "<<currentSubtree->GetEW()/BANDWIDTH<<endl;
 //            cout<<"   children{ ";
 //            Qchildren = currentSubtree->GetChildren();
-//            for (vector<Cnode*>::iterator iter=Qchildren->begin(); iter!=Qchildren->end(); ++iter) {
+//            for (vector<Node*>::iterator iter=Qchildren->begin(); iter!=Qchildren->end(); ++iter) {
 //                cout<<(*iter)->GetId()<<" ";
 //                tempQue.push_back((*iter));
 //            }
@@ -618,10 +618,10 @@ int main(int argc, const char *argv[])
 //#include "lib-io-tree.h"
 //#include "heuristics.h"
 //
-//void PrintTree(Ctree* tree){
-//    const vector<Cnode*>* children = tree->GetNodes();
+//void PrintTree(Tree* tree){
+//    const vector<Node*>* children = tree->GetNodes();
 //    cout<<"nodeId   parentId   ms_weight   me_weight   edge_weight"<<endl;
-//    for (vector<Cnode*>::const_iterator it=children->begin(); it!=children->end(); ++it) {
+//    for (vector<Node*>::const_iterator it=children->begin(); it!=children->end(); ++it) {
 //        cout<<(*it)->GetId()<<" "<<(*it)->GetParentId()<<" "<<(*it)->GetMSW()<<" "<<(*it)->GetNW()<<" "<<(*it)->GetEW()<<endl;
 //    }
 //    cout<<endl;
@@ -640,7 +640,7 @@ int main(int argc, const char *argv[])
 //    string tree = "../../test/example10.tree.nf";
 //
 //    parse_tree(tree.c_str(), &tree_size, &prnts, &spacewghts, &ewghts,&timewghts);
-//    Ctree *treeobj = new Ctree(tree_size,prnts,spacewghts,ewghts,timewghts);
+//    Tree *treeobj = new Tree(tree_size,prnts,spacewghts,ewghts,timewghts);
 //
 //    PrintTree(treeobj);
 //
@@ -759,7 +759,7 @@ int main(int argc, const char *argv[])
 //     uint64_t count;
 //     string stage2heuristic;
 //     vector<double> memorySizes;
-//     list<Cnode *> parallelSubtrees;
+//     list<Node *> parallelSubtrees;
 //     unsigned long sequentialLen;
 //     // int clusterConfig = atoi(argv[5]);
 //     bool skipBigTrees = (atoi(argv[6]) == 1);
@@ -787,7 +787,7 @@ int main(int argc, const char *argv[])
 
 //         SetBandwidth(CCR, tree_size, ewghts, timewghts);
 
-//         Ctree *treeobj = new Ctree(tree_size, prnts, spacewghts, ewghts, timewghts);
+//         Tree *treeobj = new Tree(tree_size, prnts, spacewghts, ewghts, timewghts);
 //         maxoutd = MaxOutDegree(treeobj, true);
 
 //         po_construct(tree_size, prnts, &chstart, &chend, &children, &root);
@@ -813,7 +813,7 @@ int main(int argc, const char *argv[])
 //         for (int stage2Method = 0; stage2Method < 1; ++stage2Method)
 //         {
 
-//             Ctree *treeobj = new Ctree(tree_size, prnts, spacewghts, ewghts, timewghts);
+//             Tree *treeobj = new Tree(tree_size, prnts, spacewghts, ewghts, timewghts);
 
 //             time = clock();
 //             //Paul

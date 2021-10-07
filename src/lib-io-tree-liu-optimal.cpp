@@ -21,7 +21,7 @@
 #include "lib-io-tree-liu-optimal.h"
 
 /*** LIU algorithm *****/
-void H(Ctree * tree, schedule_t::iterator vi, double Vi,  OrdoLiu_t & ordo,schedule_t::iterator & hi,int & offset, double & Hi,int quiet,int & count){
+void H(Tree * tree, schedule_t::iterator vi, double Vi,  OrdoLiu_t & ordo,schedule_t::iterator & hi,int & offset, double & Hi,int quiet,int & count){
   /*compute initial Hi value*/
   Hi = Vi;
   hi = vi;
@@ -51,7 +51,7 @@ void H(Ctree * tree, schedule_t::iterator vi, double Vi,  OrdoLiu_t & ordo,sched
   }
 }
 
-void V(Ctree * tree, schedule_t::iterator hi, double Hi, OrdoLiu_t & ordo, schedule_t::iterator &vi, int & offset,double & Vi, int quiet,int & count){
+void V(Tree * tree, schedule_t::iterator hi, double Hi, OrdoLiu_t & ordo, schedule_t::iterator &vi, int & offset,double & Vi, int quiet,int & count){
   Vi = Hi;
   vi = hi;
   double prev_value = Hi;
@@ -77,7 +77,7 @@ void V(Ctree * tree, schedule_t::iterator hi, double Hi, OrdoLiu_t & ordo, sched
 }
 
 
-void PCost(Ctree * tree,int root,OrdoLiu_t & ordo, int quiet, int & count){
+void PCost(Tree * tree,int root,OrdoLiu_t & ordo, int quiet, int & count){
   ordo.val_seg.clear();
 
   schedule_t::iterator hi,vi,prev_valley;
@@ -165,7 +165,7 @@ bool desc (val_seg_t i,val_seg_t j) {
 }
 
 
-void Combine(Ctree * tree, unsigned int sub_root, vector<OrdoLiu_t> * ordo_subtrees, OrdoLiu_t & ordo, int quiet, int & count){
+void Combine(Tree * tree, unsigned int sub_root, vector<OrdoLiu_t> * ordo_subtrees, OrdoLiu_t & ordo, int quiet, int & count){
   ordo.schedule.clear();
   ordo.val_seg.clear();	
   /*compute pcosts of subtrees*/
@@ -212,7 +212,7 @@ void Combine(Ctree * tree, unsigned int sub_root, vector<OrdoLiu_t> * ordo_subtr
 }
 
 
-//void PebbleOrderingRecur(Ctree * tree,unsigned int sub_root, OrdoLiu_t & SubSchedule, int quiet, int & count){
+//void PebbleOrderingRecur(Tree * tree,unsigned int sub_root, OrdoLiu_t & SubSchedule, int quiet, int & count){
 //
 //  count++;
 //
@@ -255,8 +255,8 @@ void Combine(Ctree * tree, unsigned int sub_root, vector<OrdoLiu_t> * ordo_subtr
 
 
 //double PebbleOrderingRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts, int *schedule){
-//  Ctree * tree = new Ctree(N,prnts,nwghts,ewghts);
-//  Ctree * tree_liu = new Ctree();
+//  Tree * tree = new Tree(N,prnts,nwghts,ewghts);
+//  Tree * tree_liu = new Tree();
 //
 //  ConvertToLiu(tree,tree_liu);
 //  delete tree;
@@ -284,8 +284,8 @@ void Combine(Ctree * tree, unsigned int sub_root, vector<OrdoLiu_t> * ordo_subtr
 
 
 //double PebbleOrderingRecurAlgorithm_timed(int N, int *prnts, double *nwghts, double *ewghts, int *schedule,double * usec,int quiet){
-//  Ctree * tree = new Ctree(N,prnts,nwghts,ewghts);
-//  Ctree * tree_liu = new Ctree();
+//  Tree * tree = new Tree(N,prnts,nwghts,ewghts);
+//  Tree * tree_liu = new Tree();
 //
 //  ConvertToLiu(tree,tree_liu);
 //

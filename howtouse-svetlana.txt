@@ -1,4 +1,6 @@
+launch.json
 {
+
     // Verwendet IntelliSense zum Ermitteln möglicher Attribute.
     // Zeigen Sie auf vorhandene Attribute, um die zugehörigen Beschreibungen anzuzeigen.
     // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?linkid=830387
@@ -14,7 +16,7 @@
             //"-q"s
             //[ "-s", "-c 0.001", "-n 1000", "-l","-d", "../../real_Trees/", "-b", "../../result/brokenEdges/brokenEdges","split_12.txt", "treesList.txt"],
             //"dump.0.1.amd.Andrews.Andrews-924.tree.nf"
-            "args": [ "${workspaceFolder}/real_Trees/trees/", "dump.0.1.amd.Bova.rma10-374.tree.nf", "0.1", "10", "1"],
+            "args": [ "${workspaceFolder}/real_Trees/trees/", "treesList.txt", "1", "1000", "1", "0"], //">", "temp.$(date \"+%Y.%m.%d-%H.%M.%S\").txt"],
             //, "-l","-d", "../../real_Trees/", "-b", "../../result/brokenEdges/brokenEdges","split_12.txt", "treesList.txt"],//, ">> output.txt"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -28,7 +30,7 @@
                     "ignoreFailures": true
                 }
             ],
-           // "preLaunchTask": "C/C++: g++ Aktive Datei kompilieren",
+           "preLaunchTask": "C/C++: g++ Aktive Datei kompilieren",
            // "miDebuggerPath": "/usr/bin/gdb"
         }
     ]

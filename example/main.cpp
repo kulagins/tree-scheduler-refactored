@@ -2,18 +2,17 @@
 //  Created by changjiang GOU on 10/05/2018.
 //  Copyright © 2018 Changjiang GOU. All rights reserved.
 
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <math.h>
-#include <algorithm>
-#include <stdlib.h>
-#include "lib-io-tree.h"
 #include "heuristics.h"
+#include "lib-io-tree.h"
+#include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <math.h>
+#include <stdlib.h>
+#include <string>
 
 #ifndef CLUSTER_H
 #define CLUSTER_H
-
 
 vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processors)
 {
@@ -24,18 +23,15 @@ vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processor
     memSizes.resize(num_processors);
     maxoutd = maxoutd / 4;
     //cout << "minProc " << maxoutd << " " << (maxoutd + minMem) / 2 << " " << minMem << endl;
-    for (int k = 0; k < num_processors / 3; k++)
-    {
+    for (int k = 0; k < num_processors / 3; k++) {
         memSizes[k] = maxoutd; //memorySize / 4 + k * memorySize / num_processors;
         cumulativeMem += memSizes[k];
     }
-    for (int k = num_processors / 3; k < 2 * num_processors / 3; k++)
-    {
+    for (int k = num_processors / 3; k < 2 * num_processors / 3; k++) {
         memSizes[k] = (maxoutd + minMem) / 2; //memorySize / 4 + k * memorySize / num_processors;
         cumulativeMem += memSizes[k];
     }
-    for (int k = 2 * num_processors / 3; k < num_processors; k++)
-    {
+    for (int k = 2 * num_processors / 3; k < num_processors; k++) {
         memSizes[k] = minMem; //memorySize / 4 + k * memorySize / num_processors;
         cumulativeMem += memSizes[k];
     }
@@ -47,41 +43,35 @@ std::map<int, int> buildProcessorSpeeds(int num_processors)
 {
     std::map<int, int> procSpeeds;
     //  procSpeeds.resize(numProcessor);
-    for (int k = 0; k < num_processors / 3; k++)
-    {
+    for (int k = 0; k < num_processors / 3; k++) {
         procSpeeds.insert(pair<int, int>(k, 1));
     }
-    for (int k = num_processors / 3; k < 2 * num_processors / 3; k++)
-    {
+    for (int k = num_processors / 3; k < 2 * num_processors / 3; k++) {
         procSpeeds.insert(pair<int, int>(k, 2));
     }
-    for (int k = 2 * num_processors / 3 + 1; k < num_processors; k++)
-    {
+    for (int k = 2 * num_processors / 3 + 1; k < num_processors; k++) {
         procSpeeds.insert(pair<int, int>(k, 3));
     }
 
     return procSpeeds;
 }
 //Paul
-void RunWithClusterConfig(bool skipBigTrees, int *chstart, int *children, Ctree *treeobj,
-                          Cluster *cluster, io_method_t method)
+void RunWithClusterConfig(bool skipBigTrees, int* chstart, int* children, Ctree* treeobj,
+    Cluster* cluster, io_method_t method)
 {
     if (cluster->isHomogeneous())
         MemoryCheck(treeobj, chstart, children, cluster, method);
     else
-        MemoryCheckA2(treeobj, chstart, children,  cluster, method, skipBigTrees);
+        MemoryCheckA2(treeobj, chstart, children, cluster, method, skipBigTrees);
 }
 
-
-void printBrokenEdges(Ctree *tree)
+void printBrokenEdges(Ctree* tree)
 {
     cout << "Print broken edges" << endl;
     unsigned long treeSize = tree->GetNodes()->size();
-    for (unsigned int i = treeSize; i >= 1; --i)
-    {
-        Cnode *currentnode = tree->GetNode(i);
-        if (currentnode->IsBorken())
-        {
+    for (unsigned int i = treeSize; i >= 1; --i) {
+        Cnode* currentnode = tree->GetNode(i);
+        if (currentnode->IsBorken()) {
             cout << i << " ";
 
             //cout << "root " << currentnode->GetMSCost() << endl;
@@ -90,7 +80,7 @@ void printBrokenEdges(Ctree *tree)
     cout << "End" << endl;
 }
 
-void actualActions(double CCR, double NPR, unsigned int num_processors, double *ewghts, double *spacewghts, double *timewghts, int *prnts, int tree_size, bool skipBigTrees, int clusterConfig)
+void actualActions(double CCR, double NPR, unsigned int num_processors, double* ewghts, double* spacewghts, double* timewghts, int* prnts, int tree_size, bool skipBigTrees, int clusterConfig)
 {
     clock_t time;
     unsigned int number_subtrees;
@@ -102,7 +92,7 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
     uint64_t count;
     string stage2heuristic;
     vector<double> memorySizes;
-    list<Cnode *> parallelSubtrees;
+    list<Cnode*> parallelSubtrees;
     unsigned long sequentialLen;
     std::map<int, int> processor_speeds = buildProcessorSpeeds(num_processors);
     std::map<int, int> taskToPrc;
@@ -113,7 +103,7 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
 
     SetBandwidth(CCR, tree_size, ewghts, timewghts);
 
-    Ctree *treeobj = new Ctree(tree_size, prnts, spacewghts, ewghts, timewghts);
+    Ctree* treeobj = new Ctree(tree_size, prnts, spacewghts, ewghts, timewghts);
     maxoutd = MaxOutDegree(treeobj, true);
 
     po_construct(tree_size, prnts, &chstart, &chend, &children, &root);
@@ -129,23 +119,21 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
 
     //<< " " << NPR << " " << CCR << " NA " << number_subtrees << " " << num_processors << " " << makespan << " Sequence " << time << endl;
 
-    schedule_t *schedule_f = new schedule_t();
+    schedule_t* schedule_f = new schedule_t();
     count = 0;
     MinMem(treeobj, maxoutd, minMem, *schedule_f, true, count);
     delete schedule_f;
     delete treeobj;
 
     memorySizes = buildMemorySizes(maxoutd, minMem, num_processors);
-    Cluster *cluster = new Cluster(memorySizes);
-    for (int stage2Method = 0; stage2Method < 1; ++stage2Method)
-    {
+    Cluster* cluster = new Cluster(memorySizes);
+    for (int stage2Method = 0; stage2Method < 1; ++stage2Method) {
 
-        Ctree *treeobj = new Ctree(tree_size, prnts, spacewghts, ewghts, timewghts);
+        Ctree* treeobj = new Ctree(tree_size, prnts, spacewghts, ewghts, timewghts);
 
         time = clock();
         //Paul
-        switch (stage2Method)
-        {
+        switch (stage2Method) {
         case 0:
             stage2heuristic = "FIRST_FIT";
             //   MemoryCheck(treeobj, chstart, children, memorySize, FIRST_FIT);
@@ -173,8 +161,7 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
         // std::cout << "after 2nd step "
         //       << number_subtrees << " " << num_processors << " " << makespan << " " << stage2heuristic << "+Nothing " << 0 << endl;
 
-        if (number_subtrees > num_processors)
-        {
+        if (number_subtrees > num_processors) {
             time = clock();
             //TODO check
             makespan = MergeV2(treeobj, number_subtrees, num_processors, memorySizes[0], chstart, children, true);
@@ -182,14 +169,10 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
             number_subtrees = HowmanySubtrees(treeobj, true);
             std::cout << "w merge "
                       << "#subtrees: " << number_subtrees << ", #numberProcessors; " << num_processors << " makespan: " << makespan << endl;
-        }
-        else if (number_subtrees == num_processors)
-        {
+        } else if (number_subtrees == num_processors) {
             std::cout << "w equal "
                       << "#subtrees: " << number_subtrees << ", #numberProcessors; " << num_processors << " makespan: " << makespan << endl;
-        }
-        else
-        {
+        } else {
             //Paul
             time = clock();
             //  if (clusterConfig == 1)
@@ -213,10 +196,10 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
     }
 }
 
-int main(int argc, const char *argv[])
+int main(int argc, const char* argv[])
 {
     int tree_size = 0;
-    int *prnts;
+    int* prnts;
     unsigned int num_processors;
     string dir = argv[1];
     string treename;
@@ -234,19 +217,16 @@ int main(int argc, const char *argv[])
     //  std::cout << " AmountSubtrees AmountProcessors Makespan Heuristic TimeConsuming" << std::endl;
 
     ifstream OpenFile(dir + argv[2]);
-    do
-    {
+    do {
         OpenFile >> treename;
         cout << treename << endl;
-        for (int clusterConfig = 1; clusterConfig <= 2; clusterConfig++)
-        {
+        for (int clusterConfig = 1; clusterConfig <= 2; clusterConfig++) {
             cout << "clusterConfig: " << clusterConfig << endl;
 
             parse_tree((dir + treename).c_str(), &tree_size, &prnts, &spacewghts, &ewghts, &timewghts);
 
             num_processors = ceil(tree_size / NPR);
-            if (num_processors < 3)
-            {
+            if (num_processors < 3) {
                 num_processors = 3;
             }
 

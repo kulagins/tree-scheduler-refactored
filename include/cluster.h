@@ -1,21 +1,24 @@
-#include <ostream>
-#include <iostream>
-#include <stdio.h>
-#include <list>
+#ifndef cluster_h
+#define cluster_h
 
-#include <vector>
-#include <forward_list>
+#include <iostream>
+#include <list>
+#include <ostream>
+#include <stdio.h>
+
+#include "lib-io-tree-utils.h"
 #include <assert.h>
+#include <forward_list>
 #include <map>
+#include <vector>
 
 using namespace std;
 
-class Processor
-{
+class Processor {
 protected:
     double memorySize;
     double processorSpeed;
-    int assignedTask;
+    Cnode* assignedTask;
 
 public:
     bool isBusy;
@@ -24,21 +27,18 @@ public:
         this->memorySize = 0;
         this->processorSpeed = 1;
         isBusy = false;
-        assignedTask = -1;
     }
     Processor(double memorySize)
     {
         this->memorySize = memorySize;
         this->processorSpeed = 1;
         isBusy = false;
-        assignedTask = -1;
     }
     Processor(double memorySize, double processorSpeed)
     {
         this->memorySize = memorySize;
         this->processorSpeed = processorSpeed;
         isBusy = false;
-        assignedTask = -1;
     }
     double getMemorySize()
     {
@@ -48,19 +48,20 @@ public:
     {
         return processorSpeed;
     }
-    void assignTask(int taskId){
-        this->assignedTask = taskId;
+    void assignTask(Cnode* assignedTask)
+    {
+        this->assignedTask = assignedTask;
         this->isBusy = true;
     }
 };
 
-class Cluster
-{
+class Cluster {
 protected:
     bool isMemoryHomogeneous;
     bool isProcessorHomogeneous;
     bool isBandwidthHomogenenous;
-    vector<Processor *> processors;
+
+    vector<Processor*> processors;
     vector<vector<double>> bandwidths;
 
 public:
@@ -70,8 +71,7 @@ public:
 
         processors.resize(3, new Processor());
         bandwidths.resize(3);
-        for (unsigned long i = 0; i < bandwidths.size(); i++)
-        {
+        for (unsigned long i = 0; i < bandwidths.size(); i++) {
             bandwidths.at(i).resize(3, 1);
         }
     }
@@ -82,8 +82,7 @@ public:
 
         processors.resize(clusterSize);
         bandwidths.resize(clusterSize);
-        for (unsigned long i = 0; i < processors.size(); i++)
-        {
+        for (unsigned long i = 0; i < processors.size(); i++) {
             bandwidths.at(i).resize(clusterSize, 1);
         }
     }
@@ -93,14 +92,11 @@ public:
         this->isProcessorHomogeneous = this->isBandwidthHomogenenous = true;
 
         processors.resize(memorySizes.size());
-        for (unsigned long i = 0; i < bandwidths.size(); i++)
-        {
-            //TODO init only upper half
+        for (unsigned long i = 0; i < memorySizes.size(); i++) {
             processors.at(i) = new Processor(memorySizes.at(i));
         }
         bandwidths.resize(memorySizes.size());
-        for (unsigned long i = 0; i < bandwidths.size(); i++)
-        {
+        for (unsigned long i = 0; i < bandwidths.size(); i++) {
             //TODO init only upper half
             bandwidths.at(i).resize(memorySizes.size(), 1);
         }
@@ -110,8 +106,7 @@ public:
     {
         bandwidths.resize(0);
 
-        for (unsigned long i = 0; i < processors.size(); i++)
-        {
+        for (unsigned long i = 0; i < processors.size(); i++) {
             delete processors.at(i);
         }
     }
@@ -122,7 +117,7 @@ public:
         return isMemoryHomogeneous && isProcessorHomogeneous && isBandwidthHomogenenous;
     }
 
-    vector<Processor *> getProcessors()
+    vector<Processor*> getProcessors()
     {
         return this->processors;
     }
@@ -130,5 +125,21 @@ public:
     {
         return this->bandwidths.at(firstProcessor).at(secondProcessor);
     }
-    Processor * getFirstFreeProcessor();
+    Processor* getFirstFreeProcessor();
+   /* {
+        for (vector<Processor*>::iterator iter = this->processors.begin(); iter < this->processors.end(); iter++) {
+            if (!(*iter)->isBusy)
+                return (*iter);
+        }
+        throw std::out_of_range("No free processor available anymore!");
+    } */
+
+    void printProcessors()
+    {
+        for (vector<Processor*>::iterator iter = this->processors.begin(); iter < processors.end(); iter++) {
+            cout << "Processor with memory " << (*iter)->getMemorySize() << ", speed " << (*iter)->getProcessorSpeed() << " and busy? " << (*iter)->isBusy << endl;
+        }
+    }
 };
+
+#endif

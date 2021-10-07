@@ -11,6 +11,7 @@
 #include <list>
 #include <algorithm>
 #include "heuristics.h"
+#include "lib-io-tree-free-methods.h"
 
 //#include <omp.h>
 
@@ -2727,7 +2728,7 @@ void MemoryCheckA2(Ctree *tree, int *chstart, int *children, Cluster *cluster, i
         }
         else
         {
-            currentProcessor->assignTask(subtreeRoot->GetId());
+            currentProcessor->assignTask(subtreeRoot);
             currentProcessor = cluster->getFirstFreeProcessor();
         }
         //cout<<endl;

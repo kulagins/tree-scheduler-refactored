@@ -20,7 +20,7 @@
 #include <forward_list>
 #include <assert.h>
 #include <map>
-#include "cluster.h"
+
 
 #ifndef DEBUG_MEMUSAGE
 #define DEBUG_MEMUSAGE 0
@@ -432,6 +432,7 @@ class Ctree
 {
 protected:
   vector<Cnode *> *nodes;
+ 
   unsigned int root_index;
   unsigned int root_count;
   unsigned int offset_id;
@@ -662,9 +663,6 @@ double MaxOutDegree(int N, double *nwghts, double *ewghts, int *chstart, int *ch
 void NextValley(Cnode *node, double available_memory, double &cut_value, list<Cnode *> &min_sub_cut, list<unsigned int> &sub_schedule, double &Inc, int quiet, int depth, int &count);
 //double IOCounter(Ctree & tree, schedule_t & sub_schedule, double available_memory,bool divisible,int quiet);
 //double IOCounter(int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, double available_memory,bool divisible,int quiet, io_method_t method=FURTHEST_NODE);
-double IOCounter(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule, double available_memory, bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method);
-double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule,
-                                Cluster *cluster, bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method);
 Ctree *BuildSubtree(Ctree *tree, Cnode *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts, double **timewghts, double **spacewghts, int *chstart, int *children);
 
 #endif

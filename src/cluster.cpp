@@ -2,13 +2,12 @@
 
 using namespace std;
 
-Processor *Cluster::getFirstFreeProcessor()
-{
+Processor* getFirstFreeProcessor()
 
-    for (vector<Processor *>::iterator iter = this->processors.begin(); iter < processors.end(); iter++)
-    {
-        if(!(*iter)->isBusy)
-        return (*iter);
+{
+    for (vector<Processor*>::iterator iter = this->processors.begin(); iter < this->processors.end(); iter++) {
+        if (!(*iter)->isBusy)
+            return (*iter);
     }
-    return nullptr;
+    throw std::out_of_range("No free processor available anymore!");
 }

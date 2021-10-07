@@ -11,6 +11,7 @@
 
 #include "lib-io-tree.h"
 #include "lib-io-tree-minmem.h"
+#include "cluster.h"
 
 typedef enum
 {

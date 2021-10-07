@@ -16,6 +16,7 @@
 #include "lib-io-tree-utils.h"
 #include "lib-io-tree.h"
 #include "lib-io-tree-minmem.h"
+#include "lib-io-tree-free-methods.h"
 #include <sys/time.h>
 #include <algorithm>
 
@@ -1497,7 +1498,7 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
                 }
                 else
                 {
-                    cluster->getFirstFreeProcessor()->assignTask(cur_task_id);
+                    cluster->getFirstFreeProcessor()->assignTask(tree->GetNode(cur_task_id));
                     //   cout << "just increase proc to " << currentProcessor << endl;
                 }
 
@@ -1628,7 +1629,7 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
                 // TODO UNDO HERE
                 //taskToPrc.at(cur_task_id) = currentProcessor;
             }
-            cluster->getFirstFreeProcessor()->assignTask(cur_task_id);
+            cluster->getFirstFreeProcessor()->assignTask(tree->GetNode(cur_task_id));
         }
     }
     delete schedule_f;

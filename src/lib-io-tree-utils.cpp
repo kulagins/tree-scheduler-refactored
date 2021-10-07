@@ -208,9 +208,9 @@ void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, doub
 //    for(unsigned int node_index=1;node_index< tree_us->GetNodes()->size()+1;node_index++){
 //        double ew, nw ;
 //
-//        Node * us_node = tree_us->GetNode(node_index);
-//        Node * liu_edgenode = tree_liu->GetNode(node_index);
-//        Node * liu_peaknode = tree_liu->GetNode(last_node);
+//        Task * us_node = tree_us->GetNode(node_index);
+//        Task * liu_edgenode = tree_liu->GetNode(node_index);
+//        Task * liu_peaknode = tree_liu->GetNode(last_node);
 //
 //        liu_edgenode->SetId(node_index);
 //        liu_peaknode->SetId(last_node);
@@ -373,7 +373,7 @@ double IOCounter(Tree &tree, schedule_t &sub_schedule, double available_memory, 
     /*iterates through the given permutation (schedule)*/
     for (schedule_t::iterator cur_task_id = sub_schedule.begin(); cur_task_id != sub_schedule.end(); cur_task_id++)
     {
-        Node *cur_node = tree.GetNode(*cur_task_id);
+        Task *cur_node = tree.GetNode(*cur_task_id);
 
         /*if the node was unloaded*/
         if (unloaded_nodes.find(*cur_task_id) != unloaded_nodes.end())
@@ -465,7 +465,7 @@ double IOCounter(Tree &tree, schedule_t &sub_schedule, double available_memory, 
         {
             cerr << "loading ";
         }
-        for (vector<Node *>::iterator child = cur_node->GetChildren()->begin(); child != cur_node->GetChildren()->end(); child++)
+        for (vector<Task *>::iterator child = cur_node->GetChildren()->begin(); child != cur_node->GetChildren()->end(); child++)
         {
             if (!quiet)
             {
@@ -1753,7 +1753,7 @@ double MaxOutDegree(int N, int *prnts, double *nwghts, double *ewghts)
     return max_out;
 }
 
-Tree *SubtreeRooted(Node *node)
+Tree *SubtreeRooted(Task *node)
 {
     Tree *subtree = new Tree();
 
@@ -1761,9 +1761,9 @@ Tree *SubtreeRooted(Node *node)
     subtree->SetTreeId(node->GetId());
     subtree->AddNode(node);
 
-    vector<Node *> visit_next;
-    vector<Node *>::iterator first_node;
-    Node *end_node;
+    vector<Task *> visit_next;
+    vector<Task *>::iterator first_node;
+    Task *end_node;
     if (node->IsLeaf())
     {
         return subtree;
@@ -1792,7 +1792,7 @@ Tree *SubtreeRooted(Node *node)
     }
 }
 
-Tree *BuildSubtree(Tree *tree, Node *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts, double **timewghts, double **spacewghts, int *chstart, int *children)
+Tree *BuildSubtree(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts, double **timewghts, double **spacewghts, int *chstart, int *children)
 {
     *prnts = new int[new_tree_size + 1];
     *ewghts = new double[new_tree_size + 1];
@@ -1808,7 +1808,7 @@ Tree *BuildSubtree(Tree *tree, Node *SubtreeRoot, unsigned int new_tree_size, in
     (*timewghts)[1] = SubtreeRoot->GetMSW();
     (*spacewghts)[1] = SubtreeRoot->GetNW();
 
-    Node *currentNode;
+    Task *currentNode;
     list<unsigned int> que;
     unsigned int originalID = SubtreeRoot->GetId();
     que.push_back(originalID);

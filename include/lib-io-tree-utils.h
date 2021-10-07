@@ -45,7 +45,7 @@ typedef enum {FURTHEST_NODE=1, BEST_K_COMBI, BEST_FIT_ABS, FIRST_FIT_ABS, BEST_F
 
 double u_wseconds(void);
 
-class Node{
+class Task{
   protected:
     bool cost_computed;
     double cost;
@@ -54,8 +54,8 @@ class Node{
     double MS_weight=0;//assume execution time for any node is larger than 0
     double makespan_nocommu;
     bool makespan_computed=false;
-    vector<Node*> * children;
-    Node * parent;
+    vector<Task*> * children;
+    Task * parent;
     unsigned int parent_id;
     unsigned int id;
     bool broken=false;
@@ -65,37 +65,37 @@ class Node{
     unsigned int Qtree_id;
 
   public :
-    Node(){
+    Task(){
       id = 0;
       Mpeak = 0;
       parent_id = 0;
       Mavail = 0;
       parent = 0;
       cost_computed = false;
-      children = new vector<Node*>(); 
+      children = new vector<Task*>(); 
     }
-    Node(double nw, double ew, double mw){
+    Task(double nw, double ew, double mw){
       id = 0;
       Mpeak = 0;
       parent_id = 0;
       Mavail = 0;
       parent=0;
       cost_computed = false;
-      children = new vector<Node*>(); 
+      children = new vector<Task*>(); 
 
       edge_weight =ew;
       node_weight = nw;
         MS_weight = mw;
         makespan_nocommu=mw;
     }
-    Node(unsigned int pparent_id,double nw, double ew, double mw){
+    Task(unsigned int pparent_id,double nw, double ew, double mw){
       id = 0;
       Mpeak = 0;
       Mavail = 0;
       parent=0;
       cost_computed = false;
         makespan_computed=false;
-      children = new vector<Node*>(); 
+      children = new vector<Task*>(); 
 
       edge_weight =ew;
       node_weight = nw;
@@ -104,8 +104,8 @@ class Node{
       parent_id = pparent_id;
     }
 
-    ~Node(){
-      for(vector<Node*>::iterator iter = children->begin();iter!=children->end();iter++){
+    ~Task(){
+      for(vector<Task*>::iterator iter = children->begin();iter!=children->end();iter++){
         delete *iter;
       }	
       delete children;
@@ -119,24 +119,24 @@ class Node{
         return makespan_difference;
     }
 
-    void SetParent(Node * pparent){
+    void SetParent(Task * pparent){
       this->parent =pparent;
     }
 
-    void AddChild(Node * pchild){
+    void AddChild(Task * pchild){
       this->children->push_back(pchild);
       cost_computed= false;
     }
 
-    vector<Node*> * GetChildren(){
+    vector<Task*> * GetChildren(){
       return children;
     }
 
-    Node * GetChild(unsigned int node_id){
+    Task * GetChild(unsigned int node_id){
       return children->at(node_id);
     }
 
-    Node * GetParent(){
+    Task * GetParent(){
       return parent;
     }
 
@@ -151,7 +151,7 @@ class Node{
     double GetCost(){
       if(!cost_computed){
         cost = edge_weight + node_weight;
-        for(vector<Node*>::iterator iter=children->begin();iter!=children->end();iter++){
+        for(vector<Task*>::iterator iter=children->begin();iter!=children->end();iter++){
           cost += (*iter)->GetEW();
         }
         cost_computed = true;
@@ -209,7 +209,7 @@ class Node{
 
     void Print(ostream & out) const{
       out<<max((unsigned int)0,GetParentId())<<" "<<GetNW()<<" "<<GetEW()<<endl;
-      for(vector<Node*>::iterator iter=children->begin();iter!=children->end();iter++){
+      for(vector<Task*>::iterator iter=children->begin();iter!=children->end();iter++){
         (*iter)->Print(out);
       }
 
@@ -251,7 +251,7 @@ class Node{
         MS_sequentialPart=MS_weight;
         MS_parallelPart=0;
         double temp;
-        for (vector<Node*>::iterator iter=this->GetChildren()->begin(); iter!=this->GetChildren()->end(); ++iter) {
+        for (vector<Task*>::iterator iter=this->GetChildren()->begin(); iter!=this->GetChildren()->end(); ++iter) {
             if ((*iter)->IsBorken()) {
                 //cout<<"edge "<<(*iter)->GetId()<<" broken"<<endl;
                 temp=(*iter)->GetMSCost(true, updateEnforce);
@@ -318,7 +318,7 @@ class Node{
     }
     
     void RemoveChild(unsigned int childId){
-        for (vector<Node*>::iterator iter=this->children->begin(); iter!=this->children->end(); ++iter) {
+        for (vector<Task*>::iterator iter=this->children->begin(); iter!=this->children->end(); ++iter) {
             if ((*iter)->GetId()==childId) {
                 this->children->erase(iter);
                 break;
@@ -331,17 +331,17 @@ class Node{
         this->GetParent()->RemoveChild(this->id);
         this->GetParent()->GetChildren()->insert(this->GetParent()->GetChildren()->end(),this->children->begin(),this->children->end());
         //cout<<", children: ";
-        for (vector<Node*>::iterator iter=this->children->begin(); iter!=this->children->end(); ++iter) {
+        for (vector<Task*>::iterator iter=this->children->begin(); iter!=this->children->end(); ++iter) {
             //cout<<(*iter)->GetId()<<" ";
             (*iter)->SetParent(this->GetParent());
             (*iter)->SetParentId(this->GetParent()->GetId());
         }
         //cout<<endl;
         this->children->clear();
-        this->~Node();
+        this->~Task();
     }
 
-   // bool operator < (const Node& other) const
+   // bool operator < (const Task& other) const
    // {
  //     double thiscost = GetMSCost();
   //      return ( thiscost < other.GetMSCost());
@@ -354,7 +354,7 @@ class Node{
 
 class Tree{
   protected:
-    vector<Node*> * nodes;
+    vector<Task*> * nodes;
     unsigned int root_index;
     unsigned int root_count;
     unsigned int offset_id;
@@ -370,7 +370,7 @@ class Tree{
       root_count=0;
       offset_id = 0;
       tree_id=1;
-      nodes = new vector<Node*>();
+      nodes = new vector<Task*>();
     }
 
 
@@ -380,12 +380,12 @@ class Tree{
       root_count=0;
       offset_id = 0;
         tree_id = 1;
-      nodes = new vector<Node*>();
+      nodes = new vector<Task*>();
 
       this->AllocateNodes(N);
 
       for(int i = 1; i < N+1 ; i++){
-        Node * cur_node = this->GetNode(i);
+        Task * cur_node = this->GetNode(i);
         cur_node->GetChildren()->clear();
         cur_node->SetEW(ewghts[i]);
         cur_node->SetNW(nwghts[i]);
@@ -395,7 +395,7 @@ class Tree{
       }
 
       for(int i = 1; i <N+1 ; i++){
-        Node * cur_node = this->GetNode(i);
+        Task * cur_node = this->GetNode(i);
 
         if(prnts[i] > 0){
             cur_node->SetParentId(prnts[i]);
@@ -409,11 +409,11 @@ class Tree{
         }
       }
         // test 
-        //    Node* currentNode;
+        //    Task* currentNode;
         //    for (unsigned int i=2; i<=tree_size; ++i) {
         //        currentNode=treeobj->GetNode(i);
         //        std::cout<<currentNode->GetId()<<" "<<currentNode->GetParent()->GetId()<<"\n";
-        //        for (vector<Node*>::iterator iter=currentNode->GetChildren()->begin(); iter!=currentNode->GetChildren()->end();
+        //        for (vector<Task*>::iterator iter=currentNode->GetChildren()->begin(); iter!=currentNode->GetChildren()->end();
         //             ++iter) {
         //            std::cout<<"   "<<(*iter)->GetId()<<"\n";
         //        }
@@ -440,7 +440,7 @@ class Tree{
 
       out<<nodes->size()<<endl;
 
-      for(vector<Node*>::iterator iter = nodes->begin();iter!=nodes->end();iter++){
+      for(vector<Task*>::iterator iter = nodes->begin();iter!=nodes->end();iter++){
         out<<max((unsigned int)0,(*iter)->GetParentId()/*+1-offset_id*/)<<" "<<(*iter)->GetNW()<<" "<<(*iter)->GetEW()<<endl;
       }
 
@@ -455,26 +455,26 @@ class Tree{
       nodes->resize(new_node_count);
 
       unsigned int i = 0;
-      for(vector<Node*>::iterator iter = nodes->begin();iter!=nodes->end();iter++){
-        *iter = new Node();
+      for(vector<Task*>::iterator iter = nodes->begin();iter!=nodes->end();iter++){
+        *iter = new Task();
         (*iter)->SetId(i++);
       }
 
       offset_id = nodes->front()->GetId();
     }
 
-    void AddNode(Node * newNode){
+    void AddNode(Task * newNode){
       nodes->push_back(newNode);
     }
 
-    void AddRoot(Node * newNode){
+    void AddRoot(Task * newNode){
       root_count++;
       assert(root_count == 1);
       nodes->push_back(newNode);
       root_index = nodes->size()-1;
     }
 
-    Node * GetRoot() const{
+    Task * GetRoot() const{
       return nodes->at(root_index-1);
     }
 
@@ -490,19 +490,19 @@ class Tree{
         tree_id = _id;
     }
     
-    Node * GetNode(unsigned int node_id) const{
+    Task * GetNode(unsigned int node_id) const{
       return nodes->at(node_id-1);
     }
 
-    Node * GetNodeByPos(unsigned int node_idx) const{
+    Task * GetNodeByPos(unsigned int node_idx) const{
       return nodes->at(node_idx);
     }
 
-    const vector<Node*> * GetNodes() const{
+    const vector<Task*> * GetNodes() const{
       return nodes;
     }
     
-    void addNode(Node* newnode){
+    void addNode(Task* newnode){
         this->nodes->push_back(newnode);
     }
     
@@ -539,7 +539,7 @@ struct s_io_t {
 
 
 typedef list<int> schedule_t;
-typedef list<Node*> cut_t;
+typedef list<Task*> cut_t;
 
 typedef pair<unsigned int, double> io_t;
 typedef map<unsigned int, double> io_map;
@@ -584,13 +584,13 @@ bool check_schedule(int * prnts,int * sched,int N);
 double MaxOutDegree(Tree * tree,int quiet);
 double MaxOutDegree(int N, double * nwghts, double * ewghts, int * chstart,int * children);
 
-void NextValley(Node * node, double available_memory,  double & cut_value, list<Node*> & min_sub_cut, list<unsigned int> & sub_schedule, double & Inc, int quiet, int depth,int & count);
+void NextValley(Task * node, double available_memory,  double & cut_value, list<Task*> & min_sub_cut, list<unsigned int> & sub_schedule, double & Inc, int quiet, int depth,int & count);
 //double IOCounter(Tree & tree, schedule_t & sub_schedule, double available_memory,bool divisible,int quiet);
 //double IOCounter(int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, double available_memory,bool divisible,int quiet, io_method_t method=FURTHEST_NODE);
 double IOCounter(Tree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, double available_memory,bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
 double IOCounterWithVariableMem(Tree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, vector<double> availableMemorySizesA2, int &currentProcessor,
                                          std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
-Tree* BuildSubtree(Tree* tree, Node* SubtreeRoot, unsigned int new_tree_size, int** prnts, double** ewghts, double** timewghts, double** spacewghts, int * chstart, int * children);
+Tree* BuildSubtree(Tree* tree, Task* SubtreeRoot, unsigned int new_tree_size, int** prnts, double** ewghts, double** timewghts, double** spacewghts, int * chstart, int * children);
 
 #endif
 #endif

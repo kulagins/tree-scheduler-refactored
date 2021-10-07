@@ -81,7 +81,7 @@ void printBrokenEdges(Tree *tree)
     unsigned long treeSize = tree->GetNodes()->size();
     for (unsigned int i = treeSize; i >= 1; --i)
     {
-        Node *currentnode = tree->GetNode(i);
+        Task *currentnode = tree->GetNode(i);
         if (currentnode->IsBorken())
         {
             cout << i << " ";
@@ -104,7 +104,7 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
     uint64_t count;
     string stage2heuristic;
     vector<double> memorySizes;
-    list<Node *> parallelSubtrees;
+    list<Task *> parallelSubtrees;
     unsigned long sequentialLen;
     std::map<int, int> processor_speeds = buildProcessorSpeeds(num_processors);
     std::map<int, int> taskToPrc;
@@ -389,7 +389,7 @@ int main(int argc, const char *argv[])
 //    int tree_size=0;
 //    int *prnts;
 //    double *ewghts, *spacewghts, *timewghts;
-//    list<Node*> parallelSubtrees;
+//    list<Task*> parallelSubtrees;
 //    int *chstart,*chend,*children,root=1;
 //    string treename,buffer;
 //    char cur_char;
@@ -577,14 +577,14 @@ int main(int argc, const char *argv[])
 //        }while(cur_char != '\n' && BrokenEdgesFile.good());
 //
 //        Tree* Qtree = BuildQtree(treeobj);
-//        Node* currentSubtree = Qtree->GetRoot();
+//        Task* currentSubtree = Qtree->GetRoot();
 //
 //        cout<<"------------------------------------------------------------------------------------"<<endl;
 //        cout<<"tree name: "<<treename<<", tree size: "<<treeobj->GetNodes()->size()<<", Qtree size: "<<Qtree->GetNodes()->size()<<", MS "<<currentSubtree->GetMSCost(true,true)<<endl;
 //        unsigned int number_subtrees = HowmanySubtrees(treeobj, false);
 //
-//        list<Node*> tempQue;
-//        vector<Node*>* Qchildren;
+//        list<Task*> tempQue;
+//        vector<Task*>* Qchildren;
 //        tempQue.push_back(currentSubtree);
 //        while (!tempQue.empty()) {
 //            currentSubtree = tempQue.front();
@@ -592,7 +592,7 @@ int main(int argc, const char *argv[])
 //            cout<<"node "<<currentSubtree->GetId()<<", size "<<currentSubtree->GetMSW()<<", communication cost "<<currentSubtree->GetEW()/BANDWIDTH<<endl;
 //            cout<<"   children{ ";
 //            Qchildren = currentSubtree->GetChildren();
-//            for (vector<Node*>::iterator iter=Qchildren->begin(); iter!=Qchildren->end(); ++iter) {
+//            for (vector<Task*>::iterator iter=Qchildren->begin(); iter!=Qchildren->end(); ++iter) {
 //                cout<<(*iter)->GetId()<<" ";
 //                tempQue.push_back((*iter));
 //            }
@@ -619,9 +619,9 @@ int main(int argc, const char *argv[])
 //#include "heuristics.h"
 //
 //void PrintTree(Tree* tree){
-//    const vector<Node*>* children = tree->GetNodes();
+//    const vector<Task*>* children = tree->GetNodes();
 //    cout<<"nodeId   parentId   ms_weight   me_weight   edge_weight"<<endl;
-//    for (vector<Node*>::const_iterator it=children->begin(); it!=children->end(); ++it) {
+//    for (vector<Task*>::const_iterator it=children->begin(); it!=children->end(); ++it) {
 //        cout<<(*it)->GetId()<<" "<<(*it)->GetParentId()<<" "<<(*it)->GetMSW()<<" "<<(*it)->GetNW()<<" "<<(*it)->GetEW()<<endl;
 //    }
 //    cout<<endl;
@@ -759,7 +759,7 @@ int main(int argc, const char *argv[])
 //     uint64_t count;
 //     string stage2heuristic;
 //     vector<double> memorySizes;
-//     list<Node *> parallelSubtrees;
+//     list<Task *> parallelSubtrees;
 //     unsigned long sequentialLen;
 //     // int clusterConfig = atoi(argv[5]);
 //     bool skipBigTrees = (atoi(argv[6]) == 1);

@@ -25,6 +25,9 @@
 
 using namespace std;
 
+Tree *  Tree::originalTree = NULL;
+bool Tree::originalTreeInitialized = false;
+
 double BANDWIDTH = 1;
 
 bool sort_sche(node_sche a, node_sche b)
@@ -46,7 +49,7 @@ double u_wseconds(void)
     return (double)tp.tv_sec + (double)tp.tv_usec / 1000000.0;
 };
 
-void parse_tree(const char *filename, Ctree *tree)
+void parse_tree(const char *filename, Tree *tree)
 {
     ifstream OpenFile(filename);
     char begin;
@@ -195,7 +198,7 @@ void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, doub
     OpenFile.close();
 }
 
-//void ConvertToLiu(const Ctree * tree_us, Ctree * tree_liu) {
+//void ConvertToLiu(const Tree * tree_us, Tree * tree_liu) {
 //
 //    tree_liu->AllocateNodes(2*tree_us->GetNodes()->size());
 //
@@ -209,9 +212,9 @@ void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, doub
 //    for(unsigned int node_index=1;node_index< tree_us->GetNodes()->size()+1;node_index++){
 //        double ew, nw ;
 //
-//        Cnode * us_node = tree_us->GetNode(node_index);
-//        Cnode * liu_edgenode = tree_liu->GetNode(node_index);
-//        Cnode * liu_peaknode = tree_liu->GetNode(last_node);
+//        Task * us_node = tree_us->GetNode(node_index);
+//        Task * liu_edgenode = tree_liu->GetNode(node_index);
+//        Task * liu_peaknode = tree_liu->GetNode(last_node);
 //
 //        liu_edgenode->SetId(node_index);
 //        liu_peaknode->SetId(last_node);
@@ -364,7 +367,7 @@ void po_construct(const int N, const int *prnts, int **chstart, int **chend, int
     }
 }
 
-double IOCounter(Ctree &tree, schedule_t &sub_schedule, double available_memory, bool divisible, int quiet)
+double IOCounter(Tree &tree, schedule_t &sub_schedule, double available_memory, bool divisible, int quiet)
 {
     double memory_occupation = 0;
     double io_volume = 0;
@@ -374,7 +377,7 @@ double IOCounter(Ctree &tree, schedule_t &sub_schedule, double available_memory,
     /*iterates through the given permutation (schedule)*/
     for (schedule_t::iterator cur_task_id = sub_schedule.begin(); cur_task_id != sub_schedule.end(); cur_task_id++)
     {
-        Cnode *cur_node = tree.GetNode(*cur_task_id);
+        Task *cur_node = tree.GetNode(*cur_task_id);
 
         /*if the node was unloaded*/
         if (unloaded_nodes.find(*cur_task_id) != unloaded_nodes.end())
@@ -466,7 +469,7 @@ double IOCounter(Ctree &tree, schedule_t &sub_schedule, double available_memory,
         {
             cerr << "loading ";
         }
-        for (vector<Cnode *>::iterator child = cur_node->GetChildren()->begin(); child != cur_node->GetChildren()->end(); child++)
+        for (vector<Task *>::iterator child = cur_node->GetChildren()->begin(); child != cur_node->GetChildren()->end(); child++)
         {
             if (!quiet)
             {
@@ -488,7 +491,7 @@ double IOCounter(Ctree &tree, schedule_t &sub_schedule, double available_memory,
     //    cerr<<"IO Volume "<<io_volume<<endl;
 }
 
-double unload_largest_first_fit(Ctree *tree, vector<unsigned int> &unloaded_nodes, list<node_ew> &loaded_nodes, const double data_to_unload, double *ewghts)
+double unload_largest_first_fit(Tree *tree, vector<unsigned int> &unloaded_nodes, list<node_ew> &loaded_nodes, const double data_to_unload, double *ewghts)
 {
     double unloaded_data = 0.0;
 
@@ -508,7 +511,7 @@ double unload_largest_first_fit(Ctree *tree, vector<unsigned int> &unloaded_node
     return unloaded_data;
 }
 
-double unload_furthest_nodes(Ctree *tree, vector<unsigned int> &unloaded_nodes, list<node_sche> &loaded_nodes, const double data_to_unload, double *ewghts, bool divisible)
+double unload_furthest_nodes(Tree *tree, vector<unsigned int> &unloaded_nodes, list<node_sche> &loaded_nodes, const double data_to_unload, double *ewghts, bool divisible)
 {
     double unloaded_data = 0.0;
     // cout << "loaded nodes: size " << loaded_nodes.size();
@@ -592,7 +595,7 @@ double unload_furthest_nodes(Ctree *tree, vector<unsigned int> &unloaded_nodes, 
     return unloaded_data;
 }
 
-double unload_furthest_first_fit(Ctree *tree, vector<unsigned int> &unloaded_nodes, list<node_sche> &loaded_nodes, const double data_to_unload, double *ewghts, bool divisible)
+double unload_furthest_first_fit(Tree *tree, vector<unsigned int> &unloaded_nodes, list<node_sche> &loaded_nodes, const double data_to_unload, double *ewghts, bool divisible)
 {
     double unloaded_data = 0.0;
     /*unload furthest non unloaded node which is NOT in current_node children first*/
@@ -1149,7 +1152,7 @@ double unload_best_furthest_nodes(io_map &unloaded_nodes, schedule_t &loaded_nod
     return unloaded_data;
 }
 
-double IOCounter(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule, double available_memory,
+double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule, double available_memory,
                  bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method)
 {
     double memory_occupation = ewghts[schedule[N - 1]];
@@ -1222,7 +1225,7 @@ double IOCounter(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstar
 
                 double *ewghtssub, *timewghtssub, *spacewghtssub;
                 int *prntssub;
-                Ctree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub, &timewghtssub, &spacewghtssub, chstart, children);
+                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub, &timewghtssub, &spacewghtssub, chstart, children);
 
                 subtree_size = subtree->GetNodes()->size();
                 cout << "subtree size " << subtree_size << endl;
@@ -1388,8 +1391,9 @@ double IOCounter(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstar
 
 //SKU hier
 //Paul
-double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule,
+double IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule, 
                                 Cluster *cluster, bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method)
+
 {
     double memory_occupation = ewghts[schedule[N - 1]];
     double io_volume = 0;
@@ -1461,7 +1465,7 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
 
                 double *ewghtssub, *timewghtssub, *spacewghtssub;
                 int *prntssub;
-                Ctree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub, &timewghtssub, &spacewghtssub, chstart, children);
+                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub, &timewghtssub, &spacewghtssub, chstart, children);
 
                 subtree_size = subtree->GetNodes()->size();
 
@@ -1638,7 +1642,7 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
     //    cerr<<"IO Volume "<<io_volume<<endl;
 }
 
-//double IOCounter(Ctree* tree, int N, int * prnts, double * nwghts, double * ewghts, int * schedule, double available_memory,int divisible, unsigned int & com_freq, io_method_t method){
+//double IOCounter(Tree* tree, int N, int * prnts, double * nwghts, double * ewghts, int * schedule, double available_memory,int divisible, unsigned int & com_freq, io_method_t method){
 //    bool div = (divisible==0);
 //
 //    int * chstart,*chend,*children;
@@ -1687,7 +1691,7 @@ bool check_schedule(int *prnts, int *sched, int N)
     return valid;
 }
 
-double MaxOutDegree(Ctree *tree, int quiet)
+double MaxOutDegree(Tree *tree, int quiet)
 {
     double max_out = 0;
     double max_j = 0;
@@ -1752,17 +1756,17 @@ double MaxOutDegree(int N, int *prnts, double *nwghts, double *ewghts)
     return max_out;
 }
 
-Ctree *SubtreeRooted(Cnode *node)
+Tree *SubtreeRooted(Task *node)
 {
-    Ctree *subtree = new Ctree();
+    Tree *subtree = new Tree();
 
     subtree->SetRootId(1);
     subtree->SetTreeId(node->GetId());
     subtree->AddNode(node);
 
-    vector<Cnode *> visit_next;
-    vector<Cnode *>::iterator first_node;
-    Cnode *end_node;
+    vector<Task *> visit_next;
+    vector<Task *>::iterator first_node;
+    Task *end_node;
     if (node->IsLeaf())
     {
         return subtree;
@@ -1791,7 +1795,7 @@ Ctree *SubtreeRooted(Cnode *node)
     }
 }
 
-Ctree *BuildSubtree(Ctree *tree, Cnode *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts, double **timewghts, double **spacewghts, int *chstart, int *children)
+Tree *BuildSubtree(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts, double **timewghts, double **spacewghts, int *chstart, int *children)
 {
     *prnts = new int[new_tree_size + 1];
     *ewghts = new double[new_tree_size + 1];
@@ -1807,7 +1811,7 @@ Ctree *BuildSubtree(Ctree *tree, Cnode *SubtreeRoot, unsigned int new_tree_size,
     (*timewghts)[1] = SubtreeRoot->GetMSW();
     (*spacewghts)[1] = SubtreeRoot->GetNW();
 
-    Cnode *currentNode;
+    Task *currentNode;
     list<unsigned int> que;
     unsigned int originalID = SubtreeRoot->GetId();
     que.push_back(originalID);
@@ -1844,7 +1848,7 @@ Ctree *BuildSubtree(Ctree *tree, Cnode *SubtreeRoot, unsigned int new_tree_size,
     //        //cout<<i<<" "<<prnts[i]<<" "<<timewghts[i]<<" "<<ewghts[i]<<endl;
     //    }
 
-    Ctree *treeobj = new Ctree(real_tree_size, *prnts, *spacewghts, *ewghts, *timewghts);
+    Tree *treeobj = new Tree(real_tree_size, *prnts, *spacewghts, *ewghts, *timewghts);
 
     for (unsigned int i = 1; i <= real_tree_size; i++)
     {

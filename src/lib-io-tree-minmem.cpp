@@ -25,9 +25,9 @@
 
 
 #ifdef DEBUG_USING_MINMEM
-void explore(Cnode * node, double available_memory,list<Cnode*> * L_init, schedule_t * S_init,  double & cut_value, list<Cnode*> & min_sub_cut, schedule_t & sub_schedule, double & Mpeak, int quiet, int depth,uint64_t & count,iter_node_t * minmem_trace,uint64_t N)
+void explore(Task * node, double available_memory,list<Task*> * L_init, schedule_t * S_init,  double & cut_value, list<Task*> & min_sub_cut, schedule_t & sub_schedule, double & Mpeak, int quiet, int depth,uint64_t & count,iter_node_t * minmem_trace,uint64_t N)
 #else
-void explore(Cnode * node, double available_memory,list<Cnode*> * L_init, schedule_t * S_init,  double & cut_value, list<Cnode*> & min_sub_cut, schedule_t & sub_schedule, double & Mpeak, int quiet, int depth,uint64_t & count)
+void explore(Task * node, double available_memory,list<Task*> * L_init, schedule_t * S_init,  double & cut_value, list<Task*> & min_sub_cut, schedule_t & sub_schedule, double & Mpeak, int quiet, int depth,uint64_t & count)
 #endif
 {
 
@@ -103,13 +103,13 @@ void explore(Cnode * node, double available_memory,list<Cnode*> * L_init, schedu
     min_sub_cut.assign(node->GetChildren()->begin(),node->GetChildren()->end());
   }
 
-  list<Cnode*> * candidates = new list<Cnode*>(min_sub_cut);
+  list<Task*> * candidates = new list<Task*>(min_sub_cut);
 
 
 #if  VERBOSE
   if (node->GetChildren()->size()>1) {
     cerr<<spacing<<"[ node "<<node->GetId()<<" ] initial subcut is [";
-    for (list<Cnode*>::iterator current_node=candidates->begin(); current_node!=candidates->end(); ++current_node){
+    for (list<Task*>::iterator current_node=candidates->begin(); current_node!=candidates->end(); ++current_node){
       cerr<<" "<<(*current_node)->GetId()<<"("<<(*current_node)->Mpeak<<")";
     }
     cerr<<" ]"<<endl;
@@ -118,9 +118,9 @@ void explore(Cnode * node, double available_memory,list<Cnode*> * L_init, schedu
 
 
   cut_value = 0;
-  for (list<Cnode*>::iterator current_node=candidates->begin(); current_node!=candidates->end(); ++current_node){
+  for (list<Task*>::iterator current_node=candidates->begin(); current_node!=candidates->end(); ++current_node){
     (*current_node)->Mavail = available_memory;
-    for (list<Cnode*>::iterator other_nodes=min_sub_cut.begin(); other_nodes!=min_sub_cut.end(); ++other_nodes){
+    for (list<Task*>::iterator other_nodes=min_sub_cut.begin(); other_nodes!=min_sub_cut.end(); ++other_nodes){
       if((*other_nodes)->GetId() != (*current_node)->GetId()){
         (*current_node)->Mavail -= (*other_nodes)->GetEW();
       }
@@ -133,16 +133,16 @@ void explore(Cnode * node, double available_memory,list<Cnode*> * L_init, schedu
 #if VERBOSE
     cerr<<spacing<<"*****************************************************************"<<endl;
     cerr<<spacing<<"[ node "<<node->GetId()<<" ] candidates are [";
-    for (list<Cnode*>::iterator current_node=candidates->begin(); current_node!=candidates->end(); ++current_node){
+    for (list<Task*>::iterator current_node=candidates->begin(); current_node!=candidates->end(); ++current_node){
       cerr<<" "<<(*current_node)->GetId()<<"("<<(*current_node)->Mpeak<<"|"<<(*current_node)->Mavail <<")";
     }
     cerr<<" ]"<<endl;
 #endif
 
 
-    for (list<Cnode*>::iterator current_node=candidates->begin(); current_node!=candidates->end(); ++current_node){
+    for (list<Task*>::iterator current_node=candidates->begin(); current_node!=candidates->end(); ++current_node){
       double m_j;
-      list<Cnode *> Lj;
+      list<Task *> Lj;
       schedule_t Sj;
 
 
@@ -168,9 +168,9 @@ void explore(Cnode * node, double available_memory,list<Cnode*> * L_init, schedu
     }
 
     candidates->clear();
-    for (list<Cnode*>::iterator current_node=min_sub_cut.begin(); current_node!=min_sub_cut.end(); ++current_node){
+    for (list<Task*>::iterator current_node=min_sub_cut.begin(); current_node!=min_sub_cut.end(); ++current_node){
       (*current_node)->Mavail = available_memory;
-      for (list<Cnode*>::iterator other_nodes=min_sub_cut.begin(); other_nodes!=min_sub_cut.end(); ++other_nodes){
+      for (list<Task*>::iterator other_nodes=min_sub_cut.begin(); other_nodes!=min_sub_cut.end(); ++other_nodes){
         if((*other_nodes)->GetId() != (*current_node)->GetId() ){
           (*current_node)->Mavail -= (*other_nodes)->GetEW();
         }
@@ -190,7 +190,7 @@ void explore(Cnode * node, double available_memory,list<Cnode*> * L_init, schedu
     cerr<<spacing<<"[ node "<<node->GetId()<<" ] new subcut value is "<<cut_value<<endl;
     cerr<<spacing<<"[ node "<<node->GetId()<<" ] new subcut is [";
 
-    for (list<Cnode*>::iterator current_node=min_sub_cut.begin(); current_node!=min_sub_cut.end(); ++current_node){
+    for (list<Task*>::iterator current_node=min_sub_cut.begin(); current_node!=min_sub_cut.end(); ++current_node){
       double available_memory_after_subroot = available_memory - cut_value + node->GetEW();
       cerr<<" "<<(*current_node)->GetId()<<"("<<(*current_node)->Mpeak<<"|"<<available_memory_after_subroot  + (*current_node)->GetEW()<<")";
     }
@@ -204,7 +204,7 @@ void explore(Cnode * node, double available_memory,list<Cnode*> * L_init, schedu
 
   cut_value = 0;
   Mpeak = numeric_limits<double>::infinity( );
-  for (list<Cnode*>::iterator current_node=min_sub_cut.begin(); current_node!=min_sub_cut.end(); ++current_node){
+  for (list<Task*>::iterator current_node=min_sub_cut.begin(); current_node!=min_sub_cut.end(); ++current_node){
     cut_value += (*current_node)->GetEW();
 
 
@@ -224,7 +224,7 @@ void explore(Cnode * node, double available_memory,list<Cnode*> * L_init, schedu
 #if VERBOSE
   double available_memory_after_subroot = available_memory - cut_value + node->GetEW();
   cerr<<spacing<<"[ node "<<node->GetId()<<" ] final subcut is [";
-  for (list<Cnode*>::iterator last=min_sub_cut.begin(); last!=min_sub_cut.end(); ++last){
+  for (list<Task*>::iterator last=min_sub_cut.begin(); last!=min_sub_cut.end(); ++last){
     cerr<<" "<<(*last)->GetId()<<"("<<(*last)->Mpeak<<"|"<<available_memory_after_subroot + (*last)->GetEW()<<")";
   }
   cerr<<"]"<<endl;
@@ -237,9 +237,9 @@ void explore(Cnode * node, double available_memory,list<Cnode*> * L_init, schedu
 }
 
 #ifdef DEBUG_USING_MINMEM
-void MinMem(Ctree * tree,double MaxOutDeg, double & Required_memory, schedule_t & Schedule, int quiet, uint64_t & count,iter_node_t * minmem_trace)
+void MinMem(Tree * tree,double MaxOutDeg, double & Required_memory, schedule_t & Schedule, int quiet, uint64_t & count,iter_node_t * minmem_trace)
 #else
-void MinMem(Ctree * tree,double MaxOutDeg, double & Required_memory, schedule_t & Schedule, int quiet, uint64_t & count)
+void MinMem(Tree * tree,double MaxOutDeg, double & Required_memory, schedule_t & Schedule, int quiet, uint64_t & count)
 #endif
 {
   double M = numeric_limits<double>::infinity();
@@ -251,15 +251,15 @@ void MinMem(Ctree * tree,double MaxOutDeg, double & Required_memory, schedule_t 
 
   setrlimit(RLIMIT_STACK,&lim);
 
-  Cnode * root=tree->GetRoot();
+  Task * root=tree->GetRoot();
 
   if(!quiet){
     cerr<<"Max out deg = "<<Mpeak<<endl;
   }
   count = 0;
-  list<Cnode*> L;
-  //	list<Cnode*> * L = new list<Cnode*>();
-  //	list<Cnode*> * prevL = new list<Cnode*>();
+  list<Task*> L;
+  //	list<Task*> * L = new list<Task*>();
+  //	list<Task*> * prevL = new list<Task*>();
   Schedule.clear();
   while(Mpeak<numeric_limits<double>::infinity()){
     Required_memory = Mpeak;
@@ -269,7 +269,7 @@ void MinMem(Ctree * tree,double MaxOutDeg, double & Required_memory, schedule_t 
     explore(root, Required_memory, &L, &Schedule,  M, L, Schedule, Mpeak, quiet,0,count);
 #endif
 
-    //		list<Cnode*> * tmp = prevL;
+    //		list<Task*> * tmp = prevL;
     //		prevL = L;
     //		L = tmp;
 #if VERBOSE
@@ -288,7 +288,7 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
   double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,double *mswghts, int *schedule)
 #endif
     {
-      Ctree * tree = new Ctree(N,prnts,nwghts,ewghts,mswghts);
+      Tree * tree = new Tree(N,prnts,nwghts,ewghts,mswghts);
 
       double Mr;
       double Mp = MaxOutDegree(tree,true);
@@ -318,7 +318,7 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
 //      double MinMemRecurAlgorithm_timed(int N, int *prnts, double *nwghts, double *ewghts, int *schedule,double * usec,int quiet)
 //#endif
 //      {
-//        Ctree * tree = new Ctree(N,prnts,nwghts,ewghts);
+//        Tree * tree = new Tree(N,prnts,nwghts,ewghts);
 //
 //        double Mr;
 //        double Mp = MaxOutDegree(tree,quiet);

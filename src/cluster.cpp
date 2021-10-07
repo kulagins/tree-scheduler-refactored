@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Processor* getFirstFreeProcessor()
+Processor* Cluster::getFirstFreeProcessor()
 
 {
     for (vector<Processor*>::iterator iter = this->processors.begin(); iter < this->processors.end(); iter++) {

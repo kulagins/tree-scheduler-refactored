@@ -47,7 +47,7 @@ heuristics.o: src/heuristics.cpp include/heuristics.h lib-io-tree-minmem.o lib-i
 
 heuristics:heuristics.o
 	rm -f ${LIB_PATH}/$@.a ${LIB_PATH}/$@.so
-	ar rcs ${LIB_PATH}/$@.a $(OBJ_PATH)/heuristics.o $(OBJ_PATH)/lib-io-tree.o $(OBJ_PATH)/lib-io-tree-utils.o $(OBJ_PATH)/lib-io-tree-minmem.o $(OBJ_PATH)/lib-io-tree-liu-optimal.o (OBJ_PATH)/cluster.o
+	ar rcs ${LIB_PATH}/$@.a $(OBJ_PATH)/heuristics.o $(OBJ_PATH)/lib-io-tree.o $(OBJ_PATH)/lib-io-tree-utils.o $(OBJ_PATH)/lib-io-tree-minmem.o $(OBJ_PATH)/lib-io-tree-liu-optimal.o $(OBJ_PATH)/cluster.o
 
 clean:
 	rm -f ${OBJ_PATH}/*.o *~ 

@@ -3,3 +3,4 @@
 *.vscode
 example/call-heuristics
 res
+Makefile

@@ -11,13 +11,17 @@
 #include <list>
 #include <algorithm>
 #include "heuristics.h"
+#include "lib-io-tree-free-methods.h"
+
+//#include <omp.h>
 
 extern double BANDWIDTH;
 
-bool cmp_noincreasing(Cnode *a, Cnode *b) { return (a->GetMSCost(true, false) >= b->GetMSCost(true, false)); };
-bool cmp_nodecreasing(Cnode *a, Cnode *b) { return (a->GetMSCost(true, false) < b->GetMSCost(true, false)); };
-bool cmp_noIn_noCommu(Cnode *a, Cnode *b) { return (a->GetMSCost(false, false) >= b->GetMSCost(false, false)); };
-bool cmp_c_nodecrea(Cnode *a, Cnode *b) { return (a->GetMSW() < b->GetMSW()); };
+bool cmp_noincreasing(Task *a, Task *b) { return (a->GetMSCost(true, false) >= b->GetMSCost(true, false)); };
+bool cmp_nodecreasing(Task *a, Task *b) { return (a->GetMSCost(true, false) < b->GetMSCost(true, false)); };
+bool cmp_noIn_noCommu(Task *a, Task *b) { return (a->GetMSCost(false, false) >= b->GetMSCost(false, false)); };
+bool cmp_c_nodecrea(Task *a, Task *b) { return (a->GetMSW() < b->GetMSW()); };
+
 
 struct CompareMapEntries
 {
@@ -50,7 +54,7 @@ void GetTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest)
 
     if (container->size() > 2)
     {
-        vector<Cnode *>::iterator iter = container->begin();
+        vector<Task *>::iterator iter = container->begin();
         iter = iter + 2;
         for (; iter != container->end(); ++iter)
         {
@@ -67,7 +71,7 @@ void GetTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest)
     }
 }
 
-void GetTwoLargestElementTypethree(vector<Cnode *> *container, vector<Cnode *>::iterator &Largest, vector<Cnode *>::iterator &secondLargest)
+void GetTwoLargestElementTypethree(vector<Task *> *container, vector<Task *>::iterator &Largest, vector<Task *>::iterator &secondLargest)
 {
     if (container->front()->GetMSCost(false, false) >= container->back()->GetMSCost(false, false))
     {
@@ -84,7 +88,7 @@ void GetTwoLargestElementTypethree(vector<Cnode *> *container, vector<Cnode *>::
 
     if (container->size() > 2)
     {
-        vector<Cnode *>::iterator iter = container->begin();
+        vector<Task *>::iterator iter = container->begin();
         advance(iter, 2);
         for (; iter != container->end(); ++iter)
         {
@@ -101,7 +105,7 @@ void GetTwoLargestElementTypethree(vector<Cnode *> *container, vector<Cnode *>::
     }
 }
 
-void GetTwoSmallestElement(list<Cnode *> *container, list<Cnode *>::iterator &Smallest, list<Cnode *>::iterator &secondSmallest)
+void GetTwoSmallestElement(list<Task *> *container, list<Task *>::iterator &Smallest, list<Task *>::iterator &secondSmallest)
 {
     if (container->front()->GetMSW() <= container->back()->GetMSW())
     {
@@ -118,7 +122,7 @@ void GetTwoSmallestElement(list<Cnode *> *container, list<Cnode *>::iterator &Sm
 
     if (container->size() > 2)
     {
-        list<Cnode *>::iterator iter = container->begin();
+        list<Task *>::iterator iter = container->begin();
         advance(iter, 2);
         for (; iter != container->end(); ++iter)
         {
@@ -135,7 +139,7 @@ void GetTwoSmallestElement(list<Cnode *> *container, list<Cnode *>::iterator &Sm
     }
 }
 
-double SplitSubtrees(Cnode *root, unsigned long num_processor, double twolevel, list<Cnode *> &parallelRoots, unsigned long &sequentialLength)
+double SplitSubtrees(Task *root, unsigned long num_processor, double twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength)
 {
     parallelRoots.clear();
     parallelRoots.emplace_front(root);
@@ -143,9 +147,9 @@ double SplitSubtrees(Cnode *root, unsigned long num_processor, double twolevel, 
     vector<double> MS(1, root->GetMSCost(true, true)); // take communication cost into account
     double MS_sequential = root->GetEW() / BANDWIDTH, Weight_more, Weight_PQ;
     unsigned long amountSubtrees;
-    vector<Cnode *> *children;
+    vector<Task *> *children;
 
-    Cnode *currentNode = root;
+    Task *currentNode = root;
     double temp;
     unsigned int mergetime;
     while (!currentNode->IsLeaf())
@@ -157,7 +161,7 @@ double SplitSubtrees(Cnode *root, unsigned long num_processor, double twolevel, 
         //cout<<"pop up "<<currentNode->GetId()<<endl;
 
         children = currentNode->GetChildren();
-        for (vector<Cnode *>::iterator iter = children->begin(); iter != children->end(); iter++)
+        for (vector<Task *>::iterator iter = children->begin(); iter != children->end(); iter++)
         {
             if ((*iter)->IsBroken())
             {
@@ -194,7 +198,7 @@ double SplitSubtrees(Cnode *root, unsigned long num_processor, double twolevel, 
         if (amountSubtrees > num_processor)
         {
             parallelRoots.sort(cmp_noIn_noCommu); //non-increasing sort, computation weight, no communication
-            list<Cnode *>::reverse_iterator iter = parallelRoots.rbegin();
+            list<Task *>::reverse_iterator iter = parallelRoots.rbegin();
             mergetime = amountSubtrees - num_processor;
             for (unsigned int i = 0; i < mergetime; ++i, ++iter)
             {
@@ -226,7 +230,7 @@ double SplitSubtrees(Cnode *root, unsigned long num_processor, double twolevel, 
         parallelRoots.remove(currentNode);
 
         children = currentNode->GetChildren();
-        for (vector<Cnode *>::iterator iter = children->begin(); iter != children->end(); iter++)
+        for (vector<Task *>::iterator iter = children->begin(); iter != children->end(); iter++)
         {
             if (!(*iter)->IsBroken())
             {
@@ -258,7 +262,7 @@ double SplitSubtrees(Cnode *root, unsigned long num_processor, double twolevel, 
     }
 
     root->BreakEdge(); //root should always be broken
-    for (list<Cnode *>::iterator iter = parallelRoots.begin(); iter != parallelRoots.end(); ++iter)
+    for (list<Task *>::iterator iter = parallelRoots.begin(); iter != parallelRoots.end(); ++iter)
     {
         (*iter)->BreakEdge();
     }
@@ -267,7 +271,7 @@ double SplitSubtrees(Cnode *root, unsigned long num_processor, double twolevel, 
     return *smallestMS_iter;
 }
 
-double SplitSubtreesV3(Cnode *root, unsigned long num_processor,  std::map<int, int> processor_speeds, double twolevel, list<Cnode *> &parallelRoots, unsigned long &sequentialLength)
+double SplitSubtreesV3(Task *root, unsigned long num_processor,  std::map<int, int> processor_speeds, double twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength)
 {
     parallelRoots.clear();
     parallelRoots.emplace_front(root);
@@ -275,9 +279,9 @@ double SplitSubtreesV3(Cnode *root, unsigned long num_processor,  std::map<int, 
     vector<double> MS(1, root->GetMSCost(true, true)); // take communication cost into account
     double MS_sequential = root->GetEW() / BANDWIDTH, Weight_more, Weight_PQ;
     unsigned long amountSubtrees;
-    vector<Cnode *> *children;
+    vector<Task *> *children;
 
-    Cnode *currentNode = root;
+    Task *currentNode = root;
     double temp;
     unsigned int mergetime;
     while (!currentNode->IsLeaf())
@@ -289,7 +293,7 @@ double SplitSubtreesV3(Cnode *root, unsigned long num_processor,  std::map<int, 
         //cout<<"pop up "<<currentNode->GetId()<<endl;
 
         children = currentNode->GetChildren();
-        for (vector<Cnode *>::iterator iter = children->begin(); iter != children->end(); iter++)
+        for (vector<Task *>::iterator iter = children->begin(); iter != children->end(); iter++)
         {
             if ((*iter)->IsBroken())
             {
@@ -326,7 +330,7 @@ double SplitSubtreesV3(Cnode *root, unsigned long num_processor,  std::map<int, 
         if (amountSubtrees > num_processor)
         {
             parallelRoots.sort(cmp_noIn_noCommu); //non-increasing sort, computation weight, no communication
-            list<Cnode *>::reverse_iterator iter = parallelRoots.rbegin();
+            list<Task *>::reverse_iterator iter = parallelRoots.rbegin();
             mergetime = amountSubtrees - num_processor;
             for (unsigned int i = 0; i < mergetime; ++i, ++iter)
             {
@@ -359,7 +363,7 @@ double SplitSubtreesV3(Cnode *root, unsigned long num_processor,  std::map<int, 
         parallelRoots.remove(currentNode);
 
         children = currentNode->GetChildren();
-        for (vector<Cnode *>::iterator iter = children->begin(); iter != children->end(); iter++)
+        for (vector<Task *>::iterator iter = children->begin(); iter != children->end(); iter++)
         {
             if (!(*iter)->IsBroken())
             {
@@ -391,7 +395,7 @@ double SplitSubtreesV3(Cnode *root, unsigned long num_processor,  std::map<int, 
     }
 
     root->BreakEdge(); //root should always be broken
-    for (list<Cnode *>::iterator iter = parallelRoots.begin(); iter != parallelRoots.end(); ++iter)
+    for (list<Task *>::iterator iter = parallelRoots.begin(); iter != parallelRoots.end(); ++iter)
     {
         (*iter)->BreakEdge();
     }
@@ -400,9 +404,9 @@ double SplitSubtreesV3(Cnode *root, unsigned long num_processor,  std::map<int, 
     return *smallestMS_iter;
 }
 
-void ISCore(Cnode *root, unsigned long num_processors, bool sequentialPart)
+void ISCore(Task *root, unsigned long num_processors, bool sequentialPart)
 { //number of processors here assumed to the same as tree'size
-    list<Cnode *> parallelRoots;
+    list<Task *> parallelRoots;
     double MS_before;
     double MS_now;
     unsigned long SF_now; //avoid dead lock
@@ -427,7 +431,7 @@ void ISCore(Cnode *root, unsigned long num_processors, bool sequentialPart)
 
     parallelRoots.sort(cmp_noincreasing); //non-increasing sort, communication counted
 
-    Cnode *frontNode;
+    Task *frontNode;
     if (parallelRoots.size() > 1)
     { //==1 means there is no parallel part
         while (true)
@@ -464,10 +468,10 @@ void ISCore(Cnode *root, unsigned long num_processors, bool sequentialPart)
     return;
 }
 
-double ImprovedSplit(Ctree *tree, unsigned int number_processor, int *chstart, int *childrenID)
+double ImprovedSplit(Tree *tree, unsigned int number_processor, int *chstart, int *childrenID)
 {
     unsigned long tree_size = tree->GetNodes()->size();
-    Cnode *root = tree->GetRoot();
+    Task *root = tree->GetRoot();
     //cout<<"---ISCore works on the root"<<endl;
     ISCore(root, tree_size, false);
 
@@ -476,14 +480,14 @@ double ImprovedSplit(Ctree *tree, unsigned int number_processor, int *chstart, i
     return makespan;
 }
 
-bool MemoryEnough(Ctree *tree, Cnode *Qrootone, Cnode *Qroottwo, bool leaf, double memory_size, int *chstart, int *children)
+bool MemoryEnough(Tree *tree, Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size, int *chstart, int *children)
 {
     bool enough = false;
     unsigned long new_tree_size = tree->GetNodes()->size();
 
-    Cnode *SubtreeRoot = tree->GetNode(Qrootone->GetothersideID());
+    Task *SubtreeRoot = tree->GetNode(Qrootone->GetothersideID());
 
-    vector<Cnode *> *childrenvector = Qrootone->GetChildren();
+    vector<Task *> *childrenvector = Qrootone->GetChildren();
     if ((leaf == true) & (childrenvector->size() == 2))
     {
         tree->GetNode(childrenvector->front()->GetothersideID())->RestoreEdge();
@@ -496,7 +500,7 @@ bool MemoryEnough(Ctree *tree, Cnode *Qrootone, Cnode *Qroottwo, bool leaf, doub
 
     double *ewghts, *timewghts, *spacewghts;
     int *prnts;
-    Ctree *subtree = BuildSubtree(tree, SubtreeRoot, new_tree_size, &prnts, &ewghts, &timewghts, &spacewghts, chstart, children);
+    Tree *subtree = BuildSubtree(tree, SubtreeRoot, new_tree_size, &prnts, &ewghts, &timewghts, &spacewghts, chstart, children);
     delete[] ewghts;
     delete[] timewghts;
     delete[] spacewghts;
@@ -529,9 +533,9 @@ bool MemoryEnough(Ctree *tree, Cnode *Qrootone, Cnode *Qroottwo, bool leaf, doub
 }
 
 ///Qtree corresponds to a whole original tree
-Ctree *BuildQtree(Ctree *tree)
+Tree *BuildQtree(Tree *tree)
 { //Qtree is for makespan side, so do not use it for space side
-    Cnode *root = tree->GetRoot();
+    Task *root = tree->GetRoot();
     root->BreakEdge();
     tree->GetRoot()->GetMSCost(true, true); //update
     size_t tree_size = tree->GetNodes()->size();
@@ -550,7 +554,7 @@ Ctree *BuildQtree(Ctree *tree)
     unsigned int j = 2;
     root->SetothersideID(1);
 
-    Cnode *currentNode;
+    Task *currentNode;
     for (unsigned int i = 2; i <= tree_size; ++i)
     {
         currentNode = tree->GetNode(i);
@@ -574,7 +578,7 @@ Ctree *BuildQtree(Ctree *tree)
         prnts[i] = currentNode->GetothersideID();
     }
 
-    Ctree *Qtreeobj = new Ctree(num_subtrees, prnts, timewghts, ewghts, timewghts); //Qtree only reprents makespan, not memory consumption
+    Tree *Qtreeobj = new Tree(num_subtrees, prnts, timewghts, ewghts, timewghts); //Qtree only reprents makespan, not memory consumption
 
     for (unsigned int i = 1; i <= num_subtrees; i++)
     {
@@ -590,19 +594,20 @@ Ctree *BuildQtree(Ctree *tree)
     return Qtreeobj;
 }
 
-bool increaseMS(Ctree *tree, Ctree *Qtree, Cnode *&smallestNode, int *chstart, int *childrenID, double memory_size, bool CheckMemory)
+bool increaseMS(Tree *tree, Tree *Qtree, Task *&smallestNode, int *chstart, int *childrenID, double memory_size, bool CheckMemory)
 {
-    Cnode *currentNode;
+
+    Task *currentNode;
     double diff, increase, temp;
     bool memoryEnough;
     bool feasible = false;
-    Cnode *LargestNode;
-    Cnode *secondLargest;
-    Cnode *parent;
+    Task *LargestNode;
+    Task *secondLargest;
+    Task *parent;
     double smallestIncrease = tree->GetRoot()->GetMSCost(true, false);
     bool leaf = false;
-    const vector<Cnode *> *subtrees = Qtree->GetNodes();
-    vector<Cnode *> *children;
+    const vector<Task *> *subtrees = Qtree->GetNodes();
+    vector<Task *> *children;
 
     if (subtrees->front()->GetId() != 1)
     {
@@ -610,7 +615,7 @@ bool increaseMS(Ctree *tree, Ctree *Qtree, Cnode *&smallestNode, int *chstart, i
         return false;
     }
 
-    vector<Cnode *>::const_iterator iter = subtrees->begin();
+    vector<Task *>::const_iterator iter = subtrees->begin();
     ++iter;
     for (; iter != subtrees->end(); ++iter)
     {
@@ -738,20 +743,20 @@ bool increaseMS(Ctree *tree, Ctree *Qtree, Cnode *&smallestNode, int *chstart, i
     return feasible;
 }
 
-bool cmp_merge_smallest(const pair<double, Cnode *> &a, const pair<double, Cnode *> &b) { return a.first < b.first; };
+bool cmp_merge_smallest(const pair<double, Task *> &a, const pair<double, Task *> &b) { return a.first < b.first; };
 
-bool estimateMS(Ctree *tree, Ctree *Qtree, Cnode *&smallestNode, int *chstart, int *childrenID, double memory_size, bool CheckMemory)
+bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, int *chstart, int *childrenID, double memory_size, bool CheckMemory)
 {
     //cout<<"   ---start compute the minimum combination"<<endl;
 
-    Cnode *currentQNode;
+    Task *currentQNode;
     double increase;
     bool memoryEnough;
-    Cnode *LargestNode;
-    Cnode *secondLargest;
+    Task *LargestNode;
+    Task *secondLargest;
     bool leaf = false;
-    const vector<Cnode *> *subtrees = Qtree->GetNodes();
-    vector<Cnode *> *children;
+    const vector<Task *> *subtrees = Qtree->GetNodes();
+    vector<Task *> *children;
 
     if (subtrees->front()->GetId() != 1)
     { //the root is supposed to be the first element in vector nodes
@@ -759,7 +764,7 @@ bool estimateMS(Ctree *tree, Ctree *Qtree, Cnode *&smallestNode, int *chstart, i
         return false;
     }
 
-    vector<Cnode *> tempQue;
+    vector<Task *> tempQue;
     currentQNode = Qtree->GetRoot();
     currentQNode->SetMSDiff(0);
     children = currentQNode->GetChildren();
@@ -776,8 +781,8 @@ bool estimateMS(Ctree *tree, Ctree *Qtree, Cnode *&smallestNode, int *chstart, i
     }
     //cout<<"   ----------------------------------"<<endl;
 
-    list<pair<double, Cnode *>> list_increase_id;
-    vector<Cnode *>::const_iterator iter = subtrees->begin();
+    list<pair<double, Task *>> list_increase_id;
+    vector<Task *>::const_iterator iter = subtrees->begin();
     ++iter;
     unsigned long size = subtrees->size() - 1;
     //  #pragma omp parallel for
@@ -841,12 +846,12 @@ bool estimateMS(Ctree *tree, Ctree *Qtree, Cnode *&smallestNode, int *chstart, i
             increase = increase - currentQNode->GetParent()->GetMSDiff();
 
             //cout<<"merge, increase in MS(r) "<<increase<<endl;
-            list_increase_id.push_back(pair<double, Cnode *>(increase, currentQNode));
+            list_increase_id.push_back(pair<double, Task *>(increase, currentQNode));
         }
     }
 
     bool feasible = false;
-    list<pair<double, Cnode *>>::iterator smallest_iter;
+    list<pair<double, Task *>>::iterator smallest_iter;
     while (feasible == false && list_increase_id.empty() == false)
     {
         smallest_iter = min_element(list_increase_id.begin(), list_increase_id.end(), cmp_merge_smallest);
@@ -883,23 +888,23 @@ bool estimateMS(Ctree *tree, Ctree *Qtree, Cnode *&smallestNode, int *chstart, i
     return feasible;
 }
 
-double Merge(Ctree *tree, unsigned int num_subtrees, unsigned int processor_number, double const memory_size, int *chstart, int *childrenID, bool CheckMemory)
+double Merge(Tree *tree, unsigned int num_subtrees, unsigned int processor_number, double const memory_size, int *chstart, int *childrenID, bool CheckMemory)
 {
-    Cnode *root = tree->GetRoot();
+    Task *root = tree->GetRoot();
 
     if (processor_number >= num_subtrees)
     {
         return root->GetMSCost(true, true);
     }
 
-    Ctree *Qtreeobj = BuildQtree(tree);
+    Tree *Qtreeobj = BuildQtree(tree);
 
-    Cnode *node_smallest_increase;
-    Cnode *parent;
+    Task *node_smallest_increase;
+    Task *parent;
     int shortage = num_subtrees - processor_number;
     double temp;
-    Cnode *nodeone;
-    Cnode *nodetwo;
+    Task *nodeone;
+    Task *nodetwo;
     bool memoryEnough;
 
     while (shortage > 0)
@@ -965,7 +970,7 @@ double Merge(Ctree *tree, unsigned int num_subtrees, unsigned int processor_numb
     return temp;
 }
 
-double MergeV2(Ctree *tree, unsigned int num_subtrees, unsigned int processor_number, double const memory_size, int *chstart, int *childrenID, bool CheckMemory)
+double MergeV2(Tree *tree, unsigned int num_subtrees, unsigned int processor_number, double const memory_size, int *chstart, int *childrenID, bool CheckMemory)
 {
     if (processor_number >= num_subtrees)
     {
@@ -974,23 +979,23 @@ double MergeV2(Ctree *tree, unsigned int num_subtrees, unsigned int processor_nu
 
     tree->GetRoot()->GetMSCost(true, true); //update makespan
 
-    Ctree *Qtreeobj = BuildQtree(tree);
+    Tree *Qtreeobj = BuildQtree(tree);
 
-    Cnode *currentNode;
-    Cnode *Qroot = Qtreeobj->GetRoot();
+    Task *currentNode;
+    Task *Qroot = Qtreeobj->GetRoot();
     int shortage = num_subtrees - processor_number;
-    list<Cnode *> Llist;
+    list<Task *> Llist;
     vector<unsigned int> CriticalPath;
     double temp;
-    Cnode *largestNode;
-    list<Cnode *>::iterator smallest;
-    list<Cnode *>::iterator secondSmallest;
-    vector<Cnode *> *Children;
+    Task *largestNode;
+    list<Task *>::iterator smallest;
+    list<Task *>::iterator secondSmallest;
+    vector<Task *> *Children;
     long pathlength;
-    vector<Cnode *> queue;
+    vector<Task *> queue;
     bool memoryCheckPass = false, leaf = false;
-    Cnode *nodeone;
-    Cnode *nodetwo;
+    Task *nodeone;
+    Task *nodetwo;
     bool DeadBreak, firstTime;
 
     while (shortage > 0)
@@ -1009,7 +1014,7 @@ double MergeV2(Ctree *tree, unsigned int num_subtrees, unsigned int processor_nu
         while (!Children->empty())
         { //initialize critical path
             temp = largestNode->GetParallelPart();
-            for (vector<Cnode *>::iterator iter = Children->begin(); iter != Children->end(); ++iter)
+            for (vector<Task *>::iterator iter = Children->begin(); iter != Children->end(); ++iter)
             {
                 if ((*iter)->GetMSCost(true, false) == temp)
                 {
@@ -1026,7 +1031,7 @@ double MergeV2(Ctree *tree, unsigned int num_subtrees, unsigned int processor_nu
 
         for (unsigned int i = 1; i < pathlength; ++i)
         { //initialize vector L
-            for (vector<Cnode *>::iterator iter = Children->begin(); iter != Children->end(); ++iter)
+            for (vector<Task *>::iterator iter = Children->begin(); iter != Children->end(); ++iter)
             {
                 if ((*iter)->GetId() != CriticalPath[i])
                 {
@@ -1041,7 +1046,7 @@ double MergeV2(Ctree *tree, unsigned int num_subtrees, unsigned int processor_nu
             currentNode = queue.back();
             queue.pop_back();
             Children = currentNode->GetChildren();
-            for (vector<Cnode *>::iterator iter = Children->begin(); iter != Children->end(); ++iter)
+            for (vector<Task *>::iterator iter = Children->begin(); iter != Children->end(); ++iter)
             {
                 Llist.push_back(*iter);
                 queue.push_back(*iter);
@@ -1057,7 +1062,7 @@ double MergeV2(Ctree *tree, unsigned int num_subtrees, unsigned int processor_nu
                 currentNode = queue.back();
                 queue.pop_back();
                 Children = currentNode->GetChildren();
-                for (vector<Cnode *>::iterator iter = Children->begin(); iter != Children->end(); ++iter)
+                for (vector<Task *>::iterator iter = Children->begin(); iter != Children->end(); ++iter)
                 {
                     Llist.push_back(*iter);
                     queue.push_back(*iter);
@@ -1173,31 +1178,31 @@ double MergeV2(Ctree *tree, unsigned int num_subtrees, unsigned int processor_nu
     return temp;
 }
 
-bool cmp_asapc(Cnode *a, Cnode *b) { return (a->GetMSminusComu() < b->GetMSminusComu()); };
+bool cmp_asapc(Task *a, Task *b) { return (a->GetMSminusComu() < b->GetMSminusComu()); };
 
-double ASAP(Ctree *tree, unsigned int num_processors, unsigned int depth)
+double ASAP(Tree *tree, unsigned int num_processors, unsigned int depth)
 { //depth should be at least 1
-    list<Cnode *> PriorityQue;
-    vector<Cnode *> BrokenEdges;
+    list<Task *> PriorityQue;
+    vector<Task *> BrokenEdges;
     unsigned long step_minimumMS = 0;
     double minimumMS = tree->GetRoot()->GetMSCost(true, true);
     //cout<<"Excuting sequentially, makespan "<<minimumMS<<endl;
     double temp;
-    list<Cnode *> children_buffer;
-    Cnode *currentNode;
+    list<Task *> children_buffer;
+    Task *currentNode;
     unsigned int add_child_deepth;
-    list<Cnode *>::iterator node_position;
+    list<Task *>::iterator node_position;
     unsigned int i;
-    Cnode *LargestNode;
+    Task *LargestNode;
 
-    vector<Cnode *> *children = tree->GetRoot()->GetChildren();
+    vector<Task *> *children = tree->GetRoot()->GetChildren();
 
     while (children->size() == 1)
     { //avoid the linear chain
         children = children->front()->GetChildren();
     }
 
-    for (vector<Cnode *>::iterator iter = children->begin(); iter != children->end(); ++iter)
+    for (vector<Task *>::iterator iter = children->begin(); iter != children->end(); ++iter)
     {
         PriorityQue.push_back(*iter);
         //cout<<"   add node "<<(*iter)->GetId()<<" into PQ."<<endl;
@@ -1213,7 +1218,7 @@ double ASAP(Ctree *tree, unsigned int num_processors, unsigned int depth)
         {
             children = children_buffer.front()->GetChildren();
             children_buffer.pop_front();
-            for (vector<Cnode *>::iterator child = children->begin(); child != children->end(); ++child)
+            for (vector<Task *>::iterator child = children->begin(); child != children->end(); ++child)
             {
                 children_buffer.push_back(*child);
                 PriorityQue.push_back(*child);
@@ -1282,7 +1287,7 @@ double ASAP(Ctree *tree, unsigned int num_processors, unsigned int depth)
             {
                 children = children_buffer.front()->GetChildren();
                 children_buffer.pop_front();
-                for (vector<Cnode *>::iterator child = children->begin(); child != children->end(); ++child)
+                for (vector<Task *>::iterator child = children->begin(); child != children->end(); ++child)
                 {
                     children_buffer.push_back(*child);
                 }
@@ -1297,7 +1302,7 @@ double ASAP(Ctree *tree, unsigned int num_processors, unsigned int depth)
             {
                 children = children_buffer.front()->GetChildren();
                 children_buffer.pop_front();
-                for (vector<Cnode *>::iterator child = children->begin(); child != children->end(); ++child)
+                for (vector<Task *>::iterator child = children->begin(); child != children->end(); ++child)
                 {
                     children_buffer.push_back(*child);
                     PriorityQue.push_back(*child);
@@ -1322,20 +1327,20 @@ double ASAP(Ctree *tree, unsigned int num_processors, unsigned int depth)
     return minimumMS;
 }
 
-bool cmp_asap(Cnode *a, Cnode *b) { return (a->GetMSCost(false, false) < b->GetMSCost(false, false)); };
+bool cmp_asap(Task *a, Task *b) { return (a->GetMSCost(false, false) < b->GetMSCost(false, false)); };
 
-double ASAP(Ctree *tree, unsigned int num_processors)
+double ASAP(Tree *tree, unsigned int num_processors)
 {
-    list<Cnode *> PriorityQue;
-    vector<Cnode *> BrokenEdges;
+    list<Task *> PriorityQue;
+    vector<Task *> BrokenEdges;
     unsigned long step_minimumMS = 0;
     double minimumMS = tree->GetRoot()->GetMSCost(true, true);
     //cout<<"Excuting sequentially, makespan "<<minimumMS<<endl;
     double temp;
-    Cnode *LargestNode;
-    list<Cnode *>::iterator node_position;
+    Task *LargestNode;
+    list<Task *>::iterator node_position;
 
-    vector<Cnode *> *children = tree->GetRoot()->GetChildren();
+    vector<Task *> *children = tree->GetRoot()->GetChildren();
     while (children->size() == 1)
     { //avoid the linear chain
         children = children->front()->GetChildren();
@@ -1395,17 +1400,17 @@ double ASAP(Ctree *tree, unsigned int num_processors)
     return minimumMS;
 }
 
-unsigned long AvoidChain(Ctree *tree)
+unsigned long AvoidChain(Tree *tree)
 {
-    Cnode *root = tree->GetRoot();
+    Task *root = tree->GetRoot();
     root->BreakEdge();
     unsigned long num_subtrees = 0;
     num_subtrees = HowmanySubtrees(tree, true);
 
-    Ctree *Qtreeobj = BuildQtree(tree);
-    const vector<Cnode *> *AllNodes = Qtreeobj->GetNodes();
-    vector<Cnode *> *children;
-    for (vector<Cnode *>::const_iterator iter = AllNodes->begin(); iter != AllNodes->end(); iter++)
+    Tree *Qtreeobj = BuildQtree(tree);
+    const vector<Task *> *AllNodes = Qtreeobj->GetNodes();
+    vector<Task *> *children;
+    for (vector<Task *>::const_iterator iter = AllNodes->begin(); iter != AllNodes->end(); iter++)
     {
         children = (*iter)->GetChildren();
         if (children->size() == 1)
@@ -1421,26 +1426,26 @@ unsigned long AvoidChain(Ctree *tree)
     return num_subtrees;
 }
 
-bool cmp_larSav(Cnode *a, Cnode *b) { return (a->GetMSminusComu() > b->GetMSminusComu()); };
+bool cmp_larSav(Task *a, Task *b) { return (a->GetMSminusComu() > b->GetMSminusComu()); };
 
 
-bool EstimateDecrase(int idleP, Ctree *tree, vector<Cnode *> *criticalPath, bool *lastsubtree, Cnode **node_i, Cnode **node_j)
+bool EstimateDecrase(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *lastsubtree, Task **node_i, Task **node_j)
 {
     //cout<<"   --------------estimate decrease in makespan-----------------"<<endl;
     *lastsubtree = false;
     bool MSdecreased = false;
-    vector<Cnode *> *children;
+    vector<Task *> *children;
     vector<double> decreaseSequence;
     double temp, decrease = -1;
-    vector<Cnode *> tempQue;
-    Cnode *lastSubtreeRoot = tree->GetNode(criticalPath->back()->GetothersideID());
+    vector<Task *> tempQue;
+    Task *lastSubtreeRoot = tree->GetNode(criticalPath->back()->GetothersideID());
 
     //cout<<"   Last subtree root "<<lastSubtreeRoot->GetId()<<endl;
     //nodes on the last subtree of critical path
     if (idleP > 1)
     { //has at least 2 idle processor
         tempQue.push_back(lastSubtreeRoot);
-        vector<Cnode *>::iterator largestNode, secondLargest;
+        vector<Task *>::iterator largestNode, secondLargest;
         //cout<<"   work on the last subtree "<<criticalPath->back()->GetothersideID()<<endl;
         while (!tempQue.empty())
         {
@@ -1457,7 +1462,7 @@ bool EstimateDecrase(int idleP, Ctree *tree, vector<Cnode *> *criticalPath, bool
                     *node_j = *secondLargest;
                 }
 
-                for (vector<Cnode *>::iterator it = children->begin(); it != children->end(); ++it)
+                for (vector<Task *>::iterator it = children->begin(); it != children->end(); ++it)
                 {
                     tempQue.push_back(*it);
                     if (it != largestNode)
@@ -1474,7 +1479,7 @@ bool EstimateDecrase(int idleP, Ctree *tree, vector<Cnode *> *criticalPath, bool
             }
             else
             {
-                for (vector<Cnode *>::iterator it = children->begin(); it != children->end(); ++it)
+                for (vector<Task *>::iterator it = children->begin(); it != children->end(); ++it)
                 {
                     tempQue.push_back(*it);
                 }
@@ -1494,11 +1499,11 @@ bool EstimateDecrase(int idleP, Ctree *tree, vector<Cnode *> *criticalPath, bool
 
     //nodes on other subtrees
     double decrease_othersubtrees = -1;
-    Cnode *output_node;
-    Cnode *subtreeRoot;
-    Cnode *currentNode; //current node is on the path composed of critial path nodes
-    Cnode *nodeOnPath;
-    Cnode *SubtreeT = criticalPath->back();
+    Task *output_node;
+    Task *subtreeRoot;
+    Task *currentNode; //current node is on the path composed of critial path nodes
+    Task *nodeOnPath;
+    Task *SubtreeT = criticalPath->back();
     double MS_t, W_t;
 
     //cout<<"   working on subtree ";
@@ -1520,7 +1525,7 @@ bool EstimateDecrase(int idleP, Ctree *tree, vector<Cnode *> *criticalPath, bool
             {
                 children = tempQue.back()->GetChildren();
                 tempQue.pop_back();
-                for (vector<Cnode *>::iterator it = children->begin(); it != children->end(); ++it)
+                for (vector<Task *>::iterator it = children->begin(); it != children->end(); ++it)
                 {
                     if ((*it)->GetId() != nodeOnPath->GetId() && (!(*it)->IsBroken()))
                     {
@@ -1564,29 +1569,30 @@ bool EstimateDecrase(int idleP, Ctree *tree, vector<Cnode *> *criticalPath, bool
     return MSdecreased;
 }
 
-double SplitAgainV2(Ctree *tree, unsigned int processor_number, unsigned int num_subtrees,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy)
+
+double SplitAgainV2(Tree *tree, unsigned int processor_number, unsigned int num_subtrees,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy)
 {
     double MS_now;
-    Cnode *root = tree->GetRoot();
-    Ctree *Qtreeobj = BuildQtree(tree);
+    Task *root = tree->GetRoot();
+    Tree *Qtreeobj = BuildQtree(tree);
 
-    vector<Cnode *> CriticalPath; //Q nodes on Critical Path
+    vector<Task *> CriticalPath; //Q nodes on Critical Path
 
-    Cnode *Qroot = Qtreeobj->GetRoot();
-    Cnode *largestNode;
-    Cnode *node_i;
-    Cnode *node_j;
-    Cnode *parent;
+    Task *Qroot = Qtreeobj->GetRoot();
+    Task *largestNode;
+    Task *node_i;
+    Task *node_j;
+    Task *parent;
     double temp;
-    vector<Cnode *> *Children;
+    vector<Task *> *Children;
     bool MSReduced, onLastSubtree;
-    vector<Cnode *> tempVector;
+    vector<Task *> tempVector;
 
     int idleProcessors = processor_number - num_subtrees;
     int currentIdleProcessor = isProcBusy[num_subtrees];
     while (idleProcessors > 0)
     {
-        
+
         //cout<<"******** root id "<<tree->GetRootId()<<" ********"<<endl;
         CriticalPath.clear();
         CriticalPath.push_back(Qroot);
@@ -1598,7 +1604,7 @@ double SplitAgainV2(Ctree *tree, unsigned int processor_number, unsigned int num
         while (!Children->empty())
         { //initialize critical path
             temp = largestNode->GetParallelPart();
-            for (vector<Cnode *>::iterator iter = Children->begin(); iter != Children->end(); ++iter)
+            for (vector<Task *>::iterator iter = Children->begin(); iter != Children->end(); ++iter)
             {
                 if ((*iter)->GetMSCost(true, false) == temp)
                 {
@@ -1619,12 +1625,12 @@ double SplitAgainV2(Ctree *tree, unsigned int processor_number, unsigned int num
         {
             if (onLastSubtree == false)
             {
-               // cout<<"split again cut edge "<<node_i->GetId()<<endl;
+                // cout<<"split again cut edge "<<node_i->GetId()<<endl;
                 node_i->BreakEdge(); //C<-C\cup C_k
                 idleProcessors--;
-                taskToPrc.at(node_i->GetId())= currentIdleProcessor;
+                taskToPrc.at(node_i->GetId()) = currentIdleProcessor;
                 isProcBusy.at(currentIdleProcessor) = true;
-             //   cout<<"is busy? "<< (isProcBusy.at(currentIdleProcessor)? "true": "false")<<endl;
+                //   cout<<"is busy? "<< (isProcBusy.at(currentIdleProcessor)? "true": "false")<<endl;
                 currentIdleProcessor++;
 
                 node_i->SetothersideID(Qtreeobj->GetNodes()->size() + 1);
@@ -1633,9 +1639,9 @@ double SplitAgainV2(Ctree *tree, unsigned int processor_number, unsigned int num
                 {
                     parent = parent->GetParent();
                 }
-                Cnode *Qparent = Qtreeobj->GetNode(parent->GetothersideID());
-                Cnode *Qchild;
-                Cnode *newNode = new Cnode(parent->GetothersideID(), 0, node_i->GetEW(), node_i->GetSequentialPart());
+                Task *Qparent = Qtreeobj->GetNode(parent->GetothersideID());
+                Task *Qchild;
+                Task *newNode = new Task(parent->GetothersideID(), 0, node_i->GetEW(), node_i->GetSequentialPart());
                 newNode->SetId(Qtreeobj->GetNodes()->size() + 1);
                 newNode->SetParent(Qparent);
                 newNode->BreakEdge();
@@ -1655,7 +1661,7 @@ double SplitAgainV2(Ctree *tree, unsigned int processor_number, unsigned int num
                     {
                         Children = tempVector.back()->GetChildren();
                         tempVector.pop_back();
-                        for (vector<Cnode *>::iterator iter = Children->begin(); iter != Children->end(); ++iter)
+                        for (vector<Task *>::iterator iter = Children->begin(); iter != Children->end(); ++iter)
                         {
                             if ((*iter)->IsBroken())
                             {
@@ -1676,25 +1682,25 @@ double SplitAgainV2(Ctree *tree, unsigned int processor_number, unsigned int num
             }
             else
             {
-              //  cout<<"split again cut edge "<<node_i->GetId()<<" and edge "<<node_j->GetId()<<endl;
+                //  cout<<"split again cut edge "<<node_i->GetId()<<" and edge "<<node_j->GetId()<<endl;
                 node_i->BreakEdge(); //C<-C\cup C_k
                 node_j->BreakEdge(); //C<-C\cup C_k
                 idleProcessors = idleProcessors - 2;
 
-                taskToPrc.at(node_i->GetId())= currentIdleProcessor;
+                taskToPrc.at(node_i->GetId()) = currentIdleProcessor;
                 isProcBusy.at(currentIdleProcessor) = true;
                 currentIdleProcessor++;
-            //    cout<<"is busy? "<<  (isProcBusy.at(currentIdleProcessor)? "true": "false")<<endl;
+                //    cout<<"is busy? "<<  (isProcBusy.at(currentIdleProcessor)? "true": "false")<<endl;
 
-                taskToPrc.at(node_j->GetId())= currentIdleProcessor;
+                taskToPrc.at(node_j->GetId()) = currentIdleProcessor;
                 isProcBusy.at(currentIdleProcessor) = true;
                 currentIdleProcessor++;
-            //      cout<<"is busy? "<<  (isProcBusy.at(currentIdleProcessor)? "true": "false")<<endl;
+                //      cout<<"is busy? "<<  (isProcBusy.at(currentIdleProcessor)? "true": "false")<<endl;
 
                 node_i->SetothersideID(Qtreeobj->GetNodes()->size() + 1);
                 node_j->SetothersideID(Qtreeobj->GetNodes()->size() + 2);
 
-                Cnode *newNodeone = new Cnode(CriticalPath.back()->GetId(), 0, node_i->GetEW(), node_i->GetSequentialPart());
+                Task *newNodeone = new Task(CriticalPath.back()->GetId(), 0, node_i->GetEW(), node_i->GetSequentialPart());
                 newNodeone->SetId(Qtreeobj->GetNodes()->size() + 1);
                 newNodeone->GetChildren()->clear();
                 newNodeone->SetParent(CriticalPath.back());
@@ -1705,7 +1711,7 @@ double SplitAgainV2(Ctree *tree, unsigned int processor_number, unsigned int num
                 temp = CriticalPath.back()->GetMSW();
                 temp = temp - newNodeone->GetMSW();
 
-                Cnode *newNodetwo = new Cnode(CriticalPath.back()->GetId(), 0, node_j->GetEW(), node_j->GetSequentialPart());
+                Task *newNodetwo = new Task(CriticalPath.back()->GetId(), 0, node_j->GetEW(), node_j->GetSequentialPart());
                 newNodetwo->SetId(Qtreeobj->GetNodes()->size() + 1);
                 newNodetwo->GetChildren()->clear();
                 newNodetwo->SetParent(CriticalPath.back());
@@ -1730,36 +1736,36 @@ double SplitAgainV2(Ctree *tree, unsigned int processor_number, unsigned int num
     return MS_now;
 }
 
-double SplitAgain(Ctree* tree, unsigned int processor_number, unsigned int num_subtrees){
+double SplitAgain(Tree* tree, unsigned int processor_number, unsigned int num_subtrees){
     double MS_now;
-    Cnode* root=tree->GetRoot();
-    Ctree* Qtreeobj = BuildQtree(tree);
+    Task* root=tree->GetRoot();
+    Tree* Qtreeobj = BuildQtree(tree);
     
-    vector<Cnode*> CriticalPath;//Q nodes on Critical Path
+    vector<Task*> CriticalPath;//Q nodes on Critical Path
     
-    Cnode* Qroot=Qtreeobj->GetRoot();
-    Cnode* largestNode;
-    Cnode* node_i;
-    Cnode* node_j;
-    Cnode* parent;
+    Task* Qroot=Qtreeobj->GetRoot();
+    Task* largestNode;
+    Task* node_i;
+    Task* node_j;
+    Task* parent;
     double temp;
-    vector<Cnode*>* Children;
+    vector<Task*>* Children;
     bool MSReduced, onLastSubtree;
-    vector<Cnode*> tempVector;
+    vector<Task*> tempVector;
     
     int idleProcessors=processor_number-num_subtrees;
     while (idleProcessors>0) {
         //cout<<"******** root id "<<tree->GetRootId()<<" ********"<<endl;
         CriticalPath.clear();
         CriticalPath.push_back(Qroot);
-        MS_now=root->GetMSCost(true, true);//update makespan
-        Qroot->GetMSCost(true,true);//update critical path
-        largestNode=Qroot;
-        Children=Qroot->GetChildren();
+        MS_now = root->GetMSCost(true, true); //update makespan
+        Qroot->GetMSCost(true, true);         //update critical path
+        largestNode = Qroot;
+        Children = Qroot->GetChildren();
         //cout<<"critical path (subtres' roots){1 ";
         while (!Children->empty()) {//initialize critical path
             temp=largestNode->GetParallelPart();
-            for (vector<Cnode*>::iterator iter=Children->begin(); iter!=Children->end(); ++iter) {
+            for (vector<Task*>::iterator iter=Children->begin(); iter!=Children->end(); ++iter) {
                 if ((*iter)->GetMSCost(true, false)==temp) {
                     largestNode=(*iter);
                     break;
@@ -1767,45 +1773,50 @@ double SplitAgain(Ctree* tree, unsigned int processor_number, unsigned int num_s
             }
             //cout<<largestNode->GetothersideID()<<" ";
             CriticalPath.push_back(largestNode);
-            Children=largestNode->GetChildren();
+            Children = largestNode->GetChildren();
         }
         //cout<<"}"<<endl;
-        
+
         //cout<<"Idle processor now: "<<idleProcessors<<endl;
         MSReduced = EstimateDecrase(idleProcessors, tree, &CriticalPath, &onLastSubtree, &node_i, &node_j);
-        
-        if (MSReduced==true) {
-            if (onLastSubtree==false) {
+
+        if (MSReduced == true)
+        {
+            if (onLastSubtree == false)
+            {
                 //cout<<"cut edge "<<node_i->GetId()<<endl;
-                node_i->BreakEdge();//C<-C\cup C_k
+                node_i->BreakEdge(); //C<-C\cup C_k
                 idleProcessors--;
-                
-                node_i->SetothersideID(Qtreeobj->GetNodes()->size()+1);
-                parent=node_i->GetParent();
-                while (!parent->IsBroken()) {
-                    parent=parent->GetParent();
+
+                node_i->SetothersideID(Qtreeobj->GetNodes()->size() + 1);
+                parent = node_i->GetParent();
+                while (!parent->IsBroken())
+                {
+                    parent = parent->GetParent();
                 }
-                Cnode* Qparent = Qtreeobj->GetNode(parent->GetothersideID());
-                Cnode* Qchild;
-                Cnode* newNode = new Cnode(parent->GetothersideID(), 0, node_i->GetEW(), node_i->GetSequentialPart());
+                Task* Qparent = Qtreeobj->GetNode(parent->GetothersideID());
+                Task* Qchild;
+                Task* newNode = new Task(parent->GetothersideID(), 0, node_i->GetEW(), node_i->GetSequentialPart());
                 newNode->SetId(Qtreeobj->GetNodes()->size()+1);
                 newNode->SetParent(Qparent);
                 newNode->BreakEdge();
                 newNode->SetothersideID(node_i->GetId());
                 Qparent->AddChild(newNode);
                 Qtreeobj->addNode(newNode);
-                temp=Qparent->GetMSW();
-                Qparent->SetMSW(temp-newNode->GetMSW());
+                temp = Qparent->GetMSW();
+                Qparent->SetMSW(temp - newNode->GetMSW());
                 //cout<<"create new Q node "<<newNode->GetId()<<", msw "<<newNode->GetMSW()<<", its parent "<<Qparent->GetId()<<", msw "<<Qparent->GetMSW()<<endl;
-                
+
                 newNode->GetChildren()->clear();
-                if (node_i->GetParallelPart()>0) {
+                if (node_i->GetParallelPart() > 0)
+                {
                     //cout<<"went to here1."<<endl;
                     tempVector.push_back(node_i);
-                    while (!tempVector.empty()) {
+                    while (!tempVector.empty())
+                    {
                         Children = tempVector.back()->GetChildren();
                         tempVector.pop_back();
-                        for (vector<Cnode*>::iterator iter=Children->begin(); iter!=Children->end(); ++iter){
+                        for (vector<Task*>::iterator iter=Children->begin(); iter!=Children->end(); ++iter){
                             if ((*iter)->IsBroken()) {
                                 //cout<<"went to here2."<<endl;
                                 Qchild = Qtreeobj->GetNode((*iter)->GetothersideID());
@@ -1813,13 +1824,17 @@ double SplitAgain(Ctree* tree, unsigned int processor_number, unsigned int num_s
                                 Qchild->SetParent(newNode);
                                 Qchild->SetParentId(newNode->GetId());
                                 Qparent->RemoveChild((*iter)->GetothersideID());
-                            }else{
+                            }
+                            else
+                            {
                                 tempVector.push_back((*iter));
                             }
                         }
                     }
                 }
-            }else{
+            }
+            else
+            {
                 //cout<<"cut edge "<<node_i->GetId()<<" and edge "<<node_j->GetId()<<endl;
                 node_i->BreakEdge();//C<-C\cup C_k
                 node_j->BreakEdge();//C<-C\cup C_k
@@ -1828,7 +1843,7 @@ double SplitAgain(Ctree* tree, unsigned int processor_number, unsigned int num_s
                 node_i->SetothersideID(Qtreeobj->GetNodes()->size()+1);
                 node_j->SetothersideID(Qtreeobj->GetNodes()->size()+2);
                 
-                Cnode* newNodeone = new Cnode(CriticalPath.back()->GetId(), 0, node_i->GetEW(), node_i->GetSequentialPart());
+                Task* newNodeone = new Task(CriticalPath.back()->GetId(), 0, node_i->GetEW(), node_i->GetSequentialPart());
                 newNodeone->SetId(Qtreeobj->GetNodes()->size()+1);
                 newNodeone->GetChildren()->clear();
                 newNodeone->SetParent(CriticalPath.back());
@@ -1839,7 +1854,7 @@ double SplitAgain(Ctree* tree, unsigned int processor_number, unsigned int num_s
                 temp=CriticalPath.back()->GetMSW();
                 temp=temp-newNodeone->GetMSW();
                 
-                Cnode* newNodetwo = new Cnode(CriticalPath.back()->GetId(), 0, node_j->GetEW(), node_j->GetSequentialPart());
+                Task* newNodetwo = new Task(CriticalPath.back()->GetId(), 0, node_j->GetEW(), node_j->GetSequentialPart());
                 newNodetwo->SetId(Qtreeobj->GetNodes()->size()+1);
                 newNodetwo->GetChildren()->clear();
                 newNodetwo->SetParent(CriticalPath.back());
@@ -1847,21 +1862,25 @@ double SplitAgain(Ctree* tree, unsigned int processor_number, unsigned int num_s
                 newNodetwo->SetothersideID(node_j->GetId());
                 CriticalPath.back()->AddChild(newNodetwo);
                 Qtreeobj->addNode(newNodetwo);
-                temp=temp-newNodetwo->GetMSW();
+                temp = temp - newNodetwo->GetMSW();
                 CriticalPath.back()->SetMSW(temp);
                 //cout<<"create new Q node "<<newNodetwo->GetId()<<", msw "<<newNodetwo->GetMSW()<<" and new node "<<newNodeone->GetId()<<", msw "<<newNodeone->GetMSW()<<", their parent "<<CriticalPath.back()->GetId()<<", msw "<<CriticalPath.back()->GetMSW()<<endl;
             }
-        }else{break;}
+        }
+        else
+        {
+            break;
+        }
     }
-    
+
     delete Qtreeobj;
-    
-    MS_now = root->GetMSCost(true,true);
+
+    MS_now = root->GetMSCost(true, true);
     return MS_now;
 }
 
 
-void Immediately(Ctree *tree, unsigned long N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule, double m_availble, unsigned int &num_para_subtrees, vector<unsigned int> *brokenEdges)
+void Immediately(Tree *tree, unsigned long N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule, double m_availble, unsigned int &num_para_subtrees, vector<unsigned int> *brokenEdges)
 {
     double memory_occupied = ewghts[schedule[N - 1]];
     list<unsigned int> allNodes;
@@ -1930,7 +1949,7 @@ void Immediately(Ctree *tree, unsigned long N, double *nwghts, double *ewghts, i
 
                 double *ewghtssub, *timewghtssub, *spacewghtssub;
                 int *prntssub, *chstartsub, *chendsub, *childrensub;
-                Ctree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub, &timewghtssub, &spacewghtssub, chstart, children);
+                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub, &timewghtssub, &spacewghtssub, chstart, children);
 
                 subtree_size = subtree->GetNodes()->size();
 
@@ -1982,11 +2001,11 @@ void Immediately(Ctree *tree, unsigned long N, double *nwghts, double *ewghts, i
     //cout<<endl;
 }
 
-void MemoryCheck(Ctree *tree, int *chstart, int *children, double const memory_size, io_method_t method)
+void MemoryCheck(Tree *tree, int *chstart, int *children, Cluster *cluster,  io_method_t method)
 { //chstart, children are not modified
-    vector<Cnode *> subtreeRoots;
-    Cnode *currentnode;
-    Cnode *subtreeRoot;
+    vector<Task *> subtreeRoots;
+    Task *currentnode;
+    Task *subtreeRoot;
     int rootid;
     tree->GetRoot()->BreakEdge();
 
@@ -2018,7 +2037,7 @@ void MemoryCheck(Ctree *tree, int *chstart, int *children, double const memory_s
 
         double *ewghts, *timewghts, *spacewghts;
         int *prnts;
-        Ctree *subtree = BuildSubtree(tree, subtreeRoot, treeSize, &prnts, &ewghts, &timewghts, &spacewghts, chstart, children);
+        Tree *subtree = BuildSubtree(tree, subtreeRoot, treeSize, &prnts, &ewghts, &timewghts, &spacewghts, chstart, children);
 
         subtreeSize = subtree->GetNodes()->size();
         int *schedule_copy = new int[subtreeSize + 1];
@@ -2031,7 +2050,7 @@ void MemoryCheck(Ctree *tree, int *chstart, int *children, double const memory_s
         po_construct(subtreeSize, prnts, &chstartsub, &chendsub, &childrensub, &rootid);
 
         //cout<<"Subtree "<<subtreeRoot->GetId()<<" needs memory "<<memory_required;
-        if (memory_required > memory_size)
+        if (memory_required > cluster->getProcessors().at(0)->getMemorySize())
         {
             //cout<<", larger than what is available: "<<memory_size<<endl;
 
@@ -2042,7 +2061,7 @@ void MemoryCheck(Ctree *tree, int *chstart, int *children, double const memory_s
                 advance(ite_sche, 1);
             }
             schedule_copy[0] = subtreeSize + 1;
-
+            double memory_size = cluster->getProcessors().at(0)->getMemorySize();
             switch (method)
             {
             case FIRST_FIT:
@@ -2078,15 +2097,13 @@ void MemoryCheck(Ctree *tree, int *chstart, int *children, double const memory_s
         tree->GetNode(*iter)->BreakEdge();
     }
 }
-void breakSubtreeFurther(int *schedule_copy, int subtreeSize)
-{
-}
-std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vector<double> memory_sizes, io_method_t method, bool skipBig, std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy)
+std::map<int, int> MemoryCheckA2(Tree *tree, int *chstart, int *children,Cluster *cluster, io_method_t method, bool skipBig)
+
 { //chstart, children are not modified
-    vector<Cnode *> subtreeRoots;
-    vector<Cnode *> subtreeRootsSkipped;
-    Cnode *currentnode;
-    Cnode *subtreeRoot;
+    vector<Task *> subtreeRoots;
+    vector<Task *> subtreeRootsSkipped;
+    Task *currentnode;
+    Task *subtreeRoot;
     int rootid;
     tree->GetRoot()->BreakEdge();
 
@@ -2103,19 +2120,8 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
         }
     }
     //cout<<endl;
-    sort(subtreeRoots.begin(), subtreeRoots.end(), [](Cnode *lhs, Cnode *rhs)
+    sort(subtreeRoots.begin(), subtreeRoots.end(), [](Task *lhs, Task *rhs)
          { return lhs->GetMSCost() < rhs->GetMSCost(); });
-    sort(memory_sizes.begin(), memory_sizes.end());
-
-    for (int i = 0; i < treeSize+1; i++)
-    {
-        taskToPrc.insert(pair<int, int>(i, -1));
-    }
-
-    for (int i = 0; i < treeSize; i++)
-    {
-        isProcBusy.insert(pair<int, bool>(i, false));
-    }
 
     double maxoutD, memory_required;
     schedule_t *schedule_f = new schedule_t();
@@ -2125,19 +2131,17 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
     list<int>::iterator ite_sche;
     vector<unsigned int> BrokenEdgesID;
     double IO_volume;
-    int currentProcessor;
-    currentProcessor = 0;
-  //  cout << endl
-   //      << "first small trees" << endl;
+    Processor *currentProcessor = cluster->getFirstFreeProcessor();
+
     while (!subtreeRoots.empty())
     {
-        double currentMem = memory_sizes[currentProcessor];
+        double currentMem = currentProcessor->getMemorySize();
         subtreeRoot = subtreeRoots.back();
         subtreeRoots.pop_back();
 
         double *ewghts, *timewghts, *spacewghts;
         int *prnts;
-        Ctree *subtree = BuildSubtree(tree, subtreeRoot, treeSize, &prnts, &ewghts, &timewghts, &spacewghts, chstart, children);
+        Tree *subtree = BuildSubtree(tree, subtreeRoot, treeSize, &prnts, &ewghts, &timewghts, &spacewghts, chstart, children);
 
         subtreeSize = subtree->GetNodes()->size();
         int *schedule_copy = new int[subtreeSize + 1];
@@ -2149,12 +2153,12 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
         int *chstartsub, *chendsub, *childrensub;
         po_construct(subtreeSize, prnts, &chstartsub, &chendsub, &childrensub, &rootid);
 
-      //  cout << "Subtree " << subtreeRoot->GetId() << " needs memory " << memory_required;
+        //  cout << "Subtree " << subtreeRoot->GetId() << " needs memory " << memory_required;
         if (memory_required > currentMem)
         {
             if (!skipBig)
             {
-             //   cout << ", larger than what is available: " << currentMem << " on proc " << currentProcessor << endl;
+                //   cout << ", larger than what is available: " << currentMem << " on proc " << currentProcessor << endl;
 
                 ite_sche = schedule_f->begin();
                 for (unsigned int i = subtreeSize; i >= 1; --i)
@@ -2168,10 +2172,10 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
                 switch (method)
                 {
                 case FIRST_FIT:
-                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor, taskToPrc, isProcBusy, false, true, com_freq, &BrokenEdgesID, FIRST_FIT);
+                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, cluster, false, true, com_freq, &BrokenEdgesID, FIRST_FIT);
                     break;
                 case LARGEST_FIT:
-                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor, taskToPrc, isProcBusy, false, true, com_freq, &BrokenEdgesID, LARGEST_FIT);
+                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, cluster, false, true, com_freq, &BrokenEdgesID, LARGEST_FIT);
                     break;
                 case IMMEDIATELY:
                     Immediately(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, currentMem, com_freq, &BrokenEdgesID);
@@ -2188,19 +2192,18 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
         }
         else
         {
-            taskToPrc.at(subtreeRoot->GetId()) = currentProcessor;
-            isProcBusy.at(currentProcessor) = true;
-            currentProcessor++;
+            currentProcessor->assignTask(subtreeRoot);
+            currentProcessor = cluster->getFirstFreeProcessor();
         }
         //cout<<endl;
         //
-     //   cout << "Now big trees" << endl;
+        //   cout << "Now big trees" << endl;
         while (!subtreeRootsSkipped.empty())
         {
-            double currentMem = memory_sizes[currentProcessor];
+            double currentMem = currentProcessor->getMemorySize();
             subtreeRoot = subtreeRootsSkipped.back();
             subtreeRootsSkipped.pop_back();
-       //     cout << ", larger than what is available: " << currentMem << " on proc " << currentProcessor << endl;
+            //     cout << ", larger than what is available: " << currentMem << " on proc " << currentProcessor << endl;
 
             ite_sche = schedule_f->begin();
             for (unsigned int i = subtreeSize; i >= 1; --i)
@@ -2214,10 +2217,10 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
             switch (method)
             {
             case FIRST_FIT:
-                IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor, taskToPrc, isProcBusy, false, true, com_freq, &BrokenEdgesID, FIRST_FIT);
+                IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, cluster, false, true, com_freq, &BrokenEdgesID, FIRST_FIT);
                 break;
             case LARGEST_FIT:
-                IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, memory_sizes, currentProcessor, taskToPrc, isProcBusy, false, true, com_freq, &BrokenEdgesID, LARGEST_FIT);
+                IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, cluster, false, true, com_freq, &BrokenEdgesID, LARGEST_FIT);
                 break;
             case IMMEDIATELY:
                 Immediately(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy, currentMem, com_freq, &BrokenEdgesID);
@@ -2244,14 +2247,13 @@ std::map<int, int> MemoryCheckA2(Ctree *tree, int *chstart, int *children, vecto
     {
         tree->GetNode(*iter)->BreakEdge();
     }
-    return taskToPrc;
 }
 
-unsigned int HowmanySubtrees(const Ctree *tree, bool quiet)
+unsigned int HowmanySubtrees(const Tree *tree, bool quiet)
 {
     unsigned int number_subtrees = 0;
     tree->GetRoot()->BreakEdge();
-    const vector<Cnode *> *Nodes = tree->GetNodes();
+    const vector<Task *> *Nodes = tree->GetNodes();
     if (quiet == false)
     {
         cout << "Broken Edges { ";
@@ -2286,7 +2288,7 @@ void SetBandwidth(double CCR, unsigned long tree_size, double *ewghts, double *t
     BANDWIDTH = sum_edges / (sum_weights * CCR);
 }
 
-double Sequence(Cnode *root)
+double Sequence(Task *root)
 {
     return root->GetMSCost();
 }

@@ -34,7 +34,7 @@ struct iter_seg_t {
 	iter_node_t * hi;
 };
 
-void PebbleOrderingRecur(Ctree * tree,unsigned int sub_root, OrdoLiu_t & SubSchedule, int quiet, int & count);
+void PebbleOrderingRecur(Tree * tree,unsigned int sub_root, OrdoLiu_t & SubSchedule, int quiet, int & count);
 double PebbleOrderingIter(const int N,const int *prnts,const double *nwghts,const double *ewghts,const int * chstart, const int * chend, int * children, const int root, int *schedule);
 
 #endif

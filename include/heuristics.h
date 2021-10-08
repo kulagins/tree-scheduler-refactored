@@ -11,25 +11,30 @@
 
 #include "lib-io-tree.h"
 #include "lib-io-tree-minmem.h"
+#include "cluster.h"
 
-typedef enum {TIME=1,SPACE} subtreeType;
+typedef enum
+{
+    TIME = 1,
+    SPACE
+} subtreeType;
 
-double SplitSubtrees(Cnode* root, unsigned long num_processor,  double twolevel, list<Cnode*>& parallelRoots, unsigned long & sequentialLength);
-double SplitSubtreesV3(Cnode* root, unsigned long num_processor,  std::map<int, int> processor_speeds, double twolevel, list<Cnode*>& parallelRoots, unsigned long & sequentialLength);
-double ImprovedSplit(Ctree* tree, unsigned int number_processor, int* chstart, int* childrenID);
-double Merge(Ctree* tree, unsigned int num_subtrees, unsigned int processor_number, double const memory_size,int * chstart,int * childrenID, bool CheckMemory);
-double MergeV2(Ctree* tree, unsigned int num_subtrees, unsigned int processor_number, double const memory_size,int * chstart,int * childrenID, bool CheckMemory);
-double ASAP(Ctree* tree, unsigned int num_processors, unsigned int depth);
-double ASAP(Ctree* tree, unsigned int num_processors);
-unsigned long AvoidChain(Ctree* tree);
-double SplitAgainV2(Ctree* tree, unsigned int processor_number, unsigned int num_subtrees,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy);
-double SplitAgain(Ctree* tree, unsigned int processor_number, unsigned int num_subtrees);
-double Sequence(Cnode* root);
+double SplitSubtrees(Task* root, unsigned long num_processor,  double twolevel, list<Task*>& parallelRoots, unsigned long & sequentialLength);
+double SplitSubtreesV3(Task* root, unsigned long num_processor,  std::map<int, int> processor_speeds, double twolevel, list<Task*>& parallelRoots, unsigned long & sequentialLength);
+double ImprovedSplit(Tree* tree, unsigned int number_processor, int* chstart, int* childrenID);
+double Merge(Tree* tree, unsigned int num_subtrees, unsigned int processor_number, double const memory_size,int * chstart,int * childrenID, bool CheckMemory);
+double MergeV2(Tree* tree, unsigned int num_subtrees, unsigned int processor_number, double const memory_size,int * chstart,int * childrenID, bool CheckMemory);
+double ASAP(Tree* tree, unsigned int num_processors, unsigned int depth);
+double ASAP(Tree* tree, unsigned int num_processors);
+unsigned long AvoidChain(Tree* tree);
+double SplitAgainV2(Tree* tree, unsigned int processor_number, unsigned int num_subtrees,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy);
+double SplitAgain(Tree* tree, unsigned int processor_number, unsigned int num_subtrees);
+double Sequence(Task* root);
 
-Ctree* BuildQtree(Ctree* tree);
-void MemoryCheck(Ctree* tree, int* chstart, int*children, double const memory_size, io_method_t method);
-std::map<int, int> MemoryCheckA2(Ctree* tree, int* chstart, int*children, vector<double> const memory_sizes, io_method_t method, bool skipBig,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy);
-unsigned int HowmanySubtrees(const Ctree* tree, bool quiet);
+Tree* BuildQtree(Tree* tree);
+void MemoryCheck(Tree* tree, int* chstart, int*children,  Cluster *cluster, io_method_t method);
+std::map<int, int> MemoryCheckA2(Tree* tree, int* chstart, int*children,  Cluster *cluster,io_method_t method, bool skipBig);
+unsigned int HowmanySubtrees(const Tree* tree, bool quiet);
 void SetBandwidth(double CCR, unsigned long tree_size, double * ewghts, double * timewghts);
 
 

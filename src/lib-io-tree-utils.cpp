@@ -16,10 +16,17 @@
 #include "lib-io-tree-utils.h"
 #include "lib-io-tree.h"
 #include "lib-io-tree-minmem.h"
+#include "lib-io-tree-free-methods.h"
 #include <sys/time.h>
 #include <algorithm>
 
+#ifndef CLUSTER_H
+#define CLUSTER_H
+
 using namespace std;
+
+Tree *  Tree::originalTree = NULL;
+bool Tree::originalTreeInitialized = false;
 
 double BANDWIDTH = 1;
 
@@ -42,7 +49,7 @@ double u_wseconds(void)
     return (double)tp.tv_sec + (double)tp.tv_usec / 1000000.0;
 };
 
-void parse_tree(const char *filename, Ctree *tree)
+void parse_tree(const char *filename, Tree *tree)
 {
     ifstream OpenFile(filename);
     char begin;
@@ -262,7 +269,7 @@ void po_construct(const int N, const int *prnts, int **chstart, int **chend, int
     }
 }
 
-double IOCounter(Ctree &tree, schedule_t &sub_schedule, double available_memory, bool divisible, int quiet)
+double IOCounter(Tree &tree, schedule_t &sub_schedule, double available_memory, bool divisible, int quiet)
 {
     double memory_occupation = 0;
     double io_volume = 0;
@@ -272,7 +279,7 @@ double IOCounter(Ctree &tree, schedule_t &sub_schedule, double available_memory,
     /*iterates through the given permutation (schedule)*/
     for (schedule_t::iterator cur_task_id = sub_schedule.begin(); cur_task_id != sub_schedule.end(); cur_task_id++)
     {
-        Cnode *cur_node = tree.GetNode(*cur_task_id);
+        Task *cur_node = tree.GetNode(*cur_task_id);
 
         /*if the node was unloaded*/
         if (unloaded_nodes.find(*cur_task_id) != unloaded_nodes.end())
@@ -364,7 +371,7 @@ double IOCounter(Ctree &tree, schedule_t &sub_schedule, double available_memory,
         {
             cerr << "loading ";
         }
-        for (vector<Cnode *>::iterator child = cur_node->GetChildren()->begin(); child != cur_node->GetChildren()->end(); child++)
+        for (vector<Task *>::iterator child = cur_node->GetChildren()->begin(); child != cur_node->GetChildren()->end(); child++)
         {
             if (!quiet)
             {
@@ -386,7 +393,7 @@ double IOCounter(Ctree &tree, schedule_t &sub_schedule, double available_memory,
     //    cerr<<"IO Volume "<<io_volume<<endl;
 }
 
-double unload_largest_first_fit(Ctree *tree, vector<unsigned int> &unloaded_nodes, list<node_ew> &loaded_nodes, const double data_to_unload, double *ewghts)
+double unload_largest_first_fit(Tree *tree, vector<unsigned int> &unloaded_nodes, list<node_ew> &loaded_nodes, const double data_to_unload, double *ewghts)
 {
     double unloaded_data = 0.0;
 
@@ -406,7 +413,7 @@ double unload_largest_first_fit(Ctree *tree, vector<unsigned int> &unloaded_node
     return unloaded_data;
 }
 
-double unload_furthest_nodes(Ctree *tree, vector<unsigned int> &unloaded_nodes, list<node_sche> &loaded_nodes, const double data_to_unload, double *ewghts, bool divisible)
+double unload_furthest_nodes(Tree *tree, vector<unsigned int> &unloaded_nodes, list<node_sche> &loaded_nodes, const double data_to_unload, double *ewghts, bool divisible)
 {
     double unloaded_data = 0.0;
     // cout << "loaded nodes: size " << loaded_nodes.size();
@@ -490,7 +497,7 @@ double unload_furthest_nodes(Ctree *tree, vector<unsigned int> &unloaded_nodes, 
     return unloaded_data;
 }
 
-double unload_furthest_first_fit(Ctree *tree, vector<unsigned int> &unloaded_nodes, list<node_sche> &loaded_nodes, const double data_to_unload, double *ewghts, bool divisible)
+double unload_furthest_first_fit(Tree *tree, vector<unsigned int> &unloaded_nodes, list<node_sche> &loaded_nodes, const double data_to_unload, double *ewghts, bool divisible)
 {
     double unloaded_data = 0.0;
     /*unload furthest non unloaded node which is NOT in current_node children first*/
@@ -1030,7 +1037,7 @@ double unload_best_furthest_nodes(io_map &unloaded_nodes, schedule_t &loaded_nod
     return unloaded_data;
 }
 
-double IOCounter(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule, double available_memory,
+double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule, double available_memory,
                  bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method)
 {
     double memory_occupation = ewghts[schedule[N - 1]];
@@ -1103,7 +1110,7 @@ double IOCounter(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstar
 
                 double *ewghtssub, *timewghtssub, *spacewghtssub;
                 int *prntssub;
-                Ctree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub, &timewghtssub, &spacewghtssub, chstart, children);
+                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub, &timewghtssub, &spacewghtssub, chstart, children);
 
                 subtree_size = subtree->GetNodes()->size();
                 cout << "subtree size " << subtree_size << endl;
@@ -1266,8 +1273,10 @@ double IOCounter(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstar
     return io_volume;
     //    cerr<<"IO Volume "<<io_volume<<endl;
 }
-double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule, vector<double> availableMemorySizesA2, int &currentProcessor,
-                                std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method)
+
+double IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule, 
+                                Cluster *cluster, bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method)
+
 {
     double memory_occupation = ewghts[schedule[N - 1]];
     double io_volume = 0;
@@ -1339,7 +1348,7 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
 
                 double *ewghtssub, *timewghtssub, *spacewghtssub;
                 int *prntssub;
-                Ctree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub, &timewghtssub, &spacewghtssub, chstart, children);
+                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub, &timewghtssub, &spacewghtssub, chstart, children);
 
                 subtree_size = subtree->GetNodes()->size();
 
@@ -1358,12 +1367,13 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
                 int *chstartsub, *chendsub, *childrensub;
                 po_construct(subtree_size, prntssub, &chstartsub, &chendsub, &childrensub, &rootid);
 
-                if (memory_required > availableMemorySizesA2[currentProcessor])
+                if (memory_required > cluster->getFirstFreeProcessor()->getMemorySize())
                 {
                     //   cout << "memory required " << memory_required << ", is larger than what is available " << availableMemorySizesA2[currentProcessor] << " on proc " << currentProcessor << endl;
                     //  cout << "----------------------Processing subtree! " << cur_task_id << endl;
-                    currentProcessor++;
-                    IO_sub = IOCounterWithVariableMem(subtree, subtree_size + 1, spacewghtssub, ewghtssub, chstartsub, childrensub, schedule_copy, availableMemorySizesA2, currentProcessor, taskToPrc, isProcBusy, divisible, quiet, com_freq, &subtreeBrokenEdges, method);
+                    // currentProcessor++;
+                    //INcrease processor??
+                    IO_sub = IOCounterWithVariableMem(subtree, subtree_size + 1, spacewghtssub, ewghtssub, chstartsub, childrensub, schedule_copy, cluster, divisible, quiet, com_freq, &subtreeBrokenEdges, method);
 
                     //    cout << "subtree broken edges " << subtreeBrokenEdges.size() << endl;
 
@@ -1375,9 +1385,7 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
                 }
                 else
                 {
-                    taskToPrc[cur_task_id] = currentProcessor;
-                    isProcBusy.at(currentProcessor) = true;
-                    currentProcessor++;
+                    cluster->getFirstFreeProcessor()->assignTask(tree->GetNode(cur_task_id));
                     //   cout << "just increase proc to " << currentProcessor << endl;
                 }
 
@@ -1403,7 +1411,7 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
                     node_cost += ewghts[children[j]];
                 }
 
-                double data_to_unload = memory_occupation + node_cost - ewghts[cur_task_id] - availableMemorySizesA2[currentProcessor];
+                double data_to_unload = memory_occupation + node_cost - ewghts[cur_task_id] - cluster->getFirstFreeProcessor()->getMemorySize();
 
                 if (!quiet)
                 {
@@ -1504,8 +1512,7 @@ double IOCounterWithVariableMem(Ctree *tree, int N, double *nwghts, double *ewgh
                     cerr << "New occupation after processing " << memory_occupation << endl;
                 }
             }
-            taskToPrc.at(cur_task_id) = currentProcessor;
-            isProcBusy.at(currentProcessor) = true;
+            cluster->getFirstFreeProcessor()->assignTask(tree->GetNode(cur_task_id));
         }
     }
     delete schedule_f;
@@ -1545,7 +1552,7 @@ bool check_schedule(int *prnts, int *sched, int N)
     return valid;
 }
 
-double MaxOutDegree(Ctree *tree, int quiet)
+double MaxOutDegree(Tree *tree, int quiet)
 {
     double max_out = 0;
     double max_j = 0;
@@ -1604,17 +1611,17 @@ double MaxOutDegree(int N, int *prnts, double *nwghts, double *ewghts)
     return max_out;
 }
 
-Ctree *SubtreeRooted(Cnode *node)
+Tree *SubtreeRooted(Task *node)
 {
-    Ctree *subtree = new Ctree();
+    Tree *subtree = new Tree();
 
     subtree->SetRootId(1);
     subtree->SetTreeId(node->GetId());
     subtree->AddNode(node);
 
-    vector<Cnode *> visit_next;
-    vector<Cnode *>::iterator first_node;
-    Cnode *end_node;
+    vector<Task *> visit_next;
+    vector<Task *>::iterator first_node;
+    Task *end_node;
     if (node->IsLeaf())
     {
         return subtree;
@@ -1643,7 +1650,7 @@ Ctree *SubtreeRooted(Cnode *node)
     }
 }
 
-Ctree *BuildSubtree(Ctree *tree, Cnode *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts, double **timewghts, double **spacewghts, int *chstart, int *children)
+Tree *BuildSubtree(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts, double **timewghts, double **spacewghts, int *chstart, int *children)
 {
     *prnts = new int[new_tree_size + 1];
     *ewghts = new double[new_tree_size + 1];
@@ -1659,7 +1666,7 @@ Ctree *BuildSubtree(Ctree *tree, Cnode *SubtreeRoot, unsigned int new_tree_size,
     (*timewghts)[1] = SubtreeRoot->GetMSW();
     (*spacewghts)[1] = SubtreeRoot->GetNW();
 
-    Cnode *currentNode;
+    Task *currentNode;
     list<unsigned int> que;
     unsigned int originalID = SubtreeRoot->GetId();
     que.push_back(originalID);
@@ -1692,7 +1699,7 @@ Ctree *BuildSubtree(Ctree *tree, Cnode *SubtreeRoot, unsigned int new_tree_size,
 
     SubtreeRoot->SetothersideID(tempid);
 
-    Ctree *treeobj = new Ctree(real_tree_size, *prnts, *spacewghts, *ewghts, *timewghts);
+    Tree *treeobj = new Tree(real_tree_size, *prnts, *spacewghts, *ewghts, *timewghts);
 
     for (unsigned int i = 1; i <= real_tree_size; i++)
     {
@@ -1703,3 +1710,5 @@ Ctree *BuildSubtree(Ctree *tree, Cnode *SubtreeRoot, unsigned int new_tree_size,
 
     return treeobj;
 }
+
+#endif

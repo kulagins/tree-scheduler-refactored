@@ -21,6 +21,7 @@
 #include <assert.h>
 #include <map>
 
+
 #ifndef DEBUG_MEMUSAGE
 #define DEBUG_MEMUSAGE 0
 #endif
@@ -31,7 +32,6 @@
 #define STRONG_ASSERT 0
 #endif
 
-
 using namespace std;
 
 #ifndef MAX_COMBI_SIZE
@@ -40,12 +40,23 @@ using namespace std;
 
 extern double BANDWIDTH;
 
-typedef enum {FURTHEST_NODE=1, BEST_K_COMBI, BEST_FIT_ABS, FIRST_FIT_ABS, BEST_FIT, FIRST_FIT,BEST_INC_COMBI, BEST_COMBI,LARGEST_FIT,IMMEDIATELY} io_method_t;
-
+typedef enum
+{
+  FURTHEST_NODE = 1,
+  BEST_K_COMBI,
+  BEST_FIT_ABS,
+  FIRST_FIT_ABS,
+  BEST_FIT,
+  FIRST_FIT,
+  BEST_INC_COMBI,
+  BEST_COMBI,
+  LARGEST_FIT,
+  IMMEDIATELY
+} io_method_t;
 
 double u_wseconds(void);
 
-class Cnode{
+     class Task{
   protected:
     bool cost_computed;
     double cost;
@@ -54,8 +65,8 @@ class Cnode{
     double MS_weight=0;//assume execution time for any node is larger than 0
     double makespan_nocommu;
     bool makespan_computed=false;
-    vector<Cnode*> * children;
-    Cnode * parent;
+    vector<Task*> * children;
+    Task * parent;
     unsigned int parent_id;
     unsigned int id;
     bool broken=false;
@@ -65,37 +76,37 @@ class Cnode{
     unsigned int Qtree_id;
 
   public :
-    Cnode(){
+    Task(){
       id = 0;
       Mpeak = 0;
       parent_id = 0;
       Mavail = 0;
       parent = 0;
       cost_computed = false;
-      children = new vector<Cnode*>(); 
+      children = new vector<Task*>(); 
     }
-    Cnode(double nw, double ew, double mw){
+    Task(double nw, double ew, double mw){
       id = 0;
       Mpeak = 0;
       parent_id = 0;
       Mavail = 0;
       parent=0;
       cost_computed = false;
-      children = new vector<Cnode*>(); 
+      children = new vector<Task*>(); 
 
       edge_weight =ew;
       node_weight = nw;
         MS_weight = mw;
         makespan_nocommu=mw;
     }
-    Cnode(unsigned int pparent_id,double nw, double ew, double mw){
+    Task(unsigned int pparent_id,double nw, double ew, double mw){
       id = 0;
       Mpeak = 0;
       Mavail = 0;
       parent=0;
       cost_computed = false;
         makespan_computed=false;
-      children = new vector<Cnode*>(); 
+      children = new vector<Task*>(); 
 
       edge_weight =ew;
       node_weight = nw;
@@ -104,8 +115,8 @@ class Cnode{
       parent_id = pparent_id;
     }
 
-    ~Cnode(){
-      for(vector<Cnode*>::iterator iter = children->begin();iter!=children->end();iter++){
+    ~Task(){
+      for(vector<Task*>::iterator iter = children->begin();iter!=children->end();iter++){
         delete *iter;
       }	
       delete children;
@@ -119,24 +130,24 @@ class Cnode{
         return makespan_difference;
     }
 
-    void SetParent(Cnode * pparent){
+    void SetParent(Task * pparent){
       this->parent =pparent;
     }
 
-    void AddChild(Cnode * pchild){
+    void AddChild(Task * pchild){
       this->children->push_back(pchild);
       cost_computed= false;
     }
 
-    vector<Cnode*> * GetChildren(){
+    vector<Task*> * GetChildren(){
       return children;
     }
 
-    Cnode * GetChild(unsigned int node_id){
+    Task * GetChild(unsigned int node_id){
       return children->at(node_id);
     }
 
-    Cnode * GetParent(){
+    Task * GetParent(){
       return parent;
     }
 
@@ -151,7 +162,7 @@ class Cnode{
     double GetCost(){
       if(!cost_computed){
         cost = edge_weight + node_weight;
-        for(vector<Cnode*>::iterator iter=children->begin();iter!=children->end();iter++){
+        for(vector<Task*>::iterator iter=children->begin();iter!=children->end();iter++){
           cost += (*iter)->GetEW();
         }
         cost_computed = true;
@@ -209,7 +220,7 @@ class Cnode{
 
     void Print(ostream & out) const{
       out<<max((unsigned int)0,GetParentId())<<" "<<GetNW()<<" "<<GetEW()<<endl;
-      for(vector<Cnode*>::iterator iter=children->begin();iter!=children->end();iter++){
+      for(vector<Task*>::iterator iter=children->begin();iter!=children->end();iter++){
         (*iter)->Print(out);
       }
 
@@ -251,7 +262,7 @@ class Cnode{
         MS_sequentialPart=MS_weight;
         MS_parallelPart=0;
         double temp;
-        for (vector<Cnode*>::iterator iter=this->GetChildren()->begin(); iter!=this->GetChildren()->end(); ++iter) {
+        for (vector<Task*>::iterator iter=this->GetChildren()->begin(); iter!=this->GetChildren()->end(); ++iter) {
             if ((*iter)->IsBroken()) {
                 //cout<<"edge "<<(*iter)->GetId()<<" broken"<<endl;
                 temp=(*iter)->GetMSCost(true, updateEnforce);
@@ -317,7 +328,7 @@ class Cnode{
     }
     
     void RemoveChild(unsigned int childId){
-        for (vector<Cnode*>::iterator iter=this->children->begin(); iter!=this->children->end(); ++iter) {
+        for (vector<Task*>::iterator iter=this->children->begin(); iter!=this->children->end(); ++iter) {
             if ((*iter)->GetId()==childId) {
                 this->children->erase(iter);
                 break;
@@ -330,14 +341,14 @@ class Cnode{
         this->GetParent()->RemoveChild(this->id);
         this->GetParent()->GetChildren()->insert(this->GetParent()->GetChildren()->end(),this->children->begin(),this->children->end());
         //cout<<", children: ";
-        for (vector<Cnode*>::iterator iter=this->children->begin(); iter!=this->children->end(); ++iter) {
+        for (vector<Task*>::iterator iter=this->children->begin(); iter!=this->children->end(); ++iter) {
             //cout<<(*iter)->GetId()<<" ";
             (*iter)->SetParent(this->GetParent());
             (*iter)->SetParentId(this->GetParent()->GetId());
         }
         //cout<<endl;
         this->children->clear();
-        this->~Cnode();
+        this->~Task();
     }
     
     unsigned int Ci;
@@ -345,37 +356,40 @@ class Cnode{
     double Mavail;
 };
 
-class Ctree{
+class Tree{
   protected:
-    vector<Cnode*> * nodes;
+    vector<Task*> * nodes;
     unsigned int root_index;
     unsigned int root_count;
     unsigned int offset_id;
     unsigned int tree_id;
 
+    static Tree * originalTree;
+    static bool originalTreeInitialized;
+
   public:
 
-    Ctree(){
+    Tree(){
       root_index=0;
       root_count=0;
       offset_id = 0;
-        tree_id=1;
-      nodes = new vector<Cnode*>();
+      tree_id=1;
+      nodes = new vector<Task*>();
     }
 
 
 
-    Ctree(int N, int *prnts, double *nwghts, double *ewghts, double *mswghts){
+    Tree(int N, int *prnts, double *nwghts, double *ewghts, double *mswghts){
       root_index=1;
       root_count=0;
       offset_id = 0;
         tree_id = 1;
-      nodes = new vector<Cnode*>();
+      nodes = new vector<Task*>();
 
       this->AllocateNodes(N);
 
       for(int i = 1; i < N+1 ; i++){
-        Cnode * cur_node = this->GetNode(i);
+        Task * cur_node = this->GetNode(i);
         cur_node->GetChildren()->clear();
         cur_node->SetEW(ewghts[i]);
         cur_node->SetNW(nwghts[i]);
@@ -385,7 +399,7 @@ class Ctree{
       }
 
       for(int i = 1; i <N+1 ; i++){
-        Cnode * cur_node = this->GetNode(i);
+        Task * cur_node = this->GetNode(i);
 
         if(prnts[i] > 0){
             cur_node->SetParentId(prnts[i]);
@@ -401,7 +415,7 @@ class Ctree{
     }
 
 
-    ~Ctree(){
+    ~Tree(){
       if(root_index!=0 && nodes->size()>0){
         delete GetRoot();
       }
@@ -413,7 +427,7 @@ class Ctree{
     void Print(ostream & out) const{
       out<<nodes->size()<<endl;
 
-      for(vector<Cnode*>::iterator iter = nodes->begin();iter!=nodes->end();iter++){
+      for(vector<Task*>::iterator iter = nodes->begin();iter!=nodes->end();iter++){
         out<<max((unsigned int)0,(*iter)->GetParentId()/*+1-offset_id*/)<<" "<<(*iter)->GetNW()<<" "<<(*iter)->GetEW()<<endl;
       }
 
@@ -428,26 +442,26 @@ class Ctree{
       nodes->resize(new_node_count);
 
       unsigned int i = 0;
-      for(vector<Cnode*>::iterator iter = nodes->begin();iter!=nodes->end();iter++){
-        *iter = new Cnode();
+      for(vector<Task*>::iterator iter = nodes->begin();iter!=nodes->end();iter++){
+        *iter = new Task();
         (*iter)->SetId(i++);
       }
 
       offset_id = nodes->front()->GetId();
     }
 
-    void AddNode(Cnode * newNode){
+    void AddNode(Task * newNode){
       nodes->push_back(newNode);
     }
 
-    void AddRoot(Cnode * newNode){
+    void AddRoot(Task * newNode){
       root_count++;
       assert(root_count == 1);
       nodes->push_back(newNode);
       root_index = nodes->size()-1;
     }
 
-    Cnode * GetRoot() const{
+    Task * GetRoot() const{
       return nodes->at(root_index-1);
     }
 
@@ -463,24 +477,42 @@ class Ctree{
         tree_id = _id;
     }
     
-    Cnode * GetNode(unsigned int node_id) const{
+    Task * GetNode(unsigned int node_id) const{
       return nodes->at(node_id-1);
     }
 
-    Cnode * GetNodeByPos(unsigned int node_idx) const{
+    Task * GetNodeByPos(unsigned int node_idx) const{
       return nodes->at(node_idx);
     }
 
-    const vector<Cnode*> * GetNodes() const{
+    const vector<Task*> * GetNodes() const{
       return nodes;
     }
     
-    void addNode(Cnode* newnode){
+    void addNode(Task* newnode){
         this->nodes->push_back(newnode);
+    }
+    
+    void setOriginalTree(Tree* origTree){
+      if (!this->originalTreeInitialized){
+        this->originalTree = origTree;
+        this->originalTreeInitialized = true;
+      }
+      else{
+        cout << "Original Tree can only be set once!"<<endl;
+        exit (EXIT_FAILURE);
+      }
+    }
+
+    Tree * getOriginalTree(){
+      return this->originalTree;
     }
 };
 
-struct s_node_t {
+
+
+struct s_node_t
+{
   int parent;
   vector<int> children;
   double edge_weight;
@@ -489,32 +521,33 @@ struct s_node_t {
   double Mavail;
 };
 
-struct s_io_t {
+struct s_io_t
+{
   unsigned int node;
   double unloaded_data;
 };
 
-
-
 typedef list<int> schedule_t;
-typedef list<Cnode*> cut_t;
+typedef list<Task*> cut_t;
 
 typedef pair<unsigned int, double> io_t;
 typedef map<unsigned int, double> io_map;
 typedef pair<unsigned int, unsigned int> node_sche;
 typedef pair<unsigned int, double> node_ew;
 
-struct OrdoLiu_t ;
-struct val_seg_t {
+struct OrdoLiu_t;
+struct val_seg_t
+{
   schedule_t::iterator begin;
   unsigned int begin_index;
   schedule_t::iterator end;
   unsigned int end_index;
-  OrdoLiu_t * orig_ordo;
+  OrdoLiu_t *orig_ordo;
   double value;
 };
 
-struct OrdoLiu_t {
+struct OrdoLiu_t
+{
   double max_pebble_cost;
   double fi;
   list<val_seg_t> val_seg;
@@ -522,31 +555,29 @@ struct OrdoLiu_t {
 }; 
 
 
-void ConvertToLiu(const Ctree * tree_us, Ctree * tree_liu) ;
+void ConvertToLiu(const Tree * tree_us, Tree * tree_liu) ;
 void ConvertToLiu(const int * oldprnts,const double * oldnwghts,const double * oldewghts, int N,const int* chstart,const int * children, int ** pprnts, double ** pnwghts, double ** pewghts);
-void parse_tree(const char *filename,Ctree * tree);
+void parse_tree(const char *filename,Tree * tree);
 void parse_tree(const char *filename,int * N ,int **prnts,double **nwghts,double **ewghts, double **mswghts);
 
-
-extern "C" {
+extern "C"
+{
 #endif
-  void po_construct(const int N, const int * prnts, int **chstart,int **chend,int **children, int * root);
-  void poaux(const int * chstart, const int * children, int N, int r, int * por, int * label);
+  void po_construct(const int N, const int *prnts, int **chstart, int **chend, int **children, int *root);
+  void poaux(const int *chstart, const int *children, int N, int r, int *por, int *label);
 #ifdef __cplusplus
 } /* closing brace for extern "C" */
 
-
-
 bool check_schedule(int * prnts,int * sched,int N);
 
-double MaxOutDegree(Ctree * tree,int quiet);
+double MaxOutDegree(Tree * tree,int quiet);
 double MaxOutDegree(int N, double * nwghts, double * ewghts, int * chstart,int * children);
 
-void NextValley(Cnode * node, double available_memory,  double & cut_value, list<Cnode*> & min_sub_cut, list<unsigned int> & sub_schedule, double & Inc, int quiet, int depth,int & count);
-double IOCounter(Ctree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, double available_memory,bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
-double IOCounterWithVariableMem(Ctree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, vector<double> availableMemorySizesA2, int &currentProcessor,
+void NextValley(Task * node, double available_memory,  double & cut_value, list<Task*> & min_sub_cut, list<unsigned int> & sub_schedule, double & Inc, int quiet, int depth,int & count);
+double IOCounter(Tree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, double available_memory,bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
+double IOCounterWithVariableMem(Tree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, vector<double> availableMemorySizesA2, int &currentProcessor,
                                          std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
-Ctree* BuildSubtree(Ctree* tree, Cnode* SubtreeRoot, unsigned int new_tree_size, int** prnts, double** ewghts, double** timewghts, double** spacewghts, int * chstart, int * children);
+Tree* BuildSubtree(Tree* tree, Task* SubtreeRoot, unsigned int new_tree_size, int** prnts, double** ewghts, double** timewghts, double** spacewghts, int * chstart, int * children);
 
 #endif
 #endif

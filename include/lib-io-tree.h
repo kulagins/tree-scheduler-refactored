@@ -51,9 +51,6 @@ double MinMemRecurAlgorithm_timed(int N, int *prnts, double *nwghts, double *ewg
 double MinMemRecurAlgorithm( int N, int *prnts, double *nwghts, double *ewghts, int *schedule,iter_node_t * minmem_trace);
 double MinMemRecurAlgorithm_timed(int N, int *prnts, double *nwghts, double *ewghts, int *schedule,double * usec,int quiet,iter_node_t * minmem_trace);
 #endif
-	
-double MinMemArrayRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts, int *schedule);
-double MinMemArrayRecurAlgorithm_timed(int N, int *prnts, double *nwghts, double *ewghts, int *schedule,double * usec,int quiet);
 #ifdef __cplusplus
 } /* closing brace for extern "C" */
 #endif

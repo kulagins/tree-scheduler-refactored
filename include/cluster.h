@@ -132,32 +132,7 @@ public:
             cout << "Processor with memory " << (*iter)->getMemorySize() << ", speed " << (*iter)->getProcessorSpeed() << " and busy? " << (*iter)->isBusy << endl;
         }
     }
-    static vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processors)
-{
-    cout << "max deg " << maxoutd << ", MinMem " << minMem << endl;
-    double cumulativeMem = 0;
-    vector<double> memSizes(num_processors);
-    memSizes.resize(num_processors);
-    maxoutd = maxoutd / 4;
-    //cout << "minProc " << maxoutd << " " << (maxoutd + minMem) / 2 << " " << minMem << endl;
-    for (int k = 0; k < num_processors / 3; k++)
-    {
-        memSizes[k] = maxoutd; 
-        cumulativeMem += memSizes[k];
-    }
-    for (int k = num_processors / 3; k < 2 * num_processors / 3; k++)
-    {
-        memSizes[k] = (maxoutd + minMem) / 2;
-        cumulativeMem += memSizes[k];
-    }
-    for (int k = 2 * num_processors / 3; k < num_processors; k++)
-    {
-        memSizes[k] = minMem;
-        cumulativeMem += memSizes[k];
-    }
-    cout << "cumulative mem in system: " << cumulativeMem << endl;
-    return memSizes;
-}
+    static vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processors);
 
     static std::map<int, int> buildProcessorSpeeds(int num_processors);
 };

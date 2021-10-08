@@ -13,11 +13,6 @@
 #include "lib-io-tree-minmem.h"
 #include "cluster.h"
 
-typedef enum
-{
-    TIME = 1,
-    SPACE
-} subtreeType;
 
 double SplitSubtrees(Task* root, unsigned long num_processor,  double twolevel, list<Task*>& parallelRoots, unsigned long & sequentialLength);
 double SplitSubtreesV3(Task* root, unsigned long num_processor,  std::map<int, int> processor_speeds, double twolevel, list<Task*>& parallelRoots, unsigned long & sequentialLength);

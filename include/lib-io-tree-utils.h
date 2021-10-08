@@ -510,27 +510,8 @@ class Tree{
 };
 
 
-
-struct s_node_t
-{
-  int parent;
-  vector<int> children;
-  double edge_weight;
-  double node_weight;
-  double Mpeak;
-  double Mavail;
-};
-
-struct s_io_t
-{
-  unsigned int node;
-  double unloaded_data;
-};
-
 typedef list<int> schedule_t;
-typedef list<Task*> cut_t;
 
-typedef pair<unsigned int, double> io_t;
 typedef map<unsigned int, double> io_map;
 typedef pair<unsigned int, unsigned int> node_sche;
 typedef pair<unsigned int, double> node_ew;

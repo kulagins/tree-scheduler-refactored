@@ -234,7 +234,7 @@ double u_wseconds(void);
         broken=false;//resotre this edge
     }
     
-    bool IsBorken(){
+    bool IsBroken(){
         if (broken==true) {
             return true;
         }else{
@@ -263,7 +263,7 @@ double u_wseconds(void);
         MS_parallelPart=0;
         double temp;
         for (vector<Task*>::iterator iter=this->GetChildren()->begin(); iter!=this->GetChildren()->end(); ++iter) {
-            if ((*iter)->IsBorken()) {
+            if ((*iter)->IsBroken()) {
                 //cout<<"edge "<<(*iter)->GetId()<<" broken"<<endl;
                 temp=(*iter)->GetMSCost(true, updateEnforce);
                 if (temp>MS_parallelPart) {
@@ -285,7 +285,6 @@ double u_wseconds(void);
     }
     
     double GetMSminusComu(){
-        //return(this->GetMSCost(false,false)-this->GetEW()/BANDWIDTH);
         return (makespan_nocommu-edge_weight/BANDWIDTH);
     }
     
@@ -351,12 +350,6 @@ double u_wseconds(void);
         this->children->clear();
         this->~Task();
     }
-
-   // bool operator < (const Task& other) const
-   // {
- //     double thiscost = GetMSCost();
-  //      return ( thiscost < other.GetMSCost());
-  //  }
     
     unsigned int Ci;
     double Mpeak;
@@ -419,16 +412,6 @@ class Tree{
             this->SetTreeId(i);
         }
       }
-        // test 
-        //    Task* currentNode;
-        //    for (unsigned int i=2; i<=tree_size; ++i) {
-        //        currentNode=treeobj->GetNode(i);
-        //        std::cout<<currentNode->GetId()<<" "<<currentNode->GetParent()->GetId()<<"\n";
-        //        for (vector<Task*>::iterator iter=currentNode->GetChildren()->begin(); iter!=currentNode->GetChildren()->end();
-        //             ++iter) {
-        //            std::cout<<"   "<<(*iter)->GetId()<<"\n";
-        //        }
-        //    }
     }
 
 
@@ -440,15 +423,8 @@ class Tree{
       delete nodes;
     }
 
-    //TODO recoder ca en recursif
-    void Print(ostream & out) const{
-      //		if(root_index!=0 && nodes->size()>0){
-      //			out<<nodes->size()<<endl;
-      //			
-      //			GetRoot()->Print(out);
-      //		}
-      //		
 
+    void Print(ostream & out) const{
       out<<nodes->size()<<endl;
 
       for(vector<Task*>::iterator iter = nodes->begin();iter!=nodes->end();iter++){
@@ -598,8 +574,6 @@ double MaxOutDegree(Tree * tree,int quiet);
 double MaxOutDegree(int N, double * nwghts, double * ewghts, int * chstart,int * children);
 
 void NextValley(Task * node, double available_memory,  double & cut_value, list<Task*> & min_sub_cut, list<unsigned int> & sub_schedule, double & Inc, int quiet, int depth,int & count);
-//double IOCounter(Tree & tree, schedule_t & sub_schedule, double available_memory,bool divisible,int quiet);
-//double IOCounter(int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, double available_memory,bool divisible,int quiet, io_method_t method=FURTHEST_NODE);
 double IOCounter(Tree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, double available_memory,bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
 double IOCounterWithVariableMem(Tree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, vector<double> availableMemorySizesA2, int &currentProcessor,
                                          std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);

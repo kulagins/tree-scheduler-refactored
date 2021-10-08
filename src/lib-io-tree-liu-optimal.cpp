@@ -31,7 +31,6 @@ void H(Tree * tree, schedule_t::iterator vi, double Vi,  OrdoLiu_t & ordo,schedu
   vi++;
   for (schedule_t::iterator current_item = vi; current_item!=ordo.schedule.end(); current_item++){
     offset++;
-    //		count++;
     double current_value =prev_value + tree->GetNode(*current_item)->GetNW();
     for(unsigned int i=0;i<tree->GetNode(*current_item)->GetChildren()->size();i++){
       current_value -= tree->GetNode(*current_item)->GetChild(i)->GetNW();
@@ -171,8 +170,6 @@ void Combine(Tree * tree, unsigned int sub_root, vector<OrdoLiu_t> * ordo_subtre
   /*compute pcosts of subtrees*/
   for(unsigned int i=0;i<tree->GetNode(sub_root)->GetChildren()->size();i++){
     if(!quiet){cerr<<"Computing PCost of T"<<tree->GetNode(sub_root)->GetChild(i)->GetId()<<endl;}
-    //		PCost(tree, tree->GetNode(sub_root)->GetChild(i)->GetId(),ordo_subtrees->at(i),quiet, count);
-    //ordo.val_seg.insert(ordo.val_seg.end(),ordo_subtrees->at(i).val_seg.begin(),ordo_subtrees->at(i).val_seg.end());
     ordo.val_seg.splice(ordo.val_seg.end(),ordo_subtrees->at(i).val_seg);
   }
 
@@ -187,12 +184,9 @@ void Combine(Tree * tree, unsigned int sub_root, vector<OrdoLiu_t> * ordo_subtre
   /*sort the segment according to their value in descending order*/
   ordo.val_seg.sort(desc);
 
-  //	count += ordo.val_seg.size() * log(ordo.val_seg.size());
-
   /*merge*/
   if(!quiet){cerr<<endl<<"Merging Segments of T"<<sub_root<<endl;}
   for (list<val_seg_t>::iterator cur_seg = ordo.val_seg.begin();cur_seg!=ordo.val_seg.end();cur_seg++){
-    //OrdoLiu_t * cur_ordo = ordo.val_seg[j].orig_ordo;
     if(!quiet){cerr<<"| "<<*(cur_seg->begin)<<"("<<cur_seg->value<<")"<<*(cur_seg->end);}
 
     /*explore until we reach the last valley*/
@@ -202,120 +196,12 @@ void Combine(Tree * tree, unsigned int sub_root, vector<OrdoLiu_t> * ordo_subtre
     ordo.schedule.insert(ordo.schedule.end(),cur_seg->begin,end);
   }
 
-  //val_seg_t subroot_segment;
-  //subroot_segment->pStart	= 
   ordo.schedule.push_back(sub_root);
 
 
   if(!quiet){cerr<<endl;}
 
 }
-
-
-//void PebbleOrderingRecur(Tree * tree,unsigned int sub_root, OrdoLiu_t & SubSchedule, int quiet, int & count){
-//
-//  count++;
-//
-//  SubSchedule.schedule.clear();
-//
-//  if (tree->GetNode(sub_root)->IsLeaf()){
-//    if(!quiet){cerr<<"Treating T"<<sub_root<<endl;}
-//    if(!quiet){cerr<<"Leaf found : "<<sub_root<<endl;}
-//    SubSchedule.schedule.push_back(sub_root);
-//  }
-//  else{
-//    vector<OrdoLiu_t> * ordo_subtrees = new vector<OrdoLiu_t>(tree->GetNode(sub_root)->GetChildren()->size());
-//
-//    for(unsigned int i=0;i<tree->GetNode(sub_root)->GetChildren()->size();i++){
-//      PebbleOrderingRecur(tree,tree->GetNode(sub_root)->GetChild(i)->GetId(), ordo_subtrees->at(i), quiet, count);
-//      if(!quiet){
-//        cerr<<"sub schedule of T"<<tree->GetNode(sub_root)->GetChild(i)->GetId()<<endl;
-//        for(schedule_t::iterator cur_item=ordo_subtrees->at(i).schedule.begin();cur_item!=ordo_subtrees->at(i).schedule.end();cur_item++){
-//          cerr<<*cur_item<<" ";
-//        }
-//        cerr<<endl;
-//      }
-//    }
-//
-//    if(!quiet){cerr<<"Treating T"<<sub_root<<endl;}
-//    Combine(tree, sub_root, ordo_subtrees, SubSchedule, quiet, count);
-//    delete ordo_subtrees;
-//  }
-//  //Compute pebble cost
-//  PCost(tree, sub_root,SubSchedule,quiet, count);
-//  //    PCostSeg(tree, sub_root,ordo.val_seg,quiet, count);
-//
-//  if(!quiet){cerr<<"End of treatment of T"<<sub_root<<endl;}
-//}
-
-
-
-
-
-
-
-//double PebbleOrderingRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts, int *schedule){
-//  Tree * tree = new Tree(N,prnts,nwghts,ewghts);
-//  Tree * tree_liu = new Tree();
-//
-//  ConvertToLiu(tree,tree_liu);
-//  delete tree;
-//
-//  double Mr;
-//  int count = 0;
-//  OrdoLiu_t ordo;
-//  ordo.max_pebble_cost = 0;
-//  ordo.fi = 0;
-//
-//  PebbleOrderingRecur(tree_liu,tree_liu->GetRootId(), ordo, true, count);
-//  Mr = ordo.max_pebble_cost;
-//
-//  unsigned int i = 0;
-//  for (schedule_t::iterator last=ordo.schedule.begin(); last!=ordo.schedule.end(); ++last){
-//    if((int)(*last)<=N){
-//      schedule[i++] = (int)(*last);
-//    }
-//  }
-//
-//  delete tree_liu;
-//
-//  return Mr;
-//}
-
-
-//double PebbleOrderingRecurAlgorithm_timed(int N, int *prnts, double *nwghts, double *ewghts, int *schedule,double * usec,int quiet){
-//  Tree * tree = new Tree(N,prnts,nwghts,ewghts);
-//  Tree * tree_liu = new Tree();
-//
-//  ConvertToLiu(tree,tree_liu);
-//
-//
-//  delete tree;
-//
-//  double Mr;
-//  int count = 0;
-//  OrdoLiu_t ordo;
-//  ordo.max_pebble_cost = 0;
-//  ordo.fi = 0;
-//
-//  *usec = -u_wseconds();
-//  PebbleOrderingRecur(tree_liu,tree_liu->GetRootId(), ordo, quiet, count);
-//  *usec += u_wseconds();
-//  Mr = ordo.max_pebble_cost;
-//
-//
-//  unsigned int i = 0;
-//  for (schedule_t::iterator last=ordo.schedule.begin(); last!=ordo.schedule.end(); ++last){
-//    if((int)(*last)<=N){
-//      schedule[i++] = (int)(*last);
-//    }
-//  }
-//
-//  delete tree_liu;
-//
-//  return Mr;
-//}
-
 
 
 int ascend_liu_comp(const void * a, const void * b){
@@ -628,216 +514,3 @@ int PCostIterative(const int * prnts, const double * nwghts, iter_node_t * sched
 
   return new_local_count-segment_count;
 }
-
-
-
-//double PebbleOrderingIter(const int N,const int *prnts,const double *nwghts,const double *ewghts,const int * chstart, const int * chend, int * children, const int root, int *schedule){
-//
-//  /*chstart and chend are indexed from 1 to N inclusive*/
-//
-//  int * po = new int[N+1];
-//  memset ( (void *) po, 0, (N+1)*sizeof(*po) );
-//
-//  int label =1;
-//  poaux(chstart, children, N, root, po, &label);
-//
-//  //now that we have a PO, we can process the tree from the leaves up to the root
-//
-//
-//  iter_seg_t * segments = new iter_seg_t[N+1];
-//
-//  //    int first_segment = 0;
-//  int total_segment_count = 0;
-//
-//
-//  iter_node_t * schedlist = new iter_node_t[N+1];
-//  int * first_segment = new int[N+1];
-//  memset ( (void *) first_segment, 0, (N+1)*sizeof(*first_segment) );
-//
-//
-//  /*Post order is done, compute weight then sort children*/
-//  for(int i = 1;i<N+1;i++){
-//    int nd = po[i];
-//#if VERBOSE
-//    cerr<<endl<<endl<<"processing node "<<nd<<endl;
-//#endif
-//
-//    /*if nd is a leaf*/
-//    if(chstart[nd]==chstart[nd+1]){
-//      //we know that we add one segment
-//      schedlist[nd].index = nd;
-//      schedlist[nd].pNext = &schedlist[nd];
-//      iter_seg_t * my_segment = &segments[total_segment_count];
-//      first_segment[nd]=total_segment_count;
-//#if VERBOSE
-//      cerr<<"\tFirst Segment is in "<<first_segment[nd]<<"th position"<<endl;
-//#endif
-//      total_segment_count++;
-//      schedlist[nd].cw = 0;
-//      my_segment->pStart = &schedlist[nd];
-//      my_segment->pEnd = &schedlist[nd];
-//      my_segment->Hi = nwghts[nd];
-//      my_segment->standalone_Hi = my_segment->Hi;
-//      my_segment->hi = &schedlist[nd];
-//      my_segment->root = nd;
-//      my_segment->value = 0;
-//      my_segment->seq_index = 0;
-//
-//#if VERBOSE
-//      cerr<<"node "<<nd<<" is a leaf of w="<<nwghts[nd]<<endl;
-//#endif
-//    }
-//    else{
-//
-//      //the first segment is the first segment of its first child
-//      first_segment[nd]=first_segment[children[chstart[nd]]];
-//#if VERBOSE
-//      cerr<<"\tFirst Segment is in "<<first_segment[nd]<<"th position"<<endl;
-//#endif
-//
-//      //Combine the segments of my children (there
-//      //sort the segment according to their value in descending order
-//      qsort ( &segments[first_segment[nd]], (total_segment_count - first_segment[nd]), sizeof(iter_seg_t), ascend_liu_comp );
-//
-//      //add a last segment containing the root
-//      schedlist[nd].index = nd;
-//      schedlist[nd].pNext = &schedlist[nd];
-//      schedlist[nd].cw = 0;
-//      for(int j = chstart[nd]; j<chstart[nd+1];j++){
-//        int ch = children[j];
-//#if VERBOSE
-//        cerr<<"\t"<<ch<<" is a child of "<<nd<<endl;
-//#endif
-//        schedlist[nd].cw += nwghts[ch];
-//      }
-//
-//
-//      iter_seg_t * my_segment = &segments[total_segment_count];
-//      total_segment_count++;
-//      my_segment->pStart = &schedlist[nd];
-//      my_segment->pEnd = &schedlist[nd];
-//      my_segment->Hi = nwghts[nd];
-//      my_segment->standalone_Hi = my_segment->Hi;
-//      my_segment->hi = &schedlist[nd];
-//      my_segment->root = nd;
-//      my_segment->value = 0;
-//      my_segment->seq_index = 0;
-//
-//
-//      //NB : PCost will construct the schedule from the segment list and return the new segments count
-//      total_segment_count+= PCostIterative(prnts, nwghts,schedlist,N, nd,&segments[first_segment[nd]],(total_segment_count-first_segment[nd]));
-//
-//#if VERBOSE
-//      cerr<<"node "<<nd<<" is not a leaf of w="<<nwghts[nd]<<endl;
-//#endif
-//
-//    }
-//
-//  }
-//
-//
-//  double Mr = segments[0].Hi;
-//
-//
-//  int offset = 0;
-//  iter_node_t * cur_item = segments[0].pStart;
-//
-//  if(cur_item->index<=0.5*N){
-//    schedule[offset++] = cur_item->index;
-//  }
-//  while(cur_item != cur_item->pNext){
-//    cur_item = cur_item->pNext;
-//    if(cur_item->index<=0.5*N){
-//      schedule[offset++] = cur_item->index;
-//    }
-//  }
-//
-//
-//  delete[] first_segment;
-//  delete[] segments;
-//  delete[] schedlist;
-//  delete[] po;
-//  return Mr;
-//
-//}
-
-//double PebbleOrderingIterAlgorithm(int N, int *prnts, double *nwghts, double *ewghts, int *schedule){
-//  double Mr;
-//  //int count = 0;
-//  int * chstart,*chend,*children;
-//  int root;
-//
-//
-//  po_construct(N, prnts, &chstart,&chend,&children, &root);
-//
-//
-//  int * prnts_liu;
-//  double * nwghts_liu;
-//  double * ewghts_liu;
-//
-//  ConvertToLiu(prnts,nwghts,ewghts,N,chstart,children,&prnts_liu,&nwghts_liu,&ewghts_liu);
-//
-//  delete[] chstart;
-//  delete[] chend;
-//  delete[] children;
-//
-//  //update chstart et children
-//  po_construct(2*N, prnts_liu, &chstart,&chend,&children, &root);
-//
-//
-//  Mr = PebbleOrderingIter(2*N,prnts_liu,nwghts_liu,ewghts_liu,chstart,chend,children,root,schedule);
-//
-//
-//  delete[] chstart;
-//  delete[] chend;
-//  delete[] children;
-//
-//  delete[] prnts_liu;
-//  delete[] nwghts_liu;
-//  delete[] ewghts_liu;
-//
-//  return Mr;
-//}
-
-//double PebbleOrderingIterAlgorithm_timed(int N, int *prnts, double *nwghts, double *ewghts, int *schedule, double * usec,int quiet){
-//  double Mr;
-//  //int count = 0;
-//  int * chstart,*chend,*children;
-//  int root;
-//
-//
-//  po_construct(N, prnts, &chstart,&chend,&children, &root);
-//
-//  int * prnts_liu;
-//  double * nwghts_liu;
-//  double * ewghts_liu;
-//
-//  ConvertToLiu(prnts,nwghts,ewghts,N,chstart,children,&prnts_liu,&nwghts_liu,&ewghts_liu);
-//
-//  delete[] chstart;
-//  delete[] chend;
-//  delete[] children;
-//
-//  //update chstart et children
-//  po_construct(2*N, prnts_liu, &chstart,&chend,&children, &root);
-//
-//  *usec = -u_wseconds();
-//  Mr = PebbleOrderingIter(2*N,prnts_liu,nwghts_liu,ewghts_liu,chstart,chend,children,root,schedule);
-//  *usec += u_wseconds();
-//
-//
-//  delete[] chstart;
-//  delete[] chend;
-//  delete[] children;
-//  delete[] prnts_liu;
-//  delete[] nwghts_liu;
-//  delete[] ewghts_liu;
-//
-//
-//  return Mr;
-//}
-
-
-
-
-

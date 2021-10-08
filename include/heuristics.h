@@ -22,13 +22,11 @@ typedef enum
 double SplitSubtrees(Task* root, unsigned long num_processor,  double twolevel, list<Task*>& parallelRoots, unsigned long & sequentialLength);
 double SplitSubtreesV3(Task* root, unsigned long num_processor,  std::map<int, int> processor_speeds, double twolevel, list<Task*>& parallelRoots, unsigned long & sequentialLength);
 double ImprovedSplit(Tree* tree, unsigned int number_processor, int* chstart, int* childrenID);
-//double ImprovedSplit(Tree* tree, unsigned int number_processor);
 double Merge(Tree* tree, unsigned int num_subtrees, unsigned int processor_number, double const memory_size,int * chstart,int * childrenID, bool CheckMemory);
 double MergeV2(Tree* tree, unsigned int num_subtrees, unsigned int processor_number, double const memory_size,int * chstart,int * childrenID, bool CheckMemory);
 double ASAP(Tree* tree, unsigned int num_processors, unsigned int depth);
 double ASAP(Tree* tree, unsigned int num_processors);
 unsigned long AvoidChain(Tree* tree);
-//double LarSav(Tree* tree, unsigned int processor_number, unsigned int num_subtrees);
 double SplitAgainV2(Tree* tree, unsigned int processor_number, unsigned int num_subtrees,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy);
 double SplitAgain(Tree* tree, unsigned int processor_number, unsigned int num_subtrees);
 double Sequence(Task* root);

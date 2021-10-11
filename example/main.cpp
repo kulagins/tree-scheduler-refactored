@@ -99,7 +99,7 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
         time = clock() - time;
 
         makespan = treeobj->GetRoot()->GetMSCost(true, true);
-        number_subtrees = HowmanySubtrees(treeobj, true);
+        number_subtrees = treeobj->HowmanySubtrees(true);
         // std::cout << "after 2nd step "
         //       << number_subtrees << " " << num_processors << " " << makespan << " " << stage2heuristic << "+Nothing " << 0 << endl;
 
@@ -108,7 +108,7 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
             time = clock();
             makespan = MergeV2(treeobj, number_subtrees, num_processors, memorySizes[0], chstart, children, true);
             time = clock() - time;
-            number_subtrees = HowmanySubtrees(treeobj, true);
+            number_subtrees = treeobj->HowmanySubtrees(true);
             std::cout << "w merge "
                       << "#subtrees: " << number_subtrees << ", #numberProcessors; " << num_processors << " makespan: " << makespan << endl;
         }
@@ -122,7 +122,7 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
             time = clock();
             makespan = SplitAgain(treeobj, num_processors, number_subtrees);
             time = clock() - time;
-            number_subtrees = HowmanySubtrees(treeobj, true);
+            number_subtrees = treeobj->HowmanySubtrees(true);
             std::cout << "w split "
                       << "#subtrees: " << number_subtrees << ", #numberProcessors; " << num_processors << " makespan: " << makespan << endl;
         }

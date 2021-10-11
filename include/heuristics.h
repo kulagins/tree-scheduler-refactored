@@ -13,6 +13,9 @@
 #include "lib-io-tree-minmem.h"
 #include "cluster.h"
 
+template <class T, class U>
+void GetTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest);
+
 
 double SplitSubtrees(Task* root, unsigned long num_processor,  double twolevel, list<Task*>& parallelRoots, unsigned long & sequentialLength);
 double ImprovedSplit(Tree* tree, unsigned int number_processor, int* chstart, int* childrenID);
@@ -22,12 +25,10 @@ double ASAP(Tree* tree, unsigned int num_processors);
 
 double SplitAgainV2(Tree* tree, unsigned int processor_number, unsigned int num_subtrees,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy);
 double SplitAgain(Tree* tree, unsigned int processor_number, unsigned int num_subtrees);
-double Sequence(Task* root);
 
-Tree* BuildQtree(Tree* tree);
+
 void MemoryCheck(Tree* tree, int* chstart, int*children,  Cluster *cluster, io_method_t method);
 std::map<int, int> MemoryCheckA2(Tree* tree, int* chstart, int*children,  Cluster *cluster,io_method_t method, bool skipBig);
-unsigned int HowmanySubtrees(const Tree* tree, bool quiet);
 void SetBandwidth(double CCR, unsigned long tree_size, double * ewghts, double * timewghts);
 
 

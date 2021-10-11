@@ -17,6 +17,7 @@
 #include "lib-io-tree.h"
 #include "lib-io-tree-minmem.h"
 #include "lib-io-tree-free-methods.h"
+#include "heuristics.h"
 #include <sys/time.h>
 #include <algorithm>
 
@@ -48,6 +49,306 @@ double u_wseconds(void)
 
     return (double)tp.tv_sec + (double)tp.tv_usec / 1000000.0;
 };
+
+
+///Qtree corresponds to a whole original tree
+Tree * Tree::BuildQtree()
+{ //Qtree is for makespan side, so do not use it for space side
+    Task *root = this->GetRoot();
+    root->BreakEdge();
+    this->GetRoot()->GetMSCost(true, true); //update
+    size_t tree_size = this->GetNodes()->size();
+    unsigned long num_subtrees = this->HowmanySubtrees(true);
+
+    int *prnts = new int[num_subtrees + 1];
+    double *ewghts = new double[num_subtrees + 1];
+    double *timewghts = new double[num_subtrees + 1];
+    int *brokenEdges = new int[num_subtrees + 1];
+
+    //creat Quotient tree
+    brokenEdges[1] = 1; //root node
+    prnts[1] = 0;
+    ewghts[1] = 0;
+    timewghts[1] = root->GetSequentialPart();
+    unsigned int j = 2;
+    root->SetothersideID(1);
+
+    Task *currentNode;
+    for (unsigned int i = 2; i <= tree_size; ++i)
+    {
+        currentNode = this->GetNode(i);
+        if (currentNode->IsBroken())
+        {
+            currentNode->SetothersideID(j); //corresponding node's ID on Qtree
+            brokenEdges[j] = i;
+            timewghts[j] = currentNode->GetSequentialPart();
+            ewghts[j] = currentNode->GetEW();
+            ++j;
+        }
+    }
+
+    for (unsigned int i = 2; i <= num_subtrees; ++i)
+    {
+        currentNode = this->GetNode(brokenEdges[i])->GetParent();
+        while (!currentNode->IsBroken())
+        {
+            currentNode = currentNode->GetParent();
+        }
+        prnts[i] = currentNode->GetothersideID();
+    }
+
+    Tree *Qtreeobj = new Tree(num_subtrees, prnts, timewghts, ewghts, timewghts); //Qtree only reprents makespan, not memory consumption
+
+    for (unsigned int i = 1; i <= num_subtrees; i++)
+    {
+        Qtreeobj->GetNode(i)->BreakEdge();                    //break edge
+        Qtreeobj->GetNode(i)->SetothersideID(brokenEdges[i]); //corresponding node's ID on tree
+    }
+
+    delete[] prnts;
+    delete[] ewghts;
+    delete[] timewghts;
+    delete[] brokenEdges;
+
+    return Qtreeobj;
+}
+
+unsigned int Tree::HowmanySubtrees(bool quiet)
+{
+    unsigned int number_subtrees = 0;
+    this->GetRoot()->BreakEdge();
+    const vector<Task *> *Nodes = this->GetNodes();
+    if (quiet == false)
+    {
+        cout << "Broken Edges { ";
+    }
+    for (auto it = Nodes->begin(); it != Nodes->end(); ++it)
+    {
+        if ((*it)->IsBroken())
+        {
+            number_subtrees++;
+            if (quiet == false)
+            {
+                cout << (*it)->GetId() << " ";
+            }
+        }
+    }
+    if (quiet == false)
+    {
+        cout << "}" << endl;
+    }
+    return number_subtrees;
+}
+
+
+bool Tree::increaseMS(Tree *Qtree, Task *&smallestNode, int *chstart, int *childrenID, double memory_size, bool CheckMemory)
+{
+
+    Task *currentNode;
+    double diff, increase, temp;
+    bool memoryEnough;
+    bool feasible = false;
+    Task *LargestNode;
+    Task *secondLargest;
+    Task *parent;
+    double smallestIncrease = this->GetRoot()->GetMSCost(true, false);
+    bool leaf = false;
+    const vector<Task *> *subtrees = Qtree->GetNodes();
+    vector<Task *> *children;
+
+    if (subtrees->front()->GetId() != 1)
+    {
+        cout << "error in function increaseMs" << endl;
+        return false;
+    }
+
+    vector<Task *>::const_iterator iter = subtrees->begin();
+    ++iter;
+    for (; iter != subtrees->end(); ++iter)
+    {
+        currentNode = (*iter);
+
+        if (this->GetNode(currentNode->GetothersideID())->IsBroken() == true)
+        { //this subtree has not been merged yet
+            children = currentNode->GetChildren();
+
+            if (children->empty())
+            {
+                leaf = true;
+            }
+
+            //check the memory cost, if merge itself to its parent subtree
+            if (CheckMemory == true)
+            {
+                memoryEnough = this->MemoryEnough(currentNode->GetParent(), currentNode, leaf, memory_size, chstart, childrenID);
+            }
+            else
+            {
+                memoryEnough = true;
+            }
+
+            //cout<<"   subtree "<<currentNode->GetothersideID()<<" ";//print subtree's root id
+            if (memoryEnough == true)
+            {
+                feasible = true;
+                //cout<<"memory fit."<<endl;
+                if (children->empty())
+                {
+                    children = currentNode->GetParent()->GetChildren();
+                    if (children->size() == 2)
+                    {
+                        increase = children->front()->GetMSCost(false, false) + children->back()->GetMSCost(false, false) - currentNode->GetParent()->GetParallelPart();
+                    }
+                    else if (children->size() == 1)
+                    {
+                        increase = -currentNode->GetEW() / BANDWIDTH;
+                    }
+                    else
+                    {
+                        //cout<<"   current subtree "<<currentNode->GetothersideID()<<", parent id "<<currentNode->GetParent()->GetothersideID()<<", number of siblings "<<children->size()-1<<endl;
+
+                        GetTwoLargestElementTypetwo(children, LargestNode, secondLargest); //no-increasing, communication counted
+                        if (currentNode->GetMSCost(true, false) == LargestNode->GetMSCost(true, false))
+                        {
+                            if (currentNode->GetMSCost(true, false) == secondLargest->GetMSCost(true, false))
+                            {
+                                increase = currentNode->GetMSW();
+                            }
+                            else
+                            {
+                                increase = -currentNode->GetEW() / BANDWIDTH + secondLargest->GetMSCost(true, false);
+                            }
+                        }
+                        else
+                        {
+                            increase = currentNode->GetMSW();
+                        }
+                    }
+                }
+                else
+                {
+                    children = currentNode->GetParent()->GetChildren();
+                    //cout<<"   current subtree "<<currentNode->GetothersideID()<<", parent id "<<currentNode->GetParent()->GetothersideID()<<", number of siblings "<<children->size()-1<<endl;
+                    diff = currentNode->GetMSCost(true, false) - currentNode->GetParent()->GetParallelPart();
+                    if (diff < 0)
+                    {
+                        increase = currentNode->GetMSW();
+                    }
+                    else
+                    { //diff=0
+                        if (children->size() == 1)
+                        {
+                            increase = -currentNode->GetEW() / BANDWIDTH;
+                        }
+                        else
+                        {                                                                      //children's size larger than 1
+                            GetTwoLargestElementTypetwo(children, LargestNode, secondLargest); //no-increasing, communication counted
+                            temp = currentNode->GetParallelPart() - secondLargest->GetMSCost(true, false);
+                            if (temp >= 0)
+                            {
+                                increase = -currentNode->GetEW() / BANDWIDTH;
+                            }
+                            else
+                            {
+                                increase = -temp - currentNode->GetEW() / BANDWIDTH;
+                            }
+                        }
+                    }
+                }
+
+                parent = currentNode->GetParent();
+                while (parent->GetId() != 1)
+                { //not the root node
+                    temp = parent->GetParent()->GetParallelPart() - (parent->GetMSCost(true, false) + increase);
+                    if (temp >= 0)
+                    {
+                        increase = 0;
+                        break;
+                    }
+                    else
+                    {
+                        increase = -temp;
+                        parent = parent->GetParent();
+                    }
+                }
+
+                //cout<<"   merge, increase in MS(r) "<<increase<<endl;
+                if (increase < smallestIncrease)
+                {
+                    smallestIncrease = increase;
+                    smallestNode = currentNode;
+                }
+            }
+            else
+            {
+                //cout<<"memory does not fit!!!"<<endl;
+            }
+        }
+    }
+
+    //cout<<"   ---end compute the minimum combination"<<endl;
+    return feasible;
+}
+
+
+bool Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size, int *chstart, int *children)
+{
+    bool enough = false;
+    unsigned long new_tree_size = this->GetNodes()->size();
+
+    Task *SubtreeRoot = this->GetNode(Qrootone->GetothersideID());
+
+    vector<Task *> *childrenvector = Qrootone->GetChildren();
+    if ((leaf == true) & (childrenvector->size() == 2))
+    {
+        this->GetNode(childrenvector->front()->GetothersideID())->RestoreEdge();
+        this->GetNode(childrenvector->back()->GetothersideID())->RestoreEdge();
+    }
+    else
+    {
+        this->GetNode(Qroottwo->GetothersideID())->RestoreEdge(); //restore edge temporarilly
+    }
+
+    double *ewghts, *timewghts, *spacewghts;
+    int *prnts;
+    Tree *subtree = BuildSubtree(this, SubtreeRoot, new_tree_size, &prnts, &ewghts, &timewghts, &spacewghts, chstart, children);
+    delete[] ewghts;
+    delete[] timewghts;
+    delete[] spacewghts;
+    delete[] prnts;
+    double maxout, requiredMemory;
+    uint64_t count = 0;
+    schedule_t *schedule_f = new schedule_t();
+    maxout = MaxOutDegree(subtree, true);
+    MinMem(subtree, maxout, requiredMemory, *schedule_f, true, count);
+
+    if (requiredMemory <= memory_size)
+    {
+        enough = true;
+    }
+
+    if ((leaf == true) & (childrenvector->size() == 2))
+    {
+        this->GetNode(childrenvector->front()->GetothersideID())->BreakEdge();
+        this->GetNode(childrenvector->back()->GetothersideID())->BreakEdge();
+    }
+    else
+    {
+        this->GetNode(Qroottwo->GetothersideID())->BreakEdge();
+    }
+
+    delete subtree;
+    delete schedule_f;
+
+    return enough;
+}
+
+
+
+double Task::Sequence()
+{
+    return this->GetMSCost();
+}
 
 void parse_tree(const char *filename, Tree *tree)
 {

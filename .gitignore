@@ -6,3 +6,4 @@ example/call-heuristics
 res
 *.dSYM
 .DS_Store
+lib/heuristics.a

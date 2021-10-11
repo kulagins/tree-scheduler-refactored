@@ -56,7 +56,7 @@ typedef enum
 
 double u_wseconds(void);
 
-     class Task{
+class Task{
   protected:
     bool cost_computed;
     double cost;
@@ -354,6 +354,8 @@ double u_wseconds(void);
     unsigned int Ci;
     double Mpeak;
     double Mavail;
+
+    double Sequence();
 };
 
 class Tree{
@@ -522,6 +524,11 @@ class Tree{
     }
     cout << "End" << endl;
 }
+
+Tree * BuildQtree();
+unsigned int HowmanySubtrees(bool quiet);
+bool increaseMS(Tree *Qtree, Task *&smallestNode, int *chstart, int *childrenID, double memory_size, bool CheckMemory);
+bool MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size, int *chstart, int *children);
 };
 
 

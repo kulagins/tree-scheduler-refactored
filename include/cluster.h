@@ -132,6 +132,9 @@ public:
             cout << "Processor with memory " << (*iter)->getMemorySize() << ", speed " << (*iter)->getProcessorSpeed() << " and busy? " << (*iter)->isBusy << endl;
         }
     }
+    static vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processors);
+
+    static std::map<int, int> buildProcessorSpeeds(int num_processors);
 };
 
 #endif

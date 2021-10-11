@@ -507,6 +507,21 @@ class Tree{
     Tree * getOriginalTree(){
       return this->originalTree;
     }
+
+    void printBrokenEdges()
+{
+    cout << "Print broken edges" << endl;
+    unsigned long treeSize = this->GetNodes()->size();
+    for (unsigned int i = treeSize; i >= 1; --i)
+    {
+        Task *currentnode = this->GetNode(i);
+        if (currentnode->IsBroken())
+        {
+            cout << i << " ";
+        }
+    }
+    cout << "End" << endl;
+}
 };
 
 

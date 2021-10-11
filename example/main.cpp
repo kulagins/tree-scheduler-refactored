@@ -13,51 +13,7 @@
 
 
 
-vector<double> buildMemorySizes(double maxoutd, double minMem, int num_processors)
-{
-    cout << "max deg " << maxoutd << ", MinMem " << minMem << endl;
-    double cumulativeMem = 0;
-    vector<double> memSizes(num_processors);
-    memSizes.resize(num_processors);
-    maxoutd = maxoutd / 4;
-    //cout << "minProc " << maxoutd << " " << (maxoutd + minMem) / 2 << " " << minMem << endl;
-    for (int k = 0; k < num_processors / 3; k++)
-    {
-        memSizes[k] = maxoutd; 
-        cumulativeMem += memSizes[k];
-    }
-    for (int k = num_processors / 3; k < 2 * num_processors / 3; k++)
-    {
-        memSizes[k] = (maxoutd + minMem) / 2;
-        cumulativeMem += memSizes[k];
-    }
-    for (int k = 2 * num_processors / 3; k < num_processors; k++)
-    {
-        memSizes[k] = minMem;
-        cumulativeMem += memSizes[k];
-    }
-    cout << "cumulative mem in system: " << cumulativeMem << endl;
-    return memSizes;
-}
 
-std::map<int, int> buildProcessorSpeeds(int num_processors)
-{
-    std::map<int, int> procSpeeds;
-    for (int k = 0; k < num_processors / 3; k++)
-    {
-        procSpeeds.insert(pair<int, int>(k, 1));
-    }
-    for (int k = num_processors / 3; k < 2 * num_processors / 3; k++)
-    {
-        procSpeeds.insert(pair<int, int>(k, 2));
-    }
-    for (int k = 2 * num_processors / 3 + 1; k < num_processors; k++)
-    {
-        procSpeeds.insert(pair<int, int>(k, 3));
-    }
-
-    return procSpeeds;
-}
 void RunWithClusterConfig(bool skipBigTrees, int *chstart, int *children, Tree *treeobj,
                           Cluster *cluster, io_method_t method)
 
@@ -68,22 +24,7 @@ void RunWithClusterConfig(bool skipBigTrees, int *chstart, int *children, Tree *
         MemoryCheckA2(treeobj, chstart, children,  cluster, method, skipBigTrees);
 }
 
-void printBrokenEdges(Tree *tree)
-{
-    cout << "Print broken edges" << endl;
-    unsigned long treeSize = tree->GetNodes()->size();
-    for (unsigned int i = treeSize; i >= 1; --i)
-    {
-        Task *currentnode = tree->GetNode(i);
-        if (currentnode->IsBroken())
-        {
-            cout << i << " ";
 
-            //cout << "root " << currentnode->GetMSCost() << endl;
-        }
-    }
-    cout << "End" << endl;
-}
 
 void actualActions(double CCR, double NPR, unsigned int num_processors, double *ewghts, double *spacewghts, double *timewghts, int *prnts, int tree_size, bool skipBigTrees, int clusterConfig)
 {
@@ -99,7 +40,7 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
     vector<double> memorySizes;
     list<Task *> parallelSubtrees;
     unsigned long sequentialLen;
-    std::map<int, int> processor_speeds = buildProcessorSpeeds(num_processors);
+    std::map<int, int> processor_speeds = Cluster::buildProcessorSpeeds(num_processors);
     std::map<int, int> taskToPrc;
     std::map<int, bool> isProcBusy;
 
@@ -127,7 +68,7 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
     delete schedule_f;
     delete treeobj;
 
-    memorySizes = buildMemorySizes(maxoutd, minMem, num_processors);
+    memorySizes = Cluster::buildMemorySizes(maxoutd, minMem, num_processors);
     Cluster *cluster = new Cluster(memorySizes);
     for (int stage2Method = 0; stage2Method < 1; ++stage2Method)
     {
@@ -186,7 +127,7 @@ void actualActions(double CCR, double NPR, unsigned int num_processors, double *
                       << "#subtrees: " << number_subtrees << ", #numberProcessors; " << num_processors << " makespan: " << makespan << endl;
         }
 
-        printBrokenEdges(treeobj);
+        treeobj->printBrokenEdges();
         delete treeobj;
 
         delete[] chstart;

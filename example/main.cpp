@@ -26,7 +26,7 @@ void RunWithClusterConfig(bool skipBigTrees, int *chstart, int *children, Tree *
 
 
 
-void actualActions(double CCR, double NPR, unsigned int num_processors, double *ewghts, double *spacewghts, double *timewghts, int *prnts, int tree_size, bool skipBigTrees, int clusterConfig)
+void actualActions(double CCR, unsigned int num_processors, double *ewghts, double *spacewghts, double *timewghts, int *prnts, int tree_size, bool skipBigTrees)
 {
     clock_t time;
     unsigned int number_subtrees;
@@ -170,7 +170,7 @@ int main(int argc, const char *argv[])
                 num_processors = 3;
             }
 
-            actualActions(CCR, NPR, num_processors, ewghts, spacewghts, timewghts, prnts, tree_size, skipBigTrees, clusterConfig);
+            actualActions(CCR, num_processors, ewghts, spacewghts, timewghts, prnts, tree_size, skipBigTrees);
             delete[] prnts;
             delete[] ewghts;
             delete[] spacewghts;

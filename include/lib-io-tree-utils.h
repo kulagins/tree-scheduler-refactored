@@ -566,7 +566,7 @@ void parse_tree(const char *filename,int * N ,int **prnts,double **nwghts,double
 extern "C"
 {
 #endif
-  void po_construct(const int N, const int *prnts, int **chstart, int **chend, int **children, int *root);
+  void po_construct(const int N, const int *prnts, int **chstart, int **children, int *root);
   void poaux(const int *chstart, const int *children, int N, int r, int *por, int *label);
 #ifdef __cplusplus
 } /* closing brace for extern "C" */

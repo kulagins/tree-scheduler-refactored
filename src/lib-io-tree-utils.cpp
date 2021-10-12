@@ -479,6 +479,7 @@ void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, doub
                         cur_char = OpenFile.get();
                     } while (cur_char != '\n' && OpenFile.good());
                     parent = nb_of_nodes - parent + 1; //root has the largest id in the txt file
+                    //cout<<"nbnodes "<<nb_of_nodes <<"parent "<< parent<<" line index "<<line_index<<" resulting index "<<nb_of_nodes - line_index<<endl;
                     (*prnts)[nb_of_nodes - line_index] = parent;
                     (*nwghts)[nb_of_nodes - line_index] = nw;
                     (*ewghts)[nb_of_nodes - line_index] = ew;
@@ -527,17 +528,22 @@ void poaux(const int *chstart, const int *children, int N, int r, int *por, int 
     delete[] stack;
 }
 
-void po_construct(const int N, const int *prnts, int **chstart, int **chend, int **children, int *root)
-{
-    *chend = new int[N + 2];
-    *chstart = new int[N + 2];
-    *children = new int[N + 1];
-    memset((void *)*chstart, 0, (N + 2) * sizeof(**chstart));
-    memset((void *)*children, 0, (N + 1) * sizeof(**children));
+void po_construct(const int treeSize, const int *prnts, int **chstart, int **children, int *root)
+{   int **chend;
+    *chend = new int[treeSize + 2];
+    *chstart = new int[treeSize + 2];
+    *children = new int[treeSize + 1];
+    memset((void *)*chstart, 0, (treeSize + 2) * sizeof(**chstart));
+    memset((void *)*children, 0, (treeSize + 1) * sizeof(**children));
+
+    *chstart = new int[treeSize + 2];
+    *children = new int[treeSize + 1];
+    memset((void *)*chstart, 0, (treeSize + 2) * sizeof(**chstart));
+    memset((void *)*children, 0, (treeSize + 1) * sizeof(**children));
 
     *root = -1;
 
-    for (int ii = 1; ii < N + 1; ii++)
+    for (int ii = 1; ii < treeSize + 1; ii++)
     {
         if (prnts[ii] > 0)
         {
@@ -551,16 +557,16 @@ void po_construct(const int N, const int *prnts, int **chstart, int **chend, int
 
     /*compute cumsum*/
     int cum_val = 1;
-    for (int ii = 1; ii < N + 2; ii++)
+    for (int ii = 1; ii < treeSize + 2; ii++)
     {
         int val = cum_val;
         cum_val += (*chstart)[ii];
         (*chstart)[ii] = val;
     }
 
-    memcpy(*chend, *chstart, (N + 2) * sizeof(**chstart));
+    memcpy(*chend, *chstart, (treeSize + 2) * sizeof(**chstart));
 
-    for (int ii = 1; ii < N + 1; ii++)
+    for (int ii = 1; ii < treeSize + 1; ii++)
     {
         if (prnts[ii] > 0)
         {
@@ -1428,8 +1434,8 @@ double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart
                     advance(ite_sche, 1);
                 }
                 schedule_copy[0] = subtree_size + 1;
-                int *chstartsub, *chendsub, *childrensub;
-                po_construct(subtree_size, prntssub, &chstartsub, &chendsub, &childrensub, &rootid);
+                int *chstartsub, *childrensub;
+                po_construct(subtree_size, prntssub, &chstartsub, &childrensub, &rootid);
 
                 if (memory_required > available_memory)
                 {
@@ -1449,7 +1455,7 @@ double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart
                 delete[] spacewghtssub;
                 delete[] prntssub;
                 delete[] chstartsub;
-                delete[] chendsub;
+               
                 delete[] childrensub;
                 delete[] schedule_copy;
                 delete subtree;
@@ -1665,8 +1671,8 @@ double IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewght
                     advance(ite_sche, 1);
                 }
                 schedule_copy[0] = subtree_size + 1;
-                int *chstartsub, *chendsub, *childrensub;
-                po_construct(subtree_size, prntssub, &chstartsub, &chendsub, &childrensub, &rootid);
+                int *chstartsub, *childrensub;
+                po_construct(subtree_size, prntssub, &chstartsub, &childrensub, &rootid);
 
                 if (memory_required > cluster->getFirstFreeProcessor()->getMemorySize())
                 {
@@ -1696,8 +1702,7 @@ double IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewght
                 delete[] timewghtssub;
                 delete[] spacewghtssub;
                 delete[] prntssub;
-                delete[] chstartsub;
-                delete[] chendsub;
+                delete[] chstartsub;                
                 delete[] childrensub;
                 delete[] schedule_copy;
                 delete subtree;
@@ -1898,15 +1903,14 @@ double MaxOutDegree(int N, double *nwghts, double *ewghts, int *chstart, int *ch
 
 double MaxOutDegree(int N, int *prnts, double *nwghts, double *ewghts)
 {
-    int *chstart, *chend, *children;
+    int *chstart, *children;
     int root;
 
-    po_construct(N, prnts, &chstart, &chend, &children, &root);
+    po_construct(N, prnts, &chstart, &children, &root);
 
     double max_out = MaxOutDegree(N, nwghts, ewghts, chstart, children);
 
-    delete[] chstart;
-    delete[] chend;
+    delete[] chstart;   
     delete[] children;
 
     return max_out;

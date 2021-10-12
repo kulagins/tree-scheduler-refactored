@@ -1375,7 +1375,7 @@ void Immediately(Tree *tree, unsigned long N, double *nwghts, double *ewghts, in
                 }
 
                 double *ewghtssub, *timewghtssub, *spacewghtssub;
-                int *prntssub, *chstartsub, *chendsub, *childrensub;
+                int *prntssub, *chstartsub, *childrensub;
                 Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub, &timewghtssub, &spacewghtssub, chstart, children);
 
                 subtree_size = subtree->GetNodes()->size();
@@ -1392,7 +1392,7 @@ void Immediately(Tree *tree, unsigned long N, double *nwghts, double *ewghts, in
                     advance(ite_sche, 1);
                 }
                 schedule_copy[0] = subtree_size + 1;
-                po_construct(subtree_size, prntssub, &chstartsub, &chendsub, &childrensub, &rootid);
+                po_construct(subtree_size, prntssub, &chstartsub, &childrensub, &rootid);
 
                 if (memory_required > m_availble)
                 {
@@ -1408,8 +1408,7 @@ void Immediately(Tree *tree, unsigned long N, double *nwghts, double *ewghts, in
                 delete[] timewghtssub;
                 delete[] spacewghtssub;
                 delete[] prntssub;
-                delete[] chstartsub;
-                delete[] chendsub;
+                delete[] chstartsub;               
                 delete[] childrensub;
                 delete[] schedule_copy;
                 delete subtree;
@@ -1473,8 +1472,8 @@ void MemoryCheck(Tree *tree, int *chstart, int *children, Cluster *cluster,  io_
         count = 0;
         MinMem(subtree, maxoutD, memory_required, *schedule_f, true, count);
 
-        int *chstartsub, *chendsub, *childrensub;
-        po_construct(subtreeSize, prnts, &chstartsub, &chendsub, &childrensub, &rootid);
+        int *chstartsub, *childrensub;
+        po_construct(subtreeSize, prnts, &chstartsub, &childrensub, &rootid);
 
         //cout<<"Subtree "<<subtreeRoot->GetId()<<" needs memory "<<memory_required;
         if (memory_required > cluster->getProcessors().at(0)->getMemorySize())
@@ -1513,7 +1512,6 @@ void MemoryCheck(Tree *tree, int *chstart, int *children, Cluster *cluster,  io_
         delete[] prnts;
         delete[] schedule_copy;
         delete[] chstartsub;
-        delete[] chendsub;
         delete[] childrensub;
         delete subtree;
     }
@@ -1524,7 +1522,7 @@ void MemoryCheck(Tree *tree, int *chstart, int *children, Cluster *cluster,  io_
         tree->GetNode(*iter)->BreakEdge();
     }
 }
-std::map<int, int> MemoryCheckA2(Tree *tree, int *chstart, int *children,Cluster *cluster, io_method_t method, bool skipBig)
+std::map<int, int> MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t method, bool skipBig)
 
 { //chstart, children are not modified
     vector<Task *> subtreeRoots;
@@ -1577,8 +1575,8 @@ std::map<int, int> MemoryCheckA2(Tree *tree, int *chstart, int *children,Cluster
         count = 0;
         MinMem(subtree, maxoutD, memory_required, *schedule_f, true, count);
 
-        int *chstartsub, *chendsub, *childrensub;
-        po_construct(subtreeSize, prnts, &chstartsub, &chendsub, &childrensub, &rootid);
+        int *chstartsub, *childrensub;
+        po_construct(subtreeSize, prnts, &chstartsub, &childrensub, &rootid);
 
         //  cout << "Subtree " << subtreeRoot->GetId() << " needs memory " << memory_required;
         if (memory_required > currentMem)
@@ -1664,7 +1662,6 @@ std::map<int, int> MemoryCheckA2(Tree *tree, int *chstart, int *children,Cluster
         delete[] prnts;
         delete[] schedule_copy;
         delete[] chstartsub;
-        delete[] chendsub;
         delete[] childrensub;
         delete subtree;
     }

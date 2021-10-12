@@ -14,14 +14,14 @@
 
 
 
-void RunWithClusterConfig(bool skipBigTrees, int *chstart, int *children, Tree *treeobj,
+void RunWithClusterConfig(bool skipBigTrees, Tree *treeobj,
                           Cluster *cluster, io_method_t method)
 
 {
     if (cluster->isHomogeneous())
-        MemoryCheck(treeobj, chstart, children, cluster, method);
+        MemoryCheck(treeobj, nullptr, nullptr, cluster, method);
     else
-        MemoryCheckA2(treeobj, chstart, children,  cluster, method, skipBigTrees);
+        MemoryCheckA2(treeobj, cluster, method, skipBigTrees);
 }
 
 
@@ -29,9 +29,9 @@ void RunWithClusterConfig(bool skipBigTrees, int *chstart, int *children, Tree *
 void actualActions(double CCR, unsigned int num_processors, double *ewghts, double *spacewghts, double *timewghts, int *prnts, int tree_size, bool skipBigTrees)
 {
     clock_t time;
+    
     unsigned int number_subtrees;
-
-    int *chstart, *chend, *children;
+  //  int *chstart, *children;
     int root;
 
     double minMem;
@@ -39,7 +39,7 @@ void actualActions(double CCR, unsigned int num_processors, double *ewghts, doub
     string stage2heuristic;
     vector<double> memorySizes;
     list<Task *> parallelSubtrees;
-    unsigned long sequentialLen;
+ 
     std::map<int, int> processor_speeds = Cluster::buildProcessorSpeeds(num_processors);
     std::map<int, int> taskToPrc;
     std::map<int, bool> isProcBusy;
@@ -50,11 +50,12 @@ void actualActions(double CCR, unsigned int num_processors, double *ewghts, doub
     SetBandwidth(CCR, tree_size, ewghts, timewghts);
 
     Tree *treeobj = new Tree(tree_size, prnts, spacewghts, ewghts, timewghts);
-    treeobj->setOriginalTree(treeobj);
-
+    Tree *originalTree = new Tree(tree_size, prnts, spacewghts, ewghts, timewghts);
+    treeobj->setOriginalTree(originalTree);
+    
     maxoutd = MaxOutDegree(treeobj, true);
 
-    po_construct(tree_size, prnts, &chstart, &chend, &children, &root);
+  //  po_construct(tree_size, prnts, &chstart, &children, &root);
     time = clock();
     makespan = treeobj->GetRoot()->GetMSCost();
     number_subtrees = 1;
@@ -79,11 +80,11 @@ void actualActions(double CCR, unsigned int num_processors, double *ewghts, doub
         {
         case 0:
             stage2heuristic = "FIRST_FIT";
-            RunWithClusterConfig(skipBigTrees, chstart, children, treeobj, cluster, FIRST_FIT);
+            RunWithClusterConfig(skipBigTrees, treeobj, cluster, FIRST_FIT);
             break;
         case 1:
             stage2heuristic = "LARGEST_FIT";
-            RunWithClusterConfig(skipBigTrees, chstart, children, treeobj, cluster, LARGEST_FIT);
+            RunWithClusterConfig(skipBigTrees, treeobj, cluster, LARGEST_FIT);
             break;
         case 2:
             stage2heuristic = "IMMEDIATELY";

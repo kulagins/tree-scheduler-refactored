@@ -22,67 +22,25 @@
 #include "lib-io-tree.h"
 #include "lib-io-tree-minmem.h"
 
-
-
-#ifdef DEBUG_USING_MINMEM
-void explore(Task * node, double available_memory,list<Task*> * L_init, schedule_t * S_init,  double & cut_value, list<Task*> & min_sub_cut, schedule_t & sub_schedule, double & Mpeak, int quiet, int depth,uint64_t & count,iter_node_t * minmem_trace,uint64_t N)
-#else
 void explore(Task * node, double available_memory,list<Task*> * L_init, schedule_t * S_init,  double & cut_value, list<Task*> & min_sub_cut, schedule_t & sub_schedule, double & Mpeak, int quiet, int depth,uint64_t & count)
-#endif
 {
-
-#ifdef DEBUG_USING_MINMEM
-  if(count<2*N){
-    minmem_trace[count].index = node->GetId();
-    minmem_trace[count].mavail = available_memory;
-  }
-  uint64_t mycount = count;
-#endif
   count++;
-
-
-#if VERBOSE
-  char * spacing;
-  spacing = (char *)malloc((depth*2+1)*sizeof(char));
-  for(int i=0;i<depth*2;++i){spacing[i]=' ';}
-  spacing[depth*2]='\0';
-#endif
-#if VERBOSE
-  cerr<<spacing<<"[ node "<<node->GetId()<<" ] is being explored with memory " <<available_memory-node->GetEW()<<" while its cost is "<<node->GetCost()<<endl;
-#endif
-
 
   /* if node is unreachable, return +infty */
   if (node->GetCost() > available_memory) {
-#if VERBOSE
-    cerr<<spacing<<"[ node "<<node->GetId()<<" ] not enough memory"<<endl;
-#endif
+
     Mpeak = node->GetCost();
     cut_value = numeric_limits<double>::infinity( );
-#ifdef DEBUG_USING_MINMEM
-    if(mycount<2*N){
-      minmem_trace[mycount].subcut_value = cut_value;
-      minmem_trace[mycount].mpeak = Mpeak;
-    }
-#endif
     return;
   }
 
 
   /* if this is a leaf, return 0 */
   if (node->IsLeaf()){
-#if VERBOSE
-    cerr<<mycount<<" "<<"[ node "<<node->GetId()<<" ] is a leaf"<<endl;
-#endif
+
     sub_schedule.push_back(node->GetId());
     cut_value = 0;
     Mpeak = numeric_limits<double>::infinity( );
-#ifdef DEBUG_USING_MINMEM
-    if(mycount<2*N){
-      minmem_trace[mycount].subcut_value = cut_value;
-      minmem_trace[mycount].mpeak = Mpeak;
-    }
-#endif
     return;
   }
 
@@ -130,40 +88,22 @@ void explore(Task * node, double available_memory,list<Task*> * L_init, schedule
 
   while (!candidates->empty()) {
 
-#if VERBOSE
-    cerr<<spacing<<"*****************************************************************"<<endl;
-    cerr<<spacing<<"[ node "<<node->GetId()<<" ] candidates are [";
-    for (list<Task*>::iterator current_node=candidates->begin(); current_node!=candidates->end(); ++current_node){
-      cerr<<" "<<(*current_node)->GetId()<<"("<<(*current_node)->Mpeak<<"|"<<(*current_node)->Mavail <<")";
-    }
-    cerr<<" ]"<<endl;
-#endif
-
 
     for (list<Task*>::iterator current_node=candidates->begin(); current_node!=candidates->end(); ++current_node){
       double m_j;
       list<Task *> Lj;
       schedule_t Sj;
 
-
-#ifdef DEBUG_USING_MINMEM
-      explore(*current_node, (*current_node)->Mavail,NULL,NULL, m_j, Lj,Sj,(*current_node)->Mpeak,quiet,depth+1,count,minmem_trace,N);
-#else
-      explore(*current_node, (*current_node)->Mavail,NULL,NULL, m_j, Lj,Sj,(*current_node)->Mpeak,quiet,depth+1,count);
-#endif
+explore(*current_node, (*current_node)->Mavail,NULL,NULL, m_j, Lj,Sj,(*current_node)->Mpeak,quiet,depth+1,count);
 
       if (m_j <= (*current_node)->GetEW()){
-#if VERBOSE
-        cerr<<spacing<<"  [ node "<<(*current_node)->GetId()<<" ] has been removed ("<<(*current_node)->GetEW()<<" vs "<<m_j<<"), new cut size is "<<min_sub_cut.size()-1<<endl;
-#endif
+
         min_sub_cut.remove(*current_node);
         min_sub_cut.splice(min_sub_cut.end(),Lj);
         sub_schedule.splice(sub_schedule.end(),Sj);
       }
       else{
-#if VERBOSE
-        cerr<<spacing<<"  [ node "<<(*current_node)->GetId()<<" ] is better than its subtree ("<<(*current_node)->GetEW()<<" vs "<<m_j<<")"<<endl;
-#endif
+
       }
     }
 
@@ -185,19 +125,6 @@ void explore(Task * node, double available_memory,list<Task*> * L_init, schedule
         //				if(!quiet){cerr<<spacing<<"node "<<(*current_node)->GetId()<<" kept"<<endl;}
       }
     }
-
-#if VERBOSE
-    cerr<<spacing<<"[ node "<<node->GetId()<<" ] new subcut value is "<<cut_value<<endl;
-    cerr<<spacing<<"[ node "<<node->GetId()<<" ] new subcut is [";
-
-    for (list<Task*>::iterator current_node=min_sub_cut.begin(); current_node!=min_sub_cut.end(); ++current_node){
-      double available_memory_after_subroot = available_memory - cut_value + node->GetEW();
-      cerr<<" "<<(*current_node)->GetId()<<"("<<(*current_node)->Mpeak<<"|"<<available_memory_after_subroot  + (*current_node)->GetEW()<<")";
-    }
-    cerr<<"]"<<endl;
-    cerr<<spacing<<"*****************************************************************"<<endl;
-    cerr<<spacing<<candidates->size()<<" candidates left"<<endl;
-#endif
   }
 
 
@@ -213,34 +140,11 @@ void explore(Task * node, double available_memory,list<Task*> * L_init, schedule
     }
   }
 
-#ifdef DEBUG_USING_MINMEM
-  if(mycount<2*N){
-    minmem_trace[mycount].subcut_value = cut_value;
-    minmem_trace[mycount].mpeak = Mpeak;
-  }
-#endif
-
-
-#if VERBOSE
-  double available_memory_after_subroot = available_memory - cut_value + node->GetEW();
-  cerr<<spacing<<"[ node "<<node->GetId()<<" ] final subcut is [";
-  for (list<Task*>::iterator last=min_sub_cut.begin(); last!=min_sub_cut.end(); ++last){
-    cerr<<" "<<(*last)->GetId()<<"("<<(*last)->Mpeak<<"|"<<available_memory_after_subroot + (*last)->GetEW()<<")";
-  }
-  cerr<<"]"<<endl;
-
-  cerr<<spacing<<"[ node "<<node->GetId()<<" ] final subcut value is "<<cut_value<<" subroot->mpeak is "<<Mpeak<<endl;
-#endif
-
   delete candidates;
   return;
 }
 
-#ifdef DEBUG_USING_MINMEM
-void MinMem(Tree * tree,double MaxOutDeg, double & Required_memory, schedule_t & Schedule, int quiet, uint64_t & count,iter_node_t * minmem_trace)
-#else
 void MinMem(Tree * tree,double MaxOutDeg, double & Required_memory, schedule_t & Schedule, int quiet, uint64_t & count)
-#endif
 {
   double M = numeric_limits<double>::infinity();
   double Mpeak = MaxOutDeg;
@@ -261,23 +165,13 @@ void MinMem(Tree * tree,double MaxOutDeg, double & Required_memory, schedule_t &
   Schedule.clear();
   while(Mpeak<numeric_limits<double>::infinity()){
     Required_memory = Mpeak;
-#ifdef DEBUG_USING_MINMEM
-    explore(root, Required_memory, &L, &Schedule,  M, L, Schedule, Mpeak, quiet,0,count,minmem_trace,tree->GetNodes()->size());
-#else
     explore(root, Required_memory, &L, &Schedule,  M, L, Schedule, Mpeak, quiet,0,count);
-#endif
 
-#if VERBOSE
-    cerr<<"[MinMemO] Available memory = "<<Required_memory<<"  Mpeak returned by explore = "<<Mpeak<<"  cutvalue = "<<M<<" cutsize = "<<L.size()<<endl;
-#endif
+
   }
 }
 
-#ifdef DEBUG_USING_MINMEM
-double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,double *mswghts, int *schedule,iter_node_t * minmem_trace)
-#else
-  double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,double *mswghts, int *schedule)
-#endif
+double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,double *mswghts, int *schedule)
     {
       Tree * tree = new Tree(N,prnts,nwghts,ewghts,mswghts);
 
@@ -285,12 +179,7 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
       double Mp = MaxOutDegree(tree,true);
       uint64_t count = 0;
       schedule_t * sub_sched = new schedule_t();
-
-#ifdef DEBUG_USING_MINMEM
-      MinMem(tree,Mp, Mr, *sub_sched, true, count,minmem_trace);
-#else
       MinMem(tree,Mp, Mr, *sub_sched, true, count);
-#endif
 
       unsigned int i = 0;
       for (schedule_t::reverse_iterator last=sub_sched->rbegin(); last!=sub_sched->rend(); ++last){
@@ -481,11 +370,7 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
 #if DEBUG_MEMUSAGE
     void exploreArray2(int N,double * nwghts, double * ewghts, int * chstart, int *children,iter_node_t * subroot,double available_memory,bool Linit,iter_node_t * NodeArray, double & cut_value, MinMemDLL * L,int * sub_schedule,int & sched_head, int depth,uint64_t & count, double * memsched_debug)
 #else
-#ifdef DEBUG_USING_MINMEM
-      void exploreArray2(int N,double * nwghts, double * ewghts, int * chstart, int *children,iter_node_t * subroot,double available_memory,bool Linit,iter_node_t * NodeArray, double & cut_value, MinMemDLL * L,int * sub_schedule,int & sched_head, int depth,uint64_t & count, iter_node_t * minmem_trace, iter_node_t * minmema_trace)
-#else
-      void exploreArray2(int N,double * nwghts, double * ewghts, int * chstart, int *children,iter_node_t * subroot,double available_memory,bool Linit,iter_node_t * NodeArray, double & cut_value, MinMemDLL * L,int * sub_schedule,int & sched_head, int depth,uint64_t & count)
-#endif
+    void exploreArray2(int N,double * nwghts, double * ewghts, int * chstart, int *children,iter_node_t * subroot,double available_memory,bool Linit,iter_node_t * NodeArray, double & cut_value, MinMemDLL * L,int * sub_schedule,int & sched_head, int depth,uint64_t & count)
 #endif
       {
 #if DEBUG_MEMUSAGE
@@ -494,70 +379,29 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
           //  cerr<<"[ node "<<subroot->index<<" ] assert passed"<<endl;
         }
 #endif
-#ifdef DEBUG_USING_MINMEM
-        if(count<2*N){
-          minmema_trace[count].index = subroot->index;
-          minmema_trace[count].mavail = available_memory + ewghts[subroot->index];
-          subroot->mavail = available_memory + ewghts[subroot->index];
-          assert(subroot->index ==  minmem_trace[count].index);
-          assert(available_memory + ewghts[subroot->index] ==  minmem_trace[count].mavail);
-        }
-        uint64_t mycount = count;
-#endif
         count++;
 #if STRONG_ASSERT
         assert(count<(uint64_t)(2*N*N));	
 #endif
 
-#if VERBOSE
-        char * spacing; 
-        spacing = (char *)malloc((depth*2+1)*sizeof(char)); 
-        for(int i=0;i<depth*2;++i){spacing[i]=' ';} spacing[depth*2]='\0'; 
-#endif
-#if VERBOSE
-        cerr<<spacing<<"[ node "<<subroot->index<<" ] is being explored with memory " <<available_memory<<" while its cost is "<<subroot->cost<<endl;
-#endif
 
 
         /* if node is unreachable, return +infty */
         if (subroot->cost - ewghts[subroot->index]> available_memory) {
-#if VERBOSE
-          cerr<<spacing<<"[ node "<<subroot->index<<" ] not enough memory"<<endl;
-#endif
+
           subroot->mpeak = subroot->cost;
           cut_value = numeric_limits<double>::infinity( );
-#ifdef DEBUG_USING_MINMEM
-          subroot->subcut_value = cut_value;
-          if(mycount<2*N){
-            minmema_trace[mycount].subcut_value = cut_value;
-            minmema_trace[mycount].mpeak = subroot->mpeak;
-
-            assert(subroot->mpeak ==  minmem_trace[mycount].mpeak);
-            assert(subroot->subcut_value ==  minmem_trace[mycount].subcut_value);
-          }
-#endif
           return;
         }
         /* if this is a leaf, return 0 */
         if (chstart[subroot->index]==chstart[subroot->index+1]){
-#if VERBOSE
-          cerr<<spacing<<"[ node "<<subroot->index<<" ] is a leaf"<<endl;
-#endif
+
 #if DEBUG_MEMUSAGE
           memsched_debug[sched_head] = memsched_debug[sched_head+1 ] + ewghts[subroot->index];
 #endif
           sub_schedule[sched_head--] = subroot->index;
           cut_value = 0;
           subroot->mpeak = numeric_limits<double>::infinity( );
-#ifdef DEBUG_USING_MINMEM
-          subroot->subcut_value = cut_value;
-          if(mycount<2*N){
-            minmema_trace[mycount].subcut_value = cut_value;
-            minmema_trace[mycount].mpeak = subroot->mpeak;
-            assert(subroot->mpeak ==  minmem_trace[mycount].mpeak);
-            assert(subroot->subcut_value ==  minmem_trace[mycount].subcut_value);
-          }
-#endif
           return;
         }
 
@@ -681,24 +525,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
 
 #ifndef USE_DICHOTOMY
           iter_node_t * current_node = subroot->pSCbegin;
-#if VERBOSE
-          cerr<<spacing<<"*****************************************************************"<<endl;
-          cerr<<spacing<<"[ node "<<subroot->index<<" ] candidates are [";
-          while(cut_size>0 && current_node != subroot->pSCend->pNext){
-            double available_memory_after_subroot = available_memory - cut_value + ewghts[subroot->index];
-            if (available_memory_after_subroot + ewghts[current_node->index]>= current_node->mpeak)
-            {
-              cerr<<" "<<current_node->index<<"("<<current_node->mpeak<<"|"<<available_memory_after_subroot + ewghts[current_node->index] <<")";
-            }
-            else{
-              cerr<<" BAD{"<<current_node->index<<"("<<current_node->mpeak<<"|"<<available_memory_after_subroot + ewghts[current_node->index]<<"])";
-
-            }
-            current_node = current_node->pNext;
-          }
-          cerr<<" ]"<<endl;
-          current_node = subroot->pSCbegin;
-#endif
 #else
           s_list_item_t * current_item = L->getItem(subroot->pSCbegin);
 	  s_list_item_t * end_item = L->getItem(subroot->pSCend);
@@ -725,20 +551,13 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
                 exploreArray2(N,nwghts,ewghts,chstart,children,current_node,available_memory_after_subroot,false,NodeArray, m_j,L,sub_schedule,tmp_sched_head,depth+1,count,memsched_debug);
 #else
 
-#ifdef DEBUG_USING_MINMEM
-                exploreArray2(N,nwghts,ewghts,chstart,children,current_node,available_memory_after_subroot,false,NodeArray, m_j,L,sub_schedule,tmp_sched_head,depth+1,count,minmem_trace,minmema_trace);
-#else
                 exploreArray2(N,nwghts,ewghts,chstart,children,current_node,available_memory_after_subroot,false,NodeArray, m_j,L,sub_schedule,tmp_sched_head,depth+1,count);
-#endif
-
 #endif
                 subcut_size = L->size() - prevCutSize;
 
                 if (m_j > ewghts[current_node->index] ){
                   //pop the end of the list
-#if VERBOSE
-                  cerr<<spacing<<"  [ node "<<current_node->index<<" ] is better than its subtree ("<<ewghts[current_node->index]<<" vs "<<m_j<<")"<<endl;
-#endif
+
                 L->splice(current_node,current_node->pSCend, subcut_size);
 #ifndef NOASSERT
                 if(subcut_size>0){
@@ -791,16 +610,10 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
                 assert(current_node->pPrev==current_node->pNext->pPrev);
 #endif
 
-#ifndef DEBUG_USING_MINMEM
-                cut_value = cut_value - ewghts[current_node->index] + m_j;
-#endif
-
                 cut_size += subcut_size -1;
                 sched_head = tmp_sched_head;
 
-#if VERBOSE
-                cerr<<spacing<<cut_value<<"  [ node "<<current_node->index<<" ] has been removed ("<<ewghts[current_node->index]<<" vs "<<m_j<<"), new cut size is "<<cut_size<<endl;
-#endif
+
 
                 //advance the pointer to skip the new nodes in the cut
                 if(subcut_size>0){
@@ -844,19 +657,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
           }
           current_node = current_node->pNext;
         }
-
-#if VERBOSE
-        cerr<<spacing<<"[ node "<<subroot->index<<" ] new subcut value is "<<cut_value<<endl;
-        cerr<<spacing<<"[ node "<<subroot->index<<" ] new subcut is [";
-        current_node = subroot->pSCbegin;
-        while(cut_size>0 && subroot->pSCend->pNext != current_node){
-          cerr<<" "<<current_node->index<<"("<<current_node->mpeak<<"|"<<available_memory_after_subroot  + ewghts[current_node->index]<<")";
-          current_node = current_node->pNext;
-        }
-        cerr<<"]"<<endl;
-        cerr<<spacing<<"*****************************************************************"<<endl;
-        cerr<<spacing<<candidates_count<<" candidates left"<<endl;
-#endif
 #else
         current_item = L->getItem(subroot->pSCbegin);
 	end_item = L->getItem(subroot->pSCend);
@@ -886,28 +686,12 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
       cut_value += ewghts[current_node->index];
       current_node = current_node->pNext;
     }
-#ifdef DEBUG_USING_MINMEM
-    subroot->subcut_value = cut_value;
-#endif
-
-#if VERBOSE
-    double available_memory_after_subroot = available_memory - cut_value + ewghts[subroot->index];
-    current_node = subroot->pSCbegin;
-    cerr<<spacing<<"[ node "<<subroot->index<<" ] final subcut is [";
-    while(cut_size>0 && subroot->pSCend->pNext != current_node){
-      cerr<<" "<<current_node->index<<"("<<current_node->mpeak<<"|"<<available_memory_after_subroot + ewghts[current_node->index]<<")";
-      current_node = current_node->pNext;
-    }
-    cerr<<"]"<<endl;
-#endif
 
 
     current_node = subroot->pSCbegin;
     subroot->mpeak = numeric_limits<double>::infinity();
     while(cut_size>0 && subroot->pSCend->pNext != current_node){
-#if VERBOSE
-      cerr<<spacing<<"[ node "<<subroot->index<<" ] current Mpeak is "<<subroot->mpeak<<" while [ node "<<current_node->index<<" ] Mpeak is "<<current_node->mpeak<<" which gives "<<current_node->mpeak + cut_value - ewghts[current_node->index]<<" in the current cut"<<endl;
-#endif
+
       subroot->mpeak = min(subroot->mpeak,current_node->mpeak + cut_value - ewghts[current_node->index]);
 
 
@@ -915,19 +699,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
 
       current_node = current_node->pNext;
     }
-#ifdef DEBUG_USING_MINMEM
-    if(mycount<2*N){
-      minmema_trace[mycount].subcut_value = cut_value;
-      minmema_trace[mycount].mpeak = subroot->mpeak;
-      assert(subroot->mpeak ==  minmem_trace[mycount].mpeak);
-      assert(subroot->subcut_value ==  minmem_trace[mycount].subcut_value);
-    }
-#endif
-
-#if VERBOSE
-    cerr<<spacing<<"[ node "<<subroot->index<<" ] final subcut value is "<<cut_value<<" subroot->mpeak is "<<subroot->mpeak<<endl;
-    //  cerr<<spacing<<"[ node "<<subroot->index<<" ] whole schedule : {"; for (int j = sched_head + 1; j<N;j++){ cerr<<sub_schedule[j]<<" "; } cerr<<"}"<<endl;
-#endif
 #else
     s_list_item_t * current_item = L->getItem(subroot->pSCbegin);
     s_list_item_t * end_item = L->getItem(subroot->pSCend);
@@ -994,13 +765,6 @@ void MinMemArray(int N, int root, double * nwghts, double * ewghts, int * chstar
   }
 #endif
 
-
-#ifdef DEBUG_USING_MINMEM
-  iter_node_t * minmema_trace = new iter_node_t[(uint64_t)((uint64_t)2*(uint64_t)N)];
-  iter_node_t * minmem_trace = new iter_node_t[(uint64_t)((uint64_t)2*(uint64_t)N)];
-  double stub = MinMemRecurAlgorithm(N, prnts, nwghts, ewghts,Schedule, minmem_trace);
-#endif
-
 #ifndef USE_DICHOTOMY
   MinMemDLL * MinCut = new MinMemDLL(&NodeArray[root]);
 #else
@@ -1020,21 +784,14 @@ void MinMemArray(int N, int root, double * nwghts, double * ewghts, int * chstar
 #if DEBUG_MEMUSAGE
     exploreArray2(N,nwghts,ewghts,chstart,children,&NodeArray[root],Required_memory, initialize_cut,NodeArray, Cut_value, MinCut, Schedule, sched_head,0,count,memsched_debug);
 #else
-
-#ifdef DEBUG_USING_MINMEM
-    exploreArray2(N,nwghts,ewghts,chstart,children,&NodeArray[root],Required_memory, initialize_cut,NodeArray, Cut_value, MinCut, Schedule, sched_head,0,count,minmem_trace,minmema_trace);
-#else
     exploreArray2(N,nwghts,ewghts,chstart,children,&NodeArray[root],Required_memory, initialize_cut,NodeArray, Cut_value, MinCut, Schedule, sched_head,0,count);
-#endif
 
 #endif
     initialize_cut = true;
 #if STRONG_ASSERT
     assert(Required_memory<=NodeArray[root].mpeak);
 #endif
-#if VERBOSE
-    cerr<<"[MinMem] Available memory = "<<Required_memory<<"  Mpeak returned by explore = "<<NodeArray[root].mpeak<<"  cutvalue = "<<Cut_value<<" cutsize = "<<MinCut->size()<<endl;
-#endif
+
   }
 #else
   uint64_t prev_sched_head = N-1;
@@ -1048,18 +805,8 @@ void MinMemArray(int N, int root, double * nwghts, double * ewghts, int * chstar
   MinMemDLL * prev_cut = prev_MinCut;
   while(max_memory != min_memory){
 
-#if VERBOSE
-    cerr<<"Input cut size = "<<current_cut->size()<<endl;
-#endif 
+ 
     exploreArray2(N,nwghts,ewghts,chstart,children,&NodeArray[root],half_mem, initialize_cut,NodeArray, Cut_value, current_cut, Schedule, sched_head,0,count);
-
-
-
-
-#if VERBOSE
-    cerr<<"[MinMem] Available memory = "<<half_mem<<"  Mpeak returned by explore = "<<NodeArray[root].mpeak<<"  cutvalue = "<<Cut_value<<" cutsize = "<<MinCut->size()<<" prev_peak = "<<prev_peak<<" prev_valid_peak = "<<prev_valid_peak<<" Min memory = "<<min_memory<<" Max memory = "<<max_memory<<endl;
-    cerr<<"Output cut size = "<<current_cut->size()<<endl;
-#endif
 
     if(NodeArray[root].mpeak==numeric_limits<double>::infinity() && prev_peak == -1) {
       break;
@@ -1106,9 +853,4 @@ void MinMemArray(int N, int root, double * nwghts, double * ewghts, int * chstar
   delete prev_MinCut;
 #endif
   delete[] NodeArray;
-
-#ifdef DEBUG_USING_MINMEM
-  delete[] minmem_trace;
-  delete[] minmema_trace;
-#endif
 }

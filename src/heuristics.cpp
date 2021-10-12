@@ -138,17 +138,17 @@ void GetTwoSmallestElement(list<Task *> *container, list<Task *>::iterator &Smal
     }
 }
 
-double SplitSubtrees(Task *root, unsigned long num_processor, double twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength)
+double Task::SplitSubtrees(unsigned long num_processor, double twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength)
 {
     parallelRoots.clear();
-    parallelRoots.emplace_front(root);
+    parallelRoots.emplace_front(this);
     //cout<<"   insert root"<<endl;
-    vector<double> MS(1, root->GetMSCost(true, true)); // take communication cost into account
-    double MS_sequential = root->GetEW() / BANDWIDTH, Weight_more, Weight_PQ;
+    vector<double> MS(1, this->GetMSCost(true, true)); // take communication cost into account
+    double MS_sequential = this->GetEW() / BANDWIDTH, Weight_more, Weight_PQ;
     unsigned long amountSubtrees;
     vector<Task *> *children;
 
-    Task *currentNode = root;
+    Task *currentNode = this;
     double temp;
     unsigned int mergetime;
     while (!currentNode->IsLeaf())
@@ -222,8 +222,8 @@ double SplitSubtrees(Task *root, unsigned long num_processor, double twolevel, l
     sequentialLength = minMS_step;
     unsigned int i = 0;
     parallelRoots.clear();
-    parallelRoots.push_back(root);
-    currentNode = root;
+    parallelRoots.push_back(this);
+    currentNode = this;
     while (i < minMS_step)
     {
         parallelRoots.remove(currentNode);
@@ -260,7 +260,7 @@ double SplitSubtrees(Task *root, unsigned long num_processor, double twolevel, l
         }
     }
 
-    root->BreakEdge(); //root should always be broken
+    this->BreakEdge(); //root should always be broken
     for (list<Task *>::iterator iter = parallelRoots.begin(); iter != parallelRoots.end(); ++iter)
     {
         (*iter)->BreakEdge();
@@ -284,7 +284,7 @@ void ISCore(Task *root, unsigned long num_processors, bool sequentialPart)
         return;
     }
 
-    makespan = SplitSubtrees(root, num_processors, false, parallelRoots, SF_now); //SF_now will be modified in SplitSubtrees, it represents the length of sequential part, 0 means the subtree no need to partition
+    makespan = root->SplitSubtrees(num_processors, false, parallelRoots, SF_now); //SF_now will be modified in SplitSubtrees, it represents the length of sequential part, 0 means the subtree no need to partition
 
     if (sequentialPart == true)
     {
@@ -1428,19 +1428,19 @@ void Immediately(Tree *tree, unsigned long N, double *nwghts, double *ewghts, in
     //cout<<endl;
 }
 
-void Tree::MemoryCheck(int *chstart, int *children, Cluster *cluster,  io_method_t method)
+void MemoryCheck(Tree* tree, int *chstart, int *children, Cluster *cluster,  io_method_t method)
 { //chstart, children are not modified
     vector<Task *> subtreeRoots;
     Task *currentnode;
     Task *subtreeRoot;
     int rootid;
-    this->GetRoot()->BreakEdge();
+    tree->GetRoot()->BreakEdge();
 
     //cout<<"Subtrees' roots: ";
-    unsigned long treeSize = this->GetNodes()->size();
+    unsigned long treeSize = tree->GetNodes()->size();
     for (unsigned int i = treeSize; i >= 1; --i)
     {
-        currentnode = this->GetNode(i);
+        currentnode = tree->GetNode(i);
         if (currentnode->IsBroken())
         {
             //cout<<i<<" ";
@@ -1464,7 +1464,7 @@ void Tree::MemoryCheck(int *chstart, int *children, Cluster *cluster,  io_method
 
         double *ewghts, *timewghts, *spacewghts;
         int *prnts;
-        Tree *subtree = BuildSubtree(this, subtreeRoot, treeSize, &prnts, &ewghts, &timewghts, &spacewghts, chstart, children);
+        Tree *subtree = BuildSubtree(tree, subtreeRoot, treeSize, &prnts, &ewghts, &timewghts, &spacewghts, chstart, children);
 
         subtreeSize = subtree->GetNodes()->size();
         int *schedule_copy = new int[subtreeSize + 1];
@@ -1521,7 +1521,7 @@ void Tree::MemoryCheck(int *chstart, int *children, Cluster *cluster,  io_method
 
     for (vector<unsigned int>::iterator iter = BrokenEdgesID.begin(); iter != BrokenEdgesID.end(); ++iter)
     {
-        this->GetNode(*iter)->BreakEdge();
+        tree->GetNode(*iter)->BreakEdge();
     }
 }
 std::map<int, int> MemoryCheckA2(Tree *tree, int *chstart, int *children,Cluster *cluster, io_method_t method, bool skipBig)

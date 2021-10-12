@@ -17,9 +17,8 @@ template <class T, class U>
 void GetTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest);
 
 
-double SplitSubtrees(Task* root, unsigned long num_processor,  double twolevel, list<Task*>& parallelRoots, unsigned long & sequentialLength);
 double ASAP(Tree* tree, unsigned int num_processors);
-
+void MemoryCheck(Tree* tree, int *chstart, int *children, Cluster *cluster,  io_method_t method);
 std::map<int, int> MemoryCheckA2(Tree* tree, int* chstart, int*children,  Cluster *cluster,io_method_t method, bool skipBig);
 void SetBandwidth(double CCR, unsigned long tree_size, double * ewghts, double * timewghts);
 

@@ -355,6 +355,7 @@ class Task{
     double Mavail;
 
     double Sequence();
+    double SplitSubtrees(unsigned long num_processor, double twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength);
 };
 
 class Tree{
@@ -536,7 +537,6 @@ double Merge(unsigned int num_subtrees, unsigned int processor_number, double co
 double MergeV2(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, int *chstart, int *childrenID, bool CheckMemory);
 double SplitAgain(unsigned int processor_number, unsigned int num_subtrees);
 double SplitAgainV2(unsigned int processor_number, unsigned int num_subtrees,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy);
-void MemoryCheck(int *chstart, int *children, Cluster *cluster,  io_method_t method);
 };
 
 

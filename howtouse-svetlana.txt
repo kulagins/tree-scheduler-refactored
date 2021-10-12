@@ -9,7 +9,7 @@ launch.json
             "name": "g++ - Aktive Datei erstellen und debuggen",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/home/kulaginasv/workspace/MemComOriginal/res",          
+            "program": "${workspaceFolder}/res",          
             "args": [ "${workspaceFolder}/real_Trees/trees/", "treesList.txt", "1", "1000", "1", "0", ">", "temp.$(date \"+%Y.%m.%d-%H.%M.%S\").txt"],          
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -35,24 +35,18 @@ launch.json
             "type": "cppbuild",
             "label": "C/C++: g++ Aktive Datei kompilieren",
             "command": "/usr/bin/g++",
-			"args": [
-				//"-g",
+			"args": [				
 				"${file}",
-				"-o",
-				//"${fileDirname}/${fileBasenameNoExtension}",
+				"-o",				
 				"res",
-				"-I/home/kulaginasv/workspace/MemComOriginal/include",
+				"-I${workspaceFolder}/include",
 				"-Wall",
 				"-m64",
 				"-g",
 				"-DNOASSERT",
 				"-std=c++14",
-				"-fopenmp",
-				//"main.cpp",
-				"/home/kulaginasv/workspace/MemComOriginal/lib/heuristics.a",  
-				// -o 
-				//"/home/kulaginasv/workspace/MemComJournal/example/Makefile"
-				//call-heuristics
+				"-fopenmp",				
+				"${workspaceFolder}/lib/heuristics.a",  				
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"

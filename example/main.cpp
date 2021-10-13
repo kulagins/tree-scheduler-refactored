@@ -106,7 +106,7 @@ void actualActions(double CCR, unsigned int num_processors, double *ewghts, doub
         if (number_subtrees > num_processors)
         {
             time = clock();
-            makespan = MergeV2(treeobj, number_subtrees, num_processors, memorySizes[0], chstart, children, true);
+            makespan = treeobj->MergeV2(number_subtrees, num_processors, memorySizes[0], chstart, children, true);
             time = clock() - time;
             number_subtrees = treeobj->HowmanySubtrees(true);
             std::cout << "w merge "
@@ -120,7 +120,7 @@ void actualActions(double CCR, unsigned int num_processors, double *ewghts, doub
         else
         {
             time = clock();
-            makespan = SplitAgain(treeobj, num_processors, number_subtrees);
+            makespan = treeobj->SplitAgain(num_processors, number_subtrees);
             time = clock() - time;
             number_subtrees = treeobj->HowmanySubtrees(true);
             std::cout << "w split "

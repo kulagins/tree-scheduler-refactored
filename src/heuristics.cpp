@@ -138,17 +138,17 @@ void GetTwoSmallestElement(list<Task *> *container, list<Task *>::iterator &Smal
     }
 }
 
-double SplitSubtrees(Task *root, unsigned long num_processor, double twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength)
+double Task::SplitSubtrees(unsigned long num_processor, double twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength)
 {
     parallelRoots.clear();
-    parallelRoots.emplace_front(root);
+    parallelRoots.emplace_front(this);
     //cout<<"   insert root"<<endl;
-    vector<double> MS(1, root->GetMSCost(true, true)); // take communication cost into account
-    double MS_sequential = root->GetEW() / BANDWIDTH, Weight_more, Weight_PQ;
+    vector<double> MS(1, this->GetMSCost(true, true)); // take communication cost into account
+    double MS_sequential = this->GetEW() / BANDWIDTH, Weight_more, Weight_PQ;
     unsigned long amountSubtrees;
     vector<Task *> *children;
 
-    Task *currentNode = root;
+    Task *currentNode = this;
     double temp;
     unsigned int mergetime;
     while (!currentNode->IsLeaf())
@@ -222,8 +222,8 @@ double SplitSubtrees(Task *root, unsigned long num_processor, double twolevel, l
     sequentialLength = minMS_step;
     unsigned int i = 0;
     parallelRoots.clear();
-    parallelRoots.push_back(root);
-    currentNode = root;
+    parallelRoots.push_back(this);
+    currentNode = this;
     while (i < minMS_step)
     {
         parallelRoots.remove(currentNode);
@@ -260,7 +260,7 @@ double SplitSubtrees(Task *root, unsigned long num_processor, double twolevel, l
         }
     }
 
-    root->BreakEdge(); //root should always be broken
+    this->BreakEdge(); //root should always be broken
     for (list<Task *>::iterator iter = parallelRoots.begin(); iter != parallelRoots.end(); ++iter)
     {
         (*iter)->BreakEdge();
@@ -284,7 +284,7 @@ void ISCore(Task *root, unsigned long num_processors, bool sequentialPart)
         return;
     }
 
-    makespan = SplitSubtrees(root, num_processors, false, parallelRoots, SF_now); //SF_now will be modified in SplitSubtrees, it represents the length of sequential part, 0 means the subtree no need to partition
+    makespan = root->SplitSubtrees(num_processors, false, parallelRoots, SF_now); //SF_now will be modified in SplitSubtrees, it represents the length of sequential part, 0 means the subtree no need to partition
 
     if (sequentialPart == true)
     {
@@ -334,15 +334,15 @@ void ISCore(Task *root, unsigned long num_processors, bool sequentialPart)
     return;
 }
 
-double ImprovedSplit(Tree *tree, unsigned int number_processor, int *chstart, int *childrenID)
+double Tree::ImprovedSplit(unsigned int number_processor, int *chstart, int *childrenID)
 {
-    unsigned long tree_size = tree->GetNodes()->size();
-    Task *root = tree->GetRoot();
+    unsigned long tree_size = this->GetNodes()->size();
+    Task *root = this->GetRoot();
     //cout<<"---ISCore works on the root"<<endl;
     ISCore(root, tree_size, false);
 
-    unsigned int numberSubtrees = tree->HowmanySubtrees(true);
-    double makespan = Merge(tree, numberSubtrees, number_processor, 0, chstart, childrenID, false);
+    unsigned int numberSubtrees = this->HowmanySubtrees(true);
+    double makespan = this->Merge(numberSubtrees, number_processor, 0, chstart, childrenID, false);
     return makespan;
 }
 
@@ -491,16 +491,16 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, int *chstart, int 
     return feasible;
 }
 
-double Merge(Tree *tree, unsigned int num_subtrees, unsigned int processor_number, double const memory_size, int *chstart, int *childrenID, bool CheckMemory)
+double Tree::Merge(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, int *chstart, int *childrenID, bool CheckMemory)
 {
-    Task *root = tree->GetRoot();
+    Task *root = this->GetRoot();
 
     if (processor_number >= num_subtrees)
     {
         return root->GetMSCost(true, true);
     }
 
-    Tree *Qtreeobj = tree->BuildQtree();
+    Tree *Qtreeobj = this->BuildQtree();
 
     Task *node_smallest_increase;
     Task *parent;
@@ -514,10 +514,10 @@ double Merge(Tree *tree, unsigned int num_subtrees, unsigned int processor_numbe
     { //merge subtree
         //cout<<"shortage "<<shortage<<endl;
         temp = Qtreeobj->GetRoot()->GetMSCost(true, true); //initilize ms
-        temp = tree->GetRoot()->GetMSCost(true, true);     //update ms
+        temp = this->GetRoot()->GetMSCost(true, true);     //update ms
 
         //memoryEnough=increaseMS(tree, Qtreeobj, node_smallest_increase, chstart, childrenID, memory_size, CheckMemory);
-        memoryEnough = estimateMS(tree, Qtreeobj, node_smallest_increase, chstart, childrenID, memory_size, CheckMemory);
+        memoryEnough = estimateMS(this, Qtreeobj, node_smallest_increase, chstart, childrenID, memory_size, CheckMemory);
 
         //when parameter checkMemory is false, memoryEnough will always be true;
         if (memoryEnough == true)
@@ -534,15 +534,15 @@ double Merge(Tree *tree, unsigned int num_subtrees, unsigned int processor_numbe
                     nodeone->MergetoParent();
                     nodetwo->MergetoParent();
                     shortage = shortage - 2;
-                    tree->GetNode(nodeone->GetothersideID())->RestoreEdge();
-                    tree->GetNode(nodetwo->GetothersideID())->RestoreEdge();
+                    this->GetNode(nodeone->GetothersideID())->RestoreEdge();
+                    this->GetNode(nodetwo->GetothersideID())->RestoreEdge();
                 }
                 else
                 {
                     //cout<<"Merge node "<<node_smallest_increase->GetothersideID()<<endl;
                     node_smallest_increase->MergetoParent();
                     shortage--;
-                    tree->GetNode(node_smallest_increase->GetothersideID())->RestoreEdge();
+                    this->GetNode(node_smallest_increase->GetothersideID())->RestoreEdge();
                 }
             }
             else
@@ -550,7 +550,7 @@ double Merge(Tree *tree, unsigned int num_subtrees, unsigned int processor_numbe
                 //cout<<"Merge node "<<node_smallest_increase->GetothersideID()<<endl;
                 node_smallest_increase->MergetoParent();
                 shortage--;
-                tree->GetNode(node_smallest_increase->GetothersideID())->RestoreEdge();
+                this->GetNode(node_smallest_increase->GetothersideID())->RestoreEdge();
             }
             //cout<<"------------------------"<<endl;
         }
@@ -573,16 +573,16 @@ double Merge(Tree *tree, unsigned int num_subtrees, unsigned int processor_numbe
     return temp;
 }
 
-double MergeV2(Tree *tree, unsigned int num_subtrees, unsigned int processor_number, double const memory_size, int *chstart, int *childrenID, bool CheckMemory)
+double Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, int *chstart, int *childrenID, bool CheckMemory)
 {
     if (processor_number >= num_subtrees)
     {
-        return tree->GetRoot()->GetMSCost(true, true);
+        return this->GetRoot()->GetMSCost(true, true);
     }
 
-    tree->GetRoot()->GetMSCost(true, true); //update makespan
+    this->GetRoot()->GetMSCost(true, true); //update makespan
 
-    Tree *Qtreeobj = tree->BuildQtree();
+    Tree *Qtreeobj = this->BuildQtree();
 
     Task *currentNode;
     Task *Qroot = Qtreeobj->GetRoot();
@@ -608,7 +608,7 @@ double MergeV2(Tree *tree, unsigned int num_subtrees, unsigned int processor_num
         Llist.clear();
         CriticalPath.clear();
         temp = Qroot->GetMSCost(true, true);           //update ms
-        temp = tree->GetRoot()->GetMSCost(true, true); //update ms
+        temp = this->GetRoot()->GetMSCost(true, true); //update ms
 
         CriticalPath.push_back(1);
         largestNode = Qroot;
@@ -695,7 +695,7 @@ double MergeV2(Tree *tree, unsigned int num_subtrees, unsigned int processor_num
 
             if (CheckMemory == true)
             {
-                memoryCheckPass = tree->MemoryEnough( (*smallest)->GetParent(), (*smallest), leaf, memory_size, chstart, childrenID);
+                memoryCheckPass = this->MemoryEnough( (*smallest)->GetParent(), (*smallest), leaf, memory_size, chstart, childrenID);
             }
             else
             {
@@ -712,7 +712,7 @@ double MergeV2(Tree *tree, unsigned int num_subtrees, unsigned int processor_num
                 {
                     leaf = false;
                 }
-                memoryCheckPass = tree->MemoryEnough( (*secondSmallest)->GetParent(), *secondSmallest, leaf, memory_size, chstart, childrenID);
+                memoryCheckPass = this->MemoryEnough( (*secondSmallest)->GetParent(), *secondSmallest, leaf, memory_size, chstart, childrenID);
                 if (memoryCheckPass == true)
                 {
                     currentNode = *secondSmallest;
@@ -754,15 +754,15 @@ double MergeV2(Tree *tree, unsigned int num_subtrees, unsigned int processor_num
                 nodeone->MergetoParent();
                 nodetwo->MergetoParent();
                 shortage = shortage - 2;
-                tree->GetNode(nodeone->GetothersideID())->RestoreEdge();
-                tree->GetNode(nodetwo->GetothersideID())->RestoreEdge();
+                this->GetNode(nodeone->GetothersideID())->RestoreEdge();
+                this->GetNode(nodetwo->GetothersideID())->RestoreEdge();
             }
             else
             {
                 //cout<<"Merge node "<<currentNode->GetId()<<"-"<<endl;
                 currentNode->MergetoParent();
                 shortage--;
-                tree->GetNode(currentNode->GetothersideID())->RestoreEdge();
+                this->GetNode(currentNode->GetothersideID())->RestoreEdge();
             }
         }
         else
@@ -770,12 +770,12 @@ double MergeV2(Tree *tree, unsigned int num_subtrees, unsigned int processor_num
             //cout<<"Merge node "<<currentNode->GetId()<<"-"<<endl;
             currentNode->MergetoParent();
             shortage--;
-            tree->GetNode(currentNode->GetothersideID())->RestoreEdge();
+            this->GetNode(currentNode->GetothersideID())->RestoreEdge();
         }
         //cout<<"------------------------"<<endl;
     }
 
-    temp = tree->GetRoot()->GetMSCost(true, true);
+    temp = this->GetRoot()->GetMSCost(true, true);
     delete Qtreeobj;
 
     return temp;
@@ -997,11 +997,11 @@ bool EstimateDecrase(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *
 }
 
 
-double SplitAgainV2(Tree *tree, unsigned int processor_number, unsigned int num_subtrees,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy)
+double Tree::SplitAgainV2(unsigned int processor_number, unsigned int num_subtrees,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy)
 {
     double MS_now;
-    Task *root = tree->GetRoot();
-    Tree *Qtreeobj = tree->BuildQtree();
+    Task *root = this->GetRoot();
+    Tree *Qtreeobj = this->BuildQtree();
 
     vector<Task *> CriticalPath; //Q nodes on Critical Path
 
@@ -1046,7 +1046,7 @@ double SplitAgainV2(Tree *tree, unsigned int processor_number, unsigned int num_
         //cout<<"}"<<endl;
 
         //cout<<"Idle processor now: "<<idleProcessors<<endl;
-        MSReduced = EstimateDecrase(idleProcessors, tree, &CriticalPath, &onLastSubtree, &node_i, &node_j);
+        MSReduced = EstimateDecrase(idleProcessors, this, &CriticalPath, &onLastSubtree, &node_i, &node_j);
 
         if (MSReduced == true)
         {
@@ -1163,10 +1163,10 @@ double SplitAgainV2(Tree *tree, unsigned int processor_number, unsigned int num_
     return MS_now;
 }
 
-double SplitAgain(Tree* tree, unsigned int processor_number, unsigned int num_subtrees){
+double Tree::SplitAgain(unsigned int processor_number, unsigned int num_subtrees){
     double MS_now;
-    Task* root=tree->GetRoot();
-    Tree* Qtreeobj =tree->BuildQtree();
+    Task* root=this->GetRoot();
+    Tree* Qtreeobj =this->BuildQtree();
     
     vector<Task*> CriticalPath;//Q nodes on Critical Path
     
@@ -1182,7 +1182,7 @@ double SplitAgain(Tree* tree, unsigned int processor_number, unsigned int num_su
     
     int idleProcessors=processor_number-num_subtrees;
     while (idleProcessors>0) {
-        //cout<<"******** root id "<<tree->GetRootId()<<" ********"<<endl;
+        //cout<<"******** root id "<<this->GetRootId()<<" ********"<<endl;
         CriticalPath.clear();
         CriticalPath.push_back(Qroot);
         MS_now = root->GetMSCost(true, true); //update makespan
@@ -1205,7 +1205,7 @@ double SplitAgain(Tree* tree, unsigned int processor_number, unsigned int num_su
         //cout<<"}"<<endl;
 
         //cout<<"Idle processor now: "<<idleProcessors<<endl;
-        MSReduced = EstimateDecrase(idleProcessors, tree, &CriticalPath, &onLastSubtree, &node_i, &node_j);
+        MSReduced = EstimateDecrase(idleProcessors, this, &CriticalPath, &onLastSubtree, &node_i, &node_j);
 
         if (MSReduced == true)
         {
@@ -1428,7 +1428,7 @@ void Immediately(Tree *tree, unsigned long N, double *nwghts, double *ewghts, in
     //cout<<endl;
 }
 
-void MemoryCheck(Tree *tree, int *chstart, int *children, Cluster *cluster,  io_method_t method)
+void MemoryCheck(Tree* tree, int *chstart, int *children, Cluster *cluster,  io_method_t method)
 { //chstart, children are not modified
     vector<Task *> subtreeRoots;
     Task *currentnode;

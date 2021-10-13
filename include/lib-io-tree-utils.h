@@ -21,7 +21,6 @@
 #include <assert.h>
 #include <map>
 
-
 #ifndef DEBUG_MEMUSAGE
 #define DEBUG_MEMUSAGE 0
 #endif
@@ -356,6 +355,7 @@ class Task{
     double Mavail;
 
     double Sequence();
+    double SplitSubtrees(unsigned long num_processor, double twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength);
 };
 
 class Tree{
@@ -533,12 +533,20 @@ class Tree{
         }
     }
     cout << "End" << endl;
+
+
 }
 
 Tree * BuildQtree();
 unsigned int HowmanySubtrees(bool quiet);
 bool increaseMS(Tree *Qtree, Task *&smallestNode, int *chstart, int *childrenID, double memory_size, bool CheckMemory);
 bool MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size, int *chstart, int *children);
+
+double ImprovedSplit(unsigned int number_processor, int *chstart, int *childrenID);
+double Merge(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, int *chstart, int *childrenID, bool CheckMemory);
+double MergeV2(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, int *chstart, int *childrenID, bool CheckMemory);
+double SplitAgain(unsigned int processor_number, unsigned int num_subtrees);
+double SplitAgainV2(unsigned int processor_number, unsigned int num_subtrees,  std::map<int, int>  &taskToPrc, std::map<int, bool>  &isProcBusy);
 };
 
 
@@ -567,6 +575,9 @@ double IOCounterWithVariableMem(Tree* tree, int N, double * nwghts, double * ewg
                                          std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
 Tree* BuildSubtreeOld(Tree* tree, Task* SubtreeRoot, unsigned int new_tree_size, int** prnts, double** ewghts, double** timewghts, double** spacewghts, int * chstart, int * children);
 Tree* BuildSubtree(Tree* tree, Task* SubtreeRoot);
+
+
+
 
 #endif
 #endif

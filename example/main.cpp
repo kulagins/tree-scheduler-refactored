@@ -31,7 +31,7 @@ void actualActions(double CCR, unsigned int num_processors, double *ewghts, doub
     clock_t time;
     
     unsigned int number_subtrees;
-  //  int *chstart, *children;
+  int *chstart, *chend, *children;
     int root;
 
     double minMem;
@@ -55,7 +55,13 @@ void actualActions(double CCR, unsigned int num_processors, double *ewghts, doub
     
     maxoutd = MaxOutDegree(treeobj, true);
 
-  //  po_construct(tree_size, prnts, &chstart, &children, &root);
+    po_construct(tree_size, prnts, &chstart, &chend, &children, &root);
+    cout<<"prnts chstart chend children"<<endl;;
+    int i;
+    for(i=0; i<=tree_size; i++){
+        cout<<prnts[i]<<"      "<<chstart[i]<<"       "<<chend[i]<<"        "<<children[i]<<"  "<<endl;
+    }
+    cout<<"      "<<chstart[++i]<<"        "<<chend[i]<<endl;
     time = clock();
     makespan = treeobj->GetRoot()->GetMSCost();
     number_subtrees = 1;
@@ -88,12 +94,12 @@ void actualActions(double CCR, unsigned int num_processors, double *ewghts, doub
             break;
         case 2:
             stage2heuristic = "IMMEDIATELY";
-            RunWithClusterConfig(skipBigTrees, chstart, children, treeobj, cluster, IMMEDIATELY);
+            RunWithClusterConfig(skipBigTrees, treeobj, cluster, IMMEDIATELY);
             break;
 
         default:
             stage2heuristic = "FIRST_FIT";
-            RunWithClusterConfig(skipBigTrees, chstart, children, treeobj, cluster, IMMEDIATELY);
+            RunWithClusterConfig(skipBigTrees, treeobj, cluster, IMMEDIATELY);
             break;
         }
 
@@ -132,7 +138,7 @@ void actualActions(double CCR, unsigned int num_processors, double *ewghts, doub
         delete treeobj;
 
         delete[] chstart;
-        delete[] chend;
+        //delete[] chend;
         delete[] children;
     }
 }

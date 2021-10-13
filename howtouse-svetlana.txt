@@ -13,9 +13,7 @@ launch.json
             "args": [ "${workspaceFolder}/real_Trees/trees/", "treesList.txt", "1", "1000", "1", "0", ">", "temp.$(date \"+%Y.%m.%d-%H.%M.%S\").txt"],          
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
-            "environment": [],
             "externalConsole": false,
-            "MIMode": "gdb",
             "setupCommands": [
                 {
                     "description": "Automatische Strukturierung und Einrückung für \"gdb\" aktivieren",
@@ -23,7 +21,19 @@ launch.json
                     "ignoreFailures": true
                 }
             ],
-           "preLaunchTask": "C/C++: g++ Aktive Datei kompilieren",          
+            "linux": {
+                "MIMode": "gbd"
+            },
+            "osx": {
+                "MIMode": "lldb",
+                "setupCommands": [
+                    {
+                       "description": "Load .lldbinit",
+                       "text": "command source .lldbinit"
+                    }
+                 ]
+            },
+           "preLaunchTask": "C/C++: g++ Aktive Datei kompilieren"
         }
     ]
 }
@@ -32,8 +42,17 @@ launch.json
 {
     "tasks": [
         {
+            "type": "shell",
+            "label": "lldbinit",
+            "command": "./createlldbinit.sh",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			}
+        },
+        {
             "type": "cppbuild",
             "label": "C/C++: g++ Aktive Datei kompilieren",
+            "dependsOn": ["lldbinit"],
             "command": "/usr/bin/g++",
 			"args": [				
 				"${file}",
@@ -45,7 +64,8 @@ launch.json
 				"-g",
 				"-DNOASSERT",
 				"-std=c++14",
-				"-fopenmp",				
+                "-Xpreprocessor",
+				"-fopenmp",	
 				"${workspaceFolder}/lib/heuristics.a",  				
 			],
 			"options": {

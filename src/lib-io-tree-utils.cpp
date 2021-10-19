@@ -13,11 +13,11 @@
 #include <limits>
 #include <cmath>
 
-#include "lib-io-tree-utils.h"
-#include "lib-io-tree.h"
-#include "lib-io-tree-minmem.h"
-#include "lib-io-tree-free-methods.h"
-#include "heuristics.h"
+#include "../include/lib-io-tree-utils.h"
+#include "../include/lib-io-tree.h"
+#include "../include/lib-io-tree-minmem.h"
+#include "../include/lib-io-tree-free-methods.h"
+#include "../include/heuristics.h"
 #include <sys/time.h>
 #include <algorithm>
 
@@ -352,8 +352,7 @@ double Task::Sequence()
 
 
 void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, double **ewghts, double **mswghts)
-{
-
+{   
     ifstream OpenFile(filename);
     char begin;
     char cur_char;
@@ -408,7 +407,7 @@ void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, doub
                         cur_char = OpenFile.get();
                     } while (cur_char != '\n' && OpenFile.good());
                     parent = nb_of_nodes - parent + 1; //root has the largest id in the txt file
-                    //cout<<"nbnodes "<<nb_of_nodes <<"parent "<< parent<<" line index "<<line_index<<" resulting index "<<nb_of_nodes - line_index<<endl;
+                   // cout<<"nbnodes "<<nb_of_nodes <<"parent "<< parent<<" line index "<<line_index<<" resulting index "<<nb_of_nodes - line_index<<endl;
                     (*prnts)[nb_of_nodes - line_index] = parent;
                     (*nwghts)[nb_of_nodes - line_index] = nw;
                     (*ewghts)[nb_of_nodes - line_index] = ew;
@@ -804,10 +803,6 @@ double unload_furthest_best_fit(io_map &unloaded_nodes, schedule_t &loaded_nodes
             {
                 local_data_to_unload = remaining_loaded_data;
             }
-#if VERBOSE
-            cerr << "unloading (IO) " << local_data_to_unload << " of " << *far_node_id << endl;
-#endif
-
             /*if it "fits", that is if the amount of data is lower than what we need to unload*/
             if (local_data_to_unload <= data_to_unload - unloaded_data)
             {
@@ -872,10 +867,6 @@ double unload_furthest_first_fit_abs(io_map &unloaded_nodes, schedule_t &loaded_
         {
             local_data_to_unload = remaining_loaded_data;
         }
-#if VERBOSE
-        cerr << "unloading (IO) " << local_data_to_unload << " of " << *far_node_id << endl;
-#endif
-
         /*if it "fits", that is if the amount of data is lower than what we need to unload*/
         if (local_data_to_unload >= data_to_unload - unloaded_data)
         {
@@ -931,10 +922,6 @@ double unload_furthest_best_fit_abs(io_map &unloaded_nodes, schedule_t &loaded_n
             {
                 local_data_to_unload = remaining_loaded_data;
             }
-#if VERBOSE
-            cerr << "unloading (IO) " << local_data_to_unload << " of " << *far_node_id << endl;
-#endif
-
             /*if it "fits", that is if the amount of data is lower than what we need to unload*/
             if (abs(data_to_unload - unloaded_data - local_data_to_unload) < abs(data_to_unload - unloaded_data - best_candi_score))
             {
@@ -1911,7 +1898,7 @@ Tree *BuildSubtreeOld(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size,
     return treeobj;
 }
 
-Tree *BuildSubtree(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size)
+Tree *BuildSubtree(Tree *tree, Task *SubtreeRoot)
 {
     
     

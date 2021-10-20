@@ -130,20 +130,6 @@ void erase(iter_node_t * pOldNode){
 
 void splice(iter_node_t * pNewLast,iter_node_t * pLastRemoved, uint64_t removed_elements){
       if(removed_elements>0){
-#if STRONG_ASSERT        
-        iter_node_t * pCurNode = pNewLast->pNext;
-        uint64_t ui_removed_count = 1;
-        while(pCurNode != this->end() && pCurNode !=pLastRemoved){
-          ui_removed_count++;
-
-
-          pCurNode = pCurNode->pNext;
-
-
-        }
-
-        assert(ui_removed_count == removed_elements);
-#endif
         pNewLast->pNext = pLastRemoved->pNext;
         pLastRemoved->pNext->pPrev = pNewLast;
 

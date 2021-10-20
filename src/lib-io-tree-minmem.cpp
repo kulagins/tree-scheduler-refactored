@@ -62,19 +62,6 @@ void explore(Task * node, double available_memory,list<Task*> * L_init, schedule
   }
 
   list<Task*> * candidates = new list<Task*>(min_sub_cut);
-
-
-#if  VERBOSE
-  if (node->GetChildren()->size()>1) {
-    cerr<<spacing<<"[ node "<<node->GetId()<<" ] initial subcut is [";
-    for (list<Task*>::iterator current_node=candidates->begin(); current_node!=candidates->end(); ++current_node){
-      cerr<<" "<<(*current_node)->GetId()<<"("<<(*current_node)->Mpeak<<")";
-    }
-    cerr<<" ]"<<endl;
-  }
-#endif
-
-
   cut_value = 0;
   for (list<Task*>::iterator current_node=candidates->begin(); current_node!=candidates->end(); ++current_node){
     (*current_node)->Mavail = available_memory;
@@ -367,22 +354,10 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
       return;
     }
 
-#if DEBUG_MEMUSAGE
-    void exploreArray2(int N,double * nwghts, double * ewghts, int * chstart, int *children,iter_node_t * subroot,double available_memory,bool Linit,iter_node_t * NodeArray, double & cut_value, MinMemDLL * L,int * sub_schedule,int & sched_head, int depth,uint64_t & count, double * memsched_debug)
-#else
     void exploreArray2(int N,double * nwghts, double * ewghts, int * chstart, int *children,iter_node_t * subroot,double available_memory,bool Linit,iter_node_t * NodeArray, double & cut_value, MinMemDLL * L,int * sub_schedule,int & sched_head, int depth,uint64_t & count)
-#endif
+
       {
-#if DEBUG_MEMUSAGE
-        if(!Linit || depth>0){
-          assert(available_memory==memsched_debug[sched_head+1]);
-          //  cerr<<"[ node "<<subroot->index<<" ] assert passed"<<endl;
-        }
-#endif
         count++;
-#if STRONG_ASSERT
-        assert(count<(uint64_t)(2*N*N));	
-#endif
 
 
 
@@ -395,10 +370,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
         }
         /* if this is a leaf, return 0 */
         if (chstart[subroot->index]==chstart[subroot->index+1]){
-
-#if DEBUG_MEMUSAGE
-          memsched_debug[sched_head] = memsched_debug[sched_head+1 ] + ewghts[subroot->index];
-#endif
           sub_schedule[sched_head--] = subroot->index;
           cut_value = 0;
           subroot->mpeak = numeric_limits<double>::infinity( );
@@ -409,7 +380,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
         int candidates_count = 0;
         if(Linit && L->size() >0){
           candidates_count = L->size();
-#ifndef USE_DICHOTOMY
           iter_node_t * cur_node = L->begin();
           while (cur_node != L->end()){
             cut_value += ewghts[cur_node->index];
@@ -417,26 +387,13 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
           }
           subroot->pSCend = L->last();
           subroot->pSCbegin = L->begin();
-#else
-          s_list_item_t * cur_node = L->begin();
-          while (cur_node != L->end()){
-            cut_value += ewghts[cur_node->node->index];
-            cur_node = cur_node->pNext;
-          }
-          subroot->pSCend = L->last()->node;
-          subroot->pSCbegin = L->begin()->node;
-#endif
         }
         else{
-#if DEBUG_MEMUSAGE
-          memsched_debug[sched_head] = memsched_debug[sched_head+1 ] + 2*ewghts[subroot->index] + nwghts[subroot->index] - subroot->cost;
-#endif
           sub_schedule[sched_head--] = subroot->index;
           /* place every child in the candidate nodes*/
           candidates_count = chstart[subroot->index+1]-chstart[subroot->index];
           iter_node_t * cur_node;
-
-#ifndef DEBUG_LIU    
+ 
           iter_node_t * prev_node = subroot;
           for(int j = chstart[subroot->index]; j<chstart[subroot->index+1];j++){
             cur_node = &NodeArray[children[j]];
@@ -446,124 +403,33 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
           }
           subroot->pSCbegin = &NodeArray[children[chstart[subroot->index]]];
           subroot->pSCend = &NodeArray[children[chstart[subroot->index+1]-1]];
-#else
-          int * seen = new int [chstart[subroot->index+1] - chstart[subroot->index]];
-
-          for(int k=0; k<chstart[subroot->index+1] - chstart[subroot->index]; k++) {seen[k] = 0;}
-#ifdef DEBUG_LIU_RANK    
-          if (chstart[subroot->index] != chstart[subroot->index+1]-1) {
-            cerr<<"children of node "<<subroot->index<< "(liu rank)";
-            for(int j = chstart[subroot->index]; j<chstart[subroot->index+1];j++) {
-              cerr<<" "<<NodeArray[children[j]].index<<"("<<NodeArray[children[j]].liu_rank<<")";
-            }
-            cerr<<endl;
-          }
-#endif
-
-          for(int j = chstart[subroot->index]; j<chstart[subroot->index+1];j++) {
-
-            int max_liu_rank_index = -1;
-            for(int k = chstart[subroot->index]; k<chstart[subroot->index+1];k++){
-              if (seen[k - chstart[subroot->index]])
-                continue;
-              if ((max_liu_rank_index == -1) || (NodeArray[children[k]].liu_rank > NodeArray[children[max_liu_rank_index]].liu_rank)){
-                max_liu_rank_index = k;
-              }
-            }
-            assert(max_liu_rank_index != -1);
-
-            seen[max_liu_rank_index - chstart[subroot->index]] = 1;
-            cur_node = &NodeArray[children[max_liu_rank_index]];
-
-#ifdef DEBUG_LIU_RANK      
-            if (chstart[subroot->index] != chstart[subroot->index+1]-1) { cerr<<" "<<cur_node->index<<"("<<cur_node->liu_rank<<")"; }
-#endif      
-            L->insert_after(subroot,cur_node);
-            cut_value += ewghts[cur_node->index];
-
-            //first node explored
-            if(j==chstart[subroot->index])
-              subroot->pSCend = cur_node;
-            //last node explored
-            if(j==chstart[subroot->index+1]-1)
-              subroot->pSCbegin = cur_node;
-          }
-          delete[] seen;
-#ifdef DEBUG_LIU_RANK
-          if (chstart[subroot->index] != chstart[subroot->index+1]-1) { cerr<<endl; }
-#endif
-#endif
-
         }
         int cut_size = candidates_count;
-#if defined(DEBUG_LIU_RANK) or VERBOSE
-        if (chstart[subroot->index] != chstart[subroot->index+1]-1) {
-          spacing[0]='\0';
-          cerr<<spacing<<"[ node "<<subroot->index<<" ] initial subcut is [";
-#ifndef USE_DICHOTOMY
-          iter_node_t * cur_node = subroot->pSCbegin;
-          while(cut_size>0 && cur_node != subroot->pSCend->pNext){
-            cerr<<" "<<cur_node->index<<"("<<cur_node->mpeak<<")";
-            cur_node = cur_node->pNext;
-          }
-          cerr<<" ]"<<endl;
-#else
-          s_list_item_t * cur_node = L->getItem(subroot->pSCbegin);
-	  s_list_item_t * end_node = L->getItem(subroot->pSCend);
-          while(cut_size>0 && cur_node != end_node->pNext){
-            cerr<<" "<<cur_node->node->index<<"("<<cur_node->node->mpeak<<")";
-            cur_node = cur_node->pNext;
-          }
-          cerr<<" ]"<<endl;
-#endif
-        }
-#endif
-
-
         bool first_loop = true;
         while (candidates_count>0) {
 
-#ifndef USE_DICHOTOMY
           iter_node_t * current_node = subroot->pSCbegin;
-#else
-          s_list_item_t * current_item = L->getItem(subroot->pSCbegin);
-	  s_list_item_t * end_item = L->getItem(subroot->pSCend);
-#endif
 
-#ifndef USE_DICHOTOMY
           while(cut_size>0 && current_node != subroot->pSCend->pNext){
-#else
-          while(cut_size>0 && current_item != end_item->pNext){
-		  iter_node_t * current_node = current_item->node;
-#endif
             double m_j = numeric_limits<double>::infinity();
             int tmp_sched_head = sched_head;
             uint64_t prevCutSize = L->size();
             uint64_t subcut_size = 0;
             double available_memory_after_subroot = available_memory - cut_value + ewghts[subroot->index];
-#if STRONG_ASSERT
-            iter_node_t * next_node = current_node->pNext;
-#endif
 
             if (available_memory_after_subroot + ewghts[current_node->index]>= current_node->mpeak || first_loop)
               {
-#if DEBUG_MEMUSAGE
-                exploreArray2(N,nwghts,ewghts,chstart,children,current_node,available_memory_after_subroot,false,NodeArray, m_j,L,sub_schedule,tmp_sched_head,depth+1,count,memsched_debug);
-#else
 
                 exploreArray2(N,nwghts,ewghts,chstart,children,current_node,available_memory_after_subroot,false,NodeArray, m_j,L,sub_schedule,tmp_sched_head,depth+1,count);
-#endif
                 subcut_size = L->size() - prevCutSize;
 
                 if (m_j > ewghts[current_node->index] ){
                   //pop the end of the list
 
                 L->splice(current_node,current_node->pSCend, subcut_size);
-#ifndef NOASSERT
                 if(subcut_size>0){
                   assert(current_node->pNext == current_node->pSCend->pNext);
                 }
-#endif
 
               }
               else if (m_j <= ewghts[current_node->index] ){
@@ -576,9 +442,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
                   }
                   if(current_node==subroot->pSCend){
                     subroot->pSCend = current_node->pSCend;
-#ifdef USE_DICHOTOMY
-	  	    end_item = L->getItem(subroot->pSCend);
-#endif
                     //              cerr<<"[ node "<<subroot->index<<" ] subcut new end "<<subroot->pSCend->index<<endl;
                   }
                 }
@@ -586,29 +449,17 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
                   // if the subcut of the children is empty but subroot's cut has other nodes than the one we are going to remove
                   if(cut_size>1){
                     if(current_node==subroot->pSCbegin && !(current_node==subroot->pSCend)){
-#ifndef USE_DICHOTOMY
                       subroot->pSCbegin = current_node->pNext;
-#else
-                      subroot->pSCbegin = current_item->pNext->node;
-#endif
                       //              cerr<<"[ node "<<subroot->index<<" ] subcut new begin "<<subroot->pSCbegin->index<<endl;
                     }
                     else if(current_node==subroot->pSCend && !(current_node==subroot->pSCbegin)){
-#ifndef USE_DICHOTOMY
                       subroot->pSCend = current_node->pPrev;
-#else
-                      subroot->pSCend = current_item->pPrev->node;
-	  	      end_item = L->getItem(subroot->pSCend);
-#endif
                       //              cerr<<"[ node "<<subroot->index<<" ] subcut new end "<<subroot->pSCend->index<<endl;
                     }
                   }
                 }
 
                 L->erase(current_node);
-#if STRONG_ASSERT
-                assert(current_node->pPrev==current_node->pNext->pPrev);
-#endif
 
                 cut_size += subcut_size -1;
                 sched_head = tmp_sched_head;
@@ -618,29 +469,14 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
                 //advance the pointer to skip the new nodes in the cut
                 if(subcut_size>0){
                   current_node = current_node->pSCend;
-#ifdef USE_DICHOTOMY
-		  current_item = L->getItem(current_node); 
-#endif
                 }
-#ifndef USE_DICHOTOMY
-#if STRONG_ASSERT
-                assert(current_node->pNext == next_node);
-#endif
-#endif
               }
 
           }
-
-#ifndef USE_DICHOTOMY
           current_node = current_node->pNext;
-#else
-          current_item = current_item->pNext;
-#endif
         }
 
         first_loop=false;
-
-#ifndef USE_DICHOTOMY
         cut_value = 0;
         current_node = subroot->pSCbegin;
         while(cut_size>0 && subroot->pSCend->pNext != current_node){
@@ -657,29 +493,9 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
           }
           current_node = current_node->pNext;
         }
-#else
-        current_item = L->getItem(subroot->pSCbegin);
-	end_item = L->getItem(subroot->pSCend);
-        cut_value = 0;
-        while(cut_size>0 && current_item != end_item->pNext){
-          cut_value += ewghts[current_item->node->index];
-          current_item = current_item->pNext;
-        }
-
-        double available_memory_after_subroot = available_memory - cut_value + ewghts[subroot->index];
-        current_item = L->getItem(subroot->pSCbegin);
-        candidates_count=0;
-        while(cut_size>0 && current_item != end_item->pNext){
-          if (available_memory_after_subroot  + ewghts[current_item->node->index]>= current_item->node->mpeak){ 
-            candidates_count++;
-          }
-          current_item = current_item->pNext;
-        }
-#endif
       }
 
 
-#ifndef USE_DICHOTOMY
     cut_value = 0;
     iter_node_t * current_node = subroot->pSCbegin;
     while(cut_size>0 && subroot->pSCend->pNext != current_node){
@@ -699,23 +515,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
 
       current_node = current_node->pNext;
     }
-#else
-    s_list_item_t * current_item = L->getItem(subroot->pSCbegin);
-    s_list_item_t * end_item = L->getItem(subroot->pSCend);
-    cut_value = 0;
-    while(cut_size>0 && current_item != end_item->pNext){
-      cut_value += ewghts[current_item->node->index];
-      current_item = current_item->pNext;
-    }
-
-    double available_memory_after_subroot = available_memory - cut_value + ewghts[subroot->index];
-    current_item = L->getItem(subroot->pSCbegin);
-    subroot->mpeak = numeric_limits<double>::infinity();
-    while(cut_size>0 && current_item != end_item->pNext){
-      subroot->mpeak = min(subroot->mpeak,current_item->node->mpeak + cut_value - ewghts[current_item->node->index]);
-      current_item = current_item->pNext;
-    }
-#endif
     return;
   }
 
@@ -731,126 +530,24 @@ void MinMemArray(int N, int root, double * nwghts, double * ewghts, int * chstar
 
   setrlimit(RLIMIT_STACK,&lim);
 
-
-#ifdef DEBUG_LIU
-  double time_liu = 0;
-  double mem_liu = PostOrderIterAlgorithm_timed( N, prnts, nwghts, ewghts, Schedule, &time_liu,1);
-  //schedule now contains liu's schedule
-#endif
-
-
-
   iter_node_t * NodeArray = new iter_node_t[N+1];
   NodeArray[root].mpeak = MaxOutDeg;
-
-#if DEBUG_MEMUSAGE
-  double * memsched_debug = new double [N+1];
-#endif
-#ifdef USE_DICHOTOMY
-  double max_memory = 0;
-#endif
   for(int i=1;i<N+1;i++){
     NodeArray[i].index = i;
     NodeArray[i].cost = ewghts[i]+nwghts[i];
     for(int j = chstart[i]; j<chstart[i+1];j++){ NodeArray[i].cost += ewghts[children[j]]; }
-#ifdef USE_DICHOTOMY
-    max_memory += ewghts[i]+nwghts[i];
-#endif
   }
 
-#ifdef DEBUG_LIU
-  for(int i=0;i<N;i++){
-    int scheduled_node_index = Schedule[i];
-    NodeArray[scheduled_node_index].liu_rank = N-1-i;
-  }
-#endif
-
-#ifndef USE_DICHOTOMY
   MinMemDLL * MinCut = new MinMemDLL(&NodeArray[root]);
-#else
-  MinMemDLL * MinCut = new MinMemDLL(&NodeArray[root],N+1);
-  MinMemDLL * prev_MinCut = new MinMemDLL(&NodeArray[root],N+1);
-#endif
 
   int sched_head = N-1;
   bool initialize_cut = false;
   count = 0;
-#ifndef USE_DICHOTOMY
   while(NodeArray[root].mpeak<numeric_limits<double>::infinity()){
     Required_memory = NodeArray[root].mpeak;
-#if DEBUG_MEMUSAGE
-    memsched_debug[sched_head+1] = Required_memory - Cut_value;
-#endif
-#if DEBUG_MEMUSAGE
-    exploreArray2(N,nwghts,ewghts,chstart,children,&NodeArray[root],Required_memory, initialize_cut,NodeArray, Cut_value, MinCut, Schedule, sched_head,0,count,memsched_debug);
-#else
     exploreArray2(N,nwghts,ewghts,chstart,children,&NodeArray[root],Required_memory, initialize_cut,NodeArray, Cut_value, MinCut, Schedule, sched_head,0,count);
-
-#endif
     initialize_cut = true;
-#if STRONG_ASSERT
-    assert(Required_memory<=NodeArray[root].mpeak);
-#endif
-
   }
-#else
-  uint64_t prev_sched_head = N-1;
-  double min_memory = MaxOutDeg;
-  max_memory = 2*MaxOutDeg; /* tmp need to check if it is too low*/
-  /*start with max out deg : good heuristic */
-  double half_mem = min_memory;//min_memory + floor((max_memory-min_memory)/2);
-  double prev_peak = -1;
-  double prev_valid_peak = -1;
-  MinMemDLL * current_cut = MinCut;
-  MinMemDLL * prev_cut = prev_MinCut;
-  while(max_memory != min_memory){
-
- 
-    exploreArray2(N,nwghts,ewghts,chstart,children,&NodeArray[root],half_mem, initialize_cut,NodeArray, Cut_value, current_cut, Schedule, sched_head,0,count);
-
-    if(NodeArray[root].mpeak==numeric_limits<double>::infinity() && prev_peak == -1) {
-      break;
-    }
-
-    if(prev_valid_peak == half_mem /*&& NodeArray[root].mpeak==numeric_limits<double>::infinity()*/){
-      break;
-    }
-
-    if(NodeArray[root].mpeak==numeric_limits<double>::infinity()){
-      initialize_cut = true;
-      sched_head = prev_sched_head;
-
-      current_cut->copy(prev_cut);
-      max_memory = half_mem;
-      half_mem = min_memory + ceil((max_memory-min_memory)/2);
-    }
-    else{
-      prev_cut->copy(current_cut);
-      prev_sched_head = sched_head;
-      min_memory = half_mem;
-      half_mem = min_memory + ceil((max_memory-min_memory)/2);
-
-      initialize_cut = true;
-
-      prev_valid_peak = NodeArray[root].mpeak;
-    }
-
-    prev_peak = NodeArray[root].mpeak;
-
-  }
-
-//  delete tmpCut;
-  Required_memory = half_mem;
-
-#endif
-
-
-#if DEBUG_MEMUSAGE
-  delete[] memsched_debug;
-#endif
   delete MinCut;
-#ifdef USE_DICHOTOMY
-  delete prev_MinCut;
-#endif
   delete[] NodeArray;
 }

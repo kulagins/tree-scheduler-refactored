@@ -320,37 +320,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
         if(!quiet){ cerr<<spacing<<candidates_count<<" candidates left"<<endl; }		
       }
 
-      //	if(!quiet){
-      //		//		if(min_sub_cut.size()>0){
-      //		int local_count;
-      //		cerr<<spacing<<"MSC : {";
-      //		list<node_peak_t>::iterator last=begin;
-      //		for (local_count=0; local_count<sub_cut_size;++local_count){
-      //			cerr<<last->index<<" ";
-      //			++last;
-      //		}
-      //		cerr<<"}"<<endl;
-      //		//		}
-      //		
-      //		cerr<<spacing<<"SUB SCHED : {";
-      //		for (int j = sched_head+1;j<=prev_sched_head;j++){ cerr<<sub_schedule[j]<<" "; }
-      //		//		for (list<int>::iterator last=sub_schedule.begin(); last!=sub_schedule.end(); ++last){
-      //		//			cerr<<*last<<" ";
-      //		//		}
-      //		cerr<<"}"<<endl;
-      //		
-      //		
-      //		cerr<<spacing<<"TOTAL SCHED : {";
-      //		for (int j = sched_head+1;j<N;j++){ cerr<<sub_schedule[j]<<" "; }
-      //		//		for (list<int>::iterator last=sub_schedule.begin(); last!=sub_schedule.end(); ++last){
-      //		//			cerr<<*last<<" ";
-      //		//		}
-      //		cerr<<"}"<<endl;
-      //		
-      //		cerr<<spacing<<"CUTVALUE :"<<cut_value<<endl;
-      //		cerr<<spacing<<"MPEAK :"<<Mpeak<<endl;
-      //	}
-
       return;
     }
 
@@ -358,9 +327,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
 
       {
         count++;
-
-
-
         /* if node is unreachable, return +infty */
         if (subroot->cost - ewghts[subroot->index]> available_memory) {
 
@@ -509,10 +475,6 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts,do
     while(cut_size>0 && subroot->pSCend->pNext != current_node){
 
       subroot->mpeak = min(subroot->mpeak,current_node->mpeak + cut_value - ewghts[current_node->index]);
-
-
-
-
       current_node = current_node->pNext;
     }
     return;

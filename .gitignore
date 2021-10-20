@@ -7,3 +7,4 @@ res
 *.dSYM
 .DS_Store
 lib/heuristics.a
+.idea

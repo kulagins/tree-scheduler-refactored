@@ -10,9 +10,8 @@
 #include <time.h>
 #include <list>
 #include <algorithm>
-#include "heuristics.h"
-#include "lib-io-tree-utils.h"
-#include "lib-io-tree-free-methods.h"
+#include "../include/heuristics.h"
+#include "../include/lib-io-tree-free-methods.h"
 
 //#include <omp.h>
 

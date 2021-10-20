@@ -39,7 +39,6 @@ void actualActions(double CCR, unsigned int num_processors, double *ewghts, doub
     string stage2heuristic;
     vector<double> memorySizes;
     list<Task *> parallelSubtrees;
-    unsigned long sequentialLen;
     std::map<int, int> processor_speeds = Cluster::buildProcessorSpeeds(num_processors);
     std::map<int, int> taskToPrc;
     std::map<int, bool> isProcBusy;

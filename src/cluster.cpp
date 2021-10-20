@@ -1,4 +1,4 @@
-#include "cluster.h"
+#include "../include/cluster.h"
 
 using namespace std;
 

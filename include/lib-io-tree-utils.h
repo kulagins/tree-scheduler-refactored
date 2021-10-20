@@ -416,6 +416,16 @@ class Tree{
       }
     }
 
+    Tree(vector<Task *> nodes, Tree * originalTree){
+      root_index=1;
+      root_count=0;
+      offset_id = 0;
+      tree_id = 1;
+      
+      *(this->nodes) = nodes;
+      this->originalTree = originalTree;      
+    }
+
 
     ~Tree(){
       if(root_index!=0 && nodes->size()>0){
@@ -546,29 +556,7 @@ typedef map<unsigned int, double> io_map;
 typedef pair<unsigned int, unsigned int> node_sche;
 typedef pair<unsigned int, double> node_ew;
 
-struct OrdoLiu_t;
-struct val_seg_t
-{
-  schedule_t::iterator begin;
-  unsigned int begin_index;
-  schedule_t::iterator end;
-  unsigned int end_index;
-  OrdoLiu_t *orig_ordo;
-  double value;
-};
 
-struct OrdoLiu_t
-{
-  double max_pebble_cost;
-  double fi;
-  list<val_seg_t> val_seg;
-  schedule_t schedule;
-}; 
-
-
-void ConvertToLiu(const Tree * tree_us, Tree * tree_liu) ;
-void ConvertToLiu(const int * oldprnts,const double * oldnwghts,const double * oldewghts, int N,const int* chstart,const int * children, int ** pprnts, double ** pnwghts, double ** pewghts);
-void parse_tree(const char *filename,Tree * tree);
 void parse_tree(const char *filename,int * N ,int **prnts,double **nwghts,double **ewghts, double **mswghts);
 
 extern "C"
@@ -579,12 +567,9 @@ extern "C"
 #ifdef __cplusplus
 } /* closing brace for extern "C" */
 
-bool check_schedule(int * prnts,int * sched,int N);
-
 double MaxOutDegree(Tree * tree,int quiet);
 double MaxOutDegree(int N, double * nwghts, double * ewghts, int * chstart,int * children);
 
-void NextValley(Task * node, double available_memory,  double & cut_value, list<Task*> & min_sub_cut, list<unsigned int> & sub_schedule, double & Inc, int quiet, int depth,int & count);
 double IOCounter(Tree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, double available_memory,bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
 double IOCounterWithVariableMem(Tree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, vector<double> availableMemorySizesA2, int &currentProcessor,
                                          std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);

@@ -13,11 +13,11 @@
 #include <limits>
 #include <cmath>
 
-#include "lib-io-tree-utils.h"
-#include "lib-io-tree.h"
-#include "lib-io-tree-minmem.h"
-#include "lib-io-tree-free-methods.h"
-#include "heuristics.h"
+#include "../include/lib-io-tree-utils.h"
+#include "../include/lib-io-tree.h"
+#include "../include/lib-io-tree-minmem.h"
+#include "../include/lib-io-tree-free-methods.h"
+#include "../include/heuristics.h"
 #include <sys/time.h>
 #include <algorithm>
 
@@ -350,77 +350,6 @@ double Task::Sequence()
     return this->GetMSCost();
 }
 
-void parse_tree(const char *filename, Tree *tree)
-{
-    ifstream OpenFile(filename);
-    char begin;
-    char cur_char;
-    unsigned int line_index = 1;
-    bool nodes_cnt_read = false;
-
-    do
-    {
-        /*skip commentary lines*/
-        begin = OpenFile.peek();
-        if (OpenFile.good())
-        {
-
-            if (begin == '%')
-            {
-                do
-                {
-                    cur_char = OpenFile.get();
-                } while (cur_char != '\n' && OpenFile.good());
-            }
-            else
-            {
-                if (!nodes_cnt_read)
-                {
-                    /* get the number of nodes and skip last trailing character*/
-                    int nb_of_nodes;
-                    OpenFile >> nb_of_nodes;
-                    do
-                    {
-                        cur_char = OpenFile.get();
-                    } while (cur_char != '\n' && OpenFile.good());
-                    nodes_cnt_read = true;
-                    /*allocate space for nodes*/
-                    tree->AllocateNodes(nb_of_nodes);
-                }
-                else
-                {
-                    /*parse actual nodes*/
-                    unsigned int parent;
-                    double ew, nw;
-
-                    OpenFile >> parent >> nw >> ew;
-                    do
-                    {
-                        cur_char = OpenFile.get();
-                    } while (cur_char != '\n' && OpenFile.good());
-
-                    tree->GetNode(line_index - 1)->SetParentId(parent - 1);
-                    tree->GetNode(line_index - 1)->SetEW(ew);
-                    tree->GetNode(line_index - 1)->SetNW(nw);
-                    tree->GetNode(line_index - 1)->SetId(line_index - 1);
-
-                    if (parent > 0)
-                    {
-                        tree->GetNode(parent - 1)->AddChild(tree->GetNode(line_index - 1));
-                    }
-
-                    if (parent == 0)
-                    {
-                        tree->SetRootId(line_index - 1);
-                    }
-                    line_index++;
-                }
-            }
-        }
-    } while (OpenFile.good());
-
-    OpenFile.close();
-}
 
 void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, double **ewghts, double **mswghts)
 {
@@ -874,10 +803,6 @@ double unload_furthest_best_fit(io_map &unloaded_nodes, schedule_t &loaded_nodes
             {
                 local_data_to_unload = remaining_loaded_data;
             }
-#if VERBOSE
-            cerr << "unloading (IO) " << local_data_to_unload << " of " << *far_node_id << endl;
-#endif
-
             /*if it "fits", that is if the amount of data is lower than what we need to unload*/
             if (local_data_to_unload <= data_to_unload - unloaded_data)
             {
@@ -942,10 +867,6 @@ double unload_furthest_first_fit_abs(io_map &unloaded_nodes, schedule_t &loaded_
         {
             local_data_to_unload = remaining_loaded_data;
         }
-#if VERBOSE
-        cerr << "unloading (IO) " << local_data_to_unload << " of " << *far_node_id << endl;
-#endif
-
         /*if it "fits", that is if the amount of data is lower than what we need to unload*/
         if (local_data_to_unload >= data_to_unload - unloaded_data)
         {
@@ -1001,10 +922,6 @@ double unload_furthest_best_fit_abs(io_map &unloaded_nodes, schedule_t &loaded_n
             {
                 local_data_to_unload = remaining_loaded_data;
             }
-#if VERBOSE
-            cerr << "unloading (IO) " << local_data_to_unload << " of " << *far_node_id << endl;
-#endif
-
             /*if it "fits", that is if the amount of data is lower than what we need to unload*/
             if (abs(data_to_unload - unloaded_data - local_data_to_unload) < abs(data_to_unload - unloaded_data - best_candi_score))
             {
@@ -1822,36 +1739,7 @@ double IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewght
     //    cerr<<"IO Volume "<<io_volume<<endl;
 }
 
-bool check_schedule(int *prnts, int *sched, int N)
-{
-    bool valid = true;
 
-    int *rev_sched = new int[N + 1];
-
-    for (int i = 1; i < N + 1; i++)
-    {
-        rev_sched[sched[i - 1]] = i;
-
-        //        cerr<<"Task "<<sched[i-1]<<" is scheduled at step "<<i<<endl;
-    }
-
-    for (int i = 1; i < N + 1; i++)
-    {
-        if (prnts[i] > 0)
-        {
-            //            cerr<<"T"<<i<<" at "<<rev_sched[i]<<" || T"<<prnts[i]<<" at "<<rev_sched[prnts[i]]<<endl;
-            valid = valid & (rev_sched[prnts[i]] > rev_sched[i]);
-            if (rev_sched[prnts[i]] < rev_sched[i])
-            {
-                cerr << "Task " << prnts[i] << " is before Task " << i << endl;
-            }
-        }
-    }
-
-    delete[] rev_sched;
-
-    return valid;
-}
 
 double MaxOutDegree(Tree *tree, int quiet)
 {

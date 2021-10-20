@@ -12,12 +12,16 @@
 #include "heuristics.h"
 
 
-void RunWithClusterConfig(bool skipBigTrees, Tree *treeobj,
-                          Cluster *cluster, io_method_t method) {
+
+
+void RunWithClusterConfig(bool skipBigTrees, int *chstart, int *children, Tree *treeobj,
+                          Cluster *cluster, io_method_t method)
+
+{
     if (cluster->isHomogeneous())
-        MemoryCheck(treeobj, nullptr, nullptr, cluster, method);
+        MemoryCheck(treeobj, chstart, children, cluster, method);
     else
-        MemoryCheckA2(treeobj, cluster, method, skipBigTrees);
+        MemoryCheckA2(treeobj, chstart, children,  cluster, method, skipBigTrees);
 }
 
 
@@ -45,54 +49,15 @@ void actualActions(double CCR, unsigned int num_processors, double *ewghts, doub
     SetBandwidth(CCR, tree_size, ewghts, timewghts);
 
     Tree *treeobj = new Tree(tree_size, prnts, spacewghts, ewghts, timewghts);
-    Tree *originalTree = new Tree(tree_size, prnts, spacewghts, ewghts, timewghts);
-    treeobj->setOriginalTree(originalTree);
-
-    for (int i = 2; i < treeobj->GetNodes()->size(); i++) {
-        cout << treeobj->GetNode(i)->GetId() << endl;
-        cout << ", parent: " << treeobj->GetNode(i)->GetParent()->GetId() << endl;
-    }
-
+    treeobj->setOriginalTree(treeobj);
 
     maxoutd = MaxOutDegree(treeobj, true);
 
     po_construct(tree_size, prnts, &chstart, &chend, &children, &root);
-    cout << "ids prnts chstart chend children" << endl;;
-    int i;
-    for (i = 0; i <= tree_size; i++) {
-        cout << i << "   " << prnts[i] << "      " << chstart[i] << "       " << chend[i] << "        " << children[i]
-             << "  " << endl;
-    }
-    cout << "      " << chstart[++i] << "        " << chend[i] << endl;
     time = clock();
     makespan = treeobj->GetRoot()->GetMSCost();
     number_subtrees = 1;
     time = clock() - time;
-
-    treeobj->GetRoot()->BreakEdge();
-
-    for (int i = 2; i < treeobj->GetNodes()->size(); i++) {
-        cout << treeobj->GetNode(i)->GetId() << " is Broken? " << treeobj->GetNode(i)->IsBroken() << endl;
-        cout << ", parent: " << treeobj->GetNode(i)->GetParent()->GetId() << endl;
-    }
-
-    treeobj->GetNode(6)->BreakEdge();
-
-    for (int i = 2; i < treeobj->GetNodes()->size(); i++) {
-        cout << treeobj->GetNode(i)->GetId() << " is Broken? " << treeobj->GetNode(i)->IsBroken() << endl;
-        cout << ", parent: " << treeobj->GetNode(i)->GetParent()->GetId() << endl;
-    }
-    int nts = treeobj->GetNodes()->size();
-
-    Tree *subtree = BuildSubtreeOld(treeobj, treeobj->GetNode(6), nts, &prnts, &ewghts, &timewghts, &spacewghts,
-                                    chstart, children);
-    cout << "Of subtree" << endl;
-    for (int i = 1; i < subtree->GetNodes()->size(); i++) {
-        cout << subtree->GetNode(i)->GetId() << " is Broken? " << subtree->GetNode(i)->IsBroken() << endl;
-      if (i!=1)  cout << ", parent: " << subtree->GetNode(i)->GetParent()->GetId() << endl;
-    }
-    //Tree* tree, Task* SubtreeRoot, unsigned int new_tree_size, int** prnts, double** ewghts, double** timewghts, 
-    //double** spacewghts, int * chstart, int * children
 
     //<< " " << NPR << " " << CCR << " NA " << number_subtrees << " " << num_processors << " " << makespan << " Sequence " << time << endl;
 
@@ -102,31 +67,31 @@ void actualActions(double CCR, unsigned int num_processors, double *ewghts, doub
     delete schedule_f;
     delete treeobj;
 
-    ////cHANGES FROM HERE
     memorySizes = Cluster::buildMemorySizes(maxoutd, minMem, num_processors);
     Cluster *cluster = new Cluster(memorySizes);
     for (int stage2Method = 0; stage2Method < 1; ++stage2Method) {
 
         Tree *treeobj = new Tree(tree_size, prnts, spacewghts, ewghts, timewghts);
         time = clock();
-        switch (stage2Method) {
-            case 0:
-                stage2heuristic = "FIRST_FIT";
-                RunWithClusterConfig(skipBigTrees, treeobj, cluster, FIRST_FIT);
-                break;
-            case 1:
-                stage2heuristic = "LARGEST_FIT";
-                RunWithClusterConfig(skipBigTrees, treeobj, cluster, LARGEST_FIT);
-                break;
-            case 2:
-                stage2heuristic = "IMMEDIATELY";
-                RunWithClusterConfig(skipBigTrees, treeobj, cluster, IMMEDIATELY);
-                break;
+        switch (stage2Method)
+        {
+        case 0:
+            stage2heuristic = "FIRST_FIT";
+            RunWithClusterConfig(skipBigTrees, chstart, children, treeobj, cluster, FIRST_FIT);
+            break;
+        case 1:
+            stage2heuristic = "LARGEST_FIT";
+            RunWithClusterConfig(skipBigTrees, chstart, children, treeobj, cluster, LARGEST_FIT);
+            break;
+        case 2:
+            stage2heuristic = "IMMEDIATELY";
+            RunWithClusterConfig(skipBigTrees, chstart, children, treeobj, cluster, IMMEDIATELY);
+            break;
 
-            default:
-                stage2heuristic = "FIRST_FIT";
-                RunWithClusterConfig(skipBigTrees, treeobj, cluster, IMMEDIATELY);
-                break;
+        default:
+            stage2heuristic = "FIRST_FIT";
+            RunWithClusterConfig(skipBigTrees, chstart, children, treeobj, cluster, IMMEDIATELY);
+            break;
         }
 
         time = clock() - time;

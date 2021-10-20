@@ -573,8 +573,7 @@ double MaxOutDegree(int N, double * nwghts, double * ewghts, int * chstart,int *
 double IOCounter(Tree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, double available_memory,bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
 double IOCounterWithVariableMem(Tree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, vector<double> availableMemorySizesA2, int &currentProcessor,
                                          std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
-Tree* BuildSubtreeOld(Tree* tree, Task* SubtreeRoot, unsigned int new_tree_size, int** prnts, double** ewghts, double** timewghts, double** spacewghts, int * chstart, int * children);
-Tree* BuildSubtree(Tree* tree, Task* SubtreeRoot);
+Tree* BuildSubtree(Tree* tree, Task* SubtreeRoot, unsigned int new_tree_size, int** prnts, double** ewghts, double** timewghts, double** spacewghts, int * chstart, int * children);
 
 
 

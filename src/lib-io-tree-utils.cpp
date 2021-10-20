@@ -311,7 +311,7 @@ bool Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory
 
     double *ewghts, *timewghts, *spacewghts;
     int *prnts;
-    Tree *subtree = BuildSubtree(this, SubtreeRoot);
+    Tree *subtree = BuildSubtree(this, SubtreeRoot, new_tree_size, &prnts, &ewghts, &timewghts, &spacewghts, chstart, children);
     delete[] ewghts;
     delete[] timewghts;
     delete[] spacewghts;
@@ -352,7 +352,8 @@ double Task::Sequence()
 
 
 void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, double **ewghts, double **mswghts)
-{   
+{
+
     ifstream OpenFile(filename);
     char begin;
     char cur_char;
@@ -407,7 +408,6 @@ void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, doub
                         cur_char = OpenFile.get();
                     } while (cur_char != '\n' && OpenFile.good());
                     parent = nb_of_nodes - parent + 1; //root has the largest id in the txt file
-                   // cout<<"nbnodes "<<nb_of_nodes <<"parent "<< parent<<" line index "<<line_index<<" resulting index "<<nb_of_nodes - line_index<<endl;
                     (*prnts)[nb_of_nodes - line_index] = parent;
                     (*nwghts)[nb_of_nodes - line_index] = nw;
                     (*ewghts)[nb_of_nodes - line_index] = ew;
@@ -456,17 +456,17 @@ void poaux(const int *chstart, const int *children, int N, int r, int *por, int 
     delete[] stack;
 }
 
-void po_construct(const int treeSize, const int *prnts, int **chstart, int **chend, int **children, int *root)
-{   
-    *chstart = new int[treeSize + 2];
-    *children = new int[treeSize + 1];
-     *chend = new int[treeSize + 2];
-    memset((void *)*chstart, 0, (treeSize + 2) * sizeof(**chstart));
-    memset((void *)*children, 0, (treeSize + 1) * sizeof(**children));
+void po_construct(const int N, const int *prnts, int **chstart, int **chend, int **children, int *root)
+{
+    *chend = new int[N + 2];
+    *chstart = new int[N + 2];
+    *children = new int[N + 1];
+    memset((void *)*chstart, 0, (N + 2) * sizeof(**chstart));
+    memset((void *)*children, 0, (N + 1) * sizeof(**children));
 
     *root = -1;
 
-    for (int ii = 1; ii < treeSize + 1; ii++)
+    for (int ii = 1; ii < N + 1; ii++)
     {
         if (prnts[ii] > 0)
         {
@@ -480,16 +480,16 @@ void po_construct(const int treeSize, const int *prnts, int **chstart, int **che
 
     /*compute cumsum*/
     int cum_val = 1;
-    for (int ii = 1; ii < treeSize + 2; ii++)
+    for (int ii = 1; ii < N + 2; ii++)
     {
         int val = cum_val;
         cum_val += (*chstart)[ii];
         (*chstart)[ii] = val;
     }
 
-    memcpy(*chend, *chstart, (treeSize + 2) * sizeof(**chstart));
+    memcpy(*chend, *chstart, (N + 2) * sizeof(**chstart));
 
-    for (int ii = 1; ii < treeSize + 1; ii++)
+    for (int ii = 1; ii < N + 1; ii++)
     {
         if (prnts[ii] > 0)
         {
@@ -1328,7 +1328,7 @@ double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart
 
                 double *ewghtssub, *timewghtssub, *spacewghtssub;
                 int *prntssub;
-                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id));
+                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub, &timewghtssub, &spacewghtssub, chstart, children);
 
                 subtree_size = subtree->GetNodes()->size();
                 cout << "subtree size " << subtree_size << endl;
@@ -1345,7 +1345,7 @@ double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart
                     advance(ite_sche, 1);
                 }
                 schedule_copy[0] = subtree_size + 1;
-                int *chstartsub, *childrensub, *chendsub;
+                int *chstartsub, *chendsub, *childrensub;
                 po_construct(subtree_size, prntssub, &chstartsub, &chendsub, &childrensub, &rootid);
 
                 if (memory_required > available_memory)
@@ -1366,7 +1366,7 @@ double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart
                 delete[] spacewghtssub;
                 delete[] prntssub;
                 delete[] chstartsub;
-               
+                delete[] chendsub;
                 delete[] childrensub;
                 delete[] schedule_copy;
                 delete subtree;
@@ -1566,7 +1566,7 @@ double IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewght
 
                 double *ewghtssub, *timewghtssub, *spacewghtssub;
                 int *prntssub;
-                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id));
+                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub, &timewghtssub, &spacewghtssub, chstart, children);
 
                 subtree_size = subtree->GetNodes()->size();
 
@@ -1582,7 +1582,7 @@ double IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewght
                     advance(ite_sche, 1);
                 }
                 schedule_copy[0] = subtree_size + 1;
-                int *chstartsub, *childrensub, *chendsub;
+                int *chstartsub, *chendsub, *childrensub;
                 po_construct(subtree_size, prntssub, &chstartsub, &chendsub, &childrensub, &rootid);
 
                 if (memory_required > cluster->getFirstFreeProcessor()->getMemorySize())
@@ -1613,7 +1613,8 @@ double IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewght
                 delete[] timewghtssub;
                 delete[] spacewghtssub;
                 delete[] prntssub;
-                delete[] chstartsub;                
+                delete[] chstartsub;
+                delete[] chendsub;
                 delete[] childrensub;
                 delete[] schedule_copy;
                 delete subtree;
@@ -1785,14 +1786,15 @@ double MaxOutDegree(int N, double *nwghts, double *ewghts, int *chstart, int *ch
 
 double MaxOutDegree(int N, int *prnts, double *nwghts, double *ewghts)
 {
-    int *chstart, *children, *chend;
+    int *chstart, *chend, *children;
     int root;
 
     po_construct(N, prnts, &chstart, &chend, &children, &root);
 
     double max_out = MaxOutDegree(N, nwghts, ewghts, chstart, children);
 
-    delete[] chstart;   
+    delete[] chstart;
+    delete[] chend;
     delete[] children;
 
     return max_out;
@@ -1837,7 +1839,7 @@ Tree *SubtreeRooted(Task *node)
     }
 }
 
-Tree *BuildSubtreeOld(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts, double **timewghts, double **spacewghts, int *chstart, int *children)
+Tree *BuildSubtree(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts, double **timewghts, double **spacewghts, int *chstart, int *children)
 {
     *prnts = new int[new_tree_size + 1];
     *ewghts = new double[new_tree_size + 1];
@@ -1894,43 +1896,6 @@ Tree *BuildSubtreeOld(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size,
     }
 
     delete[] originalIDs;
-
-    return treeobj;
-}
-
-Tree *BuildSubtree(Tree *tree, Task *SubtreeRoot)
-{
-    
-    
-    Task *currentNode;
-    list<Task*> que;
-    vector<Task*> nodesOfSubtree;
-    que.push_back(SubtreeRoot);
-    Task * parent;
-    Task *temp = SubtreeRoot;
-    SubtreeRoot->SetothersideID(1);
-
-    while (!que.empty())
-    {
-        Task * currentTask = que.front();
-        que.pop_front();
-        parent = currentTask->GetParent();
-        nodesOfSubtree.push_back(currentTask);
-        for(Task * child: *(currentTask->GetChildren())){
-            if (!child->IsBroken())
-            {                 
-                que.push_back(child); 
-            }
-        }      
-    }
-    
-    Tree *treeobj = new Tree(nodesOfSubtree, tree->getOriginalTree());
-
-    //TODO: set other side ids? 
-    /*  for (unsigned int i = 1; i <= real_tree_size; i++)
-    {
-        treeobj->GetNode(i)->SetothersideID(originalIDs[i]); //corresponding to the original tree's id
-    } */
 
     return treeobj;
 }

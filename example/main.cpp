@@ -8,11 +8,8 @@
 #include <math.h>
 #include <algorithm>
 #include <stdlib.h>
-#include "lib-io-tree.h"
-#include "heuristics.h"
-
-
-
+#include "../include/lib-io-tree.h"
+#include "../include/heuristics.h"
 
 void RunWithClusterConfig(bool skipBigTrees, int *chstart, int *children, Tree *treeobj,
                           Cluster *cluster, io_method_t method)
@@ -46,10 +43,12 @@ void actualActions(double CCR, unsigned int num_processors, double *ewghts, doub
     double makespan;
     double maxoutd;
 
-    SetBandwidth(CCR, tree_size, ewghts, timewghts);
+    Cluster *cluster = new Cluster(num_processors, true);
+    cluster->SetBandwidth(CCR, tree_size, ewghts, timewghts);
+    Cluster::setFixedCluster(cluster);
 
     Tree *treeobj = new Tree(tree_size, prnts, spacewghts, ewghts, timewghts);
-    treeobj->setOriginalTree(treeobj);
+    Tree::setOriginalTree(treeobj);
 
     maxoutd = MaxOutDegree(treeobj, true);
 
@@ -59,8 +58,6 @@ void actualActions(double CCR, unsigned int num_processors, double *ewghts, doub
     number_subtrees = 1;
     time = clock() - time;
 
-    //<< " " << NPR << " " << CCR << " NA " << number_subtrees << " " << num_processors << " " << makespan << " Sequence " << time << endl;
-
     schedule_t *schedule_f = new schedule_t();
     count = 0;
     MinMem(treeobj, maxoutd, minMem, *schedule_f, true, count);
@@ -68,7 +65,10 @@ void actualActions(double CCR, unsigned int num_processors, double *ewghts, doub
     delete treeobj;
 
     memorySizes = Cluster::buildMemorySizes(maxoutd, minMem, num_processors);
-    Cluster *cluster = new Cluster(memorySizes);
+    cluster->setMemorySizes(memorySizes);
+
+
+
     for (int stage2Method = 0; stage2Method < 1; ++stage2Method)
     {
 

@@ -10,7 +10,7 @@
 #define LIB_IO_TREE_MINMEM_H
 
 #include <list>
-#include "lib-io-tree-utils.h"
+#include "tree.h"
 
 #define uint64_t int
 

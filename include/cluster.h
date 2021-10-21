@@ -108,12 +108,16 @@ public:
     }
 
 public:
-    bool isHomogeneous() {
+    bool isHomogeneous() const {
         return isMemoryHomogeneous && isProcessorHomogeneous && isBandwidthHomogenenous;
     }
 
     vector<Processor *> getProcessors() {
         return this->processors;
+    }
+
+    int getNumberProcessors() {
+        return this->processors.size();
     }
 
     double getBandwidthBetween(int firstProcessor, int secondProcessor) {

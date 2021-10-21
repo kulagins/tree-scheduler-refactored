@@ -87,7 +87,7 @@ void thirdStep(unsigned int num_processors, clock_t time, unsigned int number_su
     else
     {
         time = clock();
-        makespan = treeobj->SplitAgain(num_processors, number_subtrees);
+        makespan = treeobj->SplitAgain();
         time = clock() - time;
         number_subtrees = treeobj->HowmanySubtrees(true);
         cout << "w split "

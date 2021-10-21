@@ -12,11 +12,9 @@
 #include <algorithm>
 #include "../include/heuristics.h"
 #include "../include/lib-io-tree-free-methods.h"
+#include "../include/cluster.h"
 
 //#include <omp.h>
-
-extern double BANDWIDTH;
-
 bool cmp_noincreasing(Task *a, Task *b) { return (a->GetMSCost(true, false) >= b->GetMSCost(true, false)); };
 bool cmp_nodecreasing(Task *a, Task *b) { return (a->GetMSCost(true, false) < b->GetMSCost(true, false)); };
 bool cmp_noIn_noCommu(Task *a, Task *b) { return (a->GetMSCost(false, false) >= b->GetMSCost(false, false)); };
@@ -143,7 +141,10 @@ double Task::SplitSubtrees(unsigned long num_processor, double twolevel, list<Ta
     parallelRoots.emplace_front(this);
     //cout<<"   insert root"<<endl;
     vector<double> MS(1, this->GetMSCost(true, true)); // take communication cost into account
-    double MS_sequential = this->GetEW() / BANDWIDTH, Weight_more, Weight_PQ;
+    double MS_sequential = this->GetEW(), Weight_more, Weight_PQ;
+    if(Cluster::getFixedCluster()->isHomogeneous()){
+        MS_sequential /= Cluster::getFixedCluster()->getHomogeneousBandwidth();
+    }
     unsigned long amountSubtrees;
     vector<Task *> *children;
 
@@ -359,6 +360,10 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, int *chstart, int 
     bool leaf = false;
     const vector<Task *> *subtrees = Qtree->GetNodes();
     vector<Task *> *children;
+    double homogeneousBandwidth;
+    if(Cluster::getFixedCluster()->isHomogeneous()){
+        homogeneousBandwidth = Cluster::getFixedCluster()->getHomogeneousBandwidth();
+    } else throw "Cluster not homogeneous";
 
     if (subtrees->front()->GetId() != 1)
     { //the root is supposed to be the first element in vector nodes
@@ -404,7 +409,7 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, int *chstart, int 
                 }
                 else if (children->size() == 1)
                 {
-                    increase = -currentQNode->GetEW() / BANDWIDTH;
+                    increase = -currentQNode->GetEW() / homogeneousBandwidth;
                 }
                 else
                 {
@@ -427,7 +432,7 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, int *chstart, int 
 
                 if (children->size() == 1)
                 {
-                    increase = -currentQNode->GetEW() / BANDWIDTH;
+                    increase = -currentQNode->GetEW() / homogeneousBandwidth;
                 }
                 else
                 {
@@ -866,6 +871,11 @@ bool EstimateDecrase(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *
     vector<Task *> tempQue;
     Task *lastSubtreeRoot = tree->GetNode(criticalPath->back()->GetothersideID());
 
+    double homogeneousBandwidth;
+    if(Cluster::getFixedCluster()->isHomogeneous()){
+        homogeneousBandwidth = Cluster::getFixedCluster()->getHomogeneousBandwidth();
+    } else throw "Cluster not homogeneous";
+
     //cout<<"   Last subtree root "<<lastSubtreeRoot->GetId()<<endl;
     //nodes on the last subtree of critical path
     if (idleP > 1)
@@ -880,7 +890,7 @@ bool EstimateDecrase(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *
             if (children->size() > 1)
             {                                                                        //has at least 2 children
                 GetTwoLargestElementTypethree(children, largestNode, secondLargest); //node_i is the largest, in terms of W
-                temp = min((*largestNode)->GetSequentialPart() - (*secondLargest)->GetEW() / BANDWIDTH, (*secondLargest)->GetSequentialPart() - (*largestNode)->GetEW() / BANDWIDTH);
+                temp = min((*largestNode)->GetSequentialPart() - (*secondLargest)->GetEW() / homogeneousBandwidth, (*secondLargest)->GetSequentialPart() - (*largestNode)->GetEW() / homogeneousBandwidth);
                 if (temp > decrease)
                 {
                     decrease = temp;
@@ -893,7 +903,7 @@ bool EstimateDecrase(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *
                     tempQue.push_back(*it);
                     if (it != largestNode)
                     {
-                        temp = min((*largestNode)->GetSequentialPart() - (*secondLargest)->GetEW() / BANDWIDTH, (*secondLargest)->GetSequentialPart() - (*largestNode)->GetEW() / BANDWIDTH);
+                        temp = min((*largestNode)->GetSequentialPart() - (*secondLargest)->GetEW() / homogeneousBandwidth, (*secondLargest)->GetSequentialPart() - (*largestNode)->GetEW() / homogeneousBandwidth);
                         if (temp > decrease)
                         {
                             decrease = temp;
@@ -957,7 +967,7 @@ bool EstimateDecrase(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *
                     {
                         //cout<<"    "<<(*it)->GetId()<<" W_i "<<(*it)->GetSequentialPart()<<", MS(t) "<<MS_t<<", W_t "<<W_t<<", MS_tj "<<(*it)->GetParallelPart()<<endl;
                         tempQue.push_back((*it));
-                        temp = min((*it)->GetSequentialPart(), MS_t - W_t - (*it)->GetEW() / BANDWIDTH - (*it)->GetParallelPart());
+                        temp = min((*it)->GetSequentialPart(), MS_t - W_t - (*it)->GetEW() / homogeneousBandwidth - (*it)->GetParallelPart());
                         if (temp > decrease_othersubtrees)
                         {
                             decrease_othersubtrees = temp;
@@ -1675,14 +1685,3 @@ std::map<int, int> MemoryCheckA2(Tree *tree, int *chstart, int *children,Cluster
     }
 }
 
-void SetBandwidth(double CCR, unsigned long tree_size, double *ewghts, double *timewghts)
-{
-    double sum_edges = 0;
-    double sum_weights = 0;
-    for (unsigned int i = 1; i <= tree_size; ++i)
-    {
-        sum_edges = sum_edges + ewghts[i];
-        sum_weights = sum_weights + timewghts[i];
-    }
-    BANDWIDTH = sum_edges / (sum_weights * CCR);
-}

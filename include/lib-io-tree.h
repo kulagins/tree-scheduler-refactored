@@ -8,7 +8,7 @@
 
 #include <assert.h>
 
-#include "lib-io-tree-utils.h"
+#include "tree.h"
 
 
 #define MIN_ACCURACY 0.001

@@ -13,24 +13,19 @@
 #include <limits>
 #include <cmath>
 
-#include "../include/lib-io-tree-utils.h"
+#include "../include/tree.h"
 #include "../include/lib-io-tree.h"
 #include "../include/lib-io-tree-minmem.h"
 #include "../include/lib-io-tree-free-methods.h"
-#include "../include/heuristics.h"
 #include <sys/time.h>
 #include <algorithm>
-
+#include "../include/cluster.fwd.h"
 #ifndef CLUSTER_H
 #define CLUSTER_H
 
 using namespace std;
 
 Tree *  Tree::originalTree = NULL;
-bool Tree::originalTreeInitialized = false;
-
-double BANDWIDTH = 1;
-
 bool sort_sche(node_sche a, node_sche b)
 {
     return (a.second > b.second);
@@ -139,157 +134,6 @@ unsigned int Tree::HowmanySubtrees(bool quiet)
     }
     return number_subtrees;
 }
-
-
-bool Tree::increaseMS(Tree *Qtree, Task *&smallestNode, int *chstart, int *childrenID, double memory_size, bool CheckMemory)
-{
-
-    Task *currentNode;
-    double diff, increase, temp;
-    bool memoryEnough;
-    bool feasible = false;
-    Task *LargestNode;
-    Task *secondLargest;
-    Task *parent;
-    double smallestIncrease = this->GetRoot()->GetMSCost(true, false);
-    bool leaf = false;
-    const vector<Task *> *subtrees = Qtree->GetNodes();
-    vector<Task *> *children;
-
-    if (subtrees->front()->GetId() != 1)
-    {
-        cout << "error in function increaseMs" << endl;
-        return false;
-    }
-
-    vector<Task *>::const_iterator iter = subtrees->begin();
-    ++iter;
-    for (; iter != subtrees->end(); ++iter)
-    {
-        currentNode = (*iter);
-
-        if (this->GetNode(currentNode->GetothersideID())->IsBroken() == true)
-        { //this subtree has not been merged yet
-            children = currentNode->GetChildren();
-
-            if (children->empty())
-            {
-                leaf = true;
-            }
-
-            //check the memory cost, if merge itself to its parent subtree
-            if (CheckMemory == true)
-            {
-                memoryEnough = this->MemoryEnough(currentNode->GetParent(), currentNode, leaf, memory_size, chstart, childrenID);
-            }
-            else
-            {
-                memoryEnough = true;
-            }
-
-            //cout<<"   subtree "<<currentNode->GetothersideID()<<" ";//print subtree's root id
-            if (memoryEnough == true)
-            {
-                feasible = true;
-                //cout<<"memory fit."<<endl;
-                if (children->empty())
-                {
-                    children = currentNode->GetParent()->GetChildren();
-                    if (children->size() == 2)
-                    {
-                        increase = children->front()->GetMSCost(false, false) + children->back()->GetMSCost(false, false) - currentNode->GetParent()->GetParallelPart();
-                    }
-                    else if (children->size() == 1)
-                    {
-                        increase = -currentNode->GetEW() / BANDWIDTH;
-                    }
-                    else
-                    {
-                        //cout<<"   current subtree "<<currentNode->GetothersideID()<<", parent id "<<currentNode->GetParent()->GetothersideID()<<", number of siblings "<<children->size()-1<<endl;
-
-                        GetTwoLargestElementTypetwo(children, LargestNode, secondLargest); //no-increasing, communication counted
-                        if (currentNode->GetMSCost(true, false) == LargestNode->GetMSCost(true, false))
-                        {
-                            if (currentNode->GetMSCost(true, false) == secondLargest->GetMSCost(true, false))
-                            {
-                                increase = currentNode->GetMSW();
-                            }
-                            else
-                            {
-                                increase = -currentNode->GetEW() / BANDWIDTH + secondLargest->GetMSCost(true, false);
-                            }
-                        }
-                        else
-                        {
-                            increase = currentNode->GetMSW();
-                        }
-                    }
-                }
-                else
-                {
-                    children = currentNode->GetParent()->GetChildren();
-                    //cout<<"   current subtree "<<currentNode->GetothersideID()<<", parent id "<<currentNode->GetParent()->GetothersideID()<<", number of siblings "<<children->size()-1<<endl;
-                    diff = currentNode->GetMSCost(true, false) - currentNode->GetParent()->GetParallelPart();
-                    if (diff < 0)
-                    {
-                        increase = currentNode->GetMSW();
-                    }
-                    else
-                    { //diff=0
-                        if (children->size() == 1)
-                        {
-                            increase = -currentNode->GetEW() / BANDWIDTH;
-                        }
-                        else
-                        {                                                                      //children's size larger than 1
-                            GetTwoLargestElementTypetwo(children, LargestNode, secondLargest); //no-increasing, communication counted
-                            temp = currentNode->GetParallelPart() - secondLargest->GetMSCost(true, false);
-                            if (temp >= 0)
-                            {
-                                increase = -currentNode->GetEW() / BANDWIDTH;
-                            }
-                            else
-                            {
-                                increase = -temp - currentNode->GetEW() / BANDWIDTH;
-                            }
-                        }
-                    }
-                }
-
-                parent = currentNode->GetParent();
-                while (parent->GetId() != 1)
-                { //not the root node
-                    temp = parent->GetParent()->GetParallelPart() - (parent->GetMSCost(true, false) + increase);
-                    if (temp >= 0)
-                    {
-                        increase = 0;
-                        break;
-                    }
-                    else
-                    {
-                        increase = -temp;
-                        parent = parent->GetParent();
-                    }
-                }
-
-                //cout<<"   merge, increase in MS(r) "<<increase<<endl;
-                if (increase < smallestIncrease)
-                {
-                    smallestIncrease = increase;
-                    smallestNode = currentNode;
-                }
-            }
-            else
-            {
-                //cout<<"memory does not fit!!!"<<endl;
-            }
-        }
-    }
-
-    //cout<<"   ---end compute the minimum combination"<<endl;
-    return feasible;
-}
-
 
 bool Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size, int *chstart, int *children)
 {

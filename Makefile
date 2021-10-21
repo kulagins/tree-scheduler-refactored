@@ -28,7 +28,7 @@ LIBS = ${LIB_PATH}/heuristics.a
 
 # all source files have associated object files
 
-lib-io-tree-utils.o: src/lib-io-tree-utils.cpp include/lib-io-tree-utils.h
+lib-io-tree-utils.o: src/tree.cpp include/tree.h
 	$(CPP) $(INCLUDES) $(DEFS) $(CFLAGS) -o ${OBJ_PATH}/$@ -c $< -fPIC
 
 cluster.o: src/cluster.cpp include/cluster.h lib-io-tree-utils.o
@@ -50,7 +50,7 @@ heuristics:heuristics.o
 heuristicsnoclean:heuristics.o
 	ar rcs ${LIB_PATH}/heuristics.a $(OBJ_PATH)/heuristics.o $(OBJ_PATH)/lib-io-tree.o $(OBJ_PATH)/lib-io-tree-utils.o $(OBJ_PATH)/lib-io-tree-minmem.o $(OBJ_PATH)/cluster.o
 
-main: example/main.cpp heuristicsnoclean
+main: example/main.cpp heuristicsnoclean cluster.o
 	$(CPP) $(INCLUDES) $(DEFS) $(CFLAGS) $< $(LIBS) $(LDADD) -o ${BIN_PATH}/$@
 
 clean:

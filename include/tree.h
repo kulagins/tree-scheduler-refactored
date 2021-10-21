@@ -20,6 +20,7 @@
 #include <forward_list>
 #include <assert.h>
 #include <map>
+#include "cluster.h"
 
 #ifndef DEBUG_MEMUSAGE
 #define DEBUG_MEMUSAGE 0
@@ -36,8 +37,6 @@ using namespace std;
 #ifndef MAX_COMBI_SIZE
 #define MAX_COMBI_SIZE 5
 #endif
-
-extern double BANDWIDTH;
 
 typedef enum
 {
@@ -284,11 +283,15 @@ class Task{
     }
     
     double GetMSminusComu(){
-        return (makespan_nocommu-edge_weight/BANDWIDTH);
+        if(Cluster::getFixedCluster()->isHomogeneous()){
+            return (makespan_nocommu-edge_weight/Cluster::getFixedCluster()->getHomogeneousBandwidth());
+        } else throw "Cluster not homogeneous";
     }
     
     double GetMSminusW(){
-        return (makespan_nocommu+edge_weight/BANDWIDTH-MS_weight);
+        if(Cluster::getFixedCluster()->isHomogeneous()){
+            return (makespan_nocommu+edge_weight/Cluster::getFixedCluster()->getHomogeneousBandwidth()-MS_weight);
+        } else throw "Cluster not homogeneous";
     }
     
     void SetMSUncomputed(){
@@ -296,9 +299,11 @@ class Task{
     }
     
     double GetMSCost(bool commulication=false, bool updateEnforce=false){
+        if(!Cluster::getFixedCluster()->isHomogeneous()) throw "Cluster not homogeneous";
+
         if ((makespan_computed==true)&(updateEnforce==false)) {
             if (commulication==true) {
-                return makespan_nocommu+edge_weight/BANDWIDTH;
+                return makespan_nocommu+edge_weight/Cluster::getFixedCluster()->getHomogeneousBandwidth();
             }else{
                 return makespan_nocommu;
             }
@@ -311,7 +316,7 @@ class Task{
         makespan_computed=true;
         if (commulication==true) {
             //cout<<id<<"-"<<makespan_nocommu<<endl;//test
-            return makespan_nocommu+edge_weight/BANDWIDTH;
+            return makespan_nocommu+edge_weight/Cluster::getFixedCluster()->getHomogeneousBandwidth();
         }
         
         //cout<<id<<"-"<<makespan_nocommu<<endl; //test
@@ -367,7 +372,6 @@ class Tree{
     unsigned int tree_id;
 
     static Tree * originalTree;
-    static bool originalTreeInitialized;
 
   public:
 
@@ -505,19 +509,12 @@ class Tree{
         this->nodes->push_back(newnode);
     }
     
-    void setOriginalTree(Tree* origTree){
-      if (!this->originalTreeInitialized){
-        this->originalTree = origTree;
-        this->originalTreeInitialized = true;
-      }
-      else{
-        cout << "Original Tree can only be set once!"<<endl;
-        exit (EXIT_FAILURE);
-      }
+   static void setOriginalTree(Tree* origTree){
+        Tree::originalTree = origTree;
     }
 
-    Tree * getOriginalTree(){
-      return this->originalTree;
+    static Tree * getOriginalTree(){
+      return Tree::originalTree;
     }
 
     void printBrokenEdges()
@@ -539,7 +536,6 @@ class Tree{
 
 Tree * BuildQtree();
 unsigned int HowmanySubtrees(bool quiet);
-bool increaseMS(Tree *Qtree, Task *&smallestNode, int *chstart, int *childrenID, double memory_size, bool CheckMemory);
 bool MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size, int *chstart, int *children);
 
 double ImprovedSplit(unsigned int number_processor, int *chstart, int *childrenID);
@@ -561,10 +557,8 @@ void parse_tree(const char *filename,int * N ,int **prnts,double **nwghts,double
 
 extern "C"
 {
-#endif
-  void po_construct(const int N, const int *prnts, int **chstart, int **chend, int **children, int *root);
-  void poaux(const int *chstart, const int *children, int N, int r, int *por, int *label);
-#ifdef __cplusplus
+void po_construct(const int N, const int *prnts, int **chstart, int **chend, int **children, int *root);
+void poaux(const int *chstart, const int *children, int N, int r, int *por, int *label);
 } /* closing brace for extern "C" */
 
 double MaxOutDegree(Tree * tree,int quiet);
@@ -574,8 +568,6 @@ double IOCounter(Tree* tree, int N, double * nwghts, double * ewghts, int * chst
 double IOCounterWithVariableMem(Tree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, vector<double> availableMemorySizesA2, int &currentProcessor,
                                          std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
 Tree* BuildSubtree(Tree* tree, Task* SubtreeRoot, unsigned int new_tree_size, int** prnts, double** ewghts, double** timewghts, double** spacewghts, int * chstart, int * children);
-
-
 
 
 #endif

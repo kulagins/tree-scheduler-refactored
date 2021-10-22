@@ -360,7 +360,16 @@ class Task{
     double Mavail;
 
     double Sequence();
-    double SplitSubtrees(unsigned long num_processor, double twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength);
+    double SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength);
+
+    void popSmallestRootsToFitToCluster(list<Task *> &parallelRoots, unsigned long amountSubtrees) const;
+
+    void breakPreparedEdges(list<Task *> &parallelRoots);
+
+    double
+    getWeightPQ(list<Task *> &parallelRoots, vector<Task *> *children, Task *currentNode) const;
+
+    double getWeightSurplusFromSmallestNodes(list<Task *> &parallelRoots, unsigned long amountSubtrees) const;
 };
 
 class Tree{

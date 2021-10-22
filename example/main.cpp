@@ -49,9 +49,10 @@ void firstStep(double CCR, unsigned int num_processors, double *ewghts, double *
 
     po_construct(tree_size, prnts, &chstart, &chend, &children, &root);
     time = clock();
-    makespan = treeobj->GetRoot()->GetMSCost();
-    number_subtrees = 1;
+    unsigned long sequentialLen;
+    makespan = treeobj->GetRoot()->SplitSubtrees(false, parallelSubtrees, sequentialLen);
     time = clock() - time;
+    cout<<"makespan "<<makespan<<endl;
 
     schedule_t *schedule_f = new schedule_t();
     count = 0;

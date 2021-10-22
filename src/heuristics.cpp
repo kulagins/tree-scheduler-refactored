@@ -135,13 +135,13 @@ void GetTwoSmallestElement(list<Task *> *container, list<Task *>::iterator &Smal
     }
 }
 
-double Task::SplitSubtrees(unsigned long num_processor, double twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength)
+double Task::SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength)
 {
     parallelRoots.clear();
     parallelRoots.emplace_front(this);
     //cout<<"   insert root"<<endl;
-    vector<double> MS(1, this->GetMSCost(true, true)); // take communication cost into account
-    double MS_sequential = this->GetEW(), Weight_more, Weight_PQ;
+    vector<double> makespansOfSplittings(1, this->GetMSCost(true, true)); // take communication cost into account
+    double MS_sequential = this->GetEW(), weightSurplusFromSmallestNodes, Weight_PQ;
     if(Cluster::getFixedCluster()->isHomogeneous()){
         MS_sequential /= Cluster::getFixedCluster()->getHomogeneousBandwidth();
     }
@@ -149,76 +149,28 @@ double Task::SplitSubtrees(unsigned long num_processor, double twolevel, list<Ta
     vector<Task *> *children;
 
     Task *currentNode = this;
-    double temp;
     unsigned int mergetime;
     while (!currentNode->IsLeaf())
     {
         MS_sequential = MS_sequential + currentNode->GetMSW();
 
-        Weight_PQ = 0;
-        parallelRoots.remove(currentNode);
-        //cout<<"pop up "<<currentNode->GetId()<<endl;
+        Weight_PQ = getWeightPQ(parallelRoots, children, currentNode);
+        if(Weight_PQ==-1) break;
 
-        children = currentNode->GetChildren();
-        for (vector<Task *>::iterator iter = children->begin(); iter != children->end(); iter++)
-        {
-            if ((*iter)->IsBroken())
-            {
-                temp = (*iter)->GetMSCost(true, false);
-                if (temp > Weight_PQ)
-                {
-                    Weight_PQ = temp;
-                }
-            }
-            else
-            {
-                parallelRoots.push_back(*iter);
-                //cout<<"   insert "<<(*iter)->GetId()<<endl;
-            }
-        }
-
-        if (parallelRoots.empty())
-        {
-            break;
-        }
-        else
-        {
-            currentNode = *max_element(parallelRoots.begin(), parallelRoots.end(), cmp_nodecreasing); //non-decreasing
-        }
-
-        temp = currentNode->GetMSCost(true, false);
-        if (temp > Weight_PQ)
-        {
-            Weight_PQ = temp;
-        }
-
-        Weight_more = 0;
-        amountSubtrees = parallelRoots.size() + 1;
-        if (amountSubtrees > num_processor)
-        {
-            parallelRoots.sort(cmp_noIn_noCommu); //non-increasing sort, computation weight, no communication
-            list<Task *>::reverse_iterator iter = parallelRoots.rbegin();
-            mergetime = amountSubtrees - num_processor;
-            for (unsigned int i = 0; i < mergetime; ++i, ++iter)
-            {
-                Weight_more += (*iter)->GetMSCost(false, false); // no comunication cost, ImprovedSplit never goes to here.
-            }
-        }
-        //cout<<"makespan "<<MS_sequential+Weight_more+Weight_PQ<<endl;
-        MS.push_back(MS_sequential + Weight_more + Weight_PQ);
+        weightSurplusFromSmallestNodes = getWeightSurplusFromSmallestNodes(parallelRoots, amountSubtrees);
+        //cout<<"makespan "<<MS_sequential+weightSurplusFromSmallestNodes+Weight_PQ<<endl;
+        makespansOfSplittings.push_back(MS_sequential + weightSurplusFromSmallestNodes + Weight_PQ);
     }
 
     if (twolevel == true)
     {
-        double makespan;
-        makespan = *std::min_element(MS.begin(), MS.end());
-        return makespan;
+        return *std::min_element(makespansOfSplittings.begin(), makespansOfSplittings.end());
     }
 
     //return broken edges, i.e., root of subtrees
-    vector<double>::iterator smallestMS_iter = min_element(MS.begin(), MS.end());
-    unsigned long minMS_step = smallestMS_iter - MS.begin();
-    //cout<<"minMS_step "<<minMS_step<<endl;
+    vector<double>::iterator smallestMS_iter = min_element(makespansOfSplittings.begin(), makespansOfSplittings.end());
+    unsigned long minMS_step = smallestMS_iter - makespansOfSplittings.begin();
+    cout<<"minMS_step "<<minMS_step<<endl;
     sequentialLength = minMS_step;
     unsigned int i = 0;
     parallelRoots.clear();
@@ -250,24 +202,90 @@ double Task::SplitSubtrees(unsigned long num_processor, double twolevel, list<Ta
         amountSubtrees = 1;
     }
 
-    if (amountSubtrees > num_processor)
+    popSmallestRootsToFitToCluster(parallelRoots, amountSubtrees);
+    breakPreparedEdges(parallelRoots);
+    //    cout<<"makespan from the tree root "<<root->GetMSCost(true,true)<<endl;
+
+    return *smallestMS_iter;
+}
+
+double Task::getWeightSurplusFromSmallestNodes(list<Task *> &parallelRoots,
+                                               unsigned long amountSubtrees) const {
+    double weightSurplusFromSmallestNodes=0;
+    int mergetime =0;
+    amountSubtrees = parallelRoots.size() + 1;
+    if (amountSubtrees > Cluster::getFixedCluster()->getNumberProcessors())
     {
-        parallelRoots.sort(cmp_noIn_noCommu); //non-increasing sort, computation weight, no communication cost
-        mergetime = amountSubtrees - num_processor;
-        for (unsigned int i = 0; i < mergetime; ++i)
+        parallelRoots.sort(cmp_noIn_noCommu); //non-increasing sort, computation weight, no communication
+        list<Task *>::reverse_iterator iter = parallelRoots.rbegin();
+        mergetime = amountSubtrees - Cluster::getFixedCluster()->getNumberProcessors();
+        for (unsigned int i = 0; i < mergetime; ++i, ++iter)
         {
-            parallelRoots.pop_back();
+            weightSurplusFromSmallestNodes += (*iter)->GetMSCost(false, false); // no comunication cost, ImprovedSplit never goes to here.
+        }
+    }
+    return weightSurplusFromSmallestNodes;
+}
+
+double Task::getWeightPQ(list<Task *> &parallelRoots, vector<Task *> *children, Task *currentNode) const {
+    double Weight_PQ = 0;
+    double temp;
+    parallelRoots.remove(currentNode);
+    //cout<<"pop up "<<currentNode->GetId()<<endl;
+
+    children = currentNode->GetChildren();
+    for (vector<Task *>::iterator iter = children->begin(); iter != children->end(); iter++)
+    {
+        if ((*iter)->IsBroken())
+        {
+            temp = (*iter)->GetMSCost(true, false);
+            if (temp > Weight_PQ)
+            {
+                Weight_PQ = temp;
+            }
+        }
+        else
+        {
+            parallelRoots.push_back(*iter);
+            //cout<<"   insert "<<(*iter)->GetId()<<endl;
         }
     }
 
-    this->BreakEdge(); //root should always be broken
+    if (parallelRoots.empty())
+    {
+        return -1;
+    }
+    else
+    {
+        currentNode = *max_element(parallelRoots.begin(), parallelRoots.end(), cmp_nodecreasing); //non-decreasing
+    }
+
+    temp = currentNode->GetMSCost(true, false);
+    if (temp > Weight_PQ)
+    {
+        Weight_PQ = temp;
+    }
+    return Weight_PQ;
+}
+
+void Task::breakPreparedEdges(list<Task *> &parallelRoots) {
+    BreakEdge(); //root should always be broken
     for (list<Task *>::iterator iter = parallelRoots.begin(); iter != parallelRoots.end(); ++iter)
     {
         (*iter)->BreakEdge();
     }
-    //    cout<<"makespan from the tree root "<<root->GetMSCost(true,true)<<endl;
+}
 
-    return *smallestMS_iter;
+void Task::popSmallestRootsToFitToCluster(list<Task *> &parallelRoots, unsigned long amountSubtrees) const {
+    if (amountSubtrees > Cluster::getFixedCluster()->getNumberProcessors())
+    {
+        parallelRoots.sort(cmp_noIn_noCommu); //non-increasing sort, computation weight, no communication cost
+        int surplus = amountSubtrees -  Cluster::getFixedCluster()->getNumberProcessors();
+        for (unsigned int i = 0; i < surplus; ++i)
+        {
+            parallelRoots.pop_back();
+        }
+    }
 }
 
 void ISCore(Task *root, unsigned long num_processors, bool sequentialPart)
@@ -284,7 +302,7 @@ void ISCore(Task *root, unsigned long num_processors, bool sequentialPart)
         return;
     }
 
-    makespan = root->SplitSubtrees(num_processors, false, parallelRoots, SF_now); //SF_now will be modified in SplitSubtrees, it represents the length of sequential part, 0 means the subtree no need to partition
+    makespan = root->SplitSubtrees(false, parallelRoots,  SF_now); //SF_now will be modified in SplitSubtrees, it represents the length of sequential part, 0 means the subtree no need to partition
 
     if (sequentialPart == true)
     {

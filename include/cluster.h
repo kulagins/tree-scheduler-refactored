@@ -46,7 +46,8 @@ public:
     double getMemorySize() const {
         return memorySize;
     }
-    void setMemorySize(double memory){
+
+    void setMemorySize(double memory) {
         this->memorySize = memory;
     }
 
@@ -148,8 +149,7 @@ public:
             for (unsigned long i = 0; i < memories.size(); i++) {
                 processors.at(i) = new Processor(memories.at(i));
             }
-        }
-        else{
+        } else {
             for (unsigned long i = 0; i < memories.size(); i++) {
                 processors.at(i)->setMemorySize(memories.at(i));
             }
@@ -177,6 +177,7 @@ public:
     static vector<double> buildMemorySizes(double maxoutd, double minMem, unsigned int num_processors);
 
     static std::map<int, int> buildProcessorSpeeds(int num_processors);
+
     void SetBandwidth(double CCR, unsigned long tree_size, double *ewghts, double *timewghts);
 };
 

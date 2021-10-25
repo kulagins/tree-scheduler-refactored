@@ -20,35 +20,33 @@
 #include <sys/time.h>
 #include <algorithm>
 #include "../include/cluster.fwd.h"
+
 #ifndef CLUSTER_H
 #define CLUSTER_H
 
 using namespace std;
 
-Tree *  Tree::originalTree = NULL;
-bool sort_sche(node_sche a, node_sche b)
-{
+Tree *Tree::originalTree = NULL;
+
+bool sort_sche(node_sche a, node_sche b) {
     return (a.second > b.second);
 }
 
-bool sort_ew(node_ew a, node_ew b)
-{
+bool sort_ew(node_ew a, node_ew b) {
     return (a.second > b.second);
 }
 
-double u_wseconds(void)
-{
+double u_wseconds(void) {
     struct timeval tp;
 
     gettimeofday(&tp, NULL);
 
-    return (double)tp.tv_sec + (double)tp.tv_usec / 1000000.0;
+    return (double) tp.tv_sec + (double) tp.tv_usec / 1000000.0;
 };
 
 
 ///Qtree corresponds to a whole original tree
-Tree * Tree::BuildQtree()
-{ //Qtree is for makespan side, so do not use it for space side
+Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for space side
     Task *root = this->GetRoot();
     root->BreakEdge();
     this->GetRoot()->GetMSCost(true, true); //update
@@ -69,11 +67,9 @@ Tree * Tree::BuildQtree()
     root->SetothersideID(1);
 
     Task *currentNode;
-    for (unsigned int i = 2; i <= tree_size; ++i)
-    {
+    for (unsigned int i = 2; i <= tree_size; ++i) {
         currentNode = this->GetNode(i);
-        if (currentNode->IsBroken())
-        {
+        if (currentNode->IsBroken()) {
             currentNode->SetothersideID(j); //corresponding node's ID on Qtree
             brokenEdges[j] = i;
             timewghts[j] = currentNode->GetSequentialPart();
@@ -82,20 +78,18 @@ Tree * Tree::BuildQtree()
         }
     }
 
-    for (unsigned int i = 2; i <= num_subtrees; ++i)
-    {
+    for (unsigned int i = 2; i <= num_subtrees; ++i) {
         currentNode = this->GetNode(brokenEdges[i])->GetParent();
-        while (!currentNode->IsBroken())
-        {
+        while (!currentNode->IsBroken()) {
             currentNode = currentNode->GetParent();
         }
         prnts[i] = currentNode->GetothersideID();
     }
 
-    Tree *Qtreeobj = new Tree(num_subtrees, prnts, timewghts, ewghts, timewghts); //Qtree only reprents makespan, not memory consumption
+    Tree *Qtreeobj = new Tree(num_subtrees, prnts, timewghts, ewghts,
+                              timewghts); //Qtree only reprents makespan, not memory consumption
 
-    for (unsigned int i = 1; i <= num_subtrees; i++)
-    {
+    for (unsigned int i = 1; i <= num_subtrees; i++) {
         Qtreeobj->GetNode(i)->BreakEdge();                    //break edge
         Qtreeobj->GetNode(i)->SetothersideID(brokenEdges[i]); //corresponding node's ID on tree
     }
@@ -108,54 +102,45 @@ Tree * Tree::BuildQtree()
     return Qtreeobj;
 }
 
-unsigned int Tree::HowmanySubtrees(bool quiet)
-{
+unsigned int Tree::HowmanySubtrees(bool quiet) {
     unsigned int number_subtrees = 0;
     this->GetRoot()->BreakEdge();
     const vector<Task *> *Nodes = this->GetNodes();
-    if (quiet == false)
-    {
+    if (quiet == false) {
         cout << "Broken Edges { ";
     }
-    for (auto it = Nodes->begin(); it != Nodes->end(); ++it)
-    {
-        if ((*it)->IsBroken())
-        {
+    for (auto it = Nodes->begin(); it != Nodes->end(); ++it) {
+        if ((*it)->IsBroken()) {
             number_subtrees++;
-            if (quiet == false)
-            {
+            if (quiet == false) {
                 cout << (*it)->GetId() << " ";
             }
         }
     }
-    if (quiet == false)
-    {
+    if (quiet == false) {
         cout << "}" << endl;
     }
     return number_subtrees;
 }
 
-bool Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size, int *chstart, int *children)
-{
+bool Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size, int *chstart, int *children) {
     bool enough = false;
     unsigned long new_tree_size = this->GetNodes()->size();
 
     Task *SubtreeRoot = this->GetNode(Qrootone->GetothersideID());
 
     vector<Task *> *childrenvector = Qrootone->GetChildren();
-    if ((leaf == true) & (childrenvector->size() == 2))
-    {
+    if ((leaf == true) & (childrenvector->size() == 2)) {
         this->GetNode(childrenvector->front()->GetothersideID())->RestoreEdge();
         this->GetNode(childrenvector->back()->GetothersideID())->RestoreEdge();
-    }
-    else
-    {
+    } else {
         this->GetNode(Qroottwo->GetothersideID())->RestoreEdge(); //restore edge temporarilly
     }
 
     double *ewghts, *timewghts, *spacewghts;
     int *prnts;
-    Tree *subtree = BuildSubtree(this, SubtreeRoot, new_tree_size, &prnts, &ewghts, &timewghts, &spacewghts, chstart, children);
+    Tree *subtree = BuildSubtree(this, SubtreeRoot, new_tree_size, &prnts, &ewghts, &timewghts, &spacewghts, chstart,
+                                 children);
     delete[] ewghts;
     delete[] timewghts;
     delete[] spacewghts;
@@ -166,18 +151,14 @@ bool Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory
     maxout = MaxOutDegree(subtree, true);
     MinMem(subtree, maxout, requiredMemory, *schedule_f, true, count);
 
-    if (requiredMemory <= memory_size)
-    {
+    if (requiredMemory <= memory_size) {
         enough = true;
     }
 
-    if ((leaf == true) & (childrenvector->size() == 2))
-    {
+    if ((leaf == true) & (childrenvector->size() == 2)) {
         this->GetNode(childrenvector->front()->GetothersideID())->BreakEdge();
         this->GetNode(childrenvector->back()->GetothersideID())->BreakEdge();
-    }
-    else
-    {
+    } else {
         this->GetNode(Qroottwo->GetothersideID())->BreakEdge();
     }
 
@@ -188,15 +169,12 @@ bool Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory
 }
 
 
-
-double Task::Sequence()
-{
+double Task::Sequence() {
     return this->GetMSCost();
 }
 
 
-void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, double **ewghts, double **mswghts)
-{
+void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, double **ewghts, double **mswghts) {
 
     ifstream OpenFile(filename);
     char begin;
@@ -206,27 +184,19 @@ void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, doub
     unsigned int nb_of_nodes = 0;
     string line;
 
-    do
-    {
+    do {
         /*skip commentary lines*/
         begin = OpenFile.peek();
-        if (OpenFile.good())
-        {
+        if (OpenFile.good()) {
 
-            if (begin == '%')
-            {
-                do
-                {
+            if (begin == '%') {
+                do {
                     cur_char = OpenFile.get();
                 } while (cur_char != '\n' && OpenFile.good());
-            }
-            else
-            {
-                if (!nodes_cnt_read)
-                {
+            } else {
+                if (!nodes_cnt_read) {
                     /* get the number of nodes and skip last trailing character*/
-                    while (getline(OpenFile, line))
-                    {
+                    while (getline(OpenFile, line)) {
                         ++nb_of_nodes;
                     }
                     OpenFile.clear();
@@ -238,17 +208,14 @@ void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, doub
                     *nwghts = new double[nb_of_nodes + 1];
                     *ewghts = new double[nb_of_nodes + 1];
                     *mswghts = new double[nb_of_nodes + 1];
-                }
-                else
-                {
+                } else {
                     /*parse actual nodes*/
                     unsigned int id;
                     unsigned int parent;
                     double ew, nw, msw;
 
                     OpenFile >> id >> parent >> nw >> msw >> ew;
-                    do
-                    {
+                    do {
                         cur_char = OpenFile.get();
                     } while (cur_char != '\n' && OpenFile.good());
                     parent = nb_of_nodes - parent + 1; //root has the largest id in the txt file
@@ -267,29 +234,24 @@ void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, doub
     OpenFile.close();
 }
 
-void poaux(const int *chstart, const int *children, int N, int r, int *por, int *label)
-{
+void poaux(const int *chstart, const int *children, int N, int r, int *por, int *label) {
     int *stack = new int[N + 2];
     memset(stack, 0, (N + 2) * sizeof(*stack));
 
     int push = 1;
     stack[push] = r;
     push++;
-    int *chtmp = (int *)malloc((N + 2) * sizeof(int));
+    int *chtmp = (int *) malloc((N + 2) * sizeof(int));
     memcpy(chtmp, chstart, (N + 2) * sizeof(*chstart));
 
-    while (push > 1)
-    {
+    while (push > 1) {
         int top = stack[push - 1];
-        if (chstart[top + 1] - chtmp[top] > 0)
-        {
+        if (chstart[top + 1] - chtmp[top] > 0) {
             int ch = children[chtmp[top]];
             chtmp[top]++;
             stack[push] = ch;
             push++;
-        }
-        else
-        {
+        } else {
             por[*label] = top;
             (*label)++;
             push--;
@@ -300,32 +262,26 @@ void poaux(const int *chstart, const int *children, int N, int r, int *por, int 
     delete[] stack;
 }
 
-void po_construct(const int N, const int *prnts, int **chstart, int **chend, int **children, int *root)
-{
+void po_construct(const int N, const int *prnts, int **chstart, int **chend, int **children, int *root) {
     *chend = new int[N + 2];
     *chstart = new int[N + 2];
     *children = new int[N + 1];
-    memset((void *)*chstart, 0, (N + 2) * sizeof(**chstart));
-    memset((void *)*children, 0, (N + 1) * sizeof(**children));
+    memset((void *) *chstart, 0, (N + 2) * sizeof(**chstart));
+    memset((void *) *children, 0, (N + 1) * sizeof(**children));
 
     *root = -1;
 
-    for (int ii = 1; ii < N + 1; ii++)
-    {
-        if (prnts[ii] > 0)
-        {
+    for (int ii = 1; ii < N + 1; ii++) {
+        if (prnts[ii] > 0) {
             (*chstart)[prnts[ii]]++;
-        }
-        else
-        {
+        } else {
             *root = ii;
         }
     }
 
     /*compute cumsum*/
     int cum_val = 1;
-    for (int ii = 1; ii < N + 2; ii++)
-    {
+    for (int ii = 1; ii < N + 2; ii++) {
         int val = cum_val;
         cum_val += (*chstart)[ii];
         (*chstart)[ii] = val;
@@ -333,33 +289,27 @@ void po_construct(const int N, const int *prnts, int **chstart, int **chend, int
 
     memcpy(*chend, *chstart, (N + 2) * sizeof(**chstart));
 
-    for (int ii = 1; ii < N + 1; ii++)
-    {
-        if (prnts[ii] > 0)
-        {
+    for (int ii = 1; ii < N + 1; ii++) {
+        if (prnts[ii] > 0) {
             (*children)[(*chend)[prnts[ii]]] = ii;
             (*chend)[prnts[ii]]++;
         }
     }
 }
 
-double IOCounter(Tree &tree, schedule_t &sub_schedule, double available_memory, bool divisible, int quiet)
-{
+double IOCounter(Tree &tree, schedule_t &sub_schedule, double available_memory, bool divisible, int quiet) {
     double memory_occupation = 0;
     double io_volume = 0;
     io_map unloaded_nodes;
     schedule_t loaded_nodes;
 
     /*iterates through the given permutation (schedule)*/
-    for (schedule_t::iterator cur_task_id = sub_schedule.begin(); cur_task_id != sub_schedule.end(); cur_task_id++)
-    {
+    for (schedule_t::iterator cur_task_id = sub_schedule.begin(); cur_task_id != sub_schedule.end(); cur_task_id++) {
         Task *cur_node = tree.GetNode(*cur_task_id);
 
         /*if the node was unloaded*/
-        if (unloaded_nodes.find(*cur_task_id) != unloaded_nodes.end())
-        {
-            if (!quiet)
-            {
+        if (unloaded_nodes.find(*cur_task_id) != unloaded_nodes.end()) {
+            if (!quiet) {
                 cerr << "Loading " << unloaded_nodes[*cur_task_id] << "of " << *cur_task_id << " (IO)" << endl;
             }
 
@@ -368,53 +318,41 @@ double IOCounter(Tree &tree, schedule_t &sub_schedule, double available_memory, 
         }
 
         double data_to_unload = memory_occupation + cur_node->GetCost() - cur_node->GetEW() - available_memory;
-        if (!quiet)
-        {
+        if (!quiet) {
             cerr << "min data to unload " << data_to_unload << endl;
         }
-        if (data_to_unload > 0)
-        {
+        if (data_to_unload > 0) {
             /*if we dont have enough room, unload files and update both io and occupation*/
             double unloaded_data = 0;
             /*unload furthest non unloaded node which is NOT in current_node children first*/
             schedule_t::reverse_iterator far_node_id = loaded_nodes.rbegin();
-            while ((far_node_id != loaded_nodes.rend()) && (unloaded_data < data_to_unload))
-            {
+            while ((far_node_id != loaded_nodes.rend()) && (unloaded_data < data_to_unload)) {
                 /*try to unload this node*/
                 bool is_already_unloaded = false;
                 double remaining_loaded_data = tree.GetNode(*far_node_id)->GetEW();
-                if (unloaded_nodes.find(*far_node_id) != unloaded_nodes.end())
-                {
+                if (unloaded_nodes.find(*far_node_id) != unloaded_nodes.end()) {
                     is_already_unloaded = true;
                     remaining_loaded_data = max(remaining_loaded_data - unloaded_nodes[*far_node_id], 0.0);
                 }
 
                 double local_data_to_unload;
-                if (divisible)
-                {
+                if (divisible) {
                     local_data_to_unload = min(remaining_loaded_data, data_to_unload);
-                }
-                else
-                {
+                } else {
                     local_data_to_unload = remaining_loaded_data;
                 }
 
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << "unloading (IO) " << local_data_to_unload << " of " << *far_node_id << endl;
                 }
                 unloaded_data += local_data_to_unload;
-                if (is_already_unloaded)
-                {
+                if (is_already_unloaded) {
                     unloaded_nodes[*far_node_id] += local_data_to_unload;
-                }
-                else
-                {
+                } else {
                     unloaded_nodes[*far_node_id] = local_data_to_unload;
                 }
 
-                if (remaining_loaded_data == local_data_to_unload)
-                {
+                if (remaining_loaded_data == local_data_to_unload) {
                     loaded_nodes.remove(*far_node_id);
                 }
 
@@ -425,40 +363,33 @@ double IOCounter(Tree &tree, schedule_t &sub_schedule, double available_memory, 
             memory_occupation -= unloaded_data;
         }
 
-        if (!quiet)
-        {
+        if (!quiet) {
             cerr << "occupation before processing " << memory_occupation << endl;
         }
         /*if we have enough memory to process the node, update occupation*/
         memory_occupation += cur_node->GetCost() - 2 * cur_node->GetEW() - cur_node->GetNW();
-        if (!quiet)
-        {
+        if (!quiet) {
             cerr << "processing " << *cur_task_id << endl;
         }
-        if (!quiet)
-        {
+        if (!quiet) {
             cerr << "unloading " << *cur_task_id << endl;
         }
         loaded_nodes.remove(*cur_task_id);
 
-        if (!quiet)
-        {
+        if (!quiet) {
             cerr << "loading ";
         }
-        for (vector<Task *>::iterator child = cur_node->GetChildren()->begin(); child != cur_node->GetChildren()->end(); child++)
-        {
-            if (!quiet)
-            {
+        for (vector<Task *>::iterator child = cur_node->GetChildren()->begin();
+             child != cur_node->GetChildren()->end(); child++) {
+            if (!quiet) {
                 cerr << (*child)->GetId() << " ";
             }
             loaded_nodes.push_back((*child)->GetId());
         }
-        if (!quiet)
-        {
+        if (!quiet) {
             cerr << endl;
         }
-        if (!quiet)
-        {
+        if (!quiet) {
             cerr << "New occupation after processing " << memory_occupation << endl;
         }
     }
@@ -467,14 +398,13 @@ double IOCounter(Tree &tree, schedule_t &sub_schedule, double available_memory, 
     //    cerr<<"IO Volume "<<io_volume<<endl;
 }
 
-double unload_largest_first_fit(Tree *tree, vector<unsigned int> &unloaded_nodes, list<node_ew> &loaded_nodes, const double data_to_unload, double *ewghts)
-{
+double unload_largest_first_fit(Tree *tree, vector<unsigned int> &unloaded_nodes, list<node_ew> &loaded_nodes,
+                                const double data_to_unload, double *ewghts) {
     double unloaded_data = 0.0;
 
     /*loaded_nodes already sorted, unload largest nodes till there is enough space*/
     list<node_ew>::iterator largest_node = loaded_nodes.begin();
-    while ((largest_node != loaded_nodes.end()) && (unloaded_data < data_to_unload))
-    {
+    while ((largest_node != loaded_nodes.end()) && (unloaded_data < data_to_unload)) {
         largest_node = loaded_nodes.begin();
         tree->GetNode(largest_node->first)->BreakEdge(); //break this edge;
         //cout<<"******Largest first: break edge "<<largest_node->first<<endl;
@@ -487,8 +417,8 @@ double unload_largest_first_fit(Tree *tree, vector<unsigned int> &unloaded_nodes
     return unloaded_data;
 }
 
-double unload_furthest_nodes(Tree *tree, vector<unsigned int> &unloaded_nodes, list<node_sche> &loaded_nodes, const double data_to_unload, double *ewghts, bool divisible)
-{
+double unload_furthest_nodes(Tree *tree, vector<unsigned int> &unloaded_nodes, list<node_sche> &loaded_nodes,
+                             const double data_to_unload, double *ewghts, bool divisible) {
     double unloaded_data = 0.0;
     // cout << "loaded nodes: size " << loaded_nodes.size();
     // list<node_sche>::iterator loaded_iterator = loaded_nodes.begin();
@@ -514,19 +444,15 @@ double unload_furthest_nodes(Tree *tree, vector<unsigned int> &unloaded_nodes, l
     /*unload furthest non unloaded node which is NOT in current_node children first*/
     list<node_sche> old_loaded_nodes = loaded_nodes;
     list<node_sche>::iterator far_node = loaded_nodes.begin();
-    while ((far_node != loaded_nodes.end()) && (unloaded_data < data_to_unload))
-    {
+    while ((far_node != loaded_nodes.end()) && (unloaded_data < data_to_unload)) {
         // cout << far_node->first << " " << far_node->second << endl;
         /*try to unload this node*/
         far_node = loaded_nodes.begin();
         double remaining_loaded_data = ewghts[(*far_node).first];
         double local_data_to_unload;
-        if (divisible)
-        {
+        if (divisible) {
             local_data_to_unload = min(remaining_loaded_data, data_to_unload);
-        }
-        else
-        {
+        } else {
             local_data_to_unload = remaining_loaded_data;
         }
 #if VERBOSE
@@ -538,24 +464,18 @@ double unload_furthest_nodes(Tree *tree, vector<unsigned int> &unloaded_nodes, l
 
         ////cout<<"-------LSNF remove "<<local_data_to_unload<<endl;
         ////cout<<"break edge "<<far_node->first<<endl;
-        if (far_node->first == 0)
-        {
+        if (far_node->first == 0) {
             cout << "Problem! loaded nodes " << endl;
             list<node_sche>::iterator loaded_iterator = loaded_nodes.begin();
-            if (loaded_nodes.size() < 20)
-            {
-                while (loaded_iterator != loaded_nodes.end())
-                {
+            if (loaded_nodes.size() < 20) {
+                while (loaded_iterator != loaded_nodes.end()) {
                     cout << loaded_iterator->first << endl;
                 }
-            }
-            else
-            {
+            } else {
                 cout << "big loaded nodes";
             }
             cout << "unloaded nodes: ";
-            for (int i = 0; i < unloaded_nodes.size(); i++)
-            {
+            for (int i = 0; i < unloaded_nodes.size(); i++) {
                 cout << unloaded_nodes[i] << endl;
             }
 
@@ -571,24 +491,20 @@ double unload_furthest_nodes(Tree *tree, vector<unsigned int> &unloaded_nodes, l
     return unloaded_data;
 }
 
-double unload_furthest_first_fit(Tree *tree, vector<unsigned int> &unloaded_nodes, list<node_sche> &loaded_nodes, const double data_to_unload, double *ewghts, bool divisible)
-{
+double unload_furthest_first_fit(Tree *tree, vector<unsigned int> &unloaded_nodes, list<node_sche> &loaded_nodes,
+                                 const double data_to_unload, double *ewghts, bool divisible) {
     double unloaded_data = 0.0;
     /*unload furthest non unloaded node which is NOT in current_node children first*/
     list<node_sche>::iterator far_node = loaded_nodes.begin();
-    while ((far_node != loaded_nodes.end()) && (unloaded_data < data_to_unload))
-    {
+    while ((far_node != loaded_nodes.end()) && (unloaded_data < data_to_unload)) {
         /*try to unload this node*/
 
         double remaining_loaded_data = ewghts[far_node->first];
 
         double local_data_to_unload;
-        if (divisible)
-        {
+        if (divisible) {
             local_data_to_unload = min(remaining_loaded_data, data_to_unload);
-        }
-        else
-        {
+        } else {
             local_data_to_unload = remaining_loaded_data;
         }
 #if VERBOSE
@@ -596,8 +512,7 @@ double unload_furthest_first_fit(Tree *tree, vector<unsigned int> &unloaded_node
 #endif
 
         /*if it "fits", that is if the amount of data is lower than what we need to unload*/
-        if (local_data_to_unload >= data_to_unload)
-        {
+        if (local_data_to_unload >= data_to_unload) {
             //cout<<"-------First fit success: ";
             //cout<<"break edge "<<far_node->first<<endl;
             unloaded_data += local_data_to_unload;
@@ -616,42 +531,35 @@ double unload_furthest_first_fit(Tree *tree, vector<unsigned int> &unloaded_node
     return unloaded_data;
 }
 
-double unload_furthest_best_fit(io_map &unloaded_nodes, schedule_t &loaded_nodes, const double data_to_unload, double *ewghts, bool divisible)
-{
+double
+unload_furthest_best_fit(io_map &unloaded_nodes, schedule_t &loaded_nodes, const double data_to_unload, double *ewghts,
+                         bool divisible) {
     double unloaded_data = 0.0;
     /*unload furthest non unloaded node which is NOT in current_node children first*/
-    while (unloaded_data < data_to_unload)
-    {
+    while (unloaded_data < data_to_unload) {
         bool is_best_already_unloaded = false;
         double best_remaining_loaded_data = 0.0;
         unsigned int best_candidate = -1;
         double best_candi_score = -1.0;
 
         schedule_t::reverse_iterator far_node_id = loaded_nodes.rbegin();
-        while ((far_node_id != loaded_nodes.rend()))
-        {
+        while ((far_node_id != loaded_nodes.rend())) {
             /*try to unload this node*/
             bool is_already_unloaded = false;
             double remaining_loaded_data = ewghts[*far_node_id];
-            if (unloaded_nodes.find(*far_node_id) != unloaded_nodes.end())
-            {
+            if (unloaded_nodes.find(*far_node_id) != unloaded_nodes.end()) {
                 is_already_unloaded = true;
                 remaining_loaded_data = max(remaining_loaded_data - unloaded_nodes[*far_node_id], 0.0);
             }
             double local_data_to_unload;
-            if (divisible)
-            {
+            if (divisible) {
                 local_data_to_unload = min(remaining_loaded_data, data_to_unload);
-            }
-            else
-            {
+            } else {
                 local_data_to_unload = remaining_loaded_data;
             }
             /*if it "fits", that is if the amount of data is lower than what we need to unload*/
-            if (local_data_to_unload <= data_to_unload - unloaded_data)
-            {
-                if (local_data_to_unload > best_candi_score)
-                {
+            if (local_data_to_unload <= data_to_unload - unloaded_data) {
+                if (local_data_to_unload > best_candi_score) {
                     best_candi_score = local_data_to_unload;
                     best_candidate = *far_node_id;
                     is_best_already_unloaded = is_already_unloaded;
@@ -662,69 +570,52 @@ double unload_furthest_best_fit(io_map &unloaded_nodes, schedule_t &loaded_nodes
             far_node_id++;
         }
 
-        if (best_candi_score != -1)
-        {
+        if (best_candi_score != -1) {
             //cerr<<"best found :"<<best_candidate<<endl;
             unloaded_data += best_candi_score;
-            if (is_best_already_unloaded)
-            {
+            if (is_best_already_unloaded) {
                 unloaded_nodes[best_candidate] += best_candi_score;
-            }
-            else
-            {
+            } else {
                 unloaded_nodes[best_candidate] = best_candi_score;
             }
-            if (best_remaining_loaded_data == best_candi_score)
-            {
+            if (best_remaining_loaded_data == best_candi_score) {
                 loaded_nodes.remove(best_candidate);
             }
-        }
-        else
-        {
+        } else {
             break;
         }
     }
     return unloaded_data;
 }
 
-double unload_furthest_first_fit_abs(io_map &unloaded_nodes, schedule_t &loaded_nodes, const double data_to_unload, double *ewghts, bool divisible)
-{
+double unload_furthest_first_fit_abs(io_map &unloaded_nodes, schedule_t &loaded_nodes, const double data_to_unload,
+                                     double *ewghts, bool divisible) {
     double unloaded_data = 0.0;
     /*unload furthest non unloaded node which is NOT in current_node children first*/
     schedule_t::reverse_iterator far_node_id = loaded_nodes.rbegin();
-    while ((far_node_id != loaded_nodes.rend()) && (unloaded_data < data_to_unload))
-    {
+    while ((far_node_id != loaded_nodes.rend()) && (unloaded_data < data_to_unload)) {
         /*try to unload this node*/
         bool is_already_unloaded = false;
         double remaining_loaded_data = ewghts[*far_node_id];
-        if (unloaded_nodes.find(*far_node_id) != unloaded_nodes.end())
-        {
+        if (unloaded_nodes.find(*far_node_id) != unloaded_nodes.end()) {
             is_already_unloaded = true;
             remaining_loaded_data = max(remaining_loaded_data - unloaded_nodes[*far_node_id], 0.0);
         }
         double local_data_to_unload;
-        if (divisible)
-        {
+        if (divisible) {
             local_data_to_unload = min(remaining_loaded_data, data_to_unload);
-        }
-        else
-        {
+        } else {
             local_data_to_unload = remaining_loaded_data;
         }
         /*if it "fits", that is if the amount of data is lower than what we need to unload*/
-        if (local_data_to_unload >= data_to_unload - unloaded_data)
-        {
+        if (local_data_to_unload >= data_to_unload - unloaded_data) {
             unloaded_data += local_data_to_unload;
-            if (is_already_unloaded)
-            {
+            if (is_already_unloaded) {
                 unloaded_nodes[*far_node_id] += local_data_to_unload;
-            }
-            else
-            {
+            } else {
                 unloaded_nodes[*far_node_id] = local_data_to_unload;
             }
-            if (remaining_loaded_data == local_data_to_unload)
-            {
+            if (remaining_loaded_data == local_data_to_unload) {
                 loaded_nodes.remove(*far_node_id);
             }
         }
@@ -735,40 +626,34 @@ double unload_furthest_first_fit_abs(io_map &unloaded_nodes, schedule_t &loaded_
     return unloaded_data;
 }
 
-double unload_furthest_best_fit_abs(io_map &unloaded_nodes, schedule_t &loaded_nodes, const double data_to_unload, double *ewghts, bool divisible)
-{
+double unload_furthest_best_fit_abs(io_map &unloaded_nodes, schedule_t &loaded_nodes, const double data_to_unload,
+                                    double *ewghts, bool divisible) {
     double unloaded_data = 0.0;
     /*unload furthest non unloaded node which is NOT in current_node children first*/
-    while (unloaded_data < data_to_unload)
-    {
+    while (unloaded_data < data_to_unload) {
         bool is_best_already_unloaded = false;
         double best_remaining_loaded_data = 0.0;
         unsigned int best_candidate = -1;
         double best_candi_score = -1.0;
 
         schedule_t::reverse_iterator far_node_id = loaded_nodes.rbegin();
-        while ((far_node_id != loaded_nodes.rend()))
-        {
+        while ((far_node_id != loaded_nodes.rend())) {
             /*try to unload this node*/
             bool is_already_unloaded = false;
             double remaining_loaded_data = ewghts[*far_node_id];
-            if (unloaded_nodes.find(*far_node_id) != unloaded_nodes.end())
-            {
+            if (unloaded_nodes.find(*far_node_id) != unloaded_nodes.end()) {
                 is_already_unloaded = true;
                 remaining_loaded_data = max(remaining_loaded_data - unloaded_nodes[*far_node_id], 0.0);
             }
             double local_data_to_unload;
-            if (divisible)
-            {
+            if (divisible) {
                 local_data_to_unload = min(remaining_loaded_data, data_to_unload);
-            }
-            else
-            {
+            } else {
                 local_data_to_unload = remaining_loaded_data;
             }
             /*if it "fits", that is if the amount of data is lower than what we need to unload*/
-            if (abs(data_to_unload - unloaded_data - local_data_to_unload) < abs(data_to_unload - unloaded_data - best_candi_score))
-            {
+            if (abs(data_to_unload - unloaded_data - local_data_to_unload) <
+                abs(data_to_unload - unloaded_data - best_candi_score)) {
                 best_candi_score = local_data_to_unload;
                 best_candidate = *far_node_id;
                 is_best_already_unloaded = is_already_unloaded;
@@ -778,25 +663,18 @@ double unload_furthest_best_fit_abs(io_map &unloaded_nodes, schedule_t &loaded_n
             far_node_id++;
         }
 
-        if (best_candi_score != -1)
-        {
+        if (best_candi_score != -1) {
             //cerr<<"best found :"<<best_candidate<<endl;
             unloaded_data += best_candi_score;
-            if (is_best_already_unloaded)
-            {
+            if (is_best_already_unloaded) {
                 unloaded_nodes[best_candidate] += best_candi_score;
-            }
-            else
-            {
+            } else {
                 unloaded_nodes[best_candidate] = best_candi_score;
             }
-            if (best_remaining_loaded_data == best_candi_score)
-            {
+            if (best_remaining_loaded_data == best_candi_score) {
                 loaded_nodes.remove(best_candidate);
             }
-        }
-        else
-        {
+        } else {
             break;
         }
     }
@@ -804,13 +682,11 @@ double unload_furthest_best_fit_abs(io_map &unloaded_nodes, schedule_t &loaded_n
     return unloaded_data;
 }
 
-int next_comb(int comb[], int k, int n)
-{
+int next_comb(int comb[], int k, int n) {
     int i = k - 1;
     ++comb[i];
 
-    while ((i > 0) && (comb[i] >= n - k + 1 + i))
-    {
+    while ((i > 0) && (comb[i] >= n - k + 1 + i)) {
         --i;
         ++comb[i];
     }
@@ -826,23 +702,20 @@ int next_comb(int comb[], int k, int n)
     return 1;
 }
 
-double unload_best_increasing_combi(io_map &unloaded_nodes, schedule_t &loaded_nodes, const double data_to_unload, double *ewghts, bool divisible, unsigned int init_combi_size, bool quiet)
-{
+double unload_best_increasing_combi(io_map &unloaded_nodes, schedule_t &loaded_nodes, const double data_to_unload,
+                                    double *ewghts, bool divisible, unsigned int init_combi_size, bool quiet) {
     assert(!divisible);
     vector<unsigned int> candidates;
     double unloaded_data = 0.0;
     vector<unsigned int> best_combi;
     double best_combi_score = numeric_limits<double>::infinity();
-    while (unloaded_data < data_to_unload)
-    {
+    while (unloaded_data < data_to_unload) {
         /*unload furthest non unloaded node which is NOT in current_node children first*/
         candidates.clear();
         schedule_t::reverse_iterator far_node_id = loaded_nodes.rbegin();
-        while ((far_node_id != loaded_nodes.rend()) && (candidates.size() <= init_combi_size))
-        {
+        while ((far_node_id != loaded_nodes.rend()) && (candidates.size() <= init_combi_size)) {
             /*try to unload this node*/
-            if (unloaded_nodes.find(*far_node_id) == unloaded_nodes.end())
-            {
+            if (unloaded_nodes.find(*far_node_id) == unloaded_nodes.end()) {
                 candidates.push_back(*far_node_id);
             }
 
@@ -853,8 +726,7 @@ double unload_best_increasing_combi(io_map &unloaded_nodes, schedule_t &loaded_n
         vector<unsigned int> cur_combi;
 
         int n = candidates.size(); /* The size of the set; for {1, 2, 3, 4} it's 4 */
-        for (int k = 1; k <= n; k++)
-        {
+        for (int k = 1; k <= n; k++) {
             /* k is the size of the subsets; for {1, 2}, {1, 3}, ... it's 2 */
             int comb[k]; /* comb[i] is the index of the i-th element in the
                           combination */
@@ -865,65 +737,56 @@ double unload_best_increasing_combi(io_map &unloaded_nodes, schedule_t &loaded_n
             /*compute score*/
             cur_combi.clear();
             double cur_unloaded_data = 0.0;
-            if (!quiet)
-            {
+            if (!quiet) {
                 cerr << "cur_combi is [";
             }
-            for (int i = 0; i < k; ++i)
-            {
+            for (int i = 0; i < k; ++i) {
                 unsigned int cur_node_id = candidates[comb[i]];
                 cur_unloaded_data += ewghts[cur_node_id];
                 cur_combi.push_back(cur_node_id);
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << " " << cur_node_id;
                 }
             }
-            if (!quiet)
-            {
+            if (!quiet) {
                 cerr << "], its score is " << cur_unloaded_data << endl;
             }
 
-            if (abs(data_to_unload - unloaded_data - cur_unloaded_data) < abs(data_to_unload - unloaded_data - best_combi_score))
-            {
-                if (!quiet)
-                {
-                    cerr << "cur_combi is better than prev best " << cur_unloaded_data << " vs " << best_combi_score << endl;
+            if (abs(data_to_unload - unloaded_data - cur_unloaded_data) <
+                abs(data_to_unload - unloaded_data - best_combi_score)) {
+                if (!quiet) {
+                    cerr << "cur_combi is better than prev best " << cur_unloaded_data << " vs " << best_combi_score
+                         << endl;
                 }
                 best_combi.assign(cur_combi.begin(), cur_combi.end());
                 best_combi_score = cur_unloaded_data;
             }
 
             /* Generate and print all the other combinations */
-            while (next_comb(comb, k, n))
-            {
+            while (next_comb(comb, k, n)) {
                 /*compute score*/
                 cur_combi.clear();
                 double cur_unloaded_data = 0.0;
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << "cur_combi is [";
                 }
-                for (int i = 0; i < k; ++i)
-                {
+                for (int i = 0; i < k; ++i) {
                     unsigned int cur_node_id = candidates[comb[i]];
                     cur_unloaded_data += ewghts[cur_node_id];
                     cur_combi.push_back(cur_node_id);
-                    if (!quiet)
-                    {
+                    if (!quiet) {
                         cerr << " " << cur_node_id;
                     }
                 }
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << "], its score is " << cur_unloaded_data << endl;
                 }
 
-                if (abs(data_to_unload - unloaded_data - cur_unloaded_data) < abs(data_to_unload - unloaded_data - best_combi_score))
-                {
-                    if (!quiet)
-                    {
-                        cerr << "cur_combi is better than prev best " << cur_unloaded_data << " vs " << best_combi_score << endl;
+                if (abs(data_to_unload - unloaded_data - cur_unloaded_data) <
+                    abs(data_to_unload - unloaded_data - best_combi_score)) {
+                    if (!quiet) {
+                        cerr << "cur_combi is better than prev best " << cur_unloaded_data << " vs " << best_combi_score
+                             << endl;
                     }
                     best_combi.assign(cur_combi.begin(), cur_combi.end());
                     best_combi_score = cur_unloaded_data;
@@ -933,53 +796,44 @@ double unload_best_increasing_combi(io_map &unloaded_nodes, schedule_t &loaded_n
 
         unloaded_data = best_combi_score;
 
-        if (unloaded_data < data_to_unload)
-        {
+        if (unloaded_data < data_to_unload) {
             init_combi_size *= 2;
         }
     }
-    if (!quiet)
-    {
+    if (!quiet) {
         cerr << "best_combi is [";
     }
-    for (unsigned int i = 0; i < best_combi.size(); i++)
-    {
+    for (unsigned int i = 0; i < best_combi.size(); i++) {
         unsigned int cur_id = best_combi[i];
         unloaded_nodes[cur_id] = ewghts[cur_id];
         loaded_nodes.remove(cur_id);
-        if (!quiet)
-        {
+        if (!quiet) {
             cerr << " " << cur_id;
         }
     }
-    if (!quiet)
-    {
+    if (!quiet) {
         cerr << "], its score is " << best_combi_score << endl;
     }
 
-    if (!quiet)
-    {
+    if (!quiet) {
         cerr << "We've unloaded " << unloaded_data << " out of " << data_to_unload << " so far" << endl;
     }
     unloaded_data = best_combi_score;
     return unloaded_data;
 }
 
-double unload_best_furthest_nodes(io_map &unloaded_nodes, schedule_t &loaded_nodes, const double data_to_unload, double *ewghts, bool divisible, unsigned int max_candidates, bool quiet)
-{
+double unload_best_furthest_nodes(io_map &unloaded_nodes, schedule_t &loaded_nodes, const double data_to_unload,
+                                  double *ewghts, bool divisible, unsigned int max_candidates, bool quiet) {
     assert(!divisible);
     vector<unsigned int> candidates;
     double unloaded_data = 0.0;
-    while (unloaded_data < data_to_unload)
-    {
+    while (unloaded_data < data_to_unload) {
         /*unload furthest non unloaded node which is NOT in current_node children first*/
         candidates.clear();
         schedule_t::reverse_iterator far_node_id = loaded_nodes.rbegin();
-        while ((far_node_id != loaded_nodes.rend()) && (candidates.size() <= max_candidates))
-        {
+        while ((far_node_id != loaded_nodes.rend()) && (candidates.size() <= max_candidates)) {
             /*try to unload this node*/
-            if (unloaded_nodes.find(*far_node_id) == unloaded_nodes.end())
-            {
+            if (unloaded_nodes.find(*far_node_id) == unloaded_nodes.end()) {
                 candidates.push_back(*far_node_id);
             }
 
@@ -992,8 +846,7 @@ double unload_best_furthest_nodes(io_map &unloaded_nodes, schedule_t &loaded_nod
         double best_combi_score = numeric_limits<double>::infinity();
 
         int n = candidates.size(); /* The size of the set; for {1, 2, 3, 4} it's 4 */
-        for (int k = 1; k <= n; k++)
-        {
+        for (int k = 1; k <= n; k++) {
             /* k is the size of the subsets; for {1, 2}, {1, 3}, ... it's 2 */
             int comb[k]; /* comb[i] is the index of the i-th element in the
                           combination */
@@ -1004,65 +857,56 @@ double unload_best_furthest_nodes(io_map &unloaded_nodes, schedule_t &loaded_nod
             /*compute score*/
             cur_combi.clear();
             double cur_unloaded_data = 0.0;
-            if (!quiet)
-            {
+            if (!quiet) {
                 cerr << "cur_combi is [";
             }
-            for (int i = 0; i < k; ++i)
-            {
+            for (int i = 0; i < k; ++i) {
                 unsigned int cur_node_id = candidates[comb[i]];
                 cur_unloaded_data += ewghts[cur_node_id];
                 cur_combi.push_back(cur_node_id);
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << " " << cur_node_id;
                 }
             }
-            if (!quiet)
-            {
+            if (!quiet) {
                 cerr << "], its score is " << cur_unloaded_data << endl;
             }
 
-            if ((double)abs(data_to_unload - unloaded_data - cur_unloaded_data) < (double)abs(data_to_unload - unloaded_data - best_combi_score))
-            {
-                if (!quiet)
-                {
-                    cerr << "cur_combi is better than prev best " << cur_unloaded_data << " vs " << best_combi_score << endl;
+            if ((double) abs(data_to_unload - unloaded_data - cur_unloaded_data) <
+                (double) abs(data_to_unload - unloaded_data - best_combi_score)) {
+                if (!quiet) {
+                    cerr << "cur_combi is better than prev best " << cur_unloaded_data << " vs " << best_combi_score
+                         << endl;
                 }
                 best_combi.assign(cur_combi.begin(), cur_combi.end());
                 best_combi_score = cur_unloaded_data;
             }
 
             /* Generate and print all the other combinations */
-            while (next_comb(comb, k, n))
-            {
+            while (next_comb(comb, k, n)) {
                 /*compute score*/
                 cur_combi.clear();
                 double cur_unloaded_data = 0.0;
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << "cur_combi is [";
                 }
-                for (int i = 0; i < k; ++i)
-                {
+                for (int i = 0; i < k; ++i) {
                     unsigned int cur_node_id = candidates[comb[i]];
                     cur_unloaded_data += ewghts[cur_node_id];
                     cur_combi.push_back(cur_node_id);
-                    if (!quiet)
-                    {
+                    if (!quiet) {
                         cerr << " " << cur_node_id;
                     }
                 }
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << "], its score is " << cur_unloaded_data << endl;
                 }
 
-                if (abs(data_to_unload - unloaded_data - cur_unloaded_data) < abs(data_to_unload - unloaded_data - best_combi_score))
-                {
-                    if (!quiet)
-                    {
-                        cerr << "cur_combi is better than prev best " << cur_unloaded_data << " vs " << best_combi_score << endl;
+                if (abs(data_to_unload - unloaded_data - cur_unloaded_data) <
+                    abs(data_to_unload - unloaded_data - best_combi_score)) {
+                    if (!quiet) {
+                        cerr << "cur_combi is better than prev best " << cur_unloaded_data << " vs " << best_combi_score
+                             << endl;
                     }
                     best_combi.assign(cur_combi.begin(), cur_combi.end());
                     best_combi_score = cur_unloaded_data;
@@ -1070,28 +914,23 @@ double unload_best_furthest_nodes(io_map &unloaded_nodes, schedule_t &loaded_nod
             }
         }
 
-        if (!quiet)
-        {
+        if (!quiet) {
             cerr << "best_combi is [";
         }
-        for (unsigned int i = 0; i < best_combi.size(); i++)
-        {
+        for (unsigned int i = 0; i < best_combi.size(); i++) {
             unsigned int cur_id = best_combi[i];
             unloaded_nodes[cur_id] = ewghts[cur_id];
             loaded_nodes.remove(cur_id);
-            if (!quiet)
-            {
+            if (!quiet) {
                 cerr << " " << cur_id;
             }
         }
-        if (!quiet)
-        {
+        if (!quiet) {
             cerr << "], its score is " << best_combi_score << endl;
         }
 
         unloaded_data += best_combi_score;
-        if (!quiet)
-        {
+        if (!quiet) {
             cerr << "We've unloaded " << unloaded_data << " out of " << data_to_unload << " so far" << endl;
         }
     }
@@ -1099,9 +938,10 @@ double unload_best_furthest_nodes(io_map &unloaded_nodes, schedule_t &loaded_nod
     return unloaded_data;
 }
 
-double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule, double available_memory,
-                 bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method)
-{
+double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule,
+                 double available_memory,
+                 bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges,
+                 io_method_t method) {
     double memory_occupation = ewghts[schedule[N - 1]];
     double io_volume = 0;
     vector<unsigned int> unloaded_nodes;
@@ -1123,17 +963,14 @@ double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart
     vector<unsigned int> subtreeBrokenEdges;
 
     /*iterates through the given permutation (schedule)*/
-    for (int rank = N - 1; rank >= 1; rank--)
-    {
+    for (int rank = N - 1; rank >= 1; rank--) {
         cur_task_id = schedule[rank];
 
         //cout<<"current task id: "<<cur_task_id<<endl;
-        if (cur_task_id != 0)
-        { //0 means this node is on other subtrees
+        if (cur_task_id != 0) { //0 means this node is on other subtrees
             /*if the node was unloaded*/
             unloaded = find(unloaded_nodes.begin(), unloaded_nodes.end(), cur_task_id);
-            if (unloaded != unloaded_nodes.end())
-            { //find node cur_task_id unloaded
+            if (unloaded != unloaded_nodes.end()) { //find node cur_task_id unloaded
                 //cout<<", (break) "<<endl;
                 brokenEdges->push_back(tree->GetNode(cur_task_id)->GetothersideID());
                 ++com_freq;
@@ -1141,14 +978,12 @@ double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart
                 temp.clear();
                 queue.push_back(cur_task_id);
                 //cout<<"children "<<endl;
-                do
-                {
+                do {
                     child_start = *(chstart + queue.front());
                     child_end = *(chstart + queue.front() + 1);
                     temp.push_back(queue.front());
                     queue.pop_front();
-                    for (unsigned int i = child_start; i < child_end; ++i)
-                    {
+                    for (unsigned int i = child_start; i < child_end; ++i) {
                         //cout<<*(children+i)<<" ";
                         queue.push_back(*(children + i));
                     }
@@ -1156,23 +991,21 @@ double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart
                 //cout<<endl;
 
                 subtree_size = temp.size(); //just an approximation
-                for (long i = rank - 1; i >= 0; i--)
-                {
+                for (long i = rank - 1; i >= 0; i--) {
                     iter = find(temp.begin(), temp.end(), schedule[i]);
-                    if (iter != temp.end())
-                    {
+                    if (iter != temp.end()) {
                         schedule[i] = 0; //IO counter will pass 0;
                         temp.erase(iter);
                     }
-                    if (temp.size() == 1)
-                    {
+                    if (temp.size() == 1) {
                         break;
                     }
                 }
 
                 double *ewghtssub, *timewghtssub, *spacewghtssub;
                 int *prntssub;
-                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub, &timewghtssub, &spacewghtssub, chstart, children);
+                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub,
+                                             &timewghtssub, &spacewghtssub, chstart, children);
 
                 subtree_size = subtree->GetNodes()->size();
                 cout << "subtree size " << subtree_size << endl;
@@ -1183,8 +1016,7 @@ double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart
                 count = 0;
                 MinMem(subtree, maxoutD, memory_required, *schedule_f, true, count);
                 ite_sche = schedule_f->begin();
-                for (unsigned int i = subtree_size; i >= 1; --i)
-                {
+                for (unsigned int i = subtree_size; i >= 1; --i) {
                     schedule_copy[i] = *ite_sche;
                     advance(ite_sche, 1);
                 }
@@ -1192,14 +1024,15 @@ double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart
                 int *chstartsub, *chendsub, *childrensub;
                 po_construct(subtree_size, prntssub, &chstartsub, &chendsub, &childrensub, &rootid);
 
-                if (memory_required > available_memory)
-                {
+                if (memory_required > available_memory) {
                     // cout << "memory required " << memory_required << ", is larger than what is available BLABLA " << available_memory << endl;
                     // cout << "----------------------Processing subtree!" << endl;
-                    IO_sub = IOCounter(subtree, subtree_size + 1, spacewghtssub, ewghtssub, chstartsub, childrensub, schedule_copy, available_memory, divisible, quiet, com_freq, &subtreeBrokenEdges, method);
+                    IO_sub = IOCounter(subtree, subtree_size + 1, spacewghtssub, ewghtssub, chstartsub, childrensub,
+                                       schedule_copy, available_memory, divisible, quiet, com_freq, &subtreeBrokenEdges,
+                                       method);
 
-                    for (vector<unsigned int>::iterator iter = subtreeBrokenEdges.begin(); iter != subtreeBrokenEdges.end(); ++iter)
-                    {
+                    for (vector<unsigned int>::iterator iter = subtreeBrokenEdges.begin();
+                         iter != subtreeBrokenEdges.end(); ++iter) {
                         brokenEdges->push_back(tree->GetNode(*iter)->GetothersideID());
                     }
                     //   cout << "----------------------Out of Processing subtree!" << endl;
@@ -1216,115 +1049,108 @@ double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart
                 delete subtree;
 
                 io_volume += IO_sub;
-            }
-            else
-            {
+            } else {
 
                 double node_cost = ewghts[cur_task_id] + nwghts[cur_task_id];
-                for (int j = chstart[cur_task_id]; j < chstart[cur_task_id + 1]; j++)
-                {
+                for (int j = chstart[cur_task_id]; j < chstart[cur_task_id + 1]; j++) {
                     node_cost += ewghts[children[j]];
                 }
 
                 double data_to_unload = memory_occupation + node_cost - ewghts[cur_task_id] - available_memory;
 
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << "min data to unload " << data_to_unload << endl;
                 }
 
-                if (data_to_unload > 0)
-                {
+                if (data_to_unload > 0) {
                     //cerr<<"We must commit I/O in order to process node "<<cur_task_id<<" which requires "<< memory_occupation + node_cost - ewghts[cur_task_id]<< " but has "<<available_memory<<"available"<<endl;
                     /*if we dont have enough room, unload files and update both io and occupation*/
 
-                    switch (method)
-                    {
-                    case FIRST_FIT:
-                        loaded_nodes.remove(make_pair(cur_task_id, schedule_vec.end() - find(schedule_vec.begin(), schedule_vec.end(), cur_task_id)));
-                        loaded_nodes.sort(sort_sche); //descending schedule order
-                        break;
-                    case LARGEST_FIT:
-                        loaded_nodes_ew.remove(make_pair(cur_task_id, ewghts[cur_task_id]));
-                        loaded_nodes_ew.sort(sort_ew);
-                        break;
+                    switch (method) {
+                        case FIRST_FIT:
+                            loaded_nodes.remove(make_pair(cur_task_id, schedule_vec.end() -
+                                                                       find(schedule_vec.begin(), schedule_vec.end(),
+                                                                            cur_task_id)));
+                            loaded_nodes.sort(sort_sche); //descending schedule order
+                            break;
+                        case LARGEST_FIT:
+                            loaded_nodes_ew.remove(make_pair(cur_task_id, ewghts[cur_task_id]));
+                            loaded_nodes_ew.sort(sort_ew);
+                            break;
 
-                    default:
-                        break;
+                        default:
+                            break;
                     }
 
                     double unloaded_data = 0.0;
-                    switch (method)
-                    {
-                    case FIRST_FIT:
-                        unloaded_data = unload_furthest_first_fit(tree, unloaded_nodes, loaded_nodes, data_to_unload, ewghts, divisible);
-                        break;
-                    case LARGEST_FIT:
-                        unloaded_data = unload_largest_first_fit(tree, unloaded_nodes, loaded_nodes_ew, data_to_unload, ewghts);
-                        break;
-                    default:
-                        unloaded_data = unload_furthest_first_fit(tree, unloaded_nodes, loaded_nodes, data_to_unload, ewghts, divisible);
-                        break;
+                    switch (method) {
+                        case FIRST_FIT:
+                            unloaded_data = unload_furthest_first_fit(tree, unloaded_nodes, loaded_nodes,
+                                                                      data_to_unload, ewghts, divisible);
+                            break;
+                        case LARGEST_FIT:
+                            unloaded_data = unload_largest_first_fit(tree, unloaded_nodes, loaded_nodes_ew,
+                                                                     data_to_unload, ewghts);
+                            break;
+                        default:
+                            unloaded_data = unload_furthest_first_fit(tree, unloaded_nodes, loaded_nodes,
+                                                                      data_to_unload, ewghts, divisible);
+                            break;
                     }
                     io_volume += unloaded_data;
                     memory_occupation -= unloaded_data;
                 }
 
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << "occupation before processing " << memory_occupation << endl;
                 }
                 /*if we have enough memory to process the node, update occupation*/
                 memory_occupation += node_cost - 2 * ewghts[cur_task_id] - nwghts[cur_task_id];
                 memory_occupation = max(0.0, memory_occupation);
 
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << "processing " << cur_task_id << endl;
                     cerr << "unloading " << cur_task_id << endl;
                     cerr << "loading ";
                 }
 
-                switch (method)
-                {
-                case FIRST_FIT:
-                    loaded_nodes.remove(make_pair(cur_task_id, schedule_vec.end() - find(schedule_vec.begin(), schedule_vec.end(), cur_task_id)));
-                    break;
-                case LARGEST_FIT:
-                    loaded_nodes_ew.remove(make_pair(cur_task_id, ewghts[cur_task_id]));
-                    break;
-
-                default:
-                    break;
-                }
-
-                for (int j = chstart[cur_task_id]; j < chstart[cur_task_id + 1]; j++)
-                {
-                    int ch = children[j];
-                    if (!quiet)
-                    {
-                        cerr << ch << " ";
-                    }
-                    switch (method)
-                    {
+                switch (method) {
                     case FIRST_FIT:
-                        loaded_nodes.push_back(make_pair(ch, schedule_vec.end() - find(schedule_vec.begin(), schedule_vec.end(), ch)));
+                        loaded_nodes.remove(make_pair(cur_task_id, schedule_vec.end() -
+                                                                   find(schedule_vec.begin(), schedule_vec.end(),
+                                                                        cur_task_id)));
                         break;
                     case LARGEST_FIT:
-                        loaded_nodes_ew.push_back(make_pair(ch, ewghts[ch]));
+                        loaded_nodes_ew.remove(make_pair(cur_task_id, ewghts[cur_task_id]));
                         break;
 
                     default:
                         break;
+                }
+
+                for (int j = chstart[cur_task_id]; j < chstart[cur_task_id + 1]; j++) {
+                    int ch = children[j];
+                    if (!quiet) {
+                        cerr << ch << " ";
+                    }
+                    switch (method) {
+                        case FIRST_FIT:
+                            loaded_nodes.push_back(make_pair(ch, schedule_vec.end() -
+                                                                 find(schedule_vec.begin(), schedule_vec.end(), ch)));
+                            break;
+                        case LARGEST_FIT:
+                            loaded_nodes_ew.push_back(make_pair(ch, ewghts[ch]));
+                            break;
+
+                        default:
+                            break;
                     }
                 }
 
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << endl;
                 }
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << "New occupation after processing " << memory_occupation << endl;
                 }
             }
@@ -1336,10 +1162,10 @@ double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart
     //    cerr<<"IO Volume "<<io_volume<<endl;
 }
 
-double IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule, 
-                                Cluster *cluster, bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method)
-
-{
+double
+IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule,
+                         Cluster *cluster, bool divisible, int quiet, unsigned int &com_freq,
+                         vector<unsigned int> *brokenEdges, io_method_t method) {
     double memory_occupation = ewghts[schedule[N - 1]];
     double io_volume = 0;
     vector<unsigned int> unloaded_nodes;
@@ -1361,17 +1187,14 @@ double IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewght
     vector<unsigned int> subtreeBrokenEdges;
 
     /*iterates through the given permutation (schedule)*/
-    for (int rank = N - 1; rank >= 1; rank--)
-    {
+    for (int rank = N - 1; rank >= 1; rank--) {
         cur_task_id = schedule[rank];
 
         // cout<<"current task id: "<<cur_task_id<<endl;
-        if (cur_task_id != 0)
-        { //0 means this node is on other subtrees
+        if (cur_task_id != 0) { //0 means this node is on other subtrees
             /*if the node was unloaded*/
             unloaded = find(unloaded_nodes.begin(), unloaded_nodes.end(), cur_task_id);
-            if (unloaded != unloaded_nodes.end())
-            { //find node cur_task_id unloaded
+            if (unloaded != unloaded_nodes.end()) { //find node cur_task_id unloaded
                 //cout<<", (break) "<<endl;
                 brokenEdges->push_back(tree->GetNode(cur_task_id)->GetothersideID());
                 ++com_freq;
@@ -1379,14 +1202,12 @@ double IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewght
                 temp.clear();
                 queue.push_back(cur_task_id);
                 //cout<<"children "<<endl;
-                do
-                {
+                do {
                     child_start = *(chstart + queue.front());
                     child_end = *(chstart + queue.front() + 1);
                     temp.push_back(queue.front());
                     queue.pop_front();
-                    for (unsigned int i = child_start; i < child_end; ++i)
-                    {
+                    for (unsigned int i = child_start; i < child_end; ++i) {
                         //cout<<*(children+i)<<" ";
                         queue.push_back(*(children + i));
                     }
@@ -1394,23 +1215,21 @@ double IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewght
                 //cout<<endl;
 
                 subtree_size = temp.size(); //just an approximation
-                for (long i = rank - 1; i >= 0; i--)
-                {
+                for (long i = rank - 1; i >= 0; i--) {
                     iter = find(temp.begin(), temp.end(), schedule[i]);
-                    if (iter != temp.end())
-                    {
+                    if (iter != temp.end()) {
                         schedule[i] = 0; //IO counter will pass 0;
                         temp.erase(iter);
                     }
-                    if (temp.size() == 1)
-                    {
+                    if (temp.size() == 1) {
                         break;
                     }
                 }
 
                 double *ewghtssub, *timewghtssub, *spacewghtssub;
                 int *prntssub;
-                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub, &timewghtssub, &spacewghtssub, chstart, children);
+                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub,
+                                             &timewghtssub, &spacewghtssub, chstart, children);
 
                 subtree_size = subtree->GetNodes()->size();
 
@@ -1420,8 +1239,7 @@ double IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewght
                 count = 0;
                 MinMem(subtree, maxoutD, memory_required, *schedule_f, true, count);
                 ite_sche = schedule_f->begin();
-                for (unsigned int i = subtree_size; i >= 1; --i)
-                {
+                for (unsigned int i = subtree_size; i >= 1; --i) {
                     schedule_copy[i] = *ite_sche;
                     advance(ite_sche, 1);
                 }
@@ -1429,24 +1247,23 @@ double IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewght
                 int *chstartsub, *chendsub, *childrensub;
                 po_construct(subtree_size, prntssub, &chstartsub, &chendsub, &childrensub, &rootid);
 
-                if (memory_required > cluster->getFirstFreeProcessor()->getMemorySize())
-                {
+                if (memory_required > cluster->getFirstFreeProcessor()->getMemorySize()) {
                     //   cout << "memory required " << memory_required << ", is larger than what is available " << availableMemorySizesA2[currentProcessor] << " on proc " << currentProcessor << endl;
                     //  cout << "----------------------Processing subtree! " << cur_task_id << endl;
                     // currentProcessor++;
                     //INcrease processor??
-                    IO_sub = IOCounterWithVariableMem(subtree, subtree_size + 1, spacewghtssub, ewghtssub, chstartsub, childrensub, schedule_copy, cluster, divisible, quiet, com_freq, &subtreeBrokenEdges, method);
+                    IO_sub = IOCounterWithVariableMem(subtree, subtree_size + 1, spacewghtssub, ewghtssub, chstartsub,
+                                                      childrensub, schedule_copy, cluster, divisible, quiet, com_freq,
+                                                      &subtreeBrokenEdges, method);
 
                     //    cout << "subtree broken edges " << subtreeBrokenEdges.size() << endl;
 
-                    for (vector<unsigned int>::iterator iter = subtreeBrokenEdges.begin(); iter != subtreeBrokenEdges.end(); ++iter)
-                    {
+                    for (vector<unsigned int>::iterator iter = subtreeBrokenEdges.begin();
+                         iter != subtreeBrokenEdges.end(); ++iter) {
                         brokenEdges->push_back(tree->GetNode(*iter)->GetothersideID());
                     }
                     //    cout << "----------------------Out of Processing subtree!" << endl;
-                }
-                else
-                {
+                } else {
                     cluster->getFirstFreeProcessor()->assignTask(tree->GetNode(cur_task_id));
                     //   cout << "just increase proc to " << currentProcessor << endl;
                 }
@@ -1464,113 +1281,107 @@ double IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewght
                 delete subtree;
 
                 io_volume += IO_sub;
-            }
-            else
-            {
+            } else {
                 double node_cost = ewghts[cur_task_id] + nwghts[cur_task_id];
-                for (int j = chstart[cur_task_id]; j < chstart[cur_task_id + 1]; j++)
-                {
+                for (int j = chstart[cur_task_id]; j < chstart[cur_task_id + 1]; j++) {
                     node_cost += ewghts[children[j]];
                 }
 
-                double data_to_unload = memory_occupation + node_cost - ewghts[cur_task_id] - cluster->getFirstFreeProcessor()->getMemorySize();
+                double data_to_unload = memory_occupation + node_cost - ewghts[cur_task_id] -
+                                        cluster->getFirstFreeProcessor()->getMemorySize();
 
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << "min data to unload " << data_to_unload << endl;
                 }
-                if (data_to_unload > 0)
-                {
+                if (data_to_unload > 0) {
                     //cerr<<"We must commit I/O in order to process node "<<cur_task_id<<" which requires "<< memory_occupation + node_cost - ewghts[cur_task_id]<< " but has "<<available_memory<<"available"<<endl;
                     /*if we dont have enough room, unload files and update both io and occupation*/
 
-                    switch (method)
-                    {
-                    case FIRST_FIT:
-                        loaded_nodes.remove(make_pair(cur_task_id, schedule_vec.end() - find(schedule_vec.begin(), schedule_vec.end(), cur_task_id)));
-                        loaded_nodes.sort(sort_sche); //descending schedule order
-                        break;
-                    case LARGEST_FIT:
-                        loaded_nodes_ew.remove(make_pair(cur_task_id, ewghts[cur_task_id]));
-                        loaded_nodes_ew.sort(sort_ew);
-                        break;
+                    switch (method) {
+                        case FIRST_FIT:
+                            loaded_nodes.remove(make_pair(cur_task_id, schedule_vec.end() -
+                                                                       find(schedule_vec.begin(), schedule_vec.end(),
+                                                                            cur_task_id)));
+                            loaded_nodes.sort(sort_sche); //descending schedule order
+                            break;
+                        case LARGEST_FIT:
+                            loaded_nodes_ew.remove(make_pair(cur_task_id, ewghts[cur_task_id]));
+                            loaded_nodes_ew.sort(sort_ew);
+                            break;
 
-                    default:
-                        break;
+                        default:
+                            break;
                     }
 
                     double unloaded_data = 0.0;
-                    switch (method)
-                    {
-                    case FIRST_FIT:
-                        unloaded_data = unload_furthest_first_fit(tree, unloaded_nodes, loaded_nodes, data_to_unload, ewghts, divisible);
-                        break;
-                    case LARGEST_FIT:
-                        unloaded_data = unload_largest_first_fit(tree, unloaded_nodes, loaded_nodes_ew, data_to_unload, ewghts);
-                        break;
-                    default:
-                        unloaded_data = unload_furthest_first_fit(tree, unloaded_nodes, loaded_nodes, data_to_unload, ewghts, divisible);
-                        break;
+                    switch (method) {
+                        case FIRST_FIT:
+                            unloaded_data = unload_furthest_first_fit(tree, unloaded_nodes, loaded_nodes,
+                                                                      data_to_unload, ewghts, divisible);
+                            break;
+                        case LARGEST_FIT:
+                            unloaded_data = unload_largest_first_fit(tree, unloaded_nodes, loaded_nodes_ew,
+                                                                     data_to_unload, ewghts);
+                            break;
+                        default:
+                            unloaded_data = unload_furthest_first_fit(tree, unloaded_nodes, loaded_nodes,
+                                                                      data_to_unload, ewghts, divisible);
+                            break;
                     }
                     io_volume += unloaded_data;
                     memory_occupation -= unloaded_data;
                 }
 
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << "occupation before processing " << memory_occupation << endl;
                 }
                 /*if we have enough memory to process the node, update occupation*/
                 memory_occupation += node_cost - 2 * ewghts[cur_task_id] - nwghts[cur_task_id];
                 memory_occupation = max(0.0, memory_occupation);
 
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << "processing " << cur_task_id << endl;
                     cerr << "unloading " << cur_task_id << endl;
                     cerr << "loading ";
                 }
 
-                switch (method)
-                {
-                case FIRST_FIT:
-                    loaded_nodes.remove(make_pair(cur_task_id, schedule_vec.end() - find(schedule_vec.begin(), schedule_vec.end(), cur_task_id)));
-                    break;
-                case LARGEST_FIT:
-                    loaded_nodes_ew.remove(make_pair(cur_task_id, ewghts[cur_task_id]));
-                    break;
-
-                default:
-                    break;
-                }
-
-                for (int j = chstart[cur_task_id]; j < chstart[cur_task_id + 1]; j++)
-                {
-                    int ch = children[j];
-                    if (!quiet)
-                    {
-                        cerr << ch << " ";
-                    }
-                    switch (method)
-                    {
+                switch (method) {
                     case FIRST_FIT:
-                        loaded_nodes.push_back(make_pair(ch, schedule_vec.end() - find(schedule_vec.begin(), schedule_vec.end(), ch)));
+                        loaded_nodes.remove(make_pair(cur_task_id, schedule_vec.end() -
+                                                                   find(schedule_vec.begin(), schedule_vec.end(),
+                                                                        cur_task_id)));
                         break;
                     case LARGEST_FIT:
-                        loaded_nodes_ew.push_back(make_pair(ch, ewghts[ch]));
+                        loaded_nodes_ew.remove(make_pair(cur_task_id, ewghts[cur_task_id]));
                         break;
 
                     default:
                         break;
+                }
+
+                for (int j = chstart[cur_task_id]; j < chstart[cur_task_id + 1]; j++) {
+                    int ch = children[j];
+                    if (!quiet) {
+                        cerr << ch << " ";
+                    }
+                    switch (method) {
+                        case FIRST_FIT:
+                            loaded_nodes.push_back(make_pair(ch, schedule_vec.end() -
+                                                                 find(schedule_vec.begin(), schedule_vec.end(), ch)));
+                            break;
+                        case LARGEST_FIT:
+                            loaded_nodes_ew.push_back(make_pair(ch, ewghts[ch]));
+                            break;
+
+                        default:
+                            break;
                     }
                 }
 
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << endl;
                 }
-                if (!quiet)
-                {
+                if (!quiet) {
                     cerr << "New occupation after processing " << memory_occupation << endl;
                 }
             }
@@ -1584,42 +1395,33 @@ double IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewght
 }
 
 
-
-double MaxOutDegree(Tree *tree, int quiet)
-{
+double MaxOutDegree(Tree *tree, int quiet) {
     double max_out = 0;
     double max_j = 0;
-    for (unsigned int j = 1; j <= tree->GetNodes()->size(); j++)
-    {
+    for (unsigned int j = 1; j <= tree->GetNodes()->size(); j++) {
         ////cout<<j<<endl;
         double cur_out = tree->GetNode(j)->GetCost();
-        if (cur_out >= max_out)
-        {
+        if (cur_out >= max_out) {
             max_out = cur_out;
             max_j = tree->GetNode(j)->GetId();
         }
     }
-    if (!quiet)
-    {
+    if (!quiet) {
         cerr << "Max out degree " << max_out << " at " << max_j << endl;
     }
     return max_out;
 }
 
-double MaxOutDegree(int N, double *nwghts, double *ewghts, int *chstart, int *children)
-{
+double MaxOutDegree(int N, double *nwghts, double *ewghts, int *chstart, int *children) {
     double max_out = 0;
-    for (int j = 1; j < N + 1; j++)
-    {
+    for (int j = 1; j < N + 1; j++) {
         double cur_out = nwghts[j] + ewghts[j];
 
-        for (int ch = chstart[j]; ch < chstart[j + 1]; ch++)
-        {
+        for (int ch = chstart[j]; ch < chstart[j + 1]; ch++) {
             cur_out += ewghts[children[ch]];
         }
 
-        if (cur_out >= max_out)
-        {
+        if (cur_out >= max_out) {
             max_out = cur_out;
         }
     }
@@ -1628,8 +1430,7 @@ double MaxOutDegree(int N, double *nwghts, double *ewghts, int *chstart, int *ch
     return max_out;
 }
 
-double MaxOutDegree(int N, int *prnts, double *nwghts, double *ewghts)
-{
+double MaxOutDegree(int N, int *prnts, double *nwghts, double *ewghts) {
     int *chstart, *chend, *children;
     int root;
 
@@ -1644,8 +1445,7 @@ double MaxOutDegree(int N, int *prnts, double *nwghts, double *ewghts)
     return max_out;
 }
 
-Tree *SubtreeRooted(Task *node)
-{
+Tree *SubtreeRooted(Task *node) {
     Tree *subtree = new Tree();
 
     subtree->SetRootId(1);
@@ -1655,27 +1455,20 @@ Tree *SubtreeRooted(Task *node)
     vector<Task *> visit_next;
     vector<Task *>::iterator first_node;
     Task *end_node;
-    if (node->IsLeaf())
-    {
+    if (node->IsLeaf()) {
         return subtree;
-    }
-    else
-    {
+    } else {
         visit_next = *(node->GetChildren());
-        while (!visit_next.empty())
-        {
-            if (!visit_next.back()->IsBroken())
-            { // this child has not been cut
+        while (!visit_next.empty()) {
+            if (!visit_next.back()->IsBroken()) { // this child has not been cut
                 subtree->AddNode(visit_next.back());
                 end_node = visit_next.back();
                 visit_next.pop_back();
-                if (!end_node->IsLeaf())
-                {
-                    visit_next.insert(visit_next.end(), end_node->GetChildren()->begin(), end_node->GetChildren()->end());
+                if (!end_node->IsLeaf()) {
+                    visit_next.insert(visit_next.end(), end_node->GetChildren()->begin(),
+                                      end_node->GetChildren()->end());
                 }
-            }
-            else
-            {
+            } else {
                 visit_next.pop_back();
             }
         }
@@ -1683,8 +1476,8 @@ Tree *SubtreeRooted(Task *node)
     }
 }
 
-Tree *BuildSubtree(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts, double **timewghts, double **spacewghts, int *chstart, int *children)
-{
+Tree *BuildSubtree(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts,
+                   double **timewghts, double **spacewghts, int *chstart, int *children) {
     *prnts = new int[new_tree_size + 1];
     *ewghts = new double[new_tree_size + 1];
     *timewghts = new double[new_tree_size + 1];
@@ -1707,16 +1500,13 @@ Tree *BuildSubtree(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, in
     unsigned int tempid = SubtreeRoot->GetothersideID();
     SubtreeRoot->SetothersideID(1);
 
-    while (!que.empty())
-    {
+    while (!que.empty()) {
         originalID = que.front();
         que.pop_front();
         parentID = tree->GetNode(originalID)->GetothersideID();
-        for (int j = chstart[originalID]; j < chstart[originalID + 1]; j++)
-        {
+        for (int j = chstart[originalID]; j < chstart[originalID + 1]; j++) {
             currentNode = tree->GetNode(children[j]);
-            if (!currentNode->IsBroken())
-            { // broken edge means node is on aother subtree
+            if (!currentNode->IsBroken()) { // broken edge means node is on aother subtree
                 nodeID++;
                 originalIDs[nodeID] = children[j];
                 (*prnts)[nodeID] = parentID;
@@ -1734,8 +1524,7 @@ Tree *BuildSubtree(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, in
 
     Tree *treeobj = new Tree(real_tree_size, *prnts, *spacewghts, *ewghts, *timewghts);
 
-    for (unsigned int i = 1; i <= real_tree_size; i++)
-    {
+    for (unsigned int i = 1; i <= real_tree_size; i++) {
         treeobj->GetNode(i)->SetothersideID(originalIDs[i]); //corresponding to the original tree's id
     }
 

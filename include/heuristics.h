@@ -13,14 +13,18 @@
 #include "lib-io-tree-minmem.h"
 #include "cluster.h"
 
-template <class T, class U>
+template<class T, class U>
 void GetTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest);
 
 
-double ASAP(Tree* tree, unsigned int num_processors);
-void MemoryCheck(Tree* tree, int *chstart, int *children, Cluster *cluster,  io_method_t method);
-std::map<int, int> MemoryCheckA2(Tree* tree, int* chstart, int*children,  Cluster *cluster,io_method_t method, bool skipBig);
-void SetBandwidth(double CCR, unsigned long tree_size, double * ewghts, double * timewghts);
+double ASAP(Tree *tree, unsigned int num_processors);
+
+void MemoryCheck(Tree *tree, int *chstart, int *children, Cluster *cluster, io_method_t method);
+
+std::map<int, int>
+MemoryCheckA2(Tree *tree, int *chstart, int *children, Cluster *cluster, io_method_t method, bool skipBig);
+
+void SetBandwidth(double CCR, unsigned long tree_size, double *ewghts, double *timewghts);
 
 
 #endif /* heuristics_h */

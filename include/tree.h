@@ -81,7 +81,7 @@ class Task{
       Mavail = 0;
       parent = 0;
       cost_computed = false;
-      children = new vector<Task*>(); 
+      children = new vector<Task*>();
     }
     Task(double nw, double ew, double mw){
       id = 0;
@@ -90,7 +90,7 @@ class Task{
       Mavail = 0;
       parent=0;
       cost_computed = false;
-      children = new vector<Task*>(); 
+      children = new vector<Task*>();
 
       edge_weight =ew;
       node_weight = nw;
@@ -104,7 +104,7 @@ class Task{
       parent=0;
       cost_computed = false;
         makespan_computed=false;
-      children = new vector<Task*>(); 
+      children = new vector<Task*>();
 
       edge_weight =ew;
       node_weight = nw;
@@ -116,14 +116,14 @@ class Task{
     ~Task(){
       for(vector<Task*>::iterator iter = children->begin();iter!=children->end();iter++){
         delete *iter;
-      }	
+      }
       delete children;
     }
-    
+
     void SetMSDiff(double slack){
         makespan_difference = slack;
     }
-    
+
     double GetMSDiff(){
         return makespan_difference;
     }
@@ -187,7 +187,7 @@ class Task{
     void SetNW(double nw ){
       node_weight = nw;
     }
-    
+
     void SetMSW(double mw){
         MS_weight = mw;
     }
@@ -203,7 +203,7 @@ class Task{
     double GetNW() const{
       return node_weight;
     }
-    
+
     double GetMSW() const{
         return MS_weight;
     }
@@ -223,15 +223,15 @@ class Task{
       }
 
     }
-    
+
     void BreakEdge(){
         broken=true;//break this edge
     }
-    
+
     void RestoreEdge(){
         broken=false;//resotre this edge
     }
-    
+
     bool IsBroken(){
         if (broken==true) {
             return true;
@@ -239,24 +239,24 @@ class Task{
             return false;
         }
     }
-    
+
     void updateMSCost(){
         makespan_nocommu=MS_sequentialPart+MS_parallelPart;
     }
-    
+
     double GetSequentialPart(){
         return MS_sequentialPart;
     }
-    
+
     double GetParallelPart(){
         return MS_parallelPart;
     }
-    
+
     double GetMSsequential(bool updateEnforce, double& MS_parallel){
         if ((makespan_computed==true)&(updateEnforce==false)) {
             return MS_sequentialPart;
         }
-        
+
         MS_sequentialPart=MS_weight;
         MS_parallelPart=0;
         double temp;
@@ -274,30 +274,30 @@ class Task{
                 }
             }
         }
-        
+
         if (MS_parallelPart>MS_parallel) {
             MS_parallel=MS_parallelPart;
         }
-        
+
         return MS_sequentialPart;
     }
-    
+
     double GetMSminusComu(){
         if(Cluster::getFixedCluster()->isHomogeneous()){
             return (makespan_nocommu-edge_weight/Cluster::getFixedCluster()->getHomogeneousBandwidth());
         } else throw "Cluster not homogeneous";
     }
-    
+
     double GetMSminusW(){
         if(Cluster::getFixedCluster()->isHomogeneous()){
             return (makespan_nocommu+edge_weight/Cluster::getFixedCluster()->getHomogeneousBandwidth()-MS_weight);
         } else throw "Cluster not homogeneous";
     }
-    
+
     void SetMSUncomputed(){
         makespan_computed=false;
     }
-    
+
     double GetMSCost(bool commulication=false, bool updateEnforce=false){
         if(!Cluster::getFixedCluster()->isHomogeneous()) throw "Cluster not homogeneous";
 
@@ -308,29 +308,29 @@ class Task{
                 return makespan_nocommu;
             }
         }
-        
+
         MS_parallelPart=0;
         MS_sequentialPart=this->GetMSsequential(updateEnforce,MS_parallelPart);//MS_parallelPart will be update here.
         makespan_nocommu=MS_sequentialPart+MS_parallelPart;
-        
+
         makespan_computed=true;
         if (commulication==true) {
             //cout<<id<<"-"<<makespan_nocommu<<endl;//test
             return makespan_nocommu+edge_weight/Cluster::getFixedCluster()->getHomogeneousBandwidth();
         }
-        
+
         //cout<<id<<"-"<<makespan_nocommu<<endl; //test
         return makespan_nocommu;
     }
-    
+
     void SetothersideID(unsigned int qtreeID){
         Qtree_id= qtreeID;
     }
-    
+
     unsigned int GetothersideID(){
         return Qtree_id;
     }
-    
+
     void RemoveChild(unsigned int childId){
         for (vector<Task*>::iterator iter=this->children->begin(); iter!=this->children->end(); ++iter) {
             if ((*iter)->GetId()==childId) {
@@ -339,7 +339,7 @@ class Task{
             }
         }
     }
-    
+
     void MergetoParent(){
         this->GetParent()->SetMSW(this->GetMSW()+this->GetParent()->GetMSW());
         this->GetParent()->RemoveChild(this->id);
@@ -354,7 +354,7 @@ class Task{
         this->children->clear();
         this->~Task();
     }
-    
+
     unsigned int Ci;
     double Mpeak;
     double Mavail;
@@ -362,14 +362,10 @@ class Task{
     double Sequence();
     double SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength);
 
-    void popSmallestRootsToFitToCluster(list<Task *> &parallelRoots, unsigned long amountSubtrees) const;
+    list<Task *> fillParallelRootsUntilBestMakespan(vector<double> &makespansOfSplittings,
+                                                    unsigned long stepsUntilMinimalMakespan) const;
 
-    void breakPreparedEdges(list<Task *> &parallelRoots);
 
-    double
-    getWeightPQ(list<Task *> &parallelRoots, vector<Task *> *children, Task *currentNode) const;
-
-    double getWeightSurplusFromSmallestNodes(list<Task *> &parallelRoots, unsigned long amountSubtrees) const;
 };
 
 class Tree{
@@ -434,9 +430,9 @@ class Tree{
       root_count=0;
       offset_id = 0;
       tree_id = 1;
-      
+
       *(this->nodes) = nodes;
-      this->originalTree = originalTree;      
+      this->originalTree = originalTree;
     }
 
 
@@ -501,7 +497,7 @@ class Tree{
     void SetTreeId(unsigned int _id){
         tree_id = _id;
     }
-    
+
     Task * GetNode(unsigned int node_id) const{
       return nodes->at(node_id-1);
     }
@@ -513,11 +509,11 @@ class Tree{
     const vector<Task*> * GetNodes() const{
       return nodes;
     }
-    
+
     void addNode(Task* newnode){
         this->nodes->push_back(newnode);
     }
-    
+
    static void setOriginalTree(Tree* origTree){
         Tree::originalTree = origTree;
     }
@@ -574,11 +570,26 @@ void poaux(const int *chstart, const int *children, int N, int r, int *por, int 
 double MaxOutDegree(Tree * tree,int quiet);
 double MaxOutDegree(int N, double * nwghts, double * ewghts, int * chstart,int * children);
 
-double IOCounter(Tree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, double available_memory,bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
-double IOCounterWithVariableMem(Tree* tree, int N, double * nwghts, double * ewghts, int * chstart,int * children, int * schedule, vector<double> availableMemorySizesA2, int &currentProcessor,
-                                         std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible,int quiet,unsigned int & com_freq, vector<unsigned int>* brokenEdges, io_method_t method);
-Tree* BuildSubtree(Tree* tree, Task* SubtreeRoot, unsigned int new_tree_size, int** prnts, double** ewghts, double** timewghts, double** spacewghts, int * chstart, int * children);
+double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule,
+                 double available_memory, bool divisible, int quiet, unsigned int &com_freq,
+                 vector<unsigned int> *brokenEdges, io_method_t method);
 
+double
+IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule,
+                         vector<double> availableMemorySizesA2, int &currentProcessor,
+                         std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible, int quiet,
+                         unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method);
+
+Tree *BuildSubtree(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts,
+                   double **timewghts, double **spacewghts, int *chstart, int *children);
+
+void popSmallestRootsToFitToCluster(list<Task *> &parallelRoots, unsigned long amountSubtrees);
+
+void breakPreparedEdges(Task *root, list<Task *> &parallelRoots);
+
+double getWeightPQ(list<Task *> &parallelRoots, Task *currentNode);
+
+double getWeightSurplusFromSmallestNodes(list<Task *> &parallelRoots);
 
 #endif
 #endif

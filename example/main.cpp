@@ -139,8 +139,6 @@ int main(int argc, const char *argv[])
     cout.precision(0);
     cout.setf(ios::fixed);
 
-    //  std::cout << " AmountSubtrees AmountProcessors Makespan Heuristic TimeConsuming" << std::endl;
-
     ifstream OpenFile(dir + argv[2]);
     do
     {

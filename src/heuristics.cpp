@@ -139,146 +139,132 @@ double Task::SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned 
 {
     parallelRoots.clear();
     parallelRoots.emplace_front(this);
-    //cout<<"   insert root"<<endl;
+
     vector<double> makespansOfSplittings(1, this->GetMSCost(true, true)); // take communication cost into account
     double MS_sequential = this->GetEW(), weightSurplusFromSmallestNodes, Weight_PQ;
-    if(Cluster::getFixedCluster()->isHomogeneous()){
+    if (Cluster::getFixedCluster()->isHomogeneous()) {
         MS_sequential /= Cluster::getFixedCluster()->getHomogeneousBandwidth();
     }
-    unsigned long amountSubtrees;
-    vector<Task *> *children;
 
     Task *currentNode = this;
-    unsigned int mergetime;
-    while (!currentNode->IsLeaf())
-    {
+
+    while (!currentNode->IsLeaf()) {
         MS_sequential = MS_sequential + currentNode->GetMSW();
 
-        Weight_PQ = getWeightPQ(parallelRoots, children, currentNode);
-        if(Weight_PQ==-1) break;
+        Weight_PQ = getWeightPQ(parallelRoots, currentNode);
+        if (Weight_PQ == -1) break;
+        else {
+            currentNode = *max_element(parallelRoots.begin(), parallelRoots.end(), cmp_nodecreasing); //non-decreasing
+        }
 
-        weightSurplusFromSmallestNodes = getWeightSurplusFromSmallestNodes(parallelRoots, amountSubtrees);
+        weightSurplusFromSmallestNodes = getWeightSurplusFromSmallestNodes(parallelRoots);
         //cout<<"makespan "<<MS_sequential+weightSurplusFromSmallestNodes+Weight_PQ<<endl;
         makespansOfSplittings.push_back(MS_sequential + weightSurplusFromSmallestNodes + Weight_PQ);
     }
 
-    if (twolevel == true)
-    {
+    if (twolevel) {
         return *std::min_element(makespansOfSplittings.begin(), makespansOfSplittings.end());
     }
 
     //return broken edges, i.e., root of subtrees
-    vector<double>::iterator smallestMS_iter = min_element(makespansOfSplittings.begin(), makespansOfSplittings.end());
-    unsigned long minMS_step = smallestMS_iter - makespansOfSplittings.begin();
-    cout<<"minMS_step "<<minMS_step<<endl;
-    sequentialLength = minMS_step;
+    auto smallestMS_iter = min_element(makespansOfSplittings.begin(), makespansOfSplittings.end());
+    sequentialLength = smallestMS_iter - makespansOfSplittings.begin();;
+    parallelRoots = fillParallelRootsUntilBestMakespan(makespansOfSplittings, sequentialLength);
+
+    unsigned long amountSubtrees;
+    if (parallelRoots.size() > 1) {
+        amountSubtrees = parallelRoots.size() + 1;
+    } else {
+        amountSubtrees = 1;
+    }
+
+    popSmallestRootsToFitToCluster(parallelRoots, amountSubtrees);
+    breakPreparedEdges(this, parallelRoots);
+    //    cout<<"makespan from the tree root "<<root->GetMSCost(true,true)<<endl;
+
+    return *smallestMS_iter;
+}
+
+list<Task *>
+Task::fillParallelRootsUntilBestMakespan(vector<double> &makespansOfSplittings,  unsigned long  stepsUntilMinimalMakespan) const {
+
+    vector<Task *> *children;
     unsigned int i = 0;
-    parallelRoots.clear();
-    parallelRoots.push_back(this);
-    currentNode = this;
-    while (i < minMS_step)
-    {
+    list<Task *> parallelRoots = {const_cast<Task *>(this)};
+    Task *currentNode = const_cast<Task *>(this);
+
+    while (i < stepsUntilMinimalMakespan) {
         parallelRoots.remove(currentNode);
 
         children = currentNode->GetChildren();
-        for (vector<Task *>::iterator iter = children->begin(); iter != children->end(); iter++)
-        {
-            if (!(*iter)->IsBroken())
-            {
-                parallelRoots.push_back(*iter);
+        for (auto &iter: *children) {
+            if (!iter->IsBroken()) {
+                parallelRoots.push_back(iter);
             }
         }
 
         currentNode = *max_element(parallelRoots.begin(), parallelRoots.end(), cmp_nodecreasing); //non-decreasing
         i++;
     }
-
-    if (parallelRoots.size() > 1)
-    {
-        amountSubtrees = parallelRoots.size() + 1;
-    }
-    else
-    {
-        amountSubtrees = 1;
-    }
-
-    popSmallestRootsToFitToCluster(parallelRoots, amountSubtrees);
-    breakPreparedEdges(parallelRoots);
-    //    cout<<"makespan from the tree root "<<root->GetMSCost(true,true)<<endl;
-
-    return *smallestMS_iter;
+    return parallelRoots;
 }
 
-double Task::getWeightSurplusFromSmallestNodes(list<Task *> &parallelRoots,
-                                               unsigned long amountSubtrees) const {
-    double weightSurplusFromSmallestNodes=0;
-    int mergetime =0;
-    amountSubtrees = parallelRoots.size() + 1;
-    if (amountSubtrees > Cluster::getFixedCluster()->getNumberProcessors())
-    {
+double getWeightSurplusFromSmallestNodes(list<Task *> &parallelRoots)  {
+    double weightSurplusFromSmallestNodes = 0;
+    unsigned long surplusOfSubtreesOverProcessors = 0;
+    unsigned long amountSubtrees = parallelRoots.size() + 1;
+
+    if (amountSubtrees > Cluster::getFixedCluster()->getNumberProcessors()) {
         parallelRoots.sort(cmp_noIn_noCommu); //non-increasing sort, computation weight, no communication
-        list<Task *>::reverse_iterator iter = parallelRoots.rbegin();
-        mergetime = amountSubtrees - Cluster::getFixedCluster()->getNumberProcessors();
-        for (unsigned int i = 0; i < mergetime; ++i, ++iter)
-        {
-            weightSurplusFromSmallestNodes += (*iter)->GetMSCost(false, false); // no comunication cost, ImprovedSplit never goes to here.
+        auto iter = parallelRoots.rbegin();
+        surplusOfSubtreesOverProcessors = amountSubtrees - Cluster::getFixedCluster()->getNumberProcessors();
+        for (unsigned int i = 0; i < surplusOfSubtreesOverProcessors; ++i, ++iter) {
+            weightSurplusFromSmallestNodes += (*iter)->GetMSCost(false,
+                                                                 false); // no comunication cost, ImprovedSplit never goes to here.
         }
     }
     return weightSurplusFromSmallestNodes;
 }
 
-double Task::getWeightPQ(list<Task *> &parallelRoots, vector<Task *> *children, Task *currentNode) const {
+double getWeightPQ(list<Task *> &parallelRoots, Task *currentNode)  {
     double Weight_PQ = 0;
     double temp;
     parallelRoots.remove(currentNode);
     //cout<<"pop up "<<currentNode->GetId()<<endl;
 
-    children = currentNode->GetChildren();
-    for (vector<Task *>::iterator iter = children->begin(); iter != children->end(); iter++)
-    {
-        if ((*iter)->IsBroken())
-        {
+    vector<Task *> *children = currentNode->GetChildren();
+    for (vector<Task *>::iterator iter = children->begin(); iter != children->end(); iter++) {
+        if ((*iter)->IsBroken()) {
             temp = (*iter)->GetMSCost(true, false);
-            if (temp > Weight_PQ)
-            {
+            if (temp > Weight_PQ) {
                 Weight_PQ = temp;
             }
-        }
-        else
-        {
+        } else {
             parallelRoots.push_back(*iter);
             //cout<<"   insert "<<(*iter)->GetId()<<endl;
         }
     }
 
-    if (parallelRoots.empty())
-    {
+    if (parallelRoots.empty()) {
         return -1;
     }
-    else
-    {
-        currentNode = *max_element(parallelRoots.begin(), parallelRoots.end(), cmp_nodecreasing); //non-decreasing
-    }
 
-    temp = currentNode->GetMSCost(true, false);
-    if (temp > Weight_PQ)
-    {
+    temp = (*max_element(parallelRoots.begin(), parallelRoots.end(), cmp_nodecreasing))->GetMSCost(true, false);
+    if (temp > Weight_PQ) {
         Weight_PQ = temp;
     }
     return Weight_PQ;
 }
 
-void Task::breakPreparedEdges(list<Task *> &parallelRoots) {
-    BreakEdge(); //root should always be broken
-    for (list<Task *>::iterator iter = parallelRoots.begin(); iter != parallelRoots.end(); ++iter)
-    {
+void breakPreparedEdges(Task * root, list<Task *> &parallelRoots) {
+    root->BreakEdge(); //root should always be broken
+    for (auto iter = parallelRoots.begin(); iter != parallelRoots.end(); ++iter) {
         (*iter)->BreakEdge();
     }
 }
 
-void Task::popSmallestRootsToFitToCluster(list<Task *> &parallelRoots, unsigned long amountSubtrees) const {
-    if (amountSubtrees > Cluster::getFixedCluster()->getNumberProcessors())
-    {
+void popSmallestRootsToFitToCluster(list<Task *> &parallelRoots, unsigned long amountSubtrees)  {
+    if (amountSubtrees > Cluster::getFixedCluster()->getNumberProcessors()) {
         parallelRoots.sort(cmp_noIn_noCommu); //non-increasing sort, computation weight, no communication cost
         int surplus = amountSubtrees -  Cluster::getFixedCluster()->getNumberProcessors();
         for (unsigned int i = 0; i < surplus; ++i)
@@ -1204,7 +1190,7 @@ double Tree::SplitAgain(){
     vector<Task*> tempVector;
 
    unsigned int number_subtrees= this->HowmanySubtrees(true);
-    
+
    unsigned int idleProcessors=Cluster::getFixedCluster()->getNumberProcessors()-number_subtrees;
     Processor * firstIdleProcessor = Cluster::getFixedCluster()->getFirstFreeProcessor();
     while (idleProcessors>0) {
@@ -1274,10 +1260,10 @@ double Tree::SplitAgain(){
                 node_i->BreakEdge();//C<-C\cup C_k
                 node_j->BreakEdge();//C<-C\cup C_k
                 idleProcessors=idleProcessors-2;
-                
+
                 node_i->SetothersideID(Qtreeobj->GetNodes()->size()+1);
                 node_j->SetothersideID(Qtreeobj->GetNodes()->size()+2);
-                
+
                 Task* newNodeone = new Task(CriticalPath.back()->GetId(), 0, node_i->GetEW(), node_i->GetSequentialPart());
                 newNodeone->SetId(Qtreeobj->GetNodes()->size()+1);
                 newNodeone->GetChildren()->clear();
@@ -1288,7 +1274,7 @@ double Tree::SplitAgain(){
                 Qtreeobj->addNode(newNodeone);
                 temp=CriticalPath.back()->GetMSW();
                 temp=temp-newNodeone->GetMSW();
-                
+
                 Task* newNodetwo = new Task(CriticalPath.back()->GetId(), 0, node_j->GetEW(), node_j->GetSequentialPart());
                 newNodetwo->SetId(Qtreeobj->GetNodes()->size()+1);
                 newNodetwo->GetChildren()->clear();
@@ -1633,7 +1619,7 @@ std::map<int, int> MemoryCheckA2(Tree *tree, int *chstart, int *children,Cluster
                 }
 
                 schedule_copy[0] = subtreeSize + 1;
-    
+
                 switch (method)
                 {
                 case FIRST_FIT:

@@ -402,6 +402,7 @@ public:
         this->AllocateNodes(N);
 
         for (int i = 1; i < N + 1; i++) {
+            //cout << "node id: " << i<<endl;
             Task *cur_node = this->GetNode(i);
             cur_node->GetChildren()->clear();
             cur_node->SetEW(ewghts[i]);
@@ -501,10 +502,29 @@ public:
     }
 
     Task *GetNode(unsigned int node_id) const {
-        return nodes->at(node_id - 1);
+// in most cases, the task with a specific ID is found on the position that is exactly before the ID
+// however, if this is not the case we do a linear search to find where the task is
+
+        unsigned int i = 0;
+        Task * task =nodes->at(node_id - 1);
+        if (task->GetId() == node_id){
+                return task;
+        }else{
+            
+            unsigned long treeSize = this->GetNodes()->size();
+            for (i=0 ;i<treeSize;i++) {
+                task = this->GetNodeByPos(i);
+                if (task->GetId() == node_id){
+                    return task;
+                }
+            }
+        }
+        cout << this->GetNodeByPos(i-1)->GetId();
+        throw "Task not Found!";
     }
 
     Task *GetNodeByPos(unsigned int node_idx) const {
+        assert(node_idx<this->GetNodes()->size());
         return nodes->at(node_idx);
     }
 
@@ -568,6 +588,7 @@ typedef pair<unsigned int, double> node_ew;
 
 
 void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, double **ewghts, double **mswghts);
+Tree * read_tree(const char *filename);
 
 extern "C"
 {

@@ -1235,8 +1235,7 @@ Immediately(Tree *tree, unsigned long N, double *nwghts, double *ewghts, int *ch
 
                 double *ewghtssub, *timewghtssub, *spacewghtssub;
                 int *prntssub, *chstartsub, *chendsub, *childrensub;
-                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub,
-                                             &timewghtssub, &spacewghtssub, chstart, children);
+                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id));
 
                 subtree_size = subtree->GetNodes()->size();
 
@@ -1318,8 +1317,7 @@ void MemoryCheck(Tree *tree, int *chstart, int *children, Cluster *cluster,
 
         double *ewghts, *timewghts, *spacewghts;
         int *prnts;
-        Tree *subtree = BuildSubtree(tree, subtreeRoot, treeSize, &prnts, &ewghts, &timewghts, &spacewghts, chstart,
-                                     children);
+        Tree *subtree = BuildSubtree(tree, subtreeRoot);
 
         subtreeSize = subtree->GetNodes()->size();
         int *schedule_copy = new int[subtreeSize + 1];
@@ -1420,8 +1418,7 @@ std::map<int, int> MemoryCheckA2(Tree *tree, int *chstart, int *children, Cluste
 
         double *ewghts, *timewghts, *spacewghts;
         int *prnts;
-        Tree *subtree = BuildSubtree(tree, subtreeRoot, treeSize, &prnts, &ewghts, &timewghts, &spacewghts, chstart,
-                                     children);
+        Tree *subtree = BuildSubtree(tree, subtreeRoot);
 
         subtreeSize = subtree->GetNodes()->size();
         int *schedule_copy = new int[subtreeSize + 1];

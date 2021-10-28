@@ -1174,56 +1174,63 @@ vector<Task *> Tree::buildCriticalPath() {
 }
 
 
-void
-Immediately(Tree *tree, unsigned long N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule,
-            double m_availble, unsigned int &num_para_subtrees, vector<unsigned int> *brokenEdges) {
-    double memory_occupied = ewghts[schedule[N - 1]];
+list<unsigned int> markSubtreeTillBottom(Task *subtreeRoot) {
     list<unsigned int> allNodes;
-    list<unsigned int> queue;
+    list<Task *> queue;
+    allNodes.clear();
+    queue.clear();
+    queue.push_back(subtreeRoot);
+
+    do {
+        Task *firstTask = queue.front();
+        allNodes.push_back(firstTask->GetId());
+        queue.pop_front();
+        for (Task *childOfFirst: *firstTask->GetChildren()) {
+            queue.push_back(childOfFirst);
+        }
+    } while (!queue.empty());
+    return allNodes;
+}
+
+void
+Immediately(Tree *tree, int *schedule,
+            double m_availble, vector<unsigned int> *brokenEdges) {
+    unsigned int treeSize = tree->GetNodes()->size();
+    double memory_occupied = tree->GetNode(schedule[treeSize - 1])->GetEW();
+
+    list<unsigned int> allNodes;
+
     unsigned long subtree_size;
     list<unsigned int>::iterator iter;
-    unsigned int com_freq;
     schedule_t *schedule_f = new schedule_t();
     list<int>::iterator ite_sche;
     double maxoutD, memory_required, node_cost, data_to_unload;
     uint64_t count;
-    int rootid, cur_task_id;
-    unsigned int child_start, child_end;
+    int cur_task_id;
     vector<unsigned int> subtreeBrokenEdges;
 
-    //cout<<"current task:";
-    for (unsigned long rank = N - 1; rank >= 1; rank--) {
+    for (unsigned long rank = treeSize - 1; rank >= 1; rank--) {
         cur_task_id = schedule[rank];
         if (cur_task_id != 0) { //=0 means this node has already been moved to another processor
             //cout<<" "<<cur_task_id;
-            node_cost = ewghts[cur_task_id] + nwghts[cur_task_id];
-            for (int j = chstart[cur_task_id]; j < chstart[cur_task_id + 1]; j++) {
-                node_cost += ewghts[children[j]];
+            Task *currTask = tree->GetNode(cur_task_id);
+            node_cost = currTask->GetEW() + currTask->GetNW();
+            for (auto child: *currTask->GetChildren()) {
+                node_cost += child->GetEW();
             }
 
-            data_to_unload = memory_occupied + node_cost - ewghts[cur_task_id] - m_availble;
+            data_to_unload = memory_occupied + node_cost - currTask->GetEW() - m_availble;
             if (data_to_unload > 0) { // schedule the subtree that is rooted at this node onto another processor
-                //cout<<"(break)"<<endl;
-                tree->GetNode(cur_task_id)->BreakEdge(); // set it cut, used for building a quotient tree later
-                brokenEdges->push_back(tree->GetNode(cur_task_id)->GetothersideID());
-                ++num_para_subtrees;
-                allNodes.clear();
-                queue.clear();
-                queue.push_back(cur_task_id);
 
-                do {
-                    child_start = *(chstart + queue.front());
-                    child_end = *(chstart + queue.front() + 1);
-                    allNodes.push_back(queue.front());
-                    queue.pop_front();
-                    for (unsigned int i = child_start; i < child_end; ++i) {
-                        queue.push_back(*(children + i));
-                    }
-                } while (!queue.empty());
+                currTask->BreakEdge(); // set it cut, used for building a quotient tree later
+                brokenEdges->push_back(currTask->GetothersideID());
 
+                allNodes =  markSubtreeTillBottom(currTask);
                 subtree_size = allNodes.size();
+
                 for (long i = rank - 1; i >= 0; i--) {
                     iter = find(allNodes.begin(), allNodes.end(), schedule[i]);
+                    //If node is in subtree
                     if (iter != allNodes.end()) {
                         schedule[i] = 0; //IO counter will pass 0;
                         allNodes.erase(iter);
@@ -1233,9 +1240,7 @@ Immediately(Tree *tree, unsigned long N, double *nwghts, double *ewghts, int *ch
                     }
                 }
 
-                double *ewghtssub, *timewghtssub, *spacewghtssub;
-                int *prntssub, *chstartsub, *chendsub, *childrensub;
-                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id));
+                Tree *subtree = BuildSubtree(tree, currTask);
 
                 subtree_size = subtree->GetNodes()->size();
 
@@ -1250,11 +1255,10 @@ Immediately(Tree *tree, unsigned long N, double *nwghts, double *ewghts, int *ch
                     advance(ite_sche, 1);
                 }
                 schedule_copy[0] = subtree_size + 1;
-                po_construct(subtree_size, prntssub, &chstartsub, &chendsub, &childrensub, &rootid);
 
                 if (memory_required > m_availble) {
-                    Immediately(subtree, subtree_size, spacewghtssub, ewghtssub, chstartsub, childrensub, schedule_copy,
-                                m_availble, com_freq, &subtreeBrokenEdges);
+                    Immediately(subtree, schedule_copy,
+                                m_availble, &subtreeBrokenEdges);
 
                     for (vector<unsigned int>::iterator iter = subtreeBrokenEdges.begin();
                          iter != subtreeBrokenEdges.end(); ++iter) {
@@ -1262,20 +1266,13 @@ Immediately(Tree *tree, unsigned long N, double *nwghts, double *ewghts, int *ch
                     }
                 }
 
-                delete[] ewghtssub;
-                delete[] timewghtssub;
-                delete[] spacewghtssub;
-                delete[] prntssub;
-                delete[] chstartsub;
-                delete[] chendsub;
-                delete[] childrensub;
                 delete[] schedule_copy;
                 delete subtree;
 
-                memory_occupied -= ewghts[cur_task_id];
+                memory_occupied -= currTask->GetEW();
                 memory_occupied = max(0.0, memory_occupied);
             } else { //memory is enough for executing this node
-                memory_occupied += node_cost - 2 * ewghts[cur_task_id] - nwghts[cur_task_id];
+                memory_occupied += node_cost - 2 * currTask->GetEW() - currTask->GetNW();
                 memory_occupied = max(0.0, memory_occupied);
             }
         }
@@ -1351,8 +1348,7 @@ void MemoryCheck(Tree *tree, int *chstart, int *children, Cluster *cluster,
                                           LARGEST_FIT);
                     break;
                 case IMMEDIATELY:
-                    Immediately(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy,
-                                memory_size, com_freq, &BrokenEdgesID);
+                    Immediately(subtree, schedule_copy, memory_size, &BrokenEdgesID);
                     break;
 
                 default:
@@ -1455,8 +1451,7 @@ std::map<int, int> MemoryCheckA2(Tree *tree, int *chstart, int *children, Cluste
                                                              &BrokenEdgesID, LARGEST_FIT);
                         break;
                     case IMMEDIATELY:
-                        Immediately(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub,
-                                    schedule_copy, currentMem, com_freq, &BrokenEdgesID);
+                        Immediately(subtree, schedule_copy, currentMem, &BrokenEdgesID);
                         break;
 
                     default:
@@ -1498,8 +1493,7 @@ std::map<int, int> MemoryCheckA2(Tree *tree, int *chstart, int *children, Cluste
                                                          &BrokenEdgesID, LARGEST_FIT);
                     break;
                 case IMMEDIATELY:
-                    Immediately(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub, schedule_copy,
-                                currentMem, com_freq, &BrokenEdgesID);
+                    Immediately(subtree, schedule_copy, currentMem, &BrokenEdgesID);
                     break;
 
                 default:

@@ -139,8 +139,7 @@ bool Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory
 
     double *ewghts, *timewghts, *spacewghts;
     int *prnts;
-    Tree *subtree = BuildSubtree(this, SubtreeRoot, new_tree_size, &prnts, &ewghts, &timewghts, &spacewghts, chstart,
-                                 children);
+    Tree *subtree = BuildSubtree(this, SubtreeRoot);
     delete[] ewghts;
     delete[] timewghts;
     delete[] spacewghts;
@@ -1004,8 +1003,7 @@ double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart
 
                 double *ewghtssub, *timewghtssub, *spacewghtssub;
                 int *prntssub;
-                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub,
-                                             &timewghtssub, &spacewghtssub, chstart, children);
+                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id));
 
                 subtree_size = subtree->GetNodes()->size();
                 cout << "subtree size " << subtree_size << endl;
@@ -1228,8 +1226,7 @@ IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewghts, int 
 
                 double *ewghtssub, *timewghtssub, *spacewghtssub;
                 int *prntssub;
-                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id), subtree_size, &prntssub, &ewghtssub,
-                                             &timewghtssub, &spacewghtssub, chstart, children);
+                Tree *subtree = BuildSubtree(tree, tree->GetNode(cur_task_id));
 
                 subtree_size = subtree->GetNodes()->size();
 
@@ -1476,7 +1473,7 @@ Tree *SubtreeRooted(Task *node) {
     }
 }
 
-Tree *BuildSubtree(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts,
+Tree *BuildSubtreeOld(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts,
                    double **timewghts, double **spacewghts, int *chstart, int *children) {
     *prnts = new int[new_tree_size + 1];
     *ewghts = new double[new_tree_size + 1];
@@ -1530,6 +1527,54 @@ Tree *BuildSubtree(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, in
 
     delete[] originalIDs;
 
+    return treeobj;
+}
+// Subtree starting from subtreeRoot; goes down until it meets broken edges or leaves
+//Subtree is a separate Tree entity with copies of original Tasks
+//Each Task in Subtree knows the Task in the big Tree that it had been copied from
+//The relation between a Task in the Subtree and its cunterpart  in the big Tree is OtherSideId
+Tree *BuildSubtree(Tree *tree, Task *subtreeRoot) {
+
+    pair<Task *, Task * > currentNodeAndCounterpartInSubtree;
+    list<pair<Task *, Task * >> tasksToBeExploredAndSubtreeCounterparts;
+    auto * tasksInSubtree = new vector<Task *>();
+    Task * copy;
+
+    //Copy of subtreeRoot will be root in the Subtree and will have no parent
+    copy = new Task(*subtreeRoot, 1, nullptr);
+    tasksInSubtree->push_back(copy);
+    //original subtreeRoot knows that copy, whose id is 1
+    subtreeRoot->SetothersideID(1);
+    //copy knows the id of the original subtreeRoot
+    copy->SetothersideID(subtreeRoot->GetId());
+    //the children of subtreeRoot need to be explored
+    tasksToBeExploredAndSubtreeCounterparts.emplace_back(subtreeRoot, copy);
+
+    unsigned int idInSubtree=1;
+    while (!tasksToBeExploredAndSubtreeCounterparts.empty()) {
+        currentNodeAndCounterpartInSubtree = tasksToBeExploredAndSubtreeCounterparts.front();
+        tasksToBeExploredAndSubtreeCounterparts.pop_front();
+        //for all children of the node in the big Tree
+          for (Task * child: *currentNodeAndCounterpartInSubtree.first->GetChildren()) {
+            if (!child->IsBroken()) {
+                // broken edge means node is on another subtree
+                idInSubtree++;
+                copy = new Task(*child, idInSubtree, currentNodeAndCounterpartInSubtree.second);
+                child->SetothersideID(idInSubtree);
+                copy->SetothersideID(child->GetId());
+
+                tasksInSubtree->push_back(copy);
+
+                //add as child to the copied parent, whose counterpart we are currently exploring
+                currentNodeAndCounterpartInSubtree.second->AddChild(copy);
+                //need to explore their children
+                tasksToBeExploredAndSubtreeCounterparts.emplace_back(child, copy);
+
+            }
+        }
+    }
+
+    Tree *treeobj = new Tree(tasksInSubtree, tree->getOriginalTree());
     return treeobj;
 }
 

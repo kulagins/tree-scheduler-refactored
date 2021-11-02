@@ -179,6 +179,16 @@ Tree * read_tree(const char *filename){
     ifstream OpenFile(filename);
     string line;
     stringstream line_stream;
+    
+    // count the number of tasks
+    unsigned int num_tasks = 0;
+    while (getline(OpenFile, line)) {
+        if(!line.empty()&& line[0]!='%'){
+            num_tasks++;
+        }
+    }
+    OpenFile.clear();
+    OpenFile.seekg(0, ios::beg);
     Tree * tree = new Tree();
 
     while(getline(OpenFile, line)) {
@@ -195,15 +205,18 @@ Tree * read_tree(const char *filename){
 
             if (parent_id == 0 ){
                 task = new Task(0, nw,ew,msw);
+                task->SetId(1+num_tasks-id);
                 tree->AddRoot(task);
             }else{
-                task = new Task(parent_id, nw,ew,msw);
+                task = new Task(1+num_tasks-parent_id, nw,ew,msw);
+                task->SetId(1+num_tasks-id);
+                // DISCLAIMER: this is not working properly until tree::AddRoot has been refactored.
+                // it is missing adding the children.
                 tree->addNode(task);
             }
-            task->SetId(id);
         }
     } 
-
+    tree->reverse_vector();
     Task * parent;
     unsigned long treeSize = tree->GetNodes()->size();
     for (unsigned int i = 0;i<treeSize;i++) {

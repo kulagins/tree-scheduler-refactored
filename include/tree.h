@@ -391,7 +391,6 @@ public:
         nodes = new vector<Task *>();
     }
 
-
     Tree(int N, int *prnts, double *nwghts, double *ewghts, double *mswghts) {
         root_index = 1;
         root_count = 0;
@@ -472,6 +471,9 @@ public:
         }
 
         offset_id = nodes->front()->GetId();
+    }
+    void reverse_vector(){
+        reverse(nodes->begin(),nodes->end());
     }
 
     void AddNode(Task *newNode) {

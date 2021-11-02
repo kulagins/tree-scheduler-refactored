@@ -151,7 +151,7 @@ int main(int argc, const char *argv[])
 
             //parse_tree((dir + treename).c_str(), &tree_size, &prnts, &spacewghts, &ewghts, &timewghts);
             Tree * tree = read_tree((dir+treename).c_str());
-            
+           /* 
             num_processors = ceil(tree_size / NPR);
             if (num_processors < 3)
             {
@@ -185,7 +185,7 @@ int main(int argc, const char *argv[])
             delete[] ewghts;
             delete[] spacewghts;
             delete[] timewghts;
-            
+            */
        delete tree;
         }
     } while (OpenFile.good());

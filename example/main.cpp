@@ -43,7 +43,7 @@ void firstStep(double CCR, unsigned int num_processors, double *ewghts, double *
     Cluster::setFixedCluster(cluster);
 
     Tree *treeobj = new Tree(tree_size, prnts, spacewghts, ewghts, timewghts);
-    cout << "the output of GetRoot()" << treeobj->GetRoot()->GetId()<< " the output of IsRoot() for that task: "<< treeobj->GetRoot()->IsRoot()<<endl;
+    cout << "the output of getRoot()" << treeobj->getRoot()->getId()<< " the output of isRoot() for that task: "<< treeobj->getRoot()->isRoot()<<endl;
     Tree::setOriginalTree(treeobj);
 
     maxoutd = MaxOutDegree(treeobj, true);
@@ -51,7 +51,7 @@ void firstStep(double CCR, unsigned int num_processors, double *ewghts, double *
     po_construct(tree_size, prnts, &chstart, &chend, &children, &root);
     time = clock();
     unsigned long sequentialLen;
-    makespan = treeobj->GetRoot()->SplitSubtrees(false, parallelSubtrees, sequentialLen);
+    makespan = treeobj->getRoot()->SplitSubtrees(false, parallelSubtrees, sequentialLen);
     time = clock() - time;
     cout<<"makespan "<<makespan<<endl;
 
@@ -67,7 +67,7 @@ void firstStep(double CCR, unsigned int num_processors, double *ewghts, double *
 
 void thirdStep(unsigned int num_processors, clock_t time, unsigned int number_subtrees, int *chstart, int *children,
                const vector<double> &memorySizes, double makespan, Tree *treeobj) {
-    makespan = treeobj->GetRoot()->GetMSCost(true, true);
+    makespan = treeobj->getRoot()->getMakespanCost(true, true);
     number_subtrees = treeobj->HowmanySubtrees(true);
     // std::cout << "after 2nd step "
 //       << number_subtrees << " " << num_processors << " " << makespan << " " << stage2heuristic << "+Nothing " << 0 << endl;
@@ -171,7 +171,7 @@ int main(int argc, const char *argv[])
             for (int stage2Method = 0; stage2Method < 1; ++stage2Method)
             {
                 Tree *treeobj = new Tree(tree_size, prnts, spacewghts, ewghts, timewghts);
-                cout << "the output of GetRoot()" << treeobj->GetRoot()->GetId()<< " the output of IsRoot() for that task: "<< treeobj->GetRoot()->IsRoot()<<endl;
+                cout << "the output of getRoot()" << treeobj->getRoot()->getId()<< " the output of isRoot() for that task: "<< treeobj->getRoot()->isRoot()<<endl;
                 time = clock();
                 secondStep(skipBigTrees, chstart, children, stage2heuristic, stage2Method, treeobj);
                 time = clock() - time;

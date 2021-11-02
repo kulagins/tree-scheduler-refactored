@@ -28,18 +28,18 @@ void explore(Task *node, double available_memory, list<Task *> *L_init, schedule
     count++;
 
     /* if node is unreachable, return +infty */
-    if (node->GetCost() > available_memory) {
+    if (node->getCost() > available_memory) {
 
-        Mpeak = node->GetCost();
+        Mpeak = node->getCost();
         cut_value = numeric_limits<double>::infinity();
         return;
     }
 
 
     /* if this is a leaf, return 0 */
-    if (node->IsLeaf()) {
+    if (node->isLeaf()) {
 
-        sub_schedule.push_back(node->GetId());
+        sub_schedule.push_back(node->getId());
         cut_value = 0;
         Mpeak = numeric_limits<double>::infinity();
         return;
@@ -50,14 +50,14 @@ void explore(Task *node, double available_memory, list<Task *> *L_init, schedule
             min_sub_cut.assign(L_init->begin(), L_init->end());
             sub_schedule.assign(S_init->begin(), S_init->end());
         } else {
-            sub_schedule.push_back(node->GetId());
+            sub_schedule.push_back(node->getId());
             /* place every child in the candidate nodes*/
-            min_sub_cut.assign(node->GetChildren()->begin(), node->GetChildren()->end());
+            min_sub_cut.assign(node->getChildren()->begin(), node->getChildren()->end());
         }
     } else {
-        sub_schedule.push_back(node->GetId());
+        sub_schedule.push_back(node->getId());
         /* place every child in the candidate nodes*/
-        min_sub_cut.assign(node->GetChildren()->begin(), node->GetChildren()->end());
+        min_sub_cut.assign(node->getChildren()->begin(), node->getChildren()->end());
     }
 
     list<Task *> *candidates = new list<Task *>(min_sub_cut);
@@ -66,11 +66,11 @@ void explore(Task *node, double available_memory, list<Task *> *L_init, schedule
         (*current_node)->Mavail = available_memory;
         for (list<Task *>::iterator other_nodes = min_sub_cut.begin();
              other_nodes != min_sub_cut.end(); ++other_nodes) {
-            if ((*other_nodes)->GetId() != (*current_node)->GetId()) {
-                (*current_node)->Mavail -= (*other_nodes)->GetEW();
+            if ((*other_nodes)->getId() != (*current_node)->getId()) {
+                (*current_node)->Mavail -= (*other_nodes)->getEdgeWeight();
             }
         }
-        cut_value += (*current_node)->GetEW();
+        cut_value += (*current_node)->getEdgeWeight();
     }
 
     while (!candidates->empty()) {
@@ -85,7 +85,7 @@ void explore(Task *node, double available_memory, list<Task *> *L_init, schedule
             explore(*current_node, (*current_node)->Mavail, NULL, NULL, m_j, Lj, Sj, (*current_node)->Mpeak, quiet,
                     depth + 1, count);
 
-            if (m_j <= (*current_node)->GetEW()) {
+            if (m_j <= (*current_node)->getEdgeWeight()) {
 
                 min_sub_cut.remove(*current_node);
                 min_sub_cut.splice(min_sub_cut.end(), Lj);
@@ -101,8 +101,8 @@ void explore(Task *node, double available_memory, list<Task *> *L_init, schedule
             (*current_node)->Mavail = available_memory;
             for (list<Task *>::iterator other_nodes = min_sub_cut.begin();
                  other_nodes != min_sub_cut.end(); ++other_nodes) {
-                if ((*other_nodes)->GetId() != (*current_node)->GetId()) {
-                    (*current_node)->Mavail -= (*other_nodes)->GetEW();
+                if ((*other_nodes)->getId() != (*current_node)->getId()) {
+                    (*current_node)->Mavail -= (*other_nodes)->getEdgeWeight();
                 }
             }
 
@@ -111,7 +111,7 @@ void explore(Task *node, double available_memory, list<Task *> *L_init, schedule
 
             if ((*current_node)->Mavail >= (*current_node)->Mpeak) {
                 candidates->push_back(*current_node);
-                //				if(!quiet){cerr<<spacing<<"node "<<(*current_node)->GetId()<<" kept"<<endl;}
+                //				if(!quiet){cerr<<spacing<<"node "<<(*current_node)->getId()<<" kept"<<endl;}
             }
         }
     }
@@ -120,7 +120,7 @@ void explore(Task *node, double available_memory, list<Task *> *L_init, schedule
     cut_value = 0;
     Mpeak = numeric_limits<double>::infinity();
     for (list<Task *>::iterator current_node = min_sub_cut.begin(); current_node != min_sub_cut.end(); ++current_node) {
-        cut_value += (*current_node)->GetEW();
+        cut_value += (*current_node)->getEdgeWeight();
 
 
         if (Mpeak > (*current_node)->Mpeak + available_memory - (*current_node)->Mavail) {
@@ -142,7 +142,7 @@ void MinMem(Tree *tree, double MaxOutDeg, double &Required_memory, schedule_t &S
 
     setrlimit(RLIMIT_STACK, &lim);
 
-    Task *root = tree->GetRoot();
+    Task *root = tree->getRoot();
 
     if (!quiet) {
         cerr << "Max out deg = " << Mpeak << endl;

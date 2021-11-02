@@ -43,6 +43,7 @@ void firstStep(double CCR, unsigned int num_processors, double *ewghts, double *
     Cluster::setFixedCluster(cluster);
 
     Tree *treeobj = new Tree(tree_size, prnts, spacewghts, ewghts, timewghts);
+    cout << "the output of GetRoot()" << treeobj->GetRoot()->GetId()<< " the output of IsRoot() for that task: "<< treeobj->GetRoot()->IsRoot()<<endl;
     Tree::setOriginalTree(treeobj);
 
     maxoutd = MaxOutDegree(treeobj, true);
@@ -148,8 +149,9 @@ int main(int argc, const char *argv[])
         {
             cout << "clusterConfig: " << clusterConfig << endl;
 
-            parse_tree((dir + treename).c_str(), &tree_size, &prnts, &spacewghts, &ewghts, &timewghts);
-
+            //parse_tree((dir + treename).c_str(), &tree_size, &prnts, &spacewghts, &ewghts, &timewghts);
+            Tree * tree = read_tree((dir+treename).c_str());
+           /* 
             num_processors = ceil(tree_size / NPR);
             if (num_processors < 3)
             {
@@ -169,6 +171,7 @@ int main(int argc, const char *argv[])
             for (int stage2Method = 0; stage2Method < 1; ++stage2Method)
             {
                 Tree *treeobj = new Tree(tree_size, prnts, spacewghts, ewghts, timewghts);
+                cout << "the output of GetRoot()" << treeobj->GetRoot()->GetId()<< " the output of IsRoot() for that task: "<< treeobj->GetRoot()->IsRoot()<<endl;
                 time = clock();
                 secondStep(skipBigTrees, chstart, children, stage2heuristic, stage2Method, treeobj);
                 time = clock() - time;
@@ -182,6 +185,8 @@ int main(int argc, const char *argv[])
             delete[] ewghts;
             delete[] spacewghts;
             delete[] timewghts;
+            */
+       delete tree;
         }
     } while (OpenFile.good());
     OpenFile.close();

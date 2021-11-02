@@ -153,7 +153,7 @@ uint64_t size(){
 };
 
         
-void MinMem(Tree * tree,double MaxOutDeg, double & Required_memory, schedule_t & Schedule, int quiet, uint64_t & count);//added by Changjiang
+void MinMem(Tree * tree,double MaxOutDeg, double & Required_memory, schedule_t & Schedule, int quiet);//added by Changjiang
 
 void MinMemArray(int N,int root, double * nwghts, double * ewghts, int * chstart, int * children,double MaxOutDeg, double & Required_memory, int * Schedule, int quiet, int & count);
 

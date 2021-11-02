@@ -683,8 +683,6 @@ double Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, d
     return temp;
 }
 
-bool cmp_asapc(Task *a, Task *b) { return (a->GetMSminusComu() < b->GetMSminusComu()); };
-
 bool cmp_asap(Task *a, Task *b) { return (a->GetMSCost(false, false) < b->GetMSCost(false, false)); };
 
 double ASAP(Tree *tree, unsigned int num_processors) {
@@ -1194,7 +1192,8 @@ list<unsigned int> markSubtreeTillBottom(Task *subtreeRoot) {
 
 void
 Immediately(Tree *tree, int *schedule,
-            double m_availble, vector<unsigned int> *brokenEdges) {
+            double m_available, vector<unsigned int> *brokenEdges) {
+
     unsigned int treeSize = tree->GetNodes()->size();
     double memory_occupied = tree->GetNode(schedule[treeSize - 1])->GetEW();
 
@@ -1219,7 +1218,7 @@ Immediately(Tree *tree, int *schedule,
                 node_cost += child->GetEW();
             }
 
-            data_to_unload = memory_occupied + node_cost - currTask->GetEW() - m_availble;
+            data_to_unload = memory_occupied + node_cost - currTask->GetEW() - m_available;
             if (data_to_unload > 0) { // schedule the subtree that is rooted at this node onto another processor
 
                 currTask->BreakEdge(); // set it cut, used for building a quotient tree later
@@ -1247,8 +1246,8 @@ Immediately(Tree *tree, int *schedule,
                 int *schedule_copy = new int[subtree_size + 1];
                 maxoutD = MaxOutDegree(subtree, true);
                 schedule_f->clear();
-                count = 0;
-                MinMem(subtree, maxoutD, memory_required, *schedule_f, true, count);
+
+                MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
                 ite_sche = schedule_f->begin();
                 for (unsigned int i = subtree_size; i >= 1; --i) {
                     schedule_copy[i] = *ite_sche;
@@ -1256,9 +1255,9 @@ Immediately(Tree *tree, int *schedule,
                 }
                 schedule_copy[0] = subtree_size + 1;
 
-                if (memory_required > m_availble) {
+                if (memory_required > m_available) {
                     Immediately(subtree, schedule_copy,
-                                m_availble, &subtreeBrokenEdges);
+                                m_available, &subtreeBrokenEdges);
 
                     for (vector<unsigned int>::iterator iter = subtreeBrokenEdges.begin();
                          iter != subtreeBrokenEdges.end(); ++iter) {
@@ -1281,8 +1280,7 @@ Immediately(Tree *tree, int *schedule,
     //cout<<endl;
 }
 
-void MemoryCheck(Tree *tree, int *chstart, int *children, Cluster *cluster,
-                 io_method_t method) { //chstart, children are not modified
+void MemoryCheck(Tree *tree, Cluster *cluster, io_method_t method) {
     vector<Task *> subtreeRoots;
     Task *currentnode;
     Task *subtreeRoot;
@@ -1320,8 +1318,8 @@ void MemoryCheck(Tree *tree, int *chstart, int *children, Cluster *cluster,
         int *schedule_copy = new int[subtreeSize + 1];
         maxoutD = MaxOutDegree(subtree, true);
         schedule_f->clear();
-        count = 0;
-        MinMem(subtree, maxoutD, memory_required, *schedule_f, true, count);
+
+        MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
 
         int *chstartsub, *chendsub, *childrensub;
         po_construct(subtreeSize, prnts, &chstartsub, &chendsub, &childrensub, &rootid);
@@ -1420,8 +1418,8 @@ std::map<int, int> MemoryCheckA2(Tree *tree, int *chstart, int *children, Cluste
         int *schedule_copy = new int[subtreeSize + 1];
         maxoutD = MaxOutDegree(subtree, true);
         schedule_f->clear();
-        count = 0;
-        MinMem(subtree, maxoutD, memory_required, *schedule_f, true, count);
+
+        MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
 
         int *chstartsub, *chendsub, *childrensub;
         po_construct(subtreeSize, prnts, &chstartsub, &chendsub, &childrensub, &rootid);

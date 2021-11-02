@@ -145,10 +145,10 @@ bool Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory
     delete[] spacewghts;
     delete[] prnts;
     double maxout, requiredMemory;
-    uint64_t count = 0;
+
     schedule_t *schedule_f = new schedule_t();
     maxout = MaxOutDegree(subtree, true);
-    MinMem(subtree, maxout, requiredMemory, *schedule_f, true, count);
+    MinMem(subtree, maxout, requiredMemory, *schedule_f, true);
 
     if (requiredMemory <= memory_size) {
         enough = true;
@@ -1011,8 +1011,8 @@ double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart
                 int *schedule_copy = new int[subtree_size + 1];
                 maxoutD = MaxOutDegree(subtree, true);
                 schedule_f->clear();
-                count = 0;
-                MinMem(subtree, maxoutD, memory_required, *schedule_f, true, count);
+
+                MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
                 ite_sche = schedule_f->begin();
                 for (unsigned int i = subtree_size; i >= 1; --i) {
                     schedule_copy[i] = *ite_sche;
@@ -1233,8 +1233,8 @@ IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewghts, int 
                 int *schedule_copy = new int[subtree_size + 1];
                 maxoutD = MaxOutDegree(subtree, true);
                 schedule_f->clear();
-                count = 0;
-                MinMem(subtree, maxoutD, memory_required, *schedule_f, true, count);
+
+                MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
                 ite_sche = schedule_f->begin();
                 for (unsigned int i = subtree_size; i >= 1; --i) {
                     schedule_copy[i] = *ite_sche;

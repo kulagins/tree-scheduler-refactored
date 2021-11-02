@@ -539,6 +539,10 @@ public:
         this->nodes->push_back(newnode);
     }
 
+    vector<Task *> getBrokenNodes(){
+
+    }
+
     static void setOriginalTree(Tree *origTree) {
         Tree::originalTree = origTree;
     }

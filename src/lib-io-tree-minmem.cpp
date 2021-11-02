@@ -23,9 +23,7 @@
 #include "../include/lib-io-tree-minmem.h"
 
 void explore(Task *node, double available_memory, list<Task *> *L_init, schedule_t *S_init, double &cut_value,
-             list<Task *> &min_sub_cut, schedule_t &sub_schedule, double &Mpeak, int quiet, int depth,
-             uint64_t &count) {
-    count++;
+             list<Task *> &min_sub_cut, schedule_t &sub_schedule, double &Mpeak, int quiet, int depth) {
 
     /* if node is unreachable, return +infty */
     if (node->GetCost() > available_memory) {
@@ -83,7 +81,7 @@ void explore(Task *node, double available_memory, list<Task *> *L_init, schedule
             schedule_t Sj;
 
             explore(*current_node, (*current_node)->Mavail, NULL, NULL, m_j, Lj, Sj, (*current_node)->Mpeak, quiet,
-                    depth + 1, count);
+                    depth + 1);
 
             if (m_j <= (*current_node)->GetEW()) {
 
@@ -132,7 +130,7 @@ void explore(Task *node, double available_memory, list<Task *> *L_init, schedule
     return;
 }
 
-void MinMem(Tree *tree, double MaxOutDeg, double &Required_memory, schedule_t &Schedule, int quiet, uint64_t &count) {
+void MinMem(Tree *tree, double MaxOutDeg, double &Required_memory, schedule_t &Schedule, int quiet) {
     double M = numeric_limits<double>::infinity();
     double Mpeak = MaxOutDeg;
 
@@ -147,12 +145,12 @@ void MinMem(Tree *tree, double MaxOutDeg, double &Required_memory, schedule_t &S
     if (!quiet) {
         cerr << "Max out deg = " << Mpeak << endl;
     }
-    count = 0;
+
     list<Task *> L;
     Schedule.clear();
     while (Mpeak < numeric_limits<double>::infinity()) {
         Required_memory = Mpeak;
-        explore(root, Required_memory, &L, &Schedule, M, L, Schedule, Mpeak, quiet, 0, count);
+        explore(root, Required_memory, &L, &Schedule, M, L, Schedule, Mpeak, quiet, 0);
 
 
     }
@@ -163,9 +161,9 @@ double MinMemRecurAlgorithm(int N, int *prnts, double *nwghts, double *ewghts, d
 
     double Mr;
     double Mp = MaxOutDegree(tree, true);
-    uint64_t count = 0;
+
     schedule_t *sub_sched = new schedule_t();
-    MinMem(tree, Mp, Mr, *sub_sched, true, count);
+    MinMem(tree, Mp, Mr, *sub_sched, true);
 
     unsigned int i = 0;
     for (schedule_t::reverse_iterator last = sub_sched->rbegin(); last != sub_sched->rend(); ++last) {

@@ -16,7 +16,7 @@ void RunWithClusterConfig(bool skipBigTrees, int *chstart, int *children, Tree *
 
 {
     if (Cluster::getFixedCluster()->isHomogeneous())
-        MemoryCheck(treeobj, chstart, children, Cluster::getFixedCluster(), method);
+        MemoryCheck(treeobj, Cluster::getFixedCluster(), method);
     else
         MemoryCheckA2(treeobj, chstart, children,  Cluster::getFixedCluster(), method, skipBigTrees);
 }
@@ -55,8 +55,8 @@ void firstStep(double CCR, unsigned int num_processors, double *ewghts, double *
     cout<<"makespan "<<makespan<<endl;
 
     schedule_t *schedule_f = new schedule_t();
-    count = 0;
-    MinMem(treeobj, maxoutd, minMem, *schedule_f, true, count);
+
+    MinMem(treeobj, maxoutd, minMem, *schedule_f, true);
     delete schedule_f;
     delete treeobj;
 

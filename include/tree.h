@@ -115,6 +115,29 @@ public :
         parent_id = pparent_id;
     }
 
+    Task(const Task &otherTask, const unsigned int newId, Task *newParent)
+            : cost_computed{otherTask.cost_computed},
+              cost{otherTask.cost},
+              edge_weight{otherTask.edge_weight},
+              node_weight{otherTask.node_weight},
+              MS_weight{otherTask.MS_weight},
+              makespan_nocommu{otherTask.makespan_nocommu},
+              makespan_computed{otherTask.makespan_computed},
+              parent{newParent ? newParent : 0},
+              parent_id{newParent ? newParent->GetId() : 0},
+              id{newId},
+              broken{otherTask.broken},
+              label{otherTask.label},
+              MS_sequentialPart{otherTask.MS_sequentialPart},
+              MS_parallelPart{otherTask.MS_parallelPart},
+              makespan_difference{otherTask.makespan_difference},
+              Qtree_id{otherTask.Qtree_id},
+              Ci{otherTask.Ci},
+              Mpeak{otherTask.Mpeak},
+              Mavail{otherTask.Mavail} {
+        children = new vector<Task *>();
+    }
+
     ~Task() {
         for (vector<Task *>::iterator iter = children->begin(); iter != children->end(); iter++) {
             delete *iter;
@@ -427,13 +450,13 @@ public:
         }
     }
 
-    Tree(vector<Task *> nodes, Tree *originalTree) {
+    Tree(vector<Task *> * nodes, Tree *originalTree) {
         root_index = 1;
         root_count = 0;
         offset_id = 0;
         tree_id = 1;
 
-        *(this->nodes) = nodes;
+        this->nodes = nodes;
         this->originalTree = originalTree;
     }
 
@@ -613,8 +636,8 @@ IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewghts, int 
                          std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible, int quiet,
                          unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method);
 
-Tree *BuildSubtree(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts,
-                   double **timewghts, double **spacewghts, int *chstart, int *children);
+Tree *BuildSubtree(Tree *tree, Task *subtreeRoot);
+Tree* BuildSubtreeOld(Tree* tree, Task* SubtreeRoot, unsigned int new_tree_size, int** prnts, double** ewghts, double** timewghts, double** spacewghts, int * chstart, int * children);
 
 void popSmallestRootsToFitToCluster(list<Task *> &parallelRoots, unsigned long amountSubtrees);
 

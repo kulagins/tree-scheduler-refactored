@@ -20,6 +20,7 @@
 #include <forward_list>
 #include <assert.h>
 #include <map>
+#include <algorithm>
 #include "cluster.h"
 
 #ifndef DEBUG_MEMUSAGE

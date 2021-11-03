@@ -11,21 +11,17 @@
 #include "../include/lib-io-tree.h"
 #include "../include/heuristics.h"
 
-void RunWithClusterConfig(bool skipBigTrees, int *chstart, int *children, Tree *treeobj,
-                          io_method_t method)
-
-{
+void RunWithClusterConfig(bool skipBigTrees, Tree *treeobj,
+                          io_method_t method) {
     if (Cluster::getFixedCluster()->isHomogeneous())
         MemoryCheck(treeobj, Cluster::getFixedCluster(), method);
     else
-        MemoryCheckA2(treeobj, chstart, children,  Cluster::getFixedCluster(), method, skipBigTrees);
+        MemoryCheckA2(treeobj, Cluster::getFixedCluster(), method, skipBigTrees);
 }
 
-void firstStep(double CCR, unsigned int num_processors, double *ewghts, double *spacewghts, double *timewghts,
-               int *prnts, int tree_size, int *&chstart, int *&chend, int *&children, string &stage2heuristic,
-               vector<double> &memorySizes) {
+void firstStep(double CCR, unsigned int num_processors, vector<double> &memorySizes, Tree * treeobj) {
     Cluster *cluster;
-    cluster= new Cluster(num_processors, true);
+    cluster = new Cluster(num_processors, true);
     clock_t time;
     unsigned int number_subtrees;
     int root;
@@ -39,92 +35,87 @@ void firstStep(double CCR, unsigned int num_processors, double *ewghts, double *
 
     double makespan;
     double maxoutd;
-    cluster->SetBandwidth(CCR, tree_size, ewghts, timewghts);
+
+    cluster->SetBandwidth(CCR, treeobj);
     Cluster::setFixedCluster(cluster);
 
-    Tree *treeobj = new Tree(tree_size, prnts, spacewghts, ewghts, timewghts);
+
     cout << "the output of getRoot()" << treeobj->getRoot()->getId()<< " the output of isRoot() for that task: "<< treeobj->getRoot()->isRoot()<<endl;
     Tree::setOriginalTree(treeobj);
 
     maxoutd = MaxOutDegree(treeobj, true);
+    schedule_t *schedule_f = new schedule_t();
+    MinMem(treeobj, maxoutd, minMem, *schedule_f, true);
 
-    po_construct(tree_size, prnts, &chstart, &chend, &children, &root);
+    memorySizes = Cluster::buildMemorySizes(maxoutd, minMem, num_processors);
+    cluster->setMemorySizes(memorySizes);
+
     time = clock();
     unsigned long sequentialLen;
     makespan = treeobj->getRoot()->SplitSubtrees(false, parallelSubtrees, sequentialLen);
     time = clock() - time;
-    cout<<"makespan "<<makespan<<endl;
+    cout << "makespan " << makespan << endl;
 
-    schedule_t *schedule_f = new schedule_t();
-
-    MinMem(treeobj, maxoutd, minMem, *schedule_f, true);
     delete schedule_f;
     delete treeobj;
-
-    memorySizes = Cluster::buildMemorySizes(maxoutd, minMem, num_processors);
-    cluster->setMemorySizes(memorySizes);
 }
 
-void thirdStep(unsigned int num_processors, clock_t time, unsigned int number_subtrees, int *chstart, int *children,
-               const vector<double> &memorySizes, double makespan, Tree *treeobj) {
-    makespan = treeobj->getRoot()->getMakespanCost(true, true);
-    number_subtrees = treeobj->HowmanySubtrees(true);
+void thirdStep(Tree *treeobj) {
+    clock_t time;
+    double makespan = treeobj->getRoot()->getMakespanCost(true, true);
+    int number_subtrees = treeobj->HowmanySubtrees(true);
     // std::cout << "after 2nd step "
 //       << number_subtrees << " " << num_processors << " " << makespan << " " << stage2heuristic << "+Nothing " << 0 << endl;
-
-    if (number_subtrees > num_processors)
-    {
+    int num_processors = Cluster::getFixedCluster()->getNumberProcessors();
+    if (number_subtrees > num_processors) {
         time = clock();
-        makespan = treeobj->MergeV2(number_subtrees, num_processors, memorySizes[0], chstart, children, true);
+        makespan = treeobj->MergeV2(number_subtrees, num_processors, Cluster::getFixedCluster()->getFirstFreeProcessor()->getMemorySize(), nullptr, nullptr, true);
         time = clock() - time;
         number_subtrees = treeobj->HowmanySubtrees(true);
         cout << "w merge "
-                  << "#subtrees: " << number_subtrees << ", #numberProcessors; " << num_processors << " makespan: " << makespan << endl;
-    }
-    else if (number_subtrees == num_processors)
-    {
+             << "#subtrees: " << number_subtrees << ", #numberProcessors; " << num_processors << " makespan: "
+             << makespan << endl;
+    } else if (number_subtrees == num_processors) {
         cout << "w equal "
-                  << "#subtrees: " << number_subtrees << ", #numberProcessors; " << num_processors << " makespan: " << makespan << endl;
-    }
-    else
-    {
+             << "#subtrees: " << number_subtrees << ", #numberProcessors; " << num_processors << " makespan: "
+             << makespan << endl;
+    } else {
         time = clock();
         makespan = treeobj->SplitAgain();
         time = clock() - time;
         number_subtrees = treeobj->HowmanySubtrees(true);
         cout << "w split "
-                  << "#subtrees: " << number_subtrees << ", #numberProcessors; " << num_processors << " makespan: " << makespan << endl;
+             << "#subtrees: " << number_subtrees << ", #numberProcessors; " << num_processors << " makespan: "
+             << makespan << endl;
     }
 
     treeobj->printBrokenEdges();
     delete treeobj;
 }
 
-void secondStep(bool skipBigTrees, int *chstart, int *children, string &stage2heuristic, int stage2Method, Tree *treeobj) {
-    switch (stage2Method)
-    {
+void secondStep(bool skipBigTrees, string &stage2heuristic, int stage2Method, Tree *treeobj) {
+    switch (stage2Method) {
         case 0:
             stage2heuristic = "FIRST_FIT";
-            RunWithClusterConfig(skipBigTrees, chstart, children, treeobj, FIRST_FIT);
+            RunWithClusterConfig(skipBigTrees, treeobj, FIRST_FIT);
             break;
         case 1:
             stage2heuristic = "LARGEST_FIT";
-            RunWithClusterConfig(skipBigTrees, chstart, children, treeobj,  LARGEST_FIT);
+            RunWithClusterConfig(skipBigTrees, treeobj, LARGEST_FIT);
             break;
         case 2:
             stage2heuristic = "IMMEDIATELY";
-            RunWithClusterConfig(skipBigTrees, chstart, children, treeobj,  IMMEDIATELY);
+            RunWithClusterConfig(skipBigTrees, treeobj, IMMEDIATELY);
             break;
 
         default:
             stage2heuristic = "FIRST_FIT";
-            RunWithClusterConfig(skipBigTrees, chstart, children, treeobj,  IMMEDIATELY);
+            RunWithClusterConfig(skipBigTrees, treeobj, IMMEDIATELY);
             break;
     }
 }
 
-int main(int argc, const char *argv[])
-{
+int main(int argc, const char *argv[]) {
     int tree_size = 0;
     int *prnts;
     clock_t time;
@@ -141,20 +132,17 @@ int main(int argc, const char *argv[])
     cout.setf(ios::fixed);
 
     ifstream OpenFile(dir + argv[2]);
-    do
-    {
+    do {
         OpenFile >> treename;
         cout << treename << endl;
-        for (int clusterConfig = 1; clusterConfig <= 2; clusterConfig++)
-        {
+        for (int clusterConfig = 1; clusterConfig <= 2; clusterConfig++) {
             cout << "clusterConfig: " << clusterConfig << endl;
 
             //parse_tree((dir + treename).c_str(), &tree_size, &prnts, &spacewghts, &ewghts, &timewghts);
             Tree * tree = read_tree((dir+treename).c_str());
-           /* 
+           /*
             num_processors = ceil(tree_size / NPR);
-            if (num_processors < 3)
-            {
+            if (num_processors < 3) {
                 num_processors = 3;
             }
             int *chstart;
@@ -164,18 +152,15 @@ int main(int argc, const char *argv[])
             vector<double> memorySizes;
             double makespan;
 
-            firstStep(CCR, num_processors, ewghts, spacewghts, timewghts, prnts, tree_size, chstart, chend, children,
-                      stage2heuristic,
-                      memorySizes);
+            firstStep(CCR, num_processors, memorySizes);
 
-            for (int stage2Method = 0; stage2Method < 1; ++stage2Method)
-            {
+            for (int stage2Method = 0; stage2Method < 1; ++stage2Method) {
                 Tree *treeobj = new Tree(tree_size, prnts, spacewghts, ewghts, timewghts);
                 cout << "the output of getRoot()" << treeobj->getRoot()->getId()<< " the output of isRoot() for that task: "<< treeobj->getRoot()->isRoot()<<endl;
                 time = clock();
-                secondStep(skipBigTrees, chstart, children, stage2heuristic, stage2Method, treeobj);
+                secondStep(skipBigTrees, stage2heuristic, stage2Method, treeobj);
                 time = clock() - time;
-                thirdStep(num_processors, time, number_subtrees, chstart, children, memorySizes, makespan, treeobj);
+                thirdStep(treeobj);
 
                 delete[] chstart;
                 delete[] chend;

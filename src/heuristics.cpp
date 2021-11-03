@@ -1181,9 +1181,9 @@ list<unsigned int> markSubtreeTillBottom(Task *subtreeRoot) {
 
     do {
         Task *firstTask = queue.front();
-        allNodes.push_back(firstTask->GetId());
+        allNodes.push_back(firstTask->getId());
         queue.pop_front();
-        for (Task *childOfFirst: *firstTask->GetChildren()) {
+        for (Task *childOfFirst: *firstTask->getChildren()) {
             queue.push_back(childOfFirst);
         }
     } while (!queue.empty());
@@ -1192,10 +1192,9 @@ list<unsigned int> markSubtreeTillBottom(Task *subtreeRoot) {
 
 void
 Immediately(Tree *tree, int *schedule,
-            double m_available, vector<unsigned int> *brokenEdges) {
-
-    unsigned int treeSize = tree->GetNodes()->size();
-    double memory_occupied = tree->GetNode(schedule[treeSize - 1])->GetEW();
+            double m_availble, vector<unsigned int> *brokenEdges) {
+    unsigned int treeSize = tree->getNodes()->size();
+    double memory_occupied = tree->getNode(schedule[treeSize - 1])->getEdgeWeight();
 
     list<unsigned int> allNodes;
 
@@ -1212,17 +1211,17 @@ Immediately(Tree *tree, int *schedule,
         cur_task_id = schedule[rank];
         if (cur_task_id != 0) { //=0 means this node has already been moved to another processor
             //cout<<" "<<cur_task_id;
-            Task *currTask = tree->GetNode(cur_task_id);
-            node_cost = currTask->GetEW() + currTask->GetNW();
-            for (auto child: *currTask->GetChildren()) {
-                node_cost += child->GetEW();
+            Task *currTask = tree->getNode(cur_task_id);
+            node_cost = currTask->getEdgeWeight() + currTask->getNodeWeight();
+            for (auto child: *currTask->getChildren()) {
+                node_cost += child->getEdgeWeight();
             }
 
-            data_to_unload = memory_occupied + node_cost - currTask->GetEW() - m_available;
+            data_to_unload = memory_occupied + node_cost - currTask->getEdgeWeight() - m_availble;
             if (data_to_unload > 0) { // schedule the subtree that is rooted at this node onto another processor
 
-                currTask->BreakEdge(); // set it cut, used for building a quotient tree later
-                brokenEdges->push_back(currTask->GetothersideID());
+                currTask->breakEdge(); // set it cut, used for building a quotient tree later
+                brokenEdges->push_back(currTask->getOtherSideId());
 
                 allNodes =  markSubtreeTillBottom(currTask);
                 subtree_size = allNodes.size();
@@ -1255,9 +1254,9 @@ Immediately(Tree *tree, int *schedule,
                 }
                 schedule_copy[0] = subtree_size + 1;
 
-                if (memory_required > m_available) {
+                if (memory_required > m_availble) {
                     Immediately(subtree, schedule_copy,
-                                m_available, &subtreeBrokenEdges);
+                                m_availble, &subtreeBrokenEdges);
 
                     for (vector<unsigned int>::iterator iter = subtreeBrokenEdges.begin();
                          iter != subtreeBrokenEdges.end(); ++iter) {
@@ -1268,10 +1267,10 @@ Immediately(Tree *tree, int *schedule,
                 delete[] schedule_copy;
                 delete subtree;
 
-                memory_occupied -= currTask->GetEW();
+                memory_occupied -= currTask->getEdgeWeight();
                 memory_occupied = max(0.0, memory_occupied);
             } else { //memory is enough for executing this node
-                memory_occupied += node_cost - 2 * currTask->GetEW() - currTask->GetNW();
+                memory_occupied += node_cost - 2 * currTask->getEdgeWeight() - currTask->getNodeWeight();
                 memory_occupied = max(0.0, memory_occupied);
             }
         }
@@ -1372,8 +1371,7 @@ void MemoryCheck(Tree *tree, Cluster *cluster, io_method_t method) {
     }
 }
 
-std::map<int, int> MemoryCheckA2(Tree *tree, int *chstart, int *children, Cluster *cluster, io_method_t method,
-                                 bool skipBig) { //chstart, children are not modified
+std::map<int, int> MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t method, bool skipBig) {
     vector<Task *> subtreeRoots;
     vector<Task *> subtreeRootsSkipped;
     Task *currentnode;

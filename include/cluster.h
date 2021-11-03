@@ -178,7 +178,7 @@ public:
 
     static std::map<int, int> buildProcessorSpeeds(int num_processors);
 
-    void SetBandwidth(double CCR, unsigned long tree_size, double *ewghts, double *timewghts);
+    void SetBandwidth(double CCR, Tree * treeobj);
 };
 
 #endif

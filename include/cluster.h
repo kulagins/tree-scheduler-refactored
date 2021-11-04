@@ -112,6 +112,9 @@ public:
     bool isHomogeneous() const {
         return isMemoryHomogeneous && isProcessorHomogeneous && isBandwidthHomogenenous;
     }
+    bool setHomogeneity(bool homogeneity){
+        isMemoryHomogeneous = homogeneity;
+    }
 
     vector<Processor *> getProcessors() {
         return this->processors;
@@ -143,7 +146,7 @@ public:
     }
 
     void setMemorySizes(vector<double> &memories) {
-        isMemoryHomogeneous = false;
+      //  isMemoryHomogeneous = false;
         if (processors.size() != memories.size()) {
             processors.resize(memories.size());
             for (unsigned long i = 0; i < memories.size(); i++) {

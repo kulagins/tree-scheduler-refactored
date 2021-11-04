@@ -72,9 +72,13 @@ protected:
     double MS_sequentialPart, MS_parallelPart;
     double makespan_difference;
     unsigned int Qtree_id;
-    bool __root;
+    bool __root{};
 
 public :
+    unsigned int Ci;
+    double Mpeak;
+    double Mavail;
+
     Task() {
         id = 0;
         Mpeak = 0;
@@ -85,7 +89,7 @@ public :
         children = new vector<Task *>();
     }
 
-    Task(double nw, double ew, double mw, bool root=false) {
+    Task(double nw, double ew, double mw, bool root = false) {
         id = 0;
         Mpeak = 0;
         parent_id = 0;
@@ -98,9 +102,9 @@ public :
         node_weight = nw;
         MS_weight = mw;
         makespan_nocommu = mw;
-        if (root){
+        if (root) {
             this->__root = true;
-        }else{
+        } else {
             this->__root = false;
         }
     }
@@ -142,6 +146,7 @@ public :
               Mpeak{otherTask.Mpeak},
               Mavail{otherTask.Mavail} {
         children = new vector<Task *>();
+        __root = otherTask.isRoot();
     }
 
     ~Task() {
@@ -341,7 +346,8 @@ public :
         }
 
         MS_parallelPart = 0;
-        MS_sequentialPart = this->getMakespanSequential(updateEnforce, MS_parallelPart);//MS_parallelPart will be update here.
+        MS_sequentialPart = this->getMakespanSequential(updateEnforce,
+                                                        MS_parallelPart);//MS_parallelPart will be update here.
         makespan_nocommu = MS_sequentialPart + MS_parallelPart;
 
         makespan_computed = true;
@@ -387,10 +393,6 @@ public :
         this->~Task();
     }
 
-    unsigned int Ci;
-    double Mpeak;
-    double Mavail;
-
     double Sequence();
 
     double SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength);
@@ -403,12 +405,12 @@ public :
 
 class Tree {
 protected:
-    vector<Task *> *nodes;
+    vector<Task *> *tasks;
     unsigned int root_count;
     unsigned int offset_id;
     unsigned int tree_id;
 
-    Task * root;
+    Task *root;
     static Tree *originalTree;
 
 public:
@@ -417,20 +419,20 @@ public:
         root_count = 0;
         offset_id = 0;
         tree_id = 1;
-        nodes = new vector<Task *>();
+        tasks = new vector<Task *>();
     }
 
     Tree(int N, int *prnts, double *nwghts, double *ewghts, double *mswghts) {
         root_count = 0;
         offset_id = 0;
         tree_id = 1;
-        nodes = new vector<Task *>();
+        tasks = new vector<Task *>();
 
-        this->allocateNodes(N);
+        this->allocateTasks(N);
 
         for (int i = 1; i < N + 1; i++) {
             //cout << "node id: " << i<<endl;
-            Task *cur_node = this->getNode(i);
+            Task *cur_node = this->getTask(i);
             cur_node->getChildren()->clear();
             cur_node->setEdgeWeight(ewghts[i]);
             cur_node->setNodeWeight(nwghts[i]);
@@ -440,12 +442,12 @@ public:
         }
 
         for (int i = 1; i < N + 1; i++) {
-            Task *cur_node = this->getNode(i);
+            Task *cur_node = this->getTask(i);
 
             if (prnts[i] > 0) {
                 cur_node->setParentId(prnts[i]);
-                cur_node->setParent(this->getNode(prnts[i]));
-                this->getNode(prnts[i])->addChild(cur_node);
+                cur_node->setParent(this->getTask(prnts[i]));
+                this->getTask(prnts[i])->addChild(cur_node);
             } else {
                 cur_node->setParentId(0);
                 this->setRootId(i);
@@ -454,64 +456,67 @@ public:
         }
     }
 
-    Tree(vector<Task *> * nodes, Tree *originalTree) {
-        root_count = 0;
+    Tree(vector<Task *> *nodes, Task * root, Tree *originalTree) {
+        root_count = 1;
         offset_id = 0;
         tree_id = 1;
-
-        this->nodes = nodes;
+        root = root;
+        setRootId(root->getId());
+        this->tasks = nodes;
         this->originalTree = originalTree;
     }
 
 
     ~Tree() {
-        if (this->getRootId() != 0 && nodes->size() > 0) {
+        if (this->getRootId() != 0 && tasks->size() > 0) {
             delete getRoot();
         }
 
-        delete nodes;
+        delete tasks;
     }
 
 
     void Print(ostream &out) const {
-        out << nodes->size() << endl;
+        out << tasks->size() << endl;
 
-        for (vector<Task *>::iterator iter = nodes->begin(); iter != nodes->end(); iter++) {
-            out << max((unsigned int) 0, (*iter)->getParentId()/*+1-offset_id*/) << " " << (*iter)->getNodeWeight() << " "
+        for (vector<Task *>::iterator iter = tasks->begin(); iter != tasks->end(); iter++) {
+            out << max((unsigned int) 0, (*iter)->getParentId()/*+1-offset_id*/) << " " << (*iter)->getNodeWeight()
+                << " "
                 << (*iter)->getEdgeWeight() << endl;
         }
 
     }
 
 
-    void allocateNodes(int new_node_count) {
-        if (root_count > 0 && nodes->size() > 0) {
+    void allocateTasks(int new_node_count) {
+        if (root_count > 0 && tasks->size() > 0) {
             delete getRoot();
         }
 
-        nodes->resize(new_node_count);
+        tasks->resize(new_node_count);
 
         unsigned int i = 0;
-        for (vector<Task *>::iterator iter = nodes->begin(); iter != nodes->end(); iter++) {
+        for (vector<Task *>::iterator iter = tasks->begin(); iter != tasks->end(); iter++) {
             *iter = new Task();
             (*iter)->setId(i++);
         }
 
-        offset_id = nodes->front()->getId();
-    }
-    void reverseVector(){
-        reverse(nodes->begin(),nodes->end());
+        offset_id = tasks->front()->getId();
     }
 
-    void addNode(Task *newNode) {
-        nodes->push_back(newNode);
+    void reverseVector() {
+        reverse(tasks->begin(), tasks->end());
+    }
+
+    void addTask(Task *newNode) {
+        tasks->push_back(newNode);
     }
 
     void addRoot(Task *newNode) {
         root_count++;
         assert(root_count == 1);
         assert(newNode->isRoot());
-        nodes->push_back(newNode);
+        tasks->push_back(newNode);
         this->root = newNode;
     }
 
@@ -535,23 +540,26 @@ public:
         tree_id = _id;
     }
 
-    Task *getNode(unsigned int node_id) const {
-        Task * task =nodes->at(node_id - 1);
-        if (task->getId() == node_id){
+    Task *getTask(unsigned int node_id) const {
+        Task *task = tasks->at(node_id - 1);
+        if (task->getId() == node_id) {
             return task;
-        }else{
+        } else {
+            for(Task * taskSequential: * this->getTasks()){
+                if(taskSequential->getId() == node_id){}
+                return task;
+            }
             throw runtime_error("Task not found for id " + to_string(node_id));
-            return 0;
         }
     }
 
-    Task *getNodeByPos(unsigned int node_idx) const {
-        assert(node_idx<this->getNodes()->size());
-        return nodes->at(node_idx);
+    Task *getTaskByPos(unsigned int node_idx) const {
+        assert(node_idx < this->getTasks()->size());
+        return tasks->at(node_idx);
     }
 
-    const vector<Task *> *getNodes() const {
-        return nodes;
+    const vector<Task *> *getTasks() const {
+        return tasks;
     }
 
     static void setOriginalTree(Tree *origTree) {
@@ -564,9 +572,9 @@ public:
 
     void printBrokenEdges() {
         cout << "Print broken edges" << endl;
-        unsigned long treeSize = this->getNodes()->size();
+        unsigned long treeSize = this->getTasks()->size();
         for (unsigned int i = treeSize; i >= 1; --i) {
-            Task *currentnode = this->getNode(i);
+            Task *currentnode = this->getTask(i);
             if (currentnode->isBroken()) {
                 cout << i << " ";
             }
@@ -606,7 +614,8 @@ typedef pair<unsigned int, double> node_ew;
 
 
 void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, double **ewghts, double **mswghts);
-Tree * read_tree(const char *filename);
+
+Tree *read_tree(const char *filename);
 
 extern "C"
 {
@@ -629,7 +638,9 @@ IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewghts, int 
                          unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method);
 
 Tree *BuildSubtree(Tree *tree, Task *subtreeRoot);
-Tree* BuildSubtreeOld(Tree* tree, Task* SubtreeRoot, unsigned int new_tree_size, int** prnts, double** ewghts, double** timewghts, double** spacewghts, int * chstart, int * children);
+
+Tree *BuildSubtreeOld(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts,
+                      double **timewghts, double **spacewghts, int *chstart, int *children);
 
 void popSmallestRootsToFitToCluster(list<Task *> &parallelRoots, unsigned long amountSubtrees);
 

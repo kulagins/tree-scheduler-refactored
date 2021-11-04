@@ -19,7 +19,7 @@ void GetTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest);
 
 double ASAP(Tree *tree, unsigned int num_processors);
 
-void MemoryCheck(Tree *tree, Cluster *cluster, io_method_t method);
+void MemoryCheck(Tree *tree, io_method_t method);
 
 std::map<int, int>
 MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t method, bool skipBig);

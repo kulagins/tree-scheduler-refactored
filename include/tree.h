@@ -409,7 +409,7 @@ protected:
     unsigned int root_count;
     unsigned int offset_id;
     unsigned int tree_id;
-
+    unsigned int size;
     Task *root;
     static Tree *originalTree;
 
@@ -420,6 +420,7 @@ public:
         offset_id = 0;
         tree_id = 1;
         tasks = new vector<Task *>();
+        size = 0;
     }
 
     Tree(int N, int *prnts, double *nwghts, double *ewghts, double *mswghts) {
@@ -454,15 +455,17 @@ public:
                 this->setTreeId(i);
             }
         }
+        size = getTasks()->size();
     }
 
-    Tree(vector<Task *> *nodes, Task * root, Tree *originalTree) {
+    Tree(vector<Task *> *nodes, Task *root, Tree *originalTree) {
         root_count = 1;
         offset_id = 0;
         tree_id = 1;
         root = root;
         setRootId(root->getId());
         this->tasks = nodes;
+        this->size = nodes->size();
         this->originalTree = originalTree;
     }
 
@@ -502,6 +505,7 @@ public:
         }
 
         offset_id = tasks->front()->getId();
+        size = new_node_count;
     }
 
     void reverseVector() {
@@ -510,6 +514,7 @@ public:
 
     void addTask(Task *newNode) {
         tasks->push_back(newNode);
+        size++;
     }
 
     void addRoot(Task *newNode) {
@@ -518,6 +523,7 @@ public:
         assert(newNode->isRoot());
         tasks->push_back(newNode);
         this->root = newNode;
+        size++;
     }
 
     Task *getRoot() const {
@@ -545,8 +551,8 @@ public:
         if (task->getId() == node_id) {
             return task;
         } else {
-            for(Task * taskSequential: * this->getTasks()){
-                if(taskSequential->getId() == node_id){}
+            for (Task *taskSequential: *this->getTasks()) {
+                if (taskSequential->getId() == node_id) {}
                 return task;
             }
             throw runtime_error("Task not found for id " + to_string(node_id));
@@ -568,6 +574,19 @@ public:
 
     static Tree *getOriginalTree() {
         return Tree::originalTree;
+    }
+
+    int getSize() {
+        return size;
+    }
+
+    vector<Task *> getBrokenTasks() {
+        vector<Task *> broken;
+        broken.resize(getTasks()->size());
+        for (Task *task: *getTasks()) {
+            if (task->isBroken()) broken.push_back(task);
+        }
+        return getBrokenTasks();
     }
 
     void printBrokenEdges() {
@@ -620,22 +639,19 @@ Tree *read_tree(const char *filename);
 extern "C"
 {
 void po_construct(const int N, const int *prnts, int **chstart, int **chend, int **children, int *root);
-void poaux(const int *chstart, const int *children, int N, int r, int *por, int *label);
 } /* closing brace for extern "C" */
 
 double MaxOutDegree(Tree *tree, int quiet);
 
 double MaxOutDegree(int N, double *nwghts, double *ewghts, int *chstart, int *children);
 
-double IOCounter(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule,
+double IOCounter(Tree *tree, int *schedule,
                  double available_memory, bool divisible, int quiet, unsigned int &com_freq,
                  vector<unsigned int> *brokenEdges, io_method_t method);
-
 double
-IOCounterWithVariableMem(Tree *tree, int N, double *nwghts, double *ewghts, int *chstart, int *children, int *schedule,
-                         vector<double> availableMemorySizesA2, int &currentProcessor,
-                         std::map<int, int> &taskToPrc, std::map<int, bool> &isProcBusy, bool divisible, int quiet,
-                         unsigned int &com_freq, vector<unsigned int> *brokenEdges, io_method_t method);
+IOCounterWithVariableMem(Tree *tree, int *schedule,
+                         Cluster *cluster, bool divisible, int quiet, unsigned int &com_freq,
+                         vector<unsigned int> *brokenEdges, io_method_t method);
 
 Tree *BuildSubtree(Tree *tree, Task *subtreeRoot);
 
@@ -649,6 +665,9 @@ void breakPreparedEdges(Task *root, list<Task *> &parallelRoots);
 double getWeightPQ(list<Task *> &parallelRoots, Task *currentNode);
 
 double getWeightSurplusFromSmallestNodes(list<Task *> &parallelRoots);
+
+int *
+copySchedule(schedule_t *schedule_f, const Tree *subtree, int subtreeSize) ;
 
 #endif
 #endif

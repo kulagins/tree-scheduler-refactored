@@ -1291,89 +1291,61 @@ Immediately(Tree *tree, int *schedule,
 }
 
 void MemoryCheck(Tree *tree, io_method_t method) {
-    Cluster *cluster = Cluster::getFixedCluster();
+
     vector<Task *> subtreeRoots;
     Task *currentnode;
     Task *subtreeRoot;
     int rootid;
+
+    double homogeneousMemorySize = Cluster::getFixedCluster()->getProcessors().at(0)->getMemorySize();
+    unsigned long treeSize = tree->getTasks()->size();
     tree->getRoot()->breakEdge();
 
-    //cout<<"Subtrees' roots: ";
-    unsigned long treeSize = tree->getTasks()->size();
-    for (unsigned int i = treeSize; i >= 1; --i) {
-        currentnode = tree->getTask(i);
-        if (currentnode->isBroken()) {
-            //cout<<i<<" ";
-            subtreeRoots.push_back(currentnode);
-        }
-    }
-    //cout<<endl;
+    subtreeRoots = tree->getBrokenTasks();
+
 
     double maxoutD, memory_required;
     schedule_t *schedule_f = new schedule_t();
-    uint64_t count;
     unsigned int com_freq;
     unsigned long subtreeSize;
-    list<int>::iterator ite_sche;
     vector<unsigned int> BrokenEdgesID;
     double IO_volume;
     while (!subtreeRoots.empty()) {
         subtreeRoot = subtreeRoots.back();
         subtreeRoots.pop_back();
 
-        double *ewghts, *timewghts, *spacewghts;
-        int *prnts;
         Tree *subtree = BuildSubtree(tree, subtreeRoot);
-
-        subtreeSize = subtree->getTasks()->size();
-        int *schedule_copy = new int[subtreeSize + 1];
         maxoutD = MaxOutDegree(subtree, true);
         schedule_f->clear();
-
         MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
 
-        int *chstartsub, *chendsub, *childrensub;
-        po_construct(subtreeSize, prnts, &chstartsub, &chendsub, &childrensub, &rootid);
-
         //cout<<"Subtree "<<subtreeRoot->getId()<<" needs memory "<<memory_required;
-        if (memory_required > cluster->getProcessors().at(0)->getMemorySize()) {
+        if (memory_required > homogeneousMemorySize) {
             //cout<<", larger than what is available: "<<memory_size<<endl;
 
-            ite_sche = schedule_f->begin();
-            for (unsigned int i = subtreeSize; i >= 1; --i) {
-                schedule_copy[i] = *ite_sche;
-                advance(ite_sche, 1);
-            }
-            schedule_copy[0] = subtreeSize + 1;
-            double memory_size = cluster->getProcessors().at(0)->getMemorySize();
+            int *schedule_copy = copySchedule(schedule_f, subtree, subtreeSize);
+
             switch (method) {
                 case FIRST_FIT:
-                    IO_volume = IOCounter(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub,
-                                          schedule_copy, memory_size, false, true, com_freq, &BrokenEdgesID, FIRST_FIT);
+                    IO_volume = IOCounter(subtree, schedule_copy, homogeneousMemorySize, false, true,
+                                          com_freq, &BrokenEdgesID,
+                                          FIRST_FIT);
                     break;
                 case LARGEST_FIT:
-                    IO_volume = IOCounter(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub, childrensub,
-                                          schedule_copy, memory_size, false, true, com_freq, &BrokenEdgesID,
+                    IO_volume = IOCounter(subtree, schedule_copy, homogeneousMemorySize, false, true,
+                                          com_freq, &BrokenEdgesID,
                                           LARGEST_FIT);
                     break;
                 case IMMEDIATELY:
-                    Immediately(subtree, schedule_copy, memory_size, &BrokenEdgesID);
+                    Immediately(subtree, schedule_copy, homogeneousMemorySize, &BrokenEdgesID);
                     break;
 
                 default:
                     break;
             }
+            delete[] schedule_copy;
         }
         //cout<<endl;
-
-        delete[] ewghts;
-        delete[] timewghts;
-        delete[] spacewghts;
-        delete[] prnts;
-        delete[] schedule_copy;
-        delete[] chstartsub;
-        delete[] chendsub;
-        delete[] childrensub;
         delete subtree;
     }
     delete schedule_f;
@@ -1449,13 +1421,11 @@ std::map<int, int> MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t metho
 
                 switch (method) {
                     case FIRST_FIT:
-                        IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub,
-                                                             childrensub, schedule_copy, cluster, false, true, com_freq,
+                        IO_volume = IOCounterWithVariableMem(subtree, schedule_copy, cluster, false, true, com_freq,
                                                              &BrokenEdgesID, FIRST_FIT);
                         break;
                     case LARGEST_FIT:
-                        IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub,
-                                                             childrensub, schedule_copy, cluster, false, true, com_freq,
+                        IO_volume = IOCounterWithVariableMem(subtree, schedule_copy, cluster, false, true, com_freq,
                                                              &BrokenEdgesID, LARGEST_FIT);
                         break;
                     case IMMEDIATELY:
@@ -1491,13 +1461,11 @@ std::map<int, int> MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t metho
 
             switch (method) {
                 case FIRST_FIT:
-                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub,
-                                                         childrensub, schedule_copy, cluster, false, true, com_freq,
+                    IO_volume = IOCounterWithVariableMem(subtree, schedule_copy, cluster, false, true, com_freq,
                                                          &BrokenEdgesID, FIRST_FIT);
                     break;
                 case LARGEST_FIT:
-                    IO_volume = IOCounterWithVariableMem(subtree, subtreeSize + 1, spacewghts, ewghts, chstartsub,
-                                                         childrensub, schedule_copy, cluster, false, true, com_freq,
+                    IO_volume = IOCounterWithVariableMem(subtree, schedule_copy, cluster, false, true, com_freq,
                                                          &BrokenEdgesID, LARGEST_FIT);
                     break;
                 case IMMEDIATELY:
@@ -1539,4 +1507,17 @@ void Cluster::SetBandwidth(double CCR, Tree *tree) {
         this->setHomogeneousBandwidth(sum_edges / (sum_weights * CCR));
     }
 
+}
+
+int *
+copySchedule(schedule_t *schedule_f, const Tree *subtree, int subtreeSize) {
+    list<int>::iterator ite_sche = schedule_f->begin();
+    int *schedule_copy = new int[subtreeSize + 1];
+    for (unsigned int i = subtreeSize; i >= 1; --i) {
+        schedule_copy[i] = *ite_sche;
+        advance(ite_sche, 1);
+    }
+    schedule_copy[0] = subtreeSize + 1;
+
+    return schedule_copy;
 }

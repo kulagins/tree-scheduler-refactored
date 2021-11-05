@@ -119,8 +119,10 @@ double Task::SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned 
     parallelRoots.clear();
     parallelRoots.emplace_front(this);
 
-    vector<double> makespansOfSplittings(1, this->getMakespanCost(true, true)); // take communication cost into account
-    double MS_sequential = this->getEdgeWeight(), weightSurplusFromSmallestNodes, Weight_PQ;
+    //cost from unsplitted root
+    vector<double> makespansOfSplittings {this->getMakespanCost(true, true)}; // take communication cost into account
+
+    double MS_sequential = this->getEdgeWeight(), weightSurplusFromSmallestTasks, weightsTasksPriorityQueue;
     if (Cluster::getFixedCluster()->isHomogeneous()) {
         MS_sequential /= Cluster::getFixedCluster()->getHomogeneousBandwidth();
     }
@@ -130,15 +132,15 @@ double Task::SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned 
     while (!currentNode->isLeaf()) {
         MS_sequential = MS_sequential + currentNode->getMakespanWeight();
 
-        Weight_PQ = getWeightPQ(parallelRoots, currentNode);
-        if (Weight_PQ == -1) break;
+        weightsTasksPriorityQueue = getWeightPQ(parallelRoots, currentNode);
+        if (weightsTasksPriorityQueue == -1) break;
         else {
             currentNode = *max_element(parallelRoots.begin(), parallelRoots.end(), cmp_nodecreasing); //non-decreasing
         }
 
-        weightSurplusFromSmallestNodes = getWeightSurplusFromSmallestNodes(parallelRoots);
-        //cout<<"makespan "<<MS_sequential+weightSurplusFromSmallestNodes+Weight_PQ<<endl;
-        makespansOfSplittings.push_back(MS_sequential + weightSurplusFromSmallestNodes + Weight_PQ);
+        weightSurplusFromSmallestTasks = getWeightSurplusFromSmallestNodes(parallelRoots);
+        //cout<<"makespan "<<MS_sequential+weightSurplusFromSmallestTasks+weightsTasksPriorityQueue<<endl;
+        makespansOfSplittings.push_back(MS_sequential + weightSurplusFromSmallestTasks + weightsTasksPriorityQueue);
     }
 
     if (twolevel) {
@@ -310,21 +312,20 @@ void ISCore(Task *root, unsigned long num_processors,
     return;
 }
 
-double Tree::ImprovedSplit(unsigned int number_processor, int *chstart, int *childrenID) {
+double Tree::ImprovedSplit() {
     unsigned long tree_size = this->getTasks()->size();
     Task *root = this->getRoot();
     //cout<<"---ISCore works on the root"<<endl;
     ISCore(root, tree_size, false);
 
-    unsigned int numberSubtrees = this->HowmanySubtrees(true);
-    double makespan = this->Merge(numberSubtrees, chstart, childrenID, false);
+
+    double makespan = this->Merge(false);
     return makespan;
 }
 
 bool cmp_merge_smallest(const pair<double, Task *> &a, const pair<double, Task *> &b) { return a.first < b.first; };
 
-bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, int *chstart, int *childrenID, double memory_size,
-                bool CheckMemory) {
+bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, double memory_size, bool CheckMemory) {
     //cout<<"   ---start compute the minimum combination"<<endl;
 
     Task *currentQNode;
@@ -432,8 +433,7 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, int *chstart, int 
         }
 
         if (CheckMemory == true) {
-            memoryEnough = tree->MemoryEnough(currentQNode->getParent(), currentQNode, leaf, memory_size, chstart,
-                                              childrenID);
+            memoryEnough = tree->MemoryEnough(currentQNode->getParent(), currentQNode, leaf, memory_size);
         } else {
             memoryEnough = true;
         }
@@ -450,8 +450,9 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, int *chstart, int 
     return feasible;
 }
 
-double Tree::Merge(unsigned int num_subtrees, int *chstart, int *childrenID, bool CheckMemory) {
+double Tree::Merge(bool CheckMemory) {
     Task *root = this->getRoot();
+    unsigned int num_subtrees = this->HowmanySubtrees(true);
 
     if (Cluster::getFixedCluster()->getNumberProcessors() >= num_subtrees) {
         return root->getMakespanCost(true, true);
@@ -473,8 +474,7 @@ double Tree::Merge(unsigned int num_subtrees, int *chstart, int *childrenID, boo
         temp = this->getRoot()->getMakespanCost(true, true);     //update ms
 
         //memoryEnough=increaseMS(tree, Qtreeobj, node_smallest_increase, chstart, childrenID, memory_size, CheckMemory);
-        memoryEnough = estimateMS(this, Qtreeobj, node_smallest_increase, chstart, childrenID,
-                                  Cluster::getFixedCluster()->getFirstFreeProcessor()->getMemorySize(), CheckMemory);
+        memoryEnough = estimateMS(this, Qtreeobj, node_smallest_increase, Cluster::getFixedCluster()->getFirstFreeProcessor()->getMemorySize(), CheckMemory);
 
         //when parameter checkMemory is false, memoryEnough will always be true;
         if (memoryEnough) {
@@ -619,8 +619,7 @@ double Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, d
             }
 
             if (CheckMemory == true) {
-                memoryCheckPass = this->MemoryEnough((*smallest)->getParent(), (*smallest), leaf, memory_size, chstart,
-                                                     childrenID);
+                memoryCheckPass = this->MemoryEnough((*smallest)->getParent(), (*smallest), leaf, memory_size);
             } else {
                 memoryCheckPass = true;
             }
@@ -631,8 +630,7 @@ double Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, d
                 } else {
                     leaf = false;
                 }
-                memoryCheckPass = this->MemoryEnough((*secondSmallest)->getParent(), *secondSmallest, leaf, memory_size,
-                                                     chstart, childrenID);
+                memoryCheckPass = this->MemoryEnough((*secondSmallest)->getParent(), *secondSmallest, leaf, memory_size);
                 if (memoryCheckPass == true) {
                     currentNode = *secondSmallest;
                     DeadBreak = false;
@@ -690,17 +688,18 @@ double Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, d
 
 bool cmp_asap(Task *a, Task *b) { return (a->getMakespanCost(false, false) < b->getMakespanCost(false, false)); };
 
-double ASAP(Tree *tree, unsigned int num_processors) {
+double Tree::ASAP() {
+   unsigned int num_processors = Cluster::getFixedCluster()->getProcessors().size();
     list<Task *> PriorityQue;
     vector<Task *> BrokenEdges;
     unsigned long step_minimumMS = 0;
-    double minimumMS = tree->getRoot()->getMakespanCost(true, true);
+    double minimumMS = this->getRoot()->getMakespanCost(true, true);
     //cout<<"Excuting sequentially, makespan "<<minimumMS<<endl;
     double temp;
     Task *LargestNode;
     list<Task *>::iterator node_position;
 
-    vector<Task *> *children = tree->getRoot()->getChildren();
+    vector<Task *> *children = this->getRoot()->getChildren();
     while (children->size() == 1) { //avoid the linear chain
         children = children->front()->getChildren();
     }
@@ -725,7 +724,7 @@ double ASAP(Tree *tree, unsigned int num_processors) {
         if (LargestNode->getParent()->getChildren()->size() > 1) {
             LargestNode->breakEdge(); //break edge
             BrokenEdges.push_back(LargestNode);
-            temp = tree->getRoot()->getMakespanCost(true, true);
+            temp = this->getRoot()->getMakespanCost(true, true);
             //cout<<"Break edge "<<LargestNode->getId()<<", makespan now: "<<temp;
             num_processors--;
             if (temp < minimumMS) {

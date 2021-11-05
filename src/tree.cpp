@@ -124,7 +124,7 @@ unsigned int Tree::HowmanySubtrees(bool quiet) {
     return number_subtrees;
 }
 
-bool Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size, int *chstart, int *children) {
+bool Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size) {
     bool enough = false;
     unsigned long new_tree_size = this->getTasks()->size();
 
@@ -138,15 +138,9 @@ bool Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory
         this->getTask(Qroottwo->getOtherSideId())->restoreEdge(); //restore edge temporarilly
     }
 
-    double *ewghts, *timewghts, *spacewghts;
-    int *prnts;
-    Tree *subtree = BuildSubtree(this, SubtreeRoot);
-    delete[] ewghts;
-    delete[] timewghts;
-    delete[] spacewghts;
-    delete[] prnts;
-    double maxout, requiredMemory;
 
+    Tree *subtree = BuildSubtree(this, SubtreeRoot);
+    double maxout, requiredMemory;
     schedule_t *schedule_f = new schedule_t();
     maxout = MaxOutDegree(subtree, true);
     MinMem(subtree, maxout, requiredMemory, *schedule_f, true);
@@ -164,7 +158,6 @@ bool Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory
 
     delete subtree;
     delete schedule_f;
-
     return enough;
 }
 

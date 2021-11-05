@@ -19,18 +19,28 @@ void RunWithClusterConfig(bool skipBigTrees, Tree *treeobj,
         MemoryCheckA2(treeobj, Cluster::getFixedCluster(), method, skipBigTrees);
 }
 
-void buildFixedClusterWithSpeeds(double CCR, unsigned int num_processors, Tree *treeobj) {
+void buildFixedClusterWithSpeedsAndMemory(double CCR, unsigned int num_processors, Tree *treeobj) {
     Cluster *cluster = new Cluster(num_processors, true);
     clock_t time;
     double minMem;
     map<int, int> processor_speeds = Cluster::buildProcessorSpeeds(num_processors);
     cluster->SetBandwidth(CCR, treeobj);
     Cluster::setFixedCluster(cluster);
+
+    Cluster::getFixedCluster()->SetBandwidth(CCR, treeobj);
+    double maxoutd = MaxOutDegree(treeobj, true);
+    schedule_t *temp_schedule = new schedule_t();
+    MinMem(treeobj, maxoutd, minMem, *temp_schedule, true);
+
+    vector<double> memorySizes = Cluster::buildMemorySizes(maxoutd, minMem, num_processors);
+    //Fix, for now we consider the non-homog cluster homogeneuos
+    Cluster::getFixedCluster()->setMemorySizes(memorySizes);
+    delete temp_schedule;
 }
 
 int main(int argc, char **argv) {
     int c;
-    string stage1, stage2="FirstFit", stage3;
+    string stage1, stage2 = "FirstFit", stage3;
 
     int memory_constraint;
     string dir = argv[1];
@@ -72,18 +82,7 @@ int main(int argc, char **argv) {
             num_processors = 3;
         }
 
-        buildFixedClusterWithSpeeds(CCR, num_processors, tree);
-        Cluster::getFixedCluster()->SetBandwidth(CCR, tree);
-        maxoutd = MaxOutDegree(tree, true);
-        schedule_t *temp_schedule = new schedule_t();
-        MinMem(tree, maxoutd, minMem, *temp_schedule, true);
-
-        vector<double> memorySizes = Cluster::buildMemorySizes(maxoutd, minMem, num_processors);
-        //Fix, for now we consider the non-homog cluster homogeneuos
-        Cluster::getFixedCluster()->setMemorySizes(memorySizes);
-
-        delete temp_schedule;
-
+        buildFixedClusterWithSpeedsAndMemory(CCR, num_processors, tree);
 
         time = clock();
         //stage1==SplitSubtrees
@@ -92,17 +91,17 @@ int main(int argc, char **argv) {
                                                   sequentialLen);// for counting how many subtrees produced, twolevel is set as false
         // stage1 == "ImprovedSplit") {
         //po_construct(tree_size, prnts, &chstart, &chend, &children, &root);
-        //  makespan = ImprovedSplit(tree, num_processors, chstart, children);
+        makespan = tree->ImprovedSplit();
         //makespan = ImprovedSplit(tree, num_processors);
         //stage1 == "AvoidChain") {
-        //   makespan = ASAP(tree, num_processors);
+         makespan = tree-> ASAP();
         //   number_subtrees = HowmanySubtrees(tree, true);
         //  time = clock() - time;
         //  std::cout << treename << " " << NPR << " " << CCR << " NA " << number_subtrees << " " << num_processors
         //             << " " << makespan << " " << "ASAP NA NA " << time << std::endl;
 
         //   time = clock();
-        //  number_subtrees = AvoidChain(tree);
+          //number_subtrees = AvoidChain(tree);
         //  makespan = tree->GetRoot()->GetMSCost(true, true);
         // }
         time = clock() - time;

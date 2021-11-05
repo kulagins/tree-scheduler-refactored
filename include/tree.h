@@ -607,11 +607,13 @@ public:
 
     unsigned int HowmanySubtrees(bool quiet);
 
-    bool MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size, int *chstart, int *children);
+    bool MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size);
 
-    double ImprovedSplit(unsigned int number_processor, int *chstart, int *childrenID);
+    double ImprovedSplit();
 
-    double Merge(unsigned int num_subtrees, int *chstart, int *childrenID, bool CheckMemory);
+    double ASAP();
+
+    double Merge(bool CheckMemory);
 
     double MergeV2(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, int *chstart,
                    int *childrenID, bool CheckMemory);

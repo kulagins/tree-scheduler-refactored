@@ -17,7 +17,7 @@ template<class T, class U>
 void GetTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest);
 
 
-double ASAP(Tree *tree, unsigned int num_processors);
+
 
 void MemoryCheck(Tree *tree, io_method_t method);
 

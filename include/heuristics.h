@@ -21,7 +21,7 @@ void GetTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest);
 
 void MemoryCheck(Tree *tree, io_method_t method);
 
-std::map<int, int>
+void
 MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t method, bool skipBig);
 
 void SetBandwidth(double CCR, unsigned long tree_size, double *ewghts, double *timewghts);

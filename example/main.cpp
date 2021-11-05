@@ -21,7 +21,6 @@ void RunWithClusterConfig(bool skipBigTrees, Tree *treeobj,
 
 void buildFixedClusterWithSpeedsAndMemory(double CCR, unsigned int num_processors, Tree *treeobj) {
     Cluster *cluster = new Cluster(num_processors, true);
-    clock_t time;
     double minMem;
     map<int, int> processor_speeds = Cluster::buildProcessorSpeeds(num_processors);
     cluster->SetBandwidth(CCR, treeobj);
@@ -39,14 +38,12 @@ void buildFixedClusterWithSpeedsAndMemory(double CCR, unsigned int num_processor
 }
 
 int main(int argc, char **argv) {
-    int c;
     string stage1, stage2 = "FirstFit", stage3;
 
-    int memory_constraint;
     string dir = argv[1];
     double CCR = atof(argv[3]);
     double NPR = atof(argv[4]);
-    bool skipBigTrees = (atoi(argv[6]) == 1);
+   // bool skipBigTrees = (atoi(argv[6]) == 1);
     //  cout.precision(0);
     // cout.setf(ios::fixed);
 
@@ -58,7 +55,7 @@ int main(int argc, char **argv) {
     list<Task *> parallelSubtrees;
     string treename;
     unsigned int num_processors;
-    double makespan, maxoutd, minMem, memorySize;
+    double makespan, maxoutd, minMem;
     clock_t time;
 
     unsigned int number_subtrees;
@@ -68,7 +65,6 @@ int main(int argc, char **argv) {
     std::cout << "TreeName " << "NPR " << "CCR " << "MemoryConstraint " << "AmountSubtrees " << "AmountProcessors "
               << "Makespan " << "Stage1 " << "Stage2 " << "Stage3 " << "TimeConsuming" << std::endl;
 
-    int memory_constraint_options[3] = {1, 2, 3};
     std::vector<int> brokenEdges;
     do {
         OpenFile >> treename;
@@ -94,14 +90,14 @@ int main(int argc, char **argv) {
         makespan = tree->ImprovedSplit();
         //makespan = ImprovedSplit(tree, num_processors);
         //stage1 == "AvoidChain") {
-         makespan = tree-> ASAP();
+        makespan = tree->ASAP();
         //   number_subtrees = HowmanySubtrees(tree, true);
         //  time = clock() - time;
         //  std::cout << treename << " " << NPR << " " << CCR << " NA " << number_subtrees << " " << num_processors
         //             << " " << makespan << " " << "ASAP NA NA " << time << std::endl;
 
         //   time = clock();
-          //number_subtrees = AvoidChain(tree);
+        //number_subtrees = AvoidChain(tree);
         //  makespan = tree->GetRoot()->GetMSCost(true, true);
         // }
         time = clock() - time;
@@ -127,15 +123,6 @@ int main(int argc, char **argv) {
             tree = trees.back();
             trees.pop_back();
 
-            memory_constraint = memory_constraint_options[i];
-            if (memory_constraint == 1) {
-                memorySize = maxoutd;
-            } else if (memory_constraint == 2) {
-                memorySize = (maxoutd + minMem) / 2;
-            } else {
-                memorySize = minMem;
-            }
-
             time = clock();
             if (stage2 == "LargestFirst") {
                 MemoryCheck(tree, LARGEST_FIT);
@@ -148,7 +135,7 @@ int main(int argc, char **argv) {
             time = clock() - time;
             number_subtrees = tree->HowmanySubtrees(true);
             makespan = tree->getRoot()->getMakespanCost(true, true);
-            std::cout << treename << " " << NPR << " " << CCR << " " << memory_constraint << " " << number_subtrees
+            std::cout << treename << " " << NPR << " " << CCR << " " << " memConstraint " << " " << number_subtrees
                       << " " << num_processors << " " << makespan << " " << stage1 << " " << stage2 << " NA "
                       << time
                       << std::endl;
@@ -158,7 +145,7 @@ int main(int argc, char **argv) {
                 stage3 = "Merge";
                 makespan = tree->MergeV2(number_subtrees, num_processors,
                                          Cluster::getFixedCluster()->getFirstFreeProcessor()->getMemorySize(),
-                                         nullptr, nullptr, true);
+                                         true);
                 //Merge(tree, number_subtrees, num_processors, memorySize, chstart, children, true);
             } else if (number_subtrees == num_processors) {
                 stage3 = "Nothing";
@@ -169,7 +156,7 @@ int main(int argc, char **argv) {
             time = clock() - time;
 
             number_subtrees = tree->HowmanySubtrees(true);
-            std::cout << treename << " " << NPR << " " << CCR << " " << memory_constraint << " " << number_subtrees
+            std::cout << treename << " " << NPR << " " << CCR << " " << "mem constraint" << " " << number_subtrees
                       << " " << num_processors << " " << makespan << " " << stage1 << " " << stage2 << " " << stage3
                       << " " << time << std::endl;
             delete tree;

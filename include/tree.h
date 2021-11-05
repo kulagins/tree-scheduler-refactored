@@ -615,8 +615,7 @@ public:
 
     double Merge(bool CheckMemory);
 
-    double MergeV2(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, int *chstart,
-                   int *childrenID, bool CheckMemory);
+    double MergeV2(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, bool CheckMemory);
 
     double SplitAgain();
 
@@ -644,8 +643,6 @@ void po_construct(const int N, const int *prnts, int **chstart, int **chend, int
 } /* closing brace for extern "C" */
 
 double MaxOutDegree(Tree *tree, int quiet);
-
-double MaxOutDegree(int N, double *nwghts, double *ewghts, int *chstart, int *children);
 
 double IOCounter(Tree *tree, int *schedule,
                  double available_memory, bool divisible, int quiet, unsigned int &com_freq,

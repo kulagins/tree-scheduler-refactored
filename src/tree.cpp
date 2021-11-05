@@ -285,42 +285,6 @@ void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, doub
     OpenFile.close();
 }
 
-
-void po_construct(const int N, const int *prnts, int **chstart, int **chend, int **children, int *root) {
-    *chend = new int[N + 2];
-    *chstart = new int[N + 2];
-    *children = new int[N + 1];
-    memset((void *) *chstart, 0, (N + 2) * sizeof(**chstart));
-    memset((void *) *children, 0, (N + 1) * sizeof(**children));
-
-    *root = -1;
-
-    for (int ii = 1; ii < N + 1; ii++) {
-        if (prnts[ii] > 0) {
-            (*chstart)[prnts[ii]]++;
-        } else {
-            *root = ii;
-        }
-    }
-
-    /*compute cumsum*/
-    int cum_val = 1;
-    for (int ii = 1; ii < N + 2; ii++) {
-        int val = cum_val;
-        cum_val += (*chstart)[ii];
-        (*chstart)[ii] = val;
-    }
-
-    memcpy(*chend, *chstart, (N + 2) * sizeof(**chstart));
-
-    for (int ii = 1; ii < N + 1; ii++) {
-        if (prnts[ii] > 0) {
-            (*children)[(*chend)[prnts[ii]]] = ii;
-            (*chend)[prnts[ii]]++;
-        }
-    }
-}
-
 double IOCounter(Tree &tree, schedule_t &sub_schedule, double available_memory, bool divisible, int quiet) {
     double memory_occupation = 0;
     double io_volume = 0;
@@ -1198,39 +1162,6 @@ double MaxOutDegree(Tree *tree, int quiet) {
     return max_out;
 }
 
-double MaxOutDegree(int N, double *nwghts, double *ewghts, int *chstart, int *children) {
-    double max_out = 0;
-    for (int j = 1; j < N + 1; j++) {
-        double cur_out = nwghts[j] + ewghts[j];
-
-        for (int ch = chstart[j]; ch < chstart[j + 1]; ch++) {
-            cur_out += ewghts[children[ch]];
-        }
-
-        if (cur_out >= max_out) {
-            max_out = cur_out;
-        }
-    }
-    ////cout<<leaves<<" leaves"<<endl;
-    ////cout<<max_j<<" is the max node"<<endl;
-    return max_out;
-}
-
-double MaxOutDegree(int N, int *prnts, double *nwghts, double *ewghts) {
-    int *chstart, *chend, *children;
-    int root;
-
-    po_construct(N, prnts, &chstart, &chend, &children, &root);
-
-    double max_out = MaxOutDegree(N, nwghts, ewghts, chstart, children);
-
-    delete[] chstart;
-    delete[] chend;
-    delete[] children;
-
-    return max_out;
-}
-
 Tree *SubtreeRooted(Task *node) {
     Tree *subtree = new Tree();
 
@@ -1262,71 +1193,14 @@ Tree *SubtreeRooted(Task *node) {
     }
 }
 
-Tree *BuildSubtreeOld(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts,
-                      double **timewghts, double **spacewghts, int *chstart, int *children) {
-    *prnts = new int[new_tree_size + 1];
-    *ewghts = new double[new_tree_size + 1];
-    *timewghts = new double[new_tree_size + 1];
-    *spacewghts = new double[new_tree_size + 1];
-    unsigned int *originalIDs = new unsigned int[new_tree_size + 1];
-
-    unsigned int real_tree_size = 0;
-    unsigned int nodeID = 1;
-    (*prnts)[1] = 0;
-    originalIDs[1] = SubtreeRoot->getId();
-    (*ewghts)[1] = SubtreeRoot->getEdgeWeight();
-    (*timewghts)[1] = SubtreeRoot->getMakespanWeight();
-    (*spacewghts)[1] = SubtreeRoot->getNodeWeight();
-
-    Task *currentNode;
-    list<unsigned int> que;
-    unsigned int originalID = SubtreeRoot->getId();
-    que.push_back(originalID);
-    unsigned int parentID;
-    unsigned int tempid = SubtreeRoot->getOtherSideId();
-    SubtreeRoot->setOtherSideId(1);
-
-    while (!que.empty()) {
-        originalID = que.front();
-        que.pop_front();
-        parentID = tree->getTask(originalID)->getOtherSideId();
-        for (int j = chstart[originalID]; j < chstart[originalID + 1]; j++) {
-            currentNode = tree->getTask(children[j]);
-            if (!currentNode->isBroken()) { // broken edge means node is on aother subtree
-                nodeID++;
-                originalIDs[nodeID] = children[j];
-                (*prnts)[nodeID] = parentID;
-                (*ewghts)[nodeID] = currentNode->getEdgeWeight();
-                (*timewghts)[nodeID] = currentNode->getMakespanWeight();
-                (*spacewghts)[nodeID] = currentNode->getNodeWeight();
-                que.push_back(children[j]);
-                tree->getTask(children[j])->setOtherSideId(nodeID);
-            }
-        }
-    }
-    real_tree_size = nodeID;
-
-    SubtreeRoot->setOtherSideId(tempid);
-
-    Tree *treeobj = new Tree(real_tree_size, *prnts, *spacewghts, *ewghts, *timewghts);
-
-    for (unsigned int i = 1; i <= real_tree_size; i++) {
-        treeobj->getTask(i)->setOtherSideId(originalIDs[i]); //corresponding to the original tree's id
-    }
-
-    delete[] originalIDs;
-
-    return treeobj;
-}
-
 // Subtree starting from subtreeRoot; goes down until it meets broken edges or leaves
 //Subtree is a separate Tree entity with copies of original Tasks
 //Each Task in Subtree knows the Task in the big Tree that it had been copied from
 //The relation between a Task in the Subtree and its cunterpart  in the big Tree is OtherSideId
 Tree *BuildSubtree(Tree *tree, Task *subtreeRoot) {
 
-    pair<Task *, Task *> currentNodeAndCounterpartInSubtree;
-    list<pair<Task *, Task * >> tasksToBeExploredAndSubtreeCounterparts;
+    pair<Task *, Task *> currentToBeExplored;
+    list<pair<Task *, Task * >> toBeExplored;
     auto *tasksInNewSubtree = new vector<Task *>();
     Task *copy;
     Task *rootCopy;
@@ -1339,27 +1213,27 @@ Tree *BuildSubtree(Tree *tree, Task *subtreeRoot) {
     //copy knows the id of the original subtreeRoot
     copy->setOtherSideId(subtreeRoot->getId());
     //the children of subtreeRoot need to be explored
-    tasksToBeExploredAndSubtreeCounterparts.emplace_back(subtreeRoot, copy);
+    toBeExplored.emplace_back(subtreeRoot, copy);
 
     unsigned int idInSubtree = 1;
-    while (!tasksToBeExploredAndSubtreeCounterparts.empty()) {
-        currentNodeAndCounterpartInSubtree = tasksToBeExploredAndSubtreeCounterparts.front();
-        tasksToBeExploredAndSubtreeCounterparts.pop_front();
+    while (!toBeExplored.empty()) {
+        currentToBeExplored = toBeExplored.front();
+        toBeExplored.pop_front();
         //for all children of the node in the big Tree
-        for (Task *child: *currentNodeAndCounterpartInSubtree.first->getChildren()) {
+        for (Task *child: *currentToBeExplored.first->getChildren()) {
             if (!child->isBroken()) {
                 // broken edge means node is on another subtree
                 idInSubtree++;
-                copy = new Task(*child, idInSubtree, currentNodeAndCounterpartInSubtree.second);
+                copy = new Task(*child, idInSubtree, currentToBeExplored.second);
                 child->setOtherSideId(idInSubtree);
                 copy->setOtherSideId(child->getId());
 
                 tasksInNewSubtree->push_back(copy);
 
                 //add as child to the copied parent, whose counterpart we are currently exploring
-                currentNodeAndCounterpartInSubtree.second->addChild(copy);
+                currentToBeExplored.second->addChild(copy);
                 //need to explore their children
-                tasksToBeExploredAndSubtreeCounterparts.emplace_back(child, copy);
+                toBeExplored.emplace_back(child, copy);
 
             }
         }

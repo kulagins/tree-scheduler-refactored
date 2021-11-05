@@ -120,7 +120,7 @@ double Task::SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned 
     parallelRoots.emplace_front(this);
 
     //cost from unsplitted root
-    vector<double> makespansOfSplittings {this->getMakespanCost(true, true)}; // take communication cost into account
+    vector<double> makespansOfSplittings{this->getMakespanCost(true, true)}; // take communication cost into account
 
     double MS_sequential = this->getEdgeWeight(), weightSurplusFromSmallestTasks, weightsTasksPriorityQueue;
     if (Cluster::getFixedCluster()->isHomogeneous()) {
@@ -248,7 +248,7 @@ void breakPreparedEdges(Task *root, list<Task *> &parallelRoots) {
 void popSmallestRootsToFitToCluster(list<Task *> &parallelRoots, unsigned long amountSubtrees) {
     if (amountSubtrees > Cluster::getFixedCluster()->getNumberProcessors()) {
         parallelRoots.sort(cmp_noIn_noCommu); //non-increasing sort, computation weight, no communication cost
-        int surplus = amountSubtrees - Cluster::getFixedCluster()->getNumberProcessors();
+        unsigned int surplus = amountSubtrees - Cluster::getFixedCluster()->getNumberProcessors();
         for (unsigned int i = 0; i < surplus; ++i) {
             parallelRoots.pop_back();
         }
@@ -261,15 +261,14 @@ void ISCore(Task *root, unsigned long num_processors,
     double MS_before;
     double MS_now;
     unsigned long SF_now; //avoid dead lock
-    double makespan;
 
     if (root->isLeaf()) {
         //cout<<"root is leaf, return."<<endl;
         return;
     }
 
-    makespan = root->SplitSubtrees(false, parallelRoots,
-                                   SF_now); //SF_now will be modified in SplitSubtrees, it represents the length of sequential part, 0 means the subtree no need to partition
+    root->SplitSubtrees(false, parallelRoots,
+                        SF_now); //SF_now will be modified in SplitSubtrees, it represents the length of sequential part, 0 means the subtree no need to partition
 
     if (sequentialPart == true) {
         if (SF_now == 0) {
@@ -474,7 +473,8 @@ double Tree::Merge(bool CheckMemory) {
         temp = this->getRoot()->getMakespanCost(true, true);     //update ms
 
         //memoryEnough=increaseMS(tree, Qtreeobj, node_smallest_increase, chstart, childrenID, memory_size, CheckMemory);
-        memoryEnough = estimateMS(this, Qtreeobj, node_smallest_increase, Cluster::getFixedCluster()->getFirstFreeProcessor()->getMemorySize(), CheckMemory);
+        memoryEnough = estimateMS(this, Qtreeobj, node_smallest_increase,
+                                  Cluster::getFixedCluster()->getFirstFreeProcessor()->getMemorySize(), CheckMemory);
 
         //when parameter checkMemory is false, memoryEnough will always be true;
         if (memoryEnough) {
@@ -518,8 +518,8 @@ double Tree::Merge(bool CheckMemory) {
     return temp;
 }
 
-double Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, int *chstart,
-                     int *childrenID, bool CheckMemory) {
+double
+Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, bool CheckMemory) {
     if (processor_number >= num_subtrees) {
         return this->getRoot()->getMakespanCost(true, true);
     }
@@ -630,7 +630,8 @@ double Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, d
                 } else {
                     leaf = false;
                 }
-                memoryCheckPass = this->MemoryEnough((*secondSmallest)->getParent(), *secondSmallest, leaf, memory_size);
+                memoryCheckPass = this->MemoryEnough((*secondSmallest)->getParent(), *secondSmallest, leaf,
+                                                     memory_size);
                 if (memoryCheckPass == true) {
                     currentNode = *secondSmallest;
                     DeadBreak = false;
@@ -689,7 +690,7 @@ double Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, d
 bool cmp_asap(Task *a, Task *b) { return (a->getMakespanCost(false, false) < b->getMakespanCost(false, false)); };
 
 double Tree::ASAP() {
-   unsigned int num_processors = Cluster::getFixedCluster()->getProcessors().size();
+    unsigned int num_processors = Cluster::getFixedCluster()->getProcessors().size();
     list<Task *> PriorityQue;
     vector<Task *> BrokenEdges;
     unsigned long step_minimumMS = 0;
@@ -1050,7 +1051,6 @@ double Tree::SplitAgain() {
     unsigned int number_subtrees = this->HowmanySubtrees(true);
 
     unsigned int idleProcessors = Cluster::getFixedCluster()->getNumberProcessors() - number_subtrees;
-    Processor *firstIdleProcessor = Cluster::getFixedCluster()->getFirstFreeProcessor();
     while (idleProcessors > 0) {
         MS_now = this->getRoot()->getMakespanCost(true, true); //update makespan
         CriticalPath = buildCriticalPath();
@@ -1152,7 +1152,6 @@ double Tree::SplitAgain() {
 }
 
 vector<Task *> Tree::buildCriticalPath() {
-    Task *root = this->getRoot();
     Tree *Qtreeobj = this->BuildQtree();
     Task *Qroot = Qtreeobj->getRoot();
 
@@ -1213,7 +1212,6 @@ Immediately(Tree *tree, int *schedule,
     schedule_t *schedule_f = new schedule_t();
     list<int>::iterator ite_sche;
     double maxoutD, memory_required, node_cost, data_to_unload;
-    uint64_t count;
     int cur_task_id;
     vector<unsigned int> subtreeBrokenEdges;
 
@@ -1292,12 +1290,8 @@ Immediately(Tree *tree, int *schedule,
 void MemoryCheck(Tree *tree, io_method_t method) {
 
     vector<Task *> subtreeRoots;
-    Task *currentnode;
     Task *subtreeRoot;
-    int rootid;
-
     double homogeneousMemorySize = Cluster::getFixedCluster()->getProcessors().at(0)->getMemorySize();
-    unsigned long treeSize = tree->getTasks()->size();
     tree->getRoot()->breakEdge();
 
     subtreeRoots = tree->getBrokenTasks();
@@ -1306,9 +1300,7 @@ void MemoryCheck(Tree *tree, io_method_t method) {
     double maxoutD, memory_required;
     schedule_t *schedule_f = new schedule_t();
     unsigned int com_freq;
-    unsigned long subtreeSize;
     vector<unsigned int> BrokenEdgesID;
-    double IO_volume;
     while (!subtreeRoots.empty()) {
         subtreeRoot = subtreeRoots.back();
         subtreeRoots.pop_back();
@@ -1322,16 +1314,16 @@ void MemoryCheck(Tree *tree, io_method_t method) {
         if (memory_required > homogeneousMemorySize) {
             //cout<<", larger than what is available: "<<memory_size<<endl;
 
-            int *schedule_copy = copySchedule(schedule_f, subtree, subtreeSize);
+            int *schedule_copy = copySchedule(schedule_f, subtree, subtree->getSize());
 
             switch (method) {
                 case FIRST_FIT:
-                    IO_volume = IOCounter(subtree, schedule_copy, homogeneousMemorySize, false, true,
+                     IOCounter(subtree, schedule_copy, homogeneousMemorySize, false, true,
                                           com_freq, &BrokenEdgesID,
                                           FIRST_FIT);
                     break;
                 case LARGEST_FIT:
-                    IO_volume = IOCounter(subtree, schedule_copy, homogeneousMemorySize, false, true,
+                     IOCounter(subtree, schedule_copy, homogeneousMemorySize, false, true,
                                           com_freq, &BrokenEdgesID,
                                           LARGEST_FIT);
                     break;
@@ -1354,12 +1346,11 @@ void MemoryCheck(Tree *tree, io_method_t method) {
     }
 }
 
-std::map<int, int> MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t method, bool skipBig) {
+void MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t method, bool skipBig) {
     vector<Task *> subtreeRoots;
     vector<Task *> subtreeRootsSkipped;
     Task *currentnode;
     Task *subtreeRoot;
-    int rootid;
     tree->getRoot()->breakEdge();
 
     //cout<<"Subtrees' roots: ";
@@ -1378,12 +1369,10 @@ std::map<int, int> MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t metho
 
     double maxoutD, memory_required;
     schedule_t *schedule_f = new schedule_t();
-    uint64_t count;
     unsigned int com_freq;
     unsigned long subtreeSize;
     list<int>::iterator ite_sche;
     vector<unsigned int> BrokenEdgesID;
-    double IO_volume;
     Processor *currentProcessor = cluster->getFirstFreeProcessor();
 
     while (!subtreeRoots.empty()) {
@@ -1391,8 +1380,6 @@ std::map<int, int> MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t metho
         subtreeRoot = subtreeRoots.back();
         subtreeRoots.pop_back();
 
-        double *ewghts, *timewghts, *spacewghts;
-        int *prnts;
         Tree *subtree = BuildSubtree(tree, subtreeRoot);
 
         subtreeSize = subtree->getTasks()->size();
@@ -1401,9 +1388,6 @@ std::map<int, int> MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t metho
         schedule_f->clear();
 
         MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
-
-        int *chstartsub, *chendsub, *childrensub;
-        po_construct(subtreeSize, prnts, &chstartsub, &chendsub, &childrensub, &rootid);
 
         //  cout << "Subtree " << subtreeRoot->getId() << " needs memory " << memory_required;
         if (memory_required > currentMem) {
@@ -1420,12 +1404,12 @@ std::map<int, int> MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t metho
 
                 switch (method) {
                     case FIRST_FIT:
-                        IO_volume = IOCounterWithVariableMem(subtree, schedule_copy, cluster, false, true, com_freq,
-                                                             &BrokenEdgesID, FIRST_FIT);
+                        IOCounterWithVariableMem(subtree, schedule_copy, cluster, false, true, com_freq,
+                                                 &BrokenEdgesID, FIRST_FIT);
                         break;
                     case LARGEST_FIT:
-                        IO_volume = IOCounterWithVariableMem(subtree, schedule_copy, cluster, false, true, com_freq,
-                                                             &BrokenEdgesID, LARGEST_FIT);
+                        IOCounterWithVariableMem(subtree, schedule_copy, cluster, false, true, com_freq,
+                                                 &BrokenEdgesID, LARGEST_FIT);
                         break;
                     case IMMEDIATELY:
                         Immediately(subtree, schedule_copy, currentMem, &BrokenEdgesID);
@@ -1460,12 +1444,12 @@ std::map<int, int> MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t metho
 
             switch (method) {
                 case FIRST_FIT:
-                    IO_volume = IOCounterWithVariableMem(subtree, schedule_copy, cluster, false, true, com_freq,
-                                                         &BrokenEdgesID, FIRST_FIT);
+                    IOCounterWithVariableMem(subtree, schedule_copy, cluster, false, true, com_freq,
+                                             &BrokenEdgesID, FIRST_FIT);
                     break;
                 case LARGEST_FIT:
-                    IO_volume = IOCounterWithVariableMem(subtree, schedule_copy, cluster, false, true, com_freq,
-                                                         &BrokenEdgesID, LARGEST_FIT);
+                    IOCounterWithVariableMem(subtree, schedule_copy, cluster, false, true, com_freq,
+                                             &BrokenEdgesID, LARGEST_FIT);
                     break;
                 case IMMEDIATELY:
                     Immediately(subtree, schedule_copy, currentMem, &BrokenEdgesID);
@@ -1476,14 +1460,7 @@ std::map<int, int> MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t metho
             }
         }
 
-        delete[] ewghts;
-        delete[] timewghts;
-        delete[] spacewghts;
-        delete[] prnts;
         delete[] schedule_copy;
-        delete[] chstartsub;
-        delete[] chendsub;
-        delete[] childrensub;
         delete subtree;
     }
     delete schedule_f;

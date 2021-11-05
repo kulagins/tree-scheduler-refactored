@@ -112,7 +112,8 @@ public:
     bool isHomogeneous() const {
         return isMemoryHomogeneous && isProcessorHomogeneous && isBandwidthHomogenenous;
     }
-    bool setHomogeneity(bool homogeneity){
+
+    void setHomogeneity(bool homogeneity) {
         isMemoryHomogeneous = homogeneity;
     }
 
@@ -120,7 +121,7 @@ public:
         return this->processors;
     }
 
-    int getNumberProcessors() {
+    unsigned int getNumberProcessors() {
         return this->processors.size();
     }
 
@@ -146,7 +147,7 @@ public:
     }
 
     void setMemorySizes(vector<double> &memories) {
-      //  isMemoryHomogeneous = false;
+        //  isMemoryHomogeneous = false;
         if (processors.size() != memories.size()) {
             processors.resize(memories.size());
             for (unsigned long i = 0; i < memories.size(); i++) {
@@ -181,7 +182,7 @@ public:
 
     static std::map<int, int> buildProcessorSpeeds(int num_processors);
 
-    void SetBandwidth(double CCR, Tree * treeobj);
+    void SetBandwidth(double CCR, Tree *treeobj);
 };
 
 #endif

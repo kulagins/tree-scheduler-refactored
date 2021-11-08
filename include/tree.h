@@ -193,6 +193,14 @@ public :
         return this->__root;
     }
 
+    void toggleRootStatus(bool newStatus){
+        if (this->isRoot() != newStatus){
+            __root=!__root;
+        }else{
+            throw "Trying to set root to a position that it is alrady in";
+        }
+    }
+
     double getCost() {
         if (!cost_computed) {
             cost = edge_weight + node_weight;
@@ -428,34 +436,21 @@ public:
         offset_id = 0;
         tree_id = 1;
         tasks = new vector<Task *>();
-
-        this->allocateTasks(N);
-
-        for (int i = 1; i < N + 1; i++) {
-            //cout << "node id: " << i<<endl;
-            Task *cur_node = this->getTask(i);
-            cur_node->getChildren()->clear();
-            cur_node->setEdgeWeight(ewghts[i]);
-            cur_node->setNodeWeight(nwghts[i]);
-            cur_node->setMakespanWeight(mswghts[i]);
-            cur_node->setId(i);
-            cur_node->setLabel(i);
-        }
+        Task * cur_node;
 
         for (int i = 1; i < N + 1; i++) {
-            Task *cur_node = this->getTask(i);
-
-            if (prnts[i] > 0) {
-                cur_node->setParentId(prnts[i]);
-                cur_node->setParent(this->getTask(prnts[i]));
-                this->getTask(prnts[i])->addChild(cur_node);
-            } else {
-                cur_node->setParentId(0);
-                this->root_count++;
-                this->setRootId(i);
+            if (prnts[i]>0){
+                cur_node = new Task(prnts[i],nwghts[i],ewghts[i],mswghts[i]);
+                cur_node->setLabel(i);
+                this ->addTask(cur_node);
+            }else{
+                cur_node = new Task(nwghts[i],ewghts[i],mswghts[i],true);
+                this->addRoot(cur_node);
                 this->setTreeId(i);
             }
+            cur_node->setId(i);
         }
+        
         size = getTasks()->size();
     }
 
@@ -464,6 +459,7 @@ public:
         offset_id = 0;
         tree_id = 1;
         this->root = root;
+        root->toggleRootStatus(true);
         setRootId(root->getId());
         this->tasks = nodes;
         this->size = nodes->size();
@@ -633,9 +629,6 @@ typedef list<int> schedule_t;
 typedef map<unsigned int, double> io_map;
 typedef pair<unsigned int, unsigned int> node_sche;
 typedef pair<unsigned int, double> node_ew;
-
-
-void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, double **ewghts, double **mswghts);
 
 Tree *read_tree(const char *filename);
 

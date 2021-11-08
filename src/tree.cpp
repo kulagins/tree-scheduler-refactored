@@ -208,66 +208,6 @@ Tree *read_tree(const char *filename) {
     return tree;
 }
 
-void parse_tree(const char *filename, int *N, int **prnts, double **nwghts, double **ewghts, double **mswghts) {
-
-    ifstream OpenFile(filename);
-    char begin;
-    char cur_char;
-    int line_index = 0;
-    bool nodes_cnt_read = false;
-    unsigned int nb_of_nodes = 0;
-    string line;
-
-    do {
-        /*skip commentary lines*/
-        begin = OpenFile.peek();
-        if (OpenFile.good()) {
-
-            if (begin == '%') {
-                do {
-                    cur_char = OpenFile.get();
-                } while (cur_char != '\n' && OpenFile.good());
-            } else {
-                if (!nodes_cnt_read) {
-                    /* get the number of nodes and skip last trailing character*/
-                    while (getline(OpenFile, line)) {
-                        ++nb_of_nodes;
-                    }
-                    OpenFile.clear();
-                    OpenFile.seekg(0, ios::beg);
-                    *N = nb_of_nodes;
-                    nodes_cnt_read = true;
-                    /*allocate space for nodes*/
-                    *prnts = new int[nb_of_nodes + 1];
-                    *nwghts = new double[nb_of_nodes + 1];
-                    *ewghts = new double[nb_of_nodes + 1];
-                    *mswghts = new double[nb_of_nodes + 1];
-                } else {
-                    /*parse actual nodes*/
-                    unsigned int id;
-                    unsigned int parent;
-                    double ew, nw, msw;
-
-                    OpenFile >> id >> parent >> nw >> msw >> ew;
-                    do {
-                        cur_char = OpenFile.get();
-                    } while (cur_char != '\n' && OpenFile.good());
-                    parent = nb_of_nodes - parent + 1; //root has the largest id in the txt file
-                    (*prnts)[nb_of_nodes - line_index] = parent;
-                    (*nwghts)[nb_of_nodes - line_index] = nw;
-                    (*ewghts)[nb_of_nodes - line_index] = ew;
-                    (*mswghts)[nb_of_nodes - line_index] = msw;
-
-                    line_index++;
-                }
-            }
-        }
-    } while (OpenFile.good());
-    (*prnts)[1] = 0;
-
-    OpenFile.close();
-}
-
 double IOCounter(Tree &tree, schedule_t &sub_schedule, double available_memory, bool divisible, int quiet) {
     double memory_occupation = 0;
     double io_volume = 0;

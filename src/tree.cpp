@@ -945,7 +945,7 @@ list<unsigned int> getAllNodesUnderCurrent(const Tree *tree, int cur_task_id) {
 double IOCounter(Tree *tree, int *schedule, double available_memory,
                  bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges,
                  io_method_t method) {
-    double memory_occupation = tree->getTasks()->at(schedule[tree->getSize() - 1])->getEdgeWeight();
+    double memory_occupation = tree->getTasks()->at(schedule[tree->getSize() ])->getEdgeWeight();
     double io_volume = 0;
     vector<unsigned int> unloaded_nodes;
     list<node_sche> loaded_nodes;
@@ -966,7 +966,7 @@ double IOCounter(Tree *tree, int *schedule, double available_memory,
     vector<unsigned int> subtreeBrokenEdges;
 
     /*iterates through the given permutation (schedule)*/
-    for (int rank = tree->getSize() - 1; rank >= 1; rank--) {
+    for (int rank = tree->getSize() ; rank >= 1; rank--) {
         cur_task_id = schedule[rank];
 
         //cout<<"current task id: "<<cur_task_id<<endl;

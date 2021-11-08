@@ -1318,14 +1318,14 @@ void MemoryCheck(Tree *tree, io_method_t method) {
 
             switch (method) {
                 case FIRST_FIT:
-                     IOCounter(subtree, schedule_copy, homogeneousMemorySize, false, true,
-                                          com_freq, &BrokenEdgesID,
-                                          FIRST_FIT);
+                    IOCounter(subtree, schedule_copy, homogeneousMemorySize, false, true,
+                              com_freq, &BrokenEdgesID,
+                              FIRST_FIT);
                     break;
                 case LARGEST_FIT:
-                     IOCounter(subtree, schedule_copy, homogeneousMemorySize, false, true,
-                                          com_freq, &BrokenEdgesID,
-                                          LARGEST_FIT);
+                    IOCounter(subtree, schedule_copy, homogeneousMemorySize, false, true,
+                              com_freq, &BrokenEdgesID,
+                              LARGEST_FIT);
                     break;
                 case IMMEDIATELY:
                     Immediately(subtree, schedule_copy, homogeneousMemorySize, &BrokenEdgesID);

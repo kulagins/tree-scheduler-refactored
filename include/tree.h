@@ -296,17 +296,17 @@ public :
         MS_sequentialPart = MS_weight;
         MS_parallelPart = 0;
         double temp;
-        for (vector<Task *>::iterator iter = this->getChildren()->begin(); iter != this->getChildren()->end(); ++iter) {
-            if ((*iter)->isBroken()) {
+        for(Task * child: *this->getChildren()){
+            if (child->isBroken()) {
                 //cout<<"edge "<<(*iter)->getId()<<" broken"<<endl;
-                temp = (*iter)->getMakespanCost(true, updateEnforce);
+                temp = child->getMakespanCost(true, updateEnforce);
                 if (temp > MS_parallelPart) {
                     MS_parallelPart = temp;
                 }
             } else {
-                MS_sequentialPart += (*iter)->getMakespanSequential(updateEnforce, MS_parallelPart);
+                MS_sequentialPart += child->getMakespanSequential(updateEnforce, MS_parallelPart);
                 if (updateEnforce == true) {
-                    (*iter)->updateMakespanCost();
+                    child->updateMakespanCost();
                 }
             }
         }
@@ -451,6 +451,7 @@ public:
                 this->getTask(prnts[i])->addChild(cur_node);
             } else {
                 cur_node->setParentId(0);
+                this->root_count++;
                 this->setRootId(i);
                 this->setTreeId(i);
             }
@@ -462,7 +463,7 @@ public:
         root_count = 1;
         offset_id = 0;
         tree_id = 1;
-        root = root;
+        this->root = root;
         setRootId(root->getId());
         this->tasks = nodes;
         this->size = nodes->size();
@@ -531,6 +532,7 @@ public:
         return this->root;
     }
 
+    //TODO: hier exception
     unsigned int getRootId() const {
         assert(root_count == 1);
         return this->getRoot()->getId();
@@ -576,17 +578,17 @@ public:
         return Tree::originalTree;
     }
 
-    int getSize() {
+    int getSize() const {
         return size;
     }
 
     vector<Task *> getBrokenTasks() {
         vector<Task *> broken;
-        broken.resize(getTasks()->size());
+
         for (Task *task: *getTasks()) {
             if (task->isBroken()) broken.push_back(task);
         }
-        return getBrokenTasks();
+        return broken;
     }
 
     void printBrokenEdges() {

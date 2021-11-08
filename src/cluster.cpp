@@ -50,18 +50,7 @@ Processor *Cluster::getFirstFreeProcessor() {
     throw std::out_of_range("No free processor available anymore!");
 }
 
-void Cluster::SetBandwidth(double CCR, unsigned long tree_size, double *ewghts, double *timewghts) {
-    double sum_edges = 0;
-    double sum_weights = 0;
-    for (unsigned int i = 1; i <= tree_size; ++i) {
-        sum_edges = sum_edges + ewghts[i];
-        sum_weights = sum_weights + timewghts[i];
-    }
-    if (this->isHomogeneous()) {
-        this->setHomogeneousBandwidth(sum_edges / (sum_weights * CCR));
-    }
 
-}
 
 
 

@@ -46,59 +46,42 @@ double u_wseconds(void) {
 };
 
 
-///Qtree corresponds to a whole original tree
+// BUilds quotient tree for the whole original tree
 Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for space side
     Task *root = this->getRoot();
     root->breakEdge();
     this->getRoot()->getMakespanCost(true, true); //update
-    size_t tree_size = this->getTasks()->size();
-    unsigned long num_subtrees = this->HowmanySubtrees(true);
 
-    int *prnts = new int[num_subtrees + 1];
-    double *ewghts = new double[num_subtrees + 1];
-    double *timewghts = new double[num_subtrees + 1];
-    int *brokenEdges = new int[num_subtrees + 1];
-
-    //creat Quotient tree
-    brokenEdges[1] = 1; //root node
-    prnts[1] = 0;
-    ewghts[1] = 0;
-    timewghts[1] = root->getSequentialPart();
-    unsigned int j = 2;
+    Task *copy;
+    Task * parent;
+    Task *rootCopy;
+    auto *tasksInQtree = new vector<Task *>();
+    rootCopy = new Task(*root, 1, nullptr);
+    rootCopy->setNodeWeight(root->getSequentialPart());
+    tasksInQtree->push_back(rootCopy);
     root->setOtherSideId(1);
+    rootCopy->setOtherSideId(root->getId());
 
     Task *currentNode;
-    for (unsigned int i = 2; i <= tree_size; ++i) {
+    for (unsigned int i = 2; i <= this->getSize(); ++i) {
         currentNode = this->getTask(i);
         if (currentNode->isBroken()) {
-            currentNode->setOtherSideId(j); //corresponding node's ID on Qtree
-            brokenEdges[j] = i;
-            timewghts[j] = currentNode->getSequentialPart();
-            ewghts[j] = currentNode->getEdgeWeight();
-            ++j;
+            parent = currentNode->getParent();
+            while (!parent->isBroken()) {
+                parent = currentNode->getParent();
+            }
+            copy = new Task(*currentNode, i, parent);
+            copy->setNodeWeight(currentNode->getSequentialPart());
+            tasksInQtree->push_back(copy);
+            currentNode->setOtherSideId(i);
+            copy->setOtherSideId(currentNode->getId());
         }
     }
+    Tree *Qtreeobj = new Tree(tasksInQtree, rootCopy, this->getOriginalTree()); //Qtree only reprents makespan, not memory consumption
 
-    for (unsigned int i = 2; i <= num_subtrees; ++i) {
-        currentNode = this->getTask(brokenEdges[i])->getParent();
-        while (!currentNode->isBroken()) {
-            currentNode = currentNode->getParent();
-        }
-        prnts[i] = currentNode->getOtherSideId();
+    for (unsigned int i = 1; i <= HowmanySubtrees(true); i++) {
+        Qtreeobj->getTask(i)->breakEdge();
     }
-
-    Tree *Qtreeobj = new Tree(num_subtrees, prnts, timewghts, ewghts,
-                              timewghts); //Qtree only reprents makespan, not memory consumption
-
-    for (unsigned int i = 1; i <= num_subtrees; i++) {
-        Qtreeobj->getTask(i)->breakEdge();                    //break edge
-        Qtreeobj->getTask(i)->setOtherSideId(brokenEdges[i]); //corresponding node's ID on tree
-    }
-
-    delete[] prnts;
-    delete[] ewghts;
-    delete[] timewghts;
-    delete[] brokenEdges;
 
     return Qtreeobj;
 }
@@ -945,7 +928,7 @@ list<unsigned int> getAllNodesUnderCurrent(const Tree *tree, int cur_task_id) {
 double IOCounter(Tree *tree, int *schedule, double available_memory,
                  bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges,
                  io_method_t method) {
-    double memory_occupation = tree->getTasks()->at(schedule[tree->getSize() ])->getEdgeWeight();
+    double memory_occupation = tree->getTasks()->at(schedule[tree->getSize()])->getEdgeWeight();
     double io_volume = 0;
     vector<unsigned int> unloaded_nodes;
     list<node_sche> loaded_nodes;
@@ -966,7 +949,7 @@ double IOCounter(Tree *tree, int *schedule, double available_memory,
     vector<unsigned int> subtreeBrokenEdges;
 
     /*iterates through the given permutation (schedule)*/
-    for (int rank = tree->getSize() ; rank >= 1; rank--) {
+    for (int rank = tree->getSize(); rank >= 1; rank--) {
         cur_task_id = schedule[rank];
 
         //cout<<"current task id: "<<cur_task_id<<endl;

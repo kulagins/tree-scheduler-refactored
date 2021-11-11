@@ -146,7 +146,7 @@ public :
               Mpeak{otherTask.Mpeak},
               Mavail{otherTask.Mavail} {
         children = new vector<Task *>();
-        __root = otherTask.isRoot();
+        __root = false;
     }
 
     ~Task() {
@@ -166,6 +166,7 @@ public :
 
     void setParent(Task *pparent) {
         this->parent = pparent;
+        this->parent_id = pparent->getId();
     }
 
     void addChild(Task *pchild) {
@@ -468,6 +469,7 @@ public:
 
 
     ~Tree() {
+       // cout<<"get root count "<<root_count<<endl;
         if (this->getRootId() != 0 && tasks->size() > 0) {
             delete getRoot();
         }
@@ -524,13 +526,13 @@ public:
     }
 
     Task *getRoot() const {
-        assert(root_count == 1);
+      //  assert(root_count == 1);
         return this->root;
     }
 
     //TODO: hier exception
     unsigned int getRootId() const {
-        assert(root_count == 1);
+      //  assert(root_count == 1);
         return this->getRoot()->getId();
     }
 
@@ -602,7 +604,7 @@ public:
     }
 
     Tree *BuildQtree();
-
+    Tree *BuildQtreeOld();
     unsigned int HowmanySubtrees(bool quiet);
 
     bool MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size);
@@ -661,7 +663,7 @@ double getWeightPQ(list<Task *> &parallelRoots, Task *currentNode);
 double getWeightSurplusFromSmallestNodes(list<Task *> &parallelRoots);
 
 int *
-copySchedule(schedule_t *schedule_f, const Tree *subtree, int subtreeSize) ;
+copyScheduleBackwards(schedule_t *schedule_f) ;
 
 #endif
 #endif

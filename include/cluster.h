@@ -178,7 +178,9 @@ public:
 
     Processor *getFirstFreeProcessor();
 
-    static vector<double> buildMemorySizes(double maxoutd, double minMem, unsigned int num_processors);
+    static vector<double> build3LevelMemorySizes(double maxoutd, double minMem, unsigned int num_processors);
+
+    static vector<double> buildHomogeneousMemorySizes(double memSize, unsigned int num_processors);
 
     static std::map<int, int> buildProcessorSpeeds(int num_processors);
 

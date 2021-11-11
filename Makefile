@@ -16,9 +16,9 @@ PEDANTIC_PARANOID_FREAK =       -O0 -Wshadow -Wcast-align \
 				-Wmissing-noreturn -Wredundant-decls -Wnested-externs \
 				-Wpointer-arith -Wwrite-strings -finline-functions
 REASONABLY_CAREFUL_DUDE =	-Wall
-NO_PRAYER_FOR_THE_WICKED =	-w -O2 
+NO_PRAYER_FOR_THE_WICKED =	-w -O0
 WARNINGS = $(REASONABLY_CAREFUL_DUDE)
-CFLAGS = $(WARNINGS)  -O3 -g -DNOASSERT -std=c++14 -Xpreprocessor -fopenmp
+CFLAGS = $(WARNINGS)  -O0 -g -DNOASSERT -std=c++14 -Xpreprocessor -fopenmp
 INCLUDES = -I${INC_PATH}
 DEFS = 
 LDADD =

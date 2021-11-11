@@ -48,36 +48,54 @@ double u_wseconds(void) {
 
 // BUilds quotient tree for the whole original tree
 Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for space side
-    Task *root = this->getRoot();
     root->breakEdge();
     this->getRoot()->getMakespanCost(true, true); //update
 
     Task *copy;
-    Task * parent;
+    Task *parent;
     Task *rootCopy;
     auto *tasksInQtree = new vector<Task *>();
     rootCopy = new Task(*root, 1, nullptr);
     rootCopy->setNodeWeight(root->getSequentialPart());
+    rootCopy->setMakespanWeight(root->getSequentialPart());
     tasksInQtree->push_back(rootCopy);
     root->setOtherSideId(1);
     rootCopy->setOtherSideId(root->getId());
 
     Task *currentNode;
+    int nodeIdCounter = 2;
     for (unsigned int i = 2; i <= this->getSize(); ++i) {
         currentNode = this->getTask(i);
         if (currentNode->isBroken()) {
-            parent = currentNode->getParent();
-            while (!parent->isBroken()) {
-                parent = currentNode->getParent();
-            }
-            copy = new Task(*currentNode, i, parent);
+            copy = new Task(*currentNode, nodeIdCounter, nullptr);
             copy->setNodeWeight(currentNode->getSequentialPart());
-            tasksInQtree->push_back(copy);
-            currentNode->setOtherSideId(i);
+            copy->setMakespanWeight(currentNode->getSequentialPart());
+            currentNode->setOtherSideId(nodeIdCounter);
             copy->setOtherSideId(currentNode->getId());
+            tasksInQtree->push_back(copy);
+            nodeIdCounter++;
         }
     }
-    Tree *Qtreeobj = new Tree(tasksInQtree, rootCopy, this->getOriginalTree()); //Qtree only reprents makespan, not memory consumption
+    nodeIdCounter = 2;
+
+    for (Task *brokenTask: getBrokenTasks()) {
+        parent = brokenTask->getParent();
+        while (parent != nullptr && !parent->isBroken()) {
+            parent = parent->getParent();
+        }
+        if (parent != nullptr) {
+            for (Task *childTask: *tasksInQtree) {
+                if (childTask->getId() == nodeIdCounter) {
+                    childTask->setParentId(parent->getOtherSideId());
+                }
+            }
+        }
+
+        nodeIdCounter++;
+    }
+
+    Tree *Qtreeobj = new Tree(tasksInQtree, rootCopy,
+                              this->getOriginalTree()); //Qtree only reprents makespan, not memory consumption
 
     for (unsigned int i = 1; i <= HowmanySubtrees(true); i++) {
         Qtreeobj->getTask(i)->breakEdge();
@@ -85,6 +103,70 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
 
     return Qtreeobj;
 }
+
+
+///Qtree corresponds to a whole original tree
+Tree *Tree::BuildQtreeOld() { //Qtree is for makespan side, so do not use it for space side
+    Task *root = this->getRoot();
+    root->breakEdge();
+    this->getRoot()->getMakespanCost(true, true); //update
+    size_t tree_size = this->getTasks()->size();
+    unsigned long num_subtrees = this->HowmanySubtrees(true);
+
+    int *prnts = new int[num_subtrees + 1];
+    double *ewghts = new double[num_subtrees + 1];
+    double *timewghts = new double[num_subtrees + 1];
+    int *brokenEdges = new int[num_subtrees + 1];
+
+    //creat Quotient tree
+    brokenEdges[1] = 1; //root node
+    prnts[1] = 0;
+    ewghts[1] = 0;
+    timewghts[1] = root->getSequentialPart();
+    unsigned int j = 2;
+    root->setOtherSideId(1);
+
+    Task *currentNode;
+    for (unsigned int i = 2; i <= tree_size; ++i) {
+        currentNode = this->getTask(i);
+        if (currentNode->isBroken()) {
+            //  cout << "broken node " << currentNode->getId() << " " << currentNode->getSequentialPart() << " i " << i
+            //        << " j " << j << endl;
+            currentNode->setOtherSideId(j); //corresponding node's ID on Qtree
+            brokenEdges[j] = i;
+            timewghts[j] = currentNode->getSequentialPart();
+            ewghts[j] = currentNode->getEdgeWeight();
+            ++j;
+        }
+    }
+
+    for (unsigned int i = 2; i <= num_subtrees; ++i) {
+        currentNode = this->getTask(brokenEdges[i])->getParent();
+        while (!currentNode->isBroken()) {
+            currentNode = currentNode->getParent();
+        }
+        prnts[i] = currentNode->getOtherSideId();
+    }
+    //   for (int i = 0; i < num_subtrees; i++) {
+    //    cout << i << " " << prnts[i] << " " << timewghts[i] << endl;
+    //   }
+
+    Tree *Qtreeobj = new Tree(num_subtrees, prnts, timewghts, ewghts,
+                              timewghts); //Qtree only reprents makespan, not memory consumption
+
+    for (unsigned int i = 1; i <= num_subtrees; i++) {
+        Qtreeobj->getTask(i)->breakEdge();                    //break edge
+        Qtreeobj->getTask(i)->setOtherSideId(brokenEdges[i]); //corresponding node's ID on tree
+    }
+
+    delete[] prnts;
+    delete[] ewghts;
+    delete[] timewghts;
+    delete[] brokenEdges;
+
+    return Qtreeobj;
+}
+
 
 unsigned int Tree::HowmanySubtrees(bool quiet) {
     unsigned int number_subtrees = 0;
@@ -150,7 +232,7 @@ double Task::Sequence() {
 }
 
 Tree *read_tree(const char *filename) {
-    cout << filename << endl;
+    //  cout << filename << endl;
     ifstream OpenFile(filename);
     string line;
     stringstream line_stream;
@@ -401,6 +483,8 @@ double unload_furthest_nodes(Tree *tree, vector<unsigned int> &unloaded_nodes, l
     return unloaded_data;
 }
 
+
+
 double unload_furthest_first_fit(Tree *tree, vector<unsigned int> &unloaded_nodes, list<node_sche> &loaded_nodes,
                                  const double data_to_unload, bool divisible) {
     double unloaded_data = 0.0;
@@ -409,8 +493,7 @@ double unload_furthest_first_fit(Tree *tree, vector<unsigned int> &unloaded_node
     while ((far_node != loaded_nodes.end()) && (unloaded_data < data_to_unload)) {
         /*try to unload this node*/
         Task *farNodeTask = tree->getTask(far_node->first);
-        cout << "ew of task " << farNodeTask->getEdgeWeight() << " whil ew in loaded nodes " << far_node->second
-             << endl;
+
         double remaining_loaded_data = farNodeTask->getEdgeWeight();
 
         double local_data_to_unload;
@@ -874,6 +957,7 @@ double IOCounter(Tree *tree, int *schedule, double available_memory,
     list<node_sche> loaded_nodes;
     list<node_ew> loaded_nodes_ew;
     vector<int> schedule_vec(schedule, schedule + tree->getSize() + 1);
+
     int cur_task_id;
     vector<unsigned int>::iterator unloaded;
     list<unsigned int> temp;
@@ -919,14 +1003,14 @@ double IOCounter(Tree *tree, int *schedule, double available_memory,
 
                 Tree *subtree = BuildSubtree(tree, tree->getTask(cur_task_id));
                 subtree_size = subtree->getSize();
-                cout << "subtree size " << subtree_size << endl;
+                //  cout << "subtree size " << subtree_size << endl;
 
                 int *schedule_copy = new int[subtree_size + 1];
                 maxoutD = MaxOutDegree(subtree, true);
                 schedule_f->clear();
 
                 MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
-                schedule_copy = copySchedule(schedule_f, subtree, subtree_size);
+                schedule_copy = copyScheduleBackwards(schedule_f);
 
                 if (memory_required > available_memory) {
                     // cout << "memory required " << memory_required << ", is larger than what is available BLABLA " << available_memory << endl;
@@ -1029,14 +1113,24 @@ double IOCounter(Tree *tree, int *schedule, double available_memory,
                     if (!quiet) {
                         cerr << child->getId() << " ";
                     }
+                    pair<unsigned int, long> idAndPosition;
+                    long positionOfTaskInMinimalTraversal;
+                    vector<int>::iterator edgeWeightOnSpot;
+
                     switch (method) {
                         case FIRST_FIT:
-                            loaded_nodes.push_back(make_pair(child->getId(), schedule_vec.end() -
-                                                                             find(schedule_vec.begin(),
-                                                                                  schedule_vec.end(), child->getId())));
+                            positionOfTaskInMinimalTraversal = schedule_vec.end() -
+                                                               find(schedule_vec.begin(),
+                                                          schedule_vec.end(), child->getId());
+                            idAndPosition = make_pair(
+                                    child->getId(), positionOfTaskInMinimalTraversal);
+                            loaded_nodes.push_back(idAndPosition);
                             break;
-                        case LARGEST_FIT:
-                            loaded_nodes_ew.push_back(make_pair(child->getId(), child->getEdgeWeight()));
+                        case LARGEST_FIT: {
+                            idAndPosition = make_pair(
+                                    child->getId(), child->getEdgeWeight());
+                            loaded_nodes_ew.push_back(idAndPosition);
+                        }
                             break;
 
                         default:

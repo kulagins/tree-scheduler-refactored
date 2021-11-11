@@ -1,3 +1,2 @@
 dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf
-sample.tree.nf
 dump.0.1.metis.Bova.rma10-374.tree.nf

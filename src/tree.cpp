@@ -191,7 +191,6 @@ unsigned int Tree::HowmanySubtrees(bool quiet) {
 
 bool Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size) {
     bool enough = false;
-    unsigned long new_tree_size = this->getTasks()->size();
 
     Task *SubtreeRoot = this->getTask(Qrootone->getOtherSideId());
 
@@ -281,13 +280,14 @@ Tree *read_tree(const char *filename) {
     for (unsigned int i = 0; i < treeSize; i++) {
         Task *task = tree->getTaskByPos(i);
         if (!task->isRoot()) {
-            Task *parent = tree->getTask(task->getParentId());
+            parent = tree->getTask(task->getParentId());
             task->setParent(parent);
             parent->addChild(task);
         }
     }
 
     return tree;
+
 }
 
 double IOCounter(Tree &tree, schedule_t &sub_schedule, double available_memory, bool divisible, int quiet) {
@@ -962,14 +962,11 @@ double IOCounter(Tree *tree, int *schedule, double available_memory,
     vector<unsigned int>::iterator unloaded;
     list<unsigned int> temp;
 
-    unsigned int child_start, child_end;
     unsigned int subtree_size;
     list<unsigned int>::iterator iter;
     double maxoutD, memory_required, IO_sub = 0;
-    uint64_t count;
     schedule_t *schedule_f = new schedule_t();
     list<int>::iterator ite_sche;
-    int rootid;
     vector<unsigned int> subtreeBrokenEdges;
 
     /*iterates through the given permutation (schedule)*/
@@ -1187,7 +1184,6 @@ Tree *SubtreeRooted(Task *node) {
     subtree->addTask(node);
 
     vector<Task *> visit_next;
-    vector<Task *>::iterator first_node;
     Task *end_node;
     if (node->isLeaf()) {
         return subtree;

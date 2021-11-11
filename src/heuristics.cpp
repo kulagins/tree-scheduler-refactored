@@ -604,11 +604,16 @@ Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, double c
                 }
             }
         }
+
         do {
             if (Llist.size() == 1) {
                 secondSmallest = Llist.begin();
                 smallest = Llist.begin();
             } else {
+                cout << "llist" << endl;
+                for (Task *task: Llist) {
+                    cout << "task id " << task->getId() << endl;
+                }
                 GetTwoSmallestElement(&Llist, smallest, secondSmallest);
             }
 
@@ -643,6 +648,7 @@ Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, double c
                 DeadBreak = false;
             }
         } while ((memoryCheckPass == false) && (!Llist.empty()));
+
 
         if (DeadBreak == true && firstTime == true) {
             Llist.clear();
@@ -1314,7 +1320,7 @@ void MemoryCheck(Tree *tree, io_method_t method) {
         if (memory_required > homogeneousMemorySize) {
             //cout<<", larger than what is available: "<<memory_size<<endl;
 
-            int *schedule_copy = copySchedule(schedule_f, subtree, subtree->getSize());
+            int *schedule_copy = copyScheduleBackwards(schedule_f);
 
             switch (method) {
                 case FIRST_FIT:
@@ -1486,14 +1492,15 @@ void Cluster::SetBandwidth(double CCR, Tree *tree) {
 }
 
 int *
-copySchedule(schedule_t *schedule_f, const Tree *subtree, int subtreeSize) {
+copyScheduleBackwards(schedule_t *schedule_f) {
+
     list<int>::iterator ite_sche = schedule_f->begin();
-    int *schedule_copy = new int[subtreeSize + 1];
-    for (unsigned int i = subtreeSize; i >= 1; --i) {
+    int *schedule_copy = new int[schedule_f->size() + 1];
+    for (unsigned int i = schedule_f->size(); i >= 1; --i) {
         schedule_copy[i] = *ite_sche;
         advance(ite_sche, 1);
     }
-    schedule_copy[0] = subtreeSize + 1;
+    schedule_copy[0] = schedule_f->size() + 1;
 
     return schedule_copy;
 }

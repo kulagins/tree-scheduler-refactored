@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include "../include/lib-io-tree.h"
 #include "../include/heuristics.h"
+#include "../include/inputParser.h"
 
 void buildFixedClusterWithSpeedsAndMemory(double CCR, unsigned int num_processors, Tree *treeobj) {
     Cluster *cluster = new Cluster(num_processors, true);
@@ -30,34 +31,50 @@ void buildFixedClusterWithSpeedsAndMemory(double CCR, unsigned int num_processor
 }
 
 int main(int argc, char **argv) {
+    InputParser * input = new InputParser(argc, argv);
     string stage1, stage2 = "FirstFit", stage3;
 
-    string dir = argv[1];
-    double CCR = atof(argv[3]);
-    double NPR = atof(argv[4]);
-    ifstream OpenFile(dir + argv[2]);
+    ifstream OpenFile(input->getPathToTreeList());
 
+    
     list<Task *> parallelSubtrees;
     string treename;
     unsigned int num_processors;
     double makespan, maxoutd, minMem;
     clock_t time;
-
     unsigned int number_subtrees;
+    float CCR=0;
+    float NPR=0;
+    switch (input->getClusteringMode())
+    {
+    case staticClustering:
+    {
+        float numberOfProcessors = input->getNumberOfProcessors();
+        float processorMemory = input->getProcessorMemory();
+        throw "Not implemented yet";
+        break;
+    }
+    case treeDependent:
+    {
+        float CCR = input->getCCR();
+        float NPR = input->getNPR();
+        break;
+    }
+    default:
+        break;
+    }
 
     cout.precision(20);
 
     std::cout << "AmountSubtrees " << "AmountProcessors "
               << "Makespan " << "Stage1 " << "Stage2 " << "Stage3 " << "TimeConsuming" << std::endl;
-
     std::vector<int> brokenEdges;
     do {
         OpenFile >> treename;
         cout << treename << endl;
-        Tree *tree = read_tree((dir + treename).c_str());
-        Tree *untouchedTree = read_tree((dir + treename).c_str());
+        Tree *tree = read_tree((input->getWorkingDirectory() + treename).c_str());
+        Tree *untouchedTree = read_tree((input->getWorkingDirectory() + treename).c_str());
         Tree::setOriginalTree(untouchedTree);
-
         num_processors = ceil(tree->getSize() / NPR);
         if (num_processors < 3) {
             num_processors = 3;

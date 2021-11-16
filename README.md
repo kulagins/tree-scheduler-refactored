@@ -2,6 +2,39 @@
 
 Modification of MemComJournal for heterogeneous clusters
 
+## Getting Started
+### How to compile
+1. In the root directory, do `make all` to compile files for the include
+3. Move to the `./examples/` directory and compile the files there via `make all`. After the succesful compilation, there will be an executable file `./res` in the root directory
+
+### How to run
+The executable requires the following input parameters:
+
+-  `heterogeneity`:
+   -  `heterogeneity = 0`: both, memory and computing power are homogeneous
+   -  `heterogeneity = 1`: the memory is heterogeneous, but computing power is still homogeneous
+   -  `heterogeneity = 2`: both, memory and computing power are heterogeneous
+- `clustering-mode` : How many processors exist, how much memory does a processor have
+  - `clustering-mode = 0`: the clustering-mode is dependent on the tree instance, we will, just like in the MemComJournal, give the CCR, NPR-values as an input
+  - `clustering-mode = 1`: the clustering-mode is static, we will give the number of processors and their memory as input
+
+The basic call is then 
+```Shell
+./res trees-directory trees-list heterogeneity clustering-mode cluster_arg_1 cluster_arg_2
+```
+Where `cluster_arg_1` and `cluster_arg_2` are the parameters that we give for the `clustering-mode`.
+
+Plugging in a fixed value for the `clustering-mode` then yields:
+
+```Shell
+./res trees-directory trees-list heterogeneity 0 CCR NPR 
+```
+if we use the tree-dependent clustering, or:
+```Shell
+./res trees-directory trees-list heterogeneity 1 number_processors processor_memory
+```
+if we use the static clustering.
+
 
 ## Frequently Asked Questions and Common Errors
 

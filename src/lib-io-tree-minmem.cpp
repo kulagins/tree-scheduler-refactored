@@ -22,8 +22,8 @@
 #include "../include/lib-io-tree.h"
 #include "../include/lib-io-tree-minmem.h"
 
-void explore(Task *node, double available_memory, list<Task *> *L_init, schedule_t *S_init, double &cut_value,
-             list<Task *> &min_sub_cut, schedule_t &sub_schedule, double &Mpeak, int quiet, int depth) {
+void explore(Task *node, double available_memory, list<Task *> *L_init, schedule_traversal *S_init, double &cut_value,
+             list<Task *> &min_sub_cut, schedule_traversal &sub_schedule, double &Mpeak, int quiet, int depth) {
 
     /* if node is unreachable, return +infty */
     if (node->getCost() > available_memory) {
@@ -78,7 +78,7 @@ void explore(Task *node, double available_memory, list<Task *> *L_init, schedule
              current_node != candidates->end(); ++current_node) {
             double m_j;
             list<Task *> Lj;
-            schedule_t Sj;
+            schedule_traversal Sj;
 
             explore(*current_node, (*current_node)->Mavail, NULL, NULL, m_j, Lj, Sj, (*current_node)->Mpeak, quiet,
                     depth + 1);
@@ -130,7 +130,7 @@ void explore(Task *node, double available_memory, list<Task *> *L_init, schedule
     return;
 }
 
-void MinMem(Tree *tree, double MaxOutDeg, double &Required_memory, schedule_t &Schedule, int quiet) {
+void MinMem(Tree *tree, double MaxOutDeg, double &Required_memory, schedule_traversal &Schedule, int quiet) {
     double M = numeric_limits<double>::infinity();
     double Mpeak = MaxOutDeg;
 

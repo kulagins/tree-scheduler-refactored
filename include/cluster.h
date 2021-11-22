@@ -142,6 +142,9 @@ public:
         for (unsigned long i = 0; i < bandwidths.size(); i++) {
             //TODO init only upper half
             bandwidths.at(i).resize(bandwidths.size(), bandwidth);
+            for (unsigned long j = 0; j < bandwidths.size(); j++) {
+                bandwidths.at(i).at(j) = bandwidth;
+            }
         }
         this->isBandwidthHomogenenous = true;
     }

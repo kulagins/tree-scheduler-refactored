@@ -53,10 +53,56 @@ heuristicsnoclean:heuristics.o
 main: example/main.cpp heuristicsnoclean cluster.o
 	$(CPP) $(INCLUDES) $(DEFS) $(CFLAGS) $< $(LIBS) $(LDADD) -o ${BIN_PATH}/$@
 
+test: test/test.cpp heuristicsnoclean cluster.o
+	$(CPP) $(INCLUDES) $(DEFS) $(CFLAGS) $< $(LIBS) $(LDADD) -o ${BIN_PATH}/$@
+
+
 clean:
 	rm -f ${OBJ_PATH}/*.o *~
 	rm -f ${BIN_PATH}/main
 	rm -f ${LIB_PATH}/heuristics.a
+
+
+############################################################################################################################
+#GTEST
+# Points to the root of Google Test, relative to where this file is.
+GTEST_DIR = ./googletest-main/googletest
+
+# Where to find user code.
+USER_DIR = ./test
+
+# Flags passed to the preprocessor.
+# Set Google Test's header directory as a system directory, such that
+# the compiler doesn't generate warnings in Google Test headers.
+CPPFLAGStest += -isystem $(GTEST_DIR)/include
+
+# Flags passed to the C++ compiler.
+CXXFLAGStest += -g -Wall -Wextra -pthread
+
+# All tests produced by t his Makefile.  Remember to add new tests you
+# created to the list.
+TESTS = sample1_unittest
+
+# All Google Test headers.  Usually you shouldn't change this
+# definition.
+GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
+                $(GTEST_DIR)/include/gtest/internal/*.h
+
+# House-keeping build targets.
+alltests : $(TESTS)
+
+cleantests :
+	rm -f $(TESTS) gtest.a gtest_main.a *.o
+
+
+GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
+
+# add new target here if new test files are created
+sample1.o: $(USER_DIR)/test.cpp $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGStest) $(CXXFLAGStest) -c $(USER_DIR)/test.cpp -o $@
+
+ sample1_unittest : sample1.o gtest_main.a
+	 $(CXX) $(CPPFLAGStest) $(CXXFLAGStest) -lpthread $^ -o $@
 
 .PHONY: clean all
 

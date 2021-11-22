@@ -35,6 +35,12 @@ if we use the tree-dependent clustering, or:
 ```
 if we use the static clustering.
 
+### How to run tests and add new ones
+To compile all existing tests, do ```make alltests ``` in root.
+
+To run currently existing ones, `./sample1_unittest`.
+
+Add new tests in the directory `test`. Any tests added in the existing file `test.cpp` will be executed without further changes. If you add new test files, add them in the Makefile as new targets after line `100`.
 
 ## Frequently Asked Questions and Common Errors
 

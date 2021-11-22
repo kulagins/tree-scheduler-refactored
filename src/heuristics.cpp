@@ -140,8 +140,14 @@ double Task::SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned 
 
         weightSurplusFromSmallestTasks = getWeightSurplusFromSmallestNodes(parallelRoots);
         //cout<<"makespan "<<MS_sequential+weightSurplusFromSmallestTasks+weightsTasksPriorityQueue<<endl;
+      //  cout<<MS_sequential<<" "<<weightSurplusFromSmallestTasks<<" "<<weightsTasksPriorityQueue<<"; ";
         makespansOfSplittings.push_back(MS_sequential + weightSurplusFromSmallestTasks + weightsTasksPriorityQueue);
     }
+  //  cout<<"MS"<<endl;
+  //  for(double d: makespansOfSplittings){
+   //     cout<<d<<" ";
+  //  }
+  //  cout<<endl;
 
     if (twolevel) {
         return *std::min_element(makespansOfSplittings.begin(), makespansOfSplittings.end());
@@ -229,9 +235,10 @@ double getWeightPQ(list<Task *> &parallelRoots, Task *currentNode) {
 
     if (parallelRoots.empty()) {
         return -1;
+    } else{
+        currentNode = *max_element(parallelRoots.begin(), parallelRoots.end(), cmp_nodecreasing);//non-decreasing
     }
-
-    temp = (*max_element(parallelRoots.begin(), parallelRoots.end(), cmp_nodecreasing))->getMakespanCost(true, false);
+    temp = currentNode->getMakespanCost(true, false);
     if (temp > Weight_PQ) {
         Weight_PQ = temp;
     }
@@ -527,7 +534,8 @@ Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, double c
     this->getRoot()->getMakespanCost(true, true); //update makespan
 
     Tree *Qtreeobj = this->BuildQtree();
-
+   // cout<<"qtree"<<endl;
+  //  Qtreeobj->Print(cout);
     Task *currentNode;
     Task *Qroot = Qtreeobj->getRoot();
     int shortage = num_subtrees - processor_number;
@@ -610,10 +618,10 @@ Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, double c
                 secondSmallest = Llist.begin();
                 smallest = Llist.begin();
             } else {
-                cout << "llist" << endl;
-                for (Task *task: Llist) {
-                    cout << "task id " << task->getId() << endl;
-                }
+             //   cout << "llist size "<<Llist.size() << endl;
+                //for (Task *task: Llist) {
+               //     cout << "task id " << task->getId() << endl;
+               // }
                 GetTwoSmallestElement(&Llist, smallest, secondSmallest);
             }
 
@@ -1215,7 +1223,7 @@ Immediately(Tree *tree, int *schedule,
 
     unsigned long subtree_size;
     list<unsigned int>::iterator iter;
-    schedule_t *schedule_f = new schedule_t();
+    schedule_traversal *schedule_f = new schedule_traversal();
     list<int>::iterator ite_sche;
     double maxoutD, memory_required, node_cost, data_to_unload;
     int cur_task_id;
@@ -1296,15 +1304,21 @@ Immediately(Tree *tree, int *schedule,
 void MemoryCheck(Tree *tree, io_method_t method) {
 
     vector<Task *> subtreeRoots;
-    Task *subtreeRoot;
+    Task *subtreeRoot, *currentnode;
     double homogeneousMemorySize = Cluster::getFixedCluster()->getProcessors().at(0)->getMemorySize();
     tree->getRoot()->breakEdge();
 
-    subtreeRoots = tree->getBrokenTasks();
-
+    //subtreeRoots = tree->getBrokenTasks();
+    for (unsigned int i=tree->getSize(); i>=1; --i) {
+        currentnode=tree->getTask(i);
+        if (currentnode->isBroken()) {
+            //cout<<i<<" ";
+            subtreeRoots.push_back(currentnode);
+        }
+    }
 
     double maxoutD, memory_required;
-    schedule_t *schedule_f = new schedule_t();
+    schedule_traversal *schedule_f = new schedule_traversal();
     unsigned int com_freq;
     vector<unsigned int> BrokenEdgesID;
     while (!subtreeRoots.empty()) {
@@ -1312,6 +1326,8 @@ void MemoryCheck(Tree *tree, io_method_t method) {
         subtreeRoots.pop_back();
 
         Tree *subtree = BuildSubtree(tree, subtreeRoot);
+       // cout<<"subtree "<<subtree->getSize();
+       // subtree->Print(cout);
         maxoutD = MaxOutDegree(subtree, true);
         schedule_f->clear();
         MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
@@ -1374,7 +1390,7 @@ void MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t method, bool skipBi
          [](Task *lhs, Task *rhs) { return lhs->getMakespanCost() < rhs->getMakespanCost(); });
 
     double maxoutD, memory_required;
-    schedule_t *schedule_f = new schedule_t();
+    schedule_traversal *schedule_f = new schedule_traversal();
     unsigned int com_freq;
     unsigned long subtreeSize;
     list<int>::iterator ite_sche;
@@ -1482,17 +1498,18 @@ void Cluster::SetBandwidth(double CCR, Tree *tree) {
 
     for (Task *task: *tree->getTasks()) {
         sum_edges += task->getEdgeWeight();
-        sum_weights += task->getNodeWeight();
+        sum_weights += task->getMakespanWeight();
     }
 
     if (this->isHomogeneous()) {
-        this->setHomogeneousBandwidth(sum_edges / (sum_weights * CCR));
+        double bandwidth = sum_edges / (sum_weights * CCR);
+        this->setHomogeneousBandwidth(bandwidth);
     }
 
 }
 
 int *
-copyScheduleBackwards(schedule_t *schedule_f) {
+copyScheduleBackwards(schedule_traversal *schedule_f) {
 
     list<int>::iterator ite_sche = schedule_f->begin();
     int *schedule_copy = new int[schedule_f->size() + 1];

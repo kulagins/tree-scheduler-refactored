@@ -13,6 +13,7 @@
 #include <limits>
 #include <cmath>
 #include <sstream>
+#include <vector>
 
 #include "../include/tree.h"
 #include "../include/lib-io-tree.h"
@@ -58,6 +59,7 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
     rootCopy = new Task(*root, 1, nullptr);
     rootCopy->setNodeWeight(root->getSequentialPart());
     rootCopy->setMakespanWeight(root->getSequentialPart());
+    //rootCopy->toggleRootStatus(true);
     tasksInQtree->push_back(rootCopy);
     root->setOtherSideId(1);
     rootCopy->setOtherSideId(root->getId());
@@ -67,6 +69,7 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
     for (unsigned int i = 2; i <= this->getSize(); ++i) {
         currentNode = this->getTask(i);
         if (currentNode->isBroken()) {
+         //   cout <<"cpy "<<currentNode->getId()<<" osideid "<<nodeIdCounter<<endl;
             copy = new Task(*currentNode, nodeIdCounter, nullptr);
             copy->setNodeWeight(currentNode->getSequentialPart());
             copy->setMakespanWeight(currentNode->getSequentialPart());
@@ -78,14 +81,20 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
     }
     nodeIdCounter = 2;
 
-    for (Task *brokenTask: getBrokenTasks()) {
+    vector<Task *> brokenTasksWithoutRoot = getBrokenTasks();
+    brokenTasksWithoutRoot.erase(brokenTasksWithoutRoot.begin());
+
+    for (Task *brokenTask: brokenTasksWithoutRoot) {
+        //cout<<"broken task id " <<brokenTask->getId()<<endl;
         parent = brokenTask->getParent();
         while (parent != nullptr && !parent->isBroken()) {
             parent = parent->getParent();
         }
         if (parent != nullptr) {
+           // cout<<"prnt "<<parent->getOtherSideId()<<endl;
             for (Task *childTask: *tasksInQtree) {
                 if (childTask->getId() == nodeIdCounter) {
+                 //   cout<<"set it on task "<<childTask->getId()<<endl;
                     childTask->setParentId(parent->getOtherSideId());
                 }
             }
@@ -99,6 +108,16 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
 
     for (unsigned int i = 1; i <= HowmanySubtrees(true); i++) {
         Qtreeobj->getTask(i)->breakEdge();
+    }
+
+    unsigned long treeSize = Qtreeobj->getTasks()->size();
+    for (unsigned int i = 0; i < treeSize; i++) {
+        Task *task = Qtreeobj->getTaskByPos(i);
+        if (!task->isRoot()) {
+            parent = Qtreeobj->getTask(task->getParentId());
+            task->setParent(parent);
+            parent->addChild(task);
+        }
     }
 
     return Qtreeobj;
@@ -205,7 +224,7 @@ bool Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory
 
     Tree *subtree = BuildSubtree(this, SubtreeRoot);
     double maxout, requiredMemory;
-    schedule_t *schedule_f = new schedule_t();
+    schedule_traversal *schedule_f = new schedule_traversal();
     maxout = MaxOutDegree(subtree, true);
     MinMem(subtree, maxout, requiredMemory, *schedule_f, true);
 
@@ -290,14 +309,15 @@ Tree *read_tree(const char *filename) {
 
 }
 
-double IOCounter(Tree &tree, schedule_t &sub_schedule, double available_memory, bool divisible, int quiet) {
+double IOCounter(Tree &tree, schedule_traversal &sub_schedule, double available_memory, bool divisible, int quiet) {
     double memory_occupation = 0;
     double io_volume = 0;
     io_map unloaded_nodes;
-    schedule_t loaded_nodes;
+    schedule_traversal loaded_nodes;
 
     /*iterates through the given permutation (schedule)*/
-    for (schedule_t::iterator cur_task_id = sub_schedule.begin(); cur_task_id != sub_schedule.end(); cur_task_id++) {
+    for (schedule_traversal::iterator cur_task_id = sub_schedule.begin();
+         cur_task_id != sub_schedule.end(); cur_task_id++) {
         Task *cur_node = tree.getTask(*cur_task_id);
 
         /*if the node was unloaded*/
@@ -318,7 +338,7 @@ double IOCounter(Tree &tree, schedule_t &sub_schedule, double available_memory, 
             /*if we dont have enough room, unload files and update both io and occupation*/
             double unloaded_data = 0;
             /*unload furthest non unloaded node which is NOT in current_node children first*/
-            schedule_t::reverse_iterator far_node_id = loaded_nodes.rbegin();
+            schedule_traversal::reverse_iterator far_node_id = loaded_nodes.rbegin();
             while ((far_node_id != loaded_nodes.rend()) && (unloaded_data < data_to_unload)) {
                 /*try to unload this node*/
                 bool is_already_unloaded = false;
@@ -484,7 +504,6 @@ double unload_furthest_nodes(Tree *tree, vector<unsigned int> &unloaded_nodes, l
 }
 
 
-
 double unload_furthest_first_fit(Tree *tree, vector<unsigned int> &unloaded_nodes, list<node_sche> &loaded_nodes,
                                  const double data_to_unload, bool divisible) {
     double unloaded_data = 0.0;
@@ -523,7 +542,8 @@ double unload_furthest_first_fit(Tree *tree, vector<unsigned int> &unloaded_node
 }
 
 double
-unload_furthest_best_fit(io_map &unloaded_nodes, schedule_t &loaded_nodes, const double data_to_unload, double *ewghts,
+unload_furthest_best_fit(io_map &unloaded_nodes, schedule_traversal &loaded_nodes, const double data_to_unload,
+                         double *ewghts,
                          bool divisible) {
     double unloaded_data = 0.0;
     /*unload furthest non unloaded node which is NOT in current_node children first*/
@@ -533,7 +553,7 @@ unload_furthest_best_fit(io_map &unloaded_nodes, schedule_t &loaded_nodes, const
         unsigned int best_candidate = -1;
         double best_candi_score = -1.0;
 
-        schedule_t::reverse_iterator far_node_id = loaded_nodes.rbegin();
+        schedule_traversal::reverse_iterator far_node_id = loaded_nodes.rbegin();
         while ((far_node_id != loaded_nodes.rend())) {
             /*try to unload this node*/
             bool is_already_unloaded = false;
@@ -579,11 +599,12 @@ unload_furthest_best_fit(io_map &unloaded_nodes, schedule_t &loaded_nodes, const
     return unloaded_data;
 }
 
-double unload_furthest_first_fit_abs(io_map &unloaded_nodes, schedule_t &loaded_nodes, const double data_to_unload,
-                                     double *ewghts, bool divisible) {
+double
+unload_furthest_first_fit_abs(io_map &unloaded_nodes, schedule_traversal &loaded_nodes, const double data_to_unload,
+                              double *ewghts, bool divisible) {
     double unloaded_data = 0.0;
     /*unload furthest non unloaded node which is NOT in current_node children first*/
-    schedule_t::reverse_iterator far_node_id = loaded_nodes.rbegin();
+    schedule_traversal::reverse_iterator far_node_id = loaded_nodes.rbegin();
     while ((far_node_id != loaded_nodes.rend()) && (unloaded_data < data_to_unload)) {
         /*try to unload this node*/
         bool is_already_unloaded = false;
@@ -617,8 +638,9 @@ double unload_furthest_first_fit_abs(io_map &unloaded_nodes, schedule_t &loaded_
     return unloaded_data;
 }
 
-double unload_furthest_best_fit_abs(io_map &unloaded_nodes, schedule_t &loaded_nodes, const double data_to_unload,
-                                    double *ewghts, bool divisible) {
+double
+unload_furthest_best_fit_abs(io_map &unloaded_nodes, schedule_traversal &loaded_nodes, const double data_to_unload,
+                             double *ewghts, bool divisible) {
     double unloaded_data = 0.0;
     /*unload furthest non unloaded node which is NOT in current_node children first*/
     while (unloaded_data < data_to_unload) {
@@ -627,7 +649,7 @@ double unload_furthest_best_fit_abs(io_map &unloaded_nodes, schedule_t &loaded_n
         unsigned int best_candidate = -1;
         double best_candi_score = -1.0;
 
-        schedule_t::reverse_iterator far_node_id = loaded_nodes.rbegin();
+        schedule_traversal::reverse_iterator far_node_id = loaded_nodes.rbegin();
         while ((far_node_id != loaded_nodes.rend())) {
             /*try to unload this node*/
             bool is_already_unloaded = false;
@@ -693,8 +715,9 @@ int next_comb(int comb[], int k, int n) {
     return 1;
 }
 
-double unload_best_increasing_combi(io_map &unloaded_nodes, schedule_t &loaded_nodes, const double data_to_unload,
-                                    double *ewghts, bool divisible, unsigned int init_combi_size, bool quiet) {
+double
+unload_best_increasing_combi(io_map &unloaded_nodes, schedule_traversal &loaded_nodes, const double data_to_unload,
+                             double *ewghts, bool divisible, unsigned int init_combi_size, bool quiet) {
     assert(!divisible);
     vector<unsigned int> candidates;
     double unloaded_data = 0.0;
@@ -703,7 +726,7 @@ double unload_best_increasing_combi(io_map &unloaded_nodes, schedule_t &loaded_n
     while (unloaded_data < data_to_unload) {
         /*unload furthest non unloaded node which is NOT in current_node children first*/
         candidates.clear();
-        schedule_t::reverse_iterator far_node_id = loaded_nodes.rbegin();
+        schedule_traversal::reverse_iterator far_node_id = loaded_nodes.rbegin();
         while ((far_node_id != loaded_nodes.rend()) && (candidates.size() <= init_combi_size)) {
             /*try to unload this node*/
             if (unloaded_nodes.find(*far_node_id) == unloaded_nodes.end()) {
@@ -813,7 +836,7 @@ double unload_best_increasing_combi(io_map &unloaded_nodes, schedule_t &loaded_n
     return unloaded_data;
 }
 
-double unload_best_furthest_nodes(io_map &unloaded_nodes, schedule_t &loaded_nodes, const double data_to_unload,
+double unload_best_furthest_nodes(io_map &unloaded_nodes, schedule_traversal &loaded_nodes, const double data_to_unload,
                                   double *ewghts, bool divisible, unsigned int max_candidates, bool quiet) {
     assert(!divisible);
     vector<unsigned int> candidates;
@@ -821,7 +844,7 @@ double unload_best_furthest_nodes(io_map &unloaded_nodes, schedule_t &loaded_nod
     while (unloaded_data < data_to_unload) {
         /*unload furthest non unloaded node which is NOT in current_node children first*/
         candidates.clear();
-        schedule_t::reverse_iterator far_node_id = loaded_nodes.rbegin();
+        schedule_traversal::reverse_iterator far_node_id = loaded_nodes.rbegin();
         while ((far_node_id != loaded_nodes.rend()) && (candidates.size() <= max_candidates)) {
             /*try to unload this node*/
             if (unloaded_nodes.find(*far_node_id) == unloaded_nodes.end()) {
@@ -951,7 +974,7 @@ list<unsigned int> getAllNodesUnderCurrent(const Tree *tree, int cur_task_id) {
 double IOCounter(Tree *tree, int *schedule, double available_memory,
                  bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges,
                  io_method_t method) {
-    double memory_occupation = tree->getTasks()->at(schedule[tree->getSize()])->getEdgeWeight();
+    double memory_occupation = tree->getTasks()->at(schedule[tree->getSize()]-1)->getEdgeWeight();
     double io_volume = 0;
     vector<unsigned int> unloaded_nodes;
     list<node_sche> loaded_nodes;
@@ -965,7 +988,7 @@ double IOCounter(Tree *tree, int *schedule, double available_memory,
     unsigned int subtree_size;
     list<unsigned int>::iterator iter;
     double maxoutD, memory_required, IO_sub = 0;
-    schedule_t *schedule_f = new schedule_t();
+    schedule_traversal *schedule_f = new schedule_traversal();
     list<int>::iterator ite_sche;
     vector<unsigned int> subtreeBrokenEdges;
 
@@ -1010,7 +1033,7 @@ double IOCounter(Tree *tree, int *schedule, double available_memory,
                 schedule_copy = copyScheduleBackwards(schedule_f);
 
                 if (memory_required > available_memory) {
-                    // cout << "memory required " << memory_required << ", is larger than what is available BLABLA " << available_memory << endl;
+                 //   cout << "memory required " << memory_required << ", is larger than what is available " << available_memory << endl;
                     // cout << "----------------------Processing subtree!" << endl;
                     IO_sub = IOCounter(subtree, schedule_copy, available_memory, divisible, quiet, com_freq,
                                        &subtreeBrokenEdges,
@@ -1018,6 +1041,9 @@ double IOCounter(Tree *tree, int *schedule, double available_memory,
 
                     for (vector<unsigned int>::iterator iter = subtreeBrokenEdges.begin();
                          iter != subtreeBrokenEdges.end(); ++iter) {
+                      //  cout<<"broken edge from subtree "<<subtree->getTask(*iter)->getId()
+                       // << " otherside id "<<subtree->getTask(*iter)->getOtherSideId()
+                     //   << "in tree " <<tree->getTask(*iter)->getOtherSideId()<<endl;
                         brokenEdges->push_back(tree->getTask(*iter)->getOtherSideId());
                     }
                     //   cout << "----------------------Out of Processing subtree!" << endl;
@@ -1118,7 +1144,7 @@ double IOCounter(Tree *tree, int *schedule, double available_memory,
                         case FIRST_FIT:
                             positionOfTaskInMinimalTraversal = schedule_vec.end() -
                                                                find(schedule_vec.begin(),
-                                                          schedule_vec.end(), child->getId());
+                                                                    schedule_vec.end(), child->getId());
                             idAndPosition = make_pair(
                                     child->getId(), positionOfTaskInMinimalTraversal);
                             loaded_nodes.push_back(idAndPosition);

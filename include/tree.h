@@ -194,10 +194,10 @@ public :
         return this->__root;
     }
 
-    void toggleRootStatus(bool newStatus){
-        if (this->isRoot() != newStatus){
-            __root=!__root;
-        }else{
+    void toggleRootStatus(bool newStatus) {
+        if (this->isRoot() != newStatus) {
+            __root = !__root;
+        } else {
             throw "Trying to set root to a position that it is alrady in";
         }
     }
@@ -305,7 +305,7 @@ public :
         MS_sequentialPart = MS_weight;
         MS_parallelPart = 0;
         double temp;
-        for(Task * child: *this->getChildren()){
+        for (Task *child: *this->getChildren()) {
             if (child->isBroken()) {
                 //cout<<"edge "<<(*iter)->getId()<<" broken"<<endl;
                 temp = child->getMakespanCost(true, updateEnforce);
@@ -437,21 +437,21 @@ public:
         offset_id = 0;
         tree_id = 1;
         tasks = new vector<Task *>();
-        Task * cur_node;
+        Task *cur_node;
 
         for (int i = 1; i < N + 1; i++) {
-            if (prnts[i]>0){
-                cur_node = new Task(prnts[i],nwghts[i],ewghts[i],mswghts[i]);
+            if (prnts[i] > 0) {
+                cur_node = new Task(prnts[i], nwghts[i], ewghts[i], mswghts[i]);
                 cur_node->setLabel(i);
-                this ->addTask(cur_node);
-            }else{
-                cur_node = new Task(nwghts[i],ewghts[i],mswghts[i],true);
+                this->addTask(cur_node);
+            } else {
+                cur_node = new Task(nwghts[i], ewghts[i], mswghts[i], true);
                 this->addRoot(cur_node);
                 this->setTreeId(i);
             }
             cur_node->setId(i);
         }
-        
+
         size = getTasks()->size();
     }
 
@@ -469,7 +469,7 @@ public:
 
 
     ~Tree() {
-       // cout<<"get root count "<<root_count<<endl;
+        // cout<<"get root count "<<root_count<<endl;
         if (this->getRootId() != 0 && tasks->size() > 0) {
             delete getRoot();
         }
@@ -482,11 +482,17 @@ public:
         out << tasks->size() << endl;
 
         for (vector<Task *>::iterator iter = tasks->begin(); iter != tasks->end(); iter++) {
-            out << max((unsigned int) 0, (*iter)->getParentId()/*+1-offset_id*/) << " " << (*iter)->getNodeWeight()
+            out << (*iter)->getId() << ", parent: " << max((unsigned int) 0, (*iter)->getParentId()/*+1-offset_id*/)
+                << " " << (*iter)->getNodeWeight()
                 << " "
-                << (*iter)->getEdgeWeight() << endl;
-        }
+                << (*iter)->getEdgeWeight() << "; " << endl;
+            out << "children: " << (*iter)->getChildren()->size() << endl;
+            for (Task *child: *(*iter)->getChildren()) {
+                out << "\t" << child->getId() << endl;
+            }
 
+        }
+        cout << endl;
     }
 
 
@@ -526,13 +532,13 @@ public:
     }
 
     Task *getRoot() const {
-      //  assert(root_count == 1);
+        assert(root_count == 1);
         return this->root;
     }
 
     //TODO: hier exception
     unsigned int getRootId() const {
-      //  assert(root_count == 1);
+        assert(root_count == 1);
         return this->getRoot()->getId();
     }
 
@@ -615,7 +621,8 @@ public:
 
     double Merge(bool CheckMemory);
 
-    double MergeV2(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, bool CheckMemory);
+    double
+    MergeV2(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, bool CheckMemory);
 
     double SplitAgain();
 
@@ -626,7 +633,7 @@ public:
 };
 
 
-typedef list<int> schedule_t;
+typedef list<int> schedule_traversal;
 
 typedef map<unsigned int, double> io_map;
 typedef pair<unsigned int, unsigned int> node_sche;
@@ -644,6 +651,7 @@ double MaxOutDegree(Tree *tree, int quiet);
 double IOCounter(Tree *tree, int *schedule,
                  double available_memory, bool divisible, int quiet, unsigned int &com_freq,
                  vector<unsigned int> *brokenEdges, io_method_t method);
+
 double
 IOCounterWithVariableMem(Tree *tree, int *schedule,
                          Cluster *cluster, bool divisible, int quiet, unsigned int &com_freq,
@@ -663,7 +671,7 @@ double getWeightPQ(list<Task *> &parallelRoots, Task *currentNode);
 double getWeightSurplusFromSmallestNodes(list<Task *> &parallelRoots);
 
 int *
-copyScheduleBackwards(schedule_t *schedule_f) ;
+copyScheduleBackwards(schedule_traversal *schedule_f);
 
 #endif
 #endif

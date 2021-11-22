@@ -21,7 +21,7 @@ void buildFixedClusterWithSpeedsAndMemory(double CCR, unsigned int num_processor
 
     Cluster::getFixedCluster()->SetBandwidth(CCR, treeobj);
     double maxoutd = MaxOutDegree(treeobj, true);
-    schedule_t *temp_schedule = new schedule_t();
+    schedule_traversal *temp_schedule = new schedule_traversal();
     MinMem(treeobj, maxoutd, minMem, *temp_schedule, true);
 
     vector<double> memorySizes = Cluster::buildHomogeneousMemorySizes(maxoutd, num_processors);
@@ -84,6 +84,8 @@ int main(int argc, char **argv) {
 
         time = clock();
 
+      /// tree->Print(cout);
+
         unsigned long sequentialLen;
         makespan = tree->getRoot()->SplitSubtrees(false, parallelSubtrees,
                                                   sequentialLen);// for counting how many subtrees produced, twolevel is set as false
@@ -111,7 +113,7 @@ int main(int argc, char **argv) {
 
 
         maxoutd = MaxOutDegree(tree, true);
-        schedule_t *schedule_f = new schedule_t();
+        schedule_traversal *schedule_f = new schedule_traversal();
 
         MinMem(tree, maxoutd, minMem, *schedule_f, true);
         delete schedule_f;
@@ -124,6 +126,8 @@ int main(int argc, char **argv) {
         } else if (stage2 == "Immediately") {
             MemoryCheck(tree, IMMEDIATELY);
         }
+        cout << "2 step ready " << endl;
+        number_subtrees = tree->HowmanySubtrees(false);
 
         time = clock() - time;
         number_subtrees = tree->HowmanySubtrees(true);

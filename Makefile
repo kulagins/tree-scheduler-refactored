@@ -77,7 +77,7 @@ USER_DIR = ./test
 CPPFLAGStest += -isystem $(GTEST_DIR)/include
 
 # Flags passed to the C++ compiler.
-CXXFLAGStest += -g -Wall -Wextra -pthread
+CXXFLAGStest += -std=c++14 -g -Wall -Wextra -pthread  
 
 # All tests produced by t his Makefile.  Remember to add new tests you
 # created to the list.
@@ -96,6 +96,20 @@ cleantests :
 
 
 GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
+
+gtest-all.o : $(GTEST_SRCS_)
+	$(CXX) $(CPPFLAGStest) -I$(GTEST_DIR) -I$(GTEST_DIR)/include $(CXXFLAGStest) -c \
+            $(GTEST_DIR)/src/gtest-all.cc
+
+gtest_main.o : $(GTEST_SRCS_)
+	$(CXX) $(CPPFLAGStest) -I$(GTEST_DIR) -I$(GTEST_DIR)/include $(CXXFLAGStest) -c \
+            $(GTEST_DIR)/src/gtest_main.cc
+
+gtest.a : gtest-all.o
+	$(AR) $(ARFLAGS) $@ $^
+
+gtest_main.a : gtest-all.o gtest_main.o
+	$(AR) $(ARFLAGS) $@ $^
 
 # add new target here if new test files are created
 sample1.o: $(USER_DIR)/test.cpp $(GTEST_HEADERS)

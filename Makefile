@@ -8,6 +8,7 @@ INC_PATH = ${path_only}/include
 SRC_PATH = ${path_only}/src
 OBJ_PATH = ${path_only}/
 BIN_PATH = ${path_only}/
+TEST_BIN_PATH = ${path_only}/test
 
 CPP = g++
 PEDANTIC_PARANOID_FREAK =       -O0 -Wshadow -Wcast-align \
@@ -116,7 +117,7 @@ sample1.o: $(USER_DIR)/test.cpp $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGStest) $(CXXFLAGStest) -c $(USER_DIR)/test.cpp -o $@
 
  sample1_unittest : sample1.o gtest_main.a
-	 $(CXX) $(CPPFLAGStest) $(CXXFLAGStest) -lpthread $^ -o $@
+	 $(CXX) $(CPPFLAGStest) $(CXXFLAGStest) -lpthread $^ -o ${TEST_BIN_PATH}/$@
 
 .PHONY: clean all
 

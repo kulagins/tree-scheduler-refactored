@@ -116,8 +116,8 @@ gtest_main.a : gtest-all.o gtest_main.o
 sample1.o: $(USER_DIR)/test.cpp $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGStest) $(CXXFLAGStest) -c $(USER_DIR)/test.cpp -o $@
 
- sample1_unittest : sample1.o gtest_main.a
-	 $(CXX) $(CPPFLAGStest) $(CXXFLAGStest) -lpthread $^ -o ${TEST_BIN_PATH}/$@
+sample1_unittest : sample1.o gtest_main.a lib/heuristics.a
+	$(CXX) $(CPPFLAGStest) $(CXXFLAGStest) $(LIBS) -lpthread $^ -o ${TEST_BIN_PATH}/$@
 
 .PHONY: clean all
 

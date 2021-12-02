@@ -50,7 +50,7 @@ double u_wseconds(void) {
 // BUilds quotient tree for the whole original tree
 Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for space side
     root->breakEdge();
-    this->getRoot()->getMakespanCost(true, true); //update
+    root->getMakespanCost(true, true); //update
 
     Task *copy;
     Task *parent;
@@ -69,7 +69,7 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
     for (unsigned int i = 2; i <= this->getSize(); ++i) {
         currentNode = this->getTask(i);
         if (currentNode->isBroken()) {
-         //   cout <<"cpy "<<currentNode->getId()<<" osideid "<<nodeIdCounter<<endl;
+            //   cout <<"cpy "<<currentNode->getId()<<" osideid "<<nodeIdCounter<<endl;
             copy = new Task(*currentNode, nodeIdCounter, nullptr);
             copy->setNodeWeight(currentNode->getSequentialPart());
             copy->setMakespanWeight(currentNode->getSequentialPart());
@@ -91,10 +91,10 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
             parent = parent->getParent();
         }
         if (parent != nullptr) {
-           // cout<<"prnt "<<parent->getOtherSideId()<<endl;
+            // cout<<"prnt "<<parent->getOtherSideId()<<endl;
             for (Task *childTask: *tasksInQtree) {
                 if (childTask->getId() == nodeIdCounter) {
-                 //   cout<<"set it on task "<<childTask->getId()<<endl;
+                    //   cout<<"set it on task "<<childTask->getId()<<endl;
                     childTask->setParentId(parent->getOtherSideId());
                 }
             }
@@ -971,10 +971,9 @@ list<unsigned int> getAllNodesUnderCurrent(const Tree *tree, int cur_task_id) {
 }
 
 //TODO check for N
-double IOCounter(Tree *tree, int *schedule, double available_memory,
-                 bool divisible, int quiet, unsigned int &com_freq, vector<unsigned int> *brokenEdges,
-                 io_method_t method) {
-    double memory_occupation = tree->getTasks()->at(schedule[tree->getSize()]-1)->getEdgeWeight();
+double IOCounter(Tree *tree, int *schedule, bool divisible, int quiet, unsigned int &com_freq,
+                 vector<unsigned int> *brokenEdges, io_method_t method) {
+    double memory_occupation = tree->getTasks()->at(schedule[tree->getSize()] - 1)->getEdgeWeight();
     double io_volume = 0;
     vector<unsigned int> unloaded_nodes;
     list<node_sche> loaded_nodes;
@@ -1003,7 +1002,14 @@ double IOCounter(Tree *tree, int *schedule, double available_memory,
             unloaded = find(unloaded_nodes.begin(), unloaded_nodes.end(), cur_task_id);
             if (unloaded != unloaded_nodes.end()) { //find node cur_task_id unloaded
                 //cout<<", (break) "<<endl;
+                Cluster::getFixedCluster()->getFirstFreeProcessor()->assignTaskId(
+                        tree->getTask(cur_task_id)->getOtherSideId());
+                //     Cluster::getFixedCluster()->getFirstFreeProcessor()->assignTask(
+                //         tree->getOriginalTree()->getTask(tree->getTask(cur_task_id)->getOtherSideId()));
                 brokenEdges->push_back(tree->getTask(cur_task_id)->getOtherSideId());
+//                cout << "iocounter get free proc "
+  //                   << Cluster::getFixedCluster()->getFirstFreeProcessor()->getMemorySize() << " for task "
+   //                  << tree->getTask(cur_task_id)->getOtherSideId() << endl;
                 ++com_freq;
                 unloaded_nodes.erase(unloaded);
                 temp.clear();
@@ -1032,18 +1038,18 @@ double IOCounter(Tree *tree, int *schedule, double available_memory,
                 MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
                 schedule_copy = copyScheduleBackwards(schedule_f);
 
-                if (memory_required > available_memory) {
-                 //   cout << "memory required " << memory_required << ", is larger than what is available " << available_memory << endl;
+                if (memory_required > Cluster::getFixedCluster()->getFirstFreeProcessor()->getMemorySize()) {
+                    //   cout << "memory required " << memory_required << ", is larger than what is available " << available_memory << endl;
                     // cout << "----------------------Processing subtree!" << endl;
-                    IO_sub = IOCounter(subtree, schedule_copy, available_memory, divisible, quiet, com_freq,
+                    IO_sub = IOCounter(subtree, schedule_copy, divisible, quiet, com_freq,
                                        &subtreeBrokenEdges,
                                        method);
 
                     for (vector<unsigned int>::iterator iter = subtreeBrokenEdges.begin();
                          iter != subtreeBrokenEdges.end(); ++iter) {
-                      //  cout<<"broken edge from subtree "<<subtree->getTask(*iter)->getId()
-                       // << " otherside id "<<subtree->getTask(*iter)->getOtherSideId()
-                     //   << "in tree " <<tree->getTask(*iter)->getOtherSideId()<<endl;
+                        //  cout<<"broken edge from subtree "<<subtree->getTask(*iter)->getId()
+                        // << " otherside id "<<subtree->getTask(*iter)->getOtherSideId()
+                        //   << "in tree " <<tree->getTask(*iter)->getOtherSideId()<<endl;
                         brokenEdges->push_back(tree->getTask(*iter)->getOtherSideId());
                     }
                     //   cout << "----------------------Out of Processing subtree!" << endl;
@@ -1060,7 +1066,8 @@ double IOCounter(Tree *tree, int *schedule, double available_memory,
                     node_cost += child->getEdgeWeight();
                 }
 
-                double data_to_unload = memory_occupation + node_cost - currentTask->getEdgeWeight() - available_memory;
+                double data_to_unload = memory_occupation + node_cost - currentTask->getEdgeWeight() -
+                                        Cluster::getFixedCluster()->getFirstFreeProcessor()->getMemorySize();
 
                 if (!quiet) {
                     cerr << "min data to unload " << data_to_unload << endl;
@@ -1278,7 +1285,7 @@ Tree *BuildSubtree(Tree *tree, Task *subtreeRoot) {
         }
     }
 
-    Tree *treeobj = new Tree(tasksInNewSubtree, rootCopy, tree->getOriginalTree());
+    Tree *treeobj = new Tree(tasksInNewSubtree, rootCopy, tree);
     return treeobj;
 }
 

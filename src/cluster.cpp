@@ -5,7 +5,7 @@ using namespace std;
 Cluster *Cluster::fixedCluster = NULL;
 
 vector<double> Cluster::build3LevelMemorySizes(double minMem, double maxMem, unsigned int num_processors) {
-    cout << "minimal memory per processor" << minMem << ", maximal " << maxMem << endl;
+   // cout << "minimal memory per processor" << minMem << ", maximal " << maxMem << endl;
     double cumulativeMem = 0;
     vector<double> memSizes(num_processors);
     memSizes.resize(num_processors);
@@ -14,14 +14,14 @@ vector<double> Cluster::build3LevelMemorySizes(double minMem, double maxMem, uns
         cumulativeMem += memSizes[k];
     }
     for (int k = num_processors / 3; k < 2 * num_processors / 3; k++) {
-        memSizes[k] = (minMem+maxMem)/2;
+        memSizes[k] = (minMem + maxMem) / 2;
         cumulativeMem += memSizes[k];
     }
     for (int k = 2 * num_processors / 3; k < num_processors; k++) {
         memSizes[k] = maxMem;
         cumulativeMem += memSizes[k];
     }
-    cout << "cumulative mem in system: " << cumulativeMem << " with "<<num_processors<<" processors."<< endl;
+   // cout << "cumulative mem in system: " << cumulativeMem << " with " << num_processors << " processors." << endl;
     return memSizes;
 }
 
@@ -29,11 +29,12 @@ vector<double> Cluster::buildHomogeneousMemorySizes(double memSize, unsigned int
 
     vector<double> memSizes(num_processors);
     memSizes.resize(num_processors);
-    for (int k = 0; k < num_processors ; k++) {
+    for (int k = 0; k < num_processors; k++) {
         memSizes[k] = memSize;
     }
 
-    cout << "cumulative mem in system: " << num_processors * memSize << " with "<<num_processors<<" processors."<< endl;
+   // cout << "cumulative mem in system: " << num_processors * memSize << " with " << num_processors << " processors."
+    //     << endl;
     return memSizes;
 }
 
@@ -58,7 +59,11 @@ Processor *Cluster::getFirstFreeProcessor() {
         if (!(*iter)->isBusy)
             return (*iter);
     }
+   // cout << "no free procs anymore, returning last" << endl;
+    //
+    // this->printProcessors();
     throw std::out_of_range("No free processor available anymore!");
+   // return this->processors.back();
 }
 
 

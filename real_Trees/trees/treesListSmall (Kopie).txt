@@ -6,3 +6,9 @@ dump.1.1.amd.QY.case39-2136.tree.nf
 dump.0.1.metis.Wang.wang4-833.tree.nf
 dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf
 dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf
+dump.0.1.amd.QY.case39-2136.tree.nf
+dump.0.1.metis.CPM.cz40948-2567.tree.nf
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf
+dump.0.1.amd.Bova.rma10-374.tree.nf
+dump.0.1.metis.Bova.rma10-374.tree.nf

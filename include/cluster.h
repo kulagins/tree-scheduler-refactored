@@ -19,6 +19,9 @@ protected:
     double processorSpeed;
     Task *assignedTask;
 
+protected:
+    int assignedTaskId;
+
 public:
     bool isBusy;
 
@@ -27,6 +30,7 @@ public:
         this->processorSpeed = 1;
         isBusy = false;
         assignedTask = nullptr;
+        assignedTaskId =-1;
     }
 
     explicit Processor(double memorySize) {
@@ -34,6 +38,7 @@ public:
         this->processorSpeed = 1;
         isBusy = false;
         assignedTask = nullptr;
+        assignedTaskId =-1;
     }
 
     Processor(double memorySize, double processorSpeed) {
@@ -55,10 +60,21 @@ public:
         return processorSpeed;
     }
 
-    void assignTask(Task *taskToBeAssigned) {
-        this->assignedTask = taskToBeAssigned;
+   // void assignTask(Task *taskToBeAssigned) {
+  //      this->assignedTask = taskToBeAssigned;
+  //      this->isBusy = true;
+  //  }
+    void assignTaskId( unsigned int taskToBeAssigned) {
+        this->assignedTaskId = taskToBeAssigned;
         this->isBusy = true;
     }
+    int getAssignedTaskId() const {
+        return assignedTaskId;
+    }
+    Task *getAssignedTask() const {
+        return assignedTask;
+    }
+
 };
 
 class Cluster {
@@ -111,6 +127,10 @@ public:
 public:
     bool isHomogeneous() const {
         return isMemoryHomogeneous && isProcessorHomogeneous && isBandwidthHomogenenous;
+    }
+
+    bool isBandwidthHomogeneous() const {
+        return isBandwidthHomogenenous;
     }
 
     void setHomogeneity(bool homogeneity) {
@@ -167,7 +187,7 @@ public:
     void printProcessors() {
         for (vector<Processor *>::iterator iter = this->processors.begin(); iter < processors.end(); iter++) {
             cout << "Processor with memory " << (*iter)->getMemorySize() << ", speed " << (*iter)->getProcessorSpeed()
-                 << " and busy? " << (*iter)->isBusy << endl;
+                 << " and busy? " << (*iter)->isBusy << "assigned "<< (*iter)->getAssignedTaskId()<< endl;
         }
     }
 
@@ -178,6 +198,7 @@ public:
     static Cluster *getFixedCluster() {
         return Cluster::fixedCluster;
     }
+
 
     Processor *getFirstFreeProcessor();
 

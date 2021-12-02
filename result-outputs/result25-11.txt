@@ -1,0 +1,1613 @@
+AmountSubtrees AmountProcessors Makespan Stage1 Stage2 Stage3 TimeConsuming
+dump.0.1.amd.Bova.rma10-374.tree.nf
+NPR is 1000 tree size 46835
+minimal memory per processor396050, maximal 478994
+cumulative mem in system: 2.0605e+07 with 47 processors.
+Processor with memory 396050, speed 1 and busy? 0assigned 909522486
+Processor with memory 396050, speed 1 and busy? 0assigned 892548128
+Processor with memory 396050, speed 1 and busy? 0assigned 909587488
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+1 step ready 
+Broken Edges { 1 429 6287 8776 10660 20895 21628 24472 25007 25682 25988 26178 26936 27286 27540 27934 28723 28860 29324 29549 29690 29812 30147 30397 30707 33089 45950 46370 }
+28 47 296042  NA NA 21800344
+Processor with memory 396050, speed 1 and busy? 0assigned 909522486
+Processor with memory 396050, speed 1 and busy? 0assigned 892548128
+Processor with memory 396050, speed 1 and busy? 0assigned 909587488
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+Processor with memory 478994, speed 1 and busy? 0assigned 0
+2 step ready 
+Broken Edges { 1 429 6287 8776 10660 20895 21628 24472 25007 25682 25988 26178 26936 27286 27540 27934 28723 28860 29324 29549 29690 29812 30147 30397 30707 33089 45950 46370 }
+28 47 296042  FirstFit NA 124144
+Broken Edges { 1 429 6128 6287 6423 7209 8776 10660 10719 11625 12744 14438 14487 15368 15547 16803 17588 18431 19459 19905 20279 20895 21628 24472 25007 25682 25988 26178 26936 27286 27540 27934 28723 28860 29324 29549 29690 29812 30147 30397 30707 32953 33089 33302 45309 45950 46370 }
+47 47 233198  FirstFit SplitAgain 638443
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf
+NPR is 1000 tree size 81920
+minimal memory per processor1.38479e+06, maximal 1.52948e+06
+cumulative mem in system: 1.19558e+08 with 82 processors.
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+1 step ready 
+Broken Edges { 1 801 21244 48878 81920 }
+5 82 343703  NA NA 665905177
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.52948e+06, speed 1 and busy? 0assigned 0
+2 step ready 
+Broken Edges { 1 801 21244 48878 81920 }
+5 82 343703  FirstFit NA 169653
+Broken Edges { 1 723 801 902 12433 21244 21391 21449 21507 25290 27839 27903 31849 34510 34595 34670 34715 34776 34793 34804 34822 34827 34830 34831 34832 34845 34849 34859 34860 34862 34863 34864 34865 34866 34867 34868 34869 34870 34871 34874 34878 34881 34885 34931 34932 35019 35102 35272 35643 35644 35663 35675 35682 35689 35778 35833 35951 36152 36161 36406 36577 36590 36944 37284 37285 37286 39127 39128 39129 42143 42144 42145 42198 42245 45353 47144 48877 48878 49004 66956 81920 }
+81 82 250766  FirstFit SplitAgain 6366842
+dump.0.1.metis.Bova.rma10-374.tree.nf
+NPR is 1000 tree size 46835
+minimal memory per processor381938, maximal 439734
+cumulative mem in system: 1.93382e+07 with 47 processors.
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+1 step ready 
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+10 47 189830  NA NA 18852156
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+Processor with memory 439734, speed 1 and busy? 0assigned 0
+2 step ready 
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+10 47 189830  FirstFit NA 187852
+Broken Edges { 1 165 272 420 5362 5448 8468 11624 11688 11774 12986 14552 17803 17918 18006 18698 19515 19620 20334 21103 21256 21327 22030 22100 22423 22747 22844 23539 24629 24712 24804 25399 25980 27259 27332 28647 29957 33098 33216 33316 34008 34769 34861 35628 36390 36514 38911 }
+47 47 124035  FirstFit SplitAgain 644952
+dump.1.3.amd.QY.case39-2136.tree.nf
+NPR is 1000 tree size 8352
+minimal memory per processor272090, maximal 290090
+cumulative mem in system: 2.52981e+06 with 9 processors.
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 290090, speed 1 and busy? 0assigned 0
+Processor with memory 290090, speed 1 and busy? 0assigned 0
+Processor with memory 290090, speed 1 and busy? 0assigned 0
+1 step ready 
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+9 9 132190  NA NA 6223867
+Processor with memory 272090, speed 1 and busy? 1assigned 1373
+Processor with memory 272090, speed 1 and busy? 1assigned 1764
+Processor with memory 272090, speed 1 and busy? 1assigned 15
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 290090, speed 1 and busy? 0assigned 0
+Processor with memory 290090, speed 1 and busy? 0assigned 0
+Processor with memory 290090, speed 1 and busy? 0assigned 0
+2 step ready 
+Broken Edges { 1 3 303 445 591 1373 1632 1764 2951 4270 5589 6908 }
+12 9 132190  FirstFit NA 71002
+Broken Edges { 1 3 303 591 1764 2951 4270 5589 6908 }
+9 9 151071  FirstFit Merge 8634
+dump.1.3.amd.QY.case39-2136.tree.nf
+NPR is 1000 tree size 8352
+minimal memory per processor272090, maximal 290090
+cumulative mem in system: 2.52981e+06 with 9 processors.
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 290090, speed 1 and busy? 0assigned 0
+Processor with memory 290090, speed 1 and busy? 0assigned 0
+Processor with memory 290090, speed 1 and busy? 0assigned 0
+1 step ready 
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+9 9 132190  NA NA 6211391
+Processor with memory 272090, speed 1 and busy? 1assigned 1373
+Processor with memory 272090, speed 1 and busy? 1assigned 1764
+Processor with memory 272090, speed 1 and busy? 1assigned 15
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 290090, speed 1 and busy? 0assigned 0
+Processor with memory 290090, speed 1 and busy? 0assigned 0
+Processor with memory 290090, speed 1 and busy? 0assigned 0
+2 step ready 
+Broken Edges { 1 3 303 445 591 1373 1632 1764 2951 4270 5589 6908 }
+12 9 132190  FirstFit NA 71887
+Broken Edges { 1 3 303 591 1764 2951 4270 5589 6908 }
+9 9 151071  FirstFit Merge 7983
+AmountSubtrees AmountProcessors Makespan Stage1 Stage2 Stage3 TimeConsuming
+dump.0.1.amd.Bova.rma10-374.tree.nf
+NPR is 1000 tree size 46835
+cumulative mem in system: 1.86144e+07 with 47 processors.
+Processor with memory 396050, speed 1 and busy? 0assigned 909522486
+Processor with memory 396050, speed 1 and busy? 0assigned 892548128
+Processor with memory 396050, speed 1 and busy? 0assigned 909587488
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+1 step ready 
+Broken Edges { 1 429 6287 8776 10660 20895 21628 24472 25007 25682 25988 26178 26936 27286 27540 27934 28723 28860 29324 29549 29690 29812 30147 30397 30707 33089 45950 46370 }
+28 47 296042  NA NA 21637448
+Processor with memory 396050, speed 1 and busy? 0assigned 909522486
+Processor with memory 396050, speed 1 and busy? 0assigned 892548128
+Processor with memory 396050, speed 1 and busy? 0assigned 909587488
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+2 step ready 
+Broken Edges { 1 429 6287 8776 10660 20895 21628 24472 25007 25682 25988 26178 26936 27286 27540 27934 28723 28860 29324 29549 29690 29812 30147 30397 30707 33089 45950 46370 }
+28 47 296042  FirstFit NA 118159
+Broken Edges { 1 429 6128 6287 6423 7209 8776 10660 10719 11625 12744 14438 14487 15368 15547 16803 17588 18431 19459 19905 20279 20895 21628 24472 25007 25682 25988 26178 26936 27286 27540 27934 28723 28860 29324 29549 29690 29812 30147 30397 30707 32953 33089 33302 45309 45950 46370 }
+47 47 233198  FirstFit SplitAgain 597729
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf
+NPR is 1000 tree size 81920
+cumulative mem in system: 1.13553e+08 with 82 processors.
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+1 step ready 
+Broken Edges { 1 801 21244 48878 81920 }
+5 82 343703  NA NA 666447853
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+2 step ready 
+Broken Edges { 1 801 21244 48878 81920 }
+5 82 343703  FirstFit NA 166440
+Broken Edges { 1 723 801 902 12433 21244 21391 21449 21507 25290 27839 27903 31849 34510 34595 34670 34715 34776 34793 34804 34822 34827 34830 34831 34832 34845 34849 34859 34860 34862 34863 34864 34865 34866 34867 34868 34869 34870 34871 34874 34878 34881 34885 34931 34932 35019 35102 35272 35643 35644 35663 35675 35682 35689 35778 35833 35951 36152 36161 36406 36577 36590 36944 37284 37285 37286 39127 39128 39129 42143 42144 42145 42198 42245 45353 47144 48877 48878 49004 66956 81920 }
+81 82 250766  FirstFit SplitAgain 5566038
+dump.0.1.metis.Bova.rma10-374.tree.nf
+NPR is 1000 tree size 46835
+cumulative mem in system: 1.79511e+07 with 47 processors.
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+1 step ready 
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+10 47 189830  NA NA 18926141
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+2 step ready 
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+10 47 189830  FirstFit NA 185831
+Broken Edges { 1 165 272 420 5362 5448 8468 11624 11688 11774 12986 14552 17803 17918 18006 18698 19515 19620 20334 21103 21256 21327 22030 22100 22423 22747 22844 23539 24629 24712 24804 25399 25980 27259 27332 28647 29957 33098 33216 33316 34008 34769 34861 35628 36390 36514 38911 }
+47 47 124035  FirstFit SplitAgain 643599
+dump.1.3.amd.QY.case39-2136.tree.nf
+NPR is 1000 tree size 8352
+cumulative mem in system: 2.44881e+06 with 9 processors.
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+1 step ready 
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+9 9 132190  NA NA 6279515
+not enough processors2 step ready 
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+9 9 132190  FirstFit NA 39876
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+9 9 132190  FirstFit Nothing 1
+dump.1.3.amd.QY.case39-2136.tree.nf
+NPR is 1000 tree size 8352
+cumulative mem in system: 2.44881e+06 with 9 processors.
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+1 step ready 
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+9 9 132190  NA NA 6285935
+not enough processors2 step ready 
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+9 9 132190  FirstFit NA 39030
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+9 9 132190  FirstFit Nothing 1
+AmountSubtrees AmountProcessors Makespan Stage1 Stage2 Stage3 TimeConsuming
+dump.0.1.amd.Bova.rma10-374.tree.nf
+NPR is 1000 tree size 46835
+cumulative mem in system: 1.86144e+07 with 47 processors.
+Processor with memory 396050, speed 1 and busy? 0assigned 909522486
+Processor with memory 396050, speed 1 and busy? 0assigned 892548128
+Processor with memory 396050, speed 1 and busy? 0assigned 909587488
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+1 step ready 
+Broken Edges { 1 429 6287 8776 10660 20895 21628 24472 25007 25682 25988 26178 26936 27286 27540 27934 28723 28860 29324 29549 29690 29812 30147 30397 30707 33089 45950 46370 }
+28 47 296042  NA NA 21435962
+Processor with memory 396050, speed 1 and busy? 0assigned 909522486
+Processor with memory 396050, speed 1 and busy? 0assigned 892548128
+Processor with memory 396050, speed 1 and busy? 0assigned 909587488
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+Processor with memory 396050, speed 1 and busy? 0assigned 0
+2 step ready 
+Broken Edges { 1 429 6287 8776 10660 20895 21628 24472 25007 25682 25988 26178 26936 27286 27540 27934 28723 28860 29324 29549 29690 29812 30147 30397 30707 33089 45950 46370 }
+28 47 296042  FirstFit NA 119089
+Broken Edges { 1 429 6128 6287 6423 7209 8776 10660 10719 11625 12744 14438 14487 15368 15547 16803 17588 18431 19459 19905 20279 20895 21628 24472 25007 25682 25988 26178 26936 27286 27540 27934 28723 28860 29324 29549 29690 29812 30147 30397 30707 32953 33089 33302 45309 45950 46370 }
+47 47 233198  FirstFit SplitAgain 560908
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf
+NPR is 1000 tree size 81920
+cumulative mem in system: 1.13553e+08 with 82 processors.
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+1 step ready 
+Broken Edges { 1 801 21244 48878 81920 }
+5 82 343703  NA NA 661877001
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.38479e+06, speed 1 and busy? 0assigned 0
+2 step ready 
+Broken Edges { 1 801 21244 48878 81920 }
+5 82 343703  FirstFit NA 165465
+Broken Edges { 1 723 801 902 12433 21244 21391 21449 21507 25290 27839 27903 31849 34510 34595 34670 34715 34776 34793 34804 34822 34827 34830 34831 34832 34845 34849 34859 34860 34862 34863 34864 34865 34866 34867 34868 34869 34870 34871 34874 34878 34881 34885 34931 34932 35019 35102 35272 35643 35644 35663 35675 35682 35689 35778 35833 35951 36152 36161 36406 36577 36590 36944 37284 37285 37286 39127 39128 39129 42143 42144 42145 42198 42245 45353 47144 48877 48878 49004 66956 81920 }
+81 82 250766  FirstFit SplitAgain 5568519
+dump.0.1.metis.Bova.rma10-374.tree.nf
+NPR is 1000 tree size 46835
+cumulative mem in system: 1.79511e+07 with 47 processors.
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+1 step ready 
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+10 47 189830  NA NA 18904624
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+Processor with memory 381938, speed 1 and busy? 0assigned 0
+2 step ready 
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+10 47 189830  FirstFit NA 188765
+Broken Edges { 1 165 272 420 5362 5448 8468 11624 11688 11774 12986 14552 17803 17918 18006 18698 19515 19620 20334 21103 21256 21327 22030 22100 22423 22747 22844 23539 24629 24712 24804 25399 25980 27259 27332 28647 29957 33098 33216 33316 34008 34769 34861 35628 36390 36514 38911 }
+47 47 124035  FirstFit SplitAgain 583571
+dump.1.3.amd.QY.case39-2136.tree.nf
+NPR is 1000 tree size 8352
+cumulative mem in system: 2.44881e+06 with 9 processors.
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+1 step ready 
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+9 9 132190  NA NA 6292603
+not enough processors2 step ready 
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+9 9 132190  FirstFit NA 39350
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+9 9 132190  FirstFit Nothing 1
+dump.1.3.amd.QY.case39-2136.tree.nf
+NPR is 1000 tree size 8352
+cumulative mem in system: 2.44881e+06 with 9 processors.
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+Processor with memory 272090, speed 1 and busy? 0assigned 0
+1 step ready 
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+9 9 132190  NA NA 6260656
+not enough processors2 step ready 
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+9 9 132190  FirstFit NA 39173
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+9 9 132190  FirstFit Nothing 2
+AmountSubtrees AmountProcessors Makespan Stage1 Stage2 Stage3 TimeConsuming
+dump.0.1.amd.Bova.rma10-374.tree.nf
+NPR is 1000 tree size 46835
+cumulative mem in system: 1.35632e+07 with 31 processors.
+Processor with memory 437522, speed 1 and busy? 0assigned -1834249088
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834248992
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834248944
+Processor with memory 437522, speed 1 and busy? 0assigned -1834248896
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250528
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250768
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250816
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250960
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834249952
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250384
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250432
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250576
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834249568
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250000
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250048
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250192
+1 step ready 
+Broken Edges { 1 429 6287 8776 10660 20895 21628 24472 25007 25682 25988 26178 26936 27286 27540 27934 28723 28860 29324 29549 29690 29812 30147 30397 30707 33089 45950 46370 }
+28 47 296042  NA NA 21614009
+Processor with memory 437522, speed 1 and busy? 0assigned -1834249088
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834248992
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834248944
+Processor with memory 437522, speed 1 and busy? 0assigned -1834248896
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250528
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250768
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250816
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250960
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834249952
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250384
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250432
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250576
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834249568
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250000
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250048
+Processor with memory 437522, speed 1 and busy? 0assigned 0
+Processor with memory 437522, speed 1 and busy? 0assigned -1834250192
+2 step ready 
+Broken Edges { 1 429 6287 8776 10660 20895 21628 24472 25007 25682 25988 26178 26936 27286 27540 27934 28723 28860 29324 29549 29690 29812 30147 30397 30707 33089 45950 46370 }
+28 47 296042  FirstFit NA 123319
+Broken Edges { 1 429 6287 8776 10660 20895 21628 24472 25007 25682 25988 26178 26936 27286 27540 27934 28723 28860 29324 29549 29690 29812 30147 30397 30707 32953 33089 33302 45309 45950 46370 }
+31 47 288137  FirstFit SplitAgain 98600
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf
+NPR is 1000 tree size 81920
+cumulative mem in system: 7.86855e+07 with 54 processors.
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819162784
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819162688
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819162640
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165952
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819166192
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819166240
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819166384
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165376
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165808
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165856
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819166000
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165184
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165424
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165472
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165616
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819164224
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165040
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165088
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165232
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819164416
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819164656
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819164704
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819164848
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819163840
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819164272
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819164320
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+1 step ready 
+Broken Edges { 1 801 21244 48878 81920 }
+5 82 343703  NA NA 662982327
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819162784
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819162688
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819162640
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165952
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819166192
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819166240
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819166384
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165376
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165808
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165856
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819166000
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165184
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165424
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165472
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165616
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819164224
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165040
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165088
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819165232
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819164416
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819164656
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819164704
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819164848
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819163840
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819164272
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned -1819164320
+Processor with memory 1.45714e+06, speed 1 and busy? 0assigned 0
+2 step ready 
+Broken Edges { 1 801 21244 48878 81920 }
+5 82 343703  FirstFit NA 163820
+Broken Edges { 1 723 801 902 12433 21244 21391 21449 21507 25290 27839 27903 31849 34510 34595 34670 34715 34776 34793 34804 34822 34827 34830 34859 34885 34932 35019 35102 35272 35644 35663 35675 35682 35689 35778 35833 35951 36152 36161 36406 36577 36590 36944 37286 39129 42145 42198 42245 45353 47144 48878 49004 66956 81920 }
+54 82 250766  FirstFit SplitAgain 2093454
+dump.0.1.metis.Bova.rma10-374.tree.nf
+NPR is 1000 tree size 46835
+cumulative mem in system: 1.27359e+07 with 31 processors.
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835356576
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835356528
+Processor with memory 410836, speed 1 and busy? 0assigned -1835356480
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1819777976
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835358112
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835358352
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835358400
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835358544
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835357536
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835357968
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835358016
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835358160
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835357152
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835357584
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835357632
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835357776
+1 step ready 
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+10 47 189830  NA NA 18778935
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835356576
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835356528
+Processor with memory 410836, speed 1 and busy? 0assigned -1835356480
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1819777976
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835358112
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835358352
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835358400
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835358544
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835357536
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835357968
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835358016
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835358160
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835357152
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835357584
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835357632
+Processor with memory 410836, speed 1 and busy? 0assigned 0
+Processor with memory 410836, speed 1 and busy? 0assigned -1835357776
+2 step ready 
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+10 47 189830  FirstFit NA 183785
+Broken Edges { 1 272 420 5362 5448 8468 11624 11688 14552 17803 17918 19515 21103 21256 21327 22030 22747 24460 24629 24712 25980 27259 27332 28647 29957 33098 33216 33316 34008 34769 36390 }
+31 47 125880  FirstFit SplitAgain 274552
+dump.1.3.amd.QY.case39-2136.tree.nf
+NPR is 1000 tree size 8352
+cumulative mem in system: 1.68654e+06 with 6 processors.
+Processor with memory 281090, speed 1 and busy? 0assigned -1811535200
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned -1811535056
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned -1811535008
+Processor with memory 281090, speed 1 and busy? 0assigned -1811534960
+1 step ready 
+Broken Edges { 1 590 2951 4270 5589 6908 }
+6 9 205789  NA NA 6227700
+Processor with memory 281090, speed 1 and busy? 0assigned -1811535200
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned -1811535056
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned -1811535008
+Processor with memory 281090, speed 1 and busy? 0assigned -1811534960
+2 step ready 
+Broken Edges { 1 590 2951 4270 5589 6908 }
+6 9 205789  FirstFit NA 15483
+Broken Edges { 1 590 2951 4270 5589 6908 }
+6 9 205789  FirstFit SplitAgain 1910
+dump.1.3.amd.QY.case39-2136.tree.nf
+NPR is 1000 tree size 8352
+cumulative mem in system: 1.68654e+06 with 6 processors.
+Processor with memory 281090, speed 1 and busy? 0assigned -1812047088
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned -1812046944
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned -1812046896
+Processor with memory 281090, speed 1 and busy? 0assigned -1812046848
+1 step ready 
+Broken Edges { 1 590 2951 4270 5589 6908 }
+6 9 205789  NA NA 6230833
+Processor with memory 281090, speed 1 and busy? 0assigned -1812047088
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned -1812046944
+Processor with memory 281090, speed 1 and busy? 0assigned 0
+Processor with memory 281090, speed 1 and busy? 0assigned -1812046896
+Processor with memory 281090, speed 1 and busy? 0assigned -1812046848
+2 step ready 
+Broken Edges { 1 590 2951 4270 5589 6908 }
+6 9 205789  FirstFit NA 15797
+Broken Edges { 1 590 2951 4270 5589 6908 }
+6 9 205789  FirstFit SplitAgain 1892

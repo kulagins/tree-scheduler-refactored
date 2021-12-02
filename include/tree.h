@@ -170,6 +170,11 @@ public :
     }
 
     void addChild(Task *pchild) {
+     //   cout << "add child " << pchild->getId() << " with parent " << pchild->getParentId() <<" to "<< this->getId()<< " and children ";
+    //    for(Task* child: *pchild->getChildren()){
+     //       cout<<child->getId()<<" ";
+     //   }
+     //   cout<<endl;
         this->children->push_back(pchild);
         cost_computed = false;
     }
@@ -518,6 +523,11 @@ public:
     }
 
     void addTask(Task *newNode) {
+       // cout << "add task " << newNode->getId() << " with parent " << newNode->getParentId() << "and children ";
+      //  for(Task* child: *newNode->getChildren()){
+       //     cout<<child->getId()<<" ";
+      //  }
+      //  cout<<endl;
         tasks->push_back(newNode);
         size++;
     }
@@ -621,7 +631,9 @@ public:
     }
 
     Tree *BuildQtree();
+
     Tree *BuildQtreeOld();
+
     unsigned int HowmanySubtrees(bool quiet);
 
     bool MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size);
@@ -640,7 +652,7 @@ public:
     double SplitAgainV2(unsigned int processor_number, unsigned int num_subtrees, std::map<int, int> &taskToPrc,
                         std::map<int, bool> &isProcBusy);
 
-    vector<Task *> buildCriticalPath();
+    vector<Task *> buildCriticalPath(Tree *Qtree);
 };
 
 
@@ -660,7 +672,7 @@ void po_construct(const int N, const int *prnts, int **chstart, int **chend, int
 double MaxOutDegree(Tree *tree, int quiet);
 
 double IOCounter(Tree *tree, int *schedule,
-                 double available_memory, bool divisible, int quiet, unsigned int &com_freq,
+                 bool divisible, int quiet, unsigned int &com_freq,
                  vector<unsigned int> *brokenEdges, io_method_t method);
 
 double

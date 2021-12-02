@@ -1,0 +1,434 @@
+heterogeneous
+dump.1.3.amd.QY.case39-2136.tree.nf
+minimal memory per processor272090, maximal 290090
+cumulative mem in system: 2.52981e+06 with 9 processors.
+132190
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+132190
+132190
+dump.1.2.amd.QY.case39-2136.tree.nf
+minimal memory per processor272090, maximal 290090
+cumulative mem in system: 4.78753e+06 with 17 processors.
+102352
+Broken Edges { 1 37 324 611 898 1189 3284 3545 5903 6164 8522 8783 11141 11402 13760 14021 16378 }
+102352
+102352
+dump.0.1.metis.Goodwin.rim-447.tree.nf
+minimal memory per processor85552, maximal 121682
+cumulative mem in system: 2.40126e+06 with 23 processors.
+31599.9
+Broken Edges { 1 241 3142 5962 8581 11482 11602 14221 16618 19519 }
+31600
+23975.1
+dump.1.1.metis.CPM.cz40948-2567.tree.nf
+minimal memory per processor2211, maximal 3003
+cumulative mem in system: 68178 with 26 processors.
+754.903
+unsolvable currently
+dump.1.1.amd.QY.case39-2136.tree.nf
+minimal memory per processor272090, maximal 290090
+cumulative mem in system: 7.58943e+06 with 27 processors.
+82319.9
+unsolvable currently
+dump.0.1.metis.Wang.wang4-833.tree.nf
+minimal memory per processor3.1601e+06, maximal 3.87365e+06
+cumulative mem in system: 9.49556e+07 with 27 processors.
+1.35881e+06
+Broken Edges { 1 872 13470 }
+1.35881e+06
+909774
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf
+minimal memory per processor324288, maximal 393378
+cumulative mem in system: 1.0765e+07 with 30 processors.
+103884
+Broken Edges { 1 393 5289 13055 14349 14629 21907 27291 28113 }
+103884
+68705.6
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf
+minimal memory per processor290322, maximal 323994
+cumulative mem in system: 1.16888e+07 with 38 processors.
+106645
+unsolvable currently
+dump.0.1.amd.QY.case39-2136.tree.nf
+minimal memory per processor272090, maximal 290090
+cumulative mem in system: 1.15337e+07 with 41 processors.
+46406.6
+Broken Edges { 1 305 965 1625 2285 3035 3975 4915 5855 6795 7940 8580 9220 9860 10500 11120 14320 14960 15600 16240 16880 17500 20700 21340 21980 22620 23260 23880 27080 27720 28360 29000 29640 30260 33460 34100 34740 35380 36020 36640 39820 }
+46406.6
+46406.6
+dump.0.1.metis.CPM.cz40948-2567.tree.nf
+minimal memory per processor2312, maximal 2976
+cumulative mem in system: 108736 with 41 processors.
+465.967
+Broken Edges { 1 11 45 1298 2577 2767 3204 3855 3872 5154 6427 7706 9047 10278 11553 12840 14105 15384 16632 17938 19210 20511 21823 23150 24454 25796 27022 28256 29484 30743 32002 33297 34568 35859 37124 38396 39701 }
+465.968
+438.618
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf
+minimal memory per processor1.47142e+06, maximal 1.50951e+06
+cumulative mem in system: 6.41092e+07 with 43 processors.
+977779
+Broken Edges { 1 474 547 691 14491 28291 28892 42015 42017 42019 42021 42023 42025 42027 42029 42031 42033 42035 42037 42039 42041 42043 42045 42047 42049 42051 42053 42055 42057 42059 42061 42063 42065 42067 42069 42071 42073 42075 42077 42079 42081 42083 42085 }
+977779
+977779
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf
+minimal memory per processor3.43226e+06, maximal 3.60954e+06
+cumulative mem in system: 1.51487e+08 with 43 processors.
+2.05369e+06
+Broken Edges { 1 709 2506 8179 13900 18343 24037 29599 35332 }
+2.05369e+06
+1.39086e+06
+dump.0.1.amd.Bova.rma10-374.tree.nf
+minimal memory per processor396050, maximal 478994
+cumulative mem in system: 2.0605e+07 with 47 processors.
+296042
+Broken Edges { 1 429 6287 8776 10660 20895 21628 24472 25007 25682 25988 26178 26936 27286 27540 27934 28723 28860 29324 29549 29690 29812 30147 30397 30707 33089 45950 46370 }
+296042
+235550
+dump.0.1.metis.Bova.rma10-374.tree.nf
+minimal memory per processor381938, maximal 439734
+cumulative mem in system: 1.93382e+07 with 47 processors.
+189830
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+189830
+124036
+dump.0.1.metis.Bova.rma10-374.tree.nf
+minimal memory per processor381938, maximal 439734
+cumulative mem in system: 1.93382e+07 with 47 processors.
+189830
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+189830
+124036
+homogeneous no adaptation
+dump.1.3.amd.QY.case39-2136.tree.nf
+cumulative mem in system: 2.44881e+06 with 9 processors.
+132190
+not enough processorsunsolvable currently
+dump.1.2.amd.QY.case39-2136.tree.nf
+cumulative mem in system: 4.62553e+06 with 17 processors.
+102352
+not enough processorsunsolvable currently
+dump.0.1.metis.Goodwin.rim-447.tree.nf
+cumulative mem in system: 1.9677e+06 with 23 processors.
+31599.9
+Broken Edges { 1 85 241 3142 5962 8581 11482 11602 11662 14221 16618 19519 }
+31600
+25343.1
+dump.1.1.metis.CPM.cz40948-2567.tree.nf
+cumulative mem in system: 57486 with 26 processors.
+754.903
+not enough processorsunsolvable currently
+dump.1.1.amd.QY.case39-2136.tree.nf
+cumulative mem in system: 7.34643e+06 with 27 processors.
+82319.9
+not enough processorsunsolvable currently
+dump.0.1.metis.Wang.wang4-833.tree.nf
+cumulative mem in system: 8.53226e+07 with 27 processors.
+1.35881e+06
+Broken Edges { 1 872 13470 }
+1.35881e+06
+909774
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf
+cumulative mem in system: 9.72864e+06 with 30 processors.
+103884
+Broken Edges { 1 393 5289 13055 14349 14629 21907 27291 28113 }
+103884
+68705.6
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf
+cumulative mem in system: 1.10322e+07 with 38 processors.
+106645
+unsolvable currently
+dump.0.1.amd.QY.case39-2136.tree.nf
+cumulative mem in system: 1.11557e+07 with 41 processors.
+46406.6
+unsolvable currently
+dump.0.1.metis.CPM.cz40948-2567.tree.nf
+cumulative mem in system: 94792 with 41 processors.
+465.967
+not enough processorsunsolvable currently
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf
+cumulative mem in system: 6.32713e+07 with 43 processors.
+977779
+Broken Edges { 1 474 547 691 14491 28291 28892 42015 42017 42019 42021 42023 42025 42027 42029 42031 42033 42035 42037 42039 42041 42043 42045 42047 42049 42051 42053 42055 42057 42059 42061 42063 42065 42067 42069 42071 42073 42075 42077 42079 42081 42083 42085 }
+977779
+977779
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf
+cumulative mem in system: 1.47587e+08 with 43 processors.
+2.05369e+06
+Broken Edges { 1 709 2506 8179 13900 18343 24037 29599 35332 }
+2.05369e+06
+1.39086e+06
+dump.0.1.amd.Bova.rma10-374.tree.nf
+cumulative mem in system: 1.86144e+07 with 47 processors.
+296042
+Broken Edges { 1 429 6287 8776 10660 20895 21628 24472 25007 25682 25988 26178 26936 27286 27540 27934 28723 28860 29324 29549 29690 29812 30147 30397 30707 33089 45950 46370 }
+296042
+235550
+dump.0.1.metis.Bova.rma10-374.tree.nf
+cumulative mem in system: 1.79511e+07 with 47 processors.
+189830
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+189830
+124036
+dump.0.1.metis.Bova.rma10-374.tree.nf
+cumulative mem in system: 1.79511e+07 with 47 processors.
+189830
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+189830
+124036
+homogeneous nmany small
+dump.1.3.amd.QY.case39-2136.tree.nf
+cumulative mem in system: 2.44881e+06 with 9 processors.
+132190
+not enough processorsunsolvable currently
+dump.1.2.amd.QY.case39-2136.tree.nf
+cumulative mem in system: 4.62553e+06 with 17 processors.
+102352
+not enough processorsunsolvable currently
+dump.0.1.metis.Goodwin.rim-447.tree.nf
+cumulative mem in system: 1.9677e+06 with 23 processors.
+31599.9
+Broken Edges { 1 85 241 3142 5962 8581 11482 11602 11662 14221 16618 19519 }
+31600
+25343.1
+dump.1.1.metis.CPM.cz40948-2567.tree.nf
+cumulative mem in system: 57486 with 26 processors.
+754.903
+not enough processorsunsolvable currently
+dump.1.1.amd.QY.case39-2136.tree.nf
+cumulative mem in system: 7.34643e+06 with 27 processors.
+82319.9
+not enough processorsunsolvable currently
+dump.0.1.metis.Wang.wang4-833.tree.nf
+cumulative mem in system: 8.53226e+07 with 27 processors.
+1.35881e+06
+Broken Edges { 1 872 13470 }
+1.35881e+06
+909774
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf
+cumulative mem in system: 9.72864e+06 with 30 processors.
+103884
+Broken Edges { 1 393 5289 13055 14349 14629 21907 27291 28113 }
+103884
+68705.6
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf
+cumulative mem in system: 1.10322e+07 with 38 processors.
+106645
+unsolvable currently
+dump.0.1.amd.QY.case39-2136.tree.nf
+cumulative mem in system: 1.11557e+07 with 41 processors.
+46406.6
+unsolvable currently
+dump.0.1.metis.CPM.cz40948-2567.tree.nf
+cumulative mem in system: 94792 with 41 processors.
+465.967
+not enough processorsunsolvable currently
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf
+cumulative mem in system: 6.32713e+07 with 43 processors.
+977779
+Broken Edges { 1 474 547 691 14491 28291 28892 42015 42017 42019 42021 42023 42025 42027 42029 42031 42033 42035 42037 42039 42041 42043 42045 42047 42049 42051 42053 42055 42057 42059 42061 42063 42065 42067 42069 42071 42073 42075 42077 42079 42081 42083 42085 }
+977779
+977779
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf
+cumulative mem in system: 1.47587e+08 with 43 processors.
+2.05369e+06
+Broken Edges { 1 709 2506 8179 13900 18343 24037 29599 35332 }
+2.05369e+06
+1.39086e+06
+dump.0.1.amd.Bova.rma10-374.tree.nf
+cumulative mem in system: 1.86144e+07 with 47 processors.
+296042
+Broken Edges { 1 429 6287 8776 10660 20895 21628 24472 25007 25682 25988 26178 26936 27286 27540 27934 28723 28860 29324 29549 29690 29812 30147 30397 30707 33089 45950 46370 }
+296042
+235550
+dump.0.1.metis.Bova.rma10-374.tree.nf
+cumulative mem in system: 1.79511e+07 with 47 processors.
+189830
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+189830
+124036
+dump.0.1.metis.Bova.rma10-374.tree.nf
+cumulative mem in system: 1.79511e+07 with 47 processors.
+189830
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+189830
+124036
+homogeneous average average
+dump.1.3.amd.QY.case39-2136.tree.nf
+cumulative mem in system: 1.68654e+06 with 6 processors.
+205789
+Broken Edges { 1 1632 2951 4270 5589 6908 }
+205789
+205789
+dump.1.2.amd.QY.case39-2136.tree.nf
+cumulative mem in system: 3.09199e+06 with 11 processors.
+112010
+Broken Edges { 1 37 324 611 898 1189 3283 5902 8521 11140 13759 }
+112010
+112010
+dump.0.1.metis.Goodwin.rim-447.tree.nf
+cumulative mem in system: 1.55426e+06 with 15 processors.
+31599.9
+Broken Edges { 1 241 3142 5962 8581 11602 14221 16618 19519 }
+31599.9
+30769
+dump.1.1.metis.CPM.cz40948-2567.tree.nf
+cumulative mem in system: 44319 with 17 processors.
+833.806
+unsolvable currently
+dump.1.1.amd.QY.case39-2136.tree.nf
+cumulative mem in system: 5.05962e+06 with 18 processors.
+100807
+Broken Edges { 1 12 58 511 964 1417 1874 5205 5626 9424 9845 13643 14064 17862 18283 22081 22502 26299 }
+100807
+100807
+dump.0.1.metis.Wang.wang4-833.tree.nf
+cumulative mem in system: 6.33037e+07 with 18 processors.
+1.35881e+06
+Broken Edges { 1 872 13470 }
+1.35881e+06
+918245
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf
+cumulative mem in system: 7.17666e+06 with 20 processors.
+103884
+Broken Edges { 1 393 5289 13055 14349 14629 21907 27291 28113 }
+103884
+70079.7
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf
+cumulative mem in system: 7.67895e+06 with 25 processors.
+106645
+Broken Edges { 1 384 4864 9472 13952 18816 23232 27840 32320 37748 37749 37750 37751 37752 37753 37754 37755 37756 37757 37758 37759 37760 37761 37762 37763 }
+106645
+106645
+dump.0.1.amd.QY.case39-2136.tree.nf
+cumulative mem in system: 7.58943e+06 with 27 processors.
+59570.9
+Broken Edges { 1 305 965 1625 2285 3025 7940 8580 9220 9840 14320 14960 15600 16220 20700 21340 21980 22600 27080 27720 28360 28980 33460 34100 34740 35360 39820 }
+59570.9
+59570.9
+dump.0.1.metis.CPM.cz40948-2567.tree.nf
+cumulative mem in system: 71388 with 27 processors.
+736.001
+Broken Edges { 1 38 2569 3855 5148 7706 9047 10278 11553 12840 14105 15377 17932 20505 23150 24454 25796 27022 28249 30743 32002 33291 35859 37124 38396 39701 }
+736.001
+718.654
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf
+cumulative mem in system: 4.17331e+07 with 28 processors.
+978744
+Broken Edges { 1 474 547 691 14491 28291 28892 42015 42017 42019 42021 42023 42025 42027 42029 42031 42033 42035 42037 42039 42041 42043 42045 42047 42049 42051 42053 42055 }
+978744
+978744
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf
+cumulative mem in system: 9.85852e+07 with 28 processors.
+2.05369e+06
+Broken Edges { 1 709 2506 8179 13900 18343 24037 29599 35332 }
+2.05369e+06
+1.39338e+06
+dump.0.1.amd.Bova.rma10-374.tree.nf
+cumulative mem in system: 1.35632e+07 with 31 processors.
+296042
+Broken Edges { 1 429 6287 8776 10660 20895 21628 24472 25007 25682 25988 26178 26936 27286 27540 27934 28723 28860 29324 29549 29690 29812 30147 30397 30707 33089 45950 46370 }
+296042
+288137
+dump.0.1.metis.Bova.rma10-374.tree.nf
+cumulative mem in system: 1.27359e+07 with 31 processors.
+189830
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+189830
+125880
+dump.0.1.metis.Bova.rma10-374.tree.nf
+cumulative mem in system: 1.27359e+07 with 31 processors.
+189830
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+189830
+125880
+homogeneous few big
+dump.1.3.amd.QY.case39-2136.tree.nf
+cumulative mem in system: 870270 with 3 processors.
+512357
+Broken Edges { 1 1632 2951 }
+512357
+512357
+dump.1.2.amd.QY.case39-2136.tree.nf
+cumulative mem in system: 1.45045e+06 with 5 processors.
+299282
+Broken Edges { 1 3283 5902 8521 11140 }
+299282
+299282
+dump.0.1.metis.Goodwin.rim-447.tree.nf
+cumulative mem in system: 851774 with 7 processors.
+49480.7
+Broken Edges { 1 181 5902 11542 16558 }
+49480.7
+48192.9
+dump.1.1.metis.CPM.cz40948-2567.tree.nf
+cumulative mem in system: 24024 with 8 processors.
+2748.53
+Broken Edges { 1 3 3312 6279 12570 15667 18848 21812 }
+2748.53
+2748.53
+dump.1.1.amd.QY.case39-2136.tree.nf
+cumulative mem in system: 2.61081e+06 with 9 processors.
+126826
+Broken Edges { 1 964 1417 1874 5204 9423 13642 17861 22080 }
+126826
+126826
+dump.0.1.metis.Wang.wang4-833.tree.nf
+cumulative mem in system: 3.48628e+07 with 9 processors.
+1.35881e+06
+Broken Edges { 1 872 13470 }
+1.35881e+06
+1.01187e+06
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf
+cumulative mem in system: 3.93378e+06 with 10 processors.
+103884
+Broken Edges { 1 393 5289 13055 14629 21907 27291 28113 }
+103884
+101968
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf
+cumulative mem in system: 3.88793e+06 with 12 processors.
+106645
+Broken Edges { 1 384 4864 9472 13952 18816 23232 27840 32320 37761 37762 37763 }
+106645
+106645
+dump.0.1.amd.QY.case39-2136.tree.nf
+cumulative mem in system: 3.77117e+06 with 13 processors.
+79420.1
+Broken Edges { 1 240 305 965 1625 2285 3025 7920 14300 20680 27060 33440 39820 }
+79420.1
+79420.1
+dump.0.1.metis.CPM.cz40948-2567.tree.nf
+cumulative mem in system: 38688 with 13 processors.
+1339.58
+Broken Edges { 1 38 2559 5141 10270 12830 15370 20498 25787 28249 30729 35849 38389 }
+1339.58
+1339.58
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf
+cumulative mem in system: 2.11332e+07 with 14 processors.
+979645
+Broken Edges { 1 474 547 691 14491 28291 28892 42015 42017 42019 42021 42023 42025 42027 }
+979645
+979645
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf
+cumulative mem in system: 5.05335e+07 with 14 processors.
+2.05369e+06
+Broken Edges { 1 709 2506 8179 13900 18343 24037 29599 35332 }
+2.05369e+06
+1.61408e+06
+dump.0.1.amd.Bova.rma10-374.tree.nf
+cumulative mem in system: 7.18491e+06 with 15 processors.
+328490
+Broken Edges { 1 429 6287 8776 10453 25007 26178 26936 27934 28860 30147 30397 30707 32953 46370 }
+328490
+328490
+dump.0.1.metis.Bova.rma10-374.tree.nf
+cumulative mem in system: 6.59601e+06 with 15 processors.
+189830
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+189830
+153384
+dump.0.1.metis.Bova.rma10-374.tree.nf
+cumulative mem in system: 6.59601e+06 with 15 processors.
+189830
+Broken Edges { 1 272 11624 17803 21103 24629 27259 29957 33098 36390 }
+189830
+153384

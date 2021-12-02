@@ -605,8 +605,19 @@ public:
             }
         }
         cout << "End" << endl;
+    }
 
-
+    unsigned long countBrokenEdges(){
+        unsigned long treeSize = this->getTasks()->size();
+        unsigned long counter = 0;
+        for (unsigned int i = treeSize; i >= 1; --i) {
+            Task *currentnode = this->getTask(i);
+            if (currentnode->isBroken()) {
+                counter ++;
+            }
+        }
+        return counter;
+        
     }
 
     Tree *BuildQtree();

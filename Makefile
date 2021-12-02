@@ -78,7 +78,7 @@ USER_DIR = ./test
 CPPFLAGStest += -isystem $(GTEST_DIR)/include
 
 # Flags passed to the C++ compiler.
-CXXFLAGStest += -std=c++14 -g -Wall -Wextra -pthread  
+CXXFLAGStest += -std=c++14 -g -Wall -Wextra -pthread
 
 # All tests produced by t his Makefile.  Remember to add new tests you
 # created to the list.
@@ -112,30 +112,12 @@ gtest.a : gtest-all.o
 gtest_main.a : gtest-all.o gtest_main.o
 	$(AR) $(ARFLAGS) $@ $^
 
-# For simplicity and to avoid depending on Google Test's
-# implementation details, the dependencies specified below are
-# conservative and not optimized.  This is fine as Google Test
-# compiles fast and for ordinary users its source rarely changes.
-gtest-all.o : $(GTEST_SRCS_)
-	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
-            $(GTEST_DIR)/src/gtest-all.cc
-
-gtest_main.o : $(GTEST_SRCS_)
-	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
-            $(GTEST_DIR)/src/gtest_main.cc
-
-gtest.a : gtest-all.o
-	$(AR) $(ARFLAGS) $@ $^
-
-gtest_main.a : gtest-all.o gtest_main.o
-	$(AR) $(ARFLAGS) $@ $^
-
 # add new target here if new test files are created
 sample1.o: $(USER_DIR)/test.cpp $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGStest) $(CXXFLAGStest) -c $(USER_DIR)/test.cpp -o $@
 
-sample1_unittest : sample1.o gtest_main.a lib/heuristics.a
-	$(CXX) $(CPPFLAGStest) $(CXXFLAGStest) $(LIBS) -lpthread $^ -o ${TEST_BIN_PATH}/$@
+ sample1_unittest : sample1.o gtest_main.a
+	 $(CXX) $(CPPFLAGStest) $(CXXFLAGStest) -lpthread $^ -o ${TEST_BIN_PATH}/$@
 
 .PHONY: clean all
 

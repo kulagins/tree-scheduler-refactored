@@ -285,8 +285,6 @@ Tree *read_tree(const char *filename) {
             } else {
                 task = new Task(1 + num_tasks - parent_id, nw, ew, msw);
                 task->setId(1 + num_tasks - id);
-                // DISCLAIMER: this is not working properly until tree::addRoot has been refactored.
-                // it is missing adding the children.
                 tree->addTask(task);
             }
         }

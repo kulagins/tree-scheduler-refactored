@@ -1,11 +1,12 @@
 #include "../include/cluster.h"
+#include "../include/tree.h"
 
 using namespace std;
 
 Cluster *Cluster::fixedCluster = NULL;
 
 vector<double> Cluster::build3LevelMemorySizes(double minMem, double maxMem, unsigned int num_processors) {
-   // cout << "minimal memory per processor" << minMem << ", maximal " << maxMem << endl;
+    // cout << "minimal memory per processor" << minMem << ", maximal " << maxMem << endl;
     double cumulativeMem = 0;
     vector<double> memSizes(num_processors);
     memSizes.resize(num_processors);
@@ -21,7 +22,7 @@ vector<double> Cluster::build3LevelMemorySizes(double minMem, double maxMem, uns
         memSizes[k] = maxMem;
         cumulativeMem += memSizes[k];
     }
-   // cout << "cumulative mem in system: " << cumulativeMem << " with " << num_processors << " processors." << endl;
+    // cout << "cumulative mem in system: " << cumulativeMem << " with " << num_processors << " processors." << endl;
     return memSizes;
 }
 
@@ -33,7 +34,7 @@ vector<double> Cluster::buildHomogeneousMemorySizes(double memSize, unsigned int
         memSizes[k] = memSize;
     }
 
-   // cout << "cumulative mem in system: " << num_processors * memSize << " with " << num_processors << " processors."
+    // cout << "cumulative mem in system: " << num_processors * memSize << " with " << num_processors << " processors."
     //     << endl;
     return memSizes;
 }
@@ -59,15 +60,57 @@ Processor *Cluster::getFirstFreeProcessor() {
         if (!(*iter)->isBusy)
             return (*iter);
     }
-   // cout << "no free procs anymore, returning last" << endl;
-    //
-    // this->printProcessors();
     throw std::out_of_range("No free processor available anymore!");
-   // return this->processors.back();
 }
 
+//todo rewrite with flag
+bool Cluster::hasFreeProcessor() {
+    for (vector<Processor *>::iterator iter = this->processors.begin(); iter < this->processors.end(); iter++) {
+        if (!(*iter)->isBusy)
+            return true;
+    }
+    return false;
+}
 
+Processor *Cluster::getFirstFreeProcessorOrSmallest() {
+    for (vector<Processor *>::iterator iter = this->processors.begin(); iter < this->processors.end(); iter++) {
+        if (!(*iter)->isBusy)
+            return (*iter);
+    }
+    return this->processors.back();
+}
 
+Processor *Cluster::getLastProcessor() {
+    return this->processors.back();
+}
+
+void Processor::assignTask(Task *taskToBeAssigned) {
+    this->assignedTask = taskToBeAssigned;
+    taskToBeAssigned->setAssignedProcessor(this);
+    this->isBusy = true;
+}
+
+void Processor::assignTaskId(unsigned int taskToBeAssigned) {
+    this->assignedTaskId = taskToBeAssigned;
+    this->isBusy = true;
+}
+
+int Processor::getAssignedTaskId() const {
+    return assignedTaskId;
+}
+
+Task *Processor::getAssignedTask() const {
+    return assignedTask;
+}
+
+void Cluster::assignTasksForIds(Tree *tree) {
+    for (Processor *p: getProcessors()) {
+        if (p->getAssignedTaskId() != -1 && p->getAssignedTask() == nullptr) {
+            p->assignTask(tree->getTask(p->getAssignedTaskId()));
+        }
+    }
+
+}
 
 
 

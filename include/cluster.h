@@ -9,9 +9,11 @@
 #include <forward_list>
 #include <map>
 #include <vector>
-#include "tree.fwd.h"
 
 using namespace std;
+
+class Tree;
+class Task;
 
 class Processor {
 protected:
@@ -60,21 +62,14 @@ public:
         return processorSpeed;
     }
 
-   // void assignTask(Task *taskToBeAssigned) {
-  //      this->assignedTask = taskToBeAssigned;
-  //      this->isBusy = true;
-  //  }
-    void assignTaskId( unsigned int taskToBeAssigned) {
-        this->assignedTaskId = taskToBeAssigned;
-        this->isBusy = true;
-    }
-    int getAssignedTaskId() const {
-        return assignedTaskId;
-    }
-    Task *getAssignedTask() const {
-        return assignedTask;
-    }
 
+    int getAssignedTaskId() const;
+
+    void assignTaskId(unsigned int taskToBeAssigned);
+
+    Task *getAssignedTask() const;
+
+    void assignTask(Task *taskToBeAssigned);
 };
 
 class Cluster {
@@ -209,6 +204,14 @@ public:
     static std::map<int, int> buildProcessorSpeeds(int num_processors);
 
     void SetBandwidth(double CCR, Tree *treeobj);
+
+    Processor *getFirstFreeProcessorOrSmallest();
+
+     bool hasFreeProcessor();
+
+    Processor *getLastProcessor();
+
+    void assignTasksForIds(Tree *tree);
 };
 
 #endif

@@ -21,7 +21,6 @@
 #include "../include/lib-io-tree-free-methods.h"
 #include <sys/time.h>
 #include <algorithm>
-#include "../include/cluster.fwd.h"
 
 #ifndef CLUSTER_H
 #define CLUSTER_H
@@ -50,7 +49,7 @@ double u_wseconds(void) {
 // BUilds quotient tree for the whole original tree
 Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for space side
     root->breakEdge();
-    root->getMakespanCost(true, true); //update
+   root->getMakespanCost(true, true); //update
 
     Task *copy;
     Task *parent;
@@ -1000,14 +999,15 @@ double IOCounter(Tree *tree, int *schedule, bool divisible, int quiet, unsigned 
             unloaded = find(unloaded_nodes.begin(), unloaded_nodes.end(), cur_task_id);
             if (unloaded != unloaded_nodes.end()) { //find node cur_task_id unloaded
                 //cout<<", (break) "<<endl;
-                Cluster::getFixedCluster()->getFirstFreeProcessor()->assignTaskId(
-                        tree->getTask(cur_task_id)->getOtherSideId());
-                //     Cluster::getFixedCluster()->getFirstFreeProcessor()->assignTask(
-                //         tree->getOriginalTree()->getTask(tree->getTask(cur_task_id)->getOtherSideId()));
+               if( Cluster::getFixedCluster()-> hasFreeProcessor()){
+                   Cluster::getFixedCluster()->getFirstFreeProcessor()->assignTaskId(
+                           tree->getTask(cur_task_id)->getOtherSideId());
+               }
+
                 brokenEdges->push_back(tree->getTask(cur_task_id)->getOtherSideId());
 //                cout << "iocounter get free proc "
   //                   << Cluster::getFixedCluster()->getFirstFreeProcessor()->getMemorySize() << " for task "
-   //                  << tree->getTask(cur_task_id)->getOtherSideId() << endl;
+   //                  << subtree->getTask(cur_task_id)->getOtherSideId() << endl;
                 ++com_freq;
                 unloaded_nodes.erase(unloaded);
                 temp.clear();
@@ -1036,7 +1036,7 @@ double IOCounter(Tree *tree, int *schedule, bool divisible, int quiet, unsigned 
                 MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
                 schedule_copy = copyScheduleBackwards(schedule_f);
 
-                if (memory_required > Cluster::getFixedCluster()->getFirstFreeProcessor()->getMemorySize()) {
+                if (memory_required > Cluster::getFixedCluster()->getFirstFreeProcessorOrSmallest()->getMemorySize()) {
                     //   cout << "memory required " << memory_required << ", is larger than what is available " << available_memory << endl;
                     // cout << "----------------------Processing subtree!" << endl;
                     IO_sub = IOCounter(subtree, schedule_copy, divisible, quiet, com_freq,
@@ -1065,7 +1065,7 @@ double IOCounter(Tree *tree, int *schedule, bool divisible, int quiet, unsigned 
                 }
 
                 double data_to_unload = memory_occupation + node_cost - currentTask->getEdgeWeight() -
-                                        Cluster::getFixedCluster()->getFirstFreeProcessor()->getMemorySize();
+                                        Cluster::getFixedCluster()->getFirstFreeProcessorOrSmallest()->getMemorySize();
 
                 if (!quiet) {
                     cerr << "min data to unload " << data_to_unload << endl;

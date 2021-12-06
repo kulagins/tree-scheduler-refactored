@@ -163,7 +163,7 @@ int main(int argc, char **argv) {
         time = clock() - time;
         //  cout << "1 step ready " << endl;
         //  number_subtrees = tree->HowmanySubtrees(false);
-       // cout << makespan << endl;
+        // cout << makespan << endl;
         //    std::cout << number_subtrees << " " << num_processors << " "
         //         << makespan << " " << stage1 << " NA NA " << time << std::endl;
 
@@ -193,16 +193,16 @@ int main(int argc, char **argv) {
         time = clock() - time;
         number_subtrees = tree->HowmanySubtrees(true);
         makespan = tree->getRoot()->getMakespanCost(true, true);
-     //   std::cout << number_subtrees << " " << num_processors << " " << makespan << " " << stage1 << " " << stage2
-     //             << " NA " << time << std::endl;
-       // cout << makespan << endl;
+        //   std::cout << number_subtrees << " " << num_processors << " " << makespan << " " << stage1 << " " << stage2
+        //             << " NA " << time << std::endl;
+        // cout << makespan << endl;
         time = clock();
         if (number_subtrees > num_processors) {
             stage3 = "Merge";
-            // makespan = tree->Merge(true);
-            makespan = tree->MergeV2(number_subtrees, num_processors,
-                                     Cluster::getFixedCluster()->getFirstFreeProcessor()->getMemorySize(),
-                                     true);
+            makespan = tree->Merge(true);
+              //  makespan = tree->MergeV2(number_subtrees, num_processors,
+                //                       Cluster::getFixedCluster()->getFirstFreeProcessorOrSmallest()->getMemorySize(),
+                  //                   true);
             //Merge(tree, number_subtrees, num_processors, memorySize, chstart, children, true);
         } else if (number_subtrees == num_processors) {
             stage3 = "Nothing";
@@ -212,10 +212,10 @@ int main(int argc, char **argv) {
         }
         time = clock() - time;
         //  Cluster::getFixedCluster()->printProcessors();
-       // number_subtrees = tree->HowmanySubtrees(false);
+        // number_subtrees = tree->HowmanySubtrees(false);
         cout << makespan << endl;
-      //  std::cout << number_subtrees << " " << num_processors << " " << makespan << " " << stage1 << " " << stage2
-       //           << " " << stage3 << " " << time << std::endl;
+        //  std::cout << number_subtrees << " " << num_processors << " " << makespan << " " << stage1 << " " << stage2
+        //           << " " << stage3 << " " << time << std::endl;
 
         delete tree;
         delete untouchedTree;

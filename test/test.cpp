@@ -145,6 +145,7 @@ TEST_F(TreeTest, testBuildQTreeSize){
 }
 
 TEST_F(TreeTest, testBuildQTreeOtherSideIds){
+    Cluster::setFixedCluster(new Cluster());
     Tree *qTree = tree->BuildQtree();
     // the root of a broken part has the otherSideId of the next node in the qtree and vice versa
     Task *task;

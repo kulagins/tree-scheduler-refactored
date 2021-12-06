@@ -126,7 +126,7 @@ TEST_F(TreeTest, emptyTreeIsEmpty){
     EXPECT_EQ(t->getSize(),0);
 }
 
-// Disclaimer: Only works, when DIVISION_LENGTH is large enough
+
 TEST_F(TreeTest,testFixtureStructure){
     cout << tree->getSize()<<endl;
     EXPECT_EQ(tree->getSize(),4*DIVISION_LENGTH +1);
@@ -210,8 +210,7 @@ TEST_F(TreeTest, testBuildSubTreeRootAttributesDoNotChange){
         task = subTreeRoots->at(i);
         subTree = BuildSubtree(tree, task);
         subTreeRoot = subTree->getRoot();
-
-        EXPECT_EQ(task->getCost(),subTreeRoot->getCost());
+        
         EXPECT_EQ(task->getEdgeWeight(),subTreeRoot->getEdgeWeight());
         EXPECT_EQ(task->getNodeWeight(),subTreeRoot->getNodeWeight());
         EXPECT_EQ(task->getMakespanWeight(),subTreeRoot->getMakespanWeight());

@@ -344,7 +344,7 @@ public :
     }
 
     double getMakespanCost(bool commulication = false, bool updateEnforce = false) {
-        if (!Cluster::getFixedCluster()->isHomogeneous()) throw "Cluster not homogeneous";
+        if (!(Cluster::getFixedCluster())->isHomogeneous()) throw "Cluster not homogeneous";
 
         if ((makespan_computed == true) & (updateEnforce == false)) {
             if (commulication == true) {

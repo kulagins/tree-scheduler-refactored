@@ -19,6 +19,7 @@ namespace {
 
         TreeTest() {
             // initialize all tasks
+            Cluster::setFixedCluster(new Cluster());
             Task * task;
             const int NUM_TASKS = 4*DIVISION_LENGTH +1;
             Task * root = new Task(1, 1, 1, true);
@@ -140,6 +141,7 @@ TEST_F(TreeTest, testBuildQTreeSize){
 
     // there is one node in the QTree for every broken edge in the original tree
     EXPECT_EQ(tree->countBrokenEdges(), qTree->getSize());
+
 }
 
 TEST_F(TreeTest, testBuildQTreeOtherSideIds){

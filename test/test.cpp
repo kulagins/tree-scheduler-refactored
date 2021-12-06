@@ -210,7 +210,6 @@ TEST_F(TreeTest, testBuildSubTreeRootAttributesDoNotChange){
         task = subTreeRoots->at(i);
         subTree = BuildSubtree(tree, task);
         subTreeRoot = subTree->getRoot();
-        
         EXPECT_EQ(task->getEdgeWeight(),subTreeRoot->getEdgeWeight());
         EXPECT_EQ(task->getNodeWeight(),subTreeRoot->getNodeWeight());
         EXPECT_EQ(task->getMakespanWeight(),subTreeRoot->getMakespanWeight());
@@ -328,7 +327,7 @@ TEST_F(TreeTest, testBuildSubTreeOthersideIdOfBrokenEdgesIsZero){
                 if (originalChild->isBroken()){
                     EXPECT_EQ(originalChild->getOtherSideId(),0);
                 }
-            }        
+            } 
         }
     }
 }

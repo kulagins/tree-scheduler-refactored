@@ -108,6 +108,10 @@ public:
         }
     }
 
+    int getConfiguration(){
+        //TODO: implement
+        return 0;
+    }
 public:
     bool isHomogeneous() const {
         return isMemoryHomogeneous && isProcessorHomogeneous && isBandwidthHomogenenous;
@@ -169,6 +173,36 @@ public:
             cout << "Processor with memory " << (*iter)->getMemorySize() << ", speed " << (*iter)->getProcessorSpeed()
                  << " and busy? " << (*iter)->isBusy << endl;
         }
+    }
+
+    string getPrettyClusterString(){
+        string out = "Cluster:\n";
+        int numProcessors = this->processors.size();
+        out += "#Nodes: "+to_string(numProcessors)+", ";
+        out += "Configuration: "+to_string(this->getConfiguration())+", ";
+        out += "MinMemory: "+to_string(this->getLastProcessor())+", ";
+        out += "CumulativeMemory: "+to_string(this->getCumulativeMemory());
+        /*
+        out += "MinMemory: "+to_string(this->getLastProcessor())+", ";
+        out += "CumulativeMemory: "+to_string(this->buildHomogeneousMemorySizes(maxoutd, numProcessors));*/
+        return out;
+    }
+
+    int getLastProcessor(){
+        //so far, it returns the proessor with the minimal memory size by using a linear search
+        int min = INT_MAX;
+        for (Processor *proc: (this->processors)){
+            min = (min>proc->getMemorySize())? proc->getMemorySize():min;
+        }
+        return min;
+    }
+
+    int getCumulativeMemory(){
+        int sum = 0;
+        for (Processor *proc: (this->processors)){
+            sum += proc->getMemorySize();
+        }
+        return sum;
     }
 
     static void setFixedCluster(Cluster *cluster) {

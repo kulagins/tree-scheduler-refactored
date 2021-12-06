@@ -12,6 +12,8 @@
 #include "../include/heuristics.h"
 #include "../include/inputParser.h"
 
+const bool verbose = false;
+
 void buildFixedClusterWithSpeedsAndMemory(double CCR, unsigned int num_processors, Tree *treeobj) {
     Cluster *cluster = new Cluster(num_processors, true);
     double minMem;
@@ -29,14 +31,24 @@ void buildFixedClusterWithSpeedsAndMemory(double CCR, unsigned int num_processor
     Cluster::getFixedCluster()->setMemorySizes(memorySizes);
     delete temp_schedule;
 }
+void initOutput(){
+    if (!verbose){
+        cout.setstate(std::ios_base::failbit);
+    }
+}
+
+void quietPrint(string text){
+    cout.clear();
+    cout << text << endl;
+    initOutput();
+}
 
 int main(int argc, char **argv) {
+    initOutput();
     InputParser * input = new InputParser(argc, argv);
     string stage1, stage2 = "FirstFit", stage3;
 
     ifstream OpenFile(input->getPathToTreeList());
-
-    
     list<Task *> parallelSubtrees;
     string treename;
     unsigned int num_processors;
@@ -81,7 +93,7 @@ int main(int argc, char **argv) {
         }
 
         buildFixedClusterWithSpeedsAndMemory(CCR, num_processors, tree);
-
+        quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
         time = clock();
 
       /// tree->Print(cout);
@@ -153,6 +165,8 @@ int main(int argc, char **argv) {
         number_subtrees = tree->HowmanySubtrees(false);
         std::cout << number_subtrees << " " << num_processors << " " << makespan << " " << stage1 << " " << stage2
                   << " " << stage3 << " " << time << std::endl;
+        
+        quietPrint(treename+" "+to_string(makespan)+" "+to_string(time)+"\n\n");
 
         delete tree;
         delete untouchedTree;

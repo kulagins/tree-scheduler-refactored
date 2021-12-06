@@ -87,6 +87,7 @@ public :
         parent = 0;
         cost_computed = false;
         children = new vector<Task *>();
+        Qtree_id = 0;
     }
 
     Task(double nw, double ew, double mw, bool root = false) {
@@ -102,6 +103,7 @@ public :
         node_weight = nw;
         MS_weight = mw;
         makespan_nocommu = mw;
+        Qtree_id = 0;
         if (root) {
             this->__root = true;
         } else {
@@ -123,6 +125,7 @@ public :
         MS_weight = mw;
         makespan_nocommu = mw;
         parent_id = pparent_id;
+        Qtree_id = 0;
     }
 
     Task(const Task &otherTask, const unsigned int newId, Task *newParent)
@@ -349,7 +352,7 @@ public :
     }
 
     double getMakespanCost(bool commulication = false, bool updateEnforce = false) {
-        if (!Cluster::getFixedCluster()->isHomogeneous()) throw "Cluster not homogeneous";
+        if (!(Cluster::getFixedCluster())->isHomogeneous()) throw "Cluster not homogeneous";
 
         if ((makespan_computed == true) & (updateEnforce == false)) {
             if (commulication == true) {

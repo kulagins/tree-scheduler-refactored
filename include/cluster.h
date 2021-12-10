@@ -9,11 +9,11 @@
 #include <forward_list>
 #include <map>
 #include <vector>
+#include "tree.fwd.h"
+#include "inputParser.h"
 
 using namespace std;
 
-class Tree;
-class Task;
 
 class Processor {
 protected:
@@ -212,6 +212,21 @@ public:
     Processor *getLastProcessor();
 
     void assignTasksForIds(Tree *tree);
+
+    static  void buildHetStaticClusterWithConfiguration(int configNUmber, double maxMinMem, double maxEdgesToMakespanWeights);
+
+    static  void buildTreeDepHomBandwidths(double CCR, unsigned int num_processors, Tree *treeobj, double &minMem, double &maxoutd,
+                                           schedule_traversal *&temp_schedule);
+
+    static  void buildMemHetTreeDepCluster(double CCR, unsigned int num_processors, Tree *treeobj);
+
+    static  void
+    buildHomogeneousCluster(double CCR, unsigned int num_processors, Tree *treeobj, HeterogeneousAdaptationMode mode);
+
+    static vector<double> build3LevelMemorySizes(vector<double> memories, vector<unsigned int> processorGroupSizes);
+
+    static void buildHomStaticClusterWithConfiguration(int configNUmber, double maxMinMem, double maxEdgesToMakespanWeights,
+                                                HeterogeneousAdaptationMode adaptationMode);
 };
 
 #endif

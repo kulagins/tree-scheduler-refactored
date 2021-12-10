@@ -669,7 +669,6 @@ public:
 };
 
 
-typedef list<int> schedule_traversal;
 
 typedef map<unsigned int, double> io_map;
 typedef pair<unsigned int, unsigned int> node_sche;

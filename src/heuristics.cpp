@@ -131,7 +131,7 @@ double Task::SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned 
 
     while (!currentNode->isLeaf()) {
         MS_sequential = MS_sequential + currentNode->getMakespanWeight();
-
+        //hier
         weightsTasksPriorityQueue = getWeightPQ(parallelRoots, currentNode);
         if (weightsTasksPriorityQueue == -1) break;
         else {
@@ -810,7 +810,7 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
     Task *lastSubtreeRoot = tree->getTask(criticalPath->back()->getOtherSideId());
 
     double homogeneousBandwidth;
-    if (Cluster::getFixedCluster()->isHomogeneous()) {
+    if (Cluster::getFixedCluster()->isBandwidthHomogeneous()) {
         homogeneousBandwidth = Cluster::getFixedCluster()->getHomogeneousBandwidth();
     } else throw "Cluster not homogeneous";
 

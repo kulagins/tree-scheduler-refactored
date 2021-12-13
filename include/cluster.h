@@ -32,7 +32,7 @@ public:
         this->processorSpeed = 1;
         isBusy = false;
         assignedTask = nullptr;
-        assignedTaskId =-1;
+        assignedTaskId = -1;
     }
 
     explicit Processor(double memorySize) {
@@ -40,7 +40,7 @@ public:
         this->processorSpeed = 1;
         isBusy = false;
         assignedTask = nullptr;
-        assignedTaskId =-1;
+        assignedTaskId = -1;
     }
 
     Processor(double memorySize, double processorSpeed) {
@@ -182,8 +182,19 @@ public:
     void printProcessors() {
         for (vector<Processor *>::iterator iter = this->processors.begin(); iter < processors.end(); iter++) {
             cout << "Processor with memory " << (*iter)->getMemorySize() << ", speed " << (*iter)->getProcessorSpeed()
-                 << " and busy? " << (*iter)->isBusy << "assigned "<< (*iter)->getAssignedTaskId()<< endl;
+                 << " and busy? " << (*iter)->isBusy << "assigned " << (*iter)->getAssignedTaskId() << endl;
         }
+    }
+
+    void printInfo() {
+        double cumulativeMemory = 0;
+        for (vector<Processor *>::iterator iter = this->processors.begin(); iter < processors.end(); iter++) {
+            cumulativeMemory += (*iter)->getMemorySize();
+        }
+        cout << fixed << (isMemoryHomogeneous ? "Homogeneous" : "Heterogeneous") << " cluster with "
+             << processors.size()
+             << " processors," << " cumulative memory " << cumulativeMemory << endl;
+
     }
 
     static void setFixedCluster(Cluster *cluster) {
@@ -207,26 +218,32 @@ public:
 
     Processor *getFirstFreeProcessorOrSmallest();
 
-     bool hasFreeProcessor();
+    bool hasFreeProcessor();
 
     Processor *getLastProcessor();
 
     void assignTasksForIds(Tree *tree);
 
-    static  void buildHetStaticClusterWithConfiguration(int configNUmber, double maxMinMem, double maxEdgesToMakespanWeights);
+    static void buildStatic2LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights);
 
-    static  void buildTreeDepHomBandwidths(double CCR, unsigned int num_processors, Tree *treeobj, double &minMem, double &maxoutd,
-                                           schedule_traversal *&temp_schedule);
+    static void
+    buildTreeDepHomBandwidths(double CCR, unsigned int num_processors, Tree *treeobj, double &minMem, double &maxoutd,
+                              schedule_traversal *&temp_schedule);
 
-    static  void buildMemHetTreeDepCluster(double CCR, unsigned int num_processors, Tree *treeobj);
+    static void buildMemHetTreeDepCluster(double CCR, unsigned int num_processors, Tree *treeobj);
 
-    static  void
+    static void
     buildHomogeneousCluster(double CCR, unsigned int num_processors, Tree *treeobj, HeterogeneousAdaptationMode mode);
 
-    static vector<double> build3LevelMemorySizes(vector<double> memories, vector<unsigned int> processorGroupSizes);
+    static vector<double> buildNLevelMemorySizes(vector<double> memories, vector<unsigned int> processorGroupSizes);
 
-    static void buildHomStaticClusterWithConfiguration(int configNUmber, double maxMinMem, double maxEdgesToMakespanWeights,
-                                                HeterogeneousAdaptationMode adaptationMode);
+    static void buildHomStatic2LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights,
+                                            HeterogeneousAdaptationMode adaptationMode);
+
+    static void buildStatic3LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights);
+
+    static void buildHomStatic3LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights,
+                                            HeterogeneousAdaptationMode adaptationMode);
 };
 
 #endif

@@ -27,11 +27,11 @@ int main(int argc, char **argv) {
     unsigned int number_subtrees;
     float CCR = 0;
     float NPR = 0;
-    int staticClusterNumber = 0;
+    int clusterConfigurationNumber = 0;
 
     switch (input->getClusteringMode()) {
         case staticClustering: {
-            staticClusterNumber = (int) input->getStaticClusterNumber();
+            clusterConfigurationNumber = (int) input->getStaticClusterConfigurationNumber();
             break;
         }
         case treeDependent: {
@@ -67,17 +67,29 @@ int main(int argc, char **argv) {
             delete schedule_f;
         } while (OpenFilePreliminary.good());
         OpenFilePreliminary.close();
-        if (input->getHeterogenityLevel() == homogeneus) {
-            Cluster::buildHomStaticClusterWithConfiguration(staticClusterNumber, maxMinMem, maxEdgesToMakespanWeights,
-                                                            input->getAdaptationMode() ? input->getAdaptationMode()
-                                                                                       : noAdaptation);
-        } else {
-            Cluster::buildHetStaticClusterWithConfiguration(staticClusterNumber, maxMinMem, maxEdgesToMakespanWeights);
+        switch (clusterConfigurationNumber) {
+            case 1:
+                if (input->getHeterogenityLevel() == homogeneus) {
+                    Cluster::buildHomStatic2LevelCluster(maxMinMem, maxEdgesToMakespanWeights,
+                                                         input->getAdaptationMode() ? input->getAdaptationMode()
+                                                                                    : noAdaptation);
+                } else {
+                    Cluster::buildStatic2LevelCluster(maxMinMem, maxEdgesToMakespanWeights);
+                }
+                break;
+            case 2:
+                if (input->getHeterogenityLevel() == homogeneus) {
+                    Cluster::buildHomStatic3LevelCluster(maxMinMem, maxEdgesToMakespanWeights,
+                                                         input->getAdaptationMode() ? input->getAdaptationMode()
+                                                                                    : noAdaptation);
+                } else {
+                    Cluster::buildStatic3LevelCluster(maxMinMem, maxEdgesToMakespanWeights);
+                }
+                break;
+            default:
+                throw "No such cluster configuration is implemented: " + clusterConfigurationNumber;
         }
-        //   C
-
-
-        //   Cluster::getFixedCluster()->printProcessors();
+        Cluster::getFixedCluster()->printInfo();
     }
 
     std::vector<int> brokenEdges;

@@ -30,7 +30,7 @@ vector<double> Cluster::build3LevelMemorySizes(double minMem, double maxMem, uns
 vector<double> Cluster::buildNLevelMemorySizes(vector<double> memories, vector<unsigned int> processorGroupSizes) {
     // cout << "minimal memory per processor" << minMem << ", maximal " << maxMem << endl;
     double cumulativeMem = 0;
-    double completeProcessorCount = std::accumulate(processorGroupSizes.begin(), processorGroupSizes.end(), 0);
+    //double completeProcessorCount = std::accumulate(processorGroupSizes.begin(), processorGroupSizes.end(), 0);
     vector<double> memSizes;
    // memSizes.resize(completeProcessorCount);
     for (int i = 0; i < processorGroupSizes.size(); i++) {
@@ -125,13 +125,17 @@ Cluster::buildHomStatic2LevelCluster(double maxMinMem, double maxEdgesToMakespan
 
     switch (adaptationMode) {
         case manySmall:
-            memorySizes = buildHomogeneousMemorySizes(maxMemInCluster, 3758);
+            num_processors = 3758;
+            memorySizes = buildHomogeneousMemorySizes(maxMemInCluster, num_processors);
             break;
         case average:
             throw "No average processors in a 2-step cluster!";
         case fewBig:
             num_processors = 906;
             memorySizes = buildHomogeneousMemorySizes(maxMemInCluster * 8, num_processors);
+            break;
+        default:
+            throw "invalid Clustering-Adaption mode";
             break;
     }
 
@@ -164,6 +168,9 @@ Cluster::buildHomStatic3LevelCluster(double maxMinMem, double maxEdgesToMakespan
         case fewBig:
             num_processors = 100;
             memorySizes = buildHomogeneousMemorySizes(maxMemInCluster * 8, num_processors);
+            break;
+        default:
+            throw "invalid Clustering-Adaption mode";
             break;
     }
 

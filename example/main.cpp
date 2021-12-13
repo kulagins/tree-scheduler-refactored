@@ -10,15 +10,45 @@
 #include <stdlib.h>
 #include "../include/lib-io-tree.h"
 #include "../include/heuristics.h"
+#include "../include/inputParser.h"
 
+const bool verbose = false;
+
+void buildFixedClusterWithSpeedsAndMemory(double CCR, unsigned int num_processors, Tree *treeobj) {
+    Cluster *cluster = new Cluster(num_processors, true);
+    double minMem;
+    map<int, int> processor_speeds = Cluster::buildProcessorSpeeds(num_processors);
+    cluster->SetBandwidth(CCR, treeobj);
+    Cluster::setFixedCluster(cluster);
+
+    Cluster::getFixedCluster()->SetBandwidth(CCR, treeobj);
+    double maxoutd = MaxOutDegree(treeobj, true);
+    schedule_traversal *temp_schedule = new schedule_traversal();
+    MinMem(treeobj, maxoutd, minMem, *temp_schedule, true);
+
+    vector<double> memorySizes = Cluster::buildHomogeneousMemorySizes(maxoutd, num_processors);
+    //Fix, for now we consider the non-homog cluster homogeneuos
+    Cluster::getFixedCluster()->setMemorySizes(memorySizes);
+    delete temp_schedule;
+}
+void initOutput(){
+    if (!verbose){
+        cout.setstate(std::ios_base::failbit);
+    }
+}
+
+void quietPrint(string text){
+    cout.clear();
+    cout << text << endl;
+    initOutput();
+}
 
 int main(int argc, char **argv) {
-    InputParser *input = new InputParser(argc, argv);
+    initOutput();
     string stage1, stage2 = "FirstFit", stage3;
 
     ifstream OpenFile(input->getPathToTreeList());
     ifstream OpenFilePreliminary(input->getPathToTreeList());
-
     list<Task *> parallelSubtrees;
     string treename;
     unsigned int num_processors;
@@ -117,6 +147,7 @@ int main(int argc, char **argv) {
             //   Cluster::getFixedCluster()->printProcessors();
         }
 
+        quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
 
         time = clock();
         /// tree->Print(cout);
@@ -190,9 +221,10 @@ int main(int argc, char **argv) {
             makespan = tree->SplitAgain();
         }
         time = clock() - time;
+        
+        quietPrint(treename+" "+to_string(makespan)+" "+to_string(time)+"\n\n");
         //  Cluster::getFixedCluster()->printProcessors();
         // number_subtrees = tree->HowmanySubtrees(false);
-        cout << makespan << endl;
         //  std::cout << number_subtrees << " " << num_processors << " " << makespan << " " << stage1 << " " << stage2
         //           << " " << stage3 << " " << time << std::endl;
 

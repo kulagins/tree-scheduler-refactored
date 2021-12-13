@@ -87,7 +87,7 @@ int main(int argc, char **argv) {
                 }
                 break;
             default:
-                throw "No such cluster configuration is implemented: " + clusterConfigurationNumber;
+                throw "No such cluster configuration is implemented: " + to_string(clusterConfigurationNumber);
         }
         Cluster::getFixedCluster()->printInfo();
     }

@@ -1420,6 +1420,7 @@ int MemoryCheck(Tree *tree, io_method_t method) {
     //      p->assignTask(tree->getTask(p->getAssignedTaskId()));
     //   }
     // Cluster::getFixedCluster()->printProcessors();
+    return 0;
 }
 
 void MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t method, bool skipBig) {

@@ -1143,7 +1143,7 @@ double IOCounter(Tree *tree, int *schedule, bool divisible, int quiet, unsigned 
                     }
                     pair<unsigned int, long> idAndPosition;
                     long positionOfTaskInMinimalTraversal;
-                    vector<int>::iterator edgeWeightOnSpot;
+                    //vector<int>::iterator edgeWeightOnSpot;
 
                     switch (method) {
                         case FIRST_FIT:

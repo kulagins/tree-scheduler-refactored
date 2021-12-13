@@ -63,6 +63,7 @@ public:
                 break;
 
             default:
+                cout<<"clustering mode "<<cluMode<<endl;
                 errorFunction(2);
                 break;
         }
@@ -134,27 +135,15 @@ public:
         }
     }
 
-    int getNumberOfProcessors() {
+    int getStaticClusterConfigurationNumber() {
         switch (this->clusteringMode) {
             case staticClustering:
                 return this->clusteringDependendArg1;
-                break;
             default:
                 throw "This parameter doesn't exisit within the chosen clustering mode";
-                break;
         }
     }
 
-    int getProcessorMemory() {
-        switch (this->clusteringMode) {
-            case staticClustering:
-                return this->clusteringDependendArg2;
-                break;
-            default:
-                throw "This parameter doesn't exisit within the chosen clustering mode";
-                break;
-        }
-    }
 
     void errorFunction(int reason) {
         switch (reason) {

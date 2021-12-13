@@ -10,77 +10,14 @@
 #include <stdlib.h>
 #include "../include/lib-io-tree.h"
 #include "../include/heuristics.h"
-#include "../include/inputParser.h"
 
-void buildHomogeneousBandwidths(double CCR, unsigned int num_processors, Tree *treeobj, double &minMem, double &maxoutd,
-                                schedule_traversal *&temp_schedule);
-
-
-void buildHomogeneousCluster(double CCR, unsigned int num_processors, Tree *treeobj, HeterogeneousAdaptationMode mode) {
-    // mode 0: build a cluster that uses all nodes with smallest memory
-    // mode 1: build a cluster that uses 2/3 of nodes with middle amount of memory
-    // mode 2: build a cluster that uses 1/3 of nodes with big memory
-
-    double minMem;
-    double maxoutd;
-    schedule_traversal *temp_schedule;
-    buildHomogeneousBandwidths(CCR, num_processors, treeobj, minMem, maxoutd, temp_schedule);
-    vector<double> memorySizes;
-    switch (mode) {
-        case noAdaptation:
-            memorySizes = Cluster::buildHomogeneousMemorySizes(maxoutd, num_processors);
-            break;
-        case manySmall:
-            memorySizes = Cluster::buildHomogeneousMemorySizes(min(maxoutd, minMem), num_processors);
-            break;
-        case average:
-            memorySizes = Cluster::buildHomogeneousMemorySizes((maxoutd + minMem) / 2, num_processors * 2 / 3);
-            break;
-        case fewBig:
-            memorySizes = Cluster::buildHomogeneousMemorySizes(max(maxoutd, minMem), num_processors / 3);
-            break;
-        default:
-            throw std::runtime_error("Bad mode for creating homogeneous cluster.");
-
-    }
-
-    //Fix, for now we consider the non-homog cluster homogeneuos
-    Cluster::getFixedCluster()->setMemorySizes(memorySizes);
-    delete temp_schedule;
-}
-
-void buildMemHeterogeneousCluster(double CCR, unsigned int num_processors, Tree *treeobj) {
-    double minMem;
-    double maxoutd;
-    schedule_traversal *temp_schedule;
-    buildHomogeneousBandwidths(CCR, num_processors, treeobj, minMem, maxoutd, temp_schedule);
-
-    vector<double> memorySizes = Cluster::build3LevelMemorySizes(min(maxoutd, minMem), max(maxoutd, minMem),
-                                                                 num_processors);
-    Cluster::getFixedCluster()->setMemorySizes(memorySizes);
-    delete temp_schedule;
-}
-
-
-void buildHomogeneousBandwidths(double CCR, unsigned int num_processors, Tree *treeobj, double &minMem, double &maxoutd,
-                                schedule_traversal *&temp_schedule) {
-    maxoutd = MaxOutDegree(treeobj, true);
-    temp_schedule = new schedule_traversal();
-    Cluster *cluster = new Cluster(num_processors, true);
-    map<int, int> processor_speeds = Cluster::buildProcessorSpeeds(num_processors);
-    cluster->SetBandwidth(CCR, treeobj);
-    Cluster::setFixedCluster(cluster);
-
-    Cluster::getFixedCluster()->SetBandwidth(CCR, treeobj);
-    MinMem(treeobj, maxoutd, minMem, *temp_schedule, true);
-}
 
 int main(int argc, char **argv) {
     InputParser *input = new InputParser(argc, argv);
     string stage1, stage2 = "FirstFit", stage3;
 
     ifstream OpenFile(input->getPathToTreeList());
-
+    ifstream OpenFilePreliminary(input->getPathToTreeList());
 
     list<Task *> parallelSubtrees;
     string treename;
@@ -90,13 +27,11 @@ int main(int argc, char **argv) {
     unsigned int number_subtrees;
     float CCR = 0;
     float NPR = 0;
-    float numberOfProcessors = 0;
-    float processorMemory = 0;
+    int clusterConfigurationNumber = 0;
+
     switch (input->getClusteringMode()) {
         case staticClustering: {
-            numberOfProcessors = input->getNumberOfProcessors();
-            processorMemory = input->getProcessorMemory();
-            throw "Not implemented yet";
+            clusterConfigurationNumber = (int) input->getStaticClusterConfigurationNumber();
             break;
         }
         case treeDependent: {
@@ -108,10 +43,55 @@ int main(int argc, char **argv) {
             break;
     }
 
-    //  cout.precision(20);
+    if (input->getClusteringMode() == staticClustering) {
+        double maxMinMem = 0;
+        double maxEdgesToMakespanWeights = 0;
+        double sum_edges = 0;
+        double sum_weights = 0;
 
-    //  std::cout << "AmountSubtrees " << "AmountProcessors "
-    //       << "Makespan " << "Stage1 " << "Stage2 " << "Stage3 " << "TimeConsuming" << std::endl;
+        do {
+            schedule_traversal *schedule_f = new schedule_traversal();
+            OpenFilePreliminary >> treename;
+            Tree *tree = read_tree((input->getWorkingDirectory() + treename).c_str());
+            maxoutd = MaxOutDegree(tree, true);
+            MinMem(tree, maxoutd, minMem, *schedule_f, true);
+            if (minMem > maxMinMem) {
+                maxMinMem = minMem;
+                for (Task *task: *tree->getTasks()) {
+                    sum_edges += task->getEdgeWeight();
+                    sum_weights += task->getMakespanWeight();
+                }
+                maxEdgesToMakespanWeights = sum_edges / sum_weights;
+            }
+            delete tree;
+            delete schedule_f;
+        } while (OpenFilePreliminary.good());
+        OpenFilePreliminary.close();
+        switch (clusterConfigurationNumber) {
+            case 1:
+                if (input->getHeterogenityLevel() == homogeneus) {
+                    Cluster::buildHomStatic2LevelCluster(maxMinMem, maxEdgesToMakespanWeights,
+                                                         input->getAdaptationMode() ? input->getAdaptationMode()
+                                                                                    : noAdaptation);
+                } else {
+                    Cluster::buildStatic2LevelCluster(maxMinMem, maxEdgesToMakespanWeights);
+                }
+                break;
+            case 2:
+                if (input->getHeterogenityLevel() == homogeneus) {
+                    Cluster::buildHomStatic3LevelCluster(maxMinMem, maxEdgesToMakespanWeights,
+                                                         input->getAdaptationMode() ? input->getAdaptationMode()
+                                                                                    : noAdaptation);
+                } else {
+                    Cluster::buildStatic3LevelCluster(maxMinMem, maxEdgesToMakespanWeights);
+                }
+                break;
+            default:
+                throw "No such cluster configuration is implemented: " + clusterConfigurationNumber;
+        }
+        Cluster::getFixedCluster()->printInfo();
+    }
+
     std::vector<int> brokenEdges;
     do {
         OpenFile >> treename;
@@ -128,14 +108,13 @@ int main(int argc, char **argv) {
             }
 
             if (input->getHeterogenityLevel() == homogeneus) {
-                buildHomogeneousCluster(CCR, num_processors, tree,
-                                        input->getAdaptationMode() ? input->getAdaptationMode() : noAdaptation);
+                Cluster::buildHomogeneousCluster(CCR, num_processors, tree,
+                                                 input->getAdaptationMode() ? input->getAdaptationMode()
+                                                                            : noAdaptation);
             } else {
-                buildMemHeterogeneousCluster(CCR, num_processors, tree);
+                Cluster::buildMemHetTreeDepCluster(CCR, num_processors, tree);
             }
             //   Cluster::getFixedCluster()->printProcessors();
-        } else {
-            throw std::runtime_error("No static cluster sizes yet.");
         }
 
 
@@ -200,9 +179,9 @@ int main(int argc, char **argv) {
         if (number_subtrees > num_processors) {
             stage3 = "Merge";
             makespan = tree->Merge(true);
-              //  makespan = tree->MergeV2(number_subtrees, num_processors,
-                //                       Cluster::getFixedCluster()->getFirstFreeProcessorOrSmallest()->getMemorySize(),
-                  //                   true);
+            //  makespan = tree->MergeV2(number_subtrees, num_processors,
+            //                       Cluster::getFixedCluster()->getFirstFreeProcessorOrSmallest()->getMemorySize(),
+            //                   true);
             //Merge(tree, number_subtrees, num_processors, memorySize, chstart, children, true);
         } else if (number_subtrees == num_processors) {
             stage3 = "Nothing";

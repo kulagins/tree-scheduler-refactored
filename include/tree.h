@@ -362,7 +362,7 @@ public :
     }
 
     double getMakespanCost(bool commulication = false, bool updateEnforce = false) {
-        if (!(Cluster::getFixedCluster())->isHomogeneous()) throw "Cluster not homogeneous";
+        if (!(Cluster::getFixedCluster())->isBandwidthHomogeneous()) throw "Cluster not homogeneous";
 
         if ((makespan_computed == true) & (updateEnforce == false)) {
             if (commulication == true) {
@@ -669,7 +669,6 @@ public:
 };
 
 
-typedef list<int> schedule_traversal;
 
 typedef map<unsigned int, double> io_map;
 typedef pair<unsigned int, unsigned int> node_sche;

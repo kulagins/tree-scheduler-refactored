@@ -73,6 +73,7 @@ protected:
     double makespan_difference;
     unsigned int Qtree_id;
     bool __root{};
+    Processor *assignedProcessor;
 
 public :
     unsigned int Ci;
@@ -87,6 +88,8 @@ public :
         parent = 0;
         cost_computed = false;
         children = new vector<Task *>();
+        assignedProcessor = nullptr;
+        Qtree_id = 0;
     }
 
     Task(double nw, double ew, double mw, bool root = false) {
@@ -97,11 +100,12 @@ public :
         parent = 0;
         cost_computed = false;
         children = new vector<Task *>();
-
+        assignedProcessor = nullptr;
         edge_weight = ew;
         node_weight = nw;
         MS_weight = mw;
         makespan_nocommu = mw;
+        Qtree_id = 0;
         if (root) {
             this->__root = true;
         } else {
@@ -117,12 +121,13 @@ public :
         cost_computed = false;
         makespan_computed = false;
         children = new vector<Task *>();
-
+        assignedProcessor = nullptr;
         edge_weight = ew;
         node_weight = nw;
         MS_weight = mw;
         makespan_nocommu = mw;
         parent_id = pparent_id;
+        Qtree_id = 0;
     }
 
     Task(const Task &otherTask, const unsigned int newId, Task *newParent)
@@ -147,6 +152,7 @@ public :
               Mavail{otherTask.Mavail} {
         children = new vector<Task *>();
         __root = false;
+        assignedProcessor = nullptr;
     }
 
     ~Task() {
@@ -170,6 +176,11 @@ public :
     }
 
     void addChild(Task *pchild) {
+        //   cout << "add child " << pchild->getId() << " with parent " << pchild->getParentId() <<" to "<< this->getId()<< " and children ";
+        //    for(Task* child: *pchild->getChildren()){
+        //       cout<<child->getId()<<" ";
+        //   }
+        //   cout<<endl;
         this->children->push_back(pchild);
         cost_computed = false;
     }
@@ -194,6 +205,13 @@ public :
         return this->__root;
     }
 
+    Processor *getAssignedProcessor() const {
+        return assignedProcessor;
+    }
+
+    void setAssignedProcessor(Processor *assignedProcessor) {
+        Task::assignedProcessor = assignedProcessor;
+    }
     void toggleRootStatus(bool newStatus) {
         if (this->isRoot() != newStatus) {
             __root = !__root;
@@ -344,7 +362,7 @@ public :
     }
 
     double getMakespanCost(bool commulication = false, bool updateEnforce = false) {
-        if (!Cluster::getFixedCluster()->isHomogeneous()) throw "Cluster not homogeneous";
+        if (!(Cluster::getFixedCluster())->isBandwidthHomogeneous()) throw "Cluster not homogeneous";
 
         if ((makespan_computed == true) & (updateEnforce == false)) {
             if (commulication == true) {
@@ -518,6 +536,11 @@ public:
     }
 
     void addTask(Task *newNode) {
+        // cout << "add task " << newNode->getId() << " with parent " << newNode->getParentId() << "and children ";
+        //  for(Task* child: *newNode->getChildren()){
+        //     cout<<child->getId()<<" ";
+        //  }
+        //  cout<<endl;
         tasks->push_back(newNode);
         size++;
     }
@@ -605,12 +628,25 @@ public:
             }
         }
         cout << "End" << endl;
+    }
 
+    unsigned long countBrokenEdges() {
+        unsigned long treeSize = this->getTasks()->size();
+        unsigned long counter = 0;
+        for (unsigned int i = treeSize; i >= 1; --i) {
+            Task *currentnode = this->getTask(i);
+            if (currentnode->isBroken()) {
+                counter++;
+            }
+        }
+        return counter;
 
     }
 
     Tree *BuildQtree();
+
     Tree *BuildQtreeOld();
+
     unsigned int HowmanySubtrees(bool quiet);
 
     bool MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size);
@@ -629,11 +665,10 @@ public:
     double SplitAgainV2(unsigned int processor_number, unsigned int num_subtrees, std::map<int, int> &taskToPrc,
                         std::map<int, bool> &isProcBusy);
 
-    vector<Task *> buildCriticalPath();
+    vector<Task *> buildCriticalPath(Tree *Qtree);
 };
 
 
-typedef list<int> schedule_traversal;
 
 typedef map<unsigned int, double> io_map;
 typedef pair<unsigned int, unsigned int> node_sche;
@@ -648,8 +683,8 @@ void po_construct(const int N, const int *prnts, int **chstart, int **chend, int
 
 double MaxOutDegree(Tree *tree, int quiet);
 
-double IOCounter(Tree *tree, int *schedule,
-                 double available_memory, bool divisible, int quiet, unsigned int &com_freq,
+double IOCounter(Tree *subtree, int *schedule,
+                 bool divisible, int quiet, unsigned int &com_freq,
                  vector<unsigned int> *brokenEdges, io_method_t method);
 
 double

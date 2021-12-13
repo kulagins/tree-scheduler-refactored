@@ -10,14 +10,19 @@
 #include <map>
 #include <vector>
 #include "tree.fwd.h"
+#include "inputParser.h"
 
 using namespace std;
+
 
 class Processor {
 protected:
     double memorySize;
     double processorSpeed;
     Task *assignedTask;
+
+protected:
+    int assignedTaskId;
 
 public:
     bool isBusy;
@@ -27,6 +32,7 @@ public:
         this->processorSpeed = 1;
         isBusy = false;
         assignedTask = nullptr;
+        assignedTaskId = -1;
     }
 
     explicit Processor(double memorySize) {
@@ -34,6 +40,7 @@ public:
         this->processorSpeed = 1;
         isBusy = false;
         assignedTask = nullptr;
+        assignedTaskId = -1;
     }
 
     Processor(double memorySize, double processorSpeed) {
@@ -55,10 +62,14 @@ public:
         return processorSpeed;
     }
 
-    void assignTask(Task *taskToBeAssigned) {
-        this->assignedTask = taskToBeAssigned;
-        this->isBusy = true;
-    }
+
+    int getAssignedTaskId() const;
+
+    void assignTaskId(unsigned int taskToBeAssigned);
+
+    Task *getAssignedTask() const;
+
+    void assignTask(Task *taskToBeAssigned);
 };
 
 class Cluster {
@@ -117,6 +128,10 @@ public:
         return isMemoryHomogeneous && isProcessorHomogeneous && isBandwidthHomogenenous;
     }
 
+    bool isBandwidthHomogeneous() const {
+        return isBandwidthHomogenenous;
+    }
+
     void setHomogeneity(bool homogeneity) {
         isMemoryHomogeneous = homogeneity;
     }
@@ -171,8 +186,19 @@ public:
     void printProcessors() {
         for (vector<Processor *>::iterator iter = this->processors.begin(); iter < processors.end(); iter++) {
             cout << "Processor with memory " << (*iter)->getMemorySize() << ", speed " << (*iter)->getProcessorSpeed()
-                 << " and busy? " << (*iter)->isBusy << endl;
+                 << " and busy? " << (*iter)->isBusy << "assigned " << (*iter)->getAssignedTaskId() << endl;
         }
+    }
+
+    void printInfo() {
+        double cumulativeMemory = 0;
+        for (vector<Processor *>::iterator iter = this->processors.begin(); iter < processors.end(); iter++) {
+            cumulativeMemory += (*iter)->getMemorySize();
+        }
+        cout << fixed << (isMemoryHomogeneous ? "Homogeneous" : "Heterogeneous") << " cluster with "
+             << processors.size()
+             << " processors," << " cumulative memory " << cumulativeMemory << endl;
+
     }
 
     string getPrettyClusterString(){
@@ -213,6 +239,7 @@ public:
         return Cluster::fixedCluster;
     }
 
+
     Processor *getFirstFreeProcessor();
 
     static vector<double> build3LevelMemorySizes(double maxoutd, double minMem, unsigned int num_processors);
@@ -222,6 +249,35 @@ public:
     static std::map<int, int> buildProcessorSpeeds(int num_processors);
 
     void SetBandwidth(double CCR, Tree *treeobj);
+
+    Processor *getFirstFreeProcessorOrSmallest();
+
+    bool hasFreeProcessor();
+
+    Processor *getLastProcessor();
+
+    void assignTasksForIds(Tree *tree);
+
+    static void buildStatic2LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights);
+
+    static void
+    buildTreeDepHomBandwidths(double CCR, unsigned int num_processors, Tree *treeobj, double &minMem, double &maxoutd,
+                              schedule_traversal *&temp_schedule);
+
+    static void buildMemHetTreeDepCluster(double CCR, unsigned int num_processors, Tree *treeobj);
+
+    static void
+    buildHomogeneousCluster(double CCR, unsigned int num_processors, Tree *treeobj, HeterogeneousAdaptationMode mode);
+
+    static vector<double> buildNLevelMemorySizes(vector<double> memories, vector<unsigned int> processorGroupSizes);
+
+    static void buildHomStatic2LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights,
+                                            HeterogeneousAdaptationMode adaptationMode);
+
+    static void buildStatic3LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights);
+
+    static void buildHomStatic3LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights,
+                                            HeterogeneousAdaptationMode adaptationMode);
 };
 
 #endif

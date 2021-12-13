@@ -1,11 +1,13 @@
 //
-// Created by kulaginasv on 20.10.21.
+// Created by kulaginasv on 07.12.21.
 //
 
-#ifndef MEMCOMORIGINAL_TREE1_H
-#define MEMCOMORIGINAL_TREE1_H
+#ifndef TREE_SCHEDULER_REFACTORED_TREE_FWD_H
+#define TREE_SCHEDULER_REFACTORED_TREE_FWD_H
+#include <list>
 
-class Task;
+typedef std::list<int> schedule_traversal;
 class Tree;
+class Task;
 
-#endif //MEMCOMORIGINAL_TREE1_H
+#endif //TREE_SCHEDULER_REFACTORED_TREE_FWD_H

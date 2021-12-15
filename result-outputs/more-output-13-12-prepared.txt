@@ -1,0 +1,178 @@
+small with extra output
+2-level
+heterogeneous
+dump.1.3.amd.QY.case39-2136.tree.nf 23988.084122 1326025
+
+dump.1.2.amd.QY.case39-2136.tree.nf 23880.112789 2324961
+
+dump.0.1.metis.Goodwin.rim-447.tree.nf 10184.262129 98992
+
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 77.330285 537250
+
+dump.1.1.amd.QY.case39-2136.tree.nf 23825.433456 3452071
+
+dump.0.1.metis.Wang.wang4-833.tree.nf 909534.803436 101683
+
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 68579.351629 89276
+
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 43795.219026 731517
+
+dump.0.1.amd.QY.case39-2136.tree.nf 17012.273456 5554376
+
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 70.938630 892784
+
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 928477.406225 17981837
+
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1391453.669284 89837
+
+dump.0.1.amd.Bova.rma10-374.tree.nf 224537.160168 223931
+
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 127483
+
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 131258
+
+homogeneous many small
+dump.1.3.amd.QY.case39-2136.tree.nf 23988.084122 1394728
+
+dump.1.2.amd.QY.case39-2136.tree.nf 23880.112789 2380526
+
+dump.0.1.metis.Goodwin.rim-447.tree.nf 10184.262129 96200
+
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 77.330285 536118
+
+dump.1.1.amd.QY.case39-2136.tree.nf 23825.433456 3468760
+
+dump.0.1.metis.Wang.wang4-833.tree.nf 909534.803436 99515
+
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 68579.351629 86564
+
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 43795.219026 727802
+
+dump.0.1.amd.QY.case39-2136.tree.nf 17012.273456 5711513
+
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 70.938630 991289
+
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 928519.106086 18127640
+
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1391215.534205 75139
+
+dump.0.1.amd.Bova.rma10-374.tree.nf 224537.160168 230377
+
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 125781
+
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 126277
+
+homogeneous average average
+homogeneous few big
+dump.1.3.amd.QY.case39-2136.tree.nf 23991.222480 325927
+
+dump.1.2.amd.QY.case39-2136.tree.nf 23881.797146 653709
+
+dump.0.1.metis.Goodwin.rim-447.tree.nf 10184.262129 98721
+
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 77.330285 535878
+
+dump.1.1.amd.QY.case39-2136.tree.nf 23826.740480 998194
+
+dump.0.1.metis.Wang.wang4-833.tree.nf 909534.803436 103135
+
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 68579.351629 87434
+
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 43795.219026 724987
+
+dump.0.1.amd.QY.case39-2136.tree.nf 17013.580480 1656459
+
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 70.938630 881434
+
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 956536.357532 4008140
+
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1391215.534205 71129
+
+dump.0.1.amd.Bova.rma10-374.tree.nf 224537.160168 219196
+
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 127578
+
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 130151
+
+3-level
+homogeneous many small
+dump.1.3.amd.QY.case39-2136.tree.nf 23988.742612 461294
+
+dump.1.2.amd.QY.case39-2136.tree.nf 23880.695279 880612
+
+dump.0.1.metis.Goodwin.rim-447.tree.nf 10184.262129 100548
+
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 77.330285 528935
+
+dump.1.1.amd.QY.case39-2136.tree.nf 23826.192612 1410493
+
+dump.0.1.metis.Wang.wang4-833.tree.nf 909534.803436 96458
+
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 68579.351629 84518
+
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 43795.219026 721083
+
+dump.0.1.amd.QY.case39-2136.tree.nf 17013.032612 2203175
+
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 70.938630 1000190
+
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 950951.838526 6519398
+
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1391215.534205 73399
+
+dump.0.1.amd.Bova.rma10-374.tree.nf 224537.160168 217486
+
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 121925
+
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 122743
+
+homogeneous average average
+dump.1.3.amd.QY.case39-2136.tree.nf 24995.862480 102356
+
+dump.1.2.amd.QY.case39-2136.tree.nf 24733.533146 207179
+
+dump.0.1.metis.Goodwin.rim-447.tree.nf 10184.262129 91264
+
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 280.852498 225424
+
+dump.1.1.amd.QY.case39-2136.tree.nf 24596.036480 340073
+
+dump.0.1.metis.Wang.wang4-833.tree.nf 909534.803436 95964
+
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 68579.351629 81995
+
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106652.380516 260309
+
+dump.0.1.amd.QY.case39-2136.tree.nf 17782.876480 573158
+
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 266.379355 390659
+
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 962100.853871 1233318
+
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1391215.534205 68800
+
+dump.0.1.amd.Bova.rma10-374.tree.nf 224537.160168 208334
+
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 131358
+
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 111464
+
+homogeneous few big
+dump.1.3.amd.QY.case39-2136.tree.nf 25495.652129 18235
+
+dump.1.2.amd.QY.case39-2136.tree.nf 25156.870796 38459
+
+dump.0.1.metis.Goodwin.rim-447.tree.nf 10326.093249 82471
+
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 371.971677 58545
+
+dump.1.1.amd.QY.case39-2136.tree.nf 24978.154129 58605
+
+dump.0.1.metis.Wang.wang4-833.tree.nf 909534.803436 96209
+
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 68579.351629 84588
+
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106652.540516 79823
+
+dump.0.1.amd.QY.case39-2136.tree.nf 18164.994129 100790
+

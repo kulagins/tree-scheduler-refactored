@@ -444,7 +444,7 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, Processor *&proces
             && parentProcessor != nullptr) {
             //both are assigned to a processor, choose a bigger one
             processorToMergeTo = currentQNodeProcessor->getMemorySize() > parentProcessor->getMemorySize() ?
-                                            currentQNodeProcessor : parentProcessor;
+                                 currentQNodeProcessor : parentProcessor;
             memorySize = processorToMergeTo->getMemorySize();
         } else if (currentQNodeProcessor == nullptr && parentProcessor != nullptr) {
             processorToMergeTo = parentProcessor;
@@ -458,8 +458,10 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, Processor *&proces
             //both unassigned, skip
             memorySize = 0;
         }
+        double requiredMemory = 0;
         if (CheckMemory == true) {
-            memoryEnough = tree->MemoryEnough(currentQNode->getParent(), currentQNode, leaf, memorySize);
+            memoryEnough = tree->MemoryEnough(currentQNode->getParent(), currentQNode, leaf, memorySize,
+                                              requiredMemory);
         } else {
             memoryEnough = true;
         }
@@ -467,14 +469,15 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, Processor *&proces
         if (memoryEnough == true) {
             feasible = true;
             smallestNode = currentQNode;
+            processorToMergeTo->setOccupiedMemorySize(requiredMemory);
         } else {
             list_increase_id.erase(smallest_iter);
         }
     }
 
     //cout<<"   ---end compute the minimum combination"<<endl;
-  //  cout<<"processor"<<endl;
-  //  cout<<processorToMergeTo->getMemorySize()<<endl;
+    //  cout<<"processor"<<endl;
+    //  cout<<processorToMergeTo->getMemorySize()<<endl;
     return feasible;
 }
 
@@ -502,10 +505,8 @@ double Tree::Merge(bool CheckMemory) {
         temp = this->getRoot()->getMakespanCost(true, true);     //update ms
 
         //    cout<<"merge get free proc "<<Cluster::getFixedCluster()->getFirstFreeProcessor()->getMemorySize()<<endl;
-        Processor * processorToMergeTo;
+        Processor *processorToMergeTo;
         memoryEnough = estimateMS(this, Qtreeobj, node_smallest_increase, processorToMergeTo, CheckMemory);
-
-
 
         //when parameter checkMemory is false, memoryEnough will always be true;
         if (memoryEnough) {
@@ -662,9 +663,10 @@ Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, double c
             } else {
                 leaf = false;
             }
-
+            double memoryRequired;
             if (CheckMemory == true) {
-                memoryCheckPass = this->MemoryEnough((*smallest)->getParent(), (*smallest), leaf, memory_size);
+                memoryCheckPass = this->MemoryEnough((*smallest)->getParent(), (*smallest), leaf, memory_size,
+                                                     memoryRequired);
             } else {
                 memoryCheckPass = true;
             }
@@ -675,8 +677,9 @@ Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, double c
                 } else {
                     leaf = false;
                 }
+
                 memoryCheckPass = this->MemoryEnough((*secondSmallest)->getParent(), *secondSmallest, leaf,
-                                                     memory_size);
+                                                     memory_size, memoryRequired);
                 if (memoryCheckPass == true) {
                     currentNode = *secondSmallest;
                     DeadBreak = false;
@@ -1405,6 +1408,11 @@ int MemoryCheck(Tree *tree, io_method_t method) {
                     break;
             }
             delete[] schedule_copy;
+        } else {
+            //cout << "we are in else in mem check" << endl;
+            if (Cluster::getFixedCluster()->hasFreeProcessor()) {
+                biggestFreeProcessor->setOccupiedMemorySize(memory_required);
+            }
         }
         //cout<<endl;
         Cluster::getFixedCluster()->assignTasksForIds(tree);
@@ -1505,6 +1513,7 @@ void MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t method, bool skipBi
             //  currentProcessor->assignTask(subtreeRoot);
             currentProcessor->assignTask(subtreeRoot);
             currentProcessor = cluster->getFirstFreeProcessor();
+            currentProcessor->setOccupiedMemorySize(memory_required);
             //        cout<<"got new proc in else "<<currentProcessor->getMemorySize()<<endl;
         }
         //cout<<endl;

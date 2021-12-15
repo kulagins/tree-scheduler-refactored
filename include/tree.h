@@ -649,7 +649,8 @@ public:
 
     unsigned int HowmanySubtrees(bool quiet);
 
-    bool MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size);
+    bool
+    MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double available_memory_size, double &requiredMemorySize);
 
     double ImprovedSplit();
 

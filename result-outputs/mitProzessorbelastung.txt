@@ -1,0 +1,653 @@
+small with extra output
+2-level
+heterogeneous
+Heterogeneous cluster with 3758 processors, cumulative memory 5379530048.750602
+dump.1.3.amd.QY.case39-2136.tree.nf	dump.1.3.amd.QY.case39-2136.tree.nf 23988.084122 1067532
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 5379527130
+Load per processor for occupied processors: 5.000000, occupied processors: 2.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	dump.1.2.amd.QY.case39-2136.tree.nf 23880.112789 1795029
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 5379527130
+Load per processor for occupied processors: 4.000000, occupied processors: 2.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	dump.0.1.metis.Goodwin.rim-447.tree.nf 10184.262129 74636
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 5379527130
+Load per processor for occupied processors: 1.000000, occupied processors: 0.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	dump.1.1.metis.CPM.cz40948-2567.tree.nf 77.330285 401981
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 5379527130
+Load per processor for occupied processors: 0.000000, occupied processors: 1.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	dump.1.1.amd.QY.case39-2136.tree.nf 23825.433456 2623741
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 5379527130
+Load per processor for occupied processors: 4.000000, occupied processors: 2.000000
+dump.0.1.metis.Wang.wang4-833.tree.nf	dump.0.1.metis.Wang.wang4-833.tree.nf 909534.803436 74749
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 5379527130
+Load per processor for occupied processors: 66.000000, occupied processors: 0.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 68579.351629 63268
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 5379527130
+Load per processor for occupied processors: 4.000000, occupied processors: 0.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 43795.219026 555190
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 5379527130
+Load per processor for occupied processors: 0.000000, occupied processors: 20.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	dump.0.1.amd.QY.case39-2136.tree.nf 17012.273456 4227336
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 5379527130
+Load per processor for occupied processors: 4.000000, occupied processors: 2.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	dump.0.1.metis.CPM.cz40948-2567.tree.nf 70.938630 666784
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 5379527130
+Load per processor for occupied processors: 0.000000, occupied processors: 1.000000
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 928519.106086 13286165
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 5379527130
+Load per processor for occupied processors: 3.000000, occupied processors: 1.000000
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1391215.534205 54054
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 5379527130
+Load per processor for occupied processors: 42.000000, occupied processors: 0.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	dump.0.1.amd.Bova.rma10-374.tree.nf 224537.160168 159982
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 5379527130
+Load per processor for occupied processors: 3.000000, occupied processors: 0.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 94076
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 5379527130
+Load per processor for occupied processors: 6.000000, occupied processors: 0.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 98093
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 5379527130
+Load per processor for occupied processors: 6.000000, occupied processors: 0.000000
+homogeneous many small
+many small
+Homogeneous cluster with 50 processors, cumulative memory 213050695.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	dump.1.3.amd.QY.case39-2136.tree.nf 47020.623462 7254
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 6.000000, occupied processors: 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	dump.1.2.amd.QY.case39-2136.tree.nf 45922.251462 14459
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 5.000000, occupied processors: 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	dump.0.1.metis.Goodwin.rim-447.tree.nf 18389.197550 29443
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 1.000000, occupied processors: 18.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	dump.1.1.metis.CPM.cz40948-2567.tree.nf 449.701175 25335
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 0.000000, occupied processors: 68.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	dump.1.1.amd.QY.case39-2136.tree.nf 45357.919462 23427
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 5.000000, occupied processors: 100.000000
+dump.0.1.metis.Wang.wang4-833.tree.nf	dump.0.1.metis.Wang.wang4-833.tree.nf 909535.632396 50466
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 66.000000, occupied processors: 6.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 68602.057904 45866
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 4.000000, occupied processors: 16.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106652.573849 34467
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	dump.0.1.amd.QY.case39-2136.tree.nf 33232.271462 36723
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 5.000000, occupied processors: 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	dump.0.1.metis.CPM.cz40948-2567.tree.nf 435.885175 43135
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 0.000000, occupied processors: 68.000000
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 977331.089163 39320
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 3.000000, occupied processors: 100.000000
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1391215.534205 53866
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 42.000000, occupied processors: 18.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	dump.0.1.amd.Bova.rma10-374.tree.nf 234965.192963 81987
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 3.000000, occupied processors: 56.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 108615.660412 64637
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 6.000000, occupied processors: 20.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 108615.660412 65032
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 6.000000, occupied processors: 20.000000
+homogeneous average average
+homogeneous few big
+big
+Homogeneous cluster with 10 processors, cumulative memory 340881112.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	dump.1.3.amd.QY.case39-2136.tree.nf 123538.960129 2322
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	dump.1.2.amd.QY.case39-2136.tree.nf 120332.904129 4659
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	dump.0.1.metis.Goodwin.rim-447.tree.nf 30628.187700 7153
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 90.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	dump.1.1.metis.CPM.cz40948-2567.tree.nf 1485.264508 7296
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	dump.1.1.amd.QY.case39-2136.tree.nf 118655.412129 7802
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.Wang.wang4-833.tree.nf	dump.0.1.metis.Wang.wang4-833.tree.nf 1012048.096984 15768
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 8.000000, occupied processors: 30.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 101975.791557 10019
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 80.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106652.600516 11623
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	dump.0.1.amd.QY.case39-2136.tree.nf 85688.252129 12380
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	dump.0.1.metis.CPM.cz40948-2567.tree.nf 1452.832508 12749
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 979904.422496 13497
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 1.000000, occupied processors: 100.000000
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1879145.228195 15020
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 5.000000, occupied processors: 90.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	dump.0.1.amd.Bova.rma10-374.tree.nf 358987.768565 14855
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 189831.374694 15305
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 189831.374694 15214
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+3-level
+homogeneous many small
+many small
+Homogeneous cluster with 50 processors, cumulative memory 213050695.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	dump.1.3.amd.QY.case39-2136.tree.nf 47020.623462 7303
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 6.000000, occupied processors: 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	dump.1.2.amd.QY.case39-2136.tree.nf 45922.251462 14525
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 5.000000, occupied processors: 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	dump.0.1.metis.Goodwin.rim-447.tree.nf 18389.197550 29420
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 1.000000, occupied processors: 18.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	dump.1.1.metis.CPM.cz40948-2567.tree.nf 449.701175 25470
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 0.000000, occupied processors: 68.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	dump.1.1.amd.QY.case39-2136.tree.nf 45357.919462 23804
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 5.000000, occupied processors: 100.000000
+dump.0.1.metis.Wang.wang4-833.tree.nf	dump.0.1.metis.Wang.wang4-833.tree.nf 909535.632396 50703
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 66.000000, occupied processors: 6.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 68602.057904 47170
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 4.000000, occupied processors: 16.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106652.573849 34750
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	dump.0.1.amd.QY.case39-2136.tree.nf 33232.271462 48530
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 5.000000, occupied processors: 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	dump.0.1.metis.CPM.cz40948-2567.tree.nf 435.885175 45869
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 0.000000, occupied processors: 68.000000
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 977331.089163 39195
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 3.000000, occupied processors: 100.000000
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1391215.534205 53847
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 42.000000, occupied processors: 18.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	dump.0.1.amd.Bova.rma10-374.tree.nf 234965.192963 77146
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 3.000000, occupied processors: 56.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 108615.660412 64719
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 6.000000, occupied processors: 20.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 108615.660412 64468
+
+
+Cluster:
+#Nodes: 50, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 213050650
+Load per processor for occupied processors: 6.000000, occupied processors: 20.000000
+homogeneous average average
+avg
+Homogeneous cluster with 20 processors, cumulative memory 170440556.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	dump.1.3.amd.QY.case39-2136.tree.nf 104094.160129 3542
+
+
+Cluster:
+#Nodes: 20, Configuration: 0, MinMemory: 8522027, CumulativeMemory: 170440540
+Load per processor for occupied processors: 2.000000, occupied processors: 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	dump.1.2.amd.QY.case39-2136.tree.nf 101397.784129 7108
+
+
+Cluster:
+#Nodes: 20, Configuration: 0, MinMemory: 8522027, CumulativeMemory: 170440540
+Load per processor for occupied processors: 2.000000, occupied processors: 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	dump.0.1.metis.Goodwin.rim-447.tree.nf 26203.447850 13092
+
+
+Cluster:
+#Nodes: 20, Configuration: 0, MinMemory: 8522027, CumulativeMemory: 170440540
+Load per processor for occupied processors: 0.000000, occupied processors: 45.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	dump.1.1.metis.CPM.cz40948-2567.tree.nf 803.655011 11009
+
+
+Cluster:
+#Nodes: 20, Configuration: 0, MinMemory: 8522027, CumulativeMemory: 170440540
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	dump.1.1.amd.QY.case39-2136.tree.nf 99995.092129 11591
+
+
+Cluster:
+#Nodes: 20, Configuration: 0, MinMemory: 8522027, CumulativeMemory: 170440540
+Load per processor for occupied processors: 2.000000, occupied processors: 100.000000
+dump.0.1.metis.Wang.wang4-833.tree.nf	dump.0.1.metis.Wang.wang4-833.tree.nf 915053.059063 23535
+
+
+Cluster:
+#Nodes: 20, Configuration: 0, MinMemory: 8522027, CumulativeMemory: 170440540
+Load per processor for occupied processors: 33.000000, occupied processors: 15.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 72956.119243 23086
+
+
+Cluster:
+#Nodes: 20, Configuration: 0, MinMemory: 8522027, CumulativeMemory: 170440540
+Load per processor for occupied processors: 2.000000, occupied processors: 40.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106652.593849 17332
+
+
+Cluster:
+#Nodes: 20, Configuration: 0, MinMemory: 8522027, CumulativeMemory: 170440540
+Load per processor for occupied processors: 1.000000, occupied processors: 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	dump.0.1.amd.QY.case39-2136.tree.nf 72339.852129 18385
+
+
+Cluster:
+#Nodes: 20, Configuration: 0, MinMemory: 8522027, CumulativeMemory: 170440540
+Load per processor for occupied processors: 2.000000, occupied processors: 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	dump.0.1.metis.CPM.cz40948-2567.tree.nf 780.427011 19164
+
+
+Cluster:
+#Nodes: 20, Configuration: 0, MinMemory: 8522027, CumulativeMemory: 170440540
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 979261.089163 19785
+
+
+Cluster:
+#Nodes: 20, Configuration: 0, MinMemory: 8522027, CumulativeMemory: 170440540
+Load per processor for occupied processors: 3.000000, occupied processors: 100.000000
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1537164.330451 31760
+
+
+Cluster:
+#Nodes: 20, Configuration: 0, MinMemory: 8522027, CumulativeMemory: 170440540
+Load per processor for occupied processors: 21.000000, occupied processors: 45.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	dump.0.1.amd.Bova.rma10-374.tree.nf 308946.778601 22988
+
+
+Cluster:
+#Nodes: 20, Configuration: 0, MinMemory: 8522027, CumulativeMemory: 170440540
+Load per processor for occupied processors: 1.000000, occupied processors: 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 152019.047340 27903
+
+
+Cluster:
+#Nodes: 20, Configuration: 0, MinMemory: 8522027, CumulativeMemory: 170440540
+Load per processor for occupied processors: 3.000000, occupied processors: 50.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 152019.047340 28184
+
+
+Cluster:
+#Nodes: 20, Configuration: 0, MinMemory: 8522027, CumulativeMemory: 170440540
+Load per processor for occupied processors: 3.000000, occupied processors: 50.000000
+homogeneous few big
+big
+Homogeneous cluster with 10 processors, cumulative memory 340881112.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	dump.1.3.amd.QY.case39-2136.tree.nf 123538.960129 2318
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	dump.1.2.amd.QY.case39-2136.tree.nf 120332.904129 4691
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	dump.0.1.metis.Goodwin.rim-447.tree.nf 30628.187700 7048
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 90.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	dump.1.1.metis.CPM.cz40948-2567.tree.nf 1485.264508 7386
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	dump.1.1.amd.QY.case39-2136.tree.nf 118655.412129 7975
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.Wang.wang4-833.tree.nf	dump.0.1.metis.Wang.wang4-833.tree.nf 1012048.096984 14587
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 8.000000, occupied processors: 30.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 101975.791557 10002
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 80.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106652.600516 11744
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	dump.0.1.amd.QY.case39-2136.tree.nf 85688.252129 14160
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	dump.0.1.metis.CPM.cz40948-2567.tree.nf 1452.832508 13042
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 979904.422496 13669
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 1.000000, occupied processors: 100.000000
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1879145.228195 14939
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 5.000000, occupied processors: 90.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	dump.0.1.amd.Bova.rma10-374.tree.nf 358987.768565 14861
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 189831.374694 15039
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 189831.374694 15232
+
+
+Cluster:
+#Nodes: 10, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 340881110
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+heterogeneous
+Heterogeneous cluster with 1475 processors, cumulative memory 1541954405.062454
+dump.1.3.amd.QY.case39-2136.tree.nf	dump.1.3.amd.QY.case39-2136.tree.nf 23988.742612 376471
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1541953250
+Load per processor for occupied processors: 5.000000, occupied processors: 5.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	dump.1.2.amd.QY.case39-2136.tree.nf 23880.695279 697917
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1541953250
+Load per processor for occupied processors: 4.000000, occupied processors: 5.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	dump.0.1.metis.Goodwin.rim-447.tree.nf 10184.262129 74053
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1541953250
+Load per processor for occupied processors: 1.000000, occupied processors: 0.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	dump.1.1.metis.CPM.cz40948-2567.tree.nf 77.330285 403052
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1541953250
+Load per processor for occupied processors: 0.000000, occupied processors: 4.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	dump.1.1.amd.QY.case39-2136.tree.nf 23826.192612 1094347
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1541953250
+Load per processor for occupied processors: 4.000000, occupied processors: 5.000000
+dump.0.1.metis.Wang.wang4-833.tree.nf	dump.0.1.metis.Wang.wang4-833.tree.nf 909534.803436 75566
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1541953250
+Load per processor for occupied processors: 66.000000, occupied processors: 0.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 68579.351629 64217
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1541953250
+Load per processor for occupied processors: 4.000000, occupied processors: 0.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 43795.219026 550446
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1541953250
+Load per processor for occupied processors: 0.000000, occupied processors: 52.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	dump.0.1.amd.QY.case39-2136.tree.nf 17013.032612 1826677
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1541953250
+Load per processor for occupied processors: 4.000000, occupied processors: 5.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	dump.0.1.metis.CPM.cz40948-2567.tree.nf 70.938630 665278
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1541953250
+Load per processor for occupied processors: 0.000000, occupied processors: 4.000000
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 950951.838526 4996628
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1541953250
+Load per processor for occupied processors: 3.000000, occupied processors: 4.000000
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1391215.534205 56235
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1541953250
+Load per processor for occupied processors: 42.000000, occupied processors: 0.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	dump.0.1.amd.Bova.rma10-374.tree.nf 224537.160168 167080
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1541953250
+Load per processor for occupied processors: 3.000000, occupied processors: 1.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 93744
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1541953250
+Load per processor for occupied processors: 6.000000, occupied processors: 0.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 93464
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1541953250
+Load per processor for occupied processors: 6.000000, occupied processors: 0.000000

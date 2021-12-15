@@ -11,6 +11,7 @@
 #include <vector>
 #include "tree.fwd.h"
 #include "inputParser.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -20,9 +21,12 @@ protected:
     double memorySize;
     double processorSpeed;
     Task *assignedTask;
-
-protected:
     int assignedTaskId;
+    double occupiedMemorySize;
+public:
+    double getOccupiedMemorySize() const;
+
+    void setOccupiedMemorySize(double occupiedMemorySize);
 
 public:
     bool isBusy;
@@ -70,6 +74,10 @@ public:
     Task *getAssignedTask() const;
 
     void assignTask(Task *taskToBeAssigned);
+
+    void setAssignedTaskId(int assignedTaskId);
+
+    void setAssignedTask(Task *assignedTask);
 };
 
 class Cluster {
@@ -119,10 +127,11 @@ public:
         }
     }
 
-    int getConfiguration(){
+    int getConfiguration() {
         //TODO: implement
         return 0;
     }
+
 public:
     bool isHomogeneous() const {
         return isMemoryHomogeneous && isProcessorHomogeneous && isBandwidthHomogenenous;
@@ -201,34 +210,54 @@ public:
 
     }
 
-    string getPrettyClusterString(){
+    string getPrettyClusterString() {
         string out = "Cluster:\n";
         int numProcessors = this->processors.size();
-        out += "#Nodes: "+to_string(numProcessors)+", ";
-        out += "Configuration: "+to_string(this->getConfiguration())+", ";
-        out += "MinMemory: "+to_string(this->getLastProcessor())+", ";
-        out += "CumulativeMemory: "+to_string(this->getCumulativeMemory());
+        out += "#Nodes: " + to_string(numProcessors) + ", ";
+        out += "Configuration: " + to_string(this->getConfiguration()) + ", ";
+        out += "MinMemory: " + to_string(this->getLastProcessorMem()) + ", ";
+        out += "CumulativeMemory: " + to_string(this->getCumulativeMemory());
+
         /*
-        out += "MinMemory: "+to_string(this->getLastProcessor())+", ";
+        out += "MinMemory: "+to_string(this->getLastProcessorMem())+", ";
         out += "CumulativeMemory: "+to_string(this->buildHomogeneousMemorySizes(maxoutd, numProcessors));*/
         return out;
     }
 
-    int getLastProcessor(){
+    int getLastProcessorMem() {
         //so far, it returns the proessor with the minimal memory size by using a linear search
         int min = INT_MAX;
-        for (Processor *proc: (this->processors)){
-            min = (min>proc->getMemorySize())? proc->getMemorySize():min;
+        for (Processor *proc: (this->processors)) {
+            min = (min > proc->getMemorySize()) ? proc->getMemorySize() : min;
         }
         return min;
     }
 
-    int getCumulativeMemory(){
-        int sum = 0;
-        for (Processor *proc: (this->processors)){
+
+    long getCumulativeMemory() {
+        long sum = 0;
+        for (Processor *proc: (this->processors)) {
             sum += proc->getMemorySize();
         }
         return sum;
+    }
+
+    string getAverageLoadAndNumberOfUsedProcessors() {
+        long sumLoad = 0, sumMems = 0, numberUsed = 0;
+        double percentageUsed = 0, avgLoad = 0;
+        for (Processor *proc: (this->processors)) {
+            if (proc->getAssignedTask() != nullptr) {
+                sumLoad += proc->getOccupiedMemorySize();
+                sumMems += proc->getMemorySize();
+                numberUsed++;
+                if (proc->getOccupiedMemorySize() == 0) {
+                    cout << "task assigned and no mem occupation " << proc->getAssignedTaskId() << endl;
+                }
+            }
+        }
+        avgLoad = sumLoad * 100 / sumMems;
+        percentageUsed = numberUsed * 100 / this->getProcessors().size();
+        return "Load per processor for occupied processors: "+ to_string(avgLoad)+", occupied processors: "+ to_string(percentageUsed);
     }
 
     static void setFixedCluster(Cluster *cluster) {
@@ -254,8 +283,6 @@ public:
 
     bool hasFreeProcessor();
 
-    Processor *getLastProcessor();
-
     void assignTasksForIds(Tree *tree);
 
     static void buildStatic2LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights);
@@ -278,6 +305,12 @@ public:
 
     static void buildHomStatic3LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights,
                                             HeterogeneousAdaptationMode adaptationMode);
+
+    string getUsageString();
+
+    void clean();
+
+    string getShortUsageString();
 };
 
 #endif

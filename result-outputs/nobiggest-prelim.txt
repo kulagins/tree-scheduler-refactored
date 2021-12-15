@@ -1,0 +1,509 @@
+scriptNoBiggest.sh 
+no biggest trees
+2-level
+heterogeneous
+Heterogeneous cluster with 3758 processors, cumulative memory 58356447105.009415
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	68587.857433
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	12277.000784
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	20875.013727
+dump.0.1.amd.Bova.rma10-374.tree.nf	224541.003942
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	30382.716593
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	250934.101474
+dump.0.1.amd.QY.case39-2136.tree.nf	17012.948892
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	928557.801736
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	1330230.580869
+dump.0.1.metis.Bova.rma10-374.tree.nf	89512.740250
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	71.110552
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf	17390806.045043
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	1391295.720014
+dump.0.1.metis.Goodwin.rim-447.tree.nf	10187.142846
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf	3136.551560
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	43803.250143
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf	31959187.504486
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf	27838.844261
+dump.0.1.metis.Shyy.shyy161-809.tree.nf	55702.262263
+dump.0.1.metis.Wang.wang4-833.tree.nf	909604.139059
+dump.0.1.metis.Watson.Baumann-1855.tree.nf	3214089.490432
+dump.1.1.amd.QY.case39-2136.tree.nf	23826.108892
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	77.487890
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf	10811.774784
+dump.1.2.amd.QY.case39-2136.tree.nf	23880.788225
+dump.1.3.amd.QY.case39-2136.tree.nf	23988.759559
+
+
+
+
+nscriptNoBiggest.sh 
+no biggest trees
+2-level
+heterogeneous
+Heterogeneous cluster with 3758 processors, cumulative memory 58356447105.009415
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	68587.857433
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	12277.000784
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	20875.013727
+dump.0.1.amd.Bova.rma10-374.tree.nf	224541.003942
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	30382.716593
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	250934.101474
+dump.0.1.amd.QY.case39-2136.tree.nf	17012.948892
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	928557.801736
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	1330230.580869
+dump.0.1.metis.Bova.rma10-374.tree.nf	89512.740250
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	71.110552
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf	17390806.045043
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	1391295.720014
+dump.0.1.metis.Goodwin.rim-447.tree.nf	10187.142846
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf	3136.551560
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	43803.250143
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf	31959187.504486
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf	27838.844261
+dump.0.1.metis.Shyy.shyy161-809.tree.nf	55702.262263
+dump.0.1.metis.Wang.wang4-833.tree.nf	909604.139059
+dump.0.1.metis.Watson.Baumann-1855.tree.nf	3214089.490432
+dump.1.1.amd.QY.case39-2136.tree.nf	23826.108892
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	77.487890
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf	10811.774784
+dump.1.2.amd.QY.case39-2136.tree.nf	23880.788225
+dump.1.3.amd.QY.case39-2136.tree.nf	23988.759559
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf	40884682.944666
+
+
+
+
+
+
+no biggest trees
+2-level
+heterogeneous
+Heterogeneous cluster with 3758 processors, cumulative memory 58356447105.009415
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	68587.857433
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	12277.000784
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	20875.013727
+dump.0.1.amd.Bova.rma10-374.tree.nf	224541.003942
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	30382.716593
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	250934.101474
+dump.0.1.amd.QY.case39-2136.tree.nf	17012.948892
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	928557.801736
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	1330230.580869
+dump.0.1.metis.Bova.rma10-374.tree.nf	89512.740250
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	71.110552
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf	17390806.045043
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	1391295.720014
+dump.0.1.metis.Goodwin.rim-447.tree.nf	10187.142846
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf	3136.551560
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	43803.250143
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf	31959187.504486
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf	27838.844261
+dump.0.1.metis.Shyy.shyy161-809.tree.nf	55702.262263
+dump.0.1.metis.Wang.wang4-833.tree.nf	909604.139059
+dump.0.1.metis.Watson.Baumann-1855.tree.nf	3214089.490432
+dump.1.1.amd.QY.case39-2136.tree.nf	23826.108892
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	77.487890
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf	10811.774784
+dump.1.2.amd.QY.case39-2136.tree.nf	23880.788225
+dump.1.3.amd.QY.case39-2136.tree.nf	23988.759559
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf	40884682.944666
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	41136375.741087
+
+
+
+
+
+
+./runscriptNoBiggest.sh 
+no biggest trees
+2-level
+heterogeneous
+Heterogeneous cluster with 3758 processors, cumulative memory 58356447105.009415
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	68587.857433
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	12277.000784
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	20875.013727
+dump.0.1.amd.Bova.rma10-374.tree.nf	224541.003942
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	30382.716593
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	250934.101474
+dump.0.1.amd.QY.case39-2136.tree.nf	17012.948892
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	928557.801736
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	1330230.580869
+dump.0.1.metis.Bova.rma10-374.tree.nf	89512.740250
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	71.110552
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf	17390806.045043
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	1391295.720014
+dump.0.1.metis.Goodwin.rim-447.tree.nf	10187.142846
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf	3136.551560
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	43803.250143
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf	31959187.504486
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf	27838.844261
+dump.0.1.metis.Shyy.shyy161-809.tree.nf	55702.262263
+dump.0.1.metis.Wang.wang4-833.tree.nf	909604.139059
+dump.0.1.metis.Watson.Baumann-1855.tree.nf	3214089.490432
+dump.1.1.amd.QY.case39-2136.tree.nf	23826.108892
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	77.487890
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf	10811.774784
+dump.1.2.amd.QY.case39-2136.tree.nf	23880.788225
+dump.1.3.amd.QY.case39-2136.tree.nf	23988.759559
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf	40884682.944666
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	41136375.741087
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	41136375.741087
+homogeneous many small
+Homogeneous cluster with 3758 processors, cumulative memory 173705764927.187744
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	68587.857433
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	12277.000784
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	20875.013727
+dump.0.1.amd.Bova.rma10-374.tree.nf	224541.003942
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	30382.716593
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	250934.101474
+dump.0.1.amd.QY.case39-2136.tree.nf	17012.948892
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	928557.801736
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	1330230.580869
+dump.0.1.metis.Bova.rma10-374.tree.nf	89512.740250
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	71.110552
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf	17390767.020394
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	1391295.720014
+dump.0.1.metis.Goodwin.rim-447.tree.nf	10187.142846
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf	3136.551560
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	43803.250143
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf	31941835.457788
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf	27838.844261
+dump.0.1.metis.Shyy.shyy161-809.tree.nf	55702.262263
+dump.0.1.metis.Wang.wang4-833.tree.nf	909604.139059
+dump.0.1.metis.Watson.Baumann-1855.tree.nf	3214089.490432
+dump.1.1.amd.QY.case39-2136.tree.nf	23826.108892
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	77.487890
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf	10811.774784
+dump.1.2.amd.QY.case39-2136.tree.nf	23880.788225
+dump.1.3.amd.QY.case39-2136.tree.nf	23988.759559
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf	40881240.149220
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	41133799.179384
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	41133799.179384
+homogeneous average average
+terminate called after throwing an instance of 'char const*'
+./runscriptNoBiggest.sh: Zeile 28: 85111 Abgebrochen             (Speicherabzug geschrieben) ./main /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/trees/ treesListNoBiggest.txt 0 1 1 -1 2
+homogeneous few big
+Homogeneous cluster with 906 processors, cumulative memory 335023785043.205688
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	68587.857433
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	12292.211451
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	20890.224394
+dump.0.1.amd.Bova.rma10-374.tree.nf	224541.003942
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	30394.505260
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	250934.101474
+dump.0.1.amd.QY.case39-2136.tree.nf	17014.242645
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	956549.553945
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	1330230.580869
+dump.0.1.metis.Bova.rma10-374.tree.nf	89512.740250
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	71.110552
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf	17390767.020394
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	1391295.720014
+dump.0.1.metis.Goodwin.rim-447.tree.nf	10187.142846
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf	3136.551560
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	43803.250143
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf	31941835.457788
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf	27838.844261
+dump.0.1.metis.Shyy.shyy161-809.tree.nf	55702.262263
+dump.0.1.metis.Wang.wang4-833.tree.nf	909604.139059
+dump.0.1.metis.Watson.Baumann-1855.tree.nf	3214089.490432
+dump.1.1.amd.QY.case39-2136.tree.nf	23827.402645
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	77.487890
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf	10826.985451
+dump.1.2.amd.QY.case39-2136.tree.nf	23882.459312
+dump.1.3.amd.QY.case39-2136.tree.nf	23991.884645
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf	57226156.383302
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	58285969.939302
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	58285969.939302
+3-level
+homogeneous many small
+Homogeneous cluster with 1475 processors, cumulative memory 68178819390.001579
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	68587.857433
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	12289.176784
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	20887.189727
+dump.0.1.amd.Bova.rma10-374.tree.nf	224541.003942
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	30391.470593
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	250934.101474
+dump.0.1.amd.QY.case39-2136.tree.nf	17013.803839
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	950969.891937
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	1330230.580869
+dump.0.1.metis.Bova.rma10-374.tree.nf	89512.740250
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	71.110552
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf	17390767.020394
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	1391295.720014
+dump.0.1.metis.Goodwin.rim-447.tree.nf	10187.142846
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf	3136.551560
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	43803.250143
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf	31941835.457788
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf	27838.844261
+dump.0.1.metis.Shyy.shyy161-809.tree.nf	55702.262263
+dump.0.1.metis.Wang.wang4-833.tree.nf	909604.139059
+dump.0.1.metis.Watson.Baumann-1855.tree.nf	3214089.490432
+dump.1.1.amd.QY.case39-2136.tree.nf	23826.963839
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	77.487890
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf	10823.950784
+dump.1.2.amd.QY.case39-2136.tree.nf	23881.466506
+dump.1.3.amd.QY.case39-2136.tree.nf	23989.513839
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf	57226148.691302
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	58285962.247302
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	58285962.247302
+homogeneous average average
+Homogeneous cluster with 340 processors, cumulative memory 31431591311.999825
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	103895.221416
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	12297.030117
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	20895.547060
+dump.0.1.amd.Bova.rma10-374.tree.nf	296053.966620
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	30397.523926
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	343754.762932
+dump.0.1.amd.QY.case39-2136.tree.nf	18684.796585
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	976089.257521
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	2306107.731637
+dump.0.1.metis.Bova.rma10-374.tree.nf	189831.689931
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	385.279679
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf	30212234.504057
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	2053828.625972
+dump.0.1.metis.Goodwin.rim-447.tree.nf	31602.102339
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf	7205.691839
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	106654.156899
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf	53265714.394055
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf	66932.164120
+dump.0.1.metis.Shyy.shyy161-809.tree.nf	92003.815081
+dump.0.1.metis.Wang.wang4-833.tree.nf	1358921.363669
+dump.0.1.metis.Watson.Baumann-1855.tree.nf	5481083.463525
+dump.1.1.amd.QY.case39-2136.tree.nf	25511.586585
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	402.623679
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf	10831.804117
+dump.1.2.amd.QY.case39-2136.tree.nf	25690.303252
+dump.1.3.amd.QY.case39-2136.tree.nf	26029.084585
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf	57226168.683301
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	58285982.239301
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	58285982.239301
+homogeneous few big
+Homogeneous cluster with 100 processors, cumulative memory 36978342720.000023
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	68587.857433
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	12299.750117
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	20898.267060
+dump.0.1.amd.Bova.rma10-374.tree.nf	224541.003942
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	30519.093260
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	250934.101474
+dump.0.1.amd.QY.case39-2136.tree.nf	18165.093252
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	966718.369624
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	1330230.580869
+dump.0.1.metis.Bova.rma10-374.tree.nf	89512.740250
+
+
+no biggest trees
+2-level
+heterogeneous
+Heterogeneous cluster with 3758 processors, cumulative memory 58356447105.009415
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	68587.857433
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	12277.000784
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	20875.013727
+dump.0.1.amd.Bova.rma10-374.tree.nf	224541.003942
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	30382.716593
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	250934.101474
+dump.0.1.amd.QY.case39-2136.tree.nf	17012.948892
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	928557.801736
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	1330230.580869
+dump.0.1.metis.Bova.rma10-374.tree.nf	89512.740250
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	71.110552
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf	17390806.045043
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	1391295.720014
+dump.0.1.metis.Goodwin.rim-447.tree.nf	10187.142846
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf	3136.551560
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	43803.250143
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf	31959187.504486
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf	27838.844261
+dump.0.1.metis.Shyy.shyy161-809.tree.nf	55702.262263
+dump.0.1.metis.Wang.wang4-833.tree.nf	909604.139059
+dump.0.1.metis.Watson.Baumann-1855.tree.nf	3214089.490432
+dump.1.1.amd.QY.case39-2136.tree.nf	23826.108892
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	77.487890
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf	10811.774784
+dump.1.2.amd.QY.case39-2136.tree.nf	23880.788225
+dump.1.3.amd.QY.case39-2136.tree.nf	23988.759559
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf	40884682.944666
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	41136375.741087
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	41136375.741087
+homogeneous many small
+Homogeneous cluster with 3758 processors, cumulative memory 173705764927.187744
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	68587.857433
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	12277.000784
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	20875.013727
+dump.0.1.amd.Bova.rma10-374.tree.nf	224541.003942
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	30382.716593
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	250934.101474
+dump.0.1.amd.QY.case39-2136.tree.nf	17012.948892
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	928557.801736
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	1330230.580869
+dump.0.1.metis.Bova.rma10-374.tree.nf	89512.740250
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	71.110552
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf	17390767.020394
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	1391295.720014
+dump.0.1.metis.Goodwin.rim-447.tree.nf	10187.142846
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf	3136.551560
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	43803.250143
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf	31941835.457788
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf	27838.844261
+dump.0.1.metis.Shyy.shyy161-809.tree.nf	55702.262263
+dump.0.1.metis.Wang.wang4-833.tree.nf	909604.139059
+dump.0.1.metis.Watson.Baumann-1855.tree.nf	3214089.490432
+dump.1.1.amd.QY.case39-2136.tree.nf	23826.108892
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	77.487890
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf	10811.774784
+dump.1.2.amd.QY.case39-2136.tree.nf	23880.788225
+dump.1.3.amd.QY.case39-2136.tree.nf	23988.759559
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf	40881240.149220
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	41133799.179384
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	41133799.179384
+homogeneous average average
+terminate called after throwing an instance of 'char const*'
+./runscriptNoBiggest.sh: Zeile 28: 85111 Abgebrochen             (Speicherabzug geschrieben) ./main /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/trees/ treesListNoBiggest.txt 0 1 1 -1 2
+homogeneous few big
+Homogeneous cluster with 906 processors, cumulative memory 335023785043.205688
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	68587.857433
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	12292.211451
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	20890.224394
+dump.0.1.amd.Bova.rma10-374.tree.nf	224541.003942
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	30394.505260
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	250934.101474
+dump.0.1.amd.QY.case39-2136.tree.nf	17014.242645
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	956549.553945
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	1330230.580869
+dump.0.1.metis.Bova.rma10-374.tree.nf	89512.740250
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	71.110552
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf	17390767.020394
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	1391295.720014
+dump.0.1.metis.Goodwin.rim-447.tree.nf	10187.142846
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf	3136.551560
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	43803.250143
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf	31941835.457788
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf	27838.844261
+dump.0.1.metis.Shyy.shyy161-809.tree.nf	55702.262263
+dump.0.1.metis.Wang.wang4-833.tree.nf	909604.139059
+dump.0.1.metis.Watson.Baumann-1855.tree.nf	3214089.490432
+dump.1.1.amd.QY.case39-2136.tree.nf	23827.402645
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	77.487890
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf	10826.985451
+dump.1.2.amd.QY.case39-2136.tree.nf	23882.459312
+dump.1.3.amd.QY.case39-2136.tree.nf	23991.884645
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf	57226156.383302
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	58285969.939302
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	58285969.939302
+3-level
+homogeneous many small
+Homogeneous cluster with 1475 processors, cumulative memory 68178819390.001579
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	68587.857433
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	12289.176784
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	20887.189727
+dump.0.1.amd.Bova.rma10-374.tree.nf	224541.003942
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	30391.470593
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	250934.101474
+dump.0.1.amd.QY.case39-2136.tree.nf	17013.803839
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	950969.891937
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	1330230.580869
+dump.0.1.metis.Bova.rma10-374.tree.nf	89512.740250
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	71.110552
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf	17390767.020394
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	1391295.720014
+dump.0.1.metis.Goodwin.rim-447.tree.nf	10187.142846
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf	3136.551560
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	43803.250143
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf	31941835.457788
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf	27838.844261
+dump.0.1.metis.Shyy.shyy161-809.tree.nf	55702.262263
+dump.0.1.metis.Wang.wang4-833.tree.nf	909604.139059
+dump.0.1.metis.Watson.Baumann-1855.tree.nf	3214089.490432
+dump.1.1.amd.QY.case39-2136.tree.nf	23826.963839
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	77.487890
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf	10823.950784
+dump.1.2.amd.QY.case39-2136.tree.nf	23881.466506
+dump.1.3.amd.QY.case39-2136.tree.nf	23989.513839
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf	57226148.691302
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	58285962.247302
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	58285962.247302
+homogeneous average average
+Homogeneous cluster with 340 processors, cumulative memory 31431591311.999825
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	103895.221416
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	12297.030117
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	20895.547060
+dump.0.1.amd.Bova.rma10-374.tree.nf	296053.966620
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	30397.523926
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	343754.762932
+dump.0.1.amd.QY.case39-2136.tree.nf	18684.796585
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	976089.257521
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	2306107.731637
+dump.0.1.metis.Bova.rma10-374.tree.nf	189831.689931
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	385.279679
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf	30212234.504057
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	2053828.625972
+dump.0.1.metis.Goodwin.rim-447.tree.nf	31602.102339
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf	7205.691839
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	106654.156899
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf	53265714.394055
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf	66932.164120
+dump.0.1.metis.Shyy.shyy161-809.tree.nf	92003.815081
+dump.0.1.metis.Wang.wang4-833.tree.nf	1358921.363669
+dump.0.1.metis.Watson.Baumann-1855.tree.nf	5481083.463525
+dump.1.1.amd.QY.case39-2136.tree.nf	25511.586585
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	402.623679
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf	10831.804117
+dump.1.2.amd.QY.case39-2136.tree.nf	25690.303252
+dump.1.3.amd.QY.case39-2136.tree.nf	26029.084585
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf	57226168.683301
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	58285982.239301
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	58285982.239301
+homogeneous few big
+Homogeneous cluster with 100 processors, cumulative memory 36978342720.000023
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	68587.857433
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	12299.750117
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	20898.267060
+dump.0.1.amd.Bova.rma10-374.tree.nf	224541.003942
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	30519.093260
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	250934.101474
+dump.0.1.amd.QY.case39-2136.tree.nf	18165.093252
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	966718.369624
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	1330230.580869
+dump.0.1.metis.Bova.rma10-374.tree.nf	89512.740250
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	355.898703
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf	17390877.803728
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	1391295.720014
+dump.0.1.metis.Goodwin.rim-447.tree.nf	10328.075697
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf	7207.108506
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	106654.316899
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf	53265714.570055
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf	66932.268787
+dump.0.1.metis.Shyy.shyy161-809.tree.nf	55702.262263
+dump.0.1.metis.Wang.wang4-833.tree.nf	909604.139059
+dump.0.1.metis.Watson.Baumann-1855.tree.nf	3214089.606432
+dump.1.1.amd.QY.case39-2136.tree.nf	24978.253252
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	371.978726
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf	10834.524117
+dump.1.2.amd.QY.case39-2136.tree.nf	25156.969918
+dump.1.3.amd.QY.case39-2136.tree.nf	25495.751252
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf	57226186.471301
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	58286000.255301
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	58286000.255301
+heterogeneous
+Heterogeneous cluster with 1475 processors, cumulative memory 16726922214.749157
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	103895.221416
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	12289.176784
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	20887.189727
+dump.0.1.amd.Bova.rma10-374.tree.nf	296053.966620
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	30391.470593
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	343754.762932
+dump.0.1.amd.QY.case39-2136.tree.nf	18684.796585
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	976089.257521
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	2306107.731637
+dump.0.1.metis.Bova.rma10-374.tree.nf	189831.689931
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	385.279679
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf	30210589.303986
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	2053828.625972
+dump.0.1.metis.Goodwin.rim-447.tree.nf	31602.102339
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf	7205.691839
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	106653.862899
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf	52553110.594177
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf	66932.164120
+dump.0.1.metis.Shyy.shyy161-809.tree.nf	92003.815081
+dump.0.1.metis.Wang.wang4-833.tree.nf	1358921.363669
+dump.0.1.metis.Watson.Baumann-1855.tree.nf	5481270.519956
+dump.1.1.amd.QY.case39-2136.tree.nf	25511.586585
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	402.623679
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf	10823.950784
+dump.1.2.amd.QY.case39-2136.tree.nf	25690.303252
+dump.1.3.amd.QY.case39-2136.tree.nf	26029.084585
+
+

@@ -1,0 +1,432 @@
+small with extra output
+2-level
+heterogeneous
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1084494147
+dump.1.3.amd.QY.case39-2136.tree.nf 23988.084122 1326025
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1084494147
+dump.1.2.amd.QY.case39-2136.tree.nf 23880.112789 2324961
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1084494147
+dump.0.1.metis.Goodwin.rim-447.tree.nf 10184.262129 98992
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1084494147
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 77.330285 537250
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1084494147
+dump.1.1.amd.QY.case39-2136.tree.nf 23825.433456 3452071
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1084494147
+dump.0.1.metis.Wang.wang4-833.tree.nf 909534.803436 101683
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1084494147
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 68579.351629 89276
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1084494147
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 43795.219026 731517
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1084494147
+dump.0.1.amd.QY.case39-2136.tree.nf 17012.273456 5554376
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1084494147
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 70.938630 892784
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1084494147
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 928477.406225 17981837
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1084494147
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1391453.669284 89837
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1084494147
+dump.0.1.amd.Bova.rma10-374.tree.nf 224537.160168 223931
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1084494147
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 127483
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 532626, CumulativeMemory: 1084494147
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 131258
+
+
+homogeneous many small
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 4261013, CumulativeMemory: -1167450428
+dump.1.3.amd.QY.case39-2136.tree.nf 23988.084122 1394728
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 4261013, CumulativeMemory: -1167450428
+dump.1.2.amd.QY.case39-2136.tree.nf 23880.112789 2380526
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 4261013, CumulativeMemory: -1167450428
+dump.0.1.metis.Goodwin.rim-447.tree.nf 10184.262129 96200
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 4261013, CumulativeMemory: -1167450428
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 77.330285 536118
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 4261013, CumulativeMemory: -1167450428
+dump.1.1.amd.QY.case39-2136.tree.nf 23825.433456 3468760
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 4261013, CumulativeMemory: -1167450428
+dump.0.1.metis.Wang.wang4-833.tree.nf 909534.803436 99515
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 4261013, CumulativeMemory: -1167450428
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 68579.351629 86564
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 4261013, CumulativeMemory: -1167450428
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 43795.219026 727802
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 4261013, CumulativeMemory: -1167450428
+dump.0.1.amd.QY.case39-2136.tree.nf 17012.273456 5711513
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 4261013, CumulativeMemory: -1167450428
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 70.938630 991289
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 4261013, CumulativeMemory: -1167450428
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 928519.106086 18127640
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 4261013, CumulativeMemory: -1167450428
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1391215.534205 75139
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 4261013, CumulativeMemory: -1167450428
+dump.0.1.amd.Bova.rma10-374.tree.nf 224537.160168 230377
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 4261013, CumulativeMemory: -1167450428
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 125781
+
+
+Cluster:
+#Nodes: 3758, Configuration: 0, MinMemory: 4261013, CumulativeMemory: -1167450428
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 126277
+
+
+homogeneous average average
+homogeneous few big
+Cluster:
+#Nodes: 906, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 818182071
+dump.1.3.amd.QY.case39-2136.tree.nf 23991.222480 325927
+
+
+Cluster:
+#Nodes: 906, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 818182071
+dump.1.2.amd.QY.case39-2136.tree.nf 23881.797146 653709
+
+
+Cluster:
+#Nodes: 906, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 818182071
+dump.0.1.metis.Goodwin.rim-447.tree.nf 10184.262129 98721
+
+
+Cluster:
+#Nodes: 906, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 818182071
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 77.330285 535878
+
+
+Cluster:
+#Nodes: 906, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 818182071
+dump.1.1.amd.QY.case39-2136.tree.nf 23826.740480 998194
+
+
+Cluster:
+#Nodes: 906, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 818182071
+dump.0.1.metis.Wang.wang4-833.tree.nf 909534.803436 103135
+
+
+Cluster:
+#Nodes: 906, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 818182071
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 68579.351629 87434
+
+
+Cluster:
+#Nodes: 906, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 818182071
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 43795.219026 724987
+
+
+Cluster:
+#Nodes: 906, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 818182071
+dump.0.1.amd.QY.case39-2136.tree.nf 17013.580480 1656459
+
+
+Cluster:
+#Nodes: 906, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 818182071
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 70.938630 881434
+
+
+Cluster:
+#Nodes: 906, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 818182071
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 956536.357532 4008140
+
+
+Cluster:
+#Nodes: 906, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 818182071
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1391215.534205 71129
+
+
+Cluster:
+#Nodes: 906, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 818182071
+dump.0.1.amd.Bova.rma10-374.tree.nf 224537.160168 219196
+
+
+Cluster:
+#Nodes: 906, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 818182071
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 127578
+
+
+Cluster:
+#Nodes: 906, Configuration: 0, MinMemory: 34088111, CumulativeMemory: 818182071
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 130151
+
+
+3-level
+homogeneous many small
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 1989960478
+dump.1.3.amd.QY.case39-2136.tree.nf 23988.742612 461294
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 1989960478
+dump.1.2.amd.QY.case39-2136.tree.nf 23880.695279 880612
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 1989960478
+dump.0.1.metis.Goodwin.rim-447.tree.nf 10184.262129 100548
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 1989960478
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 77.330285 528935
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 1989960478
+dump.1.1.amd.QY.case39-2136.tree.nf 23826.192612 1410493
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 1989960478
+dump.0.1.metis.Wang.wang4-833.tree.nf 909534.803436 96458
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 1989960478
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 68579.351629 84518
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 1989960478
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 43795.219026 721083
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 1989960478
+dump.0.1.amd.QY.case39-2136.tree.nf 17013.032612 2203175
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 1989960478
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 70.938630 1000190
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 1989960478
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 950951.838526 6519398
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 1989960478
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1391215.534205 73399
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 1989960478
+dump.0.1.amd.Bova.rma10-374.tree.nf 224537.160168 217486
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 1989960478
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 121925
+
+
+Cluster:
+#Nodes: 1475, Configuration: 0, MinMemory: 4261013, CumulativeMemory: 1989960478
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 122743
+
+
+homogeneous average average
+Cluster:
+#Nodes: 340, Configuration: 0, MinMemory: 8522027, CumulativeMemory: -1397545184
+dump.1.3.amd.QY.case39-2136.tree.nf 24995.862480 102356
+
+
+Cluster:
+#Nodes: 340, Configuration: 0, MinMemory: 8522027, CumulativeMemory: -1397545184
+dump.1.2.amd.QY.case39-2136.tree.nf 24733.533146 207179
+
+
+Cluster:
+#Nodes: 340, Configuration: 0, MinMemory: 8522027, CumulativeMemory: -1397545184
+dump.0.1.metis.Goodwin.rim-447.tree.nf 10184.262129 91264
+
+
+Cluster:
+#Nodes: 340, Configuration: 0, MinMemory: 8522027, CumulativeMemory: -1397545184
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 280.852498 225424
+
+
+Cluster:
+#Nodes: 340, Configuration: 0, MinMemory: 8522027, CumulativeMemory: -1397545184
+dump.1.1.amd.QY.case39-2136.tree.nf 24596.036480 340073
+
+
+Cluster:
+#Nodes: 340, Configuration: 0, MinMemory: 8522027, CumulativeMemory: -1397545184
+dump.0.1.metis.Wang.wang4-833.tree.nf 909534.803436 95964
+
+
+Cluster:
+#Nodes: 340, Configuration: 0, MinMemory: 8522027, CumulativeMemory: -1397545184
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 68579.351629 81995
+
+
+Cluster:
+#Nodes: 340, Configuration: 0, MinMemory: 8522027, CumulativeMemory: -1397545184
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106652.380516 260309
+
+
+Cluster:
+#Nodes: 340, Configuration: 0, MinMemory: 8522027, CumulativeMemory: -1397545184
+dump.0.1.amd.QY.case39-2136.tree.nf 17782.876480 573158
+
+
+Cluster:
+#Nodes: 340, Configuration: 0, MinMemory: 8522027, CumulativeMemory: -1397545184
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 266.379355 390659
+
+
+Cluster:
+#Nodes: 340, Configuration: 0, MinMemory: 8522027, CumulativeMemory: -1397545184
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 962100.853871 1233318
+
+
+Cluster:
+#Nodes: 340, Configuration: 0, MinMemory: 8522027, CumulativeMemory: -1397545184
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1391215.534205 68800
+
+
+Cluster:
+#Nodes: 340, Configuration: 0, MinMemory: 8522027, CumulativeMemory: -1397545184
+dump.0.1.amd.Bova.rma10-374.tree.nf 224537.160168 208334
+
+
+Cluster:
+#Nodes: 340, Configuration: 0, MinMemory: 8522027, CumulativeMemory: -1397545184
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 131358
+
+
+Cluster:
+#Nodes: 340, Configuration: 0, MinMemory: 8522027, CumulativeMemory: -1397545184
+dump.0.1.metis.Bova.rma10-374.tree.nf 89499.917033 111464
+
+
+homogeneous few big
+Cluster:
+#Nodes: 100, Configuration: 0, MinMemory: 34088111, CumulativeMemory: -886223504
+dump.1.3.amd.QY.case39-2136.tree.nf 25495.652129 18235
+
+
+Cluster:
+#Nodes: 100, Configuration: 0, MinMemory: 34088111, CumulativeMemory: -886223504
+dump.1.2.amd.QY.case39-2136.tree.nf 25156.870796 38459
+
+
+Cluster:
+#Nodes: 100, Configuration: 0, MinMemory: 34088111, CumulativeMemory: -886223504
+dump.0.1.metis.Goodwin.rim-447.tree.nf 10326.093249 82471
+
+
+Cluster:
+#Nodes: 100, Configuration: 0, MinMemory: 34088111, CumulativeMemory: -886223504
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 371.971677 58545
+
+
+Cluster:
+#Nodes: 100, Configuration: 0, MinMemory: 34088111, CumulativeMemory: -886223504
+dump.1.1.amd.QY.case39-2136.tree.nf 24978.154129 58605
+
+
+Cluster:
+#Nodes: 100, Configuration: 0, MinMemory: 34088111, CumulativeMemory: -886223504
+dump.0.1.metis.Wang.wang4-833.tree.nf 909534.803436 96209
+
+
+Cluster:
+#Nodes: 100, Configuration: 0, MinMemory: 34088111, CumulativeMemory: -886223504
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 68579.351629 84588
+
+
+Cluster:
+#Nodes: 100, Configuration: 0, MinMemory: 34088111, CumulativeMemory: -886223504
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106652.540516 79823
+
+
+Cluster:
+#Nodes: 100, Configuration: 0, MinMemory: 34088111, CumulativeMemory: -886223504
+dump.0.1.amd.QY.case39-2136.tree.nf 18164.994129 100790
+
+
+Cluster:
+#Nodes: 100, Configuration: 0, MinMemory: 34088111, CumulativeMemory: -886223504

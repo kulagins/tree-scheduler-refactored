@@ -10,9 +10,8 @@
 #include <stdlib.h>
 #include "../include/lib-io-tree.h"
 #include "../include/heuristics.h"
-#include "../include/inputParser.h"
 
-const bool verbose = false;
+const bool verbose = true;
 
 void buildFixedClusterWithSpeedsAndMemory(double CCR, unsigned int num_processors, Tree *treeobj) {
     Cluster *cluster = new Cluster(num_processors, true);
@@ -44,6 +43,8 @@ void quietPrint(string text){
 }
 
 int main(int argc, char **argv) {
+    InputParser *input = new InputParser(argc, argv);
+
     initOutput();
     string stage1, stage2 = "FirstFit", stage3;
 
@@ -147,7 +148,7 @@ int main(int argc, char **argv) {
             //   Cluster::getFixedCluster()->printProcessors();
         }
 
-        quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
+     //   quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
 
         time = clock();
         /// tree->Print(cout);
@@ -228,8 +229,12 @@ int main(int argc, char **argv) {
         //  std::cout << number_subtrees << " " << num_processors << " " << makespan << " " << stage1 << " " << stage2
         //           << " " << stage3 << " " << time << std::endl;
 
+        quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
+        quietPrint(Cluster::getFixedCluster()->getAverageLoadAndNumberOfUsedProcessors());
+        //quietPrint(Cluster::getFixedCluster()->getUsageString());
         delete tree;
         delete untouchedTree;
+        Cluster::getFixedCluster()->clean();
     } while (OpenFile.good());
     OpenFile.close();
     exit(EXIT_SUCCESS);

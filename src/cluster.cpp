@@ -32,7 +32,7 @@ vector<double> Cluster::buildNLevelMemorySizes(vector<double> memories, vector<u
     double cumulativeMem = 0;
     //double completeProcessorCount = std::accumulate(processorGroupSizes.begin(), processorGroupSizes.end(), 0);
     vector<double> memSizes;
-   // memSizes.resize(completeProcessorCount);
+    // memSizes.resize(completeProcessorCount);
     for (int i = 0; i < processorGroupSizes.size(); i++) {
         int nextGroupSize = processorGroupSizes.at(i);
         double nextMemSize = memories.at(i);
@@ -81,9 +81,9 @@ void Cluster::buildStatic2LevelCluster(double maxMinMem, double maxEdgesToMakesp
     int num_processors;
     vector<double> memorySizes;
 
-    num_processors = 3758;
-    processorCounts.insert(processorCounts.end(), {906, 2852});
-    mems.insert(mems.end(), {maxMemInCluster, maxMemInCluster / 8});
+    num_processors = 50;
+    processorCounts.insert(processorCounts.end(), {10, 40});
+    mems.insert(mems.end(), {maxMemInCluster*8, maxMemInCluster});
     memorySizes = buildNLevelMemorySizes(mems, processorCounts);
 
 
@@ -102,8 +102,8 @@ void Cluster::buildStatic3LevelCluster(double maxMinMem, double maxEdgesToMakesp
     vector<double> memorySizes;
 
     num_processors = 1475;
-    processorCounts.insert(processorCounts.end(), {100, 240, 1135});
-    mems.insert(mems.end(), {maxMemInCluster, maxMemInCluster / 2, maxMemInCluster / 8});
+    processorCounts.insert(processorCounts.end(), {10, 10, 30});
+    mems.insert(mems.end(), {maxMemInCluster*8, maxMemInCluster * 2, maxMemInCluster });
     memorySizes = buildNLevelMemorySizes(mems, processorCounts);
 
 
@@ -125,13 +125,15 @@ Cluster::buildHomStatic2LevelCluster(double maxMinMem, double maxEdgesToMakespan
 
     switch (adaptationMode) {
         case manySmall:
-            num_processors = 3758;
+            cout << "many small" << endl;
+            num_processors = 50;
             memorySizes = buildHomogeneousMemorySizes(maxMemInCluster, num_processors);
             break;
         case average:
             throw "No average processors in a 2-step cluster!";
         case fewBig:
-            num_processors = 906;
+            cout << "big" << endl;
+            num_processors = 10;
             memorySizes = buildHomogeneousMemorySizes(maxMemInCluster * 8, num_processors);
             break;
         default:
@@ -158,15 +160,18 @@ Cluster::buildHomStatic3LevelCluster(double maxMinMem, double maxEdgesToMakespan
 
     switch (adaptationMode) {
         case manySmall:
-            num_processors = 1475;
+            cout << "many small" << endl;
+            num_processors = 50;
             memorySizes = buildHomogeneousMemorySizes(maxMemInCluster, num_processors);
             break;
         case average:
-            num_processors = 340;
+            cout << "avg" << endl;
+            num_processors = 20;
             memorySizes = buildHomogeneousMemorySizes(maxMemInCluster * 2, num_processors);
             break;
         case fewBig:
-            num_processors = 100;
+            cout << "big" << endl;
+            num_processors = 10;
             memorySizes = buildHomogeneousMemorySizes(maxMemInCluster * 8, num_processors);
             break;
         default:
@@ -266,10 +271,6 @@ Processor *Cluster::getFirstFreeProcessorOrSmallest() {
     return this->processors.back();
 }
 
-Processor *Cluster::getLastProcessor() {
-    return this->processors.back();
-}
-
 void Processor::assignTask(Task *taskToBeAssigned) {
     this->assignedTask = taskToBeAssigned;
     taskToBeAssigned->setAssignedProcessor(this);
@@ -289,6 +290,22 @@ Task *Processor::getAssignedTask() const {
     return assignedTask;
 }
 
+void Processor::setAssignedTaskId(int assignedTaskId) {
+    Processor::assignedTaskId = assignedTaskId;
+}
+
+void Processor::setAssignedTask(Task *assignedTask) {
+    Processor::assignedTask = assignedTask;
+}
+
+double Processor::getOccupiedMemorySize() const {
+    return occupiedMemorySize;
+}
+
+void Processor::setOccupiedMemorySize(double occupiedMemorySize) {
+    Processor::occupiedMemorySize = occupiedMemorySize;
+}
+
 void Cluster::assignTasksForIds(Tree *tree) {
     for (Processor *p: getProcessors()) {
         if (p->getAssignedTaskId() != -1 && p->getAssignedTask() == nullptr) {
@@ -298,6 +315,57 @@ void Cluster::assignTasksForIds(Tree *tree) {
 
 }
 
+string Cluster::getUsageString() {
+    string out = "Used memory per processor \n";
+    out += "Processor number; Memory Size; Makespan weight of assigned node; Cost of assigned node; Makespan cost of assigned node; Usage percentage \n";
+    int i = 0;
+    for (Processor *p: getProcessors()) {
+        if (p->getAssignedTask() != nullptr) {
+            out += i + " " + to_string(p->getMemorySize()) + " " +
+                   to_string(p->getAssignedTask()->getMakespanWeight()) + " "
+                   + to_string(p->getAssignedTask()->getCost()) + " " +
+                   to_string(p->getAssignedTask()->getMakespanCost()) + " "
+                   + to_string(p->getAssignedTask()->getCost() * 100 / p->getMemorySize()) + "% \n";
+
+        } else {
+            out += "No task assigned   0%";
+        }
+    }
+    return out;
+
+}
+
+string Cluster::getShortUsageString() {
+    double percentageUsedProcesors;
+    string out = "";
+    int i = 0;
+    for (Processor *p: getProcessors()) {
+        if (p->getAssignedTask() != nullptr) {
+            percentageUsedProcesors++;
+            out += i + " " + to_string(p->getMemorySize()) + " " +
+                   to_string(p->getAssignedTask()->getMakespanWeight()) + " "
+                   + to_string(p->getAssignedTask()->getCost()) + " " +
+                   to_string(p->getAssignedTask()->getMakespanCost()) + " "
+                   + to_string(p->getAssignedTask()->getCost() * 100 / p->getMemorySize()) + "% \n";
+
+        } else {
+            out += "No task assigned   0%";
+        }
+    }
+    percentageUsedProcesors = percentageUsedProcesors * 100 / getProcessors().size();
+    out += "percentage used: " + to_string(percentageUsedProcesors);
+    return out;
+
+}
+
+void Cluster::clean() {
+    for (Processor *p: getProcessors()) {
+        p->setAssignedTask(nullptr);
+        p->setAssignedTaskId(-1);
+        p->isBusy = false;
+    }
+
+}
 
 
 

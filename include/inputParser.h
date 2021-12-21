@@ -1,19 +1,14 @@
+#ifndef inputParse_h
+#define inputParse_h
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <stdlib.h>
+#include <inputEnums.h>
+#include "json.hpp"
 
 using namespace std;
-
-enum HeterogenityLevels {
-    homogeneus, memoryHeteregeneus, heterogeneus
-};
-enum ClusteringModes {
-    treeDependent, staticClustering
-};
-enum HeterogeneousAdaptationMode {
-    noAdaptation, fewBig, average, manySmall
-};
 
 class InputParser {
 protected:
@@ -166,3 +161,4 @@ public:
     }
 
 };
+#endif

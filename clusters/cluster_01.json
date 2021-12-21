@@ -1,0 +1,15 @@
+{
+    "groups":
+    [
+        {
+            "number": 12,
+            "memory": 12050,
+            "speed": 1
+        },
+        {
+            "number": 20,
+            "memory": 44560,
+            "speed": 5
+        }
+    ]
+}

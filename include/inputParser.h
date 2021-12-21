@@ -1,8 +1,14 @@
+#ifndef inputParser_h
+#define inputParser_h
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <stdlib.h>
+#include "json.hpp"
+//#include "cluster.h"
 
+using json = nlohmann::json;
 using namespace std;
 
 enum HeterogenityLevels {
@@ -91,7 +97,9 @@ public:
                     break;
             }
 
+        
         }
+        this -> setClusterFromFile("/Users/paulhinzer/Documents/shk/tree-scheduler-refactored/clusters/cluster_01.json");
     }
 
     string getWorkingDirectory() {
@@ -144,6 +152,32 @@ public:
         }
     }
 
+    void setClusterFromFile(string filePath){
+        ifstream inputFile(filePath);
+        json clusterDescription;
+        inputFile >> clusterDescription;
+        cout << clusterDescription<<endl;
+        cout << clusterDescription["groups"]<<endl;
+
+
+        vector<unsigned int> processorCounts;
+        vector<double> mems;
+        int num_processors = 0;
+        vector<double> memorySizes;
+
+        for (auto& element : clusterDescription["groups"]) {
+            int numberInGroup = element["number"];
+            num_processors+=numberInGroup;
+            processorCounts.push_back(numberInGroup);
+            mems.push_back(element["memory"]);
+        }
+
+        for (auto& element: processorCounts){
+            cout << element<<endl;
+        }
+        memorySizes = Cluster::buildNLevelMemorySizes(mems,processorCounts);
+    }
+
 
     void errorFunction(int reason) {
         switch (reason) {
@@ -166,3 +200,5 @@ public:
     }
 
 };
+
+#endif

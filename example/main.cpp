@@ -10,6 +10,8 @@
 #include <stdlib.h>
 #include "../include/lib-io-tree.h"
 #include "../include/heuristics.h"
+#include "../include/cluster.h"
+#include "../include/inputParser.h"
 
 const bool verbose = true;
 
@@ -44,7 +46,8 @@ void quietPrint(string text){
 
 int main(int argc, char **argv) {
     InputParser *input = new InputParser(argc, argv);
-
+    cout << "works" <<endl;
+    /*
     initOutput();
     string stage1, stage2 = "FirstFit", stage3;
 
@@ -238,4 +241,5 @@ int main(int argc, char **argv) {
     } while (OpenFile.good());
     OpenFile.close();
     exit(EXIT_SUCCESS);
+    */
 }

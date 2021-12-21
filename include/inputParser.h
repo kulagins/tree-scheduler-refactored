@@ -5,9 +5,10 @@
 #include <fstream>
 #include <string>
 #include <stdlib.h>
-#include <inputEnums.h>
 #include "json.hpp"
+//#include "cluster.h"
 
+using json = nlohmann::json;
 using namespace std;
 
 class InputParser {
@@ -86,7 +87,9 @@ public:
                     break;
             }
 
+        
         }
+        this -> setClusterFromFile("/Users/paulhinzer/Documents/shk/tree-scheduler-refactored/clusters/cluster_01.json");
     }
 
     string getWorkingDirectory() {
@@ -137,6 +140,32 @@ public:
             default:
                 throw "This parameter doesn't exisit within the chosen clustering mode";
         }
+    }
+
+    void setClusterFromFile(string filePath){
+        ifstream inputFile(filePath);
+        json clusterDescription;
+        inputFile >> clusterDescription;
+        cout << clusterDescription<<endl;
+        cout << clusterDescription["groups"]<<endl;
+
+
+        vector<unsigned int> processorCounts;
+        vector<double> mems;
+        int num_processors = 0;
+        vector<double> memorySizes;
+
+        for (auto& element : clusterDescription["groups"]) {
+            int numberInGroup = element["number"];
+            num_processors+=numberInGroup;
+            processorCounts.push_back(numberInGroup);
+            mems.push_back(element["memory"]);
+        }
+
+        for (auto& element: processorCounts){
+            cout << element<<endl;
+        }
+        memorySizes = Cluster::buildNLevelMemorySizes(mems,processorCounts);
     }
 
 

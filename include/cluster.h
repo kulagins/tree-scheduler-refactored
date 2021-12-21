@@ -13,6 +13,7 @@
 #include <inputParser.h>
 //#include <bits/stdc++.h>
 
+class InputParser;
 using namespace std;
 
 

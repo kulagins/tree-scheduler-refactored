@@ -10,8 +10,8 @@
 #define heuristics_h
 
 #include "lib-io-tree.h"
-#include "lib-io-tree-minmem.h"
-#include "cluster.h"
+//#include "lib-io-tree-minmem.h"
+//#include "cluster.h"
 
 template<class T, class U>
 void GetTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest);
@@ -21,8 +21,8 @@ void GetTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest);
 
 int MemoryCheck(Tree *tree, io_method_t method);
 
-void
-MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t method, bool skipBig);
+//void
+//MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t method, bool skipBig);
 
 void SetBandwidth(double CCR, unsigned long tree_size, double *ewghts, double *timewghts);
 

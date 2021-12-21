@@ -5,8 +5,10 @@
 #include <fstream>
 #include <string>
 #include <stdlib.h>
-#include "json.hpp"
-//#include "cluster.h"
+#include <json.hpp>
+#include "inputEnums.h"
+#include "cluster.h"
+
 
 using json = nlohmann::json;
 using namespace std;
@@ -89,7 +91,7 @@ public:
 
         
         }
-        this -> setClusterFromFile("/Users/paulhinzer/Documents/shk/tree-scheduler-refactored/clusters/cluster_01.json");
+        this -> setClusterFromFile(argv[8]);
     }
 
     string getWorkingDirectory() {
@@ -143,29 +145,32 @@ public:
     }
 
     void setClusterFromFile(string filePath){
+        int normedMemory = 10;
         ifstream inputFile(filePath);
         json clusterDescription;
         inputFile >> clusterDescription;
-        cout << clusterDescription<<endl;
-        cout << clusterDescription["groups"]<<endl;
-
 
         vector<unsigned int> processorCounts;
         vector<double> mems;
-        int num_processors = 0;
-        vector<double> memorySizes;
-
+        vector<double> speeds;
+        
         for (auto& element : clusterDescription["groups"]) {
-            int numberInGroup = element["number"];
-            num_processors+=numberInGroup;
-            processorCounts.push_back(numberInGroup);
+            processorCounts.push_back(element["number"]);
             mems.push_back(element["memory"]);
+            speeds.push_back(element["speed"]);
         }
 
-        for (auto& element: processorCounts){
-            cout << element<<endl;
+        if (this->getClusteringMode() == treeDependent){
+            for (auto it = begin(mems); it != end(mems); it++)
+            {
+                *it = (*it) * normedMemory;
+            }
         }
-        memorySizes = Cluster::buildNLevelMemorySizes(mems,processorCounts);
+
+        Cluster *cluster = new Cluster(&processorCounts,&mems,&speeds);
+        cout << cluster->getPrettyClusterString()<<endl;
+        Cluster::setFixedCluster(cluster);
+
     }
 
 

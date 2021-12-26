@@ -115,7 +115,7 @@ void GetTwoSmallestElement(list<Task *> *container, list<Task *>::iterator &Smal
     }
 }
 
-double Task::SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength) {
+double Task::SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength, int limit) {
     parallelRoots.clear();
     parallelRoots.emplace_front(this);
 
@@ -138,7 +138,7 @@ double Task::SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned 
             currentNode = *max_element(parallelRoots.begin(), parallelRoots.end(), cmp_nodecreasing); //non-decreasing
         }
 
-        weightSurplusFromSmallestTasks = getWeightSurplusFromSmallestNodes(parallelRoots);
+        weightSurplusFromSmallestTasks = getWeightSurplusFromSmallestNodes(parallelRoots, limit);
         //cout<<"makespan "<<MS_sequential+weightSurplusFromSmallestTasks+weightsTasksPriorityQueue<<endl;
         //  cout<<MS_sequential<<" "<<weightSurplusFromSmallestTasks<<" "<<weightsTasksPriorityQueue<<"; ";
         makespansOfSplittings.push_back(MS_sequential + weightSurplusFromSmallestTasks + weightsTasksPriorityQueue);
@@ -165,7 +165,7 @@ double Task::SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned 
         amountSubtrees = 1;
     }
 
-    popSmallestRootsToFitToCluster(parallelRoots, amountSubtrees);
+    popSmallestRootsToFitToCluster(parallelRoots, amountSubtrees, limit);
     breakPreparedEdges(this, parallelRoots);
     //    cout<<"makespan from the tree root "<<root->getMakespanCost(true,true)<<endl;
 
@@ -197,15 +197,16 @@ Task::fillParallelRootsUntilBestMakespan(vector<double> &makespansOfSplittings,
     return parallelRoots;
 }
 
-double getWeightSurplusFromSmallestNodes(list<Task *> &parallelRoots) {
+double getWeightSurplusFromSmallestNodes(list<Task *> &parallelRoots, int limit) {
+    int limitToPartitioning = limit==-1? Cluster::getFixedCluster()->getNumberProcessors():limit;
     double weightSurplusFromSmallestNodes = 0;
     unsigned long surplusOfSubtreesOverProcessors = 0;
     unsigned long amountSubtrees = parallelRoots.size() + 1;
 
-    if (amountSubtrees > Cluster::getFixedCluster()->getNumberProcessors()) {
+    if (amountSubtrees > limitToPartitioning) {
         parallelRoots.sort(cmp_noIn_noCommu); //non-increasing sort, computation weight, no communication
         auto iter = parallelRoots.rbegin();
-        surplusOfSubtreesOverProcessors = amountSubtrees - Cluster::getFixedCluster()->getNumberProcessors();
+        surplusOfSubtreesOverProcessors = amountSubtrees - limitToPartitioning;
         for (unsigned int i = 0; i < surplusOfSubtreesOverProcessors; ++i, ++iter) {
             weightSurplusFromSmallestNodes += (*iter)->getMakespanCost(false,
                                                                        false); // no comunication cost, ImprovedSplit never goes to here.
@@ -252,10 +253,11 @@ void breakPreparedEdges(Task *root, list<Task *> &parallelRoots) {
     }
 }
 
-void popSmallestRootsToFitToCluster(list<Task *> &parallelRoots, unsigned long amountSubtrees) {
-    if (amountSubtrees > Cluster::getFixedCluster()->getNumberProcessors()) {
+void popSmallestRootsToFitToCluster(list<Task *> &parallelRoots, unsigned long amountSubtrees, int limit) {
+    int limitToPartitioning = limit==-1? Cluster::getFixedCluster()->getNumberProcessors():limit;
+    if (amountSubtrees > limitToPartitioning) {
         parallelRoots.sort(cmp_noIn_noCommu); //non-increasing sort, computation weight, no communication cost
-        unsigned int surplus = amountSubtrees - Cluster::getFixedCluster()->getNumberProcessors();
+        unsigned int surplus = amountSubtrees - limitToPartitioning;
         for (unsigned int i = 0; i < surplus; ++i) {
             parallelRoots.pop_back();
         }
@@ -275,7 +277,7 @@ void ISCore(Task *root, unsigned long num_processors,
     }
 
     root->SplitSubtrees(false, parallelRoots,
-                        SF_now); //SF_now will be modified in SplitSubtrees, it represents the length of sequential part, 0 means the subtree no need to partition
+                        SF_now, -1); //SF_now will be modified in SplitSubtrees, it represents the length of sequential part, 0 means the subtree no need to partition
 
     if (sequentialPart == true) {
         if (SF_now == 0) {
@@ -469,7 +471,9 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, Processor *&proces
         if (memoryEnough == true) {
             feasible = true;
             smallestNode = currentQNode;
-            processorToMergeTo->setOccupiedMemorySize(requiredMemory);
+            if(processorToMergeTo!= nullptr){
+                processorToMergeTo->setOccupiedMemorySize(requiredMemory);
+            }
         } else {
             list_increase_id.erase(smallest_iter);
         }
@@ -1361,6 +1365,7 @@ int MemoryCheck(Tree *tree, io_method_t method) {
     unsigned int com_freq;
     vector<unsigned int> BrokenEdgesID;
     while (!subtreeRoots.empty()) {
+     //   tree->HowmanySubtrees(false);
         subtreeRoot = subtreeRoots.back();
         subtreeRoots.pop_back();
         Processor *biggestFreeProcessor = Cluster::getFixedCluster()->getFirstFreeProcessorOrSmallest();
@@ -1368,7 +1373,7 @@ int MemoryCheck(Tree *tree, io_method_t method) {
             biggestFreeProcessor->assignTask(subtreeRoot);
         }
         double currentMemorySize = biggestFreeProcessor->getMemorySize();
-        //    cout<<"got proc "<<biggestFreeProcessor->getMemorySize()<<"for task "<<subtreeRoot->getId()<<endl;
+        cout<<"using proc of memory "<<biggestFreeProcessor->getMemorySize()<<"for task "<<subtreeRoot->getId()<<endl;
 
         Tree *subtree = BuildSubtree(tree, subtreeRoot);
         // cout<<"subtree "<<subtree->getSize();
@@ -1377,7 +1382,7 @@ int MemoryCheck(Tree *tree, io_method_t method) {
         schedule_f->clear();
         MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
 
-        //   cout << "Subtree " << subtreeRoot->getId() << " needs memory " << memory_required <<endl;
+        cout << "Subtree " << subtreeRoot->getId() << " needs memory " << memory_required <<endl;
         if (memory_required > currentMemorySize) {
             //        cout<<", larger than what is available: "<<currentMemorySize<<endl;
 

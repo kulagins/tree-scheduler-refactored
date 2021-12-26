@@ -1,0 +1,247 @@
+small with extra output
+2-level
+heterogeneous
+Heterogeneous cluster with 6 processors, cumulative memory 301125660.000000
+maxoutD30112566.000000
+using proc of memory 60225132.000000for task 1
+Subtree 1 needs memory 33772548.000000
+using proc of memory 60225132.000000for task 3791
+Subtree 3791 needs memory 23722272.000000
+using proc of memory 60225132.000000for task 28202
+Subtree 28202 needs memory 28576800.000000
+using proc of memory 60225132.000000for task 52645
+Subtree 52645 needs memory 699.000000
+using proc of memory 30112566.000000for task 54468
+Subtree 54468 needs memory 29445138.000000
+using proc of memory 30112566.000000for task 78921
+Subtree 78921 needs memory 21151008.000000
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 53279039.882088 50160321
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 30112566, MaxMemory: 60225132.000000, CumulativeMemory: 301125660
+task assigned and no mem occupation 78921
+Load 38.000000, Occupied 100.000000
+Heterogeneous cluster with 6 processors, cumulative memory 301125660.000000
+maxoutD30112566.000000
+using proc of memory 60225132.000000for task 1
+Subtree 1 needs memory 33772548.000000
+using proc of memory 60225132.000000for task 3791
+Subtree 3791 needs memory 23722272.000000
+using proc of memory 60225132.000000for task 28202
+Subtree 28202 needs memory 28576800.000000
+using proc of memory 60225132.000000for task 52645
+Subtree 52645 needs memory 699.000000
+using proc of memory 30112566.000000for task 54468
+Subtree 54468 needs memory 29445138.000000
+using proc of memory 30112566.000000for task 78921
+Subtree 78921 needs memory 21151008.000000
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 53279039.882088 763212806
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 30112566, MaxMemory: 60225132.000000, CumulativeMemory: 301125660
+Load 38.000000, Occupied 100.000000
+homogeneous many small
+Homogeneous cluster with 6 processors, cumulative memory 180675396.000000
+maxoutD30112566.000000
+using proc of memory 30112566.000000for task 1
+Subtree 1 needs memory 33772548.000000
+using proc of memory 30112566.000000for task 3791
+Subtree 3791 needs memory 23722272.000000
+using proc of memory 30112566.000000for task 28202
+Subtree 28202 needs memory 28576800.000000
+using proc of memory 30112566.000000for task 52645
+Subtree 52645 needs memory 699.000000
+using proc of memory 30112566.000000for task 54468
+Subtree 54468 needs memory 29445138.000000
+using proc of memory 30112566.000000for task 78921
+Subtree 78921 needs memory 21151008.000000
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 52554702.128514 47882601
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 30112566, MaxMemory: 30112566.000000, CumulativeMemory: 180675396
+task assigned and no mem occupation 1
+task assigned and no mem occupation 54468
+Load 45.000000, Occupied 100.000000
+Homogeneous cluster with 6 processors, cumulative memory 180675396.000000
+maxoutD30112566.000000
+using proc of memory 30112566.000000for task 1
+Subtree 1 needs memory 33772548.000000
+using proc of memory 30112566.000000for task 3791
+Subtree 3791 needs memory 23722272.000000
+using proc of memory 30112566.000000for task 28202
+Subtree 28202 needs memory 28576800.000000
+using proc of memory 30112566.000000for task 52645
+Subtree 52645 needs memory 699.000000
+using proc of memory 30112566.000000for task 54468
+Subtree 54468 needs memory 29445138.000000
+using proc of memory 30112566.000000for task 78921
+Subtree 78921 needs memory 21151008.000000
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 52554702.128514 712900007
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 30112566, MaxMemory: 30112566.000000, CumulativeMemory: 180675396
+task assigned and no mem occupation 54468
+Load 45.000000, Occupied 100.000000
+homogeneous average average
+homogeneous few big
+big
+Homogeneous cluster with 4 processors, cumulative memory 240900528.000000
+maxoutD30112566.000000
+using proc of memory 60225132.000000for task 1
+Subtree 1 needs memory 12338352.000000
+using proc of memory 60225132.000000for task 2029
+Subtree 2029 needs memory 32336497.000000
+using proc of memory 60225132.000000for task 52730
+Subtree 52730 needs memory 30103072.000000
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 53316660.701519 108794952
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 60225132, MaxMemory: 60225132.000000, CumulativeMemory: 240900528
+Load 41.000000, Occupied 75.000000
+big
+Homogeneous cluster with 4 processors, cumulative memory 240900528.000000
+maxoutD30112566.000000
+using proc of memory 60225132.000000for task 1
+Subtree 1 needs memory 12338352.000000
+using proc of memory 60225132.000000for task 2029
+Subtree 2029 needs memory 32336497.000000
+using proc of memory 60225132.000000for task 52730
+Subtree 52730 needs memory 30103072.000000
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 53316660.701519 764856949
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 60225132, MaxMemory: 60225132.000000, CumulativeMemory: 240900528
+Load 41.000000, Occupied 75.000000
+3-level
+heterogeneous
+Heterogeneous cluster with 6 processors, cumulative memory 271013094.000000
+maxoutD30112566.000000
+using proc of memory 60225132.000000for task 1
+Subtree 1 needs memory 33772548.000000
+using proc of memory 60225132.000000for task 3791
+Subtree 3791 needs memory 23722272.000000
+using proc of memory 45168849.000000for task 28202
+Subtree 28202 needs memory 28576800.000000
+using proc of memory 45168849.000000for task 52645
+Subtree 52645 needs memory 699.000000
+using proc of memory 30112566.000000for task 54468
+Subtree 54468 needs memory 29445138.000000
+using proc of memory 30112566.000000for task 78921
+Subtree 78921 needs memory 21151008.000000
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 53279039.882088 47738617
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 30112566, MaxMemory: 60225132.000000, CumulativeMemory: 271013094
+task assigned and no mem occupation 78921
+Load 42.000000, Occupied 100.000000
+Heterogeneous cluster with 6 processors, cumulative memory 271013094.000000
+maxoutD30112566.000000
+using proc of memory 60225132.000000for task 1
+Subtree 1 needs memory 33772548.000000
+using proc of memory 60225132.000000for task 3791
+Subtree 3791 needs memory 23722272.000000
+using proc of memory 45168849.000000for task 28202
+Subtree 28202 needs memory 28576800.000000
+using proc of memory 45168849.000000for task 52645
+Subtree 52645 needs memory 699.000000
+using proc of memory 30112566.000000for task 54468
+Subtree 54468 needs memory 29445138.000000
+using proc of memory 30112566.000000for task 78921
+Subtree 78921 needs memory 21151008.000000
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 53279039.882088 549708525
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 30112566, MaxMemory: 60225132.000000, CumulativeMemory: 271013094
+Load 42.000000, Occupied 100.000000
+homogeneous many small
+Homogeneous cluster with 6 processors, cumulative memory 180675396.000000
+maxoutD30112566.000000
+using proc of memory 30112566.000000for task 1
+Subtree 1 needs memory 33772548.000000
+using proc of memory 30112566.000000for task 3791
+Subtree 3791 needs memory 23722272.000000
+using proc of memory 30112566.000000for task 28202
+Subtree 28202 needs memory 28576800.000000
+using proc of memory 30112566.000000for task 52645
+Subtree 52645 needs memory 699.000000
+using proc of memory 30112566.000000for task 54468
+Subtree 54468 needs memory 29445138.000000
+using proc of memory 30112566.000000for task 78921
+Subtree 78921 needs memory 21151008.000000
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 52554702.128514 47785432
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 30112566, MaxMemory: 30112566.000000, CumulativeMemory: 180675396
+task assigned and no mem occupation 1
+task assigned and no mem occupation 54468
+Load 45.000000, Occupied 100.000000
+Homogeneous cluster with 6 processors, cumulative memory 180675396.000000
+maxoutD30112566.000000
+using proc of memory 30112566.000000for task 1
+Subtree 1 needs memory 33772548.000000
+using proc of memory 30112566.000000for task 3791
+Subtree 3791 needs memory 23722272.000000
+using proc of memory 30112566.000000for task 28202
+Subtree 28202 needs memory 28576800.000000
+using proc of memory 30112566.000000for task 52645
+Subtree 52645 needs memory 699.000000
+using proc of memory 30112566.000000for task 54468
+Subtree 54468 needs memory 29445138.000000
+using proc of memory 30112566.000000for task 78921
+Subtree 78921 needs memory 21151008.000000
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 52554702.128514 549572107
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 30112566, MaxMemory: 30112566.000000, CumulativeMemory: 180675396
+task assigned and no mem occupation 54468
+Load 45.000000, Occupied 100.000000
+homogeneous average average
+avg
+Homogeneous cluster with 4 processors, cumulative memory 180675396.000000
+maxoutD30112566.000000
+using proc of memory 45168849.000000for task 1
+Subtree 1 needs memory 12338352.000000
+using proc of memory 45168849.000000for task 2029
+Subtree 2029 needs memory 32336497.000000
+using proc of memory 45168849.000000for task 52730
+Subtree 52730 needs memory 30103072.000000
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 53316660.701519 109812371
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 45168849, MaxMemory: 45168849.000000, CumulativeMemory: 180675396
+Load 55.000000, Occupied 75.000000
+avg
+Homogeneous cluster with 4 processors, cumulative memory 180675396.000000
+maxoutD30112566.000000
+using proc of memory 45168849.000000for task 1
+Subtree 1 needs memory 12338352.000000
+using proc of memory 45168849.000000for task 2029
+Subtree 2029 needs memory 32336497.000000
+using proc of memory 45168849.000000for task 52730
+Subtree 52730 needs memory 30103072.000000
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 53316660.701519 670212743
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 45168849, MaxMemory: 45168849.000000, CumulativeMemory: 180675396
+Load 55.000000, Occupied 75.000000
+homogeneous few big
+big
+Homogeneous cluster with 2 processors, cumulative memory 120450264.000000
+maxoutD30112566.000000
+using proc of memory 60225132.000000for task 1
+Subtree 1 needs memory 34215856.000000
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 103701518.291333 77943011
+
+Cluster:
+#Nodes: 2, Configuration: 0, MinMemory: 60225132, MaxMemory: 60225132.000000, CumulativeMemory: 120450264
+Load 56.000000, Occupied 50.000000
+big
+Homogeneous cluster with 2 processors, cumulative memory 120450264.000000
+maxoutD30112566.000000
+using proc of memory 60225132.000000for task 1
+Subtree 1 needs memory 34215856.000000
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 103701518.291333 825652412
+
+Cluster:
+#Nodes: 2, Configuration: 0, MinMemory: 60225132, MaxMemory: 60225132.000000, CumulativeMemory: 120450264
+Load 56.000000, Occupied 50.000000

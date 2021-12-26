@@ -1,0 +1,1465 @@
+
+   num_processors = 6;
+    processorCounts.insert(processorCounts.end(), {2, 2, 2});
+    mems.insert(mems.end(), {maxMemInCluster * 2, maxMemInCluster * 1.5, maxMemInCluster});
+small with extra output
+2-level
+heterogeneous
+dump.1.3.amd.QY.case39-2136.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 2720900.000000
+maxoutD272090.000000
+using proc of memory 544180.000000for task 1
+Subtree 1 needs memory 274140.000000
+using proc of memory 544180.000000for task 1632
+Subtree 1632 needs memory 275690.000000
+using proc of memory 544180.000000for task 2951
+Subtree 2951 needs memory 275690.000000
+using proc of memory 544180.000000for task 4270
+Subtree 4270 needs memory 275690.000000
+using proc of memory 272090.000000for task 5589
+Subtree 5589 needs memory 275690.000000
+using proc of memory 272090.000000for task 6908
+Subtree 6908 needs memory 275690.000000
+dump.1.3.amd.QY.case39-2136.tree.nf 226247.460350 159849
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 272090, MaxMemory: 544180.000000, CumulativeMemory: 2720900
+task assigned and no mem occupation 5589
+task assigned and no mem occupation 5721
+Load 40.000000, Occupied 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 2720900.000000
+maxoutD272090.000000
+using proc of memory 544180.000000for task 1
+Subtree 1 needs memory 274140.000000
+using proc of memory 544180.000000for task 3283
+Subtree 3283 needs memory 275690.000000
+using proc of memory 544180.000000for task 5902
+Subtree 5902 needs memory 275690.000000
+using proc of memory 544180.000000for task 8521
+Subtree 8521 needs memory 275690.000000
+using proc of memory 272090.000000for task 11140
+Subtree 11140 needs memory 275690.000000
+using proc of memory 272090.000000for task 13759
+Subtree 13759 needs memory 275690.000000
+dump.1.2.amd.QY.case39-2136.tree.nf 219589.306350 6611717
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 272090, MaxMemory: 544180.000000, CumulativeMemory: 2720900
+task assigned and no mem occupation 11402
+Load 40.000000, Occupied 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 855520.000000
+maxoutD85552.000000
+using proc of memory 171104.000000for task 1
+Subtree 1 needs memory 78482.000000
+using proc of memory 171104.000000for task 181
+Subtree 181 needs memory 92882.000000
+using proc of memory 171104.000000for task 5902
+Subtree 5902 needs memory 92882.000000
+using proc of memory 171104.000000for task 11542
+Subtree 11542 needs memory 99824.000000
+using proc of memory 85552.000000for task 16558
+Subtree 16558 needs memory 92882.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf 49481.200131 31966169
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 85552, MaxMemory: 171104.000000, CumulativeMemory: 855520
+Load 42.000000, Occupied 100.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 22110.000000
+maxoutD2211.000000
+using proc of memory 4422.000000for task 1
+Subtree 1 needs memory 934.000000
+using proc of memory 4422.000000for task 2
+Subtree 2 needs memory 2654.000000
+using proc of memory 4422.000000for task 6279
+Subtree 6279 needs memory 2611.000000
+using proc of memory 4422.000000for task 12569
+Subtree 12569 needs memory 2544.000000
+using proc of memory 2211.000000for task 18848
+Subtree 18848 needs memory 1912.000000
+using proc of memory 2211.000000for task 21812
+Subtree 21812 needs memory 2607.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 3849.511880 42024899
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 2211, MaxMemory: 4422.000000, CumulativeMemory: 22110
+Load 63.000000, Occupied 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 2720900.000000
+maxoutD272090.000000
+using proc of memory 544180.000000for task 1
+Subtree 1 needs memory 274140.000000
+using proc of memory 544180.000000for task 5204
+Subtree 5204 needs memory 275690.000000
+using proc of memory 544180.000000for task 9423
+Subtree 9423 needs memory 275690.000000
+using proc of memory 544180.000000for task 13642
+Subtree 13642 needs memory 275690.000000
+using proc of memory 272090.000000for task 17861
+Subtree 17861 needs memory 275690.000000
+using proc of memory 272090.000000for task 22080
+Subtree 22080 needs memory 275690.000000
+dump.1.1.amd.QY.case39-2136.tree.nf 216243.940350 85324661
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 272090, MaxMemory: 544180.000000, CumulativeMemory: 2720900
+Load 40.000000, Occupied 100.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 3242880.000000
+maxoutD324288.000000
+using proc of memory 648576.000000for task 1
+Subtree 1 needs memory 393378.000000
+using proc of memory 648576.000000for task 393
+Subtree 393 needs memory 153458.000000
+using proc of memory 648576.000000for task 5193
+Subtree 5193 needs memory 281250.000000
+using proc of memory 648576.000000for task 14629
+Subtree 14629 needs memory 243602.000000
+using proc of memory 324288.000000for task 21907
+Subtree 21907 needs memory 169362.000000
+using proc of memory 324288.000000for task 28113
+Subtree 28113 needs memory 110450.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 108609.419246 122353744
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 324288, MaxMemory: 648576.000000, CumulativeMemory: 3242880
+Load 38.000000, Occupied 100.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 2903220.000000
+maxoutD290322.000000
+using proc of memory 580644.000000for task 1
+Subtree 1 needs memory 161292.000000
+using proc of memory 580644.000000for task 256
+Subtree 256 needs memory 306354.000000
+using proc of memory 580644.000000for task 9344
+Subtree 9344 needs memory 243602.000000
+using proc of memory 580644.000000for task 18688
+Subtree 18688 needs memory 243602.000000
+using proc of memory 290322.000000for task 27712
+Subtree 27712 needs memory 313734.000000
+using proc of memory 290322.000000for task 37763
+Subtree 37763 needs memory 1.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 134949.897945 155915446
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 290322, MaxMemory: 580644.000000, CumulativeMemory: 2903220
+Load 32.000000, Occupied 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 2720900.000000
+maxoutD272090.000000
+using proc of memory 544180.000000for task 1
+Subtree 1 needs memory 274140.000000
+using proc of memory 544180.000000for task 7920
+Subtree 7920 needs memory 275690.000000
+using proc of memory 544180.000000for task 14300
+Subtree 14300 needs memory 275690.000000
+using proc of memory 544180.000000for task 20680
+Subtree 20680 needs memory 275690.000000
+using proc of memory 272090.000000for task 27060
+Subtree 27060 needs memory 275690.000000
+using proc of memory 272090.000000for task 33440
+Subtree 33440 needs memory 275690.000000
+dump.0.1.amd.QY.case39-2136.tree.nf 156954.712350 197051028
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 272090, MaxMemory: 544180.000000, CumulativeMemory: 2720900
+task assigned and no mem occupation 27700
+Load 40.000000, Occupied 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 23120.000000
+maxoutD2312.000000
+using proc of memory 4624.000000for task 1
+Subtree 1 needs memory 1029.000000
+using proc of memory 4624.000000for task 22
+Subtree 22 needs memory 2772.000000
+using proc of memory 4624.000000for task 10254
+Subtree 10254 needs memory 2611.000000
+using proc of memory 4624.000000for task 20490
+Subtree 20490 needs memory 2584.000000
+using proc of memory 2312.000000for task 30729
+Subtree 30729 needs memory 1938.000000
+using proc of memory 2312.000000for task 35841
+Subtree 35841 needs memory 2733.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 3771.037880 243961144
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 2312, MaxMemory: 4624.000000, CumulativeMemory: 23120
+Load 53.000000, Occupied 100.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 3960500.000000
+maxoutD396050.000000
+using proc of memory 792100.000000for task 1
+Subtree 1 needs memory 364658.000000
+using proc of memory 792100.000000for task 429
+Subtree 429 needs memory 396050.000000
+using proc of memory 792100.000000for task 6287
+Subtree 6287 needs memory 383688.000000
+using proc of memory 792100.000000for task 9961
+Subtree 9961 needs memory 208669.000000
+using proc of memory 396050.000000for task 30707
+Subtree 30707 needs memory 164738.000000
+using proc of memory 396050.000000for task 32953
+Subtree 32953 needs memory 308898.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf 398540.205852 314707421
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 396050, MaxMemory: 792100.000000, CumulativeMemory: 3960500
+Load 38.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 3819380.000000
+maxoutD381938.000000
+using proc of memory 763876.000000for task 1
+Subtree 1 needs memory 312050.000000
+using proc of memory 763876.000000for task 272
+Subtree 272 needs memory 241443.000000
+using proc of memory 763876.000000for task 11624
+Subtree 11624 needs memory 193442.000000
+using proc of memory 763876.000000for task 17654
+Subtree 17654 needs memory 439734.000000
+using proc of memory 381938.000000for task 24460
+Subtree 24460 needs memory 354433.000000
+using proc of memory 381938.000000for task 29860
+Subtree 29860 needs memory 369800.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 330358.670530 343290036
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 381938, MaxMemory: 763876.000000, CumulativeMemory: 3819380
+Load 40.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 3819380.000000
+maxoutD381938.000000
+using proc of memory 763876.000000for task 1
+Subtree 1 needs memory 312050.000000
+using proc of memory 763876.000000for task 272
+Subtree 272 needs memory 241443.000000
+using proc of memory 763876.000000for task 11624
+Subtree 11624 needs memory 193442.000000
+using proc of memory 763876.000000for task 17654
+Subtree 17654 needs memory 439734.000000
+using proc of memory 381938.000000for task 24460
+Subtree 24460 needs memory 354433.000000
+using proc of memory 381938.000000for task 29860
+Subtree 29860 needs memory 369800.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 330358.670530 369610208
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 381938, MaxMemory: 763876.000000, CumulativeMemory: 3819380
+task assigned and no mem occupation 29860
+Load 40.000000, Occupied 100.000000
+homogeneous many small
+dump.1.3.amd.QY.case39-2136.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 1632540.000000
+maxoutD272090.000000
+using proc of memory 272090.000000for task 1
+Subtree 1 needs memory 274140.000000
+using proc of memory 272090.000000for task 1632
+Subtree 1632 needs memory 275690.000000
+using proc of memory 272090.000000for task 2951
+Subtree 2951 needs memory 275690.000000
+using proc of memory 272090.000000for task 4270
+Subtree 4270 needs memory 275690.000000
+using proc of memory 272090.000000for task 5589
+Subtree 5589 needs memory 275690.000000
+using proc of memory 272090.000000for task 6908
+Subtree 6908 needs memory 275690.000000
+dump.1.3.amd.QY.case39-2136.tree.nf -1.000000 289988
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 272090, MaxMemory: 272090.000000, CumulativeMemory: 1632540
+task assigned and no mem occupation 1373
+task assigned and no mem occupation 1764
+Load 66.000000, Occupied 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 1632540.000000
+maxoutD272090.000000
+using proc of memory 272090.000000for task 1
+Subtree 1 needs memory 274140.000000
+using proc of memory 272090.000000for task 3283
+Subtree 3283 needs memory 275690.000000
+using proc of memory 272090.000000for task 5902
+Subtree 5902 needs memory 275690.000000
+using proc of memory 272090.000000for task 8521
+Subtree 8521 needs memory 275690.000000
+using proc of memory 272090.000000for task 11140
+Subtree 11140 needs memory 275690.000000
+using proc of memory 272090.000000for task 13759
+Subtree 13759 needs memory 275690.000000
+dump.1.2.amd.QY.case39-2136.tree.nf -1.000000 7194067
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 272090, MaxMemory: 272090.000000, CumulativeMemory: 1632540
+Load 66.000000, Occupied 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 513312.000000
+maxoutD85552.000000
+using proc of memory 85552.000000for task 1
+Subtree 1 needs memory 78482.000000
+using proc of memory 85552.000000for task 181
+Subtree 181 needs memory 92882.000000
+using proc of memory 85552.000000for task 5902
+Subtree 5902 needs memory 92882.000000
+using proc of memory 85552.000000for task 11542
+Subtree 11542 needs memory 99824.000000
+using proc of memory 85552.000000for task 16558
+Subtree 16558 needs memory 92882.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf -1.000000 32672375
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 85552, MaxMemory: 85552.000000, CumulativeMemory: 513312
+Load 47.000000, Occupied 100.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 13266.000000
+maxoutD2211.000000
+using proc of memory 2211.000000for task 1
+Subtree 1 needs memory 934.000000
+using proc of memory 2211.000000for task 2
+Subtree 2 needs memory 2654.000000
+using proc of memory 2211.000000for task 6279
+Subtree 6279 needs memory 2611.000000
+using proc of memory 2211.000000for task 12569
+Subtree 12569 needs memory 2544.000000
+using proc of memory 2211.000000for task 18848
+Subtree 18848 needs memory 1912.000000
+using proc of memory 2211.000000for task 21812
+Subtree 21812 needs memory 2607.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf -1.000000 44167094
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 2211, MaxMemory: 2211.000000, CumulativeMemory: 13266
+Load 97.000000, Occupied 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 1632540.000000
+maxoutD272090.000000
+using proc of memory 272090.000000for task 1
+Subtree 1 needs memory 274140.000000
+using proc of memory 272090.000000for task 5204
+Subtree 5204 needs memory 275690.000000
+using proc of memory 272090.000000for task 9423
+Subtree 9423 needs memory 275690.000000
+using proc of memory 272090.000000for task 13642
+Subtree 13642 needs memory 275690.000000
+using proc of memory 272090.000000for task 17861
+Subtree 17861 needs memory 275690.000000
+using proc of memory 272090.000000for task 22080
+Subtree 22080 needs memory 275690.000000
+dump.1.1.amd.QY.case39-2136.tree.nf -1.000000 88476037
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 272090, MaxMemory: 272090.000000, CumulativeMemory: 1632540
+Load 57.000000, Occupied 100.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 1945728.000000
+maxoutD324288.000000
+using proc of memory 324288.000000for task 1
+Subtree 1 needs memory 393378.000000
+using proc of memory 324288.000000for task 393
+Subtree 393 needs memory 153458.000000
+using proc of memory 324288.000000for task 5193
+Subtree 5193 needs memory 281250.000000
+using proc of memory 324288.000000for task 14629
+Subtree 14629 needs memory 243602.000000
+using proc of memory 324288.000000for task 21907
+Subtree 21907 needs memory 169362.000000
+using proc of memory 324288.000000for task 28113
+Subtree 28113 needs memory 110450.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 99456.775115 125737010
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 324288, MaxMemory: 324288.000000, CumulativeMemory: 1945728
+task assigned and no mem occupation 21907
+Load 50.000000, Occupied 100.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 1741932.000000
+maxoutD290322.000000
+using proc of memory 290322.000000for task 1
+Subtree 1 needs memory 161292.000000
+using proc of memory 290322.000000for task 256
+Subtree 256 needs memory 306354.000000
+using proc of memory 290322.000000for task 9344
+Subtree 9344 needs memory 243602.000000
+using proc of memory 290322.000000for task 18688
+Subtree 18688 needs memory 243602.000000
+using proc of memory 290322.000000for task 27712
+Subtree 27712 needs memory 313734.000000
+using proc of memory 290322.000000for task 37763
+Subtree 37763 needs memory 1.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 188929.974667 159865473
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 290322, MaxMemory: 290322.000000, CumulativeMemory: 1741932
+Load 44.000000, Occupied 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 1632540.000000
+maxoutD272090.000000
+using proc of memory 272090.000000for task 1
+Subtree 1 needs memory 274140.000000
+using proc of memory 272090.000000for task 7920
+Subtree 7920 needs memory 275690.000000
+using proc of memory 272090.000000for task 14300
+Subtree 14300 needs memory 275690.000000
+using proc of memory 272090.000000for task 20680
+Subtree 20680 needs memory 275690.000000
+using proc of memory 272090.000000for task 27060
+Subtree 27060 needs memory 275690.000000
+using proc of memory 272090.000000for task 33440
+Subtree 33440 needs memory 275690.000000
+dump.0.1.amd.QY.case39-2136.tree.nf -1.000000 203006523
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 272090, MaxMemory: 272090.000000, CumulativeMemory: 1632540
+Load 57.000000, Occupied 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 13872.000000
+maxoutD2312.000000
+using proc of memory 2312.000000for task 1
+Subtree 1 needs memory 1029.000000
+using proc of memory 2312.000000for task 22
+Subtree 22 needs memory 2772.000000
+using proc of memory 2312.000000for task 10254
+Subtree 10254 needs memory 2611.000000
+using proc of memory 2312.000000for task 20490
+Subtree 20490 needs memory 2584.000000
+using proc of memory 2312.000000for task 30729
+Subtree 30729 needs memory 1938.000000
+using proc of memory 2312.000000for task 35841
+Subtree 35841 needs memory 2733.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf -1.000000 264461543
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 2312, MaxMemory: 2312.000000, CumulativeMemory: 13872
+Load 81.000000, Occupied 100.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 2376300.000000
+maxoutD396050.000000
+using proc of memory 396050.000000for task 1
+Subtree 1 needs memory 364658.000000
+using proc of memory 396050.000000for task 429
+Subtree 429 needs memory 396050.000000
+using proc of memory 396050.000000for task 6287
+Subtree 6287 needs memory 383688.000000
+using proc of memory 396050.000000for task 9961
+Subtree 9961 needs memory 208669.000000
+using proc of memory 396050.000000for task 30707
+Subtree 30707 needs memory 164738.000000
+using proc of memory 396050.000000for task 32953
+Subtree 32953 needs memory 308898.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf 398540.205852 335162832
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 396050, MaxMemory: 396050.000000, CumulativeMemory: 2376300
+Load 63.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 2291628.000000
+maxoutD381938.000000
+using proc of memory 381938.000000for task 1
+Subtree 1 needs memory 312050.000000
+using proc of memory 381938.000000for task 272
+Subtree 272 needs memory 241443.000000
+using proc of memory 381938.000000for task 11624
+Subtree 11624 needs memory 193442.000000
+using proc of memory 381938.000000for task 17654
+Subtree 17654 needs memory 439734.000000
+using proc of memory 381938.000000for task 24460
+Subtree 24460 needs memory 354433.000000
+using proc of memory 381938.000000for task 29860
+Subtree 29860 needs memory 369800.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 381394.308754 364101244
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 381938, MaxMemory: 381938.000000, CumulativeMemory: 2291628
+Load 51.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 2291628.000000
+maxoutD381938.000000
+using proc of memory 381938.000000for task 1
+Subtree 1 needs memory 312050.000000
+using proc of memory 381938.000000for task 272
+Subtree 272 needs memory 241443.000000
+using proc of memory 381938.000000for task 11624
+Subtree 11624 needs memory 193442.000000
+using proc of memory 381938.000000for task 17654
+Subtree 17654 needs memory 439734.000000
+using proc of memory 381938.000000for task 24460
+Subtree 24460 needs memory 354433.000000
+using proc of memory 381938.000000for task 29860
+Subtree 29860 needs memory 369800.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 381394.308754 390771314
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 381938, MaxMemory: 381938.000000, CumulativeMemory: 2291628
+Load 51.000000, Occupied 100.000000
+homogeneous average average
+homogeneous few big
+dump.1.3.amd.QY.case39-2136.tree.nf	big
+Homogeneous cluster with 4 processors, cumulative memory 2176720.000000
+maxoutD272090.000000
+using proc of memory 544180.000000for task 1
+Subtree 1 needs memory 281340.000000
+using proc of memory 544180.000000for task 1632
+Subtree 1632 needs memory 275690.000000
+using proc of memory 544180.000000for task 2951
+Subtree 2951 needs memory 275690.000000
+using proc of memory 544180.000000for task 4270
+Subtree 4270 needs memory 275690.000000
+dump.1.3.amd.QY.case39-2136.tree.nf 410167.993683 58422
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 544180, MaxMemory: 544180.000000, CumulativeMemory: 2176720
+task assigned and no mem occupation 4270
+Load 38.000000, Occupied 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	big
+Homogeneous cluster with 4 processors, cumulative memory 2176720.000000
+maxoutD272090.000000
+using proc of memory 544180.000000for task 1
+Subtree 1 needs memory 281340.000000
+using proc of memory 544180.000000for task 3283
+Subtree 3283 needs memory 275690.000000
+using proc of memory 544180.000000for task 5902
+Subtree 5902 needs memory 275690.000000
+using proc of memory 544180.000000for task 8521
+Subtree 8521 needs memory 275690.000000
+dump.1.2.amd.QY.case39-2136.tree.nf 398922.719683 6252629
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 544180, MaxMemory: 544180.000000, CumulativeMemory: 2176720
+Load 38.000000, Occupied 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	big
+Homogeneous cluster with 4 processors, cumulative memory 684416.000000
+maxoutD85552.000000
+using proc of memory 171104.000000for task 1
+Subtree 1 needs memory 99824.000000
+using proc of memory 171104.000000for task 181
+Subtree 181 needs memory 92882.000000
+using proc of memory 171104.000000for task 5902
+Subtree 5902 needs memory 92882.000000
+using proc of memory 171104.000000for task 16558
+Subtree 16558 needs memory 92882.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf 89487.306066 30634924
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 171104, MaxMemory: 171104.000000, CumulativeMemory: 684416
+Load 41.000000, Occupied 100.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	big
+Homogeneous cluster with 4 processors, cumulative memory 17688.000000
+maxoutD2211.000000
+using proc of memory 4422.000000for task 1
+Subtree 1 needs memory 2611.000000
+using proc of memory 4422.000000for task 2
+Subtree 2 needs memory 2654.000000
+using proc of memory 4422.000000for task 12569
+Subtree 12569 needs memory 2544.000000
+using proc of memory 4422.000000for task 18847
+Subtree 18847 needs memory 2607.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 5508.311880 40563029
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 4422, MaxMemory: 4422.000000, CumulativeMemory: 17688
+Load 44.000000, Occupied 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	big
+Homogeneous cluster with 4 processors, cumulative memory 2176720.000000
+maxoutD272090.000000
+using proc of memory 544180.000000for task 1
+Subtree 1 needs memory 281340.000000
+using proc of memory 544180.000000for task 5204
+Subtree 5204 needs memory 275690.000000
+using proc of memory 544180.000000for task 9423
+Subtree 9423 needs memory 275690.000000
+using proc of memory 544180.000000for task 13642
+Subtree 13642 needs memory 275690.000000
+dump.1.1.amd.QY.case39-2136.tree.nf 393104.153683 83258357
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 544180, MaxMemory: 544180.000000, CumulativeMemory: 2176720
+Load 38.000000, Occupied 100.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	big
+Homogeneous cluster with 4 processors, cumulative memory 2594304.000000
+maxoutD324288.000000
+using proc of memory 648576.000000for task 1
+Subtree 1 needs memory 312050.000000
+using proc of memory 648576.000000for task 345
+Subtree 345 needs memory 305762.000000
+using proc of memory 648576.000000for task 14449
+Subtree 14449 needs memory 296450.000000
+using proc of memory 648576.000000for task 28113
+Subtree 28113 needs memory 110450.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 113171.666317 120212463
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 648576, MaxMemory: 648576.000000, CumulativeMemory: 2594304
+Load 35.000000, Occupied 100.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	big
+Homogeneous cluster with 4 processors, cumulative memory 2322576.000000
+maxoutD290322.000000
+using proc of memory 580644.000000for task 1
+Subtree 1 needs memory 145416.000000
+using proc of memory 580644.000000for task 128
+Subtree 128 needs memory 308118.000000
+using proc of memory 580644.000000for task 18688
+Subtree 18688 needs memory 243602.000000
+using proc of memory 580644.000000for task 27712
+Subtree 27712 needs memory 313734.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 216477.522929 153411656
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 580644, MaxMemory: 580644.000000, CumulativeMemory: 2322576
+Load 30.000000, Occupied 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	big
+Homogeneous cluster with 4 processors, cumulative memory 2176720.000000
+maxoutD272090.000000
+using proc of memory 544180.000000for task 1
+Subtree 1 needs memory 281340.000000
+using proc of memory 544180.000000for task 7920
+Subtree 7920 needs memory 275690.000000
+using proc of memory 544180.000000for task 14300
+Subtree 14300 needs memory 275690.000000
+using proc of memory 544180.000000for task 20680
+Subtree 20680 needs memory 275690.000000
+dump.0.1.amd.QY.case39-2136.tree.nf 285773.565683 193636913
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 544180, MaxMemory: 544180.000000, CumulativeMemory: 2176720
+Load 38.000000, Occupied 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	big
+Homogeneous cluster with 4 processors, cumulative memory 18496.000000
+maxoutD2312.000000
+using proc of memory 4624.000000for task 1
+Subtree 1 needs memory 833.000000
+using proc of memory 4624.000000for task 15
+Subtree 15 needs memory 2807.000000
+using proc of memory 4624.000000for task 20490
+Subtree 20490 needs memory 2584.000000
+using proc of memory 4624.000000for task 30721
+Subtree 30721 needs memory 2733.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 5387.578546 241105471
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 4624, MaxMemory: 4624.000000, CumulativeMemory: 18496
+Load 33.000000, Occupied 100.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	big
+Homogeneous cluster with 4 processors, cumulative memory 3168400.000000
+maxoutD396050.000000
+using proc of memory 792100.000000for task 1
+Subtree 1 needs memory 383688.000000
+using proc of memory 792100.000000for task 429
+Subtree 429 needs memory 396050.000000
+using proc of memory 792100.000000for task 9961
+Subtree 9961 needs memory 208669.000000
+using proc of memory 792100.000000for task 32953
+Subtree 32953 needs memory 308898.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf 501125.217186 311602928
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 792100, MaxMemory: 792100.000000, CumulativeMemory: 3168400
+Load 31.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	big
+Homogeneous cluster with 4 processors, cumulative memory 3055504.000000
+maxoutD381938.000000
+using proc of memory 763876.000000for task 1
+Subtree 1 needs memory 158331.000000
+using proc of memory 763876.000000for task 272
+Subtree 272 needs memory 241443.000000
+using proc of memory 763876.000000for task 11499
+Subtree 11499 needs memory 439734.000000
+using proc of memory 763876.000000for task 24294
+Subtree 24294 needs memory 401089.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 385729.911585 342048482
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 763876, MaxMemory: 763876.000000, CumulativeMemory: 3055504
+Load 27.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	big
+Homogeneous cluster with 4 processors, cumulative memory 3055504.000000
+maxoutD381938.000000
+using proc of memory 763876.000000for task 1
+Subtree 1 needs memory 158331.000000
+using proc of memory 763876.000000for task 272
+Subtree 272 needs memory 241443.000000
+using proc of memory 763876.000000for task 11499
+Subtree 11499 needs memory 439734.000000
+using proc of memory 763876.000000for task 24294
+Subtree 24294 needs memory 401089.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 385729.911585 370259001
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 763876, MaxMemory: 763876.000000, CumulativeMemory: 3055504
+Load 27.000000, Occupied 100.000000
+3-level
+heterogeneous
+dump.1.3.amd.QY.case39-2136.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 2448810.000000
+maxoutD272090.000000
+using proc of memory 544180.000000for task 1
+Subtree 1 needs memory 274140.000000
+using proc of memory 544180.000000for task 1632
+Subtree 1632 needs memory 275690.000000
+using proc of memory 408135.000000for task 2951
+Subtree 2951 needs memory 275690.000000
+using proc of memory 408135.000000for task 4270
+Subtree 4270 needs memory 275690.000000
+using proc of memory 272090.000000for task 5589
+Subtree 5589 needs memory 275690.000000
+using proc of memory 272090.000000for task 6908
+Subtree 6908 needs memory 275690.000000
+dump.1.3.amd.QY.case39-2136.tree.nf 226247.460350 151178
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 272090, MaxMemory: 544180.000000, CumulativeMemory: 2448810
+task assigned and no mem occupation 5589
+task assigned and no mem occupation 5721
+Load 45.000000, Occupied 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 2448810.000000
+maxoutD272090.000000
+using proc of memory 544180.000000for task 1
+Subtree 1 needs memory 274140.000000
+using proc of memory 544180.000000for task 3283
+Subtree 3283 needs memory 275690.000000
+using proc of memory 408135.000000for task 5902
+Subtree 5902 needs memory 275690.000000
+using proc of memory 408135.000000for task 8521
+Subtree 8521 needs memory 275690.000000
+using proc of memory 272090.000000for task 11140
+Subtree 11140 needs memory 275690.000000
+using proc of memory 272090.000000for task 13759
+Subtree 13759 needs memory 275690.000000
+dump.1.2.amd.QY.case39-2136.tree.nf 219589.306350 6604613
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 272090, MaxMemory: 544180.000000, CumulativeMemory: 2448810
+task assigned and no mem occupation 11402
+Load 45.000000, Occupied 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 769968.000000
+maxoutD85552.000000
+using proc of memory 171104.000000for task 1
+Subtree 1 needs memory 78482.000000
+using proc of memory 171104.000000for task 181
+Subtree 181 needs memory 92882.000000
+using proc of memory 128328.000000for task 5902
+Subtree 5902 needs memory 92882.000000
+using proc of memory 128328.000000for task 11542
+Subtree 11542 needs memory 99824.000000
+using proc of memory 85552.000000for task 16558
+Subtree 16558 needs memory 92882.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf 49481.200131 31139866
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 85552, MaxMemory: 171104.000000, CumulativeMemory: 769968
+Load 47.000000, Occupied 100.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 19899.000000
+maxoutD2211.000000
+using proc of memory 4422.000000for task 1
+Subtree 1 needs memory 934.000000
+using proc of memory 4422.000000for task 2
+Subtree 2 needs memory 2654.000000
+using proc of memory 3316.500000for task 6279
+Subtree 6279 needs memory 2611.000000
+using proc of memory 3316.500000for task 12569
+Subtree 12569 needs memory 2544.000000
+using proc of memory 2211.000000for task 18848
+Subtree 18848 needs memory 1912.000000
+using proc of memory 2211.000000for task 21812
+Subtree 21812 needs memory 2607.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 3849.511880 41170144
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 2211, MaxMemory: 4422.000000, CumulativeMemory: 19898
+Load 71.000000, Occupied 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 2448810.000000
+maxoutD272090.000000
+using proc of memory 544180.000000for task 1
+Subtree 1 needs memory 274140.000000
+using proc of memory 544180.000000for task 5204
+Subtree 5204 needs memory 275690.000000
+using proc of memory 408135.000000for task 9423
+Subtree 9423 needs memory 275690.000000
+using proc of memory 408135.000000for task 13642
+Subtree 13642 needs memory 275690.000000
+using proc of memory 272090.000000for task 17861
+Subtree 17861 needs memory 275690.000000
+using proc of memory 272090.000000for task 22080
+Subtree 22080 needs memory 275690.000000
+dump.1.1.amd.QY.case39-2136.tree.nf 216243.940350 84476372
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 272090, MaxMemory: 544180.000000, CumulativeMemory: 2448810
+Load 45.000000, Occupied 100.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 2918592.000000
+maxoutD324288.000000
+using proc of memory 648576.000000for task 1
+Subtree 1 needs memory 393378.000000
+using proc of memory 648576.000000for task 393
+Subtree 393 needs memory 153458.000000
+using proc of memory 486432.000000for task 5193
+Subtree 5193 needs memory 281250.000000
+using proc of memory 486432.000000for task 14629
+Subtree 14629 needs memory 243602.000000
+using proc of memory 324288.000000for task 21907
+Subtree 21907 needs memory 169362.000000
+using proc of memory 324288.000000for task 28113
+Subtree 28113 needs memory 110450.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 108609.419246 121497263
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 324288, MaxMemory: 648576.000000, CumulativeMemory: 2918592
+Load 42.000000, Occupied 100.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 2612898.000000
+maxoutD290322.000000
+using proc of memory 580644.000000for task 1
+Subtree 1 needs memory 161292.000000
+using proc of memory 580644.000000for task 256
+Subtree 256 needs memory 306354.000000
+using proc of memory 435483.000000for task 9344
+Subtree 9344 needs memory 243602.000000
+using proc of memory 435483.000000for task 18688
+Subtree 18688 needs memory 243602.000000
+using proc of memory 290322.000000for task 27712
+Subtree 27712 needs memory 313734.000000
+using proc of memory 290322.000000for task 37763
+Subtree 37763 needs memory 1.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 134949.897945 154941797
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 290322, MaxMemory: 580644.000000, CumulativeMemory: 2612898
+Load 36.000000, Occupied 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 2448810.000000
+maxoutD272090.000000
+using proc of memory 544180.000000for task 1
+Subtree 1 needs memory 274140.000000
+using proc of memory 544180.000000for task 7920
+Subtree 7920 needs memory 275690.000000
+using proc of memory 408135.000000for task 14300
+Subtree 14300 needs memory 275690.000000
+using proc of memory 408135.000000for task 20680
+Subtree 20680 needs memory 275690.000000
+using proc of memory 272090.000000for task 27060
+Subtree 27060 needs memory 275690.000000
+using proc of memory 272090.000000for task 33440
+Subtree 33440 needs memory 275690.000000
+dump.0.1.amd.QY.case39-2136.tree.nf 156954.712350 195945713
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 272090, MaxMemory: 544180.000000, CumulativeMemory: 2448810
+task assigned and no mem occupation 27700
+Load 45.000000, Occupied 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 20808.000000
+maxoutD2312.000000
+using proc of memory 4624.000000for task 1
+Subtree 1 needs memory 1029.000000
+using proc of memory 4624.000000for task 22
+Subtree 22 needs memory 2772.000000
+using proc of memory 3468.000000for task 10254
+Subtree 10254 needs memory 2611.000000
+using proc of memory 3468.000000for task 20490
+Subtree 20490 needs memory 2584.000000
+using proc of memory 2312.000000for task 30729
+Subtree 30729 needs memory 1938.000000
+using proc of memory 2312.000000for task 35841
+Subtree 35841 needs memory 2733.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 3771.037880 242819823
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 2312, MaxMemory: 4624.000000, CumulativeMemory: 20808
+Load 59.000000, Occupied 100.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 3564450.000000
+maxoutD396050.000000
+using proc of memory 792100.000000for task 1
+Subtree 1 needs memory 364658.000000
+using proc of memory 792100.000000for task 429
+Subtree 429 needs memory 396050.000000
+using proc of memory 594075.000000for task 6287
+Subtree 6287 needs memory 383688.000000
+using proc of memory 594075.000000for task 9961
+Subtree 9961 needs memory 208669.000000
+using proc of memory 396050.000000for task 30707
+Subtree 30707 needs memory 164738.000000
+using proc of memory 396050.000000for task 32953
+Subtree 32953 needs memory 308898.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf 398540.205852 313493074
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 396050, MaxMemory: 792100.000000, CumulativeMemory: 3564450
+Load 42.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 3437442.000000
+maxoutD381938.000000
+using proc of memory 763876.000000for task 1
+Subtree 1 needs memory 312050.000000
+using proc of memory 763876.000000for task 272
+Subtree 272 needs memory 241443.000000
+using proc of memory 572907.000000for task 11624
+Subtree 11624 needs memory 193442.000000
+using proc of memory 572907.000000for task 17654
+Subtree 17654 needs memory 439734.000000
+using proc of memory 381938.000000for task 24460
+Subtree 24460 needs memory 354433.000000
+using proc of memory 381938.000000for task 29860
+Subtree 29860 needs memory 369800.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 330358.670530 342027226
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 381938, MaxMemory: 763876.000000, CumulativeMemory: 3437442
+Load 44.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	Heterogeneous cluster with 6 processors, cumulative memory 3437442.000000
+maxoutD381938.000000
+using proc of memory 763876.000000for task 1
+Subtree 1 needs memory 312050.000000
+using proc of memory 763876.000000for task 272
+Subtree 272 needs memory 241443.000000
+using proc of memory 572907.000000for task 11624
+Subtree 11624 needs memory 193442.000000
+using proc of memory 572907.000000for task 17654
+Subtree 17654 needs memory 439734.000000
+using proc of memory 381938.000000for task 24460
+Subtree 24460 needs memory 354433.000000
+using proc of memory 381938.000000for task 29860
+Subtree 29860 needs memory 369800.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 330358.670530 368441843
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 381938, MaxMemory: 763876.000000, CumulativeMemory: 3437442
+task assigned and no mem occupation 29860
+Load 44.000000, Occupied 100.000000
+homogeneous many small
+dump.1.3.amd.QY.case39-2136.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 1632540.000000
+maxoutD272090.000000
+using proc of memory 272090.000000for task 1
+Subtree 1 needs memory 274140.000000
+using proc of memory 272090.000000for task 1632
+Subtree 1632 needs memory 275690.000000
+using proc of memory 272090.000000for task 2951
+Subtree 2951 needs memory 275690.000000
+using proc of memory 272090.000000for task 4270
+Subtree 4270 needs memory 275690.000000
+using proc of memory 272090.000000for task 5589
+Subtree 5589 needs memory 275690.000000
+using proc of memory 272090.000000for task 6908
+Subtree 6908 needs memory 275690.000000
+dump.1.3.amd.QY.case39-2136.tree.nf -1.000000 291080
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 272090, MaxMemory: 272090.000000, CumulativeMemory: 1632540
+task assigned and no mem occupation 1373
+task assigned and no mem occupation 1764
+Load 66.000000, Occupied 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 1632540.000000
+maxoutD272090.000000
+using proc of memory 272090.000000for task 1
+Subtree 1 needs memory 274140.000000
+using proc of memory 272090.000000for task 3283
+Subtree 3283 needs memory 275690.000000
+using proc of memory 272090.000000for task 5902
+Subtree 5902 needs memory 275690.000000
+using proc of memory 272090.000000for task 8521
+Subtree 8521 needs memory 275690.000000
+using proc of memory 272090.000000for task 11140
+Subtree 11140 needs memory 275690.000000
+using proc of memory 272090.000000for task 13759
+Subtree 13759 needs memory 275690.000000
+dump.1.2.amd.QY.case39-2136.tree.nf -1.000000 7172669
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 272090, MaxMemory: 272090.000000, CumulativeMemory: 1632540
+Load 66.000000, Occupied 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 513312.000000
+maxoutD85552.000000
+using proc of memory 85552.000000for task 1
+Subtree 1 needs memory 78482.000000
+using proc of memory 85552.000000for task 181
+Subtree 181 needs memory 92882.000000
+using proc of memory 85552.000000for task 5902
+Subtree 5902 needs memory 92882.000000
+using proc of memory 85552.000000for task 11542
+Subtree 11542 needs memory 99824.000000
+using proc of memory 85552.000000for task 16558
+Subtree 16558 needs memory 92882.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf -1.000000 32608263
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 85552, MaxMemory: 85552.000000, CumulativeMemory: 513312
+Load 47.000000, Occupied 100.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 13266.000000
+maxoutD2211.000000
+using proc of memory 2211.000000for task 1
+Subtree 1 needs memory 934.000000
+using proc of memory 2211.000000for task 2
+Subtree 2 needs memory 2654.000000
+using proc of memory 2211.000000for task 6279
+Subtree 6279 needs memory 2611.000000
+using proc of memory 2211.000000for task 12569
+Subtree 12569 needs memory 2544.000000
+using proc of memory 2211.000000for task 18848
+Subtree 18848 needs memory 1912.000000
+using proc of memory 2211.000000for task 21812
+Subtree 21812 needs memory 2607.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf -1.000000 44048523
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 2211, MaxMemory: 2211.000000, CumulativeMemory: 13266
+Load 97.000000, Occupied 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 1632540.000000
+maxoutD272090.000000
+using proc of memory 272090.000000for task 1
+Subtree 1 needs memory 274140.000000
+using proc of memory 272090.000000for task 5204
+Subtree 5204 needs memory 275690.000000
+using proc of memory 272090.000000for task 9423
+Subtree 9423 needs memory 275690.000000
+using proc of memory 272090.000000for task 13642
+Subtree 13642 needs memory 275690.000000
+using proc of memory 272090.000000for task 17861
+Subtree 17861 needs memory 275690.000000
+using proc of memory 272090.000000for task 22080
+Subtree 22080 needs memory 275690.000000
+dump.1.1.amd.QY.case39-2136.tree.nf -1.000000 88306009
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 272090, MaxMemory: 272090.000000, CumulativeMemory: 1632540
+Load 57.000000, Occupied 100.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 1945728.000000
+maxoutD324288.000000
+using proc of memory 324288.000000for task 1
+Subtree 1 needs memory 393378.000000
+using proc of memory 324288.000000for task 393
+Subtree 393 needs memory 153458.000000
+using proc of memory 324288.000000for task 5193
+Subtree 5193 needs memory 281250.000000
+using proc of memory 324288.000000for task 14629
+Subtree 14629 needs memory 243602.000000
+using proc of memory 324288.000000for task 21907
+Subtree 21907 needs memory 169362.000000
+using proc of memory 324288.000000for task 28113
+Subtree 28113 needs memory 110450.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 99456.775115 125427522
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 324288, MaxMemory: 324288.000000, CumulativeMemory: 1945728
+task assigned and no mem occupation 21907
+Load 50.000000, Occupied 100.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 1741932.000000
+maxoutD290322.000000
+using proc of memory 290322.000000for task 1
+Subtree 1 needs memory 161292.000000
+using proc of memory 290322.000000for task 256
+Subtree 256 needs memory 306354.000000
+using proc of memory 290322.000000for task 9344
+Subtree 9344 needs memory 243602.000000
+using proc of memory 290322.000000for task 18688
+Subtree 18688 needs memory 243602.000000
+using proc of memory 290322.000000for task 27712
+Subtree 27712 needs memory 313734.000000
+using proc of memory 290322.000000for task 37763
+Subtree 37763 needs memory 1.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 188929.974667 159492992
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 290322, MaxMemory: 290322.000000, CumulativeMemory: 1741932
+Load 44.000000, Occupied 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 1632540.000000
+maxoutD272090.000000
+using proc of memory 272090.000000for task 1
+Subtree 1 needs memory 274140.000000
+using proc of memory 272090.000000for task 7920
+Subtree 7920 needs memory 275690.000000
+using proc of memory 272090.000000for task 14300
+Subtree 14300 needs memory 275690.000000
+using proc of memory 272090.000000for task 20680
+Subtree 20680 needs memory 275690.000000
+using proc of memory 272090.000000for task 27060
+Subtree 27060 needs memory 275690.000000
+using proc of memory 272090.000000for task 33440
+Subtree 33440 needs memory 275690.000000
+dump.0.1.amd.QY.case39-2136.tree.nf -1.000000 202549589
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 272090, MaxMemory: 272090.000000, CumulativeMemory: 1632540
+Load 57.000000, Occupied 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 13872.000000
+maxoutD2312.000000
+using proc of memory 2312.000000for task 1
+Subtree 1 needs memory 1029.000000
+using proc of memory 2312.000000for task 22
+Subtree 22 needs memory 2772.000000
+using proc of memory 2312.000000for task 10254
+Subtree 10254 needs memory 2611.000000
+using proc of memory 2312.000000for task 20490
+Subtree 20490 needs memory 2584.000000
+using proc of memory 2312.000000for task 30729
+Subtree 30729 needs memory 1938.000000
+using proc of memory 2312.000000for task 35841
+Subtree 35841 needs memory 2733.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf -1.000000 263814026
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 2312, MaxMemory: 2312.000000, CumulativeMemory: 13872
+Load 81.000000, Occupied 100.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 2376300.000000
+maxoutD396050.000000
+using proc of memory 396050.000000for task 1
+Subtree 1 needs memory 364658.000000
+using proc of memory 396050.000000for task 429
+Subtree 429 needs memory 396050.000000
+using proc of memory 396050.000000for task 6287
+Subtree 6287 needs memory 383688.000000
+using proc of memory 396050.000000for task 9961
+Subtree 9961 needs memory 208669.000000
+using proc of memory 396050.000000for task 30707
+Subtree 30707 needs memory 164738.000000
+using proc of memory 396050.000000for task 32953
+Subtree 32953 needs memory 308898.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf 398540.205852 334555726
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 396050, MaxMemory: 396050.000000, CumulativeMemory: 2376300
+Load 63.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 2291628.000000
+maxoutD381938.000000
+using proc of memory 381938.000000for task 1
+Subtree 1 needs memory 312050.000000
+using proc of memory 381938.000000for task 272
+Subtree 272 needs memory 241443.000000
+using proc of memory 381938.000000for task 11624
+Subtree 11624 needs memory 193442.000000
+using proc of memory 381938.000000for task 17654
+Subtree 17654 needs memory 439734.000000
+using proc of memory 381938.000000for task 24460
+Subtree 24460 needs memory 354433.000000
+using proc of memory 381938.000000for task 29860
+Subtree 29860 needs memory 369800.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 381394.308754 363442328
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 381938, MaxMemory: 381938.000000, CumulativeMemory: 2291628
+Load 51.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	many small
+Homogeneous cluster with 6 processors, cumulative memory 2291628.000000
+maxoutD381938.000000
+using proc of memory 381938.000000for task 1
+Subtree 1 needs memory 312050.000000
+using proc of memory 381938.000000for task 272
+Subtree 272 needs memory 241443.000000
+using proc of memory 381938.000000for task 11624
+Subtree 11624 needs memory 193442.000000
+using proc of memory 381938.000000for task 17654
+Subtree 17654 needs memory 439734.000000
+using proc of memory 381938.000000for task 24460
+Subtree 24460 needs memory 354433.000000
+using proc of memory 381938.000000for task 29860
+Subtree 29860 needs memory 369800.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 381394.308754 390030382
+
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 381938, MaxMemory: 381938.000000, CumulativeMemory: 2291628
+Load 51.000000, Occupied 100.000000
+homogeneous average average
+dump.1.3.amd.QY.case39-2136.tree.nf	avg
+Homogeneous cluster with 4 processors, cumulative memory 1632540.000000
+maxoutD272090.000000
+using proc of memory 408135.000000for task 1
+Subtree 1 needs memory 281340.000000
+using proc of memory 408135.000000for task 1632
+Subtree 1632 needs memory 275690.000000
+using proc of memory 408135.000000for task 2951
+Subtree 2951 needs memory 275690.000000
+using proc of memory 408135.000000for task 4270
+Subtree 4270 needs memory 275690.000000
+dump.1.3.amd.QY.case39-2136.tree.nf 410167.993683 58392
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 408135, MaxMemory: 408135.000000, CumulativeMemory: 1632540
+task assigned and no mem occupation 4270
+Load 51.000000, Occupied 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	avg
+Homogeneous cluster with 4 processors, cumulative memory 1632540.000000
+maxoutD272090.000000
+using proc of memory 408135.000000for task 1
+Subtree 1 needs memory 281340.000000
+using proc of memory 408135.000000for task 3283
+Subtree 3283 needs memory 275690.000000
+using proc of memory 408135.000000for task 5902
+Subtree 5902 needs memory 275690.000000
+using proc of memory 408135.000000for task 8521
+Subtree 8521 needs memory 275690.000000
+dump.1.2.amd.QY.case39-2136.tree.nf 398922.719683 6267204
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 408135, MaxMemory: 408135.000000, CumulativeMemory: 1632540
+Load 51.000000, Occupied 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	avg
+Homogeneous cluster with 4 processors, cumulative memory 513312.000000
+maxoutD85552.000000
+using proc of memory 128328.000000for task 1
+Subtree 1 needs memory 99824.000000
+using proc of memory 128328.000000for task 181
+Subtree 181 needs memory 92882.000000
+using proc of memory 128328.000000for task 5902
+Subtree 5902 needs memory 92882.000000
+using proc of memory 128328.000000for task 16558
+Subtree 16558 needs memory 92882.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf 89487.306066 30731871
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 128328, MaxMemory: 128328.000000, CumulativeMemory: 513312
+Load 55.000000, Occupied 100.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	avg
+Homogeneous cluster with 4 processors, cumulative memory 13266.000000
+maxoutD2211.000000
+using proc of memory 3316.500000for task 1
+Subtree 1 needs memory 2611.000000
+using proc of memory 3316.500000for task 2
+Subtree 2 needs memory 2654.000000
+using proc of memory 3316.500000for task 12569
+Subtree 12569 needs memory 2544.000000
+using proc of memory 3316.500000for task 18847
+Subtree 18847 needs memory 2607.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 5508.311880 40682015
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 3316, MaxMemory: 3316.500000, CumulativeMemory: 13264
+Load 58.000000, Occupied 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	avg
+Homogeneous cluster with 4 processors, cumulative memory 1632540.000000
+maxoutD272090.000000
+using proc of memory 408135.000000for task 1
+Subtree 1 needs memory 281340.000000
+using proc of memory 408135.000000for task 5204
+Subtree 5204 needs memory 275690.000000
+using proc of memory 408135.000000for task 9423
+Subtree 9423 needs memory 275690.000000
+using proc of memory 408135.000000for task 13642
+Subtree 13642 needs memory 275690.000000
+dump.1.1.amd.QY.case39-2136.tree.nf 393104.153683 83486683
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 408135, MaxMemory: 408135.000000, CumulativeMemory: 1632540
+Load 51.000000, Occupied 100.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	avg
+Homogeneous cluster with 4 processors, cumulative memory 1945728.000000
+maxoutD324288.000000
+using proc of memory 486432.000000for task 1
+Subtree 1 needs memory 312050.000000
+using proc of memory 486432.000000for task 345
+Subtree 345 needs memory 305762.000000
+using proc of memory 486432.000000for task 14449
+Subtree 14449 needs memory 296450.000000
+using proc of memory 486432.000000for task 28113
+Subtree 28113 needs memory 110450.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 113171.666317 120724139
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 486432, MaxMemory: 486432.000000, CumulativeMemory: 1945728
+Load 46.000000, Occupied 100.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	avg
+Homogeneous cluster with 4 processors, cumulative memory 1741932.000000
+maxoutD290322.000000
+using proc of memory 435483.000000for task 1
+Subtree 1 needs memory 145416.000000
+using proc of memory 435483.000000for task 128
+Subtree 128 needs memory 308118.000000
+using proc of memory 435483.000000for task 18688
+Subtree 18688 needs memory 243602.000000
+using proc of memory 435483.000000for task 27712
+Subtree 27712 needs memory 313734.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 216477.522929 154061673
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 435483, MaxMemory: 435483.000000, CumulativeMemory: 1741932
+Load 40.000000, Occupied 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	avg
+Homogeneous cluster with 4 processors, cumulative memory 1632540.000000
+maxoutD272090.000000
+using proc of memory 408135.000000for task 1
+Subtree 1 needs memory 281340.000000
+using proc of memory 408135.000000for task 7920
+Subtree 7920 needs memory 275690.000000
+using proc of memory 408135.000000for task 14300
+Subtree 14300 needs memory 275690.000000
+using proc of memory 408135.000000for task 20680
+Subtree 20680 needs memory 275690.000000
+dump.0.1.amd.QY.case39-2136.tree.nf 285773.565683 194361876
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 408135, MaxMemory: 408135.000000, CumulativeMemory: 1632540
+Load 51.000000, Occupied 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	avg
+Homogeneous cluster with 4 processors, cumulative memory 13872.000000
+maxoutD2312.000000
+using proc of memory 3468.000000for task 1
+Subtree 1 needs memory 833.000000
+using proc of memory 3468.000000for task 15
+Subtree 15 needs memory 2807.000000
+using proc of memory 3468.000000for task 20490
+Subtree 20490 needs memory 2584.000000
+using proc of memory 3468.000000for task 30721
+Subtree 30721 needs memory 2733.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 5387.578546 241998902
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 3468, MaxMemory: 3468.000000, CumulativeMemory: 13872
+Load 44.000000, Occupied 100.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	avg
+Homogeneous cluster with 4 processors, cumulative memory 2376300.000000
+maxoutD396050.000000
+using proc of memory 594075.000000for task 1
+Subtree 1 needs memory 383688.000000
+using proc of memory 594075.000000for task 429
+Subtree 429 needs memory 396050.000000
+using proc of memory 594075.000000for task 9961
+Subtree 9961 needs memory 208669.000000
+using proc of memory 594075.000000for task 32953
+Subtree 32953 needs memory 308898.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf 501125.217186 312527395
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 594075, MaxMemory: 594075.000000, CumulativeMemory: 2376300
+Load 41.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	avg
+Homogeneous cluster with 4 processors, cumulative memory 2291628.000000
+maxoutD381938.000000
+using proc of memory 572907.000000for task 1
+Subtree 1 needs memory 158331.000000
+using proc of memory 572907.000000for task 272
+Subtree 272 needs memory 241443.000000
+using proc of memory 572907.000000for task 11499
+Subtree 11499 needs memory 439734.000000
+using proc of memory 572907.000000for task 24294
+Subtree 24294 needs memory 401089.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 385729.911585 342955715
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 572907, MaxMemory: 572907.000000, CumulativeMemory: 2291628
+Load 36.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	avg
+Homogeneous cluster with 4 processors, cumulative memory 2291628.000000
+maxoutD381938.000000
+using proc of memory 572907.000000for task 1
+Subtree 1 needs memory 158331.000000
+using proc of memory 572907.000000for task 272
+Subtree 272 needs memory 241443.000000
+using proc of memory 572907.000000for task 11499
+Subtree 11499 needs memory 439734.000000
+using proc of memory 572907.000000for task 24294
+Subtree 24294 needs memory 401089.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 385729.911585 371132680
+
+Cluster:
+#Nodes: 4, Configuration: 0, MinMemory: 572907, MaxMemory: 572907.000000, CumulativeMemory: 2291628
+Load 36.000000, Occupied 100.000000
+homogeneous few big
+dump.1.3.amd.QY.case39-2136.tree.nf	big
+Homogeneous cluster with 2 processors, cumulative memory 1088360.000000
+maxoutD272090.000000
+using proc of memory 544180.000000for task 1
+Subtree 1 needs memory 290090.000000
+dump.1.3.amd.QY.case39-2136.tree.nf 614546.601333 60866
+
+Cluster:
+#Nodes: 2, Configuration: 0, MinMemory: 544180, MaxMemory: 544180.000000, CumulativeMemory: 1088360
+Load 53.000000, Occupied 50.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	big
+Homogeneous cluster with 2 processors, cumulative memory 1088360.000000
+maxoutD272090.000000
+using proc of memory 544180.000000for task 1
+Subtree 1 needs memory 290090.000000
+dump.1.2.amd.QY.case39-2136.tree.nf 598204.527333 6262066
+
+Cluster:
+#Nodes: 2, Configuration: 0, MinMemory: 544180, MaxMemory: 544180.000000, CumulativeMemory: 1088360
+Load 53.000000, Occupied 50.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	big
+Homogeneous cluster with 2 processors, cumulative memory 342208.000000
+maxoutD85552.000000
+using proc of memory 171104.000000for task 1
+Subtree 1 needs memory 121682.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf 178239.272000 30664900
+
+Cluster:
+#Nodes: 2, Configuration: 0, MinMemory: 171104, MaxMemory: 171104.000000, CumulativeMemory: 342208
+Load 71.000000, Occupied 50.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	big
+Homogeneous cluster with 2 processors, cumulative memory 8844.000000
+maxoutD2211.000000
+using proc of memory 4422.000000for task 1
+Subtree 1 needs memory 3003.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 11024.288667 41513571
+
+Cluster:
+#Nodes: 2, Configuration: 0, MinMemory: 4422, MaxMemory: 4422.000000, CumulativeMemory: 8844
+Load 67.000000, Occupied 50.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	big
+Homogeneous cluster with 2 processors, cumulative memory 1088360.000000
+maxoutD272090.000000
+using proc of memory 544180.000000for task 1
+Subtree 1 needs memory 290090.000000
+dump.1.1.amd.QY.case39-2136.tree.nf 589637.961333 84212955
+
+Cluster:
+#Nodes: 2, Configuration: 0, MinMemory: 544180, MaxMemory: 544180.000000, CumulativeMemory: 1088360
+Load 53.000000, Occupied 50.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	big
+Homogeneous cluster with 2 processors, cumulative memory 1297152.000000
+maxoutD324288.000000
+using proc of memory 648576.000000for task 1
+Subtree 1 needs memory 393378.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 197813.523333 121251560
+
+Cluster:
+#Nodes: 2, Configuration: 0, MinMemory: 648576, MaxMemory: 648576.000000, CumulativeMemory: 1297152
+Load 60.000000, Occupied 50.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	big
+Homogeneous cluster with 2 processors, cumulative memory 1161288.000000
+maxoutD290322.000000
+using proc of memory 580644.000000for task 1
+Subtree 1 needs memory 323994.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 433140.821333 154787559
+
+Cluster:
+#Nodes: 2, Configuration: 0, MinMemory: 580644, MaxMemory: 580644.000000, CumulativeMemory: 1161288
+Load 55.000000, Occupied 50.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	big
+Homogeneous cluster with 2 processors, cumulative memory 1088360.000000
+maxoutD272090.000000
+using proc of memory 544180.000000for task 1
+Subtree 1 needs memory 290090.000000
+dump.0.1.amd.QY.case39-2136.tree.nf 428927.493333 195440634
+
+Cluster:
+#Nodes: 2, Configuration: 0, MinMemory: 544180, MaxMemory: 544180.000000, CumulativeMemory: 1088360
+Load 53.000000, Occupied 50.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	big
+Homogeneous cluster with 2 processors, cumulative memory 9248.000000
+maxoutD2312.000000
+using proc of memory 4624.000000for task 1
+Subtree 1 needs memory 2976.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 10809.582667 247569032
+
+Cluster:
+#Nodes: 2, Configuration: 0, MinMemory: 4624, MaxMemory: 4624.000000, CumulativeMemory: 9248
+Load 64.000000, Occupied 50.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	big
+Homogeneous cluster with 2 processors, cumulative memory 1584200.000000
+maxoutD396050.000000
+using proc of memory 792100.000000for task 1
+Subtree 1 needs memory 478994.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf 710441.711333 318114040
+
+Cluster:
+#Nodes: 2, Configuration: 0, MinMemory: 792100, MaxMemory: 792100.000000, CumulativeMemory: 1584200
+Load 60.000000, Occupied 50.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	big
+Homogeneous cluster with 2 processors, cumulative memory 1527752.000000
+maxoutD381938.000000
+using proc of memory 763876.000000for task 1
+Subtree 1 needs memory 439734.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 837502.769333 354433177
+
+Cluster:
+#Nodes: 2, Configuration: 0, MinMemory: 763876, MaxMemory: 763876.000000, CumulativeMemory: 1527752
+Load 57.000000, Occupied 50.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	big
+Homogeneous cluster with 2 processors, cumulative memory 1527752.000000
+maxoutD381938.000000
+using proc of memory 763876.000000for task 1
+Subtree 1 needs memory 439734.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 837502.769333 388436603
+
+Cluster:
+#Nodes: 2, Configuration: 0, MinMemory: 763876, MaxMemory: 763876.000000, CumulativeMemory: 1527752
+Load 57.000000, Occupied 50.000000

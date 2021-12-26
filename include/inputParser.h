@@ -140,7 +140,8 @@ public:
             case staticClustering:
                 return this->clusteringDependendArg1;
             default:
-                throw "This parameter doesn't exisit within the chosen clustering mode";
+                return this->clusteringDependendArg1;
+                //throw "This parameter doesn't exisit within the chosen clustering mode";
         }
     }
 

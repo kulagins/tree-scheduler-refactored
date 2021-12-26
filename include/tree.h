@@ -422,7 +422,7 @@ public :
 
     double Sequence();
 
-    double SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength);
+    double SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength,  int limit);
 
     list<Task *> fillParallelRootsUntilBestMakespan(vector<double> &makespansOfSplittings,
                                                     unsigned long stepsUntilMinimalMakespan) const;
@@ -652,6 +652,8 @@ public:
     bool
     MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double available_memory_size, double &requiredMemorySize);
 
+    bool MemoryEnoughOld(Tree* tree, Task* Qrootone, Task* Qroottwo, bool leaf, double memory_size, int * chstart,int * children);
+
     double ImprovedSplit();
 
     double ASAP();
@@ -698,13 +700,13 @@ Tree *BuildSubtree(Tree *tree, Task *subtreeRoot);
 Tree *BuildSubtreeOld(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size, int **prnts, double **ewghts,
                       double **timewghts, double **spacewghts, int *chstart, int *children);
 
-void popSmallestRootsToFitToCluster(list<Task *> &parallelRoots, unsigned long amountSubtrees);
+void popSmallestRootsToFitToCluster(list<Task *> &parallelRoots, unsigned long amountSubtrees, int limit);
 
 void breakPreparedEdges(Task *root, list<Task *> &parallelRoots);
 
 double getWeightPQ(list<Task *> &parallelRoots, Task *currentNode);
 
-double getWeightSurplusFromSmallestNodes(list<Task *> &parallelRoots);
+double getWeightSurplusFromSmallestNodes(list<Task *> &parallelRoots, int limit);
 
 int *
 copyScheduleBackwards(schedule_traversal *schedule_f);

@@ -30,13 +30,14 @@ void buildFixedClusterWithSpeedsAndMemory(double CCR, unsigned int num_processor
     Cluster::getFixedCluster()->setMemorySizes(memorySizes);
     delete temp_schedule;
 }
-void initOutput(){
-    if (!verbose){
+
+void initOutput() {
+    if (!verbose) {
         cout.setstate(std::ios_base::failbit);
     }
 }
 
-void quietPrint(string text){
+void quietPrint(string text) {
     cout.clear();
     cout << text << endl;
     initOutput();
@@ -68,6 +69,7 @@ int main(int argc, char **argv) {
         case treeDependent: {
             CCR = input->getCCR();
             NPR = input->getNPR();
+            clusterConfigurationNumber = (int) input->getStaticClusterConfigurationNumber();
             break;
         }
         default:
@@ -76,6 +78,7 @@ int main(int argc, char **argv) {
 
     if (input->getClusteringMode() == staticClustering) {
         double maxMinMem = 0;
+        double maxMaxoutD = 0;
         double maxEdgesToMakespanWeights = 0;
         double sum_edges = 0;
         double sum_weights = 0;
@@ -85,6 +88,7 @@ int main(int argc, char **argv) {
             OpenFilePreliminary >> treename;
             Tree *tree = read_tree((input->getWorkingDirectory() + treename).c_str());
             maxoutd = MaxOutDegree(tree, true);
+            if (maxoutd > maxMaxoutD) maxMaxoutD = maxoutd;
             MinMem(tree, maxoutd, minMem, *schedule_f, true);
             if (minMem > maxMinMem) {
                 maxMinMem = minMem;
@@ -101,91 +105,82 @@ int main(int argc, char **argv) {
         switch (clusterConfigurationNumber) {
             case 1:
                 if (input->getHeterogenityLevel() == homogeneus) {
-                    Cluster::buildHomStatic2LevelCluster(maxMinMem, maxEdgesToMakespanWeights,
+                    Cluster::buildHomStatic2LevelCluster(maxMaxoutD, maxEdgesToMakespanWeights,
                                                          input->getAdaptationMode() ? input->getAdaptationMode()
                                                                                     : noAdaptation);
                 } else {
-                    Cluster::buildStatic2LevelCluster(maxMinMem, maxEdgesToMakespanWeights);
+                    Cluster::buildStatic2LevelCluster(maxMaxoutD, maxEdgesToMakespanWeights);
                 }
                 break;
             case 2:
                 if (input->getHeterogenityLevel() == homogeneus) {
-                    Cluster::buildHomStatic3LevelCluster(maxMinMem, maxEdgesToMakespanWeights,
+                    Cluster::buildHomStatic3LevelCluster(maxMaxoutD, maxEdgesToMakespanWeights,
                                                          input->getAdaptationMode() ? input->getAdaptationMode()
                                                                                     : noAdaptation);
                 } else {
-                    Cluster::buildStatic3LevelCluster(maxMinMem, maxEdgesToMakespanWeights);
+                    Cluster::buildStatic3LevelCluster(maxMaxoutD, maxEdgesToMakespanWeights);
                 }
                 break;
             default:
                 throw "No such cluster configuration is implemented: " + to_string(clusterConfigurationNumber);
         }
         Cluster::getFixedCluster()->printInfo();
+        num_processors = Cluster::getFixedCluster()->getProcessors().size();
     }
 
     std::vector<int> brokenEdges;
     do {
         OpenFile >> treename;
-        cout << treename << "\t";
         Tree *tree = read_tree((input->getWorkingDirectory() + treename).c_str());
         Tree *untouchedTree = read_tree((input->getWorkingDirectory() + treename).c_str());
         Tree::setOriginalTree(untouchedTree);
+        maxoutd = MaxOutDegree(tree, true);
+        quietPrint("maxoutD" + to_string(maxoutd));
+        /*    schedule_traversal *schedule_f = new schedule_traversal();
 
-
+             MinMem(tree, maxoutd, minMem, *schedule_f, true);
+             cout<< minMem<< " "<< maxoutd<< " "<< minMem/maxoutd<< " "<< maxoutd*100/minMem<<"%"<<endl;
+   */
         if (input->getClusteringMode() == treeDependent) {
-            num_processors = ceil(tree->getSize() / NPR);
-            if (num_processors < 3) {
-                num_processors = 3;
+            switch (clusterConfigurationNumber) {
+                case 1:
+                    if (input->getHeterogenityLevel() == homogeneus) {
+                        Cluster::buildHomStatic2LevelCluster(maxoutd, 610,
+                                                             input->getAdaptationMode() ? input->getAdaptationMode()
+                                                                                        : noAdaptation);
+                    } else {
+                        Cluster::buildStatic2LevelCluster(maxoutd, 610);
+                    }
+                    break;
+                case 2:
+                    if (input->getHeterogenityLevel() == homogeneus) {
+                        Cluster::buildHomStatic3LevelCluster(maxoutd, 610,
+                                                             input->getAdaptationMode() ? input->getAdaptationMode()
+                                                                                        : noAdaptation);
+                    } else {
+                        Cluster::buildStatic3LevelCluster(maxoutd, 610);
+                    }
+                    break;
+                default:
+                    throw "No such cluster configuration is implemented: " + to_string(clusterConfigurationNumber);
             }
+            Cluster::getFixedCluster()->printInfo();
+            num_processors = Cluster::getFixedCluster()->getProcessors().size();
 
-            if (input->getHeterogenityLevel() == homogeneus) {
-                Cluster::buildHomogeneousCluster(CCR, num_processors, tree,
-                                                 input->getAdaptationMode() ? input->getAdaptationMode()
-                                                                            : noAdaptation);
-            } else {
-                Cluster::buildMemHetTreeDepCluster(CCR, num_processors, tree);
-            }
-            //   Cluster::getFixedCluster()->printProcessors();
         }
 
-     //   quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
-
         time = clock();
-        /// tree->Print(cout);
-
         unsigned long sequentialLen;
-        makespan = tree->getRoot()->SplitSubtrees(false, parallelSubtrees,
-                                                  sequentialLen);// for counting how many subtrees produced, twolevel is set as false
-        // stage1 == "ImprovedSplit") {
-        //po_construct(tree_size, prnts, &chstart, &chend, &children, &root);
-        //   makespan = tree->ImprovedSplit();
-        //makespan = ImprovedSplit(tree, num_processors);
-        //stage1 == "AvoidChain") {
-        //   makespan = tree->ASAP();
-        //   number_subtrees = HowmanySubtrees(tree, true);
-        //  time = clock() - time;
-        //  std::cout << treename << " " << NPR << " " << CCR << " NA " << number_subtrees << " " << num_processors
-        //             << " " << makespan << " " << "ASAP NA NA " << time << std::endl;
+        // for counting how many subtrees produced, twolevel is set as false
+        makespan = tree->getRoot()->SplitSubtrees(false, parallelSubtrees, sequentialLen, -1);
+        // tree->ImprovedSplit();
 
-        //   time = clock();
-        //number_subtrees = AvoidChain(tree);
-        //  makespan = tree->GetRoot()->GetMSCost(true, true);
-        // }
         time = clock() - time;
-        //  cout << "1 step ready " << endl;
-        //  number_subtrees = tree->HowmanySubtrees(false);
-        // cout << makespan << endl;
-        //    std::cout << number_subtrees << " " << num_processors << " "
-        //         << makespan << " " << stage1 << " NA NA " << time << std::endl;
+        cout << "1 step ready " << endl;
+        number_subtrees = tree->HowmanySubtrees(false);
+        cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
 
 
-        maxoutd = MaxOutDegree(tree, true);
-        schedule_traversal *schedule_f = new schedule_traversal();
-
-        MinMem(tree, maxoutd, minMem, *schedule_f, true);
-        delete schedule_f;
-
-        time = clock();
         int ret = 0;
         if (stage2 == "LargestFirst") {
             ret = MemoryCheck(tree, LARGEST_FIT);
@@ -198,23 +193,15 @@ int main(int argc, char **argv) {
             cout << "unsolvable currently" << endl;
             continue;
         }
-        //  cout << "2 step ready " << endl;
-        //number_subtrees = tree->HowmanySubtrees(false);
-
-        time = clock() - time;
-        number_subtrees = tree->HowmanySubtrees(true);
+        cout << "2 step ready " << endl;
         makespan = tree->getRoot()->getMakespanCost(true, true);
-        //   std::cout << number_subtrees << " " << num_processors << " " << makespan << " " << stage1 << " " << stage2
-        //             << " NA " << time << std::endl;
-        // cout << makespan << endl;
-        time = clock();
+        number_subtrees = tree->HowmanySubtrees(false);
+        cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
+
+
         if (number_subtrees > num_processors) {
             stage3 = "Merge";
             makespan = tree->Merge(true);
-            //  makespan = tree->MergeV2(number_subtrees, num_processors,
-            //                       Cluster::getFixedCluster()->getFirstFreeProcessorOrSmallest()->getMemorySize(),
-            //                   true);
-            //Merge(tree, number_subtrees, num_processors, memorySize, chstart, children, true);
         } else if (number_subtrees == num_processors) {
             stage3 = "Nothing";
         } else {
@@ -222,13 +209,8 @@ int main(int argc, char **argv) {
             makespan = tree->SplitAgain();
         }
         time = clock() - time;
-        
-        quietPrint(treename+" "+to_string(makespan)+" "+to_string(time)+"\n\n");
-        //  Cluster::getFixedCluster()->printProcessors();
-        // number_subtrees = tree->HowmanySubtrees(false);
-        //  std::cout << number_subtrees << " " << num_processors << " " << makespan << " " << stage1 << " " << stage2
-        //           << " " << stage3 << " " << time << std::endl;
 
+        quietPrint(treename + " " + to_string(makespan) + " " + to_string(time));
         quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
         quietPrint(Cluster::getFixedCluster()->getAverageLoadAndNumberOfUsedProcessors());
         //quietPrint(Cluster::getFixedCluster()->getUsageString());

@@ -1,0 +1,367 @@
+small with extra output
+2-level
+heterogeneous
+maxmaxoutD396050.000000
+Homogeneous cluster with 3 processors, cumulative memory 1980250.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.3.amd.QY.case39-2136.tree.nf 512357.327027 28950891
+
+Load 28.000000, Occupied 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.2.amd.QY.case39-2136.tree.nf 498563.653027 35504720
+
+task assigned and no mem occupation 5902
+Load 28.000000, Occupied 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	maxoutD85552.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf 90696.498107 64242849
+
+task assigned and no mem occupation 11482
+Load 7.000000, Occupied 100.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	maxoutD2211.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 8262.095214 74871052
+
+task assigned and no mem occupation 18847
+Load 0.000000, Occupied 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.1.amd.QY.case39-2136.tree.nf 491371.087027 121162009
+
+task assigned and no mem occupation 9423
+Load 28.000000, Occupied 100.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	maxoutD324288.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 117091.856566 166534594
+
+task assigned and no mem occupation 14449
+Load 31.000000, Occupied 100.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	maxoutD290322.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 222126.773641 208206235
+
+task assigned and no mem occupation 18560
+Load 17.000000, Occupied 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.0.1.amd.QY.case39-2136.tree.nf 357350.559027 276145933
+
+task assigned and no mem occupation 14300
+Load 28.000000, Occupied 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	maxoutD2312.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 5425.104547 422633340
+
+task assigned and no mem occupation 20483
+Load 0.000000, Occupied 100.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	maxoutD396050.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf 592714.872588 641306368
+
+task assigned and no mem occupation 32953
+Load 33.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	maxoutD381938.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 837503.534320 758331330
+
+task assigned and no mem occupation 24294
+Load 44.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	maxoutD381938.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 837503.534320 858707402
+
+task assigned and no mem occupation 24294
+Load 44.000000, Occupied 100.000000
+homogeneous many small
+maxmaxoutD396050.000000
+many small
+Homogeneous cluster with 3 processors, cumulative memory 1188150.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.3.amd.QY.case39-2136.tree.nf 512357.327027 62256392
+
+Load 47.000000, Occupied 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.2.amd.QY.case39-2136.tree.nf 498563.653027 79928371
+
+task assigned and no mem occupation 5902
+Load 47.000000, Occupied 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	maxoutD85552.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf 90696.498107 154822494
+
+task assigned and no mem occupation 11482
+Load 12.000000, Occupied 100.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	maxoutD2211.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 8262.095214 177202784
+
+task assigned and no mem occupation 18847
+Load 0.000000, Occupied 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.1.amd.QY.case39-2136.tree.nf 491371.087027 328133700
+
+task assigned and no mem occupation 9423
+Load 47.000000, Occupied 100.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	maxoutD324288.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 117091.856566 445872395
+
+task assigned and no mem occupation 14449
+Load 51.000000, Occupied 100.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	maxoutD290322.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 222126.773641 546767096
+
+task assigned and no mem occupation 18560
+Load 29.000000, Occupied 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.0.1.amd.QY.case39-2136.tree.nf 357350.559027 614988487
+
+task assigned and no mem occupation 14300
+Load 47.000000, Occupied 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	maxoutD2312.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 5425.104547 717002707
+
+task assigned and no mem occupation 20483
+Load 0.000000, Occupied 100.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	maxoutD396050.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf 618852.449922 794610431
+
+task assigned and no mem occupation 429
+Load 65.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	maxoutD381938.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf -1.000000 846374619
+
+task assigned and no mem occupation 165
+task assigned and no mem occupation 21103
+Load 32.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	maxoutD381938.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf -1.000000 895675995
+
+task assigned and no mem occupation 165
+task assigned and no mem occupation 21103
+Load 32.000000, Occupied 100.000000
+homogeneous average average
+maxmaxoutD396050.000000
+homogeneous few big
+maxmaxoutD396050.000000
+big
+Homogeneous cluster with 2 processors, cumulative memory 1584200.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.3.amd.QY.case39-2136.tree.nf 614546.601333 26863537
+
+Load 36.000000, Occupied 50.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.2.amd.QY.case39-2136.tree.nf 598204.527333 33181746
+
+Load 36.000000, Occupied 50.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	maxoutD85552.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf 178239.272000 57940552
+
+Load 15.000000, Occupied 50.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	maxoutD2211.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 11024.288667 68957538
+
+Load 0.000000, Occupied 50.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.1.amd.QY.case39-2136.tree.nf 589637.961333 112361955
+
+Load 36.000000, Occupied 50.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	maxoutD324288.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 197813.523333 150103587
+
+Load 49.000000, Occupied 50.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	maxoutD290322.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 433140.821333 184293281
+
+Load 40.000000, Occupied 50.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.0.1.amd.QY.case39-2136.tree.nf 428927.493333 225740737
+
+Load 36.000000, Occupied 50.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	maxoutD2312.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 10809.582667 279340953
+
+Load 0.000000, Occupied 50.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	maxoutD396050.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf 710441.711333 351030343
+
+Load 60.000000, Occupied 50.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	maxoutD381938.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 837502.769333 388987266
+
+Load 55.000000, Occupied 50.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	maxoutD381938.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 837502.769333 425748942
+
+Load 55.000000, Occupied 50.000000
+3-level
+heterogeneous
+maxmaxoutD396050.000000
+Homogeneous cluster with 3 processors, cumulative memory 1782225.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.3.amd.QY.case39-2136.tree.nf 512357.327027 27567077
+
+Load 31.000000, Occupied 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.2.amd.QY.case39-2136.tree.nf 498563.653027 34055421
+
+task assigned and no mem occupation 5902
+Load 31.000000, Occupied 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	maxoutD85552.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf 90696.498107 58693654
+
+task assigned and no mem occupation 11482
+Load 8.000000, Occupied 100.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	maxoutD2211.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 8262.095214 68933639
+
+task assigned and no mem occupation 18847
+Load 0.000000, Occupied 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.1.amd.QY.case39-2136.tree.nf 491371.087027 112152692
+
+task assigned and no mem occupation 9423
+Load 31.000000, Occupied 100.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	maxoutD324288.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 117091.856566 149957246
+
+task assigned and no mem occupation 14449
+Load 34.000000, Occupied 100.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	maxoutD290322.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 222126.773641 183725077
+
+task assigned and no mem occupation 18560
+Load 19.000000, Occupied 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.0.1.amd.QY.case39-2136.tree.nf 357350.559027 224557121
+
+task assigned and no mem occupation 14300
+Load 31.000000, Occupied 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	maxoutD2312.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 5425.104547 274831977
+
+task assigned and no mem occupation 20483
+Load 0.000000, Occupied 100.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	maxoutD396050.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf 592714.872588 346308244
+
+task assigned and no mem occupation 32953
+Load 37.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	maxoutD381938.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 837503.534320 389212354
+
+task assigned and no mem occupation 24294
+Load 49.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	maxoutD381938.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 837503.534320 429678906
+
+task assigned and no mem occupation 24294
+Load 49.000000, Occupied 100.000000
+homogeneous many small
+maxmaxoutD396050.000000
+many small
+Homogeneous cluster with 3 processors, cumulative memory 1188150.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.3.amd.QY.case39-2136.tree.nf 512357.327027 26926278
+
+Load 47.000000, Occupied 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.2.amd.QY.case39-2136.tree.nf 498563.653027 33236178
+
+task assigned and no mem occupation 5902
+Load 47.000000, Occupied 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	maxoutD85552.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf 90696.498107 58004883
+
+task assigned and no mem occupation 11482
+Load 12.000000, Occupied 100.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	maxoutD2211.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 8262.095214 68188398
+
+task assigned and no mem occupation 18847
+Load 0.000000, Occupied 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.1.amd.QY.case39-2136.tree.nf 491371.087027 111432419
+
+task assigned and no mem occupation 9423
+Load 47.000000, Occupied 100.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	maxoutD324288.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 117091.856566 148938087
+
+task assigned and no mem occupation 14449
+Load 51.000000, Occupied 100.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	maxoutD290322.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 222126.773641 182792008
+
+task assigned and no mem occupation 18560
+Load 29.000000, Occupied 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.0.1.amd.QY.case39-2136.tree.nf 357350.559027 223585380
+
+task assigned and no mem occupation 14300
+Load 47.000000, Occupied 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	maxoutD2312.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 5425.104547 273846739
+
+task assigned and no mem occupation 20483
+Load 0.000000, Occupied 100.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	maxoutD396050.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf 618852.449922 346173120
+
+task assigned and no mem occupation 429
+Load 65.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	maxoutD381938.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf -1.000000 398065101
+
+task assigned and no mem occupation 165
+task assigned and no mem occupation 21103
+Load 32.000000, Occupied 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	maxoutD381938.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf -1.000000 447456327
+
+task assigned and no mem occupation 165
+task assigned and no mem occupation 21103
+Load 32.000000, Occupied 100.000000
+homogeneous average average
+maxmaxoutD396050.000000
+avg
+Homogeneous cluster with 2 processors, cumulative memory 1188150.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.3.amd.QY.case39-2136.tree.nf 614546.601333 26744315
+
+Load 48.000000, Occupied 50.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.2.amd.QY.case39-2136.tree.nf 598204.527333 33020428
+
+Load 48.000000, Occupied 50.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	maxoutD85552.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf 178239.272000 57685163
+
+Load 20.000000, Occupied 50.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	maxoutD2211.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 11024.288667 68671207
+
+Load 0.000000, Occupied 50.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.1.1.amd.QY.case39-2136.tree.nf 589637.961333 112099035
+
+Load 48.000000, Occupied 50.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	maxoutD324288.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 197813.523333 149860569
+
+Load 66.000000, Occupied 50.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	maxoutD290322.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 433140.821333 184015242
+
+Load 54.000000, Occupied 50.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	maxoutD272090.000000
+dump.0.1.amd.QY.case39-2136.tree.nf 428927.493333 225421228
+
+Load 48.000000, Occupied 50.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	maxoutD2312.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 10809.582667 278884875
+
+Load 0.000000, Occupied 50.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	maxoutD396050.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf 710441.711333 350634441
+
+Load 80.000000, Occupied 50.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	maxoutD381938.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 837502.769333 388347986
+
+Load 74.000000, Occupied 50.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	maxoutD381938.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf 837502.769333 423636314
+
+Load 74.000000, Occupied 50.000000
+homogeneous few big
+maxmaxoutD396050.000000
+big
+Homogeneous cluster with 1 processors, cumulative memory 792100.000000

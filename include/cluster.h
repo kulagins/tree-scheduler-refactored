@@ -216,6 +216,7 @@ public:
         out += "#Nodes: " + to_string(numProcessors) + ", ";
         out += "Configuration: " + to_string(this->getConfiguration()) + ", ";
         out += "MinMemory: " + to_string(this->getLastProcessorMem()) + ", ";
+        out += "MaxMemory: " + to_string(this->getProcessors().at(0)->getMemorySize()) + ", ";
         out += "CumulativeMemory: " + to_string(this->getCumulativeMemory());
 
         /*
@@ -257,7 +258,7 @@ public:
         }
         avgLoad = sumLoad * 100 / sumMems;
         percentageUsed = numberUsed * 100 / this->getProcessors().size();
-        return "Load per processor for occupied processors: "+ to_string(avgLoad)+", occupied processors: "+ to_string(percentageUsed);
+        return "Load "+ to_string(avgLoad)+", Occupied "+ to_string(percentageUsed);
     }
 
     static void setFixedCluster(Cluster *cluster) {
@@ -311,6 +312,9 @@ public:
     void clean();
 
     string getShortUsageString();
+
+    static void
+    BuildFixedClusterWithMemories(double maxEdgesToMakespanWeights, int num_processors, vector<double> &memorySizes);
 };
 
 #endif

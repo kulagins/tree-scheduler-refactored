@@ -10,8 +10,11 @@
 #include <map>
 #include <vector>
 #include "tree.fwd.h"
-#include "inputParser.h"
-#include <bits/stdc++.h>
+#include "inputEnums.h"
+#include <limits>
+#include <algorithm>
+//#include "inputParser.h"
+//#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -116,6 +119,27 @@ public:
         isProcessorHomogeneous = isBandwidthHomogenenous = true;
         setMemorySizes(memories);
         initHomogeneousBandwidth(memories.size());
+    }
+    Cluster(vector<unsigned int> *groupSizes, vector<double> *memories,vector<double> *speeds) {
+        if (adjacent_find( memories->begin(), memories->end(), not_equal_to<>() ) == memories->end() )
+        {
+            this->isMemoryHomogeneous = true;
+        }
+        else this->isMemoryHomogeneous = false;
+
+        if (adjacent_find( speeds->begin(), speeds->end(), not_equal_to<>() ) == speeds->end() )
+        {
+            this->isProcessorHomogeneous = true;
+        }
+        else this->isProcessorHomogeneous = false;
+
+        for (int i = 0; i< groupSizes->size();i++){
+            unsigned int groupSize = groupSizes->at(i);
+            for (unsigned int j = 0; j< groupSize; j++){
+                this->processors.push_back(new Processor(memories->at(i),speeds->at(i)));
+            }
+        }
+        initHomogeneousBandwidth(memories->size());
     }
 
 
@@ -227,7 +251,7 @@ public:
 
     int getLastProcessorMem() {
         //so far, it returns the proessor with the minimal memory size by using a linear search
-        int min = INT_MAX;
+        int min = std::numeric_limits<int>::max();
         for (Processor *proc: (this->processors)) {
             min = (min > proc->getMemorySize()) ? proc->getMemorySize() : min;
         }

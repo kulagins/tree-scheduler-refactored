@@ -13,6 +13,7 @@
 #include "../include/heuristics.h"
 #include "../include/lib-io-tree-free-methods.h"
 #include "../include/cluster.h"
+#include <lib-io-tree-minmem.h>
 
 //#include <omp.h>
 bool cmp_noincreasing(Task *a, Task *b) {

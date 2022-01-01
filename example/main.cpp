@@ -8,8 +8,15 @@
 #include <math.h>
 #include <algorithm>
 #include <stdlib.h>
-#include "../include/lib-io-tree.h"
-#include "../include/heuristics.h"
+#include <lib-io-tree.h>
+//
+
+//#include "../include/cluster.h"
+
+#include <inputParser.h>
+#include <lib-io-tree-minmem.h>
+#include <heuristics.h>
+
 
 const bool verbose = true;
 
@@ -44,14 +51,13 @@ void quietPrint(string text) {
 }
 
 int main(int argc, char **argv) {
-    InputParser *input = new InputParser(argc, argv);
-
     initOutput();
+    InputParser *input = new InputParser(argc, argv);
     string stage1, stage2 = "FirstFit", stage3;
 
     ifstream OpenFile(input->getPathToTreeList());
     ifstream OpenFilePreliminary(input->getPathToTreeList());
-    list<Task *> parallelSubtrees;
+    list < Task * > parallelSubtrees;
     string treename;
     unsigned int num_processors;
     double makespan, maxoutd, minMem;
@@ -102,30 +108,8 @@ int main(int argc, char **argv) {
             delete schedule_f;
         } while (OpenFilePreliminary.good());
         OpenFilePreliminary.close();
-        switch (clusterConfigurationNumber) {
-            case 1:
-                if (input->getHeterogenityLevel() == homogeneus) {
-                    Cluster::buildHomStatic2LevelCluster(maxMaxoutD, maxEdgesToMakespanWeights,
-                                                         input->getAdaptationMode() ? input->getAdaptationMode()
-                                                                                    : noAdaptation);
-                } else {
-                    Cluster::buildStatic2LevelCluster(maxMaxoutD, maxEdgesToMakespanWeights);
-                }
-                break;
-            case 2:
-                if (input->getHeterogenityLevel() == homogeneus) {
-                    Cluster::buildHomStatic3LevelCluster(maxMaxoutD, maxEdgesToMakespanWeights,
-                                                         input->getAdaptationMode() ? input->getAdaptationMode()
-                                                                                    : noAdaptation);
-                } else {
-                    Cluster::buildStatic3LevelCluster(maxMaxoutD, maxEdgesToMakespanWeights);
-                }
-                break;
-            default:
-                throw "No such cluster configuration is implemented: " + to_string(clusterConfigurationNumber);
-        }
-        Cluster::getFixedCluster()->printInfo();
-        num_processors = Cluster::getFixedCluster()->getProcessors().size();
+
+        input->setClusterFromFile(argv[8], 1);
     }
 
     std::vector<int> brokenEdges;
@@ -142,34 +126,12 @@ int main(int argc, char **argv) {
              cout<< minMem<< " "<< maxoutd<< " "<< minMem/maxoutd<< " "<< maxoutd*100/minMem<<"%"<<endl;
    */
         if (input->getClusteringMode() == treeDependent) {
-            switch (clusterConfigurationNumber) {
-                case 1:
-                    if (input->getHeterogenityLevel() == homogeneus) {
-                        Cluster::buildHomStatic2LevelCluster(maxoutd, 610,
-                                                             input->getAdaptationMode() ? input->getAdaptationMode()
-                                                                                        : noAdaptation);
-                    } else {
-                        Cluster::buildStatic2LevelCluster(maxoutd, 610);
-                    }
-                    break;
-                case 2:
-                    if (input->getHeterogenityLevel() == homogeneus) {
-                        Cluster::buildHomStatic3LevelCluster(maxoutd, 610,
-                                                             input->getAdaptationMode() ? input->getAdaptationMode()
-                                                                                        : noAdaptation);
-                    } else {
-                        Cluster::buildStatic3LevelCluster(maxoutd, 610);
-                    }
-                    break;
-                default:
-                    throw "No such cluster configuration is implemented: " + to_string(clusterConfigurationNumber);
-            }
-            Cluster::getFixedCluster()->printInfo();
-            num_processors = Cluster::getFixedCluster()->getProcessors().size();
-
+            maxoutd = MaxOutDegree(tree, true);
+            input -> setClusterFromFile(argv[8], maxoutd);
         }
 
         time = clock();
+
         unsigned long sequentialLen;
         // for counting how many subtrees produced, twolevel is set as false
         makespan = tree->getRoot()->SplitSubtrees(false, parallelSubtrees, sequentialLen, -1);
@@ -180,6 +142,8 @@ int main(int argc, char **argv) {
         number_subtrees = tree->HowmanySubtrees(false);
         cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
 
+
+        schedule_traversal *schedule_f = new schedule_traversal();
 
         int ret = 0;
         if (stage2 == "LargestFirst") {

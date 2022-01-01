@@ -91,7 +91,7 @@ public:
 
         
         }
-        this -> setClusterFromFile(argv[8]);
+
     }
 
     string getWorkingDirectory() {
@@ -144,8 +144,7 @@ public:
         }
     }
 
-    void setClusterFromFile(string filePath){
-        int normedMemory = 10;
+    void setClusterFromFile(string filePath, double normedMemory){
         ifstream inputFile(filePath);
         json clusterDescription;
         inputFile >> clusterDescription;

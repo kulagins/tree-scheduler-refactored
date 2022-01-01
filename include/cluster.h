@@ -11,6 +11,8 @@
 #include <vector>
 #include "tree.fwd.h"
 #include "inputEnums.h"
+#include <limits>
+#include <algorithm>
 //#include "inputParser.h"
 //#include <bits/stdc++.h>
 
@@ -248,7 +250,7 @@ public:
 
     int getLastProcessorMem() {
         //so far, it returns the proessor with the minimal memory size by using a linear search
-        int min = INT_MAX;
+        int min = std::numeric_limits<int>::max();
         for (Processor *proc: (this->processors)) {
             min = (min > proc->getMemorySize()) ? proc->getMemorySize() : min;
         }

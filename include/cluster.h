@@ -55,6 +55,7 @@ public:
         this->processorSpeed = processorSpeed;
         isBusy = false;
         assignedTask = nullptr;
+        assignedTaskId =-1;
     }
 
     double getMemorySize() const {
@@ -182,7 +183,7 @@ public:
     }
 
     double getHomogeneousBandwidth() {
-        return this->bandwidths.at(0).at(1);
+        return this->bandwidths.at(0).at(0);
     }
 
     void initHomogeneousBandwidth(int bandwidthsNumber, double bandwidth = 1) {

@@ -120,14 +120,16 @@ int main(int argc, char **argv) {
         Tree::setOriginalTree(untouchedTree);
         maxoutd = MaxOutDegree(tree, true);
         quietPrint("maxoutD" + to_string(maxoutd));
-        /*    schedule_traversal *schedule_f = new schedule_traversal();
+        schedule_traversal *schedule_f = new schedule_traversal();
+        MinMem(tree, maxoutd, minMem, *schedule_f, true);
+        bool smallCluster = false;
+        smallCluster = maxoutd * 100 / minMem < 93;
 
-             MinMem(tree, maxoutd, minMem, *schedule_f, true);
-             cout<< minMem<< " "<< maxoutd<< " "<< minMem/maxoutd<< " "<< maxoutd*100/minMem<<"%"<<endl;
-   */
         if (input->getClusteringMode() == treeDependent) {
-            maxoutd = MaxOutDegree(tree, true);
-            input -> setClusterFromFile(argv[8], maxoutd);
+
+            if (smallCluster) input->setClusterFromFileWithShrinkingFactor(argv[8], maxoutd, 3);
+            else
+                input->setClusterFromFile(argv[8], maxoutd);
         }
 
         time = clock();
@@ -141,9 +143,6 @@ int main(int argc, char **argv) {
         cout << "1 step ready " << endl;
         number_subtrees = tree->HowmanySubtrees(false);
         cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
-
-
-        schedule_traversal *schedule_f = new schedule_traversal();
 
         int ret = 0;
         if (stage2 == "LargestFirst") {
@@ -175,9 +174,10 @@ int main(int argc, char **argv) {
         time = clock() - time;
 
         quietPrint(treename + " " + to_string(makespan) + " " + to_string(time));
-        quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
-        quietPrint(Cluster::getFixedCluster()->getAverageLoadAndNumberOfUsedProcessors());
+       // quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
+       // quietPrint(Cluster::getFixedCluster()->getAverageLoadAndNumberOfUsedProcessors());
         //quietPrint(Cluster::getFixedCluster()->getUsageString());
+
         delete tree;
         delete untouchedTree;
         Cluster::getFixedCluster()->clean();

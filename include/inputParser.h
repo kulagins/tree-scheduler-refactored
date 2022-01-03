@@ -168,6 +168,35 @@ public:
         }
 
         Cluster *cluster = new Cluster(&processorCounts,&mems,&speeds);
+      //  cout << cluster->getPrettyClusterString()<<endl;
+        Cluster::setFixedCluster(cluster);
+
+    }
+    void setClusterFromFileWithShrinkingFactor(string filePath, double normedMemory, double shrinkingFactor){
+        cout<<"small cluster"<<endl;
+        ifstream inputFile(filePath);
+        json clusterDescription;
+        inputFile >> clusterDescription;
+
+        vector<unsigned int> processorCounts;
+        vector<double> mems;
+        vector<double> speeds;
+
+        for (auto& element : clusterDescription["groups"]) {
+            int numberProcessors = element["number"];
+            processorCounts.push_back(ceil(numberProcessors / shrinkingFactor));
+            mems.push_back(element["memory"]);
+            speeds.push_back(element["speed"]);
+        }
+
+        if (this->getClusteringMode() == treeDependent){
+            for (auto it = begin(mems); it != end(mems); it++)
+            {
+                *it = (*it) * normedMemory;
+            }
+        }
+
+        Cluster *cluster = new Cluster(&processorCounts,&mems,&speeds);
         cout << cluster->getPrettyClusterString()<<endl;
         Cluster::setFixedCluster(cluster);
 

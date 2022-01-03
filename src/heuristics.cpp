@@ -156,7 +156,7 @@ double Task::SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned 
 
     //return broken edges, i.e., root of subtrees
     auto smallestMS_iter = min_element(makespansOfSplittings.begin(), makespansOfSplittings.end());
-    sequentialLength = smallestMS_iter - makespansOfSplittings.begin();;
+    sequentialLength = smallestMS_iter - makespansOfSplittings.begin();
     parallelRoots = fillParallelRootsUntilBestMakespan(makespansOfSplittings, sequentialLength);
 
     unsigned long amountSubtrees;
@@ -1374,7 +1374,7 @@ int MemoryCheck(Tree *tree, io_method_t method) {
             biggestFreeProcessor->assignTask(subtreeRoot);
         }
         double currentMemorySize = biggestFreeProcessor->getMemorySize();
-        cout<<"using proc of memory "<<biggestFreeProcessor->getMemorySize()<<"for task "<<subtreeRoot->getId()<<endl;
+   //     cout<<"using proc of memory "<<biggestFreeProcessor->getMemorySize()<<"for task "<<subtreeRoot->getId()<<endl;
 
         Tree *subtree = BuildSubtree(tree, subtreeRoot);
         // cout<<"subtree "<<subtree->getSize();
@@ -1383,7 +1383,7 @@ int MemoryCheck(Tree *tree, io_method_t method) {
         schedule_f->clear();
         MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
 
-        cout << "Subtree " << subtreeRoot->getId() << " needs memory " << memory_required <<endl;
+       // cout << "Subtree " << subtreeRoot->getId() << " needs memory " << memory_required <<endl;
         if (memory_required > currentMemorySize) {
             //        cout<<", larger than what is available: "<<currentMemorySize<<endl;
 

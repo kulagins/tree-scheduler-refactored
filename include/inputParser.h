@@ -1,19 +1,17 @@
+#ifndef inputParse_h
+#define inputParse_h
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <stdlib.h>
+#include <json.hpp>
+#include "inputEnums.h"
+#include "cluster.h"
 
+
+using json = nlohmann::json;
 using namespace std;
-
-enum HeterogenityLevels {
-    homogeneus, memoryHeteregeneus, heterogeneus
-};
-enum ClusteringModes {
-    treeDependent, staticClustering
-};
-enum HeterogeneousAdaptationMode {
-    noAdaptation, fewBig, average, manySmall
-};
 
 class InputParser {
 protected:
@@ -91,7 +89,9 @@ public:
                     break;
             }
 
+        
         }
+
     }
 
     string getWorkingDirectory() {
@@ -144,6 +144,34 @@ public:
         }
     }
 
+    void setClusterFromFile(string filePath, double normedMemory){
+        ifstream inputFile(filePath);
+        json clusterDescription;
+        inputFile >> clusterDescription;
+
+        vector<unsigned int> processorCounts;
+        vector<double> mems;
+        vector<double> speeds;
+        
+        for (auto& element : clusterDescription["groups"]) {
+            processorCounts.push_back(element["number"]);
+            mems.push_back(element["memory"]);
+            speeds.push_back(element["speed"]);
+        }
+
+        if (this->getClusteringMode() == treeDependent){
+            for (auto it = begin(mems); it != end(mems); it++)
+            {
+                *it = (*it) * normedMemory;
+            }
+        }
+
+        Cluster *cluster = new Cluster(&processorCounts,&mems,&speeds);
+        cout << cluster->getPrettyClusterString()<<endl;
+        Cluster::setFixedCluster(cluster);
+
+    }
+
 
     void errorFunction(int reason) {
         switch (reason) {
@@ -166,3 +194,4 @@ public:
     }
 
 };
+#endif

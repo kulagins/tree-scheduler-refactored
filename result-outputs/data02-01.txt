@@ -1,0 +1,1453 @@
+small with extra output
+2-level
+homogeneous many small
+maxoutD324288.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 324288, MaxMemory: 324288.000000, CumulativeMemory: 2918592
+1 step ready 
+Broken Edges { 1 393 5379 8469 13055 14793 17615 21907 28113 }
+Makespan 161696 #trees: 9
+2 step ready 
+Broken Edges { 1 393 5379 8469 13055 14349 14793 17615 21907 28113 }
+Makespan 249312 #trees: 10
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 290918.832667 329198
+maxoutD65558.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 65558, MaxMemory: 65558.000000, CumulativeMemory: 590022
+1 step ready 
+Broken Edges { 1 4 22659 33786 45111 67813 78816 90104 90125 }
+Makespan 23530.6 #trees: 9
+2 step ready 
+Broken Edges { 1 4 16850 22659 33786 45111 62122 67813 78816 78817 90104 90125 }
+Makespan 36755.6 #trees: 12
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 33557.361333 151240002
+maxoutD78554.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 78554, MaxMemory: 78554.000000, CumulativeMemory: 706986
+1 step ready 
+Broken Edges { 1 5 6050 12273 18347 24749 31056 37084 43212 }
+Makespan 34628.7 #trees: 9
+2 step ready 
+Broken Edges { 1 5 6050 12273 18347 24749 31056 37084 43212 }
+Makespan 34628.7 #trees: 9
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 34628.722667 250232619
+maxoutD396050.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 396050, MaxMemory: 396050.000000, CumulativeMemory: 3564450
+1 step ready 
+Broken Edges { 1 429 6287 8776 9961 27934 30707 32953 46370 }
+Makespan 389872 #trees: 9
+2 step ready 
+Broken Edges { 1 429 6287 8776 9961 27934 30707 32953 46370 }
+Makespan 389872 #trees: 9
+dump.0.1.amd.Bova.rma10-374.tree.nf 389872.153333 299646975
+maxoutD117681.000000
+1 step ready 
+Broken Edges { 1 529 11375 13819 47847 55796 56371 56946 57521 58096 58671 59246 68447 73126 88643 95866 101497 134771 145470 146409 150969 169084 173170 177341 182155 186340 187639 }
+Makespan 39368.8 #trees: 27
+2 step ready 
+Broken Edges { 1 529 11375 13819 47847 55796 56371 56946 57521 58096 58671 59246 68447 73126 88643 95367 95866 101497 134771 145470 146409 150969 169084 173170 177341 182155 186340 187639 }
+Makespan 68918.3 #trees: 28
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 106517.678000 794297135
+maxoutD1384793.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 1384793, MaxMemory: 1384793.000000, CumulativeMemory: 12463137
+1 step ready 
+Broken Edges { 1 902 12433 21449 27839 34510 49084 61241 66956 }
+Makespan 532137 #trees: 9
+2 step ready 
+Broken Edges { 1 723 902 12433 21449 27839 34510 49084 61241 66956 }
+Makespan 1.04563e+06 #trees: 10
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 1346939.174000 2909074310
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 305 965 1625 2285 3025 7940 8580 9220 9840 14320 14960 15600 16220 20700 21340 21980 22600 27080 27720 28360 28980 33460 34100 34740 35360 39820 }
+Makespan 63170.9 #trees: 27
+2 step ready 
+Broken Edges { 1 22 305 965 1625 2285 3025 6815 7940 8580 9220 9840 10480 14320 14960 15600 16220 16860 20700 21340 21980 22600 23240 27080 27720 28360 28980 29620 33460 34100 34740 35360 36000 39820 }
+Makespan 67170.9 #trees: 34
+dump.0.1.amd.QY.case39-2136.tree.nf 58740.855333 3463681549
+maxoutD1471425.000000
+1 step ready 
+Broken Edges { 1 474 547 691 14491 28291 28897 42015 42017 42019 42021 42023 42025 42027 42029 42031 42033 42035 42037 42039 42041 42043 42045 42047 42049 42051 42053 }
+Makespan 998426 #trees: 27
+2 step ready 
+Broken Edges { 1 474 547 691 14491 28291 28897 42015 42017 42019 42021 42023 42025 42027 42029 42031 42033 42035 42037 42039 42041 42043 42045 42047 42049 42051 42053 }
+Makespan 998426 #trees: 27
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 998426.022000 3479244399
+maxoutD3607298.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 3607298, MaxMemory: 3607298.000000, CumulativeMemory: 32465682
+1 step ready 
+Broken Edges { 1 727 26184 }
+Makespan 3.16364e+06 #trees: 3
+2 step ready 
+Broken Edges { 1 727 26184 }
+Makespan 3.16364e+06 #trees: 3
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf 2990936.696000 3593441481
+maxoutD381938.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 381938, MaxMemory: 381938.000000, CumulativeMemory: 3437442
+1 step ready 
+Broken Edges { 1 272 11624 17803 21103 24460 29860 36390 }
+Makespan 260725 #trees: 8
+2 step ready 
+Broken Edges { 1 272 11624 17803 21103 24460 29860 36390 }
+Makespan 260725 #trees: 8
+dump.0.1.metis.Bova.rma10-374.tree.nf 260724.610000 3615319038
+maxoutD2312.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 2312, MaxMemory: 2312.000000, CumulativeMemory: 20808
+1 step ready 
+Broken Edges { 1 30 5141 10262 15370 20498 25779 30729 35841 }
+Makespan 1686.22 #trees: 9
+2 step ready 
+Broken Edges { 1 11 13 21 28 30 31 32 39 2577 3855 5141 10262 12848 15370 20498 25779 25785 25796 30729 35841 35867 37124 }
+Makespan 2951.14 #trees: 23
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 2972.431333 3629316754
+maxoutD21898962.000000
+1 step ready 
+Broken Edges { 1 2927 47198 90766 92287 134454 178425 179007 179043 179067 179127 179139 179205 179249 179269 179309 179341 179388 179412 179430 179478 179587 179617 179644 179668 179710 179826 }
+Makespan 3.69608e+07 #trees: 27
+2 step ready 
+Broken Edges { 1 2927 47198 90766 92287 134454 178425 179007 179043 179067 179127 179139 179205 179249 179269 179309 179341 179388 179412 179430 179478 179587 179617 179644 179668 179710 179826 }
+Makespan 3.69608e+07 #trees: 27
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 36960824.831333 3696748859
+maxoutD3432258.000000
+1 step ready 
+Broken Edges { 1 424 13900 18343 23689 35332 }
+Makespan 2.69773e+06 #trees: 6
+2 step ready 
+Broken Edges { 1 424 13900 18343 23689 35332 }
+Makespan 2.69773e+06 #trees: 6
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 2697725.978000 3970990405
+maxoutD85552.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 85552, MaxMemory: 85552.000000, CumulativeMemory: 769968
+1 step ready 
+Broken Edges { 1 241 3142 5962 8581 11602 14221 16618 19519 }
+Makespan 45999.9 #trees: 9
+2 step ready 
+Broken Edges { 1 85 241 3142 5962 8581 11482 11602 11662 14221 16618 19519 }
+Makespan 81213.9 #trees: 12
+dump.0.1.metis.Goodwin.rim-447.tree.nf 79762.484000 3980569291
+maxoutD46818.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 46818, MaxMemory: 46818.000000, CumulativeMemory: 421362
+1 step ready 
+Broken Edges { 1 2 24906 55841 59051 93811 100742 141401 166718 }
+Makespan 12367.2 #trees: 9
+2 step ready 
+Broken Edges { 1 2 24906 55841 59051 93811 100742 122284 141401 166718 }
+Makespan 20467.2 #trees: 10
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 15326.153333 4039113360
+maxoutD30112566.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 30112566, MaxMemory: 30112566.000000, CumulativeMemory: 271013094
+1 step ready 
+Broken Edges { 1 2029 52730 }
+Makespan 5.74227e+07 #trees: 3
+2 step ready 
+Broken Edges { 1 2029 28202 52730 }
+Makespan 6.58989e+07 #trees: 4
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 50962803.922667 4168997622
+maxoutD262088.000000
+1 step ready 
+Broken Edges { 1 440 5206 10756 15834 20912 41375 46266 51263 56420 61657 82640 82641 82642 82643 82644 82645 82646 82647 82648 82649 82650 82651 82652 82653 82654 82655 }
+Makespan 115710 #trees: 27
+2 step ready 
+Broken Edges { 1 440 5206 10756 15834 20912 41067 41375 46266 51263 56420 61657 82640 82641 82642 82643 82644 82645 82646 82647 82648 82649 82650 82651 82652 82653 82654 82655 }
+Makespan 130351 #trees: 28
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf 103884.028000 4644120840
+maxoutD396050.000000
+1 step ready 
+Broken Edges { 1 162 13042 22641 24935 27289 29585 32137 34441 36300 40694 41947 43201 45742 50882 }
+Makespan 159802 #trees: 15
+2 step ready 
+Broken Edges { 1 162 12882 13042 22641 24935 27289 29585 32137 34441 36300 40694 41947 43201 45742 50882 }
+Makespan 185402 #trees: 16
+dump.0.1.metis.Shyy.shyy161-809.tree.nf 172277.547333 4924638727
+maxoutD3160098.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 3160098, MaxMemory: 3160098.000000, CumulativeMemory: 28440882
+1 step ready 
+Broken Edges { 1 872 13470 }
+Makespan 2.11745e+06 #trees: 3
+2 step ready 
+Broken Edges { 1 872 13470 }
+Makespan 2.11745e+06 #trees: 3
+dump.0.1.metis.Wang.wang4-833.tree.nf 2117447.601333 5208069452
+maxoutD5524488.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 5524488, MaxMemory: 5524488.000000, CumulativeMemory: 49720392
+1 step ready 
+Broken Edges { 1 1664 29040 56870 84541 112211 }
+Makespan 6.78065e+06 #trees: 6
+2 step ready 
+Broken Edges { 1 1113 1664 29040 56870 84541 112211 }
+Makespan 8.01719e+06 #trees: 7
+dump.0.1.metis.Watson.Baumann-1855.tree.nf 7197859.913333 5239204426
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 58 511 964 1417 1874 5205 5627 6049 6470 9424 9846 10268 10689 13643 14065 14487 14908 17862 18284 18706 19127 22081 22503 22925 23346 26299 }
+Makespan 85919.8 #trees: 27
+2 step ready 
+Broken Edges { 1 3 58 511 964 1417 1874 4444 5205 5627 6049 6470 6892 9424 9846 10268 10689 11111 13643 14065 14487 14908 15330 17862 18284 18706 19127 19549 22081 22503 22925 23346 23768 26299 }
+Makespan 140145 #trees: 34
+dump.1.1.amd.QY.case39-2136.tree.nf 142232.175333 5886750004
+maxoutD2211.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 2211, MaxMemory: 2211.000000, CumulativeMemory: 19899
+1 step ready 
+Broken Edges { 1 3 3312 6280 9588 12570 15667 18848 21812 }
+Makespan 1721.71 #trees: 9
+2 step ready 
+Broken Edges { 1 2 3 5 1550 3312 6280 6281 7862 8725 9588 12570 15667 15668 18848 21812 21815 22683 23544 }
+Makespan 1921.4 #trees: 19
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 1711.823333 5898866730
+maxoutD65524.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 65524, MaxMemory: 65524.000000, CumulativeMemory: 589716
+1 step ready 
+Broken Edges { 1 4 44575 66502 66503 88564 88726 133562 155253 }
+Makespan 21389.6 #trees: 9
+2 step ready 
+Broken Edges { 1 4 44575 66502 66503 88564 88726 133562 155253 }
+Makespan 21389.6 #trees: 9
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 21389.586000 5934944994
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 37 324 611 898 1189 3284 3546 3808 4069 5903 6165 6427 6688 8522 8784 9046 9307 11141 11403 11665 11926 13760 14022 14284 14545 16378 }
+Makespan 87017.1 #trees: 27
+2 step ready 
+Broken Edges { 1 3 37 324 611 898 1189 2783 3284 3546 3808 4069 4331 5903 6165 6427 6688 6950 8522 8784 9046 9307 9569 11141 11403 11665 11926 12188 13760 14022 14284 14545 14807 16378 }
+Makespan 141242 #trees: 34
+dump.1.2.amd.QY.case39-2136.tree.nf 143097.892000 6031046231
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 19 161 303 445 591 1633 1765 1897 2028 2952 3084 3216 3347 4271 4403 4535 4666 5590 5722 5854 5985 6909 7041 7173 7304 8227 }
+Makespan 89094.2 #trees: 27
+2 step ready 
+Broken Edges { 1 3 19 161 303 445 591 1373 1633 1765 1897 2028 2160 2952 3084 3216 3347 3479 4271 4403 4535 4666 4798 5590 5722 5854 5985 6117 6909 7041 7173 7304 7436 8227 }
+Makespan 143319 #trees: 34
+dump.1.3.amd.QY.case39-2136.tree.nf 144710.873333 6039100053
+maxoutD34085496.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34085496, MaxMemory: 34085496.000000, CumulativeMemory: 306769464
+1 step ready 
+Broken Edges { 1 5 77278 154923 155408 155851 156098 156307 156635 }
+Makespan 6.55424e+07 #trees: 9
+2 step ready 
+Broken Edges { 1 5 77278 154923 155408 155851 156098 156307 156635 }
+Makespan 6.55424e+07 #trees: 9
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 65542449.327334 6049168278
+maxoutD34085496.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34085496, MaxMemory: 34085496.000000, CumulativeMemory: 306769464
+1 step ready 
+Broken Edges { 1 5 49690 98946 99366 99506 99673 99800 100017 }
+Makespan 6.66025e+07 #trees: 9
+2 step ready 
+Broken Edges { 1 5 49690 98946 99366 99506 99673 99800 100017 }
+Makespan 6.66025e+07 #trees: 9
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 66602516.889334 6223024410
+maxoutD290322.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 290322, MaxMemory: 290322.000000, CumulativeMemory: 2612898
+1 step ready 
+Broken Edges { 1 384 4864 9344 18688 27840 32320 37762 37763 }
+Makespan 161374 #trees: 9
+2 step ready 
+Broken Edges { 1 384 4864 9344 18560 18688 27840 32320 37762 37763 }
+Makespan 177250 #trees: 10
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 159335.026000 6255393023
+maxoutD290322.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 290322, MaxMemory: 290322.000000, CumulativeMemory: 2612898
+1 step ready 
+Broken Edges { 1 384 4864 9344 18688 27840 32320 37762 37763 }
+Makespan 161374 #trees: 9
+2 step ready 
+Broken Edges { 1 384 4864 9344 18560 18688 27840 32320 37762 37763 }
+Makespan 177250 #trees: 10
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 159335.026000 6294880906
+homogeneous few big
+maxoutD324288.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 972864, MaxMemory: 972864.000000, CumulativeMemory: 5837184
+1 step ready 
+Broken Edges { 1 393 5289 13055 14703 21907 }
+Makespan 179404 #trees: 6
+2 step ready 
+Broken Edges { 1 393 5289 13055 14703 21907 }
+Makespan 179404 #trees: 6
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 179404.293333 235821
+maxoutD65558.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 196674, MaxMemory: 196674.000000, CumulativeMemory: 1180044
+1 step ready 
+Broken Edges { 1 4 22658 45111 67813 78816 }
+Makespan 28325 #trees: 6
+2 step ready 
+Broken Edges { 1 4 22658 45111 67813 78816 }
+Makespan 28325 #trees: 6
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 28325.040000 46731167
+maxoutD78554.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 235662, MaxMemory: 235662.000000, CumulativeMemory: 1413972
+1 step ready 
+Broken Edges { 1 4 12272 24748 37084 43212 }
+Makespan 42987.5 #trees: 6
+2 step ready 
+Broken Edges { 1 4 12272 24748 37084 43212 }
+Makespan 42987.5 #trees: 6
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 42987.546000 130805479
+maxoutD396050.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 1188150, MaxMemory: 1188150.000000, CumulativeMemory: 7128900
+1 step ready 
+Broken Edges { 1 429 6287 9961 30707 32953 }
+Makespan 422565 #trees: 6
+2 step ready 
+Broken Edges { 1 429 6287 9961 30707 32953 }
+Makespan 422565 #trees: 6
+dump.0.1.amd.Bova.rma10-374.tree.nf 422564.812000 180662772
+maxoutD117681.000000
+1 step ready 
+Broken Edges { 1 529 11375 13819 47847 68447 73126 88643 95866 101497 134771 146409 150969 169084 173170 177341 182155 187639 }
+Makespan 39560.5 #trees: 18
+2 step ready 
+Broken Edges { 1 529 11375 13819 47847 68447 73126 88643 95866 101497 134771 146409 150969 169084 173170 177341 182155 187639 }
+Makespan 39560.5 #trees: 18
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 39560.520000 373820843
+maxoutD1384793.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 4154379, MaxMemory: 4154379.000000, CumulativeMemory: 24926274
+1 step ready 
+Broken Edges { 1 902 12433 34510 49084 66956 }
+Makespan 573424 #trees: 6
+2 step ready 
+Broken Edges { 1 902 12433 34510 49084 66956 }
+Makespan 573424 #trees: 6
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 573423.899333 2391852661
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 240 305 965 1625 2285 3025 7940 8560 14320 14940 20700 21320 27080 27700 33460 34080 39820 }
+Makespan 76345.9 #trees: 18
+2 step ready 
+Broken Edges { 1 240 305 965 1625 2285 3025 7940 8560 14320 14940 20700 21320 27080 27700 33460 34080 39820 }
+Makespan 76345.9 #trees: 18
+dump.0.1.amd.QY.case39-2136.tree.nf 76345.856000 2910034326
+maxoutD1471425.000000
+1 step ready 
+Broken Edges { 1 474 547 691 14491 28291 28897 42015 42017 42019 42021 42023 42025 42027 42029 42031 42033 42035 }
+Makespan 999005 #trees: 18
+2 step ready 
+Broken Edges { 1 474 547 691 14491 28291 28897 42015 42017 42019 42021 42023 42025 42027 42029 42031 42033 42035 }
+Makespan 999005 #trees: 18
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 999005.022000 2925588985
+maxoutD3607298.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 10821894, MaxMemory: 10821894.000000, CumulativeMemory: 64931364
+1 step ready 
+Broken Edges { 1 727 26184 }
+Makespan 3.16364e+06 #trees: 3
+2 step ready 
+Broken Edges { 1 727 26184 }
+Makespan 3.16364e+06 #trees: 3
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf 3163643.826667 3038611400
+maxoutD381938.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 1145814, MaxMemory: 1145814.000000, CumulativeMemory: 6874884
+1 step ready 
+Broken Edges { 1 272 11624 17654 24360 36390 }
+Makespan 395762 #trees: 6
+2 step ready 
+Broken Edges { 1 272 11624 17654 24360 36390 }
+Makespan 395762 #trees: 6
+dump.0.1.metis.Bova.rma10-374.tree.nf 395762.108000 3060787404
+maxoutD2312.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 6936, MaxMemory: 6936.000000, CumulativeMemory: 41616
+1 step ready 
+Broken Edges { 1 22 10254 20490 30729 35841 }
+Makespan 2911.2 #trees: 6
+2 step ready 
+Broken Edges { 1 22 10254 20490 30729 35841 }
+Makespan 2911.2 #trees: 6
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 2911.204667 3074705933
+maxoutD21898962.000000
+1 step ready 
+Broken Edges { 1 2927 47198 90766 92287 134454 178425 179007 179043 179067 179127 179139 179205 179249 179269 179309 179430 179668 }
+Makespan 3.69608e+07 #trees: 18
+2 step ready 
+Broken Edges { 1 2927 47198 90766 92287 134454 178425 179007 179043 179067 179127 179139 179205 179249 179269 179309 179430 179668 }
+Makespan 3.69608e+07 #trees: 18
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 36960836.051333 3141840884
+maxoutD3432258.000000
+1 step ready 
+Broken Edges { 1 424 13900 18343 23689 35332 }
+Makespan 2.69773e+06 #trees: 6
+2 step ready 
+Broken Edges { 1 424 13900 18343 23689 35332 }
+Makespan 2.69773e+06 #trees: 6
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 2697725.978000 3418822689
+maxoutD85552.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 256656, MaxMemory: 256656.000000, CumulativeMemory: 1539936
+1 step ready 
+Broken Edges { 1 181 5902 11542 16558 }
+Makespan 63880.7 #trees: 5
+2 step ready 
+Broken Edges { 1 181 5902 11542 16558 }
+Makespan 63880.7 #trees: 5
+dump.0.1.metis.Goodwin.rim-447.tree.nf 63880.728000 3428372240
+maxoutD46818.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 140454, MaxMemory: 140454.000000, CumulativeMemory: 842724
+1 step ready 
+Broken Edges { 1 2 24906 59051 100742 141401 }
+Makespan 13977.1 #trees: 6
+2 step ready 
+Broken Edges { 1 2 24906 59051 100742 141401 }
+Makespan 13977.1 #trees: 6
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 13977.146000 3478416958
+maxoutD30112566.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 90337698, MaxMemory: 90337698.000000, CumulativeMemory: 542026188
+1 step ready 
+Broken Edges { 1 2029 52730 }
+Makespan 5.74227e+07 #trees: 3
+2 step ready 
+Broken Edges { 1 2029 52730 }
+Makespan 5.74227e+07 #trees: 3
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 57422702.432667 3595560703
+maxoutD262088.000000
+1 step ready 
+Broken Edges { 1 440 5206 10756 15834 20912 41375 46266 51263 56420 61657 82649 82650 82651 82652 82653 82654 82655 }
+Makespan 115710 #trees: 18
+2 step ready 
+Broken Edges { 1 440 5206 10756 15834 20912 41375 46266 51263 56420 61657 82649 82650 82651 82652 82653 82654 82655 }
+Makespan 115710 #trees: 18
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf 115710.394667 4069516961
+maxoutD396050.000000
+1 step ready 
+Broken Edges { 1 162 13042 22641 24935 27289 29585 32137 34441 36300 40694 41947 43201 45742 50882 }
+Makespan 159802 #trees: 15
+2 step ready 
+Broken Edges { 1 162 13042 22641 24935 27289 29585 32137 34441 36300 40694 41947 43201 45742 50882 }
+Makespan 159802 #trees: 15
+dump.0.1.metis.Shyy.shyy161-809.tree.nf 159802.266667 4352683002
+maxoutD3160098.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 9480294, MaxMemory: 9480294.000000, CumulativeMemory: 56881764
+1 step ready 
+Broken Edges { 1 872 13470 }
+Makespan 2.11745e+06 #trees: 3
+2 step ready 
+Broken Edges { 1 872 13470 }
+Makespan 2.11745e+06 #trees: 3
+dump.0.1.metis.Wang.wang4-833.tree.nf 2117447.601333 4641771422
+maxoutD5524488.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 16573464, MaxMemory: 16573464.000000, CumulativeMemory: 99440784
+1 step ready 
+Broken Edges { 1 1664 29040 56870 84541 112211 }
+Makespan 6.78065e+06 #trees: 6
+2 step ready 
+Broken Edges { 1 1664 29040 56870 84541 112211 }
+Makespan 6.78065e+06 #trees: 6
+dump.0.1.metis.Watson.Baumann-1855.tree.nf 6780649.463333 4672642782
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 12 58 511 964 1417 1874 5205 5626 9424 9845 13643 14064 17862 18283 22081 22502 26299 }
+Makespan 104407 #trees: 18
+2 step ready 
+Broken Edges { 1 12 58 511 964 1417 1874 5205 5626 9424 9845 13643 14064 17862 18283 22081 22502 26299 }
+Makespan 104407 #trees: 18
+dump.1.1.amd.QY.case39-2136.tree.nf 104406.696000 5328442848
+maxoutD2211.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 6633, MaxMemory: 6633.000000, CumulativeMemory: 39798
+1 step ready 
+Broken Edges { 1 2 6279 12569 18848 21812 }
+Makespan 2969.46 #trees: 6
+2 step ready 
+Broken Edges { 1 2 6279 12569 18848 21812 }
+Makespan 2969.46 #trees: 6
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 2969.462667 5340372760
+maxoutD65524.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 196572, MaxMemory: 196572.000000, CumulativeMemory: 1179432
+1 step ready 
+Broken Edges { 1 4 44574 88726 133562 155253 }
+Makespan 25264.9 #trees: 6
+2 step ready 
+Broken Edges { 1 4 44574 88726 133562 155253 }
+Makespan 25264.9 #trees: 6
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 25264.930000 5376369360
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 8 37 324 611 898 1189 3284 3545 5903 6164 8522 8783 11141 11402 13760 14021 16378 }
+Makespan 105791 #trees: 18
+2 step ready 
+Broken Edges { 1 8 37 324 611 898 1189 3284 3545 5903 6164 8522 8783 11141 11402 13760 14021 16378 }
+Makespan 105791 #trees: 18
+dump.1.2.amd.QY.case39-2136.tree.nf 105790.500667 5471582999
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 19 161 303 445 591 1633 1764 2952 3083 4271 4402 5590 5721 6909 7040 8227 8268 }
+Makespan 108349 #trees: 18
+2 step ready 
+Broken Edges { 1 19 161 303 445 591 1633 1764 2952 3083 4271 4402 5590 5721 6909 7040 8227 8268 }
+Makespan 108349 #trees: 18
+dump.1.3.amd.QY.case39-2136.tree.nf 108348.796667 5479550678
+maxoutD34085496.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 102256488, MaxMemory: 102256488.000000, CumulativeMemory: 613538928
+1 step ready 
+Broken Edges { 1 5 77278 155408 155851 156098 }
+Makespan 6.55425e+07 #trees: 6
+2 step ready 
+Broken Edges { 1 5 77278 155408 155851 156098 }
+Makespan 6.55425e+07 #trees: 6
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 65542460.298668 5489565285
+maxoutD34085496.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 102256488, MaxMemory: 102256488.000000, CumulativeMemory: 613538928
+1 step ready 
+Broken Edges { 1 5 49690 99366 99506 99673 }
+Makespan 6.66026e+07 #trees: 6
+2 step ready 
+Broken Edges { 1 5 49690 99366 99506 99673 }
+Makespan 6.66026e+07 #trees: 6
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 66602567.586668 5664082409
+maxoutD290322.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 870966, MaxMemory: 870966.000000, CumulativeMemory: 5225796
+1 step ready 
+Broken Edges { 1 256 9344 18688 27712 37763 }
+Makespan 199464 #trees: 6
+2 step ready 
+Broken Edges { 1 256 9344 18688 27712 37763 }
+Makespan 199464 #trees: 6
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 199463.782000 5693823988
+maxoutD290322.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 870966, MaxMemory: 870966.000000, CumulativeMemory: 5225796
+1 step ready 
+Broken Edges { 1 256 9344 18688 27712 37763 }
+Makespan 199464 #trees: 6
+2 step ready 
+Broken Edges { 1 256 9344 18688 27712 37763 }
+Makespan 199464 #trees: 6
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 199463.782000 5730895927
+3-level
+homogeneous many small
+maxoutD324288.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 324288, MaxMemory: 324288.000000, CumulativeMemory: 2918592
+1 step ready 
+Broken Edges { 1 393 5379 8469 13055 14793 17615 21907 28113 }
+Makespan 161696 #trees: 9
+2 step ready 
+Broken Edges { 1 393 5379 8469 13055 14349 14793 17615 21907 28113 }
+Makespan 249312 #trees: 10
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 290918.832667 287352
+maxoutD65558.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 65558, MaxMemory: 65558.000000, CumulativeMemory: 590022
+1 step ready 
+Broken Edges { 1 4 22659 33786 45111 67813 78816 90104 90125 }
+Makespan 23530.6 #trees: 9
+2 step ready 
+Broken Edges { 1 4 16850 22659 33786 45111 62122 67813 78816 78817 90104 90125 }
+Makespan 36755.6 #trees: 12
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 33557.361333 144899671
+maxoutD78554.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 78554, MaxMemory: 78554.000000, CumulativeMemory: 706986
+1 step ready 
+Broken Edges { 1 5 6050 12273 18347 24749 31056 37084 43212 }
+Makespan 34628.7 #trees: 9
+2 step ready 
+Broken Edges { 1 5 6050 12273 18347 24749 31056 37084 43212 }
+Makespan 34628.7 #trees: 9
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 34628.722667 227810925
+maxoutD396050.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 396050, MaxMemory: 396050.000000, CumulativeMemory: 3564450
+1 step ready 
+Broken Edges { 1 429 6287 8776 9961 27934 30707 32953 46370 }
+Makespan 389872 #trees: 9
+2 step ready 
+Broken Edges { 1 429 6287 8776 9961 27934 30707 32953 46370 }
+Makespan 389872 #trees: 9
+dump.0.1.amd.Bova.rma10-374.tree.nf 389872.153333 276711138
+maxoutD117681.000000
+1 step ready 
+Broken Edges { 1 529 11375 13819 47847 55796 56371 56946 57521 58096 58671 59246 68447 73126 88643 95866 101497 134771 145470 146409 150969 169084 173170 177341 182155 186340 187639 }
+Makespan 39368.8 #trees: 27
+2 step ready 
+Broken Edges { 1 529 11375 13819 47847 55796 56371 56946 57521 58096 58671 59246 68447 73126 88643 95367 95866 101497 134771 145470 146409 150969 169084 173170 177341 182155 186340 187639 }
+Makespan 68918.3 #trees: 28
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 106517.678000 738349602
+maxoutD1384793.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 1384793, MaxMemory: 1384793.000000, CumulativeMemory: 12463137
+1 step ready 
+Broken Edges { 1 902 12433 21449 27839 34510 49084 61241 66956 }
+Makespan 532137 #trees: 9
+2 step ready 
+Broken Edges { 1 723 902 12433 21449 27839 34510 49084 61241 66956 }
+Makespan 1.04563e+06 #trees: 10
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 1346939.174000 2723567984
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 305 965 1625 2285 3025 7940 8580 9220 9840 14320 14960 15600 16220 20700 21340 21980 22600 27080 27720 28360 28980 33460 34100 34740 35360 39820 }
+Makespan 63170.9 #trees: 27
+2 step ready 
+Broken Edges { 1 22 305 965 1625 2285 3025 6815 7940 8580 9220 9840 10480 14320 14960 15600 16220 16860 20700 21340 21980 22600 23240 27080 27720 28360 28980 29620 33460 34100 34740 35360 36000 39820 }
+Makespan 67170.9 #trees: 34
+dump.0.1.amd.QY.case39-2136.tree.nf 58740.855333 3238888176
+maxoutD1471425.000000
+1 step ready 
+Broken Edges { 1 474 547 691 14491 28291 28897 42015 42017 42019 42021 42023 42025 42027 42029 42031 42033 42035 42037 42039 42041 42043 42045 42047 42049 42051 42053 }
+Makespan 998426 #trees: 27
+2 step ready 
+Broken Edges { 1 474 547 691 14491 28291 28897 42015 42017 42019 42021 42023 42025 42027 42029 42031 42033 42035 42037 42039 42041 42043 42045 42047 42049 42051 42053 }
+Makespan 998426 #trees: 27
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 998426.022000 3254490047
+maxoutD3607298.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 3607298, MaxMemory: 3607298.000000, CumulativeMemory: 32465682
+1 step ready 
+Broken Edges { 1 727 26184 }
+Makespan 3.16364e+06 #trees: 3
+2 step ready 
+Broken Edges { 1 727 26184 }
+Makespan 3.16364e+06 #trees: 3
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf 2990936.696000 3368557958
+maxoutD381938.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 381938, MaxMemory: 381938.000000, CumulativeMemory: 3437442
+1 step ready 
+Broken Edges { 1 272 11624 17803 21103 24460 29860 36390 }
+Makespan 260725 #trees: 8
+2 step ready 
+Broken Edges { 1 272 11624 17803 21103 24460 29860 36390 }
+Makespan 260725 #trees: 8
+dump.0.1.metis.Bova.rma10-374.tree.nf 260724.610000 3390169913
+maxoutD2312.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 2312, MaxMemory: 2312.000000, CumulativeMemory: 20808
+1 step ready 
+Broken Edges { 1 30 5141 10262 15370 20498 25779 30729 35841 }
+Makespan 1686.22 #trees: 9
+2 step ready 
+Broken Edges { 1 11 13 21 28 30 31 32 39 2577 3855 5141 10262 12848 15370 20498 25779 25785 25796 30729 35841 35867 37124 }
+Makespan 2951.14 #trees: 23
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 2972.431333 3404105498
+maxoutD21898962.000000
+1 step ready 
+Broken Edges { 1 2927 47198 90766 92287 134454 178425 179007 179043 179067 179127 179139 179205 179249 179269 179309 179341 179388 179412 179430 179478 179587 179617 179644 179668 179710 179826 }
+Makespan 3.69608e+07 #trees: 27
+2 step ready 
+Broken Edges { 1 2927 47198 90766 92287 134454 178425 179007 179043 179067 179127 179139 179205 179249 179269 179309 179341 179388 179412 179430 179478 179587 179617 179644 179668 179710 179826 }
+Makespan 3.69608e+07 #trees: 27
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 36960824.831333 3471701776
+maxoutD3432258.000000
+1 step ready 
+Broken Edges { 1 424 13900 18343 23689 35332 }
+Makespan 2.69773e+06 #trees: 6
+2 step ready 
+Broken Edges { 1 424 13900 18343 23689 35332 }
+Makespan 2.69773e+06 #trees: 6
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 2697725.978000 3744289126
+maxoutD85552.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 85552, MaxMemory: 85552.000000, CumulativeMemory: 769968
+1 step ready 
+Broken Edges { 1 241 3142 5962 8581 11602 14221 16618 19519 }
+Makespan 45999.9 #trees: 9
+2 step ready 
+Broken Edges { 1 85 241 3142 5962 8581 11482 11602 11662 14221 16618 19519 }
+Makespan 81213.9 #trees: 12
+dump.0.1.metis.Goodwin.rim-447.tree.nf 79762.484000 3753791841
+maxoutD46818.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 46818, MaxMemory: 46818.000000, CumulativeMemory: 421362
+1 step ready 
+Broken Edges { 1 2 24906 55841 59051 93811 100742 141401 166718 }
+Makespan 12367.2 #trees: 9
+2 step ready 
+Broken Edges { 1 2 24906 55841 59051 93811 100742 122284 141401 166718 }
+Makespan 20467.2 #trees: 10
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 15326.153333 3812115626
+maxoutD30112566.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 30112566, MaxMemory: 30112566.000000, CumulativeMemory: 271013094
+1 step ready 
+Broken Edges { 1 2029 52730 }
+Makespan 5.74227e+07 #trees: 3
+2 step ready 
+Broken Edges { 1 2029 28202 52730 }
+Makespan 6.58989e+07 #trees: 4
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 50962803.922667 3942265403
+maxoutD262088.000000
+1 step ready 
+Broken Edges { 1 440 5206 10756 15834 20912 41375 46266 51263 56420 61657 82640 82641 82642 82643 82644 82645 82646 82647 82648 82649 82650 82651 82652 82653 82654 82655 }
+Makespan 115710 #trees: 27
+2 step ready 
+Broken Edges { 1 440 5206 10756 15834 20912 41067 41375 46266 51263 56420 61657 82640 82641 82642 82643 82644 82645 82646 82647 82648 82649 82650 82651 82652 82653 82654 82655 }
+Makespan 130351 #trees: 28
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf 103884.028000 4413732536
+maxoutD396050.000000
+1 step ready 
+Broken Edges { 1 162 13042 22641 24935 27289 29585 32137 34441 36300 40694 41947 43201 45742 50882 }
+Makespan 159802 #trees: 15
+2 step ready 
+Broken Edges { 1 162 12882 13042 22641 24935 27289 29585 32137 34441 36300 40694 41947 43201 45742 50882 }
+Makespan 185402 #trees: 16
+dump.0.1.metis.Shyy.shyy161-809.tree.nf 172277.547333 4695624147
+maxoutD3160098.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 3160098, MaxMemory: 3160098.000000, CumulativeMemory: 28440882
+1 step ready 
+Broken Edges { 1 872 13470 }
+Makespan 2.11745e+06 #trees: 3
+2 step ready 
+Broken Edges { 1 872 13470 }
+Makespan 2.11745e+06 #trees: 3
+dump.0.1.metis.Wang.wang4-833.tree.nf 2117447.601333 4978746868
+maxoutD5524488.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 5524488, MaxMemory: 5524488.000000, CumulativeMemory: 49720392
+1 step ready 
+Broken Edges { 1 1664 29040 56870 84541 112211 }
+Makespan 6.78065e+06 #trees: 6
+2 step ready 
+Broken Edges { 1 1113 1664 29040 56870 84541 112211 }
+Makespan 8.01719e+06 #trees: 7
+dump.0.1.metis.Watson.Baumann-1855.tree.nf 7197859.913333 5010029885
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 58 511 964 1417 1874 5205 5627 6049 6470 9424 9846 10268 10689 13643 14065 14487 14908 17862 18284 18706 19127 22081 22503 22925 23346 26299 }
+Makespan 85919.8 #trees: 27
+2 step ready 
+Broken Edges { 1 3 58 511 964 1417 1874 4444 5205 5627 6049 6470 6892 9424 9846 10268 10689 11111 13643 14065 14487 14908 15330 17862 18284 18706 19127 19549 22081 22503 22925 23346 23768 26299 }
+Makespan 140145 #trees: 34
+dump.1.1.amd.QY.case39-2136.tree.nf 142232.175333 5658694132
+maxoutD2211.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 2211, MaxMemory: 2211.000000, CumulativeMemory: 19899
+1 step ready 
+Broken Edges { 1 3 3312 6280 9588 12570 15667 18848 21812 }
+Makespan 1721.71 #trees: 9
+2 step ready 
+Broken Edges { 1 2 3 5 1550 3312 6280 6281 7862 8725 9588 12570 15667 15668 18848 21812 21815 22683 23544 }
+Makespan 1921.4 #trees: 19
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 1711.823333 5670823593
+maxoutD65524.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 65524, MaxMemory: 65524.000000, CumulativeMemory: 589716
+1 step ready 
+Broken Edges { 1 4 44575 66502 66503 88564 88726 133562 155253 }
+Makespan 21389.6 #trees: 9
+2 step ready 
+Broken Edges { 1 4 44575 66502 66503 88564 88726 133562 155253 }
+Makespan 21389.6 #trees: 9
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 21389.586000 5706885519
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 37 324 611 898 1189 3284 3546 3808 4069 5903 6165 6427 6688 8522 8784 9046 9307 11141 11403 11665 11926 13760 14022 14284 14545 16378 }
+Makespan 87017.1 #trees: 27
+2 step ready 
+Broken Edges { 1 3 37 324 611 898 1189 2783 3284 3546 3808 4069 4331 5903 6165 6427 6688 6950 8522 8784 9046 9307 9569 11141 11403 11665 11926 12188 13760 14022 14284 14545 14807 16378 }
+Makespan 141242 #trees: 34
+dump.1.2.amd.QY.case39-2136.tree.nf 143097.892000 5802887018
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 19 161 303 445 591 1633 1765 1897 2028 2952 3084 3216 3347 4271 4403 4535 4666 5590 5722 5854 5985 6909 7041 7173 7304 8227 }
+Makespan 89094.2 #trees: 27
+2 step ready 
+Broken Edges { 1 3 19 161 303 445 591 1373 1633 1765 1897 2028 2160 2952 3084 3216 3347 3479 4271 4403 4535 4666 4798 5590 5722 5854 5985 6117 6909 7041 7173 7304 7436 8227 }
+Makespan 143319 #trees: 34
+dump.1.3.amd.QY.case39-2136.tree.nf 144710.873333 5810939935
+maxoutD34085496.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34085496, MaxMemory: 34085496.000000, CumulativeMemory: 306769464
+1 step ready 
+Broken Edges { 1 5 77278 154923 155408 155851 156098 156307 156635 }
+Makespan 6.55424e+07 #trees: 9
+2 step ready 
+Broken Edges { 1 5 77278 154923 155408 155851 156098 156307 156635 }
+Makespan 6.55424e+07 #trees: 9
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 65542449.327334 5821023697
+maxoutD34085496.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34085496, MaxMemory: 34085496.000000, CumulativeMemory: 306769464
+1 step ready 
+Broken Edges { 1 5 49690 98946 99366 99506 99673 99800 100017 }
+Makespan 6.66025e+07 #trees: 9
+2 step ready 
+Broken Edges { 1 5 49690 98946 99366 99506 99673 99800 100017 }
+Makespan 6.66025e+07 #trees: 9
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 66602516.889334 5996975023
+maxoutD290322.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 290322, MaxMemory: 290322.000000, CumulativeMemory: 2612898
+1 step ready 
+Broken Edges { 1 384 4864 9344 18688 27840 32320 37762 37763 }
+Makespan 161374 #trees: 9
+2 step ready 
+Broken Edges { 1 384 4864 9344 18560 18688 27840 32320 37762 37763 }
+Makespan 177250 #trees: 10
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 159335.026000 6029444977
+maxoutD290322.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 290322, MaxMemory: 290322.000000, CumulativeMemory: 2612898
+1 step ready 
+Broken Edges { 1 384 4864 9344 18688 27840 32320 37762 37763 }
+Makespan 161374 #trees: 9
+2 step ready 
+Broken Edges { 1 384 4864 9344 18560 18688 27840 32320 37762 37763 }
+Makespan 177250 #trees: 10
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 159335.026000 6068977498
+homogeneous average average
+maxoutD324288.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 486432, MaxMemory: 486432.000000, CumulativeMemory: 2918592
+1 step ready 
+Broken Edges { 1 393 5289 13055 14703 21907 }
+Makespan 179404 #trees: 6
+2 step ready 
+Broken Edges { 1 393 5289 13055 14703 21907 }
+Makespan 179404 #trees: 6
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 179404.293333 244299
+maxoutD65558.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 98337, MaxMemory: 98337.000000, CumulativeMemory: 590022
+1 step ready 
+Broken Edges { 1 4 22658 45111 67813 78816 }
+Makespan 28325 #trees: 6
+2 step ready 
+Broken Edges { 1 4 22658 45111 67813 78816 }
+Makespan 28325 #trees: 6
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 28325.040000 46709705
+maxoutD78554.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 117831, MaxMemory: 117831.000000, CumulativeMemory: 706986
+1 step ready 
+Broken Edges { 1 4 12272 24748 37084 43212 }
+Makespan 42987.5 #trees: 6
+2 step ready 
+Broken Edges { 1 4 12272 24748 37084 43212 }
+Makespan 42987.5 #trees: 6
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 42987.546000 130222761
+maxoutD396050.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 594075, MaxMemory: 594075.000000, CumulativeMemory: 3564450
+1 step ready 
+Broken Edges { 1 429 6287 9961 30707 32953 }
+Makespan 422565 #trees: 6
+2 step ready 
+Broken Edges { 1 429 6287 9961 30707 32953 }
+Makespan 422565 #trees: 6
+dump.0.1.amd.Bova.rma10-374.tree.nf 422564.812000 179568638
+maxoutD117681.000000
+1 step ready 
+Broken Edges { 1 529 11375 13819 47847 68447 73126 88643 95866 101497 134771 146409 150969 169084 173170 177341 182155 187639 }
+Makespan 39560.5 #trees: 18
+2 step ready 
+Broken Edges { 1 529 11375 13819 47847 68447 73126 88643 95866 101497 134771 146409 150969 169084 173170 177341 182155 187639 }
+Makespan 39560.5 #trees: 18
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 39560.520000 373572476
+maxoutD1384793.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 2077189, MaxMemory: 2077189.500000, CumulativeMemory: 12463134
+1 step ready 
+Broken Edges { 1 902 12433 34510 49084 66956 }
+Makespan 573424 #trees: 6
+2 step ready 
+Broken Edges { 1 902 12433 34510 49084 66956 }
+Makespan 573424 #trees: 6
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 573423.899333 2361065652
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 240 305 965 1625 2285 3025 7940 8560 14320 14940 20700 21320 27080 27700 33460 34080 39820 }
+Makespan 76345.9 #trees: 18
+2 step ready 
+Broken Edges { 1 240 305 965 1625 2285 3025 7940 8560 14320 14940 20700 21320 27080 27700 33460 34080 39820 }
+Makespan 76345.9 #trees: 18
+dump.0.1.amd.QY.case39-2136.tree.nf 76345.856000 3087033989
+maxoutD1471425.000000
+1 step ready 
+Broken Edges { 1 474 547 691 14491 28291 28897 42015 42017 42019 42021 42023 42025 42027 42029 42031 42033 42035 }
+Makespan 999005 #trees: 18
+2 step ready 
+Broken Edges { 1 474 547 691 14491 28291 28897 42015 42017 42019 42021 42023 42025 42027 42029 42031 42033 42035 }
+Makespan 999005 #trees: 18
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 999005.022000 3103232011
+maxoutD3607298.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 5410947, MaxMemory: 5410947.000000, CumulativeMemory: 32465682
+1 step ready 
+Broken Edges { 1 727 26184 }
+Makespan 3.16364e+06 #trees: 3
+2 step ready 
+Broken Edges { 1 727 26184 }
+Makespan 3.16364e+06 #trees: 3
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf 2990936.696000 3225645517
+maxoutD381938.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 572907, MaxMemory: 572907.000000, CumulativeMemory: 3437442
+1 step ready 
+Broken Edges { 1 272 11624 17654 24360 36390 }
+Makespan 395762 #trees: 6
+2 step ready 
+Broken Edges { 1 272 11624 17654 24360 36390 }
+Makespan 395762 #trees: 6
+dump.0.1.metis.Bova.rma10-374.tree.nf 395762.108000 3249274881
+maxoutD2312.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 3468, MaxMemory: 3468.000000, CumulativeMemory: 20808
+1 step ready 
+Broken Edges { 1 22 10254 20490 30729 35841 }
+Makespan 2911.2 #trees: 6
+2 step ready 
+Broken Edges { 1 22 10254 20490 30729 35841 }
+Makespan 2911.2 #trees: 6
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 2911.204667 3263892802
+maxoutD21898962.000000
+1 step ready 
+Broken Edges { 1 2927 47198 90766 92287 134454 178425 179007 179043 179067 179127 179139 179205 179249 179269 179309 179430 179668 }
+Makespan 3.69608e+07 #trees: 18
+2 step ready 
+Broken Edges { 1 2927 47198 90766 92287 134454 178425 179007 179043 179067 179127 179139 179205 179249 179269 179309 179430 179668 }
+Makespan 3.69608e+07 #trees: 18
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 36960836.051333 3333585357
+maxoutD3432258.000000
+1 step ready 
+Broken Edges { 1 424 13900 18343 23689 35332 }
+Makespan 2.69773e+06 #trees: 6
+2 step ready 
+Broken Edges { 1 424 13900 18343 23689 35332 }
+Makespan 2.69773e+06 #trees: 6
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 2697725.978000 3625758915
+maxoutD85552.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 128328, MaxMemory: 128328.000000, CumulativeMemory: 769968
+1 step ready 
+Broken Edges { 1 181 5902 11542 16558 }
+Makespan 63880.7 #trees: 5
+2 step ready 
+Broken Edges { 1 181 5902 11542 16558 }
+Makespan 63880.7 #trees: 5
+dump.0.1.metis.Goodwin.rim-447.tree.nf 63880.728000 3636256616
+maxoutD46818.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 70227, MaxMemory: 70227.000000, CumulativeMemory: 421362
+1 step ready 
+Broken Edges { 1 2 24906 59051 100742 141401 }
+Makespan 13977.1 #trees: 6
+2 step ready 
+Broken Edges { 1 2 24906 59051 100742 141401 }
+Makespan 13977.1 #trees: 6
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 13977.146000 3688993136
+maxoutD30112566.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 45168849, MaxMemory: 45168849.000000, CumulativeMemory: 271013094
+1 step ready 
+Broken Edges { 1 2029 52730 }
+Makespan 5.74227e+07 #trees: 3
+2 step ready 
+Broken Edges { 1 2029 52730 }
+Makespan 5.74227e+07 #trees: 3
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 57284626.518667 3809432406
+maxoutD262088.000000
+1 step ready 
+Broken Edges { 1 440 5206 10756 15834 20912 41375 46266 51263 56420 61657 82649 82650 82651 82652 82653 82654 82655 }
+Makespan 115710 #trees: 18
+2 step ready 
+Broken Edges { 1 440 5206 10756 15834 20912 41375 46266 51263 56420 61657 82649 82650 82651 82652 82653 82654 82655 }
+Makespan 115710 #trees: 18
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf 115710.394667 4393777196
+maxoutD396050.000000
+1 step ready 
+Broken Edges { 1 162 13042 22641 24935 27289 29585 32137 34441 36300 40694 41947 43201 45742 50882 }
+Makespan 159802 #trees: 15
+2 step ready 
+Broken Edges { 1 162 13042 22641 24935 27289 29585 32137 34441 36300 40694 41947 43201 45742 50882 }
+Makespan 159802 #trees: 15
+dump.0.1.metis.Shyy.shyy161-809.tree.nf 159802.266667 4696123821
+maxoutD3160098.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 4740147, MaxMemory: 4740147.000000, CumulativeMemory: 28440882
+1 step ready 
+Broken Edges { 1 872 13470 }
+Makespan 2.11745e+06 #trees: 3
+2 step ready 
+Broken Edges { 1 872 13470 }
+Makespan 2.11745e+06 #trees: 3
+dump.0.1.metis.Wang.wang4-833.tree.nf 2117447.601333 5018341700
+maxoutD5524488.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 8286732, MaxMemory: 8286732.000000, CumulativeMemory: 49720392
+1 step ready 
+Broken Edges { 1 1664 29040 56870 84541 112211 }
+Makespan 6.78065e+06 #trees: 6
+2 step ready 
+Broken Edges { 1 1664 29040 56870 84541 112211 }
+Makespan 6.78065e+06 #trees: 6
+dump.0.1.metis.Watson.Baumann-1855.tree.nf 6780649.463333 5050866474
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 12 58 511 964 1417 1874 5205 5626 9424 9845 13643 14064 17862 18283 22081 22502 26299 }
+Makespan 104407 #trees: 18
+2 step ready 
+Broken Edges { 1 12 58 511 964 1417 1874 5205 5626 9424 9845 13643 14064 17862 18283 22081 22502 26299 }
+Makespan 104407 #trees: 18
+dump.1.1.amd.QY.case39-2136.tree.nf 104406.696000 5815612258
+maxoutD2211.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 3316, MaxMemory: 3316.500000, CumulativeMemory: 19896
+1 step ready 
+Broken Edges { 1 2 6279 12569 18848 21812 }
+Makespan 2969.46 #trees: 6
+2 step ready 
+Broken Edges { 1 2 6279 12569 18848 21812 }
+Makespan 2969.46 #trees: 6
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 2969.462667 5827806873
+maxoutD65524.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 98286, MaxMemory: 98286.000000, CumulativeMemory: 589716
+1 step ready 
+Broken Edges { 1 4 44574 88726 133562 155253 }
+Makespan 25264.9 #trees: 6
+2 step ready 
+Broken Edges { 1 4 44574 88726 133562 155253 }
+Makespan 25264.9 #trees: 6
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 25264.930000 5864455930
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 8 37 324 611 898 1189 3284 3545 5903 6164 8522 8783 11141 11402 13760 14021 16378 }
+Makespan 105791 #trees: 18
+2 step ready 
+Broken Edges { 1 8 37 324 611 898 1189 3284 3545 5903 6164 8522 8783 11141 11402 13760 14021 16378 }
+Makespan 105791 #trees: 18
+dump.1.2.amd.QY.case39-2136.tree.nf 105790.500667 5970809183
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 19 161 303 445 591 1633 1764 2952 3083 4271 4402 5590 5721 6909 7040 8227 8268 }
+Makespan 108349 #trees: 18
+2 step ready 
+Broken Edges { 1 19 161 303 445 591 1633 1764 2952 3083 4271 4402 5590 5721 6909 7040 8227 8268 }
+Makespan 108349 #trees: 18
+dump.1.3.amd.QY.case39-2136.tree.nf 108348.796667 5978861728
+maxoutD34085496.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 51128244, MaxMemory: 51128244.000000, CumulativeMemory: 306769464
+1 step ready 
+Broken Edges { 1 5 77278 155408 155851 156098 }
+Makespan 6.55425e+07 #trees: 6
+2 step ready 
+Broken Edges { 1 5 77278 155408 155851 156098 }
+Makespan 6.55425e+07 #trees: 6
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 65542460.298668 5989008306
+maxoutD34085496.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 51128244, MaxMemory: 51128244.000000, CumulativeMemory: 306769464
+1 step ready 
+Broken Edges { 1 5 49690 99366 99506 99673 }
+Makespan 6.66026e+07 #trees: 6
+2 step ready 
+Broken Edges { 1 5 49690 99366 99506 99673 }
+Makespan 6.66026e+07 #trees: 6
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 66602567.586668 6197446761
+maxoutD290322.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 435483, MaxMemory: 435483.000000, CumulativeMemory: 2612898
+1 step ready 
+Broken Edges { 1 256 9344 18688 27712 37763 }
+Makespan 199464 #trees: 6
+2 step ready 
+Broken Edges { 1 256 9344 18688 27712 37763 }
+Makespan 199464 #trees: 6
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 199463.782000 6233249404
+maxoutD290322.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 435483, MaxMemory: 435483.000000, CumulativeMemory: 2612898
+1 step ready 
+Broken Edges { 1 256 9344 18688 27712 37763 }
+Makespan 199464 #trees: 6
+2 step ready 
+Broken Edges { 1 256 9344 18688 27712 37763 }
+Makespan 199464 #trees: 6
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 199463.782000 6270852442
+homogeneous few big
+maxoutD324288.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 972864, MaxMemory: 972864.000000, CumulativeMemory: 2918592
+1 step ready 
+Broken Edges { 1 }
+Makespan 197814 #trees: 1
+2 step ready 
+Broken Edges { 1 }
+Makespan 197814 #trees: 1
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 197813.523333 249454
+maxoutD65558.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 196674, MaxMemory: 196674.000000, CumulativeMemory: 590022
+1 step ready 
+Broken Edges { 1 3 45110 }
+Makespan 34043 #trees: 3
+2 step ready 
+Broken Edges { 1 3 45110 }
+Makespan 34043 #trees: 3
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 34042.958000 47828192
+maxoutD78554.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 235662, MaxMemory: 235662.000000, CumulativeMemory: 706986
+1 step ready 
+Broken Edges { 1 3 24747 }
+Makespan 64742.1 #trees: 3
+2 step ready 
+Broken Edges { 1 3 24747 }
+Makespan 64742.1 #trees: 3
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 64742.062667 143381703
+maxoutD396050.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 1188150, MaxMemory: 1188150.000000, CumulativeMemory: 3564450
+1 step ready 
+Broken Edges { 1 9961 32953 }
+Makespan 616739 #trees: 3
+2 step ready 
+Broken Edges { 1 9961 32953 }
+Makespan 616739 #trees: 3
+dump.0.1.amd.Bova.rma10-374.tree.nf 616739.478667 200492675
+maxoutD117681.000000
+1 step ready 
+Broken Edges { 1 361 68446 88643 95663 150969 169065 177321 187638 }
+Makespan 42329.9 #trees: 9
+2 step ready 
+Broken Edges { 1 361 68446 88643 95663 150969 169065 177321 187638 }
+Makespan 42329.9 #trees: 9
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 42329.904667 395353555
+maxoutD1384793.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 4154379, MaxMemory: 4154379.000000, CumulativeMemory: 12463137
+1 step ready 
+Broken Edges { 1 }
+Makespan 582400 #trees: 1
+2 step ready 
+Broken Edges { 1 }
+Makespan 582400 #trees: 1
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 582399.715333 2545587492
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 1625 2285 3025 7920 14300 20680 27060 33440 }
+Makespan 95208.5 #trees: 9
+2 step ready 
+Broken Edges { 1 1625 2285 3025 7920 14300 20680 27060 33440 }
+Makespan 95208.5 #trees: 9
+dump.0.1.amd.QY.case39-2136.tree.nf 95208.509333 3181109434
+maxoutD1471425.000000
+1 step ready 
+Broken Edges { 1 474 547 691 14491 28291 28897 42015 42017 }
+Makespan 999584 #trees: 9
+2 step ready 
+Broken Edges { 1 474 547 691 14491 28291 28897 42015 42017 }
+Makespan 999584 #trees: 9
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 999584.022000 3196762660
+maxoutD3607298.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 10821894, MaxMemory: 10821894.000000, CumulativeMemory: 32465682
+1 step ready 
+Broken Edges { 1 727 26184 }
+Makespan 3.16364e+06 #trees: 3
+2 step ready 
+Broken Edges { 1 727 26184 }
+Makespan 3.16364e+06 #trees: 3
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf 3163643.826667 3312866767
+maxoutD381938.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 1145814, MaxMemory: 1145814.000000, CumulativeMemory: 3437442
+1 step ready 
+Broken Edges { 1 165 24294 }
+Makespan 485304 #trees: 3
+2 step ready 
+Broken Edges { 1 165 24294 }
+Makespan 485304 #trees: 3
+dump.0.1.metis.Bova.rma10-374.tree.nf 485303.559333 3339128227
+maxoutD2312.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 6936, MaxMemory: 6936.000000, CumulativeMemory: 20808
+1 step ready 
+Broken Edges { 1 15 20483 }
+Makespan 5621.1 #trees: 3
+2 step ready 
+Broken Edges { 1 15 20483 }
+Makespan 5621.1 #trees: 3
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 5621.101333 3356862691
+maxoutD21898962.000000
+1 step ready 
+Broken Edges { 1 2927 47198 92287 134454 178425 179007 179067 179139 }
+Makespan 3.6961e+07 #trees: 9
+2 step ready 
+Broken Edges { 1 2927 47198 92287 134454 178425 179007 179067 179139 }
+Makespan 3.6961e+07 #trees: 9
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 36960992.806000 3425174497
+maxoutD3432258.000000
+1 step ready 
+Broken Edges { 1 424 13900 18343 23689 35332 }
+Makespan 2.69773e+06 #trees: 6
+2 step ready 
+Broken Edges { 1 424 13900 18343 23689 35332 }
+Makespan 2.69773e+06 #trees: 6
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 2697725.978000 3708709311
+maxoutD85552.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 256656, MaxMemory: 256656.000000, CumulativeMemory: 769968
+1 step ready 
+Broken Edges { 1 121 11482 }
+Makespan 105096 #trees: 3
+2 step ready 
+Broken Edges { 1 121 11482 }
+Makespan 105096 #trees: 3
+dump.0.1.metis.Goodwin.rim-447.tree.nf 105096.262000 3719040065
+maxoutD46818.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 140454, MaxMemory: 140454.000000, CumulativeMemory: 421362
+1 step ready 
+Broken Edges { 1 59051 100742 }
+Makespan 25090.9 #trees: 3
+2 step ready 
+Broken Edges { 1 59051 100742 }
+Makespan 25090.9 #trees: 3
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 25090.860667 3769644081
+maxoutD30112566.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 90337698, MaxMemory: 90337698.000000, CumulativeMemory: 271013094
+1 step ready 
+Broken Edges { 1 2029 52730 }
+Makespan 5.74227e+07 #trees: 3
+2 step ready 
+Broken Edges { 1 2029 52730 }
+Makespan 5.74227e+07 #trees: 3
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 57422702.432667 3888331298
+maxoutD262088.000000
+1 step ready 
+Broken Edges { 1 363 10686 20912 41309 51186 61657 82654 82655 }
+Makespan 117733 #trees: 9
+2 step ready 
+Broken Edges { 1 363 10686 20912 41309 51186 61657 82654 82655 }
+Makespan 117733 #trees: 9
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf 117732.755333 4448734258
+maxoutD396050.000000
+1 step ready 
+Broken Edges { 1 162 12882 32008 40659 43201 45742 50882 }
+Makespan 171149 #trees: 8
+2 step ready 
+Broken Edges { 1 162 12882 32008 40659 43201 45742 50882 }
+Makespan 171149 #trees: 8
+dump.0.1.metis.Shyy.shyy161-809.tree.nf 171149.256667 4742423316
+maxoutD3160098.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 9480294, MaxMemory: 9480294.000000, CumulativeMemory: 28440882
+1 step ready 
+Broken Edges { 1 872 13470 }
+Makespan 2.11745e+06 #trees: 3
+2 step ready 
+Broken Edges { 1 872 13470 }
+Makespan 2.11745e+06 #trees: 3
+dump.0.1.metis.Wang.wang4-833.tree.nf 2117447.601333 5070640114
+maxoutD5524488.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 16573464, MaxMemory: 16573464.000000, CumulativeMemory: 49720392
+1 step ready 
+Broken Edges { 1 1113 56417 }
+Makespan 9.00389e+06 #trees: 3
+2 step ready 
+Broken Edges { 1 1113 56417 }
+Makespan 9.00389e+06 #trees: 3
+dump.0.1.metis.Watson.Baumann-1855.tree.nf 9003887.381333 5103403702
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 964 1417 1874 5204 9423 13642 17861 22080 }
+Makespan 130426 #trees: 9
+2 step ready 
+Broken Edges { 1 964 1417 1874 5204 9423 13642 17861 22080 }
+Makespan 130426 #trees: 9
+dump.1.1.amd.QY.case39-2136.tree.nf 130426.029333 5868441470
+maxoutD2211.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 6633, MaxMemory: 6633.000000, CumulativeMemory: 19899
+1 step ready 
+Broken Edges { 1 12569 18847 }
+Makespan 8458.09 #trees: 3
+2 step ready 
+Broken Edges { 1 12569 18847 }
+Makespan 8458.09 #trees: 3
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 8458.092000 5880782979
+maxoutD65524.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 196572, MaxMemory: 196572.000000, CumulativeMemory: 589716
+1 step ready 
+Broken Edges { 1 3 88725 }
+Makespan 27984.4 #trees: 3
+2 step ready 
+Broken Edges { 1 3 88725 }
+Makespan 27984.4 #trees: 3
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 27984.448667 5917816079
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 611 898 1189 3283 5902 8521 11140 13759 }
+Makespan 132255 #trees: 9
+2 step ready 
+Broken Edges { 1 611 898 1189 3283 5902 8521 11140 13759 }
+Makespan 132255 #trees: 9
+dump.1.2.amd.QY.case39-2136.tree.nf 132255.267333 6023967970
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+Makespan 135790 #trees: 9
+2 step ready 
+Broken Edges { 1 303 445 591 1632 2951 4270 5589 6908 }
+Makespan 135790 #trees: 9
+dump.1.3.amd.QY.case39-2136.tree.nf 135790.151333 6032054059
+maxoutD34085496.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 102256488, MaxMemory: 102256488.000000, CumulativeMemory: 306769464
+1 step ready 
+Broken Edges { 1 5 77278 }
+Makespan 6.55425e+07 #trees: 3
+2 step ready 
+Broken Edges { 1 5 77278 }
+Makespan 6.55425e+07 #trees: 3
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 65542494.794668 6042269731
+maxoutD34085496.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 102256488, MaxMemory: 102256488.000000, CumulativeMemory: 306769464
+1 step ready 
+Broken Edges { 1 5 49690 }
+Makespan 6.66028e+07 #trees: 3
+2 step ready 
+Broken Edges { 1 5 49690 }
+Makespan 6.66028e+07 #trees: 3
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 66602820.826668 6265506172
+maxoutD290322.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 870966, MaxMemory: 870966.000000, CumulativeMemory: 2612898
+1 step ready 
+Broken Edges { 1 128 18560 }
+Makespan 238003 #trees: 3
+2 step ready 
+Broken Edges { 1 128 18560 }
+Makespan 238003 #trees: 3
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 238002.513333 6308821416
+maxoutD290322.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 870966, MaxMemory: 870966.000000, CumulativeMemory: 2612898
+1 step ready 
+Broken Edges { 1 128 18560 }
+Makespan 238003 #trees: 3
+2 step ready 
+Broken Edges { 1 128 18560 }
+Makespan 238003 #trees: 3
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 238002.513333 6353990137

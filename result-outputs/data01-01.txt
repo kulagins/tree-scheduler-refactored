@@ -1,0 +1,2327 @@
+small with extra output
+2-level
+heterogeneous
+maxoutD324288.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 324288, MaxMemory: 972864.000000, CumulativeMemory: 6810048
+1 step ready 
+Broken Edges { 1 393 5379 8469 13055 14793 17615 21907 28113 }
+Makespan 161696 #trees: 9
+using proc of memory 972864for task 1
+Subtree 1 needs memory 393378
+using proc of memory 972864for task 393
+Subtree 393 needs memory 153458
+using proc of memory 972864for task 5379
+Subtree 5379 needs memory 157922
+using proc of memory 972864for task 8469
+Subtree 8469 needs memory 140450
+using proc of memory 972864for task 13055
+Subtree 13055 needs memory 130050
+using proc of memory 972864for task 14793
+Subtree 14793 needs memory 171698
+using proc of memory 324288for task 17615
+Subtree 17615 needs memory 122018
+using proc of memory 324288for task 21907
+Subtree 21907 needs memory 169362
+using proc of memory 324288for task 28113
+Subtree 28113 needs memory 110450
+2 step ready 
+Broken Edges { 1 393 5379 8469 13055 14793 17615 21907 28113 }
+Makespan 161696 #trees: 9
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 161696.385333 243948
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 324288, MaxMemory: 972864.000000, CumulativeMemory: 6810048
+Load 21.000000, Occupied 100.000000
+maxoutD65558.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 65558, MaxMemory: 196674.000000, CumulativeMemory: 1376718
+1 step ready 
+Broken Edges { 1 4 22659 33786 45111 67813 78816 90104 90125 }
+Makespan 23530.6 #trees: 9
+using proc of memory 196674for task 1
+Subtree 1 needs memory 27979
+using proc of memory 196674for task 4
+Subtree 4 needs memory 66834
+using proc of memory 196674for task 22659
+Subtree 22659 needs memory 62995
+using proc of memory 196674for task 33786
+Subtree 33786 needs memory 60717
+using proc of memory 196674for task 45111
+Subtree 45111 needs memory 66694
+using proc of memory 196674for task 67813
+Subtree 67813 needs memory 63578
+using proc of memory 65558for task 78816
+Subtree 78816 needs memory 66909
+using proc of memory 65558for task 90104
+Subtree 90104 needs memory 242
+using proc of memory 65558for task 90125
+Subtree 90125 needs memory 242
+2 step ready 
+Broken Edges { 1 4 22659 33786 45111 67813 78816 78817 90104 90125 }
+Makespan 36755.6 #trees: 10
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 27127.973333 58431528
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 65558, MaxMemory: 196674.000000, CumulativeMemory: 1376718
+Load 31.000000, Occupied 100.000000
+maxoutD78554.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 78554, MaxMemory: 235662.000000, CumulativeMemory: 1649634
+1 step ready 
+Broken Edges { 1 5 6050 12273 18347 24749 31056 37084 43212 }
+Makespan 34628.7 #trees: 9
+using proc of memory 235662for task 1
+Subtree 1 needs memory 30920
+using proc of memory 235662for task 5
+Subtree 5 needs memory 44819
+using proc of memory 235662for task 6050
+Subtree 6050 needs memory 78554
+using proc of memory 235662for task 12273
+Subtree 12273 needs memory 62995
+using proc of memory 235662for task 18347
+Subtree 18347 needs memory 77474
+using proc of memory 235662for task 24749
+Subtree 24749 needs memory 48658
+using proc of memory 78554for task 31056
+Subtree 31056 needs memory 68890
+using proc of memory 78554for task 37084
+Subtree 37084 needs memory 63578
+using proc of memory 78554for task 43212
+Subtree 43212 needs memory 66909
+2 step ready 
+Broken Edges { 1 5 6050 12273 18347 24749 31056 37084 43212 }
+Makespan 34628.7 #trees: 9
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 34628.722667 145505028
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 78554, MaxMemory: 235662.000000, CumulativeMemory: 1649634
+Load 28.000000, Occupied 100.000000
+maxoutD396050.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 396050, MaxMemory: 1188150.000000, CumulativeMemory: 8317050
+1 step ready 
+Broken Edges { 1 429 6287 8776 9961 27934 30707 32953 46370 }
+Makespan 389872 #trees: 9
+using proc of memory 1.18815e+06for task 1
+Subtree 1 needs memory 364658
+using proc of memory 1.18815e+06for task 429
+Subtree 429 needs memory 396050
+using proc of memory 1.18815e+06for task 6287
+Subtree 6287 needs memory 383688
+using proc of memory 1.18815e+06for task 8776
+Subtree 8776 needs memory 175232
+using proc of memory 1.18815e+06for task 9961
+Subtree 9961 needs memory 208669
+using proc of memory 1.18815e+06for task 27934
+Subtree 27934 needs memory 128018
+using proc of memory 396050for task 30707
+Subtree 30707 needs memory 164738
+using proc of memory 396050for task 32953
+Subtree 32953 needs memory 308898
+using proc of memory 396050for task 46370
+Subtree 46370 needs memory 160178
+2 step ready 
+Broken Edges { 1 429 6287 8776 9961 27934 30707 32953 46370 }
+Makespan 389872 #trees: 9
+dump.0.1.amd.Bova.rma10-374.tree.nf 389872.153333 194556130
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 396050, MaxMemory: 1188150.000000, CumulativeMemory: 8317050
+Load 25.000000, Occupied 100.000000
+maxoutD117681.000000
+1 step ready 
+Broken Edges { 1 529 11375 13819 47847 55796 56371 56946 57521 58096 58671 59246 68447 73126 88643 95866 101497 134771 145470 146409 150969 169084 173170 177341 182155 186340 187639 }
+Makespan 39368.8 #trees: 27
+using proc of memory 353043for task 1
+Subtree 1 needs memory 125508
+using proc of memory 353043for task 529
+Subtree 529 needs memory 34850
+using proc of memory 353043for task 11375
+Subtree 11375 needs memory 18052
+using proc of memory 353043for task 13819
+Subtree 13819 needs memory 60589
+using proc of memory 353043for task 47847
+Subtree 47847 needs memory 39099
+using proc of memory 353043for task 55796
+Subtree 55796 needs memory 7640
+using proc of memory 353043for task 56371
+Subtree 56371 needs memory 7640
+using proc of memory 353043for task 56946
+Subtree 56946 needs memory 7640
+using proc of memory 353043for task 57521
+Subtree 57521 needs memory 7640
+using proc of memory 353043for task 58096
+Subtree 58096 needs memory 7640
+using proc of memory 353043for task 58671
+Subtree 58671 needs memory 7640
+using proc of memory 353043for task 59246
+Subtree 59246 needs memory 7640
+using proc of memory 353043for task 68447
+Subtree 68447 needs memory 25994
+using proc of memory 353043for task 73126
+Subtree 73126 needs memory 18052
+using proc of memory 353043for task 88643
+Subtree 88643 needs memory 34858
+using proc of memory 353043for task 95866
+Subtree 95866 needs memory 33447
+using proc of memory 353043for task 101497
+Subtree 101497 needs memory 52817
+using proc of memory 353043for task 134771
+Subtree 134771 needs memory 28324
+using proc of memory 117681for task 145470
+Subtree 145470 needs memory 9764
+using proc of memory 117681for task 146409
+Subtree 146409 needs memory 21220
+using proc of memory 117681for task 150969
+Subtree 150969 needs memory 27850
+using proc of memory 117681for task 169084
+Subtree 169084 needs memory 25090
+using proc of memory 117681for task 173170
+Subtree 173170 needs memory 19560
+using proc of memory 117681for task 177341
+Subtree 177341 needs memory 28324
+using proc of memory 117681for task 182155
+Subtree 182155 needs memory 23330
+using proc of memory 117681for task 186340
+Subtree 186340 needs memory 12092
+using proc of memory 117681for task 187639
+Subtree 187639 needs memory 28802
+2 step ready 
+Broken Edges { 1 529 11375 13819 47847 55796 56371 56946 57521 58096 58671 59246 68447 73126 88643 95866 101497 134771 145470 146409 150969 169084 173170 177341 182155 186340 187639 }
+Makespan 39368.8 #trees: 27
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 39368.832000 389329260
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 117681, MaxMemory: 353043.000000, CumulativeMemory: 7413903
+Load 9.000000, Occupied 100.000000
+maxoutD1384793.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 1384793, MaxMemory: 4154379.000000, CumulativeMemory: 29080653
+1 step ready 
+Broken Edges { 1 902 12433 21449 27839 34510 49084 61241 66956 }
+Makespan 532137 #trees: 9
+using proc of memory 4.15438e+06for task 1
+Subtree 1 needs memory 1.52948e+06
+using proc of memory 4.15438e+06for task 902
+Subtree 902 needs memory 412232
+using proc of memory 4.15438e+06for task 12433
+Subtree 12433 needs memory 352800
+using proc of memory 4.15438e+06for task 21449
+Subtree 21449 needs memory 249218
+using proc of memory 4.15438e+06for task 27839
+Subtree 27839 needs memory 228488
+using proc of memory 4.15438e+06for task 34510
+Subtree 34510 needs memory 410418
+using proc of memory 1.38479e+06for task 49084
+Subtree 49084 needs memory 399618
+using proc of memory 1.38479e+06for task 61241
+Subtree 61241 needs memory 187272
+using proc of memory 1.38479e+06for task 66956
+Subtree 66956 needs memory 462722
+2 step ready 
+Broken Edges { 1 902 12433 21449 27839 34510 49084 61241 66956 }
+Makespan 532137 #trees: 9
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 532136.757333 2373069301
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 1384793, MaxMemory: 4154379.000000, CumulativeMemory: 29080653
+Load 12.000000, Occupied 100.000000
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 305 965 1625 2285 3025 7940 8580 9220 9840 14320 14960 15600 16220 20700 21340 21980 22600 27080 27720 28360 28980 33460 34100 34740 35360 39820 }
+Makespan 63170.9 #trees: 27
+using proc of memory 816270for task 1
+Subtree 1 needs memory 125566
+using proc of memory 816270for task 305
+Subtree 305 needs memory 125566
+using proc of memory 816270for task 965
+Subtree 965 needs memory 125566
+using proc of memory 816270for task 1625
+Subtree 1625 needs memory 125566
+using proc of memory 816270for task 2285
+Subtree 2285 needs memory 125566
+using proc of memory 816270for task 3025
+Subtree 3025 needs memory 274140
+using proc of memory 816270for task 7940
+Subtree 7940 needs memory 272090
+using proc of memory 816270for task 8580
+Subtree 8580 needs memory 272090
+using proc of memory 816270for task 9220
+Subtree 9220 needs memory 272090
+using proc of memory 816270for task 9840
+Subtree 9840 needs memory 275690
+using proc of memory 816270for task 14320
+Subtree 14320 needs memory 272090
+using proc of memory 816270for task 14960
+Subtree 14960 needs memory 272090
+using proc of memory 816270for task 15600
+Subtree 15600 needs memory 272090
+using proc of memory 816270for task 16220
+Subtree 16220 needs memory 275690
+using proc of memory 816270for task 20700
+Subtree 20700 needs memory 272090
+using proc of memory 816270for task 21340
+Subtree 21340 needs memory 272090
+using proc of memory 816270for task 21980
+Subtree 21980 needs memory 272090
+using proc of memory 816270for task 22600
+Subtree 22600 needs memory 275690
+using proc of memory 272090for task 27080
+Subtree 27080 needs memory 272090
+using proc of memory 272090for task 27720
+Subtree 27720 needs memory 272090
+using proc of memory 272090for task 28360
+Subtree 28360 needs memory 272090
+using proc of memory 272090for task 28980
+Subtree 28980 needs memory 275690
+using proc of memory 272090for task 33460
+Subtree 33460 needs memory 272090
+using proc of memory 272090for task 34100
+Subtree 34100 needs memory 272090
+using proc of memory 272090for task 34740
+Subtree 34740 needs memory 272090
+using proc of memory 272090for task 35360
+Subtree 35360 needs memory 275690
+using proc of memory 272090for task 39820
+Subtree 39820 needs memory 47781
+2 step ready 
+Broken Edges { 1 22 305 965 1625 2285 3025 7940 8580 9220 9840 14320 14960 15600 16220 20700 21340 21980 22600 27080 27720 28360 28980 29620 33460 34100 34740 35360 36000 39820 }
+Makespan 67170.9 #trees: 30
+dump.0.1.amd.QY.case39-2136.tree.nf 72865.206667 2894781723
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 272090, MaxMemory: 816270.000000, CumulativeMemory: 17141670
+Load 35.000000, Occupied 100.000000
+maxoutD1471425.000000
+1 step ready 
+Broken Edges { 1 474 547 691 14491 28291 28897 42015 42017 42019 42021 42023 42025 42027 42029 42031 42033 42035 42037 42039 42041 42043 42045 42047 42049 42051 42053 }
+Makespan 998426 #trees: 27
+using proc of memory 4.41428e+06for task 1
+Subtree 1 needs memory 511293
+using proc of memory 4.41428e+06for task 474
+Subtree 474 needs memory 64402
+using proc of memory 4.41428e+06for task 547
+Subtree 547 needs memory 1.47142e+06
+using proc of memory 4.41428e+06for task 691
+Subtree 691 needs memory 1.47142e+06
+using proc of memory 4.41428e+06for task 14491
+Subtree 14491 needs memory 1.47142e+06
+using proc of memory 4.41428e+06for task 28291
+Subtree 28291 needs memory 53138
+using proc of memory 4.41428e+06for task 28897
+Subtree 28897 needs memory 424005
+using proc of memory 4.41428e+06for task 42015
+Subtree 42015 needs memory 64402
+using proc of memory 4.41428e+06for task 42017
+Subtree 42017 needs memory 64402
+using proc of memory 4.41428e+06for task 42019
+Subtree 42019 needs memory 64402
+using proc of memory 4.41428e+06for task 42021
+Subtree 42021 needs memory 64402
+using proc of memory 4.41428e+06for task 42023
+Subtree 42023 needs memory 64402
+using proc of memory 4.41428e+06for task 42025
+Subtree 42025 needs memory 64402
+using proc of memory 4.41428e+06for task 42027
+Subtree 42027 needs memory 64402
+using proc of memory 4.41428e+06for task 42029
+Subtree 42029 needs memory 64402
+using proc of memory 4.41428e+06for task 42031
+Subtree 42031 needs memory 64402
+using proc of memory 4.41428e+06for task 42033
+Subtree 42033 needs memory 64402
+using proc of memory 4.41428e+06for task 42035
+Subtree 42035 needs memory 64402
+using proc of memory 1.47142e+06for task 42037
+Subtree 42037 needs memory 64402
+using proc of memory 1.47142e+06for task 42039
+Subtree 42039 needs memory 64402
+using proc of memory 1.47142e+06for task 42041
+Subtree 42041 needs memory 64402
+using proc of memory 1.47142e+06for task 42043
+Subtree 42043 needs memory 64402
+using proc of memory 1.47142e+06for task 42045
+Subtree 42045 needs memory 64402
+using proc of memory 1.47142e+06for task 42047
+Subtree 42047 needs memory 64402
+using proc of memory 1.47142e+06for task 42049
+Subtree 42049 needs memory 64402
+using proc of memory 1.47142e+06for task 42051
+Subtree 42051 needs memory 64402
+using proc of memory 1.47142e+06for task 42053
+Subtree 42053 needs memory 64402
+2 step ready 
+Broken Edges { 1 474 547 691 14491 28291 28897 42015 42017 42019 42021 42023 42025 42027 42029 42031 42033 42035 42037 42039 42041 42043 42045 42047 42049 42051 42053 }
+Makespan 998426 #trees: 27
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 998426.022000 2910415110
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 1471425, MaxMemory: 4414275.000000, CumulativeMemory: 92699775
+Load 7.000000, Occupied 100.000000
+maxoutD3607298.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 3607298, MaxMemory: 10821894.000000, CumulativeMemory: 75753258
+1 step ready 
+Broken Edges { 1 727 26184 }
+Makespan 3.16364e+06 #trees: 3
+using proc of memory 1.08219e+07for task 1
+Subtree 1 needs memory 1.58123e+06
+using proc of memory 1.08219e+07for task 727
+Subtree 727 needs memory 3.6073e+06
+using proc of memory 1.08219e+07for task 26184
+Subtree 26184 needs memory 3.38632e+06
+2 step ready 
+Broken Edges { 1 727 26184 }
+Makespan 3.16364e+06 #trees: 3
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf 3163643.826667 3026293666
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 3607298, MaxMemory: 10821894.000000, CumulativeMemory: 75753258
+Load 26.000000, Occupied 33.000000
+maxoutD381938.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 381938, MaxMemory: 1145814.000000, CumulativeMemory: 8020698
+1 step ready 
+Broken Edges { 1 272 11624 17803 21103 24460 29860 36390 }
+Makespan 260725 #trees: 8
+using proc of memory 1.14581e+06for task 1
+Subtree 1 needs memory 381938
+using proc of memory 1.14581e+06for task 272
+Subtree 272 needs memory 241443
+using proc of memory 1.14581e+06for task 11624
+Subtree 11624 needs memory 193442
+using proc of memory 1.14581e+06for task 17803
+Subtree 17803 needs memory 364658
+using proc of memory 1.14581e+06for task 21103
+Subtree 21103 needs memory 366368
+using proc of memory 1.14581e+06for task 24460
+Subtree 24460 needs memory 354433
+using proc of memory 381938for task 29860
+Subtree 29860 needs memory 369800
+using proc of memory 381938for task 36390
+Subtree 36390 needs memory 132098
+2 step ready 
+Broken Edges { 1 272 11624 17803 21103 24460 29860 36390 }
+Makespan 260725 #trees: 8
+dump.0.1.metis.Bova.rma10-374.tree.nf 260724.610000 3048649381
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 381938, MaxMemory: 1145814.000000, CumulativeMemory: 8020698
+Load 31.000000, Occupied 88.000000
+maxoutD2312.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 2312, MaxMemory: 6936.000000, CumulativeMemory: 48552
+1 step ready 
+Broken Edges { 1 30 5141 10262 15370 20498 25779 30729 35841 }
+Makespan 1686.22 #trees: 9
+using proc of memory 6936for task 1
+Subtree 1 needs memory 1326
+using proc of memory 6936for task 30
+Subtree 30 needs memory 2772
+using proc of memory 6936for task 5141
+Subtree 5141 needs memory 2054
+using proc of memory 6936for task 10262
+Subtree 10262 needs memory 2611
+using proc of memory 6936for task 15370
+Subtree 15370 needs memory 1940
+using proc of memory 6936for task 20498
+Subtree 20498 needs memory 2178
+using proc of memory 2312for task 25779
+Subtree 25779 needs memory 2584
+using proc of memory 2312for task 30729
+Subtree 30729 needs memory 1938
+using proc of memory 2312for task 35841
+Subtree 35841 needs memory 2733
+2 step ready 
+Broken Edges { 1 13 30 31 32 5141 10262 15370 20498 25779 25785 25796 30729 35841 35867 37124 }
+Makespan 2507.45 #trees: 16
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 3355.328000 3063707361
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 2312, MaxMemory: 6936.000000, CumulativeMemory: 48552
+Load 39.000000, Occupied 100.000000
+maxoutD21898962.000000
+1 step ready 
+Broken Edges { 1 2927 47198 90766 92287 134454 178425 179007 179043 179067 179127 179139 179205 179249 179269 179309 179341 179388 179412 179430 179478 179587 179617 179644 179668 179710 179826 }
+Makespan 3.69608e+07 #trees: 27
+using proc of memory 6.56969e+07for task 1
+Subtree 1 needs memory 2.04498e+07
+using proc of memory 6.56969e+07for task 2927
+Subtree 2927 needs memory 1.49276e+07
+using proc of memory 6.56969e+07for task 47198
+Subtree 47198 needs memory 1.64738e+07
+using proc of memory 6.56969e+07for task 90766
+Subtree 90766 needs memory 4705
+using proc of memory 6.56969e+07for task 92287
+Subtree 92287 needs memory 2.1899e+07
+using proc of memory 6.56969e+07for task 134454
+Subtree 134454 needs memory 1.48369e+07
+using proc of memory 6.56969e+07for task 178425
+Subtree 178425 needs memory 90738
+using proc of memory 6.56969e+07for task 179007
+Subtree 179007 needs memory 9522
+using proc of memory 6.56969e+07for task 179043
+Subtree 179043 needs memory 4232
+using proc of memory 6.56969e+07for task 179067
+Subtree 179067 needs memory 15842
+using proc of memory 6.56969e+07for task 179127
+Subtree 179127 needs memory 882
+using proc of memory 6.56969e+07for task 179139
+Subtree 179139 needs memory 16562
+using proc of memory 6.56969e+07for task 179205
+Subtree 179205 needs memory 7442
+using proc of memory 6.56969e+07for task 179249
+Subtree 179249 needs memory 1682
+using proc of memory 6.56969e+07for task 179269
+Subtree 179269 needs memory 7442
+using proc of memory 6.56969e+07for task 179309
+Subtree 179309 needs memory 1458
+using proc of memory 6.56969e+07for task 179341
+Subtree 179341 needs memory 274
+using proc of memory 6.56969e+07for task 179388
+Subtree 179388 needs memory 274
+using proc of memory 2.1899e+07for task 179412
+Subtree 179412 needs memory 243
+using proc of memory 2.1899e+07for task 179430
+Subtree 179430 needs memory 803
+using proc of memory 2.1899e+07for task 179478
+Subtree 179478 needs memory 278
+using proc of memory 2.1899e+07for task 179587
+Subtree 179587 needs memory 278
+using proc of memory 2.1899e+07for task 179617
+Subtree 179617 needs memory 278
+using proc of memory 2.1899e+07for task 179644
+Subtree 179644 needs memory 278
+using proc of memory 2.1899e+07for task 179668
+Subtree 179668 needs memory 470
+using proc of memory 2.1899e+07for task 179710
+Subtree 179710 needs memory 278
+using proc of memory 2.1899e+07for task 179826
+Subtree 179826 needs memory 404
+2 step ready 
+Broken Edges { 1 2927 47198 90766 92287 134454 178425 179007 179043 179067 179127 179139 179205 179249 179269 179309 179341 179388 179412 179430 179478 179587 179617 179644 179668 179710 179826 }
+Makespan 3.69608e+07 #trees: 27
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 36960824.831333 3131925962
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 21898962, MaxMemory: 65696886.000000, CumulativeMemory: 1379634606
+Load 6.000000, Occupied 100.000000
+maxoutD3432258.000000
+1 step ready 
+Broken Edges { 1 424 13900 18343 23689 35332 }
+Makespan 2.69773e+06 #trees: 6
+using proc of memory 1.02968e+07for task 1
+Subtree 1 needs memory 3.43226e+06
+using proc of memory 1.02968e+07for task 424
+Subtree 424 needs memory 1.72138e+06
+using proc of memory 1.02968e+07for task 13900
+Subtree 13900 needs memory 2.70514e+06
+using proc of memory 1.02968e+07for task 18343
+Subtree 18343 needs memory 3.06529e+06
+using proc of memory 1.02968e+07for task 23689
+Subtree 23689 needs memory 1.7053e+06
+using proc of memory 1.02968e+07for task 35332
+Subtree 35332 needs memory 594050
+2 step ready 
+Broken Edges { 1 424 13900 18343 23689 35332 }
+Makespan 2.69773e+06 #trees: 6
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 2697725.978000 3411840347
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 3432258, MaxMemory: 10296774.000000, CumulativeMemory: 216232254
+Load 21.000000, Occupied 22.000000
+maxoutD85552.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 85552, MaxMemory: 256656.000000, CumulativeMemory: 1796592
+1 step ready 
+Broken Edges { 1 241 3142 5962 8581 11602 14221 16618 19519 }
+Makespan 45999.9 #trees: 9
+using proc of memory 256656for task 1
+Subtree 1 needs memory 92882
+using proc of memory 256656for task 241
+Subtree 241 needs memory 78482
+using proc of memory 256656for task 3142
+Subtree 3142 needs memory 84338
+using proc of memory 256656for task 5962
+Subtree 5962 needs memory 78482
+using proc of memory 256656for task 8581
+Subtree 8581 needs memory 78482
+using proc of memory 256656for task 11602
+Subtree 11602 needs memory 99824
+using proc of memory 85552for task 14221
+Subtree 14221 needs memory 78482
+using proc of memory 85552for task 16618
+Subtree 16618 needs memory 85552
+using proc of memory 85552for task 19519
+Subtree 19519 needs memory 78482
+2 step ready 
+Broken Edges { 1 241 3142 5962 8581 11602 14221 16618 19519 }
+Makespan 45999.9 #trees: 9
+dump.0.1.metis.Goodwin.rim-447.tree.nf 45999.924000 3421517561
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 85552, MaxMemory: 256656.000000, CumulativeMemory: 1796592
+Load 37.000000, Occupied 100.000000
+maxoutD46818.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 46818, MaxMemory: 140454.000000, CumulativeMemory: 983178
+1 step ready 
+Broken Edges { 1 2 24906 55841 59051 93811 100742 141401 166718 }
+Makespan 12367.2 #trees: 9
+using proc of memory 140454for task 1
+Subtree 1 needs memory 32
+using proc of memory 140454for task 2
+Subtree 2 needs memory 10083
+using proc of memory 140454for task 24906
+Subtree 24906 needs memory 39200
+using proc of memory 140454for task 55841
+Subtree 55841 needs memory 1827
+using proc of memory 140454for task 59051
+Subtree 59051 needs memory 42632
+using proc of memory 140454for task 93811
+Subtree 93811 needs memory 2888
+using proc of memory 46818for task 100742
+Subtree 100742 needs memory 51318
+using proc of memory 46818for task 141401
+Subtree 141401 needs memory 10041
+using proc of memory 46818for task 166718
+Subtree 166718 needs memory 6579
+2 step ready 
+Broken Edges { 1 2 24906 55841 59051 93811 100742 122284 141401 166718 }
+Makespan 20467.2 #trees: 10
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 20467.174667 3502416427
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 46818, MaxMemory: 140454.000000, CumulativeMemory: 983178
+Load 18.000000, Occupied 100.000000
+maxoutD30112566.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 30112566, MaxMemory: 90337698.000000, CumulativeMemory: 632363886
+1 step ready 
+Broken Edges { 1 2029 52730 }
+Makespan 5.74227e+07 #trees: 3
+using proc of memory 9.03377e+07for task 1
+Subtree 1 needs memory 1.23384e+07
+using proc of memory 9.03377e+07for task 2029
+Subtree 2029 needs memory 3.23365e+07
+using proc of memory 9.03377e+07for task 52730
+Subtree 52730 needs memory 3.01031e+07
+2 step ready 
+Broken Edges { 1 2029 52730 }
+Makespan 5.74227e+07 #trees: 3
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 57422702.432667 3620715291
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 30112566, MaxMemory: 90337698.000000, CumulativeMemory: 632363886
+Load 27.000000, Occupied 33.000000
+maxoutD262088.000000
+1 step ready 
+Broken Edges { 1 440 5206 10756 15834 20912 41375 46266 51263 56420 61657 82640 82641 82642 82643 82644 82645 82646 82647 82648 82649 82650 82651 82652 82653 82654 82655 }
+Makespan 115710 #trees: 27
+using proc of memory 786264for task 1
+Subtree 1 needs memory 273841
+using proc of memory 786264for task 440
+Subtree 440 needs memory 136242
+using proc of memory 786264for task 5206
+Subtree 5206 needs memory 123008
+using proc of memory 786264for task 10756
+Subtree 10756 needs memory 110450
+using proc of memory 786264for task 15834
+Subtree 15834 needs memory 132098
+using proc of memory 786264for task 20912
+Subtree 20912 needs memory 187272
+using proc of memory 786264for task 41375
+Subtree 41375 needs memory 124002
+using proc of memory 786264for task 46266
+Subtree 46266 needs memory 115200
+using proc of memory 786264for task 51263
+Subtree 51263 needs memory 115200
+using proc of memory 786264for task 56420
+Subtree 56420 needs memory 141512
+using proc of memory 786264for task 61657
+Subtree 61657 needs memory 186050
+using proc of memory 786264for task 82640
+Subtree 82640 needs memory 1
+using proc of memory 786264for task 82641
+Subtree 82641 needs memory 1
+using proc of memory 786264for task 82642
+Subtree 82642 needs memory 1
+using proc of memory 786264for task 82643
+Subtree 82643 needs memory 1
+using proc of memory 786264for task 82644
+Subtree 82644 needs memory 1
+using proc of memory 786264for task 82645
+Subtree 82645 needs memory 1
+using proc of memory 786264for task 82646
+Subtree 82646 needs memory 1
+using proc of memory 262088for task 82647
+Subtree 82647 needs memory 1
+using proc of memory 262088for task 82648
+Subtree 82648 needs memory 1
+using proc of memory 262088for task 82649
+Subtree 82649 needs memory 1
+using proc of memory 262088for task 82650
+Subtree 82650 needs memory 1
+using proc of memory 262088for task 82651
+Subtree 82651 needs memory 1
+using proc of memory 262088for task 82652
+Subtree 82652 needs memory 1
+using proc of memory 262088for task 82653
+Subtree 82653 needs memory 1
+using proc of memory 262088for task 82654
+Subtree 82654 needs memory 1
+using proc of memory 262088for task 82655
+Subtree 82655 needs memory 1
+2 step ready 
+Broken Edges { 1 440 5206 10756 15834 20912 41375 46266 51263 56420 61657 82640 82641 82642 82643 82644 82645 82646 82647 82648 82649 82650 82651 82652 82653 82654 82655 }
+Makespan 115710 #trees: 27
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf 115710.388667 4100335907
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 262088, MaxMemory: 786264.000000, CumulativeMemory: 16511544
+Load 9.000000, Occupied 100.000000
+maxoutD396050.000000
+1 step ready 
+Broken Edges { 1 162 13042 22641 24935 27289 29585 32137 34441 36300 40694 41947 43201 45742 50882 }
+Makespan 159802 #trees: 15
+using proc of memory 1.18815e+06for task 1
+Subtree 1 needs memory 421650
+using proc of memory 1.18815e+06for task 162
+Subtree 162 needs memory 131072
+using proc of memory 1.18815e+06for task 13042
+Subtree 13042 needs memory 159862
+using proc of memory 1.18815e+06for task 22641
+Subtree 22641 needs memory 115200
+using proc of memory 1.18815e+06for task 24935
+Subtree 24935 needs memory 109512
+using proc of memory 1.18815e+06for task 27289
+Subtree 27289 needs memory 120050
+using proc of memory 1.18815e+06for task 29585
+Subtree 29585 needs memory 107648
+using proc of memory 1.18815e+06for task 32137
+Subtree 32137 needs memory 64800
+using proc of memory 1.18815e+06for task 34441
+Subtree 34441 needs memory 65522
+using proc of memory 1.18815e+06for task 36300
+Subtree 36300 needs memory 109512
+using proc of memory 1.18815e+06for task 40694
+Subtree 40694 needs memory 69192
+using proc of memory 1.18815e+06for task 41947
+Subtree 41947 needs memory 57122
+using proc of memory 1.18815e+06for task 43201
+Subtree 43201 needs memory 133128
+using proc of memory 1.18815e+06for task 45742
+Subtree 45742 needs memory 115200
+using proc of memory 1.18815e+06for task 50882
+Subtree 50882 needs memory 131329
+2 step ready 
+Broken Edges { 1 162 13042 22641 24935 27289 29585 32137 34441 36300 40694 41947 43201 45742 50882 }
+Makespan 159802 #trees: 15
+dump.0.1.metis.Shyy.shyy161-809.tree.nf 159802.266667 4384174698
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 396050, MaxMemory: 1188150.000000, CumulativeMemory: 24951150
+Load 10.000000, Occupied 55.000000
+maxoutD3160098.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 3160098, MaxMemory: 9480294.000000, CumulativeMemory: 66362058
+1 step ready 
+Broken Edges { 1 872 13470 }
+Makespan 2.11745e+06 #trees: 3
+using proc of memory 9.48029e+06for task 1
+Subtree 1 needs memory 2.27592e+06
+using proc of memory 9.48029e+06for task 872
+Subtree 872 needs memory 3.11501e+06
+using proc of memory 9.48029e+06for task 13470
+Subtree 13470 needs memory 3.1601e+06
+2 step ready 
+Broken Edges { 1 872 13470 }
+Makespan 2.11745e+06 #trees: 3
+dump.0.1.metis.Wang.wang4-833.tree.nf 2117447.601333 4670467198
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 3160098, MaxMemory: 9480294.000000, CumulativeMemory: 66362058
+Load 30.000000, Occupied 33.000000
+maxoutD5524488.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 5524488, MaxMemory: 16573464.000000, CumulativeMemory: 116014248
+1 step ready 
+Broken Edges { 1 1664 29040 56870 84541 112211 }
+Makespan 6.78065e+06 #trees: 6
+using proc of memory 1.65735e+07for task 1
+Subtree 1 needs memory 6.12874e+06
+using proc of memory 1.65735e+07for task 1664
+Subtree 1664 needs memory 5.30077e+06
+using proc of memory 1.65735e+07for task 29040
+Subtree 29040 needs memory 4.91725e+06
+using proc of memory 1.65735e+07for task 56870
+Subtree 56870 needs memory 4.01011e+06
+using proc of memory 1.65735e+07for task 84541
+Subtree 84541 needs memory 4.67568e+06
+using proc of memory 1.65735e+07for task 112211
+Subtree 112211 needs memory 9
+2 step ready 
+Broken Edges { 1 1664 29040 56870 84541 112211 }
+Makespan 6.78065e+06 #trees: 6
+dump.0.1.metis.Watson.Baumann-1855.tree.nf 6780649.463333 4701872567
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 5524488, MaxMemory: 16573464.000000, CumulativeMemory: 116014248
+Load 25.000000, Occupied 66.000000
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 58 511 964 1417 1874 5205 5627 6049 6470 9424 9846 10268 10689 13643 14065 14487 14908 17862 18284 18706 19127 22081 22503 22925 23346 26299 }
+Makespan 85919.8 #trees: 27
+using proc of memory 816270for task 1
+Subtree 1 needs memory 125566
+using proc of memory 816270for task 58
+Subtree 58 needs memory 125566
+using proc of memory 816270for task 511
+Subtree 511 needs memory 125566
+using proc of memory 816270for task 964
+Subtree 964 needs memory 125566
+using proc of memory 816270for task 1417
+Subtree 1417 needs memory 125566
+using proc of memory 816270for task 1874
+Subtree 1874 needs memory 274140
+using proc of memory 816270for task 5205
+Subtree 5205 needs memory 272090
+using proc of memory 816270for task 5627
+Subtree 5627 needs memory 272090
+using proc of memory 816270for task 6049
+Subtree 6049 needs memory 272090
+using proc of memory 816270for task 6470
+Subtree 6470 needs memory 275690
+using proc of memory 816270for task 9424
+Subtree 9424 needs memory 272090
+using proc of memory 816270for task 9846
+Subtree 9846 needs memory 272090
+using proc of memory 816270for task 10268
+Subtree 10268 needs memory 272090
+using proc of memory 816270for task 10689
+Subtree 10689 needs memory 275690
+using proc of memory 816270for task 13643
+Subtree 13643 needs memory 272090
+using proc of memory 816270for task 14065
+Subtree 14065 needs memory 272090
+using proc of memory 816270for task 14487
+Subtree 14487 needs memory 272090
+using proc of memory 816270for task 14908
+Subtree 14908 needs memory 275690
+using proc of memory 272090for task 17862
+Subtree 17862 needs memory 272090
+using proc of memory 272090for task 18284
+Subtree 18284 needs memory 272090
+using proc of memory 272090for task 18706
+Subtree 18706 needs memory 272090
+using proc of memory 272090for task 19127
+Subtree 19127 needs memory 275690
+using proc of memory 272090for task 22081
+Subtree 22081 needs memory 272090
+using proc of memory 272090for task 22503
+Subtree 22503 needs memory 272090
+using proc of memory 272090for task 22925
+Subtree 22925 needs memory 272090
+using proc of memory 272090for task 23346
+Subtree 23346 needs memory 275690
+using proc of memory 272090for task 26299
+Subtree 26299 needs memory 47781
+2 step ready 
+Broken Edges { 1 3 58 511 964 1417 1874 5205 5627 6049 6470 9424 9846 10268 10689 13643 14065 14487 14908 17862 18284 18706 19127 19549 22081 22503 22925 23346 23768 26299 }
+Makespan 140145 #trees: 30
+dump.1.1.amd.QY.case39-2136.tree.nf 97864.486667 5370457418
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 272090, MaxMemory: 816270.000000, CumulativeMemory: 17141670
+Load 35.000000, Occupied 100.000000
+maxoutD2211.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 2211, MaxMemory: 6633.000000, CumulativeMemory: 46431
+1 step ready 
+Broken Edges { 1 3 3312 6280 9588 12570 15667 18848 21812 }
+Makespan 1721.71 #trees: 9
+using proc of memory 6633for task 1
+Subtree 1 needs memory 1326
+using proc of memory 6633for task 3
+Subtree 3 needs memory 2654
+using proc of memory 6633for task 3312
+Subtree 3312 needs memory 1985
+using proc of memory 6633for task 6280
+Subtree 6280 needs memory 2611
+using proc of memory 6633for task 9588
+Subtree 9588 needs memory 1942
+using proc of memory 6633for task 12570
+Subtree 12570 needs memory 2038
+using proc of memory 2211for task 15667
+Subtree 15667 needs memory 2544
+using proc of memory 2211for task 18848
+Subtree 18848 needs memory 1912
+using proc of memory 2211for task 21812
+Subtree 21812 needs memory 2607
+2 step ready 
+Broken Edges { 1 2 3 3312 6280 9588 12570 15667 15668 18848 21812 21815 22683 23544 }
+Makespan 1921.4 #trees: 14
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 3176.493333 5382735732
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 2211, MaxMemory: 6633.000000, CumulativeMemory: 46431
+Load 35.000000, Occupied 100.000000
+maxoutD65524.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 65524, MaxMemory: 196572.000000, CumulativeMemory: 1376004
+1 step ready 
+Broken Edges { 1 4 44575 66502 66503 88564 88726 133562 155253 }
+Makespan 21389.6 #trees: 9
+using proc of memory 196572for task 1
+Subtree 1 needs memory 27587
+using proc of memory 196572for task 4
+Subtree 4 needs memory 65524
+using proc of memory 196572for task 44575
+Subtree 44575 needs memory 56569
+using proc of memory 196572for task 66502
+Subtree 66502 needs memory 256
+using proc of memory 196572for task 66503
+Subtree 66503 needs memory 59026
+using proc of memory 196572for task 88564
+Subtree 88564 needs memory 256
+using proc of memory 65524for task 88726
+Subtree 88726 needs memory 61162
+using proc of memory 65524for task 133562
+Subtree 133562 needs memory 63578
+using proc of memory 65524for task 155253
+Subtree 155253 needs memory 58006
+2 step ready 
+Broken Edges { 1 4 44575 66502 66503 88564 88726 133562 155253 }
+Makespan 21389.6 #trees: 9
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 21389.586000 5419192643
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 65524, MaxMemory: 196572.000000, CumulativeMemory: 1376004
+Load 24.000000, Occupied 100.000000
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 37 324 611 898 1189 3284 3546 3808 4069 5903 6165 6427 6688 8522 8784 9046 9307 11141 11403 11665 11926 13760 14022 14284 14545 16378 }
+Makespan 87017.1 #trees: 27
+using proc of memory 816270for task 1
+Subtree 1 needs memory 144490
+using proc of memory 816270for task 37
+Subtree 37 needs memory 144490
+using proc of memory 816270for task 324
+Subtree 324 needs memory 144490
+using proc of memory 816270for task 611
+Subtree 611 needs memory 144490
+using proc of memory 816270for task 898
+Subtree 898 needs memory 144490
+using proc of memory 816270for task 1189
+Subtree 1189 needs memory 274140
+using proc of memory 816270for task 3284
+Subtree 3284 needs memory 272090
+using proc of memory 816270for task 3546
+Subtree 3546 needs memory 272090
+using proc of memory 816270for task 3808
+Subtree 3808 needs memory 272090
+using proc of memory 816270for task 4069
+Subtree 4069 needs memory 275690
+using proc of memory 816270for task 5903
+Subtree 5903 needs memory 272090
+using proc of memory 816270for task 6165
+Subtree 6165 needs memory 272090
+using proc of memory 816270for task 6427
+Subtree 6427 needs memory 272090
+using proc of memory 816270for task 6688
+Subtree 6688 needs memory 275690
+using proc of memory 816270for task 8522
+Subtree 8522 needs memory 272090
+using proc of memory 816270for task 8784
+Subtree 8784 needs memory 272090
+using proc of memory 816270for task 9046
+Subtree 9046 needs memory 272090
+using proc of memory 816270for task 9307
+Subtree 9307 needs memory 275690
+using proc of memory 272090for task 11141
+Subtree 11141 needs memory 272090
+using proc of memory 272090for task 11403
+Subtree 11403 needs memory 272090
+using proc of memory 272090for task 11665
+Subtree 11665 needs memory 272090
+using proc of memory 272090for task 11926
+Subtree 11926 needs memory 275690
+using proc of memory 272090for task 13760
+Subtree 13760 needs memory 272090
+using proc of memory 272090for task 14022
+Subtree 14022 needs memory 272090
+using proc of memory 272090for task 14284
+Subtree 14284 needs memory 272090
+using proc of memory 272090for task 14545
+Subtree 14545 needs memory 275690
+using proc of memory 272090for task 16378
+Subtree 16378 needs memory 45764
+2 step ready 
+Broken Edges { 1 3 37 324 611 898 1189 3284 3546 3808 4069 5903 6165 6427 6688 8522 8784 9046 9307 11141 11403 11665 11926 12188 13760 14022 14284 14545 14807 16378 }
+Makespan 141242 #trees: 30
+dump.1.2.amd.QY.case39-2136.tree.nf 99129.778667 5516418578
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 272090, MaxMemory: 816270.000000, CumulativeMemory: 17141670
+Load 36.000000, Occupied 100.000000
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 19 161 303 445 591 1633 1765 1897 2028 2952 3084 3216 3347 4271 4403 4535 4666 5590 5722 5854 5985 6909 7041 7173 7304 8227 }
+Makespan 89094.2 #trees: 27
+using proc of memory 816270for task 1
+Subtree 1 needs memory 187810
+using proc of memory 816270for task 19
+Subtree 19 needs memory 187810
+using proc of memory 816270for task 161
+Subtree 161 needs memory 187810
+using proc of memory 816270for task 303
+Subtree 303 needs memory 187810
+using proc of memory 816270for task 445
+Subtree 445 needs memory 187810
+using proc of memory 816270for task 591
+Subtree 591 needs memory 274140
+using proc of memory 816270for task 1633
+Subtree 1633 needs memory 272090
+using proc of memory 816270for task 1765
+Subtree 1765 needs memory 272090
+using proc of memory 816270for task 1897
+Subtree 1897 needs memory 272090
+using proc of memory 816270for task 2028
+Subtree 2028 needs memory 275690
+using proc of memory 816270for task 2952
+Subtree 2952 needs memory 272090
+using proc of memory 816270for task 3084
+Subtree 3084 needs memory 272090
+using proc of memory 816270for task 3216
+Subtree 3216 needs memory 272090
+using proc of memory 816270for task 3347
+Subtree 3347 needs memory 275690
+using proc of memory 816270for task 4271
+Subtree 4271 needs memory 272090
+using proc of memory 816270for task 4403
+Subtree 4403 needs memory 272090
+using proc of memory 816270for task 4535
+Subtree 4535 needs memory 272090
+using proc of memory 816270for task 4666
+Subtree 4666 needs memory 275690
+using proc of memory 272090for task 5590
+Subtree 5590 needs memory 272090
+using proc of memory 272090for task 5722
+Subtree 5722 needs memory 272090
+using proc of memory 272090for task 5854
+Subtree 5854 needs memory 272090
+using proc of memory 272090for task 5985
+Subtree 5985 needs memory 275690
+using proc of memory 272090for task 6909
+Subtree 6909 needs memory 272090
+using proc of memory 272090for task 7041
+Subtree 7041 needs memory 272090
+using proc of memory 272090for task 7173
+Subtree 7173 needs memory 272090
+using proc of memory 272090for task 7304
+Subtree 7304 needs memory 275690
+using proc of memory 272090for task 8227
+Subtree 8227 needs memory 42120
+2 step ready 
+Broken Edges { 1 3 19 161 303 445 591 1633 1765 1897 2028 2952 3084 3216 3347 4271 4403 4535 4666 5590 5722 5854 5985 6117 6909 7041 7173 7304 7436 8227 }
+Makespan 143319 #trees: 30
+dump.1.3.amd.QY.case39-2136.tree.nf 101571.314667 5524553814
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 272090, MaxMemory: 816270.000000, CumulativeMemory: 17141670
+Load 37.000000, Occupied 100.000000
+maxoutD34085496.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34085496, MaxMemory: 102256488.000000, CumulativeMemory: 715795416
+1 step ready 
+Broken Edges { 1 5 77278 154923 155408 155851 156098 156307 156635 }
+Makespan 6.55424e+07 #trees: 9
+using proc of memory 1.02256e+08for task 1
+Subtree 1 needs memory 1.23756e+07
+using proc of memory 1.02256e+08for task 5
+Subtree 5 needs memory 3.37034e+07
+using proc of memory 1.02256e+08for task 77278
+Subtree 77278 needs memory 3.40855e+07
+using proc of memory 1.02256e+08for task 154923
+Subtree 154923 needs memory 498
+using proc of memory 1.02256e+08for task 155408
+Subtree 155408 needs memory 1031
+using proc of memory 1.02256e+08for task 155851
+Subtree 155851 needs memory 575
+using proc of memory 3.40855e+07for task 156098
+Subtree 156098 needs memory 399
+using proc of memory 3.40855e+07for task 156307
+Subtree 156307 needs memory 373
+using proc of memory 3.40855e+07for task 156635
+Subtree 156635 needs memory 228
+2 step ready 
+Broken Edges { 1 5 77278 154923 155408 155851 156098 156307 156635 }
+Makespan 6.55424e+07 #trees: 9
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 65542449.327334 5534780665
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34085496, MaxMemory: 102256488.000000, CumulativeMemory: 715795416
+Load 11.000000, Occupied 100.000000
+maxoutD34085496.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34085496, MaxMemory: 102256488.000000, CumulativeMemory: 715795416
+1 step ready 
+Broken Edges { 1 5 49690 98946 99366 99506 99673 99800 100017 }
+Makespan 6.66025e+07 #trees: 9
+using proc of memory 1.02256e+08for task 1
+Subtree 1 needs memory 1.23756e+07
+using proc of memory 1.02256e+08for task 5
+Subtree 5 needs memory 3.37034e+07
+using proc of memory 1.02256e+08for task 49690
+Subtree 49690 needs memory 3.40855e+07
+using proc of memory 1.02256e+08for task 98946
+Subtree 98946 needs memory 889
+using proc of memory 1.02256e+08for task 99366
+Subtree 99366 needs memory 1507
+using proc of memory 1.02256e+08for task 99506
+Subtree 99506 needs memory 1015
+using proc of memory 3.40855e+07for task 99673
+Subtree 99673 needs memory 823
+using proc of memory 3.40855e+07for task 99800
+Subtree 99800 needs memory 602
+using proc of memory 3.40855e+07for task 100017
+Subtree 100017 needs memory 620
+2 step ready 
+Broken Edges { 1 5 49690 98946 99366 99506 99673 99800 100017 }
+Makespan 6.66025e+07 #trees: 9
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 66602516.889334 5718713062
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34085496, MaxMemory: 102256488.000000, CumulativeMemory: 715795416
+Load 11.000000, Occupied 100.000000
+maxoutD290322.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 290322, MaxMemory: 870966.000000, CumulativeMemory: 6096762
+1 step ready 
+Broken Edges { 1 384 4864 9344 18688 27840 32320 37762 37763 }
+Makespan 161374 #trees: 9
+using proc of memory 870966for task 1
+Subtree 1 needs memory 306198
+using proc of memory 870966for task 384
+Subtree 384 needs memory 240818
+using proc of memory 870966for task 4864
+Subtree 4864 needs memory 243602
+using proc of memory 870966for task 9344
+Subtree 9344 needs memory 243602
+using proc of memory 870966for task 18688
+Subtree 18688 needs memory 243602
+using proc of memory 870966for task 27840
+Subtree 27840 needs memory 249218
+using proc of memory 290322for task 32320
+Subtree 32320 needs memory 281250
+using proc of memory 290322for task 37762
+Subtree 37762 needs memory 1
+using proc of memory 290322for task 37763
+Subtree 37763 needs memory 1
+2 step ready 
+Broken Edges { 1 384 4864 9344 18688 27840 32320 37762 37763 }
+Makespan 161374 #trees: 9
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 161373.822000 5749254410
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 290322, MaxMemory: 870966.000000, CumulativeMemory: 6096762
+Load 29.000000, Occupied 100.000000
+maxoutD290322.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 290322, MaxMemory: 870966.000000, CumulativeMemory: 6096762
+1 step ready 
+Broken Edges { 1 384 4864 9344 18688 27840 32320 37762 37763 }
+Makespan 161374 #trees: 9
+using proc of memory 870966for task 1
+Subtree 1 needs memory 306198
+using proc of memory 870966for task 384
+Subtree 384 needs memory 240818
+using proc of memory 870966for task 4864
+Subtree 4864 needs memory 243602
+using proc of memory 870966for task 9344
+Subtree 9344 needs memory 243602
+using proc of memory 870966for task 18688
+Subtree 18688 needs memory 243602
+using proc of memory 870966for task 27840
+Subtree 27840 needs memory 249218
+using proc of memory 290322for task 32320
+Subtree 32320 needs memory 281250
+using proc of memory 290322for task 37762
+Subtree 37762 needs memory 1
+using proc of memory 290322for task 37763
+Subtree 37763 needs memory 1
+2 step ready 
+Broken Edges { 1 384 4864 9344 18688 27840 32320 37762 37763 }
+Makespan 161374 #trees: 9
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 161373.822000 5786746462
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 290322, MaxMemory: 870966.000000, CumulativeMemory: 6096762
+Load 29.000000, Occupied 100.000000
+homogeneous many small
+maxoutD324288.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 324288, MaxMemory: 324288.000000, CumulativeMemory: 2918592
+homogeneous few big
+maxoutD324288.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 972864, MaxMemory: 972864.000000, CumulativeMemory: 5837184
+3-level
+heterogeneous
+maxoutD324288.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 324288, MaxMemory: 972864.000000, CumulativeMemory: 5350752
+1 step ready 
+Broken Edges { 1 393 5379 8469 13055 14793 17615 21907 28113 }
+Makespan 161696 #trees: 9
+using proc of memory 972864for task 1
+Subtree 1 needs memory 393378
+using proc of memory 972864for task 393
+Subtree 393 needs memory 153458
+using proc of memory 972864for task 5379
+Subtree 5379 needs memory 157922
+using proc of memory 486432for task 8469
+Subtree 8469 needs memory 140450
+using proc of memory 486432for task 13055
+Subtree 13055 needs memory 130050
+using proc of memory 486432for task 14793
+Subtree 14793 needs memory 171698
+using proc of memory 324288for task 17615
+Subtree 17615 needs memory 122018
+using proc of memory 324288for task 21907
+Subtree 21907 needs memory 169362
+using proc of memory 324288for task 28113
+Subtree 28113 needs memory 110450
+2 step ready 
+Broken Edges { 1 393 5379 8469 13055 14793 17615 21907 28113 }
+Makespan 161696 #trees: 9
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 161696.385333 241980
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 324288, MaxMemory: 972864.000000, CumulativeMemory: 5350752
+Load 26.000000, Occupied 100.000000
+maxoutD65558.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 65558, MaxMemory: 196674.000000, CumulativeMemory: 1081707
+1 step ready 
+Broken Edges { 1 4 22659 33786 45111 67813 78816 90104 90125 }
+Makespan 23530.6 #trees: 9
+using proc of memory 196674for task 1
+Subtree 1 needs memory 27979
+using proc of memory 196674for task 4
+Subtree 4 needs memory 66834
+using proc of memory 196674for task 22659
+Subtree 22659 needs memory 62995
+using proc of memory 98337for task 33786
+Subtree 33786 needs memory 60717
+using proc of memory 98337for task 45111
+Subtree 45111 needs memory 66694
+using proc of memory 98337for task 67813
+Subtree 67813 needs memory 63578
+using proc of memory 65558for task 78816
+Subtree 78816 needs memory 66909
+using proc of memory 65558for task 90104
+Subtree 90104 needs memory 242
+using proc of memory 65558for task 90125
+Subtree 90125 needs memory 242
+2 step ready 
+Broken Edges { 1 4 22659 33786 45111 67813 78816 78817 90104 90125 }
+Makespan 36755.6 #trees: 10
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 32386.011333 143203486
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 65558, MaxMemory: 196674.000000, CumulativeMemory: 1081707
+Load 37.000000, Occupied 100.000000
+maxoutD78554.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 78554, MaxMemory: 235662.000000, CumulativeMemory: 1296141
+1 step ready 
+Broken Edges { 1 5 6050 12273 18347 24749 31056 37084 43212 }
+Makespan 34628.7 #trees: 9
+using proc of memory 235662for task 1
+Subtree 1 needs memory 30920
+using proc of memory 235662for task 5
+Subtree 5 needs memory 44819
+using proc of memory 235662for task 6050
+Subtree 6050 needs memory 78554
+using proc of memory 117831for task 12273
+Subtree 12273 needs memory 62995
+using proc of memory 117831for task 18347
+Subtree 18347 needs memory 77474
+using proc of memory 117831for task 24749
+Subtree 24749 needs memory 48658
+using proc of memory 78554for task 31056
+Subtree 31056 needs memory 68890
+using proc of memory 78554for task 37084
+Subtree 37084 needs memory 63578
+using proc of memory 78554for task 43212
+Subtree 43212 needs memory 66909
+2 step ready 
+Broken Edges { 1 5 6050 12273 18347 24749 31056 37084 43212 }
+Makespan 34628.7 #trees: 9
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 34628.722667 228211884
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 78554, MaxMemory: 235662.000000, CumulativeMemory: 1296141
+Load 36.000000, Occupied 100.000000
+maxoutD396050.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 396050, MaxMemory: 1188150.000000, CumulativeMemory: 6534825
+1 step ready 
+Broken Edges { 1 429 6287 8776 9961 27934 30707 32953 46370 }
+Makespan 389872 #trees: 9
+using proc of memory 1.18815e+06for task 1
+Subtree 1 needs memory 364658
+using proc of memory 1.18815e+06for task 429
+Subtree 429 needs memory 396050
+using proc of memory 1.18815e+06for task 6287
+Subtree 6287 needs memory 383688
+using proc of memory 594075for task 8776
+Subtree 8776 needs memory 175232
+using proc of memory 594075for task 9961
+Subtree 9961 needs memory 208669
+using proc of memory 594075for task 27934
+Subtree 27934 needs memory 128018
+using proc of memory 396050for task 30707
+Subtree 30707 needs memory 164738
+using proc of memory 396050for task 32953
+Subtree 32953 needs memory 308898
+using proc of memory 396050for task 46370
+Subtree 46370 needs memory 160178
+2 step ready 
+Broken Edges { 1 429 6287 8776 9961 27934 30707 32953 46370 }
+Makespan 389872 #trees: 9
+dump.0.1.amd.Bova.rma10-374.tree.nf 389872.153333 278261205
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 396050, MaxMemory: 1188150.000000, CumulativeMemory: 6534825
+Load 32.000000, Occupied 100.000000
+maxoutD117681.000000
+1 step ready 
+Broken Edges { 1 529 11375 13819 47847 55796 56371 56946 57521 58096 58671 59246 68447 73126 88643 95866 101497 134771 145470 146409 150969 169084 173170 177341 182155 186340 187639 }
+Makespan 39368.8 #trees: 27
+using proc of memory 353043for task 1
+Subtree 1 needs memory 125508
+using proc of memory 353043for task 529
+Subtree 529 needs memory 34850
+using proc of memory 353043for task 11375
+Subtree 11375 needs memory 18052
+using proc of memory 353043for task 13819
+Subtree 13819 needs memory 60589
+using proc of memory 353043for task 47847
+Subtree 47847 needs memory 39099
+using proc of memory 353043for task 55796
+Subtree 55796 needs memory 7640
+using proc of memory 353043for task 56371
+Subtree 56371 needs memory 7640
+using proc of memory 353043for task 56946
+Subtree 56946 needs memory 7640
+using proc of memory 353043for task 57521
+Subtree 57521 needs memory 7640
+using proc of memory 176522for task 58096
+Subtree 58096 needs memory 7640
+using proc of memory 176522for task 58671
+Subtree 58671 needs memory 7640
+using proc of memory 176522for task 59246
+Subtree 59246 needs memory 7640
+using proc of memory 176522for task 68447
+Subtree 68447 needs memory 25994
+using proc of memory 176522for task 73126
+Subtree 73126 needs memory 18052
+using proc of memory 176522for task 88643
+Subtree 88643 needs memory 34858
+using proc of memory 176522for task 95866
+Subtree 95866 needs memory 33447
+using proc of memory 176522for task 101497
+Subtree 101497 needs memory 52817
+using proc of memory 176522for task 134771
+Subtree 134771 needs memory 28324
+using proc of memory 117681for task 145470
+Subtree 145470 needs memory 9764
+using proc of memory 117681for task 146409
+Subtree 146409 needs memory 21220
+using proc of memory 117681for task 150969
+Subtree 150969 needs memory 27850
+using proc of memory 117681for task 169084
+Subtree 169084 needs memory 25090
+using proc of memory 117681for task 173170
+Subtree 173170 needs memory 19560
+using proc of memory 117681for task 177341
+Subtree 177341 needs memory 28324
+using proc of memory 117681for task 182155
+Subtree 182155 needs memory 23330
+using proc of memory 117681for task 186340
+Subtree 186340 needs memory 12092
+using proc of memory 117681for task 187639
+Subtree 187639 needs memory 28802
+2 step ready 
+Broken Edges { 1 529 11375 13819 47847 55796 56371 56946 57521 58096 58671 59246 68447 73126 88643 95866 101497 134771 145470 146409 150969 169084 173170 177341 182155 186340 187639 }
+Makespan 39368.8 #trees: 27
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 39368.832000 473026588
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 117681, MaxMemory: 353043.000000, CumulativeMemory: 5825205
+Load 11.000000, Occupied 100.000000
+maxoutD1384793.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 1384793, MaxMemory: 4154379.000000, CumulativeMemory: 22849083
+1 step ready 
+Broken Edges { 1 902 12433 21449 27839 34510 49084 61241 66956 }
+Makespan 532137 #trees: 9
+using proc of memory 4.15438e+06for task 1
+Subtree 1 needs memory 1.52948e+06
+using proc of memory 4.15438e+06for task 902
+Subtree 902 needs memory 412232
+using proc of memory 4.15438e+06for task 12433
+Subtree 12433 needs memory 352800
+using proc of memory 2.07719e+06for task 21449
+Subtree 21449 needs memory 249218
+using proc of memory 2.07719e+06for task 27839
+Subtree 27839 needs memory 228488
+using proc of memory 2.07719e+06for task 34510
+Subtree 34510 needs memory 410418
+using proc of memory 1.38479e+06for task 49084
+Subtree 49084 needs memory 399618
+using proc of memory 1.38479e+06for task 61241
+Subtree 61241 needs memory 187272
+using proc of memory 1.38479e+06for task 66956
+Subtree 66956 needs memory 462722
+2 step ready 
+Broken Edges { 1 902 12433 21449 27839 34510 49084 61241 66956 }
+Makespan 532137 #trees: 9
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 532136.757333 2455121745
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 1384793, MaxMemory: 4154379.000000, CumulativeMemory: 22849083
+Load 16.000000, Occupied 100.000000
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 305 965 1625 2285 3025 7940 8580 9220 9840 14320 14960 15600 16220 20700 21340 21980 22600 27080 27720 28360 28980 33460 34100 34740 35360 39820 }
+Makespan 63170.9 #trees: 27
+using proc of memory 816270for task 1
+Subtree 1 needs memory 125566
+using proc of memory 816270for task 305
+Subtree 305 needs memory 125566
+using proc of memory 816270for task 965
+Subtree 965 needs memory 125566
+using proc of memory 816270for task 1625
+Subtree 1625 needs memory 125566
+using proc of memory 816270for task 2285
+Subtree 2285 needs memory 125566
+using proc of memory 816270for task 3025
+Subtree 3025 needs memory 274140
+using proc of memory 816270for task 7940
+Subtree 7940 needs memory 272090
+using proc of memory 816270for task 8580
+Subtree 8580 needs memory 272090
+using proc of memory 816270for task 9220
+Subtree 9220 needs memory 272090
+using proc of memory 408135for task 9840
+Subtree 9840 needs memory 275690
+using proc of memory 408135for task 14320
+Subtree 14320 needs memory 272090
+using proc of memory 408135for task 14960
+Subtree 14960 needs memory 272090
+using proc of memory 408135for task 15600
+Subtree 15600 needs memory 272090
+using proc of memory 408135for task 16220
+Subtree 16220 needs memory 275690
+using proc of memory 408135for task 20700
+Subtree 20700 needs memory 272090
+using proc of memory 408135for task 21340
+Subtree 21340 needs memory 272090
+using proc of memory 408135for task 21980
+Subtree 21980 needs memory 272090
+using proc of memory 408135for task 22600
+Subtree 22600 needs memory 275690
+using proc of memory 272090for task 27080
+Subtree 27080 needs memory 272090
+using proc of memory 272090for task 27720
+Subtree 27720 needs memory 272090
+using proc of memory 272090for task 28360
+Subtree 28360 needs memory 272090
+using proc of memory 272090for task 28980
+Subtree 28980 needs memory 275690
+using proc of memory 272090for task 33460
+Subtree 33460 needs memory 272090
+using proc of memory 272090for task 34100
+Subtree 34100 needs memory 272090
+using proc of memory 272090for task 34740
+Subtree 34740 needs memory 272090
+using proc of memory 272090for task 35360
+Subtree 35360 needs memory 275690
+using proc of memory 272090for task 39820
+Subtree 39820 needs memory 47781
+2 step ready 
+Broken Edges { 1 22 305 965 1625 2285 3025 7940 8580 9220 9840 14320 14960 15600 16220 20700 21340 21980 22600 27080 27720 28360 28980 29620 33460 34100 34740 35360 36000 39820 }
+Makespan 67170.9 #trees: 30
+dump.0.1.amd.QY.case39-2136.tree.nf 62044.835333 2987473235
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 272090, MaxMemory: 816270.000000, CumulativeMemory: 13468455
+Load 45.000000, Occupied 100.000000
+maxoutD1471425.000000
+1 step ready 
+Broken Edges { 1 474 547 691 14491 28291 28897 42015 42017 42019 42021 42023 42025 42027 42029 42031 42033 42035 42037 42039 42041 42043 42045 42047 42049 42051 42053 }
+Makespan 998426 #trees: 27
+using proc of memory 4.41428e+06for task 1
+Subtree 1 needs memory 511293
+using proc of memory 4.41428e+06for task 474
+Subtree 474 needs memory 64402
+using proc of memory 4.41428e+06for task 547
+Subtree 547 needs memory 1.47142e+06
+using proc of memory 4.41428e+06for task 691
+Subtree 691 needs memory 1.47142e+06
+using proc of memory 4.41428e+06for task 14491
+Subtree 14491 needs memory 1.47142e+06
+using proc of memory 4.41428e+06for task 28291
+Subtree 28291 needs memory 53138
+using proc of memory 4.41428e+06for task 28897
+Subtree 28897 needs memory 424005
+using proc of memory 4.41428e+06for task 42015
+Subtree 42015 needs memory 64402
+using proc of memory 4.41428e+06for task 42017
+Subtree 42017 needs memory 64402
+using proc of memory 2.20714e+06for task 42019
+Subtree 42019 needs memory 64402
+using proc of memory 2.20714e+06for task 42021
+Subtree 42021 needs memory 64402
+using proc of memory 2.20714e+06for task 42023
+Subtree 42023 needs memory 64402
+using proc of memory 2.20714e+06for task 42025
+Subtree 42025 needs memory 64402
+using proc of memory 2.20714e+06for task 42027
+Subtree 42027 needs memory 64402
+using proc of memory 2.20714e+06for task 42029
+Subtree 42029 needs memory 64402
+using proc of memory 2.20714e+06for task 42031
+Subtree 42031 needs memory 64402
+using proc of memory 2.20714e+06for task 42033
+Subtree 42033 needs memory 64402
+using proc of memory 2.20714e+06for task 42035
+Subtree 42035 needs memory 64402
+using proc of memory 1.47142e+06for task 42037
+Subtree 42037 needs memory 64402
+using proc of memory 1.47142e+06for task 42039
+Subtree 42039 needs memory 64402
+using proc of memory 1.47142e+06for task 42041
+Subtree 42041 needs memory 64402
+using proc of memory 1.47142e+06for task 42043
+Subtree 42043 needs memory 64402
+using proc of memory 1.47142e+06for task 42045
+Subtree 42045 needs memory 64402
+using proc of memory 1.47142e+06for task 42047
+Subtree 42047 needs memory 64402
+using proc of memory 1.47142e+06for task 42049
+Subtree 42049 needs memory 64402
+using proc of memory 1.47142e+06for task 42051
+Subtree 42051 needs memory 64402
+using proc of memory 1.47142e+06for task 42053
+Subtree 42053 needs memory 64402
+2 step ready 
+Broken Edges { 1 474 547 691 14491 28291 28897 42015 42017 42019 42021 42023 42025 42027 42029 42031 42033 42035 42037 42039 42041 42043 42045 42047 42049 42051 42053 }
+Makespan 998426 #trees: 27
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 998426.022000 3003094949
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 1471425, MaxMemory: 4414275.000000, CumulativeMemory: 72835533
+Load 9.000000, Occupied 100.000000
+maxoutD3607298.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 3607298, MaxMemory: 10821894.000000, CumulativeMemory: 59520417
+1 step ready 
+Broken Edges { 1 727 26184 }
+Makespan 3.16364e+06 #trees: 3
+using proc of memory 1.08219e+07for task 1
+Subtree 1 needs memory 1.58123e+06
+using proc of memory 1.08219e+07for task 727
+Subtree 727 needs memory 3.6073e+06
+using proc of memory 1.08219e+07for task 26184
+Subtree 26184 needs memory 3.38632e+06
+2 step ready 
+Broken Edges { 1 727 26184 }
+Makespan 3.16364e+06 #trees: 3
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf 2990936.696000 3122421146
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 3607298, MaxMemory: 10821894.000000, CumulativeMemory: 59520417
+Load 26.000000, Occupied 33.000000
+maxoutD381938.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 381938, MaxMemory: 1145814.000000, CumulativeMemory: 6301977
+1 step ready 
+Broken Edges { 1 272 11624 17803 21103 24460 29860 36390 }
+Makespan 260725 #trees: 8
+using proc of memory 1.14581e+06for task 1
+Subtree 1 needs memory 381938
+using proc of memory 1.14581e+06for task 272
+Subtree 272 needs memory 241443
+using proc of memory 1.14581e+06for task 11624
+Subtree 11624 needs memory 193442
+using proc of memory 572907for task 17803
+Subtree 17803 needs memory 364658
+using proc of memory 572907for task 21103
+Subtree 21103 needs memory 366368
+using proc of memory 572907for task 24460
+Subtree 24460 needs memory 354433
+using proc of memory 381938for task 29860
+Subtree 29860 needs memory 369800
+using proc of memory 381938for task 36390
+Subtree 36390 needs memory 132098
+2 step ready 
+Broken Edges { 1 272 11624 17803 21103 24460 29860 36390 }
+Makespan 260725 #trees: 8
+dump.0.1.metis.Bova.rma10-374.tree.nf 260724.610000 3145141362
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 381938, MaxMemory: 1145814.000000, CumulativeMemory: 6301977
+Load 40.000000, Occupied 88.000000
+maxoutD2312.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 2312, MaxMemory: 6936.000000, CumulativeMemory: 38148
+1 step ready 
+Broken Edges { 1 30 5141 10262 15370 20498 25779 30729 35841 }
+Makespan 1686.22 #trees: 9
+using proc of memory 6936for task 1
+Subtree 1 needs memory 1326
+using proc of memory 6936for task 30
+Subtree 30 needs memory 2772
+using proc of memory 6936for task 5141
+Subtree 5141 needs memory 2054
+using proc of memory 3468for task 10262
+Subtree 10262 needs memory 2611
+using proc of memory 3468for task 15370
+Subtree 15370 needs memory 1940
+using proc of memory 3468for task 20498
+Subtree 20498 needs memory 2178
+using proc of memory 2312for task 25779
+Subtree 25779 needs memory 2584
+using proc of memory 2312for task 30729
+Subtree 30729 needs memory 1938
+using proc of memory 2312for task 35841
+Subtree 35841 needs memory 2733
+2 step ready 
+Broken Edges { 1 13 30 31 32 5141 10262 15370 20498 25779 25785 25796 30729 35841 35867 37124 }
+Makespan 2507.45 #trees: 16
+dump.0.1.metis.CPM.cz40948-2567.tree.nf 2365.134667 3159213944
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 2312, MaxMemory: 6936.000000, CumulativeMemory: 38148
+Load 40.000000, Occupied 100.000000
+maxoutD21898962.000000
+1 step ready 
+Broken Edges { 1 2927 47198 90766 92287 134454 178425 179007 179043 179067 179127 179139 179205 179249 179269 179309 179341 179388 179412 179430 179478 179587 179617 179644 179668 179710 179826 }
+Makespan 3.69608e+07 #trees: 27
+using proc of memory 6.56969e+07for task 1
+Subtree 1 needs memory 2.04498e+07
+using proc of memory 6.56969e+07for task 2927
+Subtree 2927 needs memory 1.49276e+07
+using proc of memory 6.56969e+07for task 47198
+Subtree 47198 needs memory 1.64738e+07
+using proc of memory 6.56969e+07for task 90766
+Subtree 90766 needs memory 4705
+using proc of memory 6.56969e+07for task 92287
+Subtree 92287 needs memory 2.1899e+07
+using proc of memory 6.56969e+07for task 134454
+Subtree 134454 needs memory 1.48369e+07
+using proc of memory 6.56969e+07for task 178425
+Subtree 178425 needs memory 90738
+using proc of memory 6.56969e+07for task 179007
+Subtree 179007 needs memory 9522
+using proc of memory 6.56969e+07for task 179043
+Subtree 179043 needs memory 4232
+using proc of memory 3.28484e+07for task 179067
+Subtree 179067 needs memory 15842
+using proc of memory 3.28484e+07for task 179127
+Subtree 179127 needs memory 882
+using proc of memory 3.28484e+07for task 179139
+Subtree 179139 needs memory 16562
+using proc of memory 3.28484e+07for task 179205
+Subtree 179205 needs memory 7442
+using proc of memory 3.28484e+07for task 179249
+Subtree 179249 needs memory 1682
+using proc of memory 3.28484e+07for task 179269
+Subtree 179269 needs memory 7442
+using proc of memory 3.28484e+07for task 179309
+Subtree 179309 needs memory 1458
+using proc of memory 3.28484e+07for task 179341
+Subtree 179341 needs memory 274
+using proc of memory 3.28484e+07for task 179388
+Subtree 179388 needs memory 274
+using proc of memory 2.1899e+07for task 179412
+Subtree 179412 needs memory 243
+using proc of memory 2.1899e+07for task 179430
+Subtree 179430 needs memory 803
+using proc of memory 2.1899e+07for task 179478
+Subtree 179478 needs memory 278
+using proc of memory 2.1899e+07for task 179587
+Subtree 179587 needs memory 278
+using proc of memory 2.1899e+07for task 179617
+Subtree 179617 needs memory 278
+using proc of memory 2.1899e+07for task 179644
+Subtree 179644 needs memory 278
+using proc of memory 2.1899e+07for task 179668
+Subtree 179668 needs memory 470
+using proc of memory 2.1899e+07for task 179710
+Subtree 179710 needs memory 278
+using proc of memory 2.1899e+07for task 179826
+Subtree 179826 needs memory 404
+2 step ready 
+Broken Edges { 1 2927 47198 90766 92287 134454 178425 179007 179043 179067 179127 179139 179205 179249 179269 179309 179341 179388 179412 179430 179478 179587 179617 179644 179668 179710 179826 }
+Makespan 3.69608e+07 #trees: 27
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 36960824.831333 3228750289
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 21898962, MaxMemory: 65696886.000000, CumulativeMemory: 1083998619
+Load 8.000000, Occupied 100.000000
+maxoutD3432258.000000
+1 step ready 
+Broken Edges { 1 424 13900 18343 23689 35332 }
+Makespan 2.69773e+06 #trees: 6
+using proc of memory 1.02968e+07for task 1
+Subtree 1 needs memory 3.43226e+06
+using proc of memory 1.02968e+07for task 424
+Subtree 424 needs memory 1.72138e+06
+using proc of memory 1.02968e+07for task 13900
+Subtree 13900 needs memory 2.70514e+06
+using proc of memory 1.02968e+07for task 18343
+Subtree 18343 needs memory 3.06529e+06
+using proc of memory 1.02968e+07for task 23689
+Subtree 23689 needs memory 1.7053e+06
+using proc of memory 1.02968e+07for task 35332
+Subtree 35332 needs memory 594050
+2 step ready 
+Broken Edges { 1 424 13900 18343 23689 35332 }
+Makespan 2.69773e+06 #trees: 6
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 2697725.978000 3506417923
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 3432258, MaxMemory: 10296774.000000, CumulativeMemory: 169896771
+Load 21.000000, Occupied 22.000000
+maxoutD85552.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 85552, MaxMemory: 256656.000000, CumulativeMemory: 1411608
+1 step ready 
+Broken Edges { 1 241 3142 5962 8581 11602 14221 16618 19519 }
+Makespan 45999.9 #trees: 9
+using proc of memory 256656for task 1
+Subtree 1 needs memory 92882
+using proc of memory 256656for task 241
+Subtree 241 needs memory 78482
+using proc of memory 256656for task 3142
+Subtree 3142 needs memory 84338
+using proc of memory 128328for task 5962
+Subtree 5962 needs memory 78482
+using proc of memory 128328for task 8581
+Subtree 8581 needs memory 78482
+using proc of memory 128328for task 11602
+Subtree 11602 needs memory 99824
+using proc of memory 85552for task 14221
+Subtree 14221 needs memory 78482
+using proc of memory 85552for task 16618
+Subtree 16618 needs memory 85552
+using proc of memory 85552for task 19519
+Subtree 19519 needs memory 78482
+2 step ready 
+Broken Edges { 1 241 3142 5962 8581 11602 14221 16618 19519 }
+Makespan 45999.9 #trees: 9
+dump.0.1.metis.Goodwin.rim-447.tree.nf 45999.924000 3515916364
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 85552, MaxMemory: 256656.000000, CumulativeMemory: 1411608
+Load 47.000000, Occupied 100.000000
+maxoutD46818.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 46818, MaxMemory: 140454.000000, CumulativeMemory: 772497
+1 step ready 
+Broken Edges { 1 2 24906 55841 59051 93811 100742 141401 166718 }
+Makespan 12367.2 #trees: 9
+using proc of memory 140454for task 1
+Subtree 1 needs memory 32
+using proc of memory 140454for task 2
+Subtree 2 needs memory 10083
+using proc of memory 140454for task 24906
+Subtree 24906 needs memory 39200
+using proc of memory 70227for task 55841
+Subtree 55841 needs memory 1827
+using proc of memory 70227for task 59051
+Subtree 59051 needs memory 42632
+using proc of memory 70227for task 93811
+Subtree 93811 needs memory 2888
+using proc of memory 46818for task 100742
+Subtree 100742 needs memory 51318
+using proc of memory 46818for task 141401
+Subtree 141401 needs memory 10041
+using proc of memory 46818for task 166718
+Subtree 166718 needs memory 6579
+2 step ready 
+Broken Edges { 1 2 24906 55841 59051 93811 100742 122284 141401 166718 }
+Makespan 20467.2 #trees: 10
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 15326.153333 3574789684
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 46818, MaxMemory: 140454.000000, CumulativeMemory: 772497
+Load 18.000000, Occupied 100.000000
+maxoutD30112566.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 30112566, MaxMemory: 90337698.000000, CumulativeMemory: 496857339
+1 step ready 
+Broken Edges { 1 2029 52730 }
+Makespan 5.74227e+07 #trees: 3
+using proc of memory 9.03377e+07for task 1
+Subtree 1 needs memory 1.23384e+07
+using proc of memory 9.03377e+07for task 2029
+Subtree 2029 needs memory 3.23365e+07
+using proc of memory 9.03377e+07for task 52730
+Subtree 52730 needs memory 3.01031e+07
+2 step ready 
+Broken Edges { 1 2029 52730 }
+Makespan 5.74227e+07 #trees: 3
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 50962803.922667 3693067667
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 30112566, MaxMemory: 90337698.000000, CumulativeMemory: 496857339
+Load 27.000000, Occupied 33.000000
+maxoutD262088.000000
+1 step ready 
+Broken Edges { 1 440 5206 10756 15834 20912 41375 46266 51263 56420 61657 82640 82641 82642 82643 82644 82645 82646 82647 82648 82649 82650 82651 82652 82653 82654 82655 }
+Makespan 115710 #trees: 27
+using proc of memory 786264for task 1
+Subtree 1 needs memory 273841
+using proc of memory 786264for task 440
+Subtree 440 needs memory 136242
+using proc of memory 786264for task 5206
+Subtree 5206 needs memory 123008
+using proc of memory 786264for task 10756
+Subtree 10756 needs memory 110450
+using proc of memory 786264for task 15834
+Subtree 15834 needs memory 132098
+using proc of memory 786264for task 20912
+Subtree 20912 needs memory 187272
+using proc of memory 786264for task 41375
+Subtree 41375 needs memory 124002
+using proc of memory 786264for task 46266
+Subtree 46266 needs memory 115200
+using proc of memory 786264for task 51263
+Subtree 51263 needs memory 115200
+using proc of memory 393132for task 56420
+Subtree 56420 needs memory 141512
+using proc of memory 393132for task 61657
+Subtree 61657 needs memory 186050
+using proc of memory 393132for task 82640
+Subtree 82640 needs memory 1
+using proc of memory 393132for task 82641
+Subtree 82641 needs memory 1
+using proc of memory 393132for task 82642
+Subtree 82642 needs memory 1
+using proc of memory 393132for task 82643
+Subtree 82643 needs memory 1
+using proc of memory 393132for task 82644
+Subtree 82644 needs memory 1
+using proc of memory 393132for task 82645
+Subtree 82645 needs memory 1
+using proc of memory 393132for task 82646
+Subtree 82646 needs memory 1
+using proc of memory 262088for task 82647
+Subtree 82647 needs memory 1
+using proc of memory 262088for task 82648
+Subtree 82648 needs memory 1
+using proc of memory 262088for task 82649
+Subtree 82649 needs memory 1
+using proc of memory 262088for task 82650
+Subtree 82650 needs memory 1
+using proc of memory 262088for task 82651
+Subtree 82651 needs memory 1
+using proc of memory 262088for task 82652
+Subtree 82652 needs memory 1
+using proc of memory 262088for task 82653
+Subtree 82653 needs memory 1
+using proc of memory 262088for task 82654
+Subtree 82654 needs memory 1
+using proc of memory 262088for task 82655
+Subtree 82655 needs memory 1
+2 step ready 
+Broken Edges { 1 440 5206 10756 15834 20912 41375 46266 51263 56420 61657 82640 82641 82642 82643 82644 82645 82646 82647 82648 82649 82650 82651 82652 82653 82654 82655 }
+Makespan 115710 #trees: 27
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf 115710.388667 4210247163
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 262088, MaxMemory: 786264.000000, CumulativeMemory: 12973356
+Load 12.000000, Occupied 100.000000
+maxoutD396050.000000
+1 step ready 
+Broken Edges { 1 162 13042 22641 24935 27289 29585 32137 34441 36300 40694 41947 43201 45742 50882 }
+Makespan 159802 #trees: 15
+using proc of memory 1.18815e+06for task 1
+Subtree 1 needs memory 421650
+using proc of memory 1.18815e+06for task 162
+Subtree 162 needs memory 131072
+using proc of memory 1.18815e+06for task 13042
+Subtree 13042 needs memory 159862
+using proc of memory 1.18815e+06for task 22641
+Subtree 22641 needs memory 115200
+using proc of memory 1.18815e+06for task 24935
+Subtree 24935 needs memory 109512
+using proc of memory 1.18815e+06for task 27289
+Subtree 27289 needs memory 120050
+using proc of memory 1.18815e+06for task 29585
+Subtree 29585 needs memory 107648
+using proc of memory 1.18815e+06for task 32137
+Subtree 32137 needs memory 64800
+using proc of memory 1.18815e+06for task 34441
+Subtree 34441 needs memory 65522
+using proc of memory 594075for task 36300
+Subtree 36300 needs memory 109512
+using proc of memory 594075for task 40694
+Subtree 40694 needs memory 69192
+using proc of memory 594075for task 41947
+Subtree 41947 needs memory 57122
+using proc of memory 594075for task 43201
+Subtree 43201 needs memory 133128
+using proc of memory 594075for task 45742
+Subtree 45742 needs memory 115200
+using proc of memory 594075for task 50882
+Subtree 50882 needs memory 131329
+2 step ready 
+Broken Edges { 1 162 13042 22641 24935 27289 29585 32137 34441 36300 40694 41947 43201 45742 50882 }
+Makespan 159802 #trees: 15
+dump.0.1.metis.Shyy.shyy161-809.tree.nf 159802.266667 4573793298
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 396050, MaxMemory: 1188150.000000, CumulativeMemory: 19604475
+Load 13.000000, Occupied 55.000000
+maxoutD3160098.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 3160098, MaxMemory: 9480294.000000, CumulativeMemory: 52141617
+1 step ready 
+Broken Edges { 1 872 13470 }
+Makespan 2.11745e+06 #trees: 3
+using proc of memory 9.48029e+06for task 1
+Subtree 1 needs memory 2.27592e+06
+using proc of memory 9.48029e+06for task 872
+Subtree 872 needs memory 3.11501e+06
+using proc of memory 9.48029e+06for task 13470
+Subtree 13470 needs memory 3.1601e+06
+2 step ready 
+Broken Edges { 1 872 13470 }
+Makespan 2.11745e+06 #trees: 3
+dump.0.1.metis.Wang.wang4-833.tree.nf 2117447.601333 4882915023
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 3160098, MaxMemory: 9480294.000000, CumulativeMemory: 52141617
+Load 30.000000, Occupied 33.000000
+maxoutD5524488.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 5524488, MaxMemory: 16573464.000000, CumulativeMemory: 91154052
+1 step ready 
+Broken Edges { 1 1664 29040 56870 84541 112211 }
+Makespan 6.78065e+06 #trees: 6
+using proc of memory 1.65735e+07for task 1
+Subtree 1 needs memory 6.12874e+06
+using proc of memory 1.65735e+07for task 1664
+Subtree 1664 needs memory 5.30077e+06
+using proc of memory 1.65735e+07for task 29040
+Subtree 29040 needs memory 4.91725e+06
+using proc of memory 8.28673e+06for task 56870
+Subtree 56870 needs memory 4.01011e+06
+using proc of memory 8.28673e+06for task 84541
+Subtree 84541 needs memory 4.67568e+06
+using proc of memory 8.28673e+06for task 112211
+Subtree 112211 needs memory 9
+2 step ready 
+Broken Edges { 1 1664 29040 56870 84541 112211 }
+Makespan 6.78065e+06 #trees: 6
+dump.0.1.metis.Watson.Baumann-1855.tree.nf 6780649.463333 4916614927
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 5524488, MaxMemory: 16573464.000000, CumulativeMemory: 91154052
+Load 33.000000, Occupied 66.000000
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 58 511 964 1417 1874 5205 5627 6049 6470 9424 9846 10268 10689 13643 14065 14487 14908 17862 18284 18706 19127 22081 22503 22925 23346 26299 }
+Makespan 85919.8 #trees: 27
+using proc of memory 816270for task 1
+Subtree 1 needs memory 125566
+using proc of memory 816270for task 58
+Subtree 58 needs memory 125566
+using proc of memory 816270for task 511
+Subtree 511 needs memory 125566
+using proc of memory 816270for task 964
+Subtree 964 needs memory 125566
+using proc of memory 816270for task 1417
+Subtree 1417 needs memory 125566
+using proc of memory 816270for task 1874
+Subtree 1874 needs memory 274140
+using proc of memory 816270for task 5205
+Subtree 5205 needs memory 272090
+using proc of memory 816270for task 5627
+Subtree 5627 needs memory 272090
+using proc of memory 816270for task 6049
+Subtree 6049 needs memory 272090
+using proc of memory 408135for task 6470
+Subtree 6470 needs memory 275690
+using proc of memory 408135for task 9424
+Subtree 9424 needs memory 272090
+using proc of memory 408135for task 9846
+Subtree 9846 needs memory 272090
+using proc of memory 408135for task 10268
+Subtree 10268 needs memory 272090
+using proc of memory 408135for task 10689
+Subtree 10689 needs memory 275690
+using proc of memory 408135for task 13643
+Subtree 13643 needs memory 272090
+using proc of memory 408135for task 14065
+Subtree 14065 needs memory 272090
+using proc of memory 408135for task 14487
+Subtree 14487 needs memory 272090
+using proc of memory 408135for task 14908
+Subtree 14908 needs memory 275690
+using proc of memory 272090for task 17862
+Subtree 17862 needs memory 272090
+using proc of memory 272090for task 18284
+Subtree 18284 needs memory 272090
+using proc of memory 272090for task 18706
+Subtree 18706 needs memory 272090
+using proc of memory 272090for task 19127
+Subtree 19127 needs memory 275690
+using proc of memory 272090for task 22081
+Subtree 22081 needs memory 272090
+using proc of memory 272090for task 22503
+Subtree 22503 needs memory 272090
+using proc of memory 272090for task 22925
+Subtree 22925 needs memory 272090
+using proc of memory 272090for task 23346
+Subtree 23346 needs memory 275690
+using proc of memory 272090for task 26299
+Subtree 26299 needs memory 47781
+2 step ready 
+Broken Edges { 1 3 58 511 964 1417 1874 5205 5627 6049 6470 9424 9846 10268 10689 13643 14065 14487 14908 17862 18284 18706 19127 19549 22081 22503 22925 23346 23768 26299 }
+Makespan 140145 #trees: 30
+dump.1.1.amd.QY.case39-2136.tree.nf 148367.668667 5682004307
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 272090, MaxMemory: 816270.000000, CumulativeMemory: 13468455
+Load 45.000000, Occupied 100.000000
+maxoutD2211.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 2211, MaxMemory: 6633.000000, CumulativeMemory: 36480
+1 step ready 
+Broken Edges { 1 3 3312 6280 9588 12570 15667 18848 21812 }
+Makespan 1721.71 #trees: 9
+using proc of memory 6633for task 1
+Subtree 1 needs memory 1326
+using proc of memory 6633for task 3
+Subtree 3 needs memory 2654
+using proc of memory 6633for task 3312
+Subtree 3312 needs memory 1985
+using proc of memory 3316.5for task 6280
+Subtree 6280 needs memory 2611
+using proc of memory 3316.5for task 9588
+Subtree 9588 needs memory 1942
+using proc of memory 3316.5for task 12570
+Subtree 12570 needs memory 2038
+using proc of memory 2211for task 15667
+Subtree 15667 needs memory 2544
+using proc of memory 2211for task 18848
+Subtree 18848 needs memory 1912
+using proc of memory 2211for task 21812
+Subtree 21812 needs memory 2607
+2 step ready 
+Broken Edges { 1 2 3 3312 6280 9588 12570 15667 15668 18848 21812 21815 22683 23544 }
+Makespan 1921.4 #trees: 14
+dump.1.1.metis.CPM.cz40948-2567.tree.nf 1907.010667 5698519655
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 2211, MaxMemory: 6633.000000, CumulativeMemory: 36480
+Load 41.000000, Occupied 100.000000
+maxoutD65524.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 65524, MaxMemory: 196572.000000, CumulativeMemory: 1081146
+1 step ready 
+Broken Edges { 1 4 44575 66502 66503 88564 88726 133562 155253 }
+Makespan 21389.6 #trees: 9
+using proc of memory 196572for task 1
+Subtree 1 needs memory 27587
+using proc of memory 196572for task 4
+Subtree 4 needs memory 65524
+using proc of memory 196572for task 44575
+Subtree 44575 needs memory 56569
+using proc of memory 98286for task 66502
+Subtree 66502 needs memory 256
+using proc of memory 98286for task 66503
+Subtree 66503 needs memory 59026
+using proc of memory 98286for task 88564
+Subtree 88564 needs memory 256
+using proc of memory 65524for task 88726
+Subtree 88726 needs memory 61162
+using proc of memory 65524for task 133562
+Subtree 133562 needs memory 63578
+using proc of memory 65524for task 155253
+Subtree 155253 needs memory 58006
+2 step ready 
+Broken Edges { 1 4 44575 66502 66503 88564 88726 133562 155253 }
+Makespan 21389.6 #trees: 9
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 21389.586000 5743713744
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 65524, MaxMemory: 196572.000000, CumulativeMemory: 1081146
+Load 30.000000, Occupied 100.000000
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 37 324 611 898 1189 3284 3546 3808 4069 5903 6165 6427 6688 8522 8784 9046 9307 11141 11403 11665 11926 13760 14022 14284 14545 16378 }
+Makespan 87017.1 #trees: 27
+using proc of memory 816270for task 1
+Subtree 1 needs memory 144490
+using proc of memory 816270for task 37
+Subtree 37 needs memory 144490
+using proc of memory 816270for task 324
+Subtree 324 needs memory 144490
+using proc of memory 816270for task 611
+Subtree 611 needs memory 144490
+using proc of memory 816270for task 898
+Subtree 898 needs memory 144490
+using proc of memory 816270for task 1189
+Subtree 1189 needs memory 274140
+using proc of memory 816270for task 3284
+Subtree 3284 needs memory 272090
+using proc of memory 816270for task 3546
+Subtree 3546 needs memory 272090
+using proc of memory 816270for task 3808
+Subtree 3808 needs memory 272090
+using proc of memory 408135for task 4069
+Subtree 4069 needs memory 275690
+using proc of memory 408135for task 5903
+Subtree 5903 needs memory 272090
+using proc of memory 408135for task 6165
+Subtree 6165 needs memory 272090
+using proc of memory 408135for task 6427
+Subtree 6427 needs memory 272090
+using proc of memory 408135for task 6688
+Subtree 6688 needs memory 275690
+using proc of memory 408135for task 8522
+Subtree 8522 needs memory 272090
+using proc of memory 408135for task 8784
+Subtree 8784 needs memory 272090
+using proc of memory 408135for task 9046
+Subtree 9046 needs memory 272090
+using proc of memory 408135for task 9307
+Subtree 9307 needs memory 275690
+using proc of memory 272090for task 11141
+Subtree 11141 needs memory 272090
+using proc of memory 272090for task 11403
+Subtree 11403 needs memory 272090
+using proc of memory 272090for task 11665
+Subtree 11665 needs memory 272090
+using proc of memory 272090for task 11926
+Subtree 11926 needs memory 275690
+using proc of memory 272090for task 13760
+Subtree 13760 needs memory 272090
+using proc of memory 272090for task 14022
+Subtree 14022 needs memory 272090
+using proc of memory 272090for task 14284
+Subtree 14284 needs memory 272090
+using proc of memory 272090for task 14545
+Subtree 14545 needs memory 275690
+using proc of memory 272090for task 16378
+Subtree 16378 needs memory 45764
+2 step ready 
+Broken Edges { 1 3 37 324 611 898 1189 3284 3546 3808 4069 5903 6165 6427 6688 8522 8784 9046 9307 11141 11403 11665 11926 12188 13760 14022 14284 14545 14807 16378 }
+Makespan 141242 #trees: 30
+dump.1.2.amd.QY.case39-2136.tree.nf 149370.785333 5850991191
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 272090, MaxMemory: 816270.000000, CumulativeMemory: 13468455
+task assigned and no mem occupation 11926
+Load 45.000000, Occupied 100.000000
+maxoutD272090.000000
+1 step ready 
+Broken Edges { 1 19 161 303 445 591 1633 1765 1897 2028 2952 3084 3216 3347 4271 4403 4535 4666 5590 5722 5854 5985 6909 7041 7173 7304 8227 }
+Makespan 89094.2 #trees: 27
+using proc of memory 816270for task 1
+Subtree 1 needs memory 187810
+using proc of memory 816270for task 19
+Subtree 19 needs memory 187810
+using proc of memory 816270for task 161
+Subtree 161 needs memory 187810
+using proc of memory 816270for task 303
+Subtree 303 needs memory 187810
+using proc of memory 816270for task 445
+Subtree 445 needs memory 187810
+using proc of memory 816270for task 591
+Subtree 591 needs memory 274140
+using proc of memory 816270for task 1633
+Subtree 1633 needs memory 272090
+using proc of memory 816270for task 1765
+Subtree 1765 needs memory 272090
+using proc of memory 816270for task 1897
+Subtree 1897 needs memory 272090
+using proc of memory 408135for task 2028
+Subtree 2028 needs memory 275690
+using proc of memory 408135for task 2952
+Subtree 2952 needs memory 272090
+using proc of memory 408135for task 3084
+Subtree 3084 needs memory 272090
+using proc of memory 408135for task 3216
+Subtree 3216 needs memory 272090
+using proc of memory 408135for task 3347
+Subtree 3347 needs memory 275690
+using proc of memory 408135for task 4271
+Subtree 4271 needs memory 272090
+using proc of memory 408135for task 4403
+Subtree 4403 needs memory 272090
+using proc of memory 408135for task 4535
+Subtree 4535 needs memory 272090
+using proc of memory 408135for task 4666
+Subtree 4666 needs memory 275690
+using proc of memory 272090for task 5590
+Subtree 5590 needs memory 272090
+using proc of memory 272090for task 5722
+Subtree 5722 needs memory 272090
+using proc of memory 272090for task 5854
+Subtree 5854 needs memory 272090
+using proc of memory 272090for task 5985
+Subtree 5985 needs memory 275690
+using proc of memory 272090for task 6909
+Subtree 6909 needs memory 272090
+using proc of memory 272090for task 7041
+Subtree 7041 needs memory 272090
+using proc of memory 272090for task 7173
+Subtree 7173 needs memory 272090
+using proc of memory 272090for task 7304
+Subtree 7304 needs memory 275690
+using proc of memory 272090for task 8227
+Subtree 8227 needs memory 42120
+2 step ready 
+Broken Edges { 1 3 19 161 303 445 591 1633 1765 1897 2028 2952 3084 3216 3347 4271 4403 4535 4666 5590 5722 5854 5985 6117 6909 7041 7173 7304 7436 8227 }
+Makespan 143319 #trees: 30
+dump.1.3.amd.QY.case39-2136.tree.nf 151238.606667 5859110346
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 272090, MaxMemory: 816270.000000, CumulativeMemory: 13468455
+Load 47.000000, Occupied 100.000000
+maxoutD34085496.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34085496, MaxMemory: 102256488.000000, CumulativeMemory: 562410684
+1 step ready 
+Broken Edges { 1 5 77278 154923 155408 155851 156098 156307 156635 }
+Makespan 6.55424e+07 #trees: 9
+using proc of memory 1.02256e+08for task 1
+Subtree 1 needs memory 1.23756e+07
+using proc of memory 1.02256e+08for task 5
+Subtree 5 needs memory 3.37034e+07
+using proc of memory 1.02256e+08for task 77278
+Subtree 77278 needs memory 3.40855e+07
+using proc of memory 5.11282e+07for task 154923
+Subtree 154923 needs memory 498
+using proc of memory 5.11282e+07for task 155408
+Subtree 155408 needs memory 1031
+using proc of memory 5.11282e+07for task 155851
+Subtree 155851 needs memory 575
+using proc of memory 3.40855e+07for task 156098
+Subtree 156098 needs memory 399
+using proc of memory 3.40855e+07for task 156307
+Subtree 156307 needs memory 373
+using proc of memory 3.40855e+07for task 156635
+Subtree 156635 needs memory 228
+2 step ready 
+Broken Edges { 1 5 77278 154923 155408 155851 156098 156307 156635 }
+Makespan 6.55424e+07 #trees: 9
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 65542449.327334 5869683837
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34085496, MaxMemory: 102256488.000000, CumulativeMemory: 562410684
+Load 14.000000, Occupied 100.000000
+maxoutD34085496.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34085496, MaxMemory: 102256488.000000, CumulativeMemory: 562410684
+1 step ready 
+Broken Edges { 1 5 49690 98946 99366 99506 99673 99800 100017 }
+Makespan 6.66025e+07 #trees: 9
+using proc of memory 1.02256e+08for task 1
+Subtree 1 needs memory 1.23756e+07
+using proc of memory 1.02256e+08for task 5
+Subtree 5 needs memory 3.37034e+07
+using proc of memory 1.02256e+08for task 49690
+Subtree 49690 needs memory 3.40855e+07
+using proc of memory 5.11282e+07for task 98946
+Subtree 98946 needs memory 889
+using proc of memory 5.11282e+07for task 99366
+Subtree 99366 needs memory 1507
+using proc of memory 5.11282e+07for task 99506
+Subtree 99506 needs memory 1015
+using proc of memory 3.40855e+07for task 99673
+Subtree 99673 needs memory 823
+using proc of memory 3.40855e+07for task 99800
+Subtree 99800 needs memory 602
+using proc of memory 3.40855e+07for task 100017
+Subtree 100017 needs memory 620
+2 step ready 
+Broken Edges { 1 5 49690 98946 99366 99506 99673 99800 100017 }
+Makespan 6.66025e+07 #trees: 9
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 66602516.889334 6115576013
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34085496, MaxMemory: 102256488.000000, CumulativeMemory: 562410684
+Load 14.000000, Occupied 100.000000
+maxoutD290322.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 290322, MaxMemory: 870966.000000, CumulativeMemory: 4790313
+1 step ready 
+Broken Edges { 1 384 4864 9344 18688 27840 32320 37762 37763 }
+Makespan 161374 #trees: 9
+using proc of memory 870966for task 1
+Subtree 1 needs memory 306198
+using proc of memory 870966for task 384
+Subtree 384 needs memory 240818
+using proc of memory 870966for task 4864
+Subtree 4864 needs memory 243602
+using proc of memory 435483for task 9344
+Subtree 9344 needs memory 243602
+using proc of memory 435483for task 18688
+Subtree 18688 needs memory 243602
+using proc of memory 435483for task 27840
+Subtree 27840 needs memory 249218
+using proc of memory 290322for task 32320
+Subtree 32320 needs memory 281250
+using proc of memory 290322for task 37762
+Subtree 37762 needs memory 1
+using proc of memory 290322for task 37763
+Subtree 37763 needs memory 1
+2 step ready 
+Broken Edges { 1 384 4864 9344 18688 27840 32320 37762 37763 }
+Makespan 161374 #trees: 9
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 161373.822000 6157609483
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 290322, MaxMemory: 870966.000000, CumulativeMemory: 4790313
+Load 37.000000, Occupied 100.000000
+maxoutD290322.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 290322, MaxMemory: 870966.000000, CumulativeMemory: 4790313
+1 step ready 
+Broken Edges { 1 384 4864 9344 18688 27840 32320 37762 37763 }
+Makespan 161374 #trees: 9
+using proc of memory 870966for task 1
+Subtree 1 needs memory 306198
+using proc of memory 870966for task 384
+Subtree 384 needs memory 240818
+using proc of memory 870966for task 4864
+Subtree 4864 needs memory 243602
+using proc of memory 435483for task 9344
+Subtree 9344 needs memory 243602
+using proc of memory 435483for task 18688
+Subtree 18688 needs memory 243602
+using proc of memory 435483for task 27840
+Subtree 27840 needs memory 249218
+using proc of memory 290322for task 32320
+Subtree 32320 needs memory 281250
+using proc of memory 290322for task 37762
+Subtree 37762 needs memory 1
+using proc of memory 290322for task 37763
+Subtree 37763 needs memory 1
+2 step ready 
+Broken Edges { 1 384 4864 9344 18688 27840 32320 37762 37763 }
+Makespan 161374 #trees: 9
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 161373.822000 6204734655
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 290322, MaxMemory: 870966.000000, CumulativeMemory: 4790313
+Load 37.000000, Occupied 100.000000
+homogeneous many small
+maxoutD324288.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 324288, MaxMemory: 324288.000000, CumulativeMemory: 2918592
+homogeneous average average
+maxoutD324288.000000
+small cluster
+Cluster:
+#Nodes: 6, Configuration: 0, MinMemory: 486432, MaxMemory: 486432.000000, CumulativeMemory: 2918592
+homogeneous few big
+maxoutD324288.000000
+small cluster
+Cluster:
+#Nodes: 3, Configuration: 0, MinMemory: 972864, MaxMemory: 972864.000000, CumulativeMemory: 2918592

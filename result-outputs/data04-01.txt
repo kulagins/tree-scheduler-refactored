@@ -1,0 +1,262 @@
+small with extra output
+2-level
+heterogeneous
+ratio: 100
+random_tree_1_2000 3453.350845 51672
+ratio: 88.1816
+small cluster
+random_tree_2_2000 2913.999710 106432
+ratio: 88.0326
+small cluster
+random_tree_3_2000 8869.971222 197476
+ratio: 75.4877
+small cluster
+random_tree_4_2000 11476.255799 286254
+ratio: 75.943
+small cluster
+random_tree_5_4000 8791.216163 487759
+ratio: 78.4007
+small cluster
+random_tree_6_4000 11241.375827 1123457
+ratio: 87.9833
+small cluster
+random_tree_7_4000 7676.026051 1297934
+ratio: 77.7818
+small cluster
+random_tree_8_4000 4734.679452 1567706
+ratio: 80.9483
+small cluster
+random_tree_9_10000 11140.519175 3443142
+ratio: 89.0476
+small cluster
+random_tree_10_10000 13382.043800 4469374
+ratio: 81.0856
+small cluster
+random_tree_11_20000 16881.098721 7180738
+ratio: 100
+random_tree_0_15 6168.291004 7623326
+ratio: 100
+random_tree_0_15 6168.291004 7623523
+homogeneous many small
+ratio: 100
+random_tree_1_2000 3453.350845 25751
+ratio: 88.1816
+small cluster
+random_tree_2_2000 4205.622221 86935
+ratio: 88.0326
+small cluster
+random_tree_3_2000 8869.971222 179822
+ratio: 75.4877
+small cluster
+random_tree_4_2000 -1.000000 326450
+ratio: 75.943
+small cluster
+random_tree_5_4000 -1.000000 880667
+ratio: 78.4007
+small cluster
+random_tree_6_4000 -1.000000 1884951
+ratio: 87.9833
+small cluster
+random_tree_7_4000 10871.212172 2185296
+ratio: 77.7818
+small cluster
+random_tree_8_4000 -1.000000 2564645
+ratio: 80.9483
+small cluster
+random_tree_9_10000 15068.907186 5521270
+ratio: 89.0476
+small cluster
+random_tree_10_10000 -1.000000 10479112
+ratio: 81.0856
+small cluster
+random_tree_11_20000 -1.000000 18575437
+ratio: 100
+random_tree_0_15 6168.291004 18939540
+ratio: 100
+random_tree_0_15 6168.291004 18939771
+homogeneous few big
+ratio: 100
+random_tree_1_2000 3468.675743 31000
+ratio: 88.1816
+small cluster
+random_tree_2_2000 3047.882781 90622
+ratio: 88.0326
+small cluster
+random_tree_3_2000 8949.446697 199177
+ratio: 75.4877
+small cluster
+random_tree_4_2000 7820.893700 280153
+ratio: 75.943
+small cluster
+random_tree_5_4000 8932.319549 430798
+ratio: 78.4007
+small cluster
+random_tree_6_4000 8032.061375 960585
+ratio: 87.9833
+small cluster
+random_tree_7_4000 7877.880045 1147091
+ratio: 77.7818
+small cluster
+random_tree_8_4000 4838.163075 1451496
+ratio: 80.9483
+small cluster
+random_tree_9_10000 11593.687878 3487961
+ratio: 89.0476
+small cluster
+random_tree_10_10000 13803.242077 4313888
+ratio: 81.0856
+small cluster
+random_tree_11_20000 17357.850822 7081507
+ratio: 100
+random_tree_0_15 6168.291004 7507865
+ratio: 100
+random_tree_0_15 6168.291004 7508131
+3-level
+heterogeneous
+ratio: 100
+random_tree_1_2000 3453.350845 38074
+ratio: 88.1816
+small cluster
+random_tree_2_2000 2913.999710 101112
+ratio: 88.0326
+small cluster
+random_tree_3_2000 8869.971222 202061
+ratio: 75.4877
+small cluster
+random_tree_4_2000 11476.255799 344897
+ratio: 75.943
+small cluster
+random_tree_5_4000 8791.216163 633238
+ratio: 78.4007
+small cluster
+random_tree_6_4000 11241.375827 1311833
+ratio: 87.9833
+small cluster
+random_tree_7_4000 7676.026051 1500740
+ratio: 77.7818
+small cluster
+random_tree_8_4000 4734.679452 1829949
+ratio: 80.9483
+small cluster
+random_tree_9_10000 11140.519175 4034298
+ratio: 89.0476
+small cluster
+random_tree_10_10000 13382.043800 4888864
+ratio: 81.0856
+small cluster
+random_tree_11_20000 16881.098721 7575751
+ratio: 100
+random_tree_0_15 6168.291004 8068863
+ratio: 100
+random_tree_0_15 6168.291004 8069152
+homogeneous many small
+ratio: 100
+random_tree_1_2000 3453.350845 35068
+ratio: 88.1816
+small cluster
+random_tree_2_2000 4205.622221 107687
+ratio: 88.0326
+small cluster
+random_tree_3_2000 8869.971222 212289
+ratio: 75.4877
+small cluster
+random_tree_4_2000 -1.000000 377619
+ratio: 75.943
+small cluster
+random_tree_5_4000 -1.000000 907030
+ratio: 78.4007
+small cluster
+random_tree_6_4000 -1.000000 2020703
+ratio: 87.9833
+small cluster
+random_tree_7_4000 10871.212172 2378553
+ratio: 77.7818
+small cluster
+random_tree_8_4000 -1.000000 2822579
+ratio: 80.9483
+small cluster
+random_tree_9_10000 15068.907186 6158952
+ratio: 89.0476
+small cluster
+random_tree_10_10000 -1.000000 11944006
+ratio: 81.0856
+small cluster
+random_tree_11_20000 -1.000000 20082663
+ratio: 100
+random_tree_0_15 6168.291004 20454644
+ratio: 100
+random_tree_0_15 6168.291004 20454836
+homogeneous average average
+ratio: 100
+random_tree_1_2000 3468.675743 25649
+ratio: 88.1816
+small cluster
+random_tree_2_2000 3047.882781 77964
+ratio: 88.0326
+small cluster
+random_tree_3_2000 8949.446697 174108
+ratio: 75.4877
+small cluster
+random_tree_4_2000 7820.893700 248453
+ratio: 75.943
+small cluster
+random_tree_5_4000 8932.319549 387017
+ratio: 78.4007
+small cluster
+random_tree_6_4000 8032.061375 860636
+ratio: 87.9833
+small cluster
+random_tree_7_4000 7877.880045 1030660
+ratio: 77.7818
+small cluster
+random_tree_8_4000 4838.163075 1310369
+ratio: 80.9483
+small cluster
+random_tree_9_10000 11593.687878 3159565
+ratio: 89.0476
+small cluster
+random_tree_10_10000 13803.242077 4009615
+ratio: 81.0856
+small cluster
+random_tree_11_20000 17357.850822 6784402
+ratio: 100
+random_tree_0_15 6168.291004 7177303
+ratio: 100
+random_tree_0_15 6168.291004 7177620
+homogeneous few big
+ratio: 100
+random_tree_1_2000 3547.135937 46401
+ratio: 88.1816
+small cluster
+random_tree_2_2000 3307.325368 113772
+ratio: 88.0326
+small cluster
+random_tree_3_2000 9188.170044 233692
+ratio: 75.4877
+small cluster
+random_tree_4_2000 8061.508653 327901
+ratio: 75.943
+small cluster
+random_tree_5_4000 9406.846047 494802
+ratio: 78.4007
+small cluster
+random_tree_6_4000 8311.565381 903060
+ratio: 87.9833
+small cluster
+random_tree_7_4000 8172.866694 1147703
+ratio: 77.7818
+small cluster
+random_tree_8_4000 5265.683407 1419735
+ratio: 80.9483
+small cluster
+random_tree_9_10000 12087.687381 4044066
+ratio: 89.0476
+small cluster
+random_tree_10_10000 14286.848528 4888515
+ratio: 81.0856
+small cluster
+random_tree_11_20000 17859.053800 8209776
+ratio: 100
+random_tree_0_15 6168.291004 8590536
+ratio: 100
+random_tree_0_15 6168.291004 8590821

@@ -1,0 +1,381 @@
+small with extra output
+2-level
+heterogeneous
+ratio: 100
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 15584, MaxMemory: 46752.000000, CumulativeMemory: 981792
+random_tree_1_2000 3453.350845 16283
+ratio: 88.1816
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 9379, MaxMemory: 28137.000000, CumulativeMemory: 590877
+random_tree_2_2000 2748.447237 10367
+ratio: 88.0326
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 29711, MaxMemory: 89133.000000, CumulativeMemory: 1871793
+random_tree_3_2000 8698.381603 16685
+ratio: 75.4877
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 22484, MaxMemory: 67452.000000, CumulativeMemory: 1416492
+random_tree_4_2000 11291.867632 36771
+ratio: 75.943
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 23575, MaxMemory: 70725.000000, CumulativeMemory: 1485225
+random_tree_5_4000 11989.382588 98010
+ratio: 78.4007
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 23285, MaxMemory: 69855.000000, CumulativeMemory: 1466955
+random_tree_6_4000 10599.904780 146190
+ratio: 87.9833
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 22917, MaxMemory: 68751.000000, CumulativeMemory: 1443771
+random_tree_7_4000 7162.671924 53847
+ratio: 77.7818
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 12743, MaxMemory: 38229.000000, CumulativeMemory: 802809
+random_tree_8_4000 5906.577843 81744
+ratio: 80.9483
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 31021, MaxMemory: 93063.000000, CumulativeMemory: 1954323
+random_tree_9_10000 9772.396590 257963
+ratio: 89.0476
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 39953, MaxMemory: 119859.000000, CumulativeMemory: 2517039
+random_tree_10_10000 11849.107135 180378
+ratio: 81.0856
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 36345, MaxMemory: 109035.000000, CumulativeMemory: 2289735
+random_tree_11_20000 14521.624905 807299
+ratio: 100
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 15303, MaxMemory: 45909.000000, CumulativeMemory: 964089
+random_tree_0_15 6168.291004 103
+ratio: 100
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 15303, MaxMemory: 45909.000000, CumulativeMemory: 964089
+random_tree_0_15 6168.291004 79
+
+homogeneous many small
+ratio: 100
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 15584, MaxMemory: 15584.000000, CumulativeMemory: 420768
+random_tree_1_2000 3453.350845 17042
+ratio: 88.1816
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 9379, MaxMemory: 9379.000000, CumulativeMemory: 253233
+random_tree_2_2000 2748.447237 10363
+ratio: 88.0326
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 29711, MaxMemory: 29711.000000, CumulativeMemory: 802197
+random_tree_3_2000 8698.381603 16604
+ratio: 75.4877
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 22484, MaxMemory: 22484.000000, CumulativeMemory: 607068
+random_tree_4_2000 11297.975398 53170
+ratio: 75.943
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 23575, MaxMemory: 23575.000000, CumulativeMemory: 636525
+random_tree_5_4000 15820.404093 180464
+ratio: 78.4007
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 23285, MaxMemory: 23285.000000, CumulativeMemory: 628695
+random_tree_6_4000 13869.746493 240553
+ratio: 87.9833
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 22917, MaxMemory: 22917.000000, CumulativeMemory: 618759
+random_tree_7_4000 7162.671924 53734
+ratio: 77.7818
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 12743, MaxMemory: 12743.000000, CumulativeMemory: 344061
+random_tree_8_4000 7689.872072 167662
+ratio: 80.9483
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 31021, MaxMemory: 31021.000000, CumulativeMemory: 837567
+random_tree_9_10000 9772.396590 257099
+ratio: 89.0476
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 39953, MaxMemory: 39953.000000, CumulativeMemory: 1078731
+random_tree_10_10000 11903.906846 227656
+ratio: 81.0856
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 36345, MaxMemory: 36345.000000, CumulativeMemory: 981315
+random_tree_11_20000 19030.660686 2363905
+ratio: 100
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 15303, MaxMemory: 15303.000000, CumulativeMemory: 413181
+random_tree_0_15 6168.291004 50
+ratio: 100
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 15303, MaxMemory: 15303.000000, CumulativeMemory: 413181
+random_tree_0_15 6168.291004 47
+
+homogeneous few big
+ratio: 100
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 46752, MaxMemory: 46752.000000, CumulativeMemory: 841536
+random_tree_1_2000 3468.675743 13719
+ratio: 88.1816
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 28137, MaxMemory: 28137.000000, CumulativeMemory: 506466
+random_tree_2_2000 2784.263436 11115
+ratio: 88.0326
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 89133, MaxMemory: 89133.000000, CumulativeMemory: 1604394
+random_tree_3_2000 8753.469582 16705
+ratio: 75.4877
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 67452, MaxMemory: 67452.000000, CumulativeMemory: 1214136
+random_tree_4_2000 7623.242375 16014
+ratio: 75.943
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 70725, MaxMemory: 70725.000000, CumulativeMemory: 1273050
+random_tree_5_4000 8292.524559 44049
+ratio: 78.4007
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 69855, MaxMemory: 69855.000000, CumulativeMemory: 1257390
+random_tree_6_4000 7522.725356 73677
+ratio: 87.9833
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 68751, MaxMemory: 68751.000000, CumulativeMemory: 1237518
+random_tree_7_4000 7343.079709 66410
+ratio: 77.7818
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 38229, MaxMemory: 38229.000000, CumulativeMemory: 688122
+random_tree_8_4000 4307.082782 45761
+ratio: 80.9483
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 93063, MaxMemory: 93063.000000, CumulativeMemory: 1675134
+random_tree_9_10000 10323.210531 213965
+ratio: 89.0476
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 119859, MaxMemory: 119859.000000, CumulativeMemory: 2157462
+random_tree_10_10000 12443.739164 211358
+ratio: 81.0856
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 109035, MaxMemory: 109035.000000, CumulativeMemory: 1962630
+random_tree_11_20000 15574.411812 1061134
+ratio: 100
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 45909, MaxMemory: 45909.000000, CumulativeMemory: 826362
+random_tree_0_15 6168.291004 51
+ratio: 100
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 45909, MaxMemory: 45909.000000, CumulativeMemory: 826362
+random_tree_0_15 6168.291004 47
+
+3-level
+heterogeneous
+ratio: 100
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 15584, MaxMemory: 46752.000000, CumulativeMemory: 771408
+random_tree_1_2000 3453.350845 13698
+ratio: 88.1816
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 9379, MaxMemory: 28137.000000, CumulativeMemory: 464256
+random_tree_2_2000 2748.447237 10366
+ratio: 88.0326
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 29711, MaxMemory: 89133.000000, CumulativeMemory: 1470690
+random_tree_3_2000 8698.381603 16562
+ratio: 75.4877
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 22484, MaxMemory: 67452.000000, CumulativeMemory: 1112958
+random_tree_4_2000 11291.867632 36550
+ratio: 75.943
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 23575, MaxMemory: 70725.000000, CumulativeMemory: 1166958
+random_tree_5_4000 11989.382588 97875
+ratio: 78.4007
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 23285, MaxMemory: 69855.000000, CumulativeMemory: 1152603
+random_tree_6_4000 10599.904780 148010
+ratio: 87.9833
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 22917, MaxMemory: 68751.000000, CumulativeMemory: 1134387
+random_tree_7_4000 7162.671924 54134
+ratio: 77.7818
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 12743, MaxMemory: 38229.000000, CumulativeMemory: 630774
+random_tree_8_4000 5906.577843 81831
+ratio: 80.9483
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 31021, MaxMemory: 93063.000000, CumulativeMemory: 1535535
+random_tree_9_10000 9772.396590 258017
+ratio: 89.0476
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 39953, MaxMemory: 119859.000000, CumulativeMemory: 1977669
+random_tree_10_10000 11849.107135 178806
+ratio: 81.0856
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 36345, MaxMemory: 109035.000000, CumulativeMemory: 1799073
+random_tree_11_20000 14521.624905 721305
+ratio: 100
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 15303, MaxMemory: 45909.000000, CumulativeMemory: 757494
+random_tree_0_15 6168.291004 52
+ratio: 100
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 15303, MaxMemory: 45909.000000, CumulativeMemory: 757494
+random_tree_0_15 6168.291004 48
+
+homogeneous many small
+ratio: 100
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 15584, MaxMemory: 15584.000000, CumulativeMemory: 420768
+random_tree_1_2000 3453.350845 13850
+ratio: 88.1816
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 9379, MaxMemory: 9379.000000, CumulativeMemory: 253233
+random_tree_2_2000 2748.447237 10444
+ratio: 88.0326
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 29711, MaxMemory: 29711.000000, CumulativeMemory: 802197
+random_tree_3_2000 8698.381603 16932
+ratio: 75.4877
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 22484, MaxMemory: 22484.000000, CumulativeMemory: 607068
+random_tree_4_2000 11297.975398 50842
+ratio: 75.943
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 23575, MaxMemory: 23575.000000, CumulativeMemory: 636525
+random_tree_5_4000 15820.404093 158351
+ratio: 78.4007
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 23285, MaxMemory: 23285.000000, CumulativeMemory: 628695
+random_tree_6_4000 13869.746493 242854
+ratio: 87.9833
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 22917, MaxMemory: 22917.000000, CumulativeMemory: 618759
+random_tree_7_4000 7162.671924 54433
+ratio: 77.7818
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 12743, MaxMemory: 12743.000000, CumulativeMemory: 344061
+random_tree_8_4000 7689.872072 169066
+ratio: 80.9483
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 31021, MaxMemory: 31021.000000, CumulativeMemory: 837567
+random_tree_9_10000 9772.396590 257931
+ratio: 89.0476
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 39953, MaxMemory: 39953.000000, CumulativeMemory: 1078731
+random_tree_10_10000 11903.906846 235713
+ratio: 81.0856
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 36345, MaxMemory: 36345.000000, CumulativeMemory: 981315
+random_tree_11_20000 19030.660686 2279020
+ratio: 100
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 15303, MaxMemory: 15303.000000, CumulativeMemory: 413181
+random_tree_0_15 6168.291004 52
+ratio: 100
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 15303, MaxMemory: 15303.000000, CumulativeMemory: 413181
+random_tree_0_15 6168.291004 47
+
+homogeneous average average
+ratio: 100
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 23376, MaxMemory: 23376.000000, CumulativeMemory: 420768
+random_tree_1_2000 3468.675743 13692
+ratio: 88.1816
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 14068, MaxMemory: 14068.500000, CumulativeMemory: 253224
+random_tree_2_2000 2784.263436 11029
+ratio: 88.0326
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 44566, MaxMemory: 44566.500000, CumulativeMemory: 802188
+random_tree_3_2000 8753.469582 16588
+ratio: 75.4877
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 33726, MaxMemory: 33726.000000, CumulativeMemory: 607068
+random_tree_4_2000 7623.242375 15928
+ratio: 75.943
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 35362, MaxMemory: 35362.500000, CumulativeMemory: 636516
+random_tree_5_4000 8292.524559 43433
+ratio: 78.4007
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 34927, MaxMemory: 34927.500000, CumulativeMemory: 628686
+random_tree_6_4000 7522.725356 73416
+ratio: 87.9833
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 34375, MaxMemory: 34375.500000, CumulativeMemory: 618750
+random_tree_7_4000 7343.079709 65984
+ratio: 77.7818
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 19114, MaxMemory: 19114.500000, CumulativeMemory: 344052
+random_tree_8_4000 4307.082782 45538
+ratio: 80.9483
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 46531, MaxMemory: 46531.500000, CumulativeMemory: 837558
+random_tree_9_10000 10323.210531 220609
+ratio: 89.0476
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 59929, MaxMemory: 59929.500000, CumulativeMemory: 1078722
+random_tree_10_10000 12443.739164 211147
+ratio: 81.0856
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 54517, MaxMemory: 54517.500000, CumulativeMemory: 981306
+random_tree_11_20000 15574.411812 1047281
+ratio: 100
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 22954, MaxMemory: 22954.500000, CumulativeMemory: 413172
+random_tree_0_15 6168.291004 50
+ratio: 100
+Cluster:
+#Nodes: 18, Configuration: 0, MinMemory: 22954, MaxMemory: 22954.500000, CumulativeMemory: 413172
+random_tree_0_15 6168.291004 46
+
+homogeneous few big
+ratio: 100
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 46752, MaxMemory: 46752.000000, CumulativeMemory: 420768
+random_tree_1_2000 3547.135937 14701
+ratio: 88.1816
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 28137, MaxMemory: 28137.000000, CumulativeMemory: 253233
+random_tree_2_2000 2913.999710 11540
+ratio: 88.0326
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 89133, MaxMemory: 89133.000000, CumulativeMemory: 802197
+random_tree_3_2000 8869.971222 17684
+ratio: 75.4877
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 67452, MaxMemory: 67452.000000, CumulativeMemory: 607068
+random_tree_4_2000 7720.242482 17765
+ratio: 75.943
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 70725, MaxMemory: 70725.000000, CumulativeMemory: 636525
+random_tree_5_4000 8595.525874 57377
+ratio: 78.4007
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 69855, MaxMemory: 69855.000000, CumulativeMemory: 628695
+random_tree_6_4000 7862.750529 120543
+ratio: 87.9833
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 68751, MaxMemory: 68751.000000, CumulativeMemory: 618759
+random_tree_7_4000 7676.026051 68930
+ratio: 77.7818
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 38229, MaxMemory: 38229.000000, CumulativeMemory: 344061
+random_tree_8_4000 4627.784920 62596
+ratio: 80.9483
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 93063, MaxMemory: 93063.000000, CumulativeMemory: 837567
+random_tree_9_10000 11140.519175 588033
+ratio: 89.0476
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 119859, MaxMemory: 119859.000000, CumulativeMemory: 1078731
+random_tree_10_10000 13382.043800 290723
+ratio: 81.0856
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 109035, MaxMemory: 109035.000000, CumulativeMemory: 981315
+random_tree_11_20000 16881.098721 986420
+ratio: 100
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 45909, MaxMemory: 45909.000000, CumulativeMemory: 413181
+random_tree_0_15 6168.291004 53
+ratio: 100
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 45909, MaxMemory: 45909.000000, CumulativeMemory: 413181
+random_tree_0_15 6168.291004 49
+

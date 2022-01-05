@@ -117,7 +117,6 @@ void GetTwoSmallestElement(list<Task *> *container, list<Task *>::iterator &Smal
 }
 
 double Task::SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength, int limit) {
-    list<Task *> parallelRoots1;
     parallelRoots.clear();
     parallelRoots.emplace_front(this);
 

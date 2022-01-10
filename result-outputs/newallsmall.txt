@@ -1,0 +1,354 @@
+small with extra output
+2-level
+heterogeneous
+Heterogeneous cluster with 30 processors, cumulative memory 463354830.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	dump.1.3.amd.QY.case39-2136.tree.nf 85094.377135 4740
+
+Load per processor for occupied processors: 1.000000, occupied processors: 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	dump.1.2.amd.QY.case39-2136.tree.nf 82907.681135 9478
+
+Load per processor for occupied processors: 1.000000, occupied processors: 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	dump.0.1.metis.Goodwin.rim-447.tree.nf 24597.327750 18764
+
+Load per processor for occupied processors: 0.000000, occupied processors: 30.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	dump.1.1.metis.CPM.cz40948-2567.tree.nf 705.906957 14693
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	dump.1.1.amd.QY.case39-2136.tree.nf 81779.789135 15646
+
+Load per processor for occupied processors: 1.000000, occupied processors: 100.000000
+dump.0.1.metis.Wang.wang4-833.tree.nf	dump.0.1.metis.Wang.wang4-833.tree.nf 1181169.719822 24786
+
+Load per processor for occupied processors: 10.000000, occupied processors: 10.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 106300.385371 15451
+
+Load per processor for occupied processors: 0.000000, occupied processors: 26.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 114627.786398 22823
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	dump.0.1.amd.QY.case39-2136.tree.nf 59436.469135 24589
+
+Load per processor for occupied processors: 1.000000, occupied processors: 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	dump.0.1.metis.CPM.cz40948-2567.tree.nf 687.294957 25059
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 980971.895793 28187
+
+Load per processor for occupied processors: 1.000000, occupied processors: 100.000000
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1733551.003671 28727
+
+Load per processor for occupied processors: 7.000000, occupied processors: 23.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	dump.0.1.amd.Bova.rma10-374.tree.nf 303227.520897 32836
+
+Load per processor for occupied processors: 0.000000, occupied processors: 90.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 136057.379666 38947
+
+Load per processor for occupied processors: 1.000000, occupied processors: 33.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 136057.379666 39831
+
+Load per processor for occupied processors: 1.000000, occupied processors: 33.000000
+homogeneous many small
+many small
+Homogeneous cluster with 30 processors, cumulative memory 102967740.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	dump.1.3.amd.QY.case39-2136.tree.nf 85094.377135 437
+
+task assigned and no mem occupation -1
+Load per processor for occupied processors: 7.000000, occupied processors: 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	dump.1.2.amd.QY.case39-2136.tree.nf 82907.681135 939
+
+task assigned and no mem occupation -1
+Load per processor for occupied processors: 7.000000, occupied processors: 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	dump.0.1.metis.Goodwin.rim-447.tree.nf 33381.773875 1498
+
+Load per processor for occupied processors: 2.000000, occupied processors: 30.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	dump.1.1.metis.CPM.cz40948-2567.tree.nf 705.906957 1747
+
+task assigned and no mem occupation -1
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	dump.1.1.amd.QY.case39-2136.tree.nf 81779.789135 1689
+
+task assigned and no mem occupation -1
+Load per processor for occupied processors: 7.000000, occupied processors: 100.000000
+dump.0.1.metis.Wang.wang4-833.tree.nf	dump.0.1.metis.Wang.wang4-833.tree.nf 1452680.515986 1804
+
+Load per processor for occupied processors: 83.000000, occupied processors: 10.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 113309.683839 2149
+
+Load per processor for occupied processors: 5.000000, occupied processors: 26.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 114627.786398 2596
+
+task assigned and no mem occupation -1
+Load per processor for occupied processors: 2.000000, occupied processors: 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	dump.0.1.amd.QY.case39-2136.tree.nf 59436.469135 2771
+
+task assigned and no mem occupation -1
+Load per processor for occupied processors: 7.000000, occupied processors: 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	dump.0.1.metis.CPM.cz40948-2567.tree.nf 687.294957 2947
+
+task assigned and no mem occupation -1
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 980971.895793 2795
+
+task assigned and no mem occupation -1
+Load per processor for occupied processors: 6.000000, occupied processors: 100.000000
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 2102254.458218 3030
+
+Load per processor for occupied processors: 57.000000, occupied processors: 23.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	dump.0.1.amd.Bova.rma10-374.tree.nf 303272.521218 3292
+
+Load per processor for occupied processors: 4.000000, occupied processors: 90.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 198984.034389 3278
+
+Load per processor for occupied processors: 8.000000, occupied processors: 33.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 198984.034389 3278
+
+Load per processor for occupied processors: 8.000000, occupied processors: 33.000000
+homogeneous average average
+homogeneous few big
+big
+Homogeneous cluster with 15 processors, cumulative memory 411870960.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	dump.1.3.amd.QY.case39-2136.tree.nf 114261.577135 2928
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	dump.1.2.amd.QY.case39-2136.tree.nf 111310.361135 5878
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	dump.0.1.metis.Goodwin.rim-447.tree.nf 32550.873875 9719
+
+Load per processor for occupied processors: 0.000000, occupied processors: 60.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	dump.1.1.metis.CPM.cz40948-2567.tree.nf 1338.952738 9171
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	dump.1.1.amd.QY.case39-2136.tree.nf 109770.269135 9746
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.Wang.wang4-833.tree.nf	dump.0.1.metis.Wang.wang4-833.tree.nf 1181169.750489 21115
+
+Load per processor for occupied processors: 10.000000, occupied processors: 20.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 106300.385371 15507
+
+Load per processor for occupied processors: 0.000000, occupied processors: 53.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 114627.796398 14287
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	dump.0.1.amd.QY.case39-2136.tree.nf 79459.069135 15325
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	dump.0.1.metis.CPM.cz40948-2567.tree.nf 1312.264738 16098
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 981936.895793 16442
+
+Load per processor for occupied processors: 1.000000, occupied processors: 100.000000
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1736955.184039 23888
+
+Load per processor for occupied processors: 7.000000, occupied processors: 46.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	dump.0.1.amd.Bova.rma10-374.tree.nf 334198.600683 18481
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 168271.548273 22051
+
+Load per processor for occupied processors: 1.000000, occupied processors: 66.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 168271.548273 23035
+
+Load per processor for occupied processors: 1.000000, occupied processors: 66.000000
+3-level
+homogeneous many small
+many small
+Homogeneous cluster with 30 processors, cumulative memory 102967740.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	dump.1.3.amd.QY.case39-2136.tree.nf 85094.377135 4751
+
+task assigned and no mem occupation -1
+Load per processor for occupied processors: 7.000000, occupied processors: 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	dump.1.2.amd.QY.case39-2136.tree.nf 82907.681135 9483
+
+task assigned and no mem occupation -1
+Load per processor for occupied processors: 7.000000, occupied processors: 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	dump.0.1.metis.Goodwin.rim-447.tree.nf 24597.327750 18956
+
+Load per processor for occupied processors: 2.000000, occupied processors: 30.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	dump.1.1.metis.CPM.cz40948-2567.tree.nf 705.906957 14726
+
+task assigned and no mem occupation -1
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	dump.1.1.amd.QY.case39-2136.tree.nf 81779.789135 15566
+
+task assigned and no mem occupation -1
+Load per processor for occupied processors: 7.000000, occupied processors: 100.000000
+dump.0.1.metis.Wang.wang4-833.tree.nf	dump.0.1.metis.Wang.wang4-833.tree.nf 1181169.719822 24715
+
+Load per processor for occupied processors: 83.000000, occupied processors: 10.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 106300.385371 15336
+
+Load per processor for occupied processors: 5.000000, occupied processors: 26.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 114627.786398 22862
+
+task assigned and no mem occupation -1
+Load per processor for occupied processors: 2.000000, occupied processors: 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	dump.0.1.amd.QY.case39-2136.tree.nf 59436.469135 25001
+
+task assigned and no mem occupation -1
+Load per processor for occupied processors: 7.000000, occupied processors: 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	dump.0.1.metis.CPM.cz40948-2567.tree.nf 687.294957 25205
+
+task assigned and no mem occupation -1
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 980971.895793 26349
+
+task assigned and no mem occupation -1
+Load per processor for occupied processors: 6.000000, occupied processors: 100.000000
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1733551.003671 28551
+
+Load per processor for occupied processors: 57.000000, occupied processors: 23.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	dump.0.1.amd.Bova.rma10-374.tree.nf 303227.520897 33070
+
+Load per processor for occupied processors: 4.000000, occupied processors: 90.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 136057.379666 39062
+
+Load per processor for occupied processors: 8.000000, occupied processors: 33.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 136057.379666 38680
+
+Load per processor for occupied processors: 8.000000, occupied processors: 33.000000
+homogeneous average average
+avg
+Homogeneous cluster with 20 processors, cumulative memory 137290320.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	dump.1.3.amd.QY.case39-2136.tree.nf 104539.177135 3548
+
+Load per processor for occupied processors: 3.000000, occupied processors: 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	dump.1.2.amd.QY.case39-2136.tree.nf 101842.801135 7063
+
+Load per processor for occupied processors: 3.000000, occupied processors: 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	dump.0.1.metis.Goodwin.rim-447.tree.nf 28812.491750 13044
+
+Load per processor for occupied processors: 1.000000, occupied processors: 45.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	dump.1.1.metis.CPM.cz40948-2567.tree.nf 835.300664 11094
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	dump.1.1.amd.QY.case39-2136.tree.nf 100440.109135 11686
+
+Load per processor for occupied processors: 3.000000, occupied processors: 100.000000
+dump.0.1.metis.Wang.wang4-833.tree.nf	dump.0.1.metis.Wang.wang4-833.tree.nf 1181169.719822 24603
+
+Load per processor for occupied processors: 41.000000, occupied processors: 15.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 106300.385371 15517
+
+Load per processor for occupied processors: 2.000000, occupied processors: 40.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 114627.793065 17618
+
+Load per processor for occupied processors: 1.000000, occupied processors: 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	dump.0.1.amd.QY.case39-2136.tree.nf 72784.869135 18694
+
+Load per processor for occupied processors: 3.000000, occupied processors: 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	dump.0.1.metis.CPM.cz40948-2567.tree.nf 812.072664 19186
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 981615.229126 20161
+
+Load per processor for occupied processors: 4.000000, occupied processors: 100.000000
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1733551.003671 28416
+
+Load per processor for occupied processors: 28.000000, occupied processors: 35.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	dump.0.1.amd.Bova.rma10-374.tree.nf 316822.589899 22246
+
+Load per processor for occupied processors: 2.000000, occupied processors: 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 158415.108390 28958
+
+Load per processor for occupied processors: 4.000000, occupied processors: 50.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 158415.108390 28890
+
+Load per processor for occupied processors: 4.000000, occupied processors: 50.000000
+homogeneous few big
+big
+Homogeneous cluster with 10 processors, cumulative memory 274580640.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	dump.1.3.amd.QY.case39-2136.tree.nf 123983.977135 434
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	dump.1.2.amd.QY.case39-2136.tree.nf 120777.921135 941
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	dump.0.1.metis.Goodwin.rim-447.tree.nf 33381.773875 1416
+
+Load per processor for occupied processors: 0.000000, occupied processors: 90.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	dump.1.1.metis.CPM.cz40948-2567.tree.nf 1513.078071 1787
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	dump.1.1.amd.QY.case39-2136.tree.nf 119100.429135 1785
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.Wang.wang4-833.tree.nf	dump.0.1.metis.Wang.wang4-833.tree.nf 1452680.515986 1844
+
+Load per processor for occupied processors: 10.000000, occupied processors: 30.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 113309.683839 2020
+
+Load per processor for occupied processors: 0.000000, occupied processors: 80.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 114627.799731 2651
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	dump.0.1.amd.QY.case39-2136.tree.nf 86133.269135 2773
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	dump.0.1.metis.CPM.cz40948-2567.tree.nf 1480.646071 2941
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 982258.562460 2778
+
+Load per processor for occupied processors: 2.000000, occupied processors: 100.000000
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 2102254.458218 2961
+
+Load per processor for occupied processors: 7.000000, occupied processors: 70.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	dump.0.1.amd.Bova.rma10-374.tree.nf 362006.411948 3283
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 198984.034389 3353
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 198984.034389 3277
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+heterogeneous
+Heterogeneous cluster with 30 processors, cumulative memory 377548380.000000
+dump.1.3.amd.QY.case39-2136.tree.nf	dump.1.3.amd.QY.case39-2136.tree.nf 85094.377135 4786
+
+Load per processor for occupied processors: 2.000000, occupied processors: 100.000000
+dump.1.2.amd.QY.case39-2136.tree.nf	dump.1.2.amd.QY.case39-2136.tree.nf 82907.681135 9550
+
+Load per processor for occupied processors: 1.000000, occupied processors: 100.000000
+dump.0.1.metis.Goodwin.rim-447.tree.nf	dump.0.1.metis.Goodwin.rim-447.tree.nf 24597.327750 18750
+
+Load per processor for occupied processors: 0.000000, occupied processors: 30.000000
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	dump.1.1.metis.CPM.cz40948-2567.tree.nf 705.906957 15126
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.1.1.amd.QY.case39-2136.tree.nf	dump.1.1.amd.QY.case39-2136.tree.nf 81779.789135 15612
+
+Load per processor for occupied processors: 1.000000, occupied processors: 100.000000
+dump.0.1.metis.Wang.wang4-833.tree.nf	dump.0.1.metis.Wang.wang4-833.tree.nf 1181169.719822 24933
+
+Load per processor for occupied processors: 10.000000, occupied processors: 10.000000
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 106300.385371 16601
+
+Load per processor for occupied processors: 0.000000, occupied processors: 26.000000
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 114627.786398 23742
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.QY.case39-2136.tree.nf	dump.0.1.amd.QY.case39-2136.tree.nf 59436.469135 24467
+
+Load per processor for occupied processors: 1.000000, occupied processors: 100.000000
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	dump.0.1.metis.CPM.cz40948-2567.tree.nf 687.294957 25641
+
+Load per processor for occupied processors: 0.000000, occupied processors: 100.000000
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 980971.895793 26459
+
+Load per processor for occupied processors: 1.000000, occupied processors: 100.000000
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1733551.003671 28259
+
+Load per processor for occupied processors: 7.000000, occupied processors: 23.000000
+dump.0.1.amd.Bova.rma10-374.tree.nf	dump.0.1.amd.Bova.rma10-374.tree.nf 303227.520897 33073
+
+Load per processor for occupied processors: 1.000000, occupied processors: 90.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 136057.379666 39635
+
+Load per processor for occupied processors: 1.000000, occupied processors: 33.000000
+dump.0.1.metis.Bova.rma10-374.tree.nf	dump.0.1.metis.Bova.rma10-374.tree.nf 136057.379666 38899
+
+Load per processor for occupied processors: 1.000000, occupied processors: 33.000000

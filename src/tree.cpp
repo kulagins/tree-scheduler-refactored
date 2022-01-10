@@ -1213,6 +1213,21 @@ double MaxOutDegree(Tree *tree, int quiet) {
     return max_out;
 }
 
+vector<double> maxAndAvgFanout(Tree *tree){
+    double max_fanout = 0;
+    double avg_fanout = 0;
+    for (unsigned int j = 1; j <= tree->getTasks()->size(); j++) {
+        ////cout<<j<<endl;
+        double currentFanout = tree->getTask(j)->getChildren()->size();
+        if (currentFanout >= max_fanout) {
+            max_fanout = currentFanout;
+        }
+        avg_fanout += currentFanout;
+    }
+    avg_fanout /= tree->getTasks()->size();
+    return {max_fanout, avg_fanout};
+}
+
 Tree *SubtreeRooted(Task *node) {
     Tree *subtree = new Tree();
 

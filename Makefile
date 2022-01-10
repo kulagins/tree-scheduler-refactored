@@ -52,7 +52,7 @@ heuristicsnoclean:heuristics.o
 	ar rcs ${LIB_PATH}/heuristics.a $(OBJ_PATH)/heuristics.o $(OBJ_PATH)/lib-io-tree.o $(OBJ_PATH)/lib-io-tree-utils.o $(OBJ_PATH)/lib-io-tree-minmem.o $(OBJ_PATH)/cluster.o
 
 main: example/main.cpp heuristicsnoclean cluster.o
-	$(CPP) $(INCLUDES) $(DEFS) $(CFLAGS) $< $(LIBS) $(LDADD) -o ${BIN_PATH}/main-temp
+	$(CPP) $(INCLUDES) $(DEFS) $(CFLAGS) $< $(LIBS) $(LDADD) -o ${BIN_PATH}/$@
 
 test: test/test.cpp heuristicsnoclean cluster.o
 	$(CPP) $(INCLUDES) $(DEFS) $(CFLAGS) $< $(LIBS) $(LDADD) -o ${BIN_PATH}/$@
@@ -60,7 +60,7 @@ test: test/test.cpp heuristicsnoclean cluster.o
 
 clean:
 	rm -f ${OBJ_PATH}/*.o *~
-	#rm -f ${BIN_PATH}/main
+	rm -f ${BIN_PATH}/main
 	rm -f ${LIB_PATH}/heuristics.a
 
 

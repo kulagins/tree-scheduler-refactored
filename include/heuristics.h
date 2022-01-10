@@ -19,7 +19,7 @@ void GetTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest);
 
 
 
-int MemoryCheck(Tree *tree, io_method_t method);
+int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcessor);
 
 //void
 //MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t method, bool skipBig);

@@ -1,0 +1,119 @@
+ratio: 75.4877
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 22484, MaxMemory: 67452.000000, CumulativeMemory: 1112958
+1 step ready 
+Makespan 4552.59 #trees: 1
+2 step ready 
+Makespan 4552.59 #trees: 1
+random_tree_4_2000 4552.592169 61476
+ratio: 75.943
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 23575, MaxMemory: 70725.000000, CumulativeMemory: 1166958
+1 step ready 
+Makespan 5761.06 #trees: 1
+2 step ready 
+Makespan 5761.06 #trees: 1
+random_tree_5_4000 5761.062211 107173
+ratio: 78.4007
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 23285, MaxMemory: 69855.000000, CumulativeMemory: 1152603
+1 step ready 
+Makespan 5227.1 #trees: 1
+2 step ready 
+Makespan 5227.1 #trees: 1
+random_tree_6_4000 5227.099594 294997
+ratio: 77.7818
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 12743, MaxMemory: 38229.000000, CumulativeMemory: 630774
+1 step ready 
+Makespan 3676.02 #trees: 1
+2 step ready 
+Makespan 3676.02 #trees: 1
+random_tree_8_4000 3676.017258 209032
+ratio: 89.0476
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 39953, MaxMemory: 119859.000000, CumulativeMemory: 1977669
+1 step ready 
+Makespan 9570.13 #trees: 1
+2 step ready 
+Makespan 9570.13 #trees: 1
+random_tree_10_10000 9570.126127 505505
+ratio: 81.0856
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 36345, MaxMemory: 109035.000000, CumulativeMemory: 1799073
+1 step ready 
+Makespan 11371.8 #trees: 27
+2 step ready 
+Makespan 11371.8 #trees: 27
+random_tree_11_20000 11371.830631 571437
+ratio: 81.0856
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 36345, MaxMemory: 109035.000000, CumulativeMemory: 1799073
+1 step ready 
+Makespan 11371.8 #trees: 27
+2 step ready 
+Makespan 11371.8 #trees: 27
+random_tree_11_20000 11371.830631 576850
+
+
+
+
+
+2-LEVEL
+ratio: 75.4877
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 22484, MaxMemory: 67452.000000, CumulativeMemory: 1416492
+1 step ready 
+Makespan 4552.59 #trees: 1
+2 step ready 
+Makespan 4552.59 #trees: 1
+random_tree_4_2000 4552.592169 61056
+ratio: 75.943
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 23575, MaxMemory: 70725.000000, CumulativeMemory: 1485225
+1 step ready 
+Makespan 5761.06 #trees: 1
+2 step ready 
+Makespan 5761.06 #trees: 1
+random_tree_5_4000 5761.062211 107966
+ratio: 78.4007
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 23285, MaxMemory: 69855.000000, CumulativeMemory: 1466955
+1 step ready 
+Makespan 5227.1 #trees: 1
+2 step ready 
+Makespan 5227.1 #trees: 1
+random_tree_6_4000 5227.099594 312126
+ratio: 77.7818
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 12743, MaxMemory: 38229.000000, CumulativeMemory: 802809
+1 step ready 
+Makespan 3676.02 #trees: 1
+2 step ready 
+Makespan 3676.02 #trees: 1
+random_tree_8_4000 3676.017258 205854
+ratio: 89.0476
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 39953, MaxMemory: 119859.000000, CumulativeMemory: 2517039
+1 step ready 
+Makespan 9570.13 #trees: 1
+2 step ready 
+Makespan 9570.13 #trees: 1
+random_tree_10_10000 9570.126127 500911
+ratio: 81.0856
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 36345, MaxMemory: 109035.000000, CumulativeMemory: 2289735
+1 step ready 
+Makespan 11371.8 #trees: 27
+2 step ready 
+Makespan 11371.8 #trees: 27
+random_tree_11_20000 11371.830631 567601
+ratio: 81.0856
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 36345, MaxMemory: 109035.000000, CumulativeMemory: 2289735
+1 step ready 
+Makespan 11371.8 #trees: 27
+2 step ready 
+Makespan 11371.8 #trees: 27
+random_tree_11_20000 11371.830631 572411
+

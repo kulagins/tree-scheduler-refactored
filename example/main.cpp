@@ -16,9 +16,15 @@
 #include <inputParser.h>
 #include <lib-io-tree-minmem.h>
 #include <heuristics.h>
+#include "../include/inputParser.h"
+#include "../include/tree.h"
+#include "../include/lib-io-tree-minmem.h"
 
 
 const bool verbose = true;
+
+void
+buildTreeDependentCluster(string argv, InputParser *input, Tree *tree, bool computeSmallCluster);
 
 void buildFixedClusterWithSpeedsAndMemory(double CCR, unsigned int num_processors, Tree *treeobj) {
     Cluster *cluster = new Cluster(num_processors, true);
@@ -50,19 +56,62 @@ void quietPrint(string text) {
     initOutput();
 }
 
+double threeSteps(Tree *tree) {
+    string stage2 = "FirstFit";
+    unsigned int number_subtrees = 0;
+    unsigned long sequentialLen;
+    unsigned int num_processors;
+    list<Task *> parallelSubtrees;
+    double makespan;
+    // for counting how many subtrees produced, twolevel is set as false
+    makespan = tree->getRoot()->SplitSubtrees(false, parallelSubtrees, sequentialLen, -1);
+    // tree->ImprovedSplit();
+
+
+    cout << "1 step ready " << endl;
+    number_subtrees = tree->HowmanySubtrees(true);
+    cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
+
+    int ret = 0;
+    if (stage2 == "LargestFirst") {
+        ret = MemoryCheck(tree, LARGEST_FIT, false);
+    } else if (stage2 == "FirstFit") {
+        ret = MemoryCheck(tree, FIRST_FIT, false);
+    } else if (stage2 == "Immediately") {
+        ret = MemoryCheck(tree, IMMEDIATELY, false);
+    }
+    if (ret == -1) {
+        cout << "unsolvable currently" << endl;
+        return -2;
+    }
+    cout << "2 step ready " << endl;
+    makespan = tree->getRoot()->getMakespanCost(true, true);
+    number_subtrees = tree->HowmanySubtrees(true);
+    cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
+
+
+    if (number_subtrees > num_processors) {
+        makespan = tree->Merge(true);
+    } else if (number_subtrees == num_processors) {
+    } else {
+        makespan = tree->SplitAgain();
+    }
+    return makespan;
+}
+
 int main(int argc, char **argv) {
     initOutput();
     InputParser *input = new InputParser(argc, argv);
-    string stage1, stage2 = "FirstFit", stage3;
+    string treesToRerun = "";
 
     ifstream OpenFile(input->getPathToTreeList());
     ifstream OpenFilePreliminary(input->getPathToTreeList());
-    list < Task * > parallelSubtrees;
+
     string treename;
-    unsigned int num_processors;
+
     double makespan, maxoutd, minMem;
     clock_t time;
-    unsigned int number_subtrees;
+
     float CCR = 0;
     float NPR = 0;
     int clusterConfigurationNumber = 0;
@@ -75,6 +124,7 @@ int main(int argc, char **argv) {
         case treeDependent: {
             CCR = input->getCCR();
             NPR = input->getNPR();
+            clusterConfigurationNumber = (int) input->getStaticClusterConfigurationNumber();
             break;
         }
         default:
@@ -83,6 +133,7 @@ int main(int argc, char **argv) {
 
     if (input->getClusteringMode() == staticClustering) {
         double maxMinMem = 0;
+        double maxMaxoutD = 0;
         double maxEdgesToMakespanWeights = 0;
         double sum_edges = 0;
         double sum_weights = 0;
@@ -92,6 +143,7 @@ int main(int argc, char **argv) {
             OpenFilePreliminary >> treename;
             Tree *tree = read_tree((input->getWorkingDirectory() + treename).c_str());
             maxoutd = MaxOutDegree(tree, true);
+            if (maxoutd > maxMaxoutD) maxMaxoutD = maxoutd;
             MinMem(tree, maxoutd, minMem, *schedule_f, true);
             if (minMem > maxMinMem) {
                 maxMinMem = minMem;
@@ -112,102 +164,56 @@ int main(int argc, char **argv) {
     std::vector<int> brokenEdges;
     do {
         OpenFile >> treename;
-        cout << treename << "\t";
         Tree *tree = read_tree((input->getWorkingDirectory() + treename).c_str());
         Tree *untouchedTree = read_tree((input->getWorkingDirectory() + treename).c_str());
         Tree::setOriginalTree(untouchedTree);
-
-
+        const vector<double> fanouts = maxAndAvgFanout(tree);
+        cout << "Fanout: Max: " << fanouts[0] << ",  Avg: " << fanouts[1] << endl;
         if (input->getClusteringMode() == treeDependent) {
-            maxoutd = MaxOutDegree(tree, true);
-            input -> setClusterFromFile(argv[8], maxoutd);
+            cout<<"BuildSmallCluster? true"<<endl;
+            buildTreeDependentCluster(argv[8], input, tree, true);
         }
 
         time = clock();
-
-        unsigned long sequentialLen;
-        makespan = tree->getRoot()->SplitSubtrees(false, parallelSubtrees,
-                                                  sequentialLen);// for counting how many subtrees produced, twolevel is set as false
-        // stage1 == "ImprovedSplit") {
-        //po_construct(tree_size, prnts, &chstart, &chend, &children, &root);
-        //   makespan = tree->ImprovedSplit();
-        //makespan = ImprovedSplit(tree, num_processors);
-        //stage1 == "AvoidChain") {
-        //   makespan = tree->ASAP();
-        //   number_subtrees = HowmanySubtrees(tree, true);
-        //  time = clock() - time;
-        //  std::cout << treename << " " << NPR << " " << CCR << " NA " << number_subtrees << " " << num_processors
-        //             << " " << makespan << " " << "ASAP NA NA " << time << std::endl;
-
-        //   time = clock();
-        //number_subtrees = AvoidChain(tree);
-        //  makespan = tree->GetRoot()->GetMSCost(true, true);
-        // }
-        time = clock() - time;
-        //  cout << "1 step ready " << endl;
-        //  number_subtrees = tree->HowmanySubtrees(false);
-        // cout << makespan << endl;
-        //    std::cout << number_subtrees << " " << num_processors << " "
-        //         << makespan << " " << stage1 << " NA NA " << time << std::endl;
-
-
-
-        schedule_traversal *schedule_f = new schedule_traversal();
-
-        MinMem(tree, maxoutd, minMem, *schedule_f, true);
-        delete schedule_f;
-
-        time = clock();
-        int ret = 0;
-        if (stage2 == "LargestFirst") {
-            ret = MemoryCheck(tree, LARGEST_FIT);
-        } else if (stage2 == "FirstFit") {
-            ret = MemoryCheck(tree, FIRST_FIT);
-        } else if (stage2 == "Immediately") {
-            ret = MemoryCheck(tree, IMMEDIATELY);
-        }
-        if (ret == -1) {
-            cout << "unsolvable currently" << endl;
-            continue;
-        }
-        //  cout << "2 step ready " << endl;
-        //number_subtrees = tree->HowmanySubtrees(false);
-
-        time = clock() - time;
-        number_subtrees = tree->HowmanySubtrees(true);
-        makespan = tree->getRoot()->getMakespanCost(true, true);
-        //   std::cout << number_subtrees << " " << num_processors << " " << makespan << " " << stage1 << " " << stage2
-        //             << " NA " << time << std::endl;
-        // cout << makespan << endl;
-        time = clock();
-        if (number_subtrees > num_processors) {
-            stage3 = "Merge";
-            makespan = tree->Merge(true);
-            //  makespan = tree->MergeV2(number_subtrees, num_processors,
-            //                       Cluster::getFixedCluster()->getFirstFreeProcessorOrSmallest()->getMemorySize(),
-            //                   true);
-            //Merge(tree, number_subtrees, num_processors, memorySize, chstart, children, true);
-        } else if (number_subtrees == num_processors) {
-            stage3 = "Nothing";
-        } else {
-            stage3 = "SplitAgain";
-            makespan = tree->SplitAgain();
-        }
+        makespan = threeSteps(tree);
         time = clock() - time;
 
-        quietPrint(treename + " " + to_string(makespan) + " " + to_string(time) + "\n\n");
-        //  Cluster::getFixedCluster()->printProcessors();
-        // number_subtrees = tree->HowmanySubtrees(false);
-        //  std::cout << number_subtrees << " " << num_processors << " " << makespan << " " << stage1 << " " << stage2
-        //           << " " << stage3 << " " << time << std::endl;
+        if (makespan == -1) {
+            cout << "small cluster too small" << endl;
+            treesToRerun += treename + "\n";
+            buildTreeDependentCluster(argv[8], input, tree, false);
+            time = clock();
+            makespan = threeSteps(tree);
+            time = clock() - time;
+        }
 
-        quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
-        quietPrint(Cluster::getFixedCluster()->getAverageLoadAndNumberOfUsedProcessors());
+
+        quietPrint("&& " + treename + " " + to_string(makespan) + " " + to_string(time));
+        // quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
+        // quietPrint(Cluster::getFixedCluster()->getAverageLoadAndNumberOfUsedProcessors());
         //quietPrint(Cluster::getFixedCluster()->getUsageString());
+
         delete tree;
         delete untouchedTree;
         Cluster::getFixedCluster()->clean();
     } while (OpenFile.good());
     OpenFile.close();
+    cout << treesToRerun << endl;
     exit(EXIT_SUCCESS);
+}
+
+void
+buildTreeDependentCluster(string clusterFilename, InputParser *input, Tree *tree, bool computeSmallCluster) {
+    double maxoutd, minMem;
+    maxoutd = MaxOutDegree(tree, true);
+
+    schedule_traversal *schedule_f = new schedule_traversal();
+    MinMem(tree, maxoutd, minMem, *schedule_f, true);
+    bool smallCluster = false;
+    //computeSmall cluster? then compute. Else set to false directly
+    smallCluster = computeSmallCluster && maxoutd * 100 / minMem < 93;
+    quietPrint("maxoutD " + to_string(maxoutd) + "minmem " + to_string(minMem));
+    if (smallCluster) input->setClusterFromFileWithShrinkingFactor(clusterFilename, maxoutd, 3);
+    else
+        input->setClusterFromFile(clusterFilename, maxoutd);
 }

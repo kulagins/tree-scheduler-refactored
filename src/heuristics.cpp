@@ -13,7 +13,8 @@
 #include "../include/heuristics.h"
 #include "../include/lib-io-tree-free-methods.h"
 #include "../include/cluster.h"
-#include <lib-io-tree-minmem.h>
+//INFO: paths are necessary for Clion. In case of problems please ping Svetlana.
+#include "../include/lib-io-tree-minmem.h"
 
 //#include <omp.h>
 bool cmp_noincreasing(Task *a, Task *b) {
@@ -1346,7 +1347,7 @@ Immediately(Tree *tree, int *schedule,
     //cout<<endl;
 }
 
-int MemoryCheck(Tree *tree, io_method_t method) {
+int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcessor) {
 
     vector<Task *> subtreeRoots;
     Task *subtreeRoot, *currentnode;
@@ -1370,12 +1371,8 @@ int MemoryCheck(Tree *tree, io_method_t method) {
         //   tree->HowmanySubtrees(false);
         subtreeRoot = subtreeRoots.back();
         subtreeRoots.pop_back();
-        Processor *biggestFreeProcessor = Cluster::getFixedCluster()->getFirstFreeProcessorOrSmallest();
-        if (Cluster::getFixedCluster()->hasFreeProcessor()) {
-            biggestFreeProcessor->assignTask(subtreeRoot);
-        }
-        double currentMemorySize = biggestFreeProcessor->getMemorySize();
-        //     cout<<"using proc of memory "<<biggestFreeProcessor->getMemorySize()<<"for task "<<subtreeRoot->getId()<<endl;
+        Processor *mostSuitableProcessor;
+        double currentMemorySize;
 
         Tree *subtree = BuildSubtree(tree, subtreeRoot);
         // cout<<"subtree "<<subtree->getSize();
@@ -1383,8 +1380,20 @@ int MemoryCheck(Tree *tree, io_method_t method) {
         maxoutD = MaxOutDegree(subtree, true);
         schedule_f->clear();
         MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
+        if (useMinimalAvailableProvcessor) {
+            mostSuitableProcessor = Cluster::getFixedCluster()->findSmallestFittingProcessor(memory_required);
+        } else {
+            mostSuitableProcessor = Cluster::getFixedCluster()->getFirstFreeProcessorOrSmallest();
+        }
+        if (mostSuitableProcessor == nullptr) {
+            mostSuitableProcessor = Cluster::getFixedCluster()->getFirstFreeProcessorOrSmallest();
+            mostSuitableProcessor->assignTask(subtreeRoot);
+        }
+        mostSuitableProcessor->assignTask(subtreeRoot);
+        currentMemorySize = mostSuitableProcessor->getMemorySize();
 
-        // cout << "Subtree " << subtreeRoot->getId() << " needs memory " << memory_required <<endl;
+        // cout<<"using proc of memory "<<mostSuitableProcessor->getMemorySize()<<"for task "<<subtreeRoot->getId()<<endl;
+        //  cout << "Subtree " << subtreeRoot->getId() << " needs memory " << memory_required <<endl;
         if (memory_required > currentMemorySize) {
             //        cout<<", larger than what is available: "<<currentMemorySize<<endl;
 
@@ -1418,7 +1427,7 @@ int MemoryCheck(Tree *tree, io_method_t method) {
         } else {
             //cout << "we are in else in mem check" << endl;
             if (Cluster::getFixedCluster()->hasFreeProcessor()) {
-                biggestFreeProcessor->setOccupiedMemorySize(memory_required);
+                mostSuitableProcessor->setOccupiedMemorySize(memory_required);
             }
         }
         //cout<<endl;

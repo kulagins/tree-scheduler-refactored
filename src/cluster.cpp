@@ -363,7 +363,19 @@ void Cluster::clean() {
 
 }
 
+Processor * Cluster::findSmallestFittingProcessor(double requiredMem){
+    //TODO method for only free processors
+    int min = std::numeric_limits<int>::max();
+    Processor *minProc = nullptr;
+    for (Processor *proc: (this->getProcessors())) {
+        if(proc->getMemorySize() >= requiredMem && !proc->isBusy&& min > proc->getMemorySize()){
+            min = proc->getMemorySize();
+            minProc = proc;
+        }
 
+    }
+    return minProc;
+}
 
 
 

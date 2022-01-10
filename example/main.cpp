@@ -74,11 +74,11 @@ double threeSteps(Tree *tree) {
 
     int ret = 0;
     if (stage2 == "LargestFirst") {
-        ret = MemoryCheck(tree, LARGEST_FIT);
+        ret = MemoryCheck(tree, LARGEST_FIT, false);
     } else if (stage2 == "FirstFit") {
-        ret = MemoryCheck(tree, FIRST_FIT);
+        ret = MemoryCheck(tree, FIRST_FIT, false);
     } else if (stage2 == "Immediately") {
-        ret = MemoryCheck(tree, IMMEDIATELY);
+        ret = MemoryCheck(tree, IMMEDIATELY, false);
     }
     if (ret == -1) {
         cout << "unsolvable currently" << endl;
@@ -167,10 +167,11 @@ int main(int argc, char **argv) {
         Tree *tree = read_tree((input->getWorkingDirectory() + treename).c_str());
         Tree *untouchedTree = read_tree((input->getWorkingDirectory() + treename).c_str());
         Tree::setOriginalTree(untouchedTree);
-
-
+        const vector<double> fanouts = maxAndAvgFanout(tree);
+        cout << "Fanout: Max: " << fanouts[0] << ",  Avg: " << fanouts[1] << endl;
         if (input->getClusteringMode() == treeDependent) {
-            buildTreeDependentCluster(argv[8], input, tree, false);
+            cout<<"BuildSmallCluster? true"<<endl;
+            buildTreeDependentCluster(argv[8], input, tree, true);
         }
 
         time = clock();
@@ -187,7 +188,7 @@ int main(int argc, char **argv) {
         }
 
 
-        quietPrint(treename + " " + to_string(makespan) + " " + to_string(time));
+        quietPrint("&& " + treename + " " + to_string(makespan) + " " + to_string(time));
         // quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
         // quietPrint(Cluster::getFixedCluster()->getAverageLoadAndNumberOfUsedProcessors());
         //quietPrint(Cluster::getFixedCluster()->getUsageString());
@@ -205,13 +206,13 @@ void
 buildTreeDependentCluster(string clusterFilename, InputParser *input, Tree *tree, bool computeSmallCluster) {
     double maxoutd, minMem;
     maxoutd = MaxOutDegree(tree, true);
-    //quietPrint("maxoutD" + to_string(maxoutd));
+
     schedule_traversal *schedule_f = new schedule_traversal();
     MinMem(tree, maxoutd, minMem, *schedule_f, true);
     bool smallCluster = false;
     //computeSmall cluster? then compute. Else set to false directly
     smallCluster = computeSmallCluster && maxoutd * 100 / minMem < 93;
-    cout << "ratio: " << (maxoutd * 100 / minMem) << endl;
+    quietPrint("maxoutD " + to_string(maxoutd) + "minmem " + to_string(minMem));
     if (smallCluster) input->setClusterFromFileWithShrinkingFactor(clusterFilename, maxoutd, 3);
     else
         input->setClusterFromFile(clusterFilename, maxoutd);

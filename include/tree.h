@@ -685,6 +685,7 @@ void po_construct(const int N, const int *prnts, int **chstart, int **chend, int
 } /* closing brace for extern "C" */
 
 double MaxOutDegree(Tree *tree, int quiet);
+vector<double> maxAndAvgFanout(Tree *tree);
 
 double IOCounter(Tree *subtree, int *schedule,
                  bool divisible, int quiet, unsigned int &com_freq,

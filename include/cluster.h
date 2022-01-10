@@ -340,6 +340,8 @@ public:
 
     static void
     BuildFixedClusterWithMemories(double maxEdgesToMakespanWeights, int num_processors, vector<double> &memorySizes);
+
+    Processor *findSmallestFittingProcessor(double requiredMem);
 };
 
 #endif

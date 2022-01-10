@@ -1,0 +1,178 @@
+small with extra output
+2-level
+heterogeneous
+random_tree_1_2000 2562.512447 16653
+small cluster
+random_tree_2_2000 2162.036456 49302
+small cluster
+random_tree_3_2000 5184.156397 87065
+small cluster
+random_tree_4_2000 4552.592169 60565
+small cluster
+random_tree_5_4000 5761.062211 103441
+small cluster
+random_tree_6_4000 5227.099594 312375
+small cluster
+random_tree_7_4000 5130.517753 164600
+small cluster
+random_tree_8_4000 3676.017258 191009
+small cluster
+random_tree_9_10000 8501.584463 1428445
+small cluster
+random_tree_10_10000 9570.126127 491991
+small cluster
+random_tree_11_20000 12645.414276 953134
+random_tree_0_15 3087.868316 57
+random_tree_0_15 3087.868316 53
+
+homogeneous many small
+random_tree_1_2000 2562.512447 14514
+small cluster
+random_tree_2_2000 6532.068332 124155
+small cluster
+random_tree_3_2000 16896.731306 171684
+small cluster
+random_tree_4_2000 26677.180932 175648
+small cluster
+random_tree_5_4000 34832.541859 532425
+small cluster
+random_tree_6_4000 19784.784637 757382
+small cluster
+random_tree_7_4000 13122.443033 411654
+small cluster
+random_tree_8_4000 14685.875869 443696
+small cluster
+random_tree_9_10000 16693.198555 2852014
+small cluster
+random_tree_10_10000 16198.306247 1840288
+small cluster
+random_tree_11_20000 24136.434661 1927235
+random_tree_0_15 3087.868316 58
+random_tree_0_15 3087.868316 54
+
+homogeneous few big
+random_tree_1_2000 2562.512447 14611
+small cluster
+random_tree_2_2000 2162.036456 44784
+small cluster
+random_tree_3_2000 5184.156397 86365
+small cluster
+random_tree_4_2000 4552.592169 60329
+small cluster
+random_tree_5_4000 5761.062211 103684
+small cluster
+random_tree_6_4000 5227.099594 296840
+small cluster
+random_tree_7_4000 5130.517753 139430
+small cluster
+random_tree_8_4000 3676.017258 183919
+small cluster
+random_tree_9_10000 8501.584463 1425905
+small cluster
+random_tree_10_10000 9570.126127 493769
+small cluster
+random_tree_11_20000 13565.789156 998143
+random_tree_0_15 3087.868316 59
+random_tree_0_15 3087.868316 54
+
+3-level
+heterogeneous
+random_tree_1_2000 2562.512447 14554
+small cluster
+random_tree_2_2000 2162.036456 44722
+small cluster
+random_tree_3_2000 5184.156397 85713
+small cluster
+random_tree_4_2000 4552.592169 60561
+small cluster
+random_tree_5_4000 5761.062211 102995
+small cluster
+random_tree_6_4000 5227.099594 289923
+small cluster
+random_tree_7_4000 5130.517753 138779
+small cluster
+random_tree_8_4000 3676.017258 184210
+small cluster
+random_tree_9_10000 8501.584463 1433212
+small cluster
+random_tree_10_10000 9570.126127 487452
+small cluster
+random_tree_11_20000 12645.414276 954113
+random_tree_0_15 3087.868316 58
+random_tree_0_15 3087.868316 53
+
+homogeneous many small
+random_tree_1_2000 2562.512447 14645
+small cluster
+random_tree_2_2000 6532.068332 124386
+small cluster
+random_tree_3_2000 16896.731306 172542
+small cluster
+random_tree_4_2000 26677.180932 176613
+small cluster
+random_tree_5_4000 34832.541859 526140
+small cluster
+random_tree_6_4000 19784.784637 771797
+small cluster
+random_tree_7_4000 13122.443033 413481
+small cluster
+random_tree_8_4000 14685.875869 443646
+small cluster
+random_tree_9_10000 16693.198555 2872065
+small cluster
+random_tree_10_10000 16198.306247 1844870
+small cluster
+random_tree_11_20000 24136.434661 1948289
+random_tree_0_15 3087.868316 58
+random_tree_0_15 3087.868316 54
+
+homogeneous average average
+random_tree_1_2000 2562.512447 14630
+small cluster
+random_tree_2_2000 2162.036456 44929
+small cluster
+random_tree_3_2000 5184.156397 85994
+small cluster
+random_tree_4_2000 4552.592169 60297
+small cluster
+random_tree_5_4000 5761.062211 107354
+small cluster
+random_tree_6_4000 5227.099594 288366
+small cluster
+random_tree_7_4000 5130.517753 138952
+small cluster
+random_tree_8_4000 3676.017258 202594
+small cluster
+random_tree_9_10000 8501.584463 1435613
+small cluster
+random_tree_10_10000 9570.126127 494031
+small cluster
+random_tree_11_20000 13565.789156 996020
+random_tree_0_15 3087.868316 63
+random_tree_0_15 3087.868316 53
+
+homogeneous few big
+random_tree_1_2000 2562.512447 14593
+small cluster
+random_tree_2_2000 2162.036456 45091
+small cluster
+random_tree_3_2000 5184.156397 86199
+small cluster
+random_tree_4_2000 4552.592169 60644
+small cluster
+random_tree_5_4000 5761.062211 107633
+small cluster
+random_tree_6_4000 5227.099594 295624
+small cluster
+random_tree_7_4000 5130.517753 140069
+small cluster
+random_tree_8_4000 3676.017258 200353
+small cluster
+random_tree_9_10000 8501.584463 1429924
+small cluster
+random_tree_10_10000 9570.126127 490157
+small cluster
+random_tree_11_20000 13646.430491 1945961
+random_tree_0_15 3087.868316 61
+random_tree_0_15 3087.868316 55
+

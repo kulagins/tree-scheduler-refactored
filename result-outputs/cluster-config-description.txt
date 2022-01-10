@@ -1,0 +1,18 @@
+27 processors
+bandwidth 1
+proc speed 1
+Memory share: according to maxoutd
+
+if maxoutd/minMem(root) <93%, 
+then processors counts capped by 3.
+
+2-memory-size
+
+18 big x3 mem
+9 small x1 mem
+
+3-memory-size
+9 big x3 mem
+9 avg x1,5 mem
+9 small x1 mem
+

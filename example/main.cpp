@@ -21,7 +21,7 @@
 #include "../include/lib-io-tree-minmem.h"
 
 
-const bool verbose = true;
+const bool verbose = false;
 
 void
 buildTreeDependentCluster(string argv, InputParser *input, Tree *tree, bool computeSmallCluster);
@@ -212,7 +212,7 @@ buildTreeDependentCluster(string clusterFilename, InputParser *input, Tree *tree
     bool smallCluster = false;
     //computeSmall cluster? then compute. Else set to false directly
     smallCluster = computeSmallCluster && maxoutd * 100 / minMem < 93;
-    quietPrint("maxoutD " + to_string(maxoutd) + "minmem " + to_string(minMem));
+    cout<<"maxoutD " << to_string(maxoutd) + "minmem " + to_string(minMem)<<endl;
     if (smallCluster) input->setClusterFromFileWithShrinkingFactor(clusterFilename, maxoutd, 3);
     else
         input->setClusterFromFile(clusterFilename, maxoutd);

@@ -1,0 +1,1943 @@
+small with extra output
+2-level
+heterogeneous
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/10_children
+blabla
+&& size_10000/random_tree_1 8793.493491 491561
+&& size_10000/random_tree_2 7461.146289 242156
+&& size_10000/random_tree_3 4482.258197 1453447
+&& size_15000/random_tree_1 11289.494522 915565
+&& size_15000/random_tree_2 7438.750147 3105037
+&& size_15000/random_tree_3 11450.617182 2340013
+&& size_20000/random_tree_1 7711.891047 10026694
+&& size_20000/random_tree_2 11984.444062 2910603
+&& size_20000/random_tree_3 6717.027861 4593274
+&& size_25000/random_tree_1 9719.507222 6928227
+&& size_25000/random_tree_2 9080.219832 9997540
+&& size_25000/random_tree_3 16291.847868 7479742
+&& size_5000/random_tree_1 7178.899456 93466
+&& size_5000/random_tree_2 5013.587893 123978
+&& size_5000/random_tree_3 7190.519630 227222
+&& size_5000/random_tree_3 7190.519630 196222
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large
+blabla
+&& size_10000/random_tree_1 130016.094875 1385036
+&& size_10000/random_tree_10 233755.086366 2521333
+&& size_10000/random_tree_2 249096.174983 1358396
+&& size_10000/random_tree_3 239181.176700 1977368
+&& size_10000/random_tree_4 205739.464424 1056827
+&& size_10000/random_tree_5 177198.742403 1806107
+&& size_10000/random_tree_6 191976.739560 1722342
+&& size_10000/random_tree_7 241764.418798 2027527
+&& size_10000/random_tree_8 236811.476373 1359963
+&& size_10000/random_tree_9 225105.730084 1049336
+&& size_2000/random_tree_1 109398.918629 80743
+&& size_2000/random_tree_10 74746.340503 50852
+&& size_2000/random_tree_2 81368.476813 53153
+&& size_2000/random_tree_3 97943.068849 52703
+&& size_2000/random_tree_4 105088.893685 203437
+&& size_2000/random_tree_5 66497.406272 71103
+&& size_2000/random_tree_6 104816.040493 60930
+&& size_2000/random_tree_7 104111.139211 60834
+&& size_2000/random_tree_8 78018.928907 64856
+&& size_2000/random_tree_9 101127.002025 132798
+&& size_20000/random_tree_1 262434.186454 3752908
+&& size_20000/random_tree_2 330529.746614 4511819
+&& size_20000/random_tree_3 406703.666513 6692750
+&& size_20000/random_tree_4 300484.337870 6128799
+&& size_20000/random_tree_5 356023.006797 8857844
+&& size_30000/random_tree_1 486029.357715 9142127
+&& size_30000/random_tree_2 430958.575992 10884039
+&& size_30000/random_tree_3 587553.273452 16653756
+&& size_30000/random_tree_4 451780.869639 9608868
+&& size_30000/random_tree_5 448045.098288 29720131
+&& size_4000/random_tree_1 160240.370975 230328
+&& size_4000/random_tree_10 147588.317090 192800
+&& size_4000/random_tree_2 121189.639398 285529
+&& size_4000/random_tree_3 129150.741873 172389
+&& size_4000/random_tree_4 111509.453501 200557
+&& size_4000/random_tree_5 97707.089879 539063
+&& size_4000/random_tree_6 147107.993272 288664
+&& size_4000/random_tree_7 112698.775470 136952
+&& size_4000/random_tree_8 154785.386065 192810
+&& size_4000/random_tree_9 115721.592946 180975
+&& size_50000/random_tree_1 922398.276117 52302404
+&& size_50000/random_tree_2 876239.161268 26684428
+&& size_50000/random_tree_3 693542.269666 35874278
+&& size_50000/random_tree_4 750535.098055 37890425
+&& size_50000/random_tree_5 873939.760286 30792810
+&& size_50000/random_tree_5 873939.760286 30710554
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights
+blabla
+&& size_10000/random_tree_1 33332.999684 456918
+&& size_10000/random_tree_10 51015.191898 576508
+&& size_10000/random_tree_2 52404.826281 358643
+&& size_10000/random_tree_3 47216.256699 1569709
+&& size_10000/random_tree_4 21401.721654 821462
+&& size_10000/random_tree_5 19841.858736 1978097
+&& size_10000/random_tree_6 15742.423375 3162846
+&& size_10000/random_tree_7 48322.883854 359483
+&& size_10000/random_tree_8 43560.317900 1701878
+&& size_10000/random_tree_9 49949.063116 1246965
+&& size_2000/random_tree_1 33211.271928 47132
+&& size_2000/random_tree_10 15520.711752 34507
+&& size_2000/random_tree_2 31165.197722 50305
+&& size_2000/random_tree_3 45343.357622 47271
+&& size_2000/random_tree_4 26909.628824 84440
+&& size_2000/random_tree_5 33141.060449 78944
+&& size_2000/random_tree_6 34092.952041 100055
+&& size_2000/random_tree_7 46978.566464 19307
+&& size_2000/random_tree_8 27297.722652 29404
+&& size_2000/random_tree_9 32401.321527 51568
+&& size_20000/random_tree_1 45616.494060 6257462
+&& size_20000/random_tree_2 50651.718847 3700284
+&& size_20000/random_tree_3 22105.661348 8073591
+&& size_20000/random_tree_4 36957.226963 2037767
+&& size_20000/random_tree_5 24421.283284 10876894
+&& size_30000/random_tree_1 59459.215234 7736875
+&& size_30000/random_tree_2 63699.212632 27748289
+&& size_30000/random_tree_3 39573.806589 6061825
+&& size_30000/random_tree_4 29095.792088 7329735
+&& size_30000/random_tree_5 42102.083078 22123947
+&& size_4000/random_tree_1 21109.826776 51077
+&& size_4000/random_tree_10 42927.987822 166591
+&& size_4000/random_tree_2 44617.859956 149362
+&& size_4000/random_tree_3 43577.828840 179855
+&& size_4000/random_tree_4 36459.937301 105757
+&& size_4000/random_tree_5 31290.648993 266230
+&& size_4000/random_tree_6 36805.573232 308300
+&& size_4000/random_tree_7 22116.092757 360648
+&& size_4000/random_tree_8 27145.256567 288776
+&& size_4000/random_tree_9 19351.745565 130990
+&& size_50000/random_tree_1 50461.484453 19925959
+&& size_50000/random_tree_2 47054.384082 60224517
+&& size_50000/random_tree_3 61152.855231 21413806
+&& size_50000/random_tree_4 71073.352653 17268320
+&& size_50000/random_tree_5 32221.835824 8060824
+&& size_50000/random_tree_5 32221.835824 8064820
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/20_children
+blabla
+&& size_10000/random_tree_1 8650.175052 421641
+&& size_10000/random_tree_2 5682.376340 2249119
+&& size_10000/random_tree_3 8312.221120 615414
+&& size_15000/random_tree_1 7453.069654 6787930
+&& size_15000/random_tree_2 8317.271278 2015091
+&& size_15000/random_tree_3 5703.558106 1569757
+&& size_20000/random_tree_1 13211.355899 4053490
+&& size_20000/random_tree_2 14143.838575 9368090
+&& size_20000/random_tree_3 14064.175756 1456794
+&& size_25000/random_tree_1 7076.847080 3639674
+&& size_25000/random_tree_2 13929.384687 5696156
+&& size_25000/random_tree_3 8382.557917 6609899
+&& size_5000/random_tree_1 5582.392243 71871
+&& size_5000/random_tree_2 6672.672804 103936
+&& size_5000/random_tree_3 3966.257093 90025
+&& size_5000/random_tree_3 3966.257093 86164
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small
+blabla
+&& size_10000/random_tree_1 695.752665 383240
+&& size_10000/random_tree_10 510.496661 300409
+&& size_10000/random_tree_2 682.327060 433556
+&& size_10000/random_tree_3 595.473909 467398
+&& size_10000/random_tree_4 759.604226 341147
+&& size_10000/random_tree_5 951.960065 792848
+&& size_10000/random_tree_6 596.824209 1106675
+&& size_10000/random_tree_7 837.352334 913641
+&& size_10000/random_tree_8 430.878984 418613
+&& size_10000/random_tree_9 785.274534 518371
+&& size_2000/random_tree_1 365.289356 75686
+&& size_2000/random_tree_10 471.618491 62641
+&& size_2000/random_tree_2 405.625408 53003
+&& size_2000/random_tree_3 518.059676 28597
+&& size_2000/random_tree_4 216.332816 42121
+&& size_2000/random_tree_5 468.064994 19183
+&& size_2000/random_tree_6 411.132619 79940
+&& size_2000/random_tree_7 578.157237 38219
+&& size_2000/random_tree_8 551.843726 33538
+&& size_2000/random_tree_9 289.033465 69345
+&& size_20000/random_tree_1 859.649080 1243476
+&& size_20000/random_tree_2 989.057610 3737275
+&& size_20000/random_tree_3 1319.738949 2661723
+&& size_20000/random_tree_4 1261.902491 2161094
+&& size_20000/random_tree_5 914.462950 3008889
+&& size_30000/random_tree_1 1465.611315 7437724
+&& size_30000/random_tree_2 1958.772651 5454152
+&& size_30000/random_tree_3 1401.079584 5570593
+&& size_30000/random_tree_4 1662.307329 5414543
+&& size_30000/random_tree_5 1656.041393 6240499
+&& size_4000/random_tree_1 388.316612 306140
+&& size_4000/random_tree_10 596.024084 76957
+&& size_4000/random_tree_2 461.171340 126443
+&& size_4000/random_tree_3 650.310661 259376
+&& size_4000/random_tree_4 681.699277 95496
+&& size_4000/random_tree_5 640.941586 243693
+&& size_4000/random_tree_6 615.008596 298390
+&& size_4000/random_tree_7 456.804497 85876
+&& size_4000/random_tree_8 330.390762 187187
+&& size_4000/random_tree_9 524.856602 184211
+&& size_50000/random_tree_1 2134.463295 40386190
+&& size_50000/random_tree_2 2319.601483 20007138
+&& size_50000/random_tree_3 1777.972209 25709204
+&& size_50000/random_tree_4 1884.758990 17813743
+&& size_50000/random_tree_5 1579.150765 7455276
+&& size_50000/random_tree_5 1579.150765 7825316
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights
+blabla
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_1
+Fanout: Max: 6,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 53943.000000minmem 63328.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 53943, MaxMemory: 161829.000000, CumulativeMemory: 1132803
+1 step ready 
+Makespan 9501.66 #trees: 1
+2 step ready 
+Makespan 9501.66 #trees: 1
+&& size_10000/random_tree_1 9501.659333 902919
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_10
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_10
+Fanout: Max: 7,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 54240.000000minmem 56978.000000
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 54240, MaxMemory: 162720.000000, CumulativeMemory: 3417120
+1 step ready 
+Makespan 9145.17 #trees: 1
+2 step ready 
+Makespan 9145.17 #trees: 1
+&& size_10000/random_tree_10 9145.170261 229466
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_2
+Fanout: Max: 6,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 30010.000000minmem 33435.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 30010, MaxMemory: 90030.000000, CumulativeMemory: 630210
+1 step ready 
+Makespan 6172.52 #trees: 9
+2 step ready 
+Makespan 8031.54 #trees: 13
+&& size_10000/random_tree_2 8396.161591 1206330
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_3
+Fanout: Max: 6,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 39577.000000minmem 44725.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 39577, MaxMemory: 118731.000000, CumulativeMemory: 831117
+1 step ready 
+Makespan 6846.64 #trees: 9
+2 step ready 
+Makespan 11434 #trees: 14
+&& size_10000/random_tree_3 7077.869286 777588
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_4
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_4
+Fanout: Max: 7,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 37207.000000minmem 40270.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 37207, MaxMemory: 111621.000000, CumulativeMemory: 781347
+1 step ready 
+Makespan 7703.04 #trees: 1
+2 step ready 
+Makespan 7703.04 #trees: 1
+&& size_10000/random_tree_4 7703.040020 652398
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_5
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_5
+Fanout: Max: 6,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 52038.000000minmem 56869.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 52038, MaxMemory: 156114.000000, CumulativeMemory: 1092798
+1 step ready 
+Makespan 9481.58 #trees: 1
+2 step ready 
+Makespan 9481.58 #trees: 1
+&& size_10000/random_tree_5 9481.582969 462155
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_6
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_6
+Fanout: Max: 7,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 55022.000000minmem 65633.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 55022, MaxMemory: 165066.000000, CumulativeMemory: 1155462
+1 step ready 
+Makespan 9497.91 #trees: 1
+2 step ready 
+Makespan 9497.91 #trees: 1
+&& size_10000/random_tree_6 9497.909865 1788657
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_7
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_7
+Fanout: Max: 7,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 34094.000000minmem 37015.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34094, MaxMemory: 102282.000000, CumulativeMemory: 715974
+1 step ready 
+Makespan 7046.02 #trees: 9
+2 step ready 
+Makespan 7046.02 #trees: 9
+&& size_10000/random_tree_7 7046.015750 531088
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_8
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_8
+Fanout: Max: 6,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 33769.000000minmem 40034.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 33769, MaxMemory: 101307.000000, CumulativeMemory: 709149
+1 step ready 
+Makespan 7013.92 #trees: 9
+2 step ready 
+Makespan 9459.61 #trees: 17
+&& size_10000/random_tree_8 7560.834013 1959147
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_9
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_10000/random_tree_9
+Fanout: Max: 7,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 45016.000000minmem 49038.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 45016, MaxMemory: 135048.000000, CumulativeMemory: 945336
+1 step ready 
+Makespan 8721.11 #trees: 1
+2 step ready 
+Makespan 8721.11 #trees: 1
+&& size_10000/random_tree_9 8721.106556 487671
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_1
+Fanout: Max: 6,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 47302.000000minmem 53234.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 47302, MaxMemory: 141906.000000, CumulativeMemory: 993342
+1 step ready 
+Makespan 5620.14 #trees: 1
+2 step ready 
+Makespan 5620.14 #trees: 1
+&& size_2000/random_tree_1 5620.140335 64123
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_10
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_10
+Fanout: Max: 5,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 21913.000000minmem 25160.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 21913, MaxMemory: 65739.000000, CumulativeMemory: 460173
+1 step ready 
+Makespan 2442.92 #trees: 1
+2 step ready 
+Makespan 2442.92 #trees: 1
+&& size_2000/random_tree_10 2442.924941 86583
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_2
+Fanout: Max: 6,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 40061.000000minmem 44636.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 40061, MaxMemory: 120183.000000, CumulativeMemory: 841281
+1 step ready 
+Makespan 3921.08 #trees: 1
+2 step ready 
+Makespan 3921.08 #trees: 1
+&& size_2000/random_tree_2 3921.083731 161187
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_3
+Fanout: Max: 6,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 24589.000000minmem 25337.000000
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 24589, MaxMemory: 73767.000000, CumulativeMemory: 1549107
+1 step ready 
+Makespan 2018.82 #trees: 1
+2 step ready 
+Makespan 2018.82 #trees: 1
+&& size_2000/random_tree_3 2018.824017 47391
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_4
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_4
+Fanout: Max: 6,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 35170.000000minmem 36790.000000
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 35170, MaxMemory: 105510.000000, CumulativeMemory: 2215710
+1 step ready 
+Makespan 2993.91 #trees: 1
+2 step ready 
+Makespan 2993.91 #trees: 1
+&& size_2000/random_tree_4 2993.911446 63852
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_5
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_5
+Fanout: Max: 5,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 22538.000000minmem 25980.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 22538, MaxMemory: 67614.000000, CumulativeMemory: 473298
+1 step ready 
+Makespan 2600.43 #trees: 1
+2 step ready 
+Makespan 2600.43 #trees: 1
+&& size_2000/random_tree_5 2600.433989 91918
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_6
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_6
+Fanout: Max: 6,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 44752.000000minmem 48418.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 44752, MaxMemory: 134256.000000, CumulativeMemory: 939792
+1 step ready 
+Makespan 4698.68 #trees: 1
+2 step ready 
+Makespan 4698.68 #trees: 1
+&& size_2000/random_tree_6 4698.679381 41482
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_7
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_7
+Fanout: Max: 5,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 23392.000000minmem 26024.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 23392, MaxMemory: 70176.000000, CumulativeMemory: 491232
+1 step ready 
+Makespan 2060.93 #trees: 1
+2 step ready 
+Makespan 2060.93 #trees: 1
+&& size_2000/random_tree_7 2060.926194 150309
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_8
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_8
+Fanout: Max: 6,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 32275.000000minmem 35622.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 32275, MaxMemory: 96825.000000, CumulativeMemory: 677775
+1 step ready 
+Makespan 3423.94 #trees: 1
+2 step ready 
+Makespan 3423.94 #trees: 1
+&& size_2000/random_tree_8 3423.944706 54292
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_9
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_2000/random_tree_9
+Fanout: Max: 5,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 43420.000000minmem 48320.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 43420, MaxMemory: 130260.000000, CumulativeMemory: 911820
+1 step ready 
+Makespan 5804.89 #trees: 1
+2 step ready 
+Makespan 5804.89 #trees: 1
+&& size_2000/random_tree_9 5804.890914 21626
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_20000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_20000/random_tree_1
+Fanout: Max: 8,  Avg: 0.99995
+BuildSmallCluster? true
+maxoutD 51238.000000minmem 54659.000000
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 51238, MaxMemory: 153714.000000, CumulativeMemory: 3227994
+1 step ready 
+Makespan 11060.3 #trees: 27
+2 step ready 
+Makespan 15336 #trees: 28
+&& size_20000/random_tree_1 12006.680218 1253683
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_20000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_20000/random_tree_2
+Fanout: Max: 8,  Avg: 0.99995
+BuildSmallCluster? true
+maxoutD 36055.000000minmem 38196.000000
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 36055, MaxMemory: 108165.000000, CumulativeMemory: 2271465
+1 step ready 
+Makespan 6608.74 #trees: 27
+2 step ready 
+Makespan 6608.74 #trees: 27
+&& size_20000/random_tree_2 6608.737083 971780
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_20000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_20000/random_tree_3
+Fanout: Max: 7,  Avg: 0.99995
+BuildSmallCluster? true
+maxoutD 49744.000000minmem 60028.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 49744, MaxMemory: 149232.000000, CumulativeMemory: 1044624
+1 step ready 
+Makespan 11876.4 #trees: 9
+2 step ready 
+Makespan 25362.3 #trees: 20
+&& size_20000/random_tree_3 13381.338620 5936228
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_20000/random_tree_4
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_20000/random_tree_4
+Fanout: Max: 7,  Avg: 0.99995
+BuildSmallCluster? true
+maxoutD 59902.000000minmem 68821.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 59902, MaxMemory: 179706.000000, CumulativeMemory: 1257942
+1 step ready 
+Makespan 14120 #trees: 1
+2 step ready 
+Makespan 14120 #trees: 1
+&& size_20000/random_tree_4 14120.010737 11381132
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_20000/random_tree_5
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_20000/random_tree_5
+Fanout: Max: 7,  Avg: 0.99995
+BuildSmallCluster? true
+maxoutD 41585.000000minmem 44835.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 41585, MaxMemory: 124755.000000, CumulativeMemory: 873285
+1 step ready 
+Makespan 10368.9 #trees: 9
+2 step ready 
+Makespan 10368.9 #trees: 9
+&& size_20000/random_tree_5 10368.883717 948727
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_30000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_30000/random_tree_1
+Fanout: Max: 7,  Avg: 0.999967
+BuildSmallCluster? true
+maxoutD 27789.000000minmem 30812.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 27789, MaxMemory: 83367.000000, CumulativeMemory: 583569
+1 step ready 
+Makespan 9126.72 #trees: 9
+2 step ready 
+Makespan 10449 #trees: 11
+&& size_30000/random_tree_1 9723.182000 5447105
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_30000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_30000/random_tree_2
+Fanout: Max: 8,  Avg: 0.999967
+BuildSmallCluster? true
+maxoutD 26108.000000minmem 27276.000000
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 26108, MaxMemory: 78324.000000, CumulativeMemory: 1644804
+1 step ready 
+Makespan 5262.68 #trees: 27
+2 step ready 
+Makespan 5262.68 #trees: 27
+&& size_30000/random_tree_2 5262.682808 2968386
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_30000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_30000/random_tree_3
+Fanout: Max: 7,  Avg: 0.999967
+BuildSmallCluster? true
+maxoutD 42362.000000minmem 51498.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 42362, MaxMemory: 127086.000000, CumulativeMemory: 889602
+1 step ready 
+Makespan 11775.3 #trees: 9
+2 step ready 
+Makespan 14162 #trees: 11
+&& size_30000/random_tree_3 14952.066282 4019177
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_30000/random_tree_4
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_30000/random_tree_4
+Fanout: Max: 7,  Avg: 0.999967
+BuildSmallCluster? true
+maxoutD 52180.000000minmem 60300.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 52180, MaxMemory: 156540.000000, CumulativeMemory: 1095780
+1 step ready 
+Makespan 13619.1 #trees: 9
+2 step ready 
+Makespan 17025.1 #trees: 16
+&& size_30000/random_tree_4 16221.122251 21319721
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_30000/random_tree_5
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_30000/random_tree_5
+Fanout: Max: 7,  Avg: 0.999967
+BuildSmallCluster? true
+maxoutD 51466.000000minmem 61011.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 51466, MaxMemory: 154398.000000, CumulativeMemory: 1080786
+1 step ready 
+Makespan 15018.4 #trees: 9
+2 step ready 
+Makespan 19877 #trees: 12
+&& size_30000/random_tree_5 15784.426502 3559828
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_1
+Fanout: Max: 7,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 45232.000000minmem 48699.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 45232, MaxMemory: 135696.000000, CumulativeMemory: 949872
+1 step ready 
+Makespan 5940.02 #trees: 1
+2 step ready 
+Makespan 5940.02 #trees: 1
+&& size_4000/random_tree_1 5940.017374 172007
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_10
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_10
+Fanout: Max: 6,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 34741.000000minmem 38105.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34741, MaxMemory: 104223.000000, CumulativeMemory: 729561
+1 step ready 
+Makespan 4342.48 #trees: 1
+2 step ready 
+Makespan 4342.48 #trees: 1
+&& size_4000/random_tree_10 4342.477913 161154
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_2
+Fanout: Max: 6,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 31142.000000minmem 35495.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 31142, MaxMemory: 93426.000000, CumulativeMemory: 653982
+1 step ready 
+Makespan 4496.11 #trees: 1
+2 step ready 
+Makespan 4496.11 #trees: 1
+&& size_4000/random_tree_2 4496.114340 435134
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_3
+Fanout: Max: 5,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 36059.000000minmem 41265.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 36059, MaxMemory: 108177.000000, CumulativeMemory: 757239
+1 step ready 
+Makespan 4773.2 #trees: 1
+2 step ready 
+Makespan 4773.2 #trees: 1
+&& size_4000/random_tree_3 4773.200890 132321
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_4
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_4
+Fanout: Max: 5,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 34906.000000minmem 41059.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34906, MaxMemory: 104718.000000, CumulativeMemory: 733026
+1 step ready 
+Makespan 4347.97 #trees: 1
+2 step ready 
+Makespan 4347.97 #trees: 1
+&& size_4000/random_tree_4 4347.968474 456772
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_5
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_5
+Fanout: Max: 6,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 39257.000000minmem 44372.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 39257, MaxMemory: 117771.000000, CumulativeMemory: 824397
+1 step ready 
+Makespan 5451.74 #trees: 1
+2 step ready 
+Makespan 5451.74 #trees: 1
+&& size_4000/random_tree_5 5451.737515 179042
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_6
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_6
+Fanout: Max: 7,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 40841.000000minmem 43502.000000
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 40841, MaxMemory: 122523.000000, CumulativeMemory: 2572983
+1 step ready 
+Makespan 4561.59 #trees: 1
+2 step ready 
+Makespan 4561.59 #trees: 1
+&& size_4000/random_tree_6 4561.594314 329155
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_7
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_7
+Fanout: Max: 6,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 28197.000000minmem 29912.000000
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 28197, MaxMemory: 84591.000000, CumulativeMemory: 1776411
+1 step ready 
+Makespan 3451.58 #trees: 1
+2 step ready 
+Makespan 3451.58 #trees: 1
+&& size_4000/random_tree_7 3451.578881 111644
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_8
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_8
+Fanout: Max: 7,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 54604.000000minmem 54772.000000
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 54604, MaxMemory: 163812.000000, CumulativeMemory: 3440052
+1 step ready 
+Makespan 6715.5 #trees: 1
+2 step ready 
+Makespan 6715.5 #trees: 1
+&& size_4000/random_tree_8 6715.504885 84162
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_9
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_4000/random_tree_9
+Fanout: Max: 6,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 38327.000000minmem 42238.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 38327, MaxMemory: 114981.000000, CumulativeMemory: 804867
+1 step ready 
+Makespan 4520.03 #trees: 1
+2 step ready 
+Makespan 4520.03 #trees: 1
+&& size_4000/random_tree_9 4520.027349 124019
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_50000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_50000/random_tree_1
+Fanout: Max: 7,  Avg: 0.99998
+BuildSmallCluster? true
+maxoutD 49986.000000minmem 65672.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 49986, MaxMemory: 149958.000000, CumulativeMemory: 1049706
+1 step ready 
+Makespan 17454.1 #trees: 9
+2 step ready 
+Makespan 26971.4 #trees: 49
+&& size_50000/random_tree_1 19069.458584 63003756
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_50000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_50000/random_tree_2
+Fanout: Max: 8,  Avg: 0.99998
+BuildSmallCluster? true
+maxoutD 47905.000000minmem 52757.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 47905, MaxMemory: 143715.000000, CumulativeMemory: 1006005
+1 step ready 
+Makespan 15198 #trees: 9
+2 step ready 
+Makespan 18430.5 #trees: 12
+&& size_50000/random_tree_2 17042.816146 11100199
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_50000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_50000/random_tree_3
+Fanout: Max: 7,  Avg: 0.99998
+BuildSmallCluster? true
+maxoutD 34878.000000minmem 40145.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34878, MaxMemory: 104634.000000, CumulativeMemory: 732438
+1 step ready 
+Makespan 13793.1 #trees: 9
+2 step ready 
+Makespan 15940.7 #trees: 18
+&& size_50000/random_tree_3 14819.398165 15655840
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_50000/random_tree_4
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_50000/random_tree_4
+Fanout: Max: 7,  Avg: 0.99998
+BuildSmallCluster? true
+maxoutD 49237.000000minmem 60847.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 49237, MaxMemory: 147711.000000, CumulativeMemory: 1033977
+1 step ready 
+Makespan 17870.7 #trees: 9
+2 step ready 
+Makespan 21032.9 #trees: 14
+&& size_50000/random_tree_4 18670.347907 17208608
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_50000/random_tree_5
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_50000/random_tree_5
+Fanout: Max: 8,  Avg: 0.99998
+BuildSmallCluster? true
+maxoutD 35906.000000minmem 38998.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 35906, MaxMemory: 107718.000000, CumulativeMemory: 754026
+1 step ready 
+Makespan 12799.6 #trees: 9
+2 step ready 
+Makespan 16481.7 #trees: 14
+&& size_50000/random_tree_5 13747.579215 14828782
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_50000/random_tree_5
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights/size_50000/random_tree_5
+Fanout: Max: 8,  Avg: 0.99998
+BuildSmallCluster? true
+maxoutD 35906.000000minmem 38998.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 35906, MaxMemory: 107718.000000, CumulativeMemory: 754026
+1 step ready 
+Makespan 12799.6 #trees: 9
+2 step ready 
+Makespan 16481.7 #trees: 14
+&& size_50000/random_tree_5 13747.579215 14393950
+
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children
+blabla
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_10000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_10000/random_tree_1
+Fanout: Max: 4,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 5531.000000minmem 9999.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 5531, MaxMemory: 16593.000000, CumulativeMemory: 116151
+1 step ready 
+Makespan 3670.48 #trees: 9
+2 step ready 
+Makespan 8666.1 #trees: 58
+&& size_10000/random_tree_1 3840.522109 1717638
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_10000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_10000/random_tree_2
+Fanout: Max: 4,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 12705.000000minmem 24333.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 12705, MaxMemory: 38115.000000, CumulativeMemory: 266805
+1 step ready 
+Makespan 6855.09 #trees: 9
+2 step ready 
+Makespan 23047.9 #trees: 57
+&& size_10000/random_tree_2 7034.484506 1858560
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_10000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_10000/random_tree_3
+Fanout: Max: 4,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 9504.000000minmem 17572.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 9504, MaxMemory: 28512.000000, CumulativeMemory: 199584
+1 step ready 
+Makespan 6317.69 #trees: 1
+2 step ready 
+Makespan 6317.69 #trees: 1
+&& size_10000/random_tree_3 6317.687548 744397
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_15/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_15/random_tree_1
+Fanout: Max: 4,  Avg: 0.933333
+BuildSmallCluster? true
+maxoutD 27310.000000minmem 27310.000000
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 27310, MaxMemory: 81930.000000, CumulativeMemory: 1720530
+1 step ready 
+Makespan 2245.12 #trees: 1
+2 step ready 
+Makespan 2245.12 #trees: 1
+&& size_15/random_tree_1 2245.123210 76
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_15000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_15000/random_tree_1
+Fanout: Max: 4,  Avg: 0.999933
+BuildSmallCluster? true
+maxoutD 18411.000000minmem 35619.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 18411, MaxMemory: 55233.000000, CumulativeMemory: 386631
+1 step ready 
+Makespan 10090.2 #trees: 9
+2 step ready 
+Makespan 31390.7 #trees: 64
+&& size_15000/random_tree_1 11004.345374 8334733
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_15000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_15000/random_tree_2
+Fanout: Max: 4,  Avg: 0.999933
+BuildSmallCluster? true
+maxoutD 21149.000000minmem 41121.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 21149, MaxMemory: 63447.000000, CumulativeMemory: 444129
+1 step ready 
+Makespan 10172.1 #trees: 9
+2 step ready 
+Makespan 41369.2 #trees: 58
+&& size_15000/random_tree_2 10420.243330 5075266
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_15000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_15000/random_tree_3
+Fanout: Max: 4,  Avg: 0.999933
+BuildSmallCluster? true
+maxoutD 18102.000000minmem 38773.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 18102, MaxMemory: 54306.000000, CumulativeMemory: 380142
+1 step ready 
+Makespan 9309.91 #trees: 9
+2 step ready 
+Makespan 50515.1 #trees: 62
+&& size_15000/random_tree_3 9644.189268 4419009
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_20/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_20/random_tree_1
+Fanout: Max: 4,  Avg: 0.95
+BuildSmallCluster? true
+maxoutD 34886.000000minmem 34886.000000
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 34886, MaxMemory: 104658.000000, CumulativeMemory: 2197818
+1 step ready 
+Makespan 4253.2 #trees: 1
+2 step ready 
+Makespan 4253.2 #trees: 1
+&& size_20/random_tree_1 4253.203671 92
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_20000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_20000/random_tree_1
+Fanout: Max: 4,  Avg: 0.99995
+BuildSmallCluster? true
+maxoutD 12114.000000minmem 25239.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 12114, MaxMemory: 36342.000000, CumulativeMemory: 254394
+1 step ready 
+Makespan 7902.51 #trees: 9
+2 step ready 
+Makespan 24772.7 #trees: 56
+&& size_20000/random_tree_1 8154.627932 12066746
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_20000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_20000/random_tree_2
+Fanout: Max: 4,  Avg: 0.99995
+BuildSmallCluster? true
+maxoutD 9447.000000minmem 19679.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 9447, MaxMemory: 28341.000000, CumulativeMemory: 198387
+1 step ready 
+Makespan 6281.5 #trees: 9
+2 step ready 
+Makespan 21901.7 #trees: 77
+&& size_20000/random_tree_2 8997.631961 8305462
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_20000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_20000/random_tree_3
+Fanout: Max: 4,  Avg: 0.99995
+BuildSmallCluster? true
+maxoutD 8370.000000minmem 16975.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 8370, MaxMemory: 25110.000000, CumulativeMemory: 175770
+1 step ready 
+Makespan 6735 #trees: 9
+2 step ready 
+Makespan 16056.8 #trees: 62
+&& size_20000/random_tree_3 6837.846106 6658495
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_25000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_25000/random_tree_1
+Fanout: Max: 4,  Avg: 0.99996
+BuildSmallCluster? true
+maxoutD 14949.000000minmem 31455.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 14949, MaxMemory: 44847.000000, CumulativeMemory: 313929
+1 step ready 
+Makespan 12993.8 #trees: 9
+2 step ready 
+Makespan 31493.6 #trees: 49
+&& size_25000/random_tree_1 14559.394998 20961781
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_25000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_25000/random_tree_2
+Fanout: Max: 4,  Avg: 0.99996
+BuildSmallCluster? true
+maxoutD 11135.000000minmem 23237.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 11135, MaxMemory: 33405.000000, CumulativeMemory: 233835
+1 step ready 
+Makespan 8227.13 #trees: 9
+2 step ready 
+Makespan 21392.5 #trees: 76
+&& size_25000/random_tree_2 8310.149575 15422393
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_25000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_25000/random_tree_3
+Fanout: Max: 4,  Avg: 0.99996
+BuildSmallCluster? true
+maxoutD 8654.000000minmem 17757.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 8654, MaxMemory: 25962.000000, CumulativeMemory: 181734
+1 step ready 
+Makespan 7441.18 #trees: 9
+2 step ready 
+Makespan 26272.5 #trees: 74
+&& size_25000/random_tree_3 7536.050748 7813554
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_5000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_5000/random_tree_1
+Fanout: Max: 4,  Avg: 0.9998
+BuildSmallCluster? true
+maxoutD 15914.000000minmem 28053.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 15914, MaxMemory: 47742.000000, CumulativeMemory: 334194
+1 step ready 
+Makespan 5412.57 #trees: 1
+2 step ready 
+Makespan 5412.57 #trees: 1
+&& size_5000/random_tree_1 5412.573943 127632
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_5000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_5000/random_tree_2
+Fanout: Max: 4,  Avg: 0.9998
+BuildSmallCluster? true
+maxoutD 23542.000000minmem 41595.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 23542, MaxMemory: 70626.000000, CumulativeMemory: 494382
+1 step ready 
+Makespan 6914.89 #trees: 1
+2 step ready 
+Makespan 6914.89 #trees: 1
+&& size_5000/random_tree_2 6914.888733 120557
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_5000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_5000/random_tree_3
+Fanout: Max: 4,  Avg: 0.9998
+BuildSmallCluster? true
+maxoutD 10513.000000minmem 19894.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 10513, MaxMemory: 31539.000000, CumulativeMemory: 220773
+1 step ready 
+Makespan 4297.35 #trees: 1
+2 step ready 
+Makespan 4297.35 #trees: 1
+&& size_5000/random_tree_3 4297.346526 242080
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_5000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children/size_5000/random_tree_3
+Fanout: Max: 4,  Avg: 0.9998
+BuildSmallCluster? true
+maxoutD 10513.000000minmem 19894.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 10513, MaxMemory: 31539.000000, CumulativeMemory: 220773
+1 step ready 
+Makespan 4297.35 #trees: 1
+2 step ready 
+Makespan 4297.35 #trees: 1
+&& size_5000/random_tree_3 4297.346526 244357
+
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights
+blabla
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_1
+Fanout: Max: 6,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 28660.000000minmem 36559.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 28660, MaxMemory: 85980.000000, CumulativeMemory: 601860
+1 step ready 
+Makespan 124860 #trees: 9
+2 step ready 
+Makespan 127417 #trees: 16
+&& size_10000/random_tree_1 163061.204580 6719842
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_10
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_10
+Fanout: Max: 6,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 16836.000000minmem 21247.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 16836, MaxMemory: 50508.000000, CumulativeMemory: 353556
+1 step ready 
+Makespan 93633 #trees: 9
+2 step ready 
+Makespan 98170 #trees: 15
+&& size_10000/random_tree_10 122062.365742 5971687
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_2
+Fanout: Max: 7,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 25017.000000minmem 30513.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 25017, MaxMemory: 75051.000000, CumulativeMemory: 525357
+1 step ready 
+Makespan 164284 #trees: 9
+2 step ready 
+Makespan 164284 #trees: 9
+&& size_10000/random_tree_2 164283.699730 5264866
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_3
+Fanout: Max: 7,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 10562.000000minmem 12076.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 10562, MaxMemory: 31686.000000, CumulativeMemory: 221802
+1 step ready 
+Makespan 101389 #trees: 9
+2 step ready 
+Makespan 102623 #trees: 11
+&& size_10000/random_tree_3 115184.601556 5876175
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_4
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_4
+Fanout: Max: 6,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 13465.000000minmem 16869.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 13465, MaxMemory: 40395.000000, CumulativeMemory: 282765
+1 step ready 
+Makespan 138312 #trees: 9
+2 step ready 
+Makespan 137974 #trees: 14
+&& size_10000/random_tree_4 146129.149736 6379481
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_5
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_5
+Fanout: Max: 7,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 34489.000000minmem 42532.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 34489, MaxMemory: 103467.000000, CumulativeMemory: 724269
+1 step ready 
+Makespan 128515 #trees: 9
+2 step ready 
+Makespan 128515 #trees: 9
+&& size_10000/random_tree_5 128515.016974 5221479
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_6
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_6
+Fanout: Max: 7,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 39115.000000minmem 48549.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 39115, MaxMemory: 117345.000000, CumulativeMemory: 821415
+1 step ready 
+Makespan 111844 #trees: 9
+2 step ready 
+Makespan 116638 #trees: 13
+&& size_10000/random_tree_6 147151.331616 6311407
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_7
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_7
+Fanout: Max: 7,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 37090.000000minmem 45922.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 37090, MaxMemory: 111270.000000, CumulativeMemory: 778890
+1 step ready 
+Makespan 92590.9 #trees: 9
+2 step ready 
+Makespan 92590.9 #trees: 11
+&& size_10000/random_tree_7 120311.828397 5232474
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_8
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_8
+Fanout: Max: 6,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 13955.000000minmem 17715.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 13955, MaxMemory: 41865.000000, CumulativeMemory: 293055
+1 step ready 
+Makespan 112679 #trees: 9
+2 step ready 
+Makespan 114719 #trees: 17
+&& size_10000/random_tree_8 135851.111584 5711697
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_9
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_10000/random_tree_9
+Fanout: Max: 6,  Avg: 0.9999
+BuildSmallCluster? true
+maxoutD 25740.000000minmem 32679.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 25740, MaxMemory: 77220.000000, CumulativeMemory: 540540
+1 step ready 
+Makespan 145002 #trees: 9
+2 step ready 
+Makespan 144506 #trees: 13
+&& size_10000/random_tree_9 186828.748613 5695502
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_1
+Fanout: Max: 6,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 16042.000000minmem 19832.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 16042, MaxMemory: 48126.000000, CumulativeMemory: 336882
+1 step ready 
+Makespan 26610.8 #trees: 9
+2 step ready 
+Makespan 26610.8 #trees: 9
+&& size_2000/random_tree_1 26610.830144 216871
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_10
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_10
+Fanout: Max: 5,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 7587.000000minmem 9683.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 7587, MaxMemory: 22761.000000, CumulativeMemory: 159327
+1 step ready 
+Makespan 28136 #trees: 9
+2 step ready 
+Makespan 29294 #trees: 11
+&& size_2000/random_tree_10 32043.383949 218940
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_2
+Fanout: Max: 6,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 13546.000000minmem 15362.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 13546, MaxMemory: 40638.000000, CumulativeMemory: 284466
+1 step ready 
+Makespan 29132.2 #trees: 9
+2 step ready 
+Makespan 29132.2 #trees: 9
+&& size_2000/random_tree_2 29132.181061 197092
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_3
+Fanout: Max: 6,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 10869.000000minmem 13276.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 10869, MaxMemory: 32607.000000, CumulativeMemory: 228249
+1 step ready 
+Makespan 19983.3 #trees: 9
+2 step ready 
+Makespan 19983.3 #trees: 9
+&& size_2000/random_tree_3 19983.263020 209301
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_4
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_4
+Fanout: Max: 6,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 8947.000000minmem 10022.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 8947, MaxMemory: 26841.000000, CumulativeMemory: 187887
+1 step ready 
+Makespan 23941.3 #trees: 9
+2 step ready 
+Makespan 23941.3 #trees: 9
+&& size_2000/random_tree_4 23941.336835 200484
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_5
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_5
+Fanout: Max: 5,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 11189.000000minmem 14820.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 11189, MaxMemory: 33567.000000, CumulativeMemory: 234969
+1 step ready 
+Makespan 39519.4 #trees: 9
+2 step ready 
+Makespan 40498.2 #trees: 13
+&& size_2000/random_tree_5 39537.372982 231234
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_6
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_6
+Fanout: Max: 6,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 21347.000000minmem 24282.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 21347, MaxMemory: 64041.000000, CumulativeMemory: 448287
+1 step ready 
+Makespan 30977.6 #trees: 9
+2 step ready 
+Makespan 33926.6 #trees: 10
+&& size_2000/random_tree_6 35106.167911 217860
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_7
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_7
+Fanout: Max: 5,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 10001.000000minmem 13001.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 10001, MaxMemory: 30003.000000, CumulativeMemory: 210021
+1 step ready 
+Makespan 23241.3 #trees: 9
+2 step ready 
+Makespan 25682.5 #trees: 15
+&& size_2000/random_tree_7 24262.400211 257213
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_8
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_8
+Fanout: Max: 6,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 14396.000000minmem 16666.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 14396, MaxMemory: 43188.000000, CumulativeMemory: 302316
+1 step ready 
+Makespan 30640.5 #trees: 9
+2 step ready 
+Makespan 32545.5 #trees: 11
+&& size_2000/random_tree_8 32972.018183 208601
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_9
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_2000/random_tree_9
+Fanout: Max: 6,  Avg: 0.9995
+BuildSmallCluster? true
+maxoutD 14061.000000minmem 15692.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 14061, MaxMemory: 42183.000000, CumulativeMemory: 295281
+1 step ready 
+Makespan 35464.4 #trees: 9
+2 step ready 
+Makespan 35464.4 #trees: 9
+&& size_2000/random_tree_9 35464.434426 214396
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_20000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_20000/random_tree_1
+Fanout: Max: 7,  Avg: 0.99995
+BuildSmallCluster? true
+maxoutD 37800.000000minmem 42481.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 37800, MaxMemory: 113400.000000, CumulativeMemory: 793800
+1 step ready 
+Makespan 319919 #trees: 9
+2 step ready 
+Makespan 319919 #trees: 9
+&& size_20000/random_tree_1 319918.903610 21022688
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_20000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_20000/random_tree_2
+Fanout: Max: 6,  Avg: 0.99995
+BuildSmallCluster? true
+maxoutD 28211.000000minmem 39903.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 28211, MaxMemory: 84633.000000, CumulativeMemory: 592431
+1 step ready 
+Makespan 245749 #trees: 9
+2 step ready 
+Makespan 200390 #trees: 32
+&& size_20000/random_tree_2 260779.443137 24167524
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_20000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_20000/random_tree_3
+Fanout: Max: 7,  Avg: 0.99995
+BuildSmallCluster? true
+maxoutD 20502.000000minmem 25344.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 20502, MaxMemory: 61506.000000, CumulativeMemory: 430542
+1 step ready 
+Makespan 288020 #trees: 9
+2 step ready 
+Makespan 288020 #trees: 11
+&& size_20000/random_tree_3 301712.816879 22851197
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_20000/random_tree_4
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_20000/random_tree_4
+Fanout: Max: 7,  Avg: 0.99995
+BuildSmallCluster? true
+maxoutD 31777.000000minmem 39208.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 31777, MaxMemory: 95331.000000, CumulativeMemory: 667317
+1 step ready 
+Makespan 347201 #trees: 9
+2 step ready 
+Makespan 351021 #trees: 11
+&& size_20000/random_tree_4 365594.477488 22997039
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_20000/random_tree_5
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_20000/random_tree_5
+Fanout: Max: 7,  Avg: 0.99995
+BuildSmallCluster? true
+maxoutD 18168.000000minmem 22682.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 18168, MaxMemory: 54504.000000, CumulativeMemory: 381528
+1 step ready 
+Makespan 193711 #trees: 9
+2 step ready 
+Makespan 195410 #trees: 14
+&& size_20000/random_tree_5 255479.703836 24464976
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_30000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_30000/random_tree_1
+Fanout: Max: 8,  Avg: 0.999967
+BuildSmallCluster? true
+maxoutD 13104.000000minmem 15530.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 13104, MaxMemory: 39312.000000, CumulativeMemory: 275184
+1 step ready 
+Makespan 364413 #trees: 9
+2 step ready 
+Makespan 365519 #trees: 10
+&& size_30000/random_tree_1 386796.450055 55829116
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_30000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_30000/random_tree_2
+Fanout: Max: 6,  Avg: 0.999967
+BuildSmallCluster? true
+maxoutD 29291.000000minmem 45174.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 29291, MaxMemory: 87873.000000, CumulativeMemory: 615111
+1 step ready 
+Makespan 299691 #trees: 9
+2 step ready 
+Makespan 307853 #trees: 17
+&& size_30000/random_tree_2 387452.115817 64925106
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_30000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_30000/random_tree_3
+Fanout: Max: 8,  Avg: 0.999967
+BuildSmallCluster? true
+maxoutD 9654.000000minmem 10686.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 9654, MaxMemory: 28962.000000, CumulativeMemory: 202734
+1 step ready 
+Makespan 301182 #trees: 9
+2 step ready 
+Makespan 301182 #trees: 9
+&& size_30000/random_tree_3 301181.577688 50775234
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_30000/random_tree_4
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_30000/random_tree_4
+Fanout: Max: 7,  Avg: 0.999967
+BuildSmallCluster? true
+maxoutD 35132.000000minmem 43569.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 35132, MaxMemory: 105396.000000, CumulativeMemory: 737772
+1 step ready 
+Makespan 313773 #trees: 9
+2 step ready 
+Makespan 316984 #trees: 16
+&& size_30000/random_tree_4 394465.144375 59516921
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_30000/random_tree_5
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_30000/random_tree_5
+Fanout: Max: 7,  Avg: 0.999967
+BuildSmallCluster? true
+maxoutD 17350.000000minmem 21269.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 17350, MaxMemory: 52050.000000, CumulativeMemory: 364350
+1 step ready 
+Makespan 402721 #trees: 9
+2 step ready 
+Makespan 404659 #trees: 14
+&& size_30000/random_tree_5 454498.667262 55686681
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_1
+Fanout: Max: 6,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 26348.000000minmem 33469.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 26348, MaxMemory: 79044.000000, CumulativeMemory: 553308
+1 step ready 
+Makespan 51832.3 #trees: 9
+2 step ready 
+Makespan 55629.3 #trees: 10
+&& size_4000/random_tree_1 56726.216750 858360
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_10
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_10
+Fanout: Max: 7,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 39078.000000minmem 39078.000000
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 39078, MaxMemory: 117234.000000, CumulativeMemory: 2461914
+1 step ready 
+Makespan 56946.7 #trees: 27
+2 step ready 
+Makespan 56946.7 #trees: 27
+&& size_4000/random_tree_10 56946.694880 922017
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_2
+Fanout: Max: 6,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 25947.000000minmem 29552.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 25947, MaxMemory: 77841.000000, CumulativeMemory: 544887
+1 step ready 
+Makespan 67431.2 #trees: 9
+2 step ready 
+Makespan 71028.2 #trees: 10
+&& size_4000/random_tree_2 67432.197614 883013
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_3
+Fanout: Max: 6,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 17390.000000minmem 22135.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 17390, MaxMemory: 52170.000000, CumulativeMemory: 365190
+1 step ready 
+Makespan 49066.5 #trees: 9
+2 step ready 
+Makespan 51450.5 #trees: 10
+&& size_4000/random_tree_3 56192.201556 831984
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_4
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_4
+Fanout: Max: 7,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 36579.000000minmem 40867.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 36579, MaxMemory: 109737.000000, CumulativeMemory: 768159
+1 step ready 
+Makespan 47275.7 #trees: 9
+2 step ready 
+Makespan 47275.7 #trees: 9
+&& size_4000/random_tree_4 47275.667826 823952
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_5
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_5
+Fanout: Max: 6,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 13757.000000minmem 17339.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 13757, MaxMemory: 41271.000000, CumulativeMemory: 288897
+1 step ready 
+Makespan 52906.3 #trees: 9
+2 step ready 
+Makespan 52906.3 #trees: 9
+&& size_4000/random_tree_5 52906.331423 786985
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_6
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_6
+Fanout: Max: 6,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 33851.000000minmem 38736.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 33851, MaxMemory: 101553.000000, CumulativeMemory: 710871
+1 step ready 
+Makespan 59377.5 #trees: 9
+2 step ready 
+Makespan 63861.8 #trees: 10
+&& size_4000/random_tree_6 67914.020158 881854
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_7
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_7
+Fanout: Max: 5,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 13833.000000minmem 18201.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 13833, MaxMemory: 41499.000000, CumulativeMemory: 290493
+1 step ready 
+Makespan 43746.7 #trees: 9
+2 step ready 
+Makespan 46638.4 #trees: 21
+&& size_4000/random_tree_7 62088.705834 1187581
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_8
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_8
+Fanout: Max: 6,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 8343.000000minmem 10350.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 8343, MaxMemory: 25029.000000, CumulativeMemory: 175203
+1 step ready 
+Makespan 47901.8 #trees: 9
+2 step ready 
+Makespan 47901.8 #trees: 9
+&& size_4000/random_tree_8 47901.805471 799214
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_9
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_4000/random_tree_9
+Fanout: Max: 6,  Avg: 0.99975
+BuildSmallCluster? true
+maxoutD 23136.000000minmem 29118.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 23136, MaxMemory: 69408.000000, CumulativeMemory: 485856
+1 step ready 
+Makespan 48027.8 #trees: 9
+2 step ready 
+Makespan 48027.8 #trees: 10
+&& size_4000/random_tree_9 49923.537368 833189
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_50000/random_tree_1
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_50000/random_tree_1
+Fanout: Max: 7,  Avg: 0.99998
+BuildSmallCluster? true
+maxoutD 12192.000000minmem 16164.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 12192, MaxMemory: 36576.000000, CumulativeMemory: 256032
+1 step ready 
+Makespan 436647 #trees: 9
+2 step ready 
+Makespan 352542 #trees: 14
+&& size_50000/random_tree_1 512420.979600 151647119
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_50000/random_tree_2
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_50000/random_tree_2
+Fanout: Max: 7,  Avg: 0.99998
+BuildSmallCluster? true
+maxoutD 31822.000000minmem 39407.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 31822, MaxMemory: 95466.000000, CumulativeMemory: 668262
+1 step ready 
+Makespan 807199 #trees: 9
+2 step ready 
+Makespan 806944 #trees: 13
+&& size_50000/random_tree_2 870269.457097 165465293
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_50000/random_tree_3
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_50000/random_tree_3
+Fanout: Max: 10,  Avg: 0.99998
+BuildSmallCluster? true
+maxoutD 11548.000000minmem 11548.000000
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 11548, MaxMemory: 34644.000000, CumulativeMemory: 727524
+1 step ready 
+Makespan 489192 #trees: 27
+2 step ready 
+Makespan 489192 #trees: 27
+&& size_50000/random_tree_3 489191.979028 158556301
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_50000/random_tree_4
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_50000/random_tree_4
+Fanout: Max: 8,  Avg: 0.99998
+BuildSmallCluster? true
+maxoutD 38101.000000minmem 46176.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 38101, MaxMemory: 114303.000000, CumulativeMemory: 800121
+1 step ready 
+Makespan 556804 #trees: 9
+2 step ready 
+Makespan 560647 #trees: 15
+&& size_50000/random_tree_4 650011.769768 196001017
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_50000/random_tree_5
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_50000/random_tree_5
+Fanout: Max: 7,  Avg: 0.99998
+BuildSmallCluster? true
+maxoutD 17687.000000minmem 23449.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 17687, MaxMemory: 53061.000000, CumulativeMemory: 371427
+1 step ready 
+Makespan 754344 #trees: 9
+2 step ready 
+Makespan 749070 #trees: 13
+&& size_50000/random_tree_5 896517.019548 189843199
+BLA 
+11 2 0
+11.2.0
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_50000/random_tree_5
+FILENAME/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights/size_50000/random_tree_5
+Fanout: Max: 7,  Avg: 0.99998
+BuildSmallCluster? true
+maxoutD 17687.000000minmem 23449.000000
+small cluster
+Cluster:
+#Nodes: 9, Configuration: 0, MinMemory: 17687, MaxMemory: 53061.000000, CumulativeMemory: 371427
+1 step ready 
+Makespan 754344 #trees: 9
+2 step ready 
+Makespan 749070 #trees: 13
+&& size_50000/random_tree_5 896517.019548 182737694
+

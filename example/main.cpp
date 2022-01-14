@@ -164,13 +164,17 @@ int main(int argc, char **argv) {
     std::vector<int> brokenEdges;
     do {
         OpenFile >> treename;
-        Tree *tree = read_tree((input->getWorkingDirectory() + treename).c_str());
-        Tree *untouchedTree = read_tree((input->getWorkingDirectory() + treename).c_str());
+        Tree *tree = read_tree((input->getWorkingDirectory()+"/"  + treename).c_str());
+        if (tree->getTasks()->size() == 0) {
+            quietPrint("Read empty tree with directory " + input->getWorkingDirectory() + " and file " + treename+", path to tree list: "+input->getPathToTreeList());
+            continue;
+        }
+        Tree *untouchedTree = read_tree((input->getWorkingDirectory()+"/" + treename).c_str());
         Tree::setOriginalTree(untouchedTree);
         const vector<double> fanouts = maxAndAvgFanout(tree);
         cout << "Fanout: Max: " << fanouts[0] << ",  Avg: " << fanouts[1] << endl;
         if (input->getClusteringMode() == treeDependent) {
-            cout<<"BuildSmallCluster? true"<<endl;
+            cout << "BuildSmallCluster? true" << endl;
             buildTreeDependentCluster(argv[8], input, tree, true);
         }
 
@@ -212,7 +216,7 @@ buildTreeDependentCluster(string clusterFilename, InputParser *input, Tree *tree
     bool smallCluster = false;
     //computeSmall cluster? then compute. Else set to false directly
     smallCluster = computeSmallCluster && maxoutd * 100 / minMem < 93;
-    cout<<"maxoutD " << to_string(maxoutd) + "minmem " + to_string(minMem)<<endl;
+    cout << "maxoutD " << to_string(maxoutd) + "minmem " + to_string(minMem) << endl;
     if (smallCluster) input->setClusterFromFileWithShrinkingFactor(clusterFilename, maxoutd, 3);
     else
         input->setClusterFromFile(clusterFilename, maxoutd);

@@ -1,0 +1,109 @@
+
+2-level
+homogeneous many small
+#Nodes: 9, Configuration: 0, MinMemory: 324288, MaxMemory: 324288.000000, CumulativeMemory: 2918592
+#Nodes: 9, Configuration: 0, MinMemory: 65558, MaxMemory: 65558.000000, CumulativeMemory: 590022
+#Nodes: 9, Configuration: 0, MinMemory: 78554, MaxMemory: 78554.000000, CumulativeMemory: 706986
+#Nodes: 9, Configuration: 0, MinMemory: 396050, MaxMemory: 396050.000000, CumulativeMemory: 3564450
+#Nodes: 9, Configuration: 0, MinMemory: 1384793, MaxMemory: 1384793.000000, CumulativeMemory: 12463137
+#Nodes: 9, Configuration: 0, MinMemory: 3607298, MaxMemory: 3607298.000000, CumulativeMemory: 32465682
+#Nodes: 9, Configuration: 0, MinMemory: 381938, MaxMemory: 381938.000000, CumulativeMemory: 3437442
+#Nodes: 9, Configuration: 0, MinMemory: 2312, MaxMemory: 2312.000000, CumulativeMemory: 20808
+
+#Nodes: 9, Configuration: 0, MinMemory: 85552, MaxMemory: 85552.000000, CumulativeMemory: 769968
+#Nodes: 9, Configuration: 0, MinMemory: 46818, MaxMemory: 46818.000000, CumulativeMemory: 421362
+#Nodes: 9, Configuration: 0, MinMemory: 30112566, MaxMemory: 30112566.000000, CumulativeMemory: 271013094
+#Nodes: 9, Configuration: 0, MinMemory: 3160098, MaxMemory: 3160098.000000, CumulativeMemory: 28440882
+#Nodes: 9, Configuration: 0, MinMemory: 5524488, MaxMemory: 5524488.000000, CumulativeMemory: 49720392
+#Nodes: 9, Configuration: 0, MinMemory: 2211, MaxMemory: 2211.000000, CumulativeMemory: 19899
+#Nodes: 9, Configuration: 0, MinMemory: 65524, MaxMemory: 65524.000000, CumulativeMemory: 589716
+#Nodes: 9, Configuration: 0, MinMemory: 34085496, MaxMemory: 34085496.000000, CumulativeMemory: 306769464
+#Nodes: 9, Configuration: 0, MinMemory: 34085496, MaxMemory: 34085496.000000, CumulativeMemory: 306769464
+#Nodes: 9, Configuration: 0, MinMemory: 290322, MaxMemory: 290322.000000, CumulativeMemory: 2612898
+#Nodes: 9, Configuration: 0, MinMemory: 290322, MaxMemory: 290322.000000, CumulativeMemory: 2612898
+homogeneous few big
+#Nodes: 6, Configuration: 0, MinMemory: 972864, MaxMemory: 972864.000000, CumulativeMemory: 5837184
+#Nodes: 6, Configuration: 0, MinMemory: 196674, MaxMemory: 196674.000000, CumulativeMemory: 1180044
+#Nodes: 6, Configuration: 0, MinMemory: 235662, MaxMemory: 235662.000000, CumulativeMemory: 1413972
+#Nodes: 6, Configuration: 0, MinMemory: 1188150, MaxMemory: 1188150.000000, CumulativeMemory: 7128900
+#Nodes: 6, Configuration: 0, MinMemory: 4154379, MaxMemory: 4154379.000000, CumulativeMemory: 24926274
+#Nodes: 6, Configuration: 0, MinMemory: 10821894, MaxMemory: 10821894.000000, CumulativeMemory: 64931364
+#Nodes: 6, Configuration: 0, MinMemory: 1145814, MaxMemory: 1145814.000000, CumulativeMemory: 6874884
+#Nodes: 6, Configuration: 0, MinMemory: 6936, MaxMemory: 6936.000000, CumulativeMemory: 41616
+
+#Nodes: 6, Configuration: 0, MinMemory: 256656, MaxMemory: 256656.000000, CumulativeMemory: 1539936
+#Nodes: 6, Configuration: 0, MinMemory: 140454, MaxMemory: 140454.000000, CumulativeMemory: 842724
+#Nodes: 6, Configuration: 0, MinMemory: 90337698, MaxMemory: 90337698.000000, CumulativeMemory: 542026188
+#Nodes: 6, Configuration: 0, MinMemory: 9480294, MaxMemory: 9480294.000000, CumulativeMemory: 56881764
+#Nodes: 6, Configuration: 0, MinMemory: 16573464, MaxMemory: 16573464.000000, CumulativeMemory: 99440784
+#Nodes: 6, Configuration: 0, MinMemory: 6633, MaxMemory: 6633.000000, CumulativeMemory: 39798
+#Nodes: 6, Configuration: 0, MinMemory: 196572, MaxMemory: 196572.000000, CumulativeMemory: 1179432
+#Nodes: 6, Configuration: 0, MinMemory: 102256488, MaxMemory: 102256488.000000, CumulativeMemory: 613538928
+#Nodes: 6, Configuration: 0, MinMemory: 102256488, MaxMemory: 102256488.000000, CumulativeMemory: 613538928
+#Nodes: 6, Configuration: 0, MinMemory: 870966, MaxMemory: 870966.000000, CumulativeMemory: 5225796
+#Nodes: 6, Configuration: 0, MinMemory: 870966, MaxMemory: 870966.000000, CumulativeMemory: 5225796
+3-level
+homogeneous many small
+#Nodes: 9, Configuration: 0, MinMemory: 324288, MaxMemory: 324288.000000, CumulativeMemory: 2918592
+#Nodes: 9, Configuration: 0, MinMemory: 65558, MaxMemory: 65558.000000, CumulativeMemory: 590022
+#Nodes: 9, Configuration: 0, MinMemory: 78554, MaxMemory: 78554.000000, CumulativeMemory: 706986
+#Nodes: 9, Configuration: 0, MinMemory: 396050, MaxMemory: 396050.000000, CumulativeMemory: 3564450
+#Nodes: 9, Configuration: 0, MinMemory: 1384793, MaxMemory: 1384793.000000, CumulativeMemory: 12463137
+#Nodes: 9, Configuration: 0, MinMemory: 3607298, MaxMemory: 3607298.000000, CumulativeMemory: 32465682
+#Nodes: 9, Configuration: 0, MinMemory: 381938, MaxMemory: 381938.000000, CumulativeMemory: 3437442
+#Nodes: 9, Configuration: 0, MinMemory: 2312, MaxMemory: 2312.000000, CumulativeMemory: 20808
+
+#Nodes: 9, Configuration: 0, MinMemory: 85552, MaxMemory: 85552.000000, CumulativeMemory: 769968
+#Nodes: 9, Configuration: 0, MinMemory: 46818, MaxMemory: 46818.000000, CumulativeMemory: 421362
+#Nodes: 9, Configuration: 0, MinMemory: 30112566, MaxMemory: 30112566.000000, CumulativeMemory: 271013094
+#Nodes: 9, Configuration: 0, MinMemory: 3160098, MaxMemory: 3160098.000000, CumulativeMemory: 28440882
+#Nodes: 9, Configuration: 0, MinMemory: 5524488, MaxMemory: 5524488.000000, CumulativeMemory: 49720392
+#Nodes: 9, Configuration: 0, MinMemory: 2211, MaxMemory: 2211.000000, CumulativeMemory: 19899
+#Nodes: 9, Configuration: 0, MinMemory: 65524, MaxMemory: 65524.000000, CumulativeMemory: 589716
+#Nodes: 9, Configuration: 0, MinMemory: 34085496, MaxMemory: 34085496.000000, CumulativeMemory: 306769464
+#Nodes: 9, Configuration: 0, MinMemory: 34085496, MaxMemory: 34085496.000000, CumulativeMemory: 306769464
+#Nodes: 9, Configuration: 0, MinMemory: 290322, MaxMemory: 290322.000000, CumulativeMemory: 2612898
+#Nodes: 9, Configuration: 0, MinMemory: 290322, MaxMemory: 290322.000000, CumulativeMemory: 2612898
+homogeneous average average
+#Nodes: 6, Configuration: 0, MinMemory: 486432, MaxMemory: 486432.000000, CumulativeMemory: 2918592
+#Nodes: 6, Configuration: 0, MinMemory: 98337, MaxMemory: 98337.000000, CumulativeMemory: 590022
+#Nodes: 6, Configuration: 0, MinMemory: 117831, MaxMemory: 117831.000000, CumulativeMemory: 706986
+#Nodes: 6, Configuration: 0, MinMemory: 594075, MaxMemory: 594075.000000, CumulativeMemory: 3564450
+#Nodes: 6, Configuration: 0, MinMemory: 2077189, MaxMemory: 2077189.500000, CumulativeMemory: 12463134
+#Nodes: 6, Configuration: 0, MinMemory: 5410947, MaxMemory: 5410947.000000, CumulativeMemory: 32465682
+#Nodes: 6, Configuration: 0, MinMemory: 572907, MaxMemory: 572907.000000, CumulativeMemory: 3437442
+#Nodes: 6, Configuration: 0, MinMemory: 3468, MaxMemory: 3468.000000, CumulativeMemory: 20808
+
+#Nodes: 6, Configuration: 0, MinMemory: 128328, MaxMemory: 128328.000000, CumulativeMemory: 769968
+#Nodes: 6, Configuration: 0, MinMemory: 70227, MaxMemory: 70227.000000, CumulativeMemory: 421362
+#Nodes: 6, Configuration: 0, MinMemory: 45168849, MaxMemory: 45168849.000000, CumulativeMemory: 271013094
+#Nodes: 6, Configuration: 0, MinMemory: 4740147, MaxMemory: 4740147.000000, CumulativeMemory: 28440882
+#Nodes: 6, Configuration: 0, MinMemory: 8286732, MaxMemory: 8286732.000000, CumulativeMemory: 49720392
+#Nodes: 6, Configuration: 0, MinMemory: 3316, MaxMemory: 3316.500000, CumulativeMemory: 19896
+#Nodes: 6, Configuration: 0, MinMemory: 98286, MaxMemory: 98286.000000, CumulativeMemory: 589716
+#Nodes: 6, Configuration: 0, MinMemory: 51128244, MaxMemory: 51128244.000000, CumulativeMemory: 306769464
+#Nodes: 6, Configuration: 0, MinMemory: 51128244, MaxMemory: 51128244.000000, CumulativeMemory: 306769464
+#Nodes: 6, Configuration: 0, MinMemory: 435483, MaxMemory: 435483.000000, CumulativeMemory: 2612898
+#Nodes: 6, Configuration: 0, MinMemory: 435483, MaxMemory: 435483.000000, CumulativeMemory: 2612898
+homogeneous few big
+#Nodes: 3, Configuration: 0, MinMemory: 972864, MaxMemory: 972864.000000, CumulativeMemory: 2918592
+#Nodes: 3, Configuration: 0, MinMemory: 196674, MaxMemory: 196674.000000, CumulativeMemory: 590022
+#Nodes: 3, Configuration: 0, MinMemory: 235662, MaxMemory: 235662.000000, CumulativeMemory: 706986
+#Nodes: 3, Configuration: 0, MinMemory: 1188150, MaxMemory: 1188150.000000, CumulativeMemory: 3564450
+#Nodes: 3, Configuration: 0, MinMemory: 4154379, MaxMemory: 4154379.000000, CumulativeMemory: 12463137
+#Nodes: 3, Configuration: 0, MinMemory: 10821894, MaxMemory: 10821894.000000, CumulativeMemory: 32465682
+#Nodes: 3, Configuration: 0, MinMemory: 1145814, MaxMemory: 1145814.000000, CumulativeMemory: 3437442
+#Nodes: 3, Configuration: 0, MinMemory: 6936, MaxMemory: 6936.000000, CumulativeMemory: 20808
+
+#Nodes: 3, Configuration: 0, MinMemory: 256656, MaxMemory: 256656.000000, CumulativeMemory: 769968
+#Nodes: 3, Configuration: 0, MinMemory: 140454, MaxMemory: 140454.000000, CumulativeMemory: 421362
+#Nodes: 3, Configuration: 0, MinMemory: 90337698, MaxMemory: 90337698.000000, CumulativeMemory: 271013094
+#Nodes: 3, Configuration: 0, MinMemory: 9480294, MaxMemory: 9480294.000000, CumulativeMemory: 28440882
+#Nodes: 3, Configuration: 0, MinMemory: 16573464, MaxMemory: 16573464.000000, CumulativeMemory: 49720392
+#Nodes: 3, Configuration: 0, MinMemory: 6633, MaxMemory: 6633.000000, CumulativeMemory: 19899
+#Nodes: 3, Configuration: 0, MinMemory: 196572, MaxMemory: 196572.000000, CumulativeMemory: 589716
+#Nodes: 3, Configuration: 0, MinMemory: 102256488, MaxMemory: 102256488.000000, CumulativeMemory: 306769464
+#Nodes: 3, Configuration: 0, MinMemory: 102256488, MaxMemory: 102256488.000000, CumulativeMemory: 306769464
+#Nodes: 3, Configuration: 0, MinMemory: 870966, MaxMemory: 870966.000000, CumulativeMemory: 2612898
+#Nodes: 3, Configuration: 0, MinMemory: 870966, MaxMemory: 870966.000000, CumulativeMemory: 2612898
+

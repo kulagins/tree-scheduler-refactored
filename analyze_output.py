@@ -1,9 +1,12 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field, InitVar
 from sys import argv
-from typing import Mapping
+from typing import Mapping, Union
 from xml.dom import ValidationErr
-
-
+import csv
+'''
+from matplotlib import pyplot as plt
+import numpy as np
+'''
 @dataclass
 class TreeStatistic():
     name: str
@@ -11,6 +14,26 @@ class TreeStatistic():
     manySmallMakespan:float = 0
     fewBigMakespan:float = 0
     averageAverageMakespan:float = 0
+    heterogeneousRatio: Mapping[str, Union[float,str]] = None
+
+    def __post_init__(self):
+        self.heterogeneousRatio:Mapping[str, float] ={} 
+
+    def setHeterogeneous(self, value:float)->None:
+        self.heterogeneousMakespan = value
+    
+    def setManySmall(self,value:float)->None:
+        self.manySmallMakespan = value
+        self.heterogeneousRatio["manySmall"] = self.heterogeneousMakespan/value if value != -1 else "not_computed"
+
+    def setfewBig(self,value:float)->None:
+        self.fewBigMakespan = value
+        self.heterogeneousRatio["fewBig"] = self.heterogeneousMakespan/value if value != -1 else "not_computed"
+
+    def setAverageAverage(self,value:float)->None:
+        self.averageAverageMakespan = value
+        self.heterogeneousRatio["averageAverage"] = self.heterogeneousMakespan/value if value != -1 else "not_computed"
+
 
 class OutputAnalyszer():
     def __init__(self,argv):
@@ -23,7 +46,6 @@ class OutputAnalyszer():
     def readNextLine(self,file):
         line = file.readline()
         while line[0:2] != "&&" and line not in self.modeSwitchKeywords:
-            print(line[0:2])
             line = file.readline()
         return line
 
@@ -42,15 +64,13 @@ class OutputAnalyszer():
             try:
                 treeStatistic = self.treeNameToObjectMap[treeName]
                 makespanValue = float(line[2])
-                if state == 1: treeStatistic.manySmallMakespan = makespanValue
-                elif state == 2: treeStatistic.fewBigMakespan = makespanValue
-                elif state == 3: treeStatistic.averageAverageMakespan = makespanValue
+                if state == 1: treeStatistic.setManySmall(makespanValue)
+                elif state == 2: treeStatistic.setfewBig(makespanValue)
+                elif state == 3: treeStatistic.setAverageAverage(makespanValue)
                 else: raise ValidationErr("state not supported")
 
             except KeyError:
                 raise ValidationErr(f"The tree {treeName} doesn't have all entries.")
-
-
 
 
     def analyze(self):
@@ -63,10 +83,29 @@ class OutputAnalyszer():
                     state = self.adaptState(line)
                 else: self.updateTreeStatistic(state,line)
 
+    def writeCSV(self, filePath = "out.csv"):
+        
+        rows = []
+        for treename, treeobj in  self.treeNameToObjectMap.items():
+            manySmallRatio = treeobj.heterogeneousRatio["manySmall"]
+            avgAvgRatio = treeobj.heterogeneousRatio["averageAverage"]
+            fewBigRatio = treeobj.heterogeneousRatio["fewBig"]
+            row = [treename,treeobj.heterogeneousMakespan,treeobj.manySmallMakespan,treeobj.fewBigMakespan,treeobj.averageAverageMakespan,manySmallRatio,fewBigRatio,avgAvgRatio]
+            rows.append(row)
+
+        with open(filePath, 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile, delimiter=',')
+            writer.writerow(["Name", "Heterogeneous", "Many_Small", "Few_Big", "Avg_Avg","Ratio_Many_Small","Ratio_Few_Big","Ratio_Avg_Avg"])
+            writer.writerow([])
+            writer.writerows(rows)
+'''
+    def plot(self):
+        x = np.arange(4)
+'''
+        
+
 o = OutputAnalyszer(argv)
 o.analyze()
-for element in o.treeNameToObjectMap:
-    print(o.treeNameToObjectMap[element])
-
+o.writeCSV()
 
 

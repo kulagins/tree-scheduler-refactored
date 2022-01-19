@@ -24,7 +24,7 @@
 
 void explore(Task *node, double available_memory, list<Task *> *L_init, schedule_traversal *S_init, double &cut_value,
              list<Task *> &min_sub_cut, schedule_traversal &sub_schedule, double &Mpeak, int quiet, int depth) {
-
+    //cout<<"explore node id "<<node->getId()<<" avail mem "<<available_memory<<endl;
     /* if node is unreachable, return +infty */
     if (node->getCost() > available_memory) {
 

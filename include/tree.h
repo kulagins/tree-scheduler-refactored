@@ -422,7 +422,7 @@ public :
 
     double Sequence();
 
-    double SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength,  int limit);
+    double SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength, int limit);
 
     list<Task *> fillParallelRootsUntilBestMakespan(vector<double> &makespansOfSplittings,
                                                     unsigned long stepsUntilMinimalMakespan) const;
@@ -652,7 +652,11 @@ public:
     bool
     MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double available_memory_size, double &requiredMemorySize);
 
-    bool MemoryEnoughOld(Tree* tree, Task* Qrootone, Task* Qroottwo, bool leaf, double memory_size, int * chstart,int * children);
+    double
+    CheckRequiredMemoryIfMerged(Task *Qrootone, Task *Qroottwo, bool leaf);
+
+    bool MemoryEnoughOld(Tree *tree, Task *Qrootone, Task *Qroottwo, bool leaf, double memory_size, int *chstart,
+                         int *children);
 
     double ImprovedSplit();
 
@@ -672,7 +676,6 @@ public:
 };
 
 
-
 typedef map<unsigned int, double> io_map;
 typedef pair<unsigned int, unsigned int> node_sche;
 typedef pair<unsigned int, double> node_ew;
@@ -685,6 +688,7 @@ void po_construct(const int N, const int *prnts, int **chstart, int **chend, int
 } /* closing brace for extern "C" */
 
 double MaxOutDegree(Tree *tree, int quiet);
+
 vector<double> maxAndAvgFanout(Tree *tree);
 
 double IOCounter(Tree *subtree, int *schedule,

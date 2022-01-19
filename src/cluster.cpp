@@ -240,7 +240,9 @@ void Cluster::buildTreeDepHomBandwidths(double CCR, unsigned int num_processors,
     Cluster::getFixedCluster()->SetBandwidth(CCR, treeobj);
 }
 
-Processor *Cluster::getFirstFreeProcessor() {
+Processor *Cluster::getBiggestFreeProcessor() {
+    sort(this->processors.begin(), this->processors.end(),
+         [](Processor *lhs, Processor *rhs) { return lhs->getMemorySize() > rhs->getMemorySize(); });
     for (vector<Processor *>::iterator iter = this->processors.begin(); iter < this->processors.end(); iter++) {
         if (!(*iter)->isBusy)
             return (*iter);
@@ -363,19 +365,67 @@ void Cluster::clean() {
 
 }
 
-Processor * Cluster::findSmallestFittingProcessor(double requiredMem){
+Processor *Cluster::smallestFreeProcessorFitting(double requiredMem) {
     //TODO method for only free processors
     int min = std::numeric_limits<int>::max();
     Processor *minProc = nullptr;
     for (Processor *proc: (this->getProcessors())) {
-        if(proc->getMemorySize() >= requiredMem && !proc->isBusy&& min > proc->getMemorySize()){
+        if (proc->getMemorySize() >= requiredMem && !proc->isBusy && min > proc->getMemorySize()) {
             min = proc->getMemorySize();
             minProc = proc;
         }
-
     }
     return minProc;
 }
 
+bool Cluster::areAllUnassigned(Task *currentQNode, const Tree *tree) {
+    vector<Task *> *childrenvector = currentQNode->getParent()->getChildren();
+    bool mergeThreeNodes = (currentQNode->getChildren()->empty()) & (childrenvector->size() == 2);
+    bool areAllUnassigned = true;
+    if (mergeThreeNodes) {
+        areAllUnassigned = tree->getTask(childrenvector->front()->getOtherSideId())->getAssignedProcessor() == NULL &&
+                           tree->getTask(childrenvector->back()->getOtherSideId())->getAssignedProcessor() == NULL &&
+                           tree->getTask(currentQNode->getParent()->getOtherSideId())->getAssignedProcessor() == NULL;
+    } else {
 
+        areAllUnassigned = tree->getTask(currentQNode->getOtherSideId())->getAssignedProcessor() == NULL &&
+                           tree->getTask(currentQNode->getParent()->getOtherSideId())->getAssignedProcessor() == NULL;
+    }
+    return areAllUnassigned;
+}
+
+Processor *Cluster::findSmallestFittingProcessorForMerge(Task *currentQNode, const Tree *tree, double requiredMemory) {
+    Processor *optimalProcessor = nullptr;
+    double optimalMemorySize = std::numeric_limits<double>::max();
+    vector<Task *> *childrenvector = currentQNode->getParent()->getChildren();
+    bool mergeThreeNodes = (currentQNode->getChildren()->empty()) & (childrenvector->size() == 2);
+    vector<Processor *> eligibleProcessors;
+    if (mergeThreeNodes) {
+        cout << "3 nodes" << endl;
+        eligibleProcessors.push_back(tree->getTask(childrenvector->front()->getOtherSideId())->getAssignedProcessor());
+        eligibleProcessors.push_back(tree->getTask(childrenvector->back()->getOtherSideId())->getAssignedProcessor());
+        eligibleProcessors.push_back(
+                tree->getTask(currentQNode->getParent()->getOtherSideId())->getAssignedProcessor());
+    } else {
+        cout << "2 nodes" << endl;
+        eligibleProcessors.push_back(tree->getTask(currentQNode->getOtherSideId())->getAssignedProcessor());
+        eligibleProcessors.push_back(
+                tree->getTask(currentQNode->getParent()->getOtherSideId())->getAssignedProcessor());
+    }
+    cout << "proc size before " << eligibleProcessors.size() << endl;
+    eligibleProcessors.erase(std::remove_if(eligibleProcessors.begin(),
+                                            eligibleProcessors.end(),
+                                            [](Processor *proc) { return proc == NULL; }),
+                             eligibleProcessors.end());
+    for (auto eligibleProcessor: eligibleProcessors) {
+        cout << "proc mem " << (eligibleProcessor != NULL ? to_string(eligibleProcessor->getMemorySize()) : "null")
+             << endl;
+        if (eligibleProcessor != NULL && eligibleProcessor->getMemorySize() > requiredMemory &&
+            eligibleProcessor->getMemorySize() < optimalMemorySize) {
+            optimalProcessor = eligibleProcessor;
+            optimalMemorySize = eligibleProcessor->getMemorySize();
+        }
+    }
+    return optimalProcessor;
+}
 

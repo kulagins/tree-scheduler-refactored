@@ -59,13 +59,14 @@ class OutputAnalyszer():
         
     def updateTreeStatistic(self,state:int, line:str)->None:
         line = line.split(" ")
-        treeName = line[1]
+        treeName = line[1].split("/")[1]
+
         if state == 0:
             treeStatistic = TreeStatistic(treeName, heterogeneousMakespan=float(line[2]))
-            self.treeNameToObjectMap[treeName+"/"+self.categorie] = treeStatistic
+            self.treeNameToObjectMap[treeName+"/"+self.categorie+"/"+str(self.level)] = treeStatistic
         else:
             try:
-                treeStatistic = self.treeNameToObjectMap[treeName+"/"+self.categorie]
+                treeStatistic = self.treeNameToObjectMap[treeName+"/"+self.categorie+"/"+str(self.level)]
                 makespanValue = float(line[2])
                 if state == 1: treeStatistic.setManySmall(makespanValue)
                 elif state == 2: treeStatistic.setfewBig(makespanValue)
@@ -95,7 +96,7 @@ class OutputAnalyszer():
     def changeLevel(self,line):
         if self.treeNameToObjectMap:
             self.writeCSV(("csv/"+str(self.level)+"-level.csv"))
-            self.treeNameToObjectMap = {}
+            #self.treeNameToObjectMap = {}
         if line:
             self.level = int(line[0])
     
@@ -107,7 +108,7 @@ class OutputAnalyszer():
     def writeCSV(self, filePath = "out.csv"):
         
         rows = []
-        for treename, treeobj in  self.treeNameToObjectMap.items():
+        for treeKey, treeobj in  self.treeNameToObjectMap.items():
             if "manySmall" in treeobj.heterogeneousRatio.keys(): 
                 manySmallRatio = treeobj.heterogeneousRatio["manySmall"]
             else: manySmallRatio = "not_computed"
@@ -117,7 +118,7 @@ class OutputAnalyszer():
             if "fewBig" in treeobj.heterogeneousRatio.keys(): 
                 fewBigRatio = treeobj.heterogeneousRatio["fewBig"]
             else: fewBigRatio = "not_computed"
-            row = [treename.split("/")[-1],treeobj.name,treeobj.heterogeneousMakespan,treeobj.manySmallMakespan,treeobj.fewBigMakespan,treeobj.averageAverageMakespan,manySmallRatio,fewBigRatio,avgAvgRatio]
+            row = [treeKey.split("/")[1],treeKey.split("/")[0],treeobj.heterogeneousMakespan,treeobj.manySmallMakespan,treeobj.fewBigMakespan,treeobj.averageAverageMakespan,manySmallRatio,fewBigRatio,avgAvgRatio]
             rows.append(row)
 
         with open(filePath, 'w', newline='') as csvfile:
@@ -125,12 +126,16 @@ class OutputAnalyszer():
             writer.writerow(["Category","Name", "Heterogeneous", "Many_Small", "Few_Big", "Avg_Avg","Ratio_Many_Small","Ratio_Few_Big","Ratio_Avg_Avg"])
             writer.writerow([])
             writer.writerows(rows)
-'''
+
     def plot(self):
-        x = np.arange(4)
-'''
+        # you can acces each tree with self.treeNameToObjectMap[treeName+"/"+categorie+"/"+str(level)]
+        # so if you would like to find the random_tree_1 from the 2-level with trees with 10 children, you'd have to 
+        print(self.treeNameToObjectMap["random_tree_1/10_children/2"])
+        #that gives you the object where the Makespans are saved
+        #from that, you cann access the trees makespan and ratio attributes
+
         
 
 o = OutputAnalyszer(argv)
 o.analyze()
-#o.writeCSV()
+o.plot()

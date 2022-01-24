@@ -27,8 +27,9 @@ for dir in $directories; do
     cd "$dir"
     treeDir=$(pwd)
     cd ../../..
-    echo "!! $treeDir"
-    ./main $treeDir /treesList.txt clusters/cluster-27proc-1-3.json 0 0 0   
+    echo "$treeDir"
+    echo "blabla"
+    ./main $treeDir /treesList.txt 1 0 1 -1 0 clusters/cluster-27proc-1-3.json   
     cd real_Trees/random_trees
 done
 echo "many small"
@@ -36,8 +37,9 @@ for dir in $directories; do
     cd "$dir"
     treeDir=$(pwd)
     cd ../../..
-    echo "!! $treeDir"§
-    ./main $treeDir /treesList.txt clusters/cluster-hom-27proc-1.json 0 0 0
+    echo "$treeDir"
+    echo "blabla"
+    ./main $treeDir /treesList.txt 0 0 1 -1 1 clusters/cluster-hom-27proc-1.json
    
     cd real_Trees/random_trees
 done
@@ -46,8 +48,9 @@ for dir in $directories; do
     cd "$dir"
     treeDir=$(pwd)
     cd ../../..
-    echo "!! $treeDir"§
-    ./main $treeDir /treesList.txt clusters/cluster-hom-18proc-3.json 0 0 0
+    echo "$treeDir"
+    echo "blabla"
+    ./main $treeDir /treesList.txt 0 0 1 -1 3 clusters/cluster-hom-18proc-3.json
    
     cd real_Trees/random_trees
 done
@@ -61,8 +64,9 @@ for dir in $directories; do
     cd "$dir"
     treeDir=$(pwd)
     cd ../../..
-    echo "!! $treeDir"§
-    ./main $treeDir /treesList.txt clusters/cluster_27proc_1-1,5-3.json 0 0 0
+    echo "$treeDir"
+    echo "blabla"
+    ./main $treeDir /treesList.txt 1 0 2 -1 0 clusters/cluster_27proc_1-1,5-3.json      
     cd real_Trees/random_trees
 done
 echo "many small"
@@ -70,8 +74,9 @@ for dir in $directories; do
     cd "$dir"
     treeDir=$(pwd)
     cd ../../..
-    echo "!! $treeDir"§
-    ./main $treeDir /treesList.txt clusters/cluster-hom-27proc-1.json 0 0 0
+    echo "$treeDir"
+    echo "blabla"
+    ./main $treeDir /treesList.txt 0 0 2 -1 1 clusters/cluster-hom-27proc-1.json
    
     cd real_Trees/random_trees
 done
@@ -80,8 +85,10 @@ for dir in $directories; do
     cd "$dir"
     treeDir=$(pwd)
     cd ../../..
-    echo "!! $treeDir"§
-    ./main $treeDir /treesList.txt clusters/cluster-hom-18proc-1,5.json 0 0 0
+    echo "$treeDir"
+    echo "blabla"
+    ./main $treeDir /treesList.txt 0 0 2 -1 2 clusters/cluster-hom-18proc-1,5.json
+   
     cd real_Trees/random_trees
 done
 echo "few big"
@@ -89,8 +96,10 @@ for dir in $directories; do
     cd "$dir"
     treeDir=$(pwd)
     cd ../../..
-    echo "!! $treeDir"§
-    ./main $treeDir /treesList.txt clusters/cluster-hom-9proc-3.json 0 0 0
+    echo "$treeDir"
+    echo "blabla"
+    ./main $treeDir /treesList.txt 0 0 2 -1 3 clusters/cluster-hom-9proc-3.json
+   
     cd real_Trees/random_trees
 done
 

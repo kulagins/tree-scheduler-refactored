@@ -1,0 +1,5 @@
+small with extra output
+2-level
+heterogeneous
+&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 155980.084667 5311369
+&& dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 23526.750000 18207031

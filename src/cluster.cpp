@@ -291,25 +291,20 @@ Processor *Cluster::findSmallestFittingProcessorForMerge(Task *currentQNode, con
     bool mergeThreeNodes = (currentQNode->getChildren()->empty()) & (childrenvector->size() == 2);
     vector<Processor *> eligibleProcessors;
     if (mergeThreeNodes) {
-        cout << "3 nodes" << endl;
         eligibleProcessors.push_back(tree->getTask(childrenvector->front()->getOtherSideId())->getAssignedProcessor());
         eligibleProcessors.push_back(tree->getTask(childrenvector->back()->getOtherSideId())->getAssignedProcessor());
         eligibleProcessors.push_back(
                 tree->getTask(currentQNode->getParent()->getOtherSideId())->getAssignedProcessor());
     } else {
-        cout << "2 nodes" << endl;
         eligibleProcessors.push_back(tree->getTask(currentQNode->getOtherSideId())->getAssignedProcessor());
         eligibleProcessors.push_back(
                 tree->getTask(currentQNode->getParent()->getOtherSideId())->getAssignedProcessor());
     }
-    cout << "proc size before " << eligibleProcessors.size() << endl;
     eligibleProcessors.erase(std::remove_if(eligibleProcessors.begin(),
                                             eligibleProcessors.end(),
                                             [](Processor *proc) { return proc == NULL; }),
                              eligibleProcessors.end());
     for (auto eligibleProcessor: eligibleProcessors) {
-        cout << "proc mem " << (eligibleProcessor != NULL ? to_string(eligibleProcessor->getMemorySize()) : "null")
-             << endl;
         if (eligibleProcessor != NULL && eligibleProcessor->getMemorySize() > requiredMemory &&
             eligibleProcessor->getMemorySize() < optimalMemorySize) {
             optimalProcessor = eligibleProcessor;

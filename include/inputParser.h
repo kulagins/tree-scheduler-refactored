@@ -31,6 +31,7 @@ public:
         if (argc < 7) errorFunction(0);
 
         this->workingDirectory = argv[1];
+        cout << workingDirectory<<endl;
         this->pathToTree = this->workingDirectory + argv[2];
         this->pathToCluster = argv[3];
 

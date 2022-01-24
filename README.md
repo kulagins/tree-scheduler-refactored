@@ -6,6 +6,18 @@ Modification of MemComJournal for heterogeneous clusters
 ### How to compile
 1. In the root directory, do `make all` to compile files for the include
 3. Move to the `./examples/` directory and compile the files there via `make all`. After the succesful compilation, there will be an executable file `./res` in the root directory
+### Input files
+Input files are in the directory `./real_trees`. `trees` contain the trees generated from sparse matrices, while `random_trees` contain various random trees generated automatically.
+
+All trees have the same format. Each line is dedicated to a single unique task.
+Each line contains `id parent_id node_weight makespan_weight edge_weight`
+
+`id` is the number of the current task, `parent_id` is the id of the (unique) parent of the current task. 
+`node_weight` is the amount of memory required to execute this task on a processor,
+`edge_weight` is the amount of data needed to be transferred from parent to current task in order to start the execution on the current node.
+`makespan_weight` represents the runtime length of the execution of the task.
+
+All values are numbers without a measurement unit.
 
 ### How to run
 The executable requires the following input parameters:

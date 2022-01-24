@@ -245,13 +245,47 @@ Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double available_m
     return enough;
 }
 
+double
+Tree::CheckRequiredMemoryIfMerged(Task *Qrootone, Task *Qroottwo, bool leaf) {
+
+    double requiredMemorySize;
+
+    Task *SubtreeRoot = this->getTask(Qrootone->getOtherSideId());
+    vector<Task *> *childrenvector = Qrootone->getChildren();
+    bool mergeThreeNodes = leaf & (childrenvector->size() == 2);
+    if (mergeThreeNodes) {
+        this->getTask(childrenvector->front()->getOtherSideId())->restoreEdge();
+        this->getTask(childrenvector->back()->getOtherSideId())->restoreEdge();
+    } else {
+        this->getTask(Qroottwo->getOtherSideId())->restoreEdge(); //restore edge temporarilly
+    }
+
+
+    Tree *subtree = BuildSubtree(this, SubtreeRoot);
+    double maxout;
+    schedule_traversal *schedule_f = new schedule_traversal();
+    maxout = MaxOutDegree(subtree, true);
+    MinMem(subtree, maxout, requiredMemorySize, *schedule_f, true);
+
+    if (mergeThreeNodes) {
+        this->getTask(childrenvector->front()->getOtherSideId())->breakEdge();
+        this->getTask(childrenvector->back()->getOtherSideId())->breakEdge();
+    } else {
+        this->getTask(Qroottwo->getOtherSideId())->breakEdge();
+    }
+
+    delete subtree;
+    delete schedule_f;
+    return requiredMemorySize;
+}
+
 
 double Task::Sequence() {
     return this->getMakespanCost();
 }
 
 Tree *read_tree(const char *filename) {
-    //  cout << filename << endl;
+    cout << filename << endl;
     ifstream OpenFile(filename);
     string line;
     stringstream line_stream;
@@ -276,7 +310,8 @@ Tree *read_tree(const char *filename) {
             unsigned int parent_id;
             double ew, nw, msw;
             Task *task;
-
+            //TODO HIER!!
+            //line_stream >> id >> parent_id >> nw >> ew >> msw;
             line_stream >> id >> parent_id >> nw >> msw >> ew;
 
             if (parent_id == 0) {
@@ -1002,13 +1037,13 @@ double IOCounter(Tree *tree, int *schedule, bool divisible, int quiet, unsigned 
             if (unloaded != unloaded_nodes.end()) { //find node cur_task_id unloaded
                 //cout<<", (break) "<<endl;
                 if (Cluster::getFixedCluster()->hasFreeProcessor()) {
-                    Cluster::getFixedCluster()->getFirstFreeProcessor()->assignTaskId(
+                    Cluster::getFixedCluster()->getBiggestFreeProcessor()->assignTaskId(
                             tree->getTask(cur_task_id)->getOtherSideId());
                 }
 
                 brokenEdges->push_back(tree->getTask(cur_task_id)->getOtherSideId());
 //                cout << "iocounter get free proc "
-                //                   << Cluster::getFixedCluster()->getFirstFreeProcessor()->getMemorySize() << " for task "
+                //                   << Cluster::getFixedCluster()->getBiggestFreeProcessor()->getMemorySize() << " for task "
                 //                  << subtree->getTask(cur_task_id)->getOtherSideId() << endl;
                 ++com_freq;
                 unloaded_nodes.erase(unloaded);
@@ -1038,7 +1073,7 @@ double IOCounter(Tree *tree, int *schedule, bool divisible, int quiet, unsigned 
                 MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
                 schedule_copy = copyScheduleBackwards(schedule_f);
                 if (Cluster::getFixedCluster()->hasFreeProcessor()) {
-                    Cluster::getFixedCluster()->getFirstFreeProcessor()->setOccupiedMemorySize(
+                    Cluster::getFixedCluster()->getBiggestFreeProcessor()->setOccupiedMemorySize(
                             memory_required);
                 }
 
@@ -1213,7 +1248,7 @@ double MaxOutDegree(Tree *tree, int quiet) {
     return max_out;
 }
 
-vector<double> maxAndAvgFanout(Tree *tree){
+vector<double> maxAndAvgFanout(Tree *tree) {
     double max_fanout = 0;
     double avg_fanout = 0;
     for (unsigned int j = 1; j <= tree->getTasks()->size(); j++) {

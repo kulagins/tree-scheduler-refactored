@@ -81,6 +81,8 @@ public:
     void setAssignedTaskId(int assignedTaskId);
 
     void setAssignedTask(Task *assignedTask);
+
+    void freeProcessorIfAvailable(Task *task);
 };
 
 class Cluster {
@@ -294,7 +296,7 @@ public:
     }
 
 
-    Processor *getFirstFreeProcessor();
+    Processor *getBiggestFreeProcessor();
 
     static vector<double> build3LevelMemorySizes(double maxoutd, double minMem, unsigned int num_processors);
 
@@ -329,7 +331,11 @@ public:
     static void
     BuildFixedClusterWithMemories(double maxEdgesToMakespanWeights, int num_processors, vector<double> &memorySizes);
 
-    Processor *findSmallestFittingProcessor(double requiredMem);
+    Processor *smallestFreeProcessorFitting(double requiredMem);
+
+    Processor *findSmallestFittingProcessorForMerge(Task *currentQNode, const Tree *tree, double requiredMemory);
+
+    bool areAllUnassigned(Task *currentQNode, const Tree *tree);
 };
 
 #endif

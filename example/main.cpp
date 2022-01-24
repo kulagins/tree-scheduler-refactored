@@ -26,24 +26,6 @@ bool verbose = true;
 void
 buildTreeDependentCluster(InputParser *input, Tree *tree, bool computeSmallCluster);
 
-void buildFixedClusterWithSpeedsAndMemory(double CCR, unsigned int num_processors, Tree *treeobj) {
-    Cluster *cluster = new Cluster(num_processors, true);
-    double minMem;
-    map<int, int> processor_speeds = Cluster::buildProcessorSpeeds(num_processors);
-    cluster->SetBandwidth(CCR, treeobj);
-    Cluster::setFixedCluster(cluster);
-
-    Cluster::getFixedCluster()->SetBandwidth(CCR, treeobj);
-    double maxoutd = MaxOutDegree(treeobj, true);
-    schedule_traversal *temp_schedule = new schedule_traversal();
-    MinMem(treeobj, maxoutd, minMem, *temp_schedule, true);
-
-    vector<double> memorySizes = Cluster::buildHomogeneousMemorySizes(maxoutd, num_processors);
-    //Fix, for now we consider the non-homog cluster homogeneuos
-    Cluster::getFixedCluster()->setMemorySizes(memorySizes);
-    delete temp_schedule;
-}
-
 void initOutput() {
     if (!verbose) {
         cout.setstate(std::ios_base::failbit);
@@ -147,14 +129,22 @@ int main(int argc, char **argv) {
     std::vector<int> brokenEdges;
     do {
         OpenFile >> treename;
-        Tree *tree = read_tree((input->getWorkingDirectory() + treename).c_str());
-        Tree *untouchedTree = read_tree((input->getWorkingDirectory() + treename).c_str());
+        string extraSlash = input->getWorkingDirectory().back() != '/' ? "/" : "";
+        //quietPrint("FILEN "+input->getWorkingDirectory() + extraSlash +
+        //           treename);
+        Tree *tree = read_tree((input->getWorkingDirectory() + extraSlash +
+                                treename).c_str());
+        if (tree->getSize() == 0) {
+            quietPrint("Read empty tree with directory " + input->getWorkingDirectory() + " and file " + treename);
+            continue;
+        }
+        Tree *untouchedTree = read_tree((input->getWorkingDirectory() + "/" + treename).c_str());
         Tree::setOriginalTree(untouchedTree);
         const vector<double> fanouts = maxAndAvgFanout(tree);
         cout << "Fanout: Max: " << fanouts[0] << ",  Avg: " << fanouts[1] << endl;
+
         if (input->getClusteringMode() == treeDependent) {
-            cout<<"BuildSmallCluster? true"<<endl;
-            buildTreeDependentCluster(input, tree, true);
+            buildTreeDependentCluster(argv[8], input, tree, true);
         }
 
         time = clock();
@@ -194,9 +184,11 @@ buildTreeDependentCluster(InputParser *input, Tree *tree, bool computeSmallClust
     MinMem(tree, maxoutd, minMem, *schedule_f, true);
     bool smallCluster = false;
     //computeSmall cluster? then compute. Else set to false directly
-    smallCluster = computeSmallCluster && maxoutd * 100 / minMem < 93;
-    cout<<"maxoutD " << to_string(maxoutd) + "minmem " + to_string(minMem)<<endl;
+    //smallCluster = computeSmallCluster && maxoutd * 100 / minMem < 93;
+    cout << "small cluster " << (smallCluster ? "yes" : "no") << endl;
+    cout << "maxoutD " << to_string(maxoutd) + "minmem " + to_string(minMem) << endl;
     if (smallCluster) input->setClusterFromFileWithShrinkingFactor(maxoutd, 3);
-    else
+    else {
         input->setClusterFromFile(maxoutd);
+    }
 }

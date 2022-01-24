@@ -21,7 +21,7 @@
 #include "../include/lib-io-tree-minmem.h"
 
 
-const bool verbose = false;
+const bool verbose = true;
 
 void
 buildTreeDependentCluster(string argv, InputParser *input, Tree *tree, bool computeSmallCluster);
@@ -146,9 +146,8 @@ int main(int argc, char **argv) {
     std::vector<int> brokenEdges;
     do {
         OpenFile >> treename;
+
         string extraSlash = input->getWorkingDirectory().back() != '/' ? "/" : "";
-        //quietPrint("FILEN "+input->getWorkingDirectory() + extraSlash +
-        //           treename);
         Tree *tree = read_tree((input->getWorkingDirectory() + extraSlash +
                                 treename).c_str());
         if (tree->getSize() == 0) {
@@ -159,16 +158,16 @@ int main(int argc, char **argv) {
         Tree::setOriginalTree(untouchedTree);
         const vector<double> fanouts = maxAndAvgFanout(tree);
         cout << "Fanout: Max: " << fanouts[0] << ",  Avg: " << fanouts[1] << endl;
-
+        bool computeSmallCluster =false;
         if (input->getClusteringMode() == treeDependent) {
-            buildTreeDependentCluster(argv[8], input, tree, true);
+            buildTreeDependentCluster(argv[8], input, tree, computeSmallCluster);
         }
 
         time = clock();
         makespan = threeSteps(tree);
         time = clock() - time;
 
-        if (makespan == -1) {
+        if (makespan == -1 &&computeSmallCluster) {
             cout << "small cluster too small" << endl;
             treesToRerun += treename + "\n";
             buildTreeDependentCluster(argv[8], input, tree, false);
@@ -207,5 +206,9 @@ buildTreeDependentCluster(string clusterFilename, InputParser *input, Tree *tree
     if (smallCluster) input->setClusterFromFileWithShrinkingFactor(clusterFilename, maxoutd, 3);
     else {
         input->setClusterFromFile(clusterFilename, maxoutd);
+    }
+    if(minMem> Cluster::getFixedCluster()->getCumulativeMemory()){
+        throw "Cluster too small: cumulative memory: "+ to_string(Cluster::getFixedCluster()->getCumulativeMemory()) + " vs required "+
+                                                                                                            to_string(minMem);
     }
 }

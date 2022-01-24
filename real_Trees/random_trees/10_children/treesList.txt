@@ -1,6 +1,5 @@
-
-size_10000/random_tree_1
 size_10000/random_tree_2
+size_10000/random_tree_1
 size_10000/random_tree_3
 size_15000/random_tree_1
 size_15000/random_tree_2

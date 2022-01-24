@@ -90,6 +90,7 @@ void Cluster::buildStatic2LevelCluster(double maxMinMem, double maxEdgesToMakesp
     Cluster::getFixedCluster()->isMemoryHomogeneous = false;
 }
 
+
 void Cluster::buildStatic3LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights) {
     vector<unsigned int> processorCounts;
     vector<double> mems;
@@ -107,127 +108,6 @@ void Cluster::buildStatic3LevelCluster(double maxMinMem, double maxEdgesToMakesp
     Cluster::getFixedCluster()->isMemoryHomogeneous = false;
 }
 
-void
-Cluster::buildHomStatic2LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights,
-                                     HeterogeneousAdaptationMode adaptationMode) {
-    vector<unsigned int> processorCounts;
-    vector<double> mems;
-    double maxMemInCluster = maxMinMem;
-    int num_processors;
-    vector<double> memorySizes;
-
-    switch (adaptationMode) {
-        case manySmall:
-            // cout << "many small" << endl;
-            num_processors = 27;
-            memorySizes = buildHomogeneousMemorySizes(maxMemInCluster, num_processors);
-            break;
-        case average:
-            throw "No average processors in a 2-step cluster!";
-        case fewBig:
-            cout << "big" << endl;
-            num_processors = 18;
-            memorySizes = buildHomogeneousMemorySizes(maxMemInCluster * 2, num_processors);
-            break;
-        default:
-            throw "invalid Clustering-Adaption mode";
-            break;
-    }
-
-
-    BuildFixedClusterWithMemories(maxEdgesToMakespanWeights, num_processors, memorySizes);
-}
-
-void Cluster::BuildFixedClusterWithMemories(double maxEdgesToMakespanWeights, int num_processors,
-                                            vector<double> &memorySizes) {
-    Cluster *cluster = new Cluster(num_processors, true);
-    map<int, int> processor_speeds = buildProcessorSpeeds(num_processors);
-    cluster->setHomogeneousBandwidth(maxEdgesToMakespanWeights);
-    setFixedCluster(cluster);
-    getFixedCluster()->setMemorySizes(memorySizes);
-}
-
-void
-Cluster::buildHomStatic3LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights,
-                                     HeterogeneousAdaptationMode adaptationMode) {
-    vector<unsigned int> processorCounts;
-    vector<double> mems;
-    double maxMemInCluster = maxMinMem;
-    int num_processors;
-    vector<double> memorySizes;
-
-    switch (adaptationMode) {
-        case manySmall:
-            cout << "many small" << endl;
-            num_processors = 27;
-            memorySizes = buildHomogeneousMemorySizes(maxMemInCluster, num_processors);
-            break;
-        case average:
-            cout << "avg" << endl;
-            num_processors = 18;
-            memorySizes = buildHomogeneousMemorySizes(maxMemInCluster * 1.5, num_processors);
-            break;
-        case fewBig:
-            cout << "big" << endl;
-            num_processors = 9;
-            memorySizes = buildHomogeneousMemorySizes(maxMemInCluster * 2, num_processors);
-            break;
-        default:
-            throw "invalid Clustering-Adaption mode";
-            break;
-    }
-
-
-    BuildFixedClusterWithMemories(maxEdgesToMakespanWeights, num_processors, memorySizes);
-}
-
-void Cluster::buildHomogeneousCluster(double CCR, unsigned int num_processors, Tree *treeobj,
-                                      HeterogeneousAdaptationMode mode) {
-    // mode 0: build a cluster that uses all nodes with smallest memory
-    // mode 1: build a cluster that uses 2/3 of nodes with middle amount of memory
-    // mode 2: build a cluster that uses 1/3 of nodes with big memory
-
-    double minMem;
-    double maxoutd;
-    schedule_traversal *temp_schedule;
-    buildTreeDepHomBandwidths(CCR, num_processors, treeobj, minMem, maxoutd, temp_schedule);
-    vector<double> memorySizes;
-    switch (mode) {
-        case noAdaptation:
-            memorySizes = Cluster::buildHomogeneousMemorySizes(maxoutd, num_processors);
-            break;
-        case manySmall:
-            memorySizes = Cluster::buildHomogeneousMemorySizes(min(maxoutd, minMem), num_processors);
-            break;
-        case average:
-            memorySizes = Cluster::buildHomogeneousMemorySizes((maxoutd + minMem) / 2, num_processors * 2 / 3);
-            break;
-        case fewBig:
-            memorySizes = Cluster::buildHomogeneousMemorySizes(max(maxoutd, minMem), num_processors / 3);
-            break;
-        default:
-            throw std::runtime_error("Bad mode for creating homogeneous cluster.");
-
-    }
-
-    //Fix, for now we consider the non-homog cluster homogeneuos
-    Cluster::getFixedCluster()->setMemorySizes(memorySizes);
-    delete temp_schedule;
-}
-
-void Cluster::buildMemHetTreeDepCluster(double CCR, unsigned int num_processors, Tree *treeobj) {
-    double minMem;
-    double maxoutd;
-    schedule_traversal *temp_schedule;
-    buildTreeDepHomBandwidths(CCR, num_processors, treeobj, minMem, maxoutd, temp_schedule);
-
-    vector<double> memorySizes = Cluster::build3LevelMemorySizes(min(maxoutd, minMem), max(maxoutd, minMem),
-                                                                 num_processors);
-    Cluster::getFixedCluster()->setMemorySizes(memorySizes);
-    delete temp_schedule;
-}
-
-
 void Cluster::buildTreeDepHomBandwidths(double CCR, unsigned int num_processors, Tree *treeobj, double &minMem,
                                         double &maxoutd,
                                         schedule_traversal *&temp_schedule) {
@@ -238,6 +118,16 @@ void Cluster::buildTreeDepHomBandwidths(double CCR, unsigned int num_processors,
     cluster->SetBandwidth(CCR, treeobj);
     Cluster::setFixedCluster(cluster);
     Cluster::getFixedCluster()->SetBandwidth(CCR, treeobj);
+}
+
+
+void Cluster::BuildFixedClusterWithMemories(double maxEdgesToMakespanWeights, int num_processors,
+                                            vector<double> &memorySizes) {
+    Cluster *cluster = new Cluster(num_processors, true);
+    map<int, int> processor_speeds = buildProcessorSpeeds(num_processors);
+    cluster->setHomogeneousBandwidth(maxEdgesToMakespanWeights);
+    setFixedCluster(cluster);
+    getFixedCluster()->setMemorySizes(memorySizes);
 }
 
 Processor *Cluster::getBiggestFreeProcessor() {

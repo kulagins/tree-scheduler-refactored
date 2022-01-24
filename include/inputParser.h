@@ -32,8 +32,9 @@ public:
 
         this->workingDirectory = argv[1];
         this->pathToTree = this->workingDirectory + argv[2];
+        this->pathToCluster = argv[3];
 
-        int cluMode = atoi(argv[3]);
+        int cluMode = atoi(argv[4]);
         switch (cluMode) {
             case 0:
                 this->clusteringMode = treeDependent;
@@ -48,9 +49,9 @@ public:
                 break;
         }
 
-        this->buildSmallCluster = (bool)atoi((argv[4]));
-        this->verbose = (bool)atoi((argv[5]));
-        this->pathToCluster = argv[6];
+        this->buildSmallCluster = (bool)atoi((argv[5]));
+        this->verbose = (bool)atoi((argv[6]));
+        
     }
 
     string getWorkingDirectory() {

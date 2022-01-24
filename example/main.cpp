@@ -103,7 +103,6 @@ int main(int argc, char **argv) {
     InputParser *input = new InputParser(argc, argv);
     verbose = input->getVerbosity();
     initOutput();
-
     string treesToRerun = "";
 
     ifstream OpenFile(input->getPathToTreeList());

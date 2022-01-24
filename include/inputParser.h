@@ -70,7 +70,7 @@ public:
         return verbose;
     }
     bool getBuildSmallClusters(){
-        return verbose;
+        return buildSmallCluster;
     }
 
     void setClusterFromFile(double normedMemory){

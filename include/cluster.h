@@ -10,12 +10,11 @@
 #include <map>
 #include <vector>
 #include "tree.fwd.h"
-#include "inputEnums.h"
 #include <limits>
 #include <algorithm>
 //#include "inputParser.h"
 //#include <bits/stdc++.h>
-
+enum ClusteringModes {treeDependent, staticClustering};
 using namespace std;
 
 
@@ -317,20 +316,9 @@ public:
     buildTreeDepHomBandwidths(double CCR, unsigned int num_processors, Tree *treeobj, double &minMem, double &maxoutd,
                               schedule_traversal *&temp_schedule);
 
-    static void buildMemHetTreeDepCluster(double CCR, unsigned int num_processors, Tree *treeobj);
-
-    static void
-    buildHomogeneousCluster(double CCR, unsigned int num_processors, Tree *treeobj, HeterogeneousAdaptationMode mode);
-
     static vector<double> buildNLevelMemorySizes(vector<double> memories, vector<unsigned int> processorGroupSizes);
 
-    static void buildHomStatic2LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights,
-                                            HeterogeneousAdaptationMode adaptationMode);
-
     static void buildStatic3LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights);
-
-    static void buildHomStatic3LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights,
-                                            HeterogeneousAdaptationMode adaptationMode);
 
     string getUsageString();
 

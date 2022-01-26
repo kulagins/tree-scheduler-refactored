@@ -285,7 +285,7 @@ double Task::Sequence() {
 }
 
 Tree *read_tree(const char *filename) {
-    cout << filename << endl;
+    cout <<"reading "<< filename << endl;
     ifstream OpenFile(filename);
     string line;
     stringstream line_stream;

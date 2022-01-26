@@ -21,7 +21,7 @@
 #include "../include/lib-io-tree-minmem.h"
 
 
-const bool verbose = true;
+const bool verbose = false;
 
 void
 buildTreeDependentCluster(string argv, InputParser *input, Tree *tree, bool computeSmallCluster);

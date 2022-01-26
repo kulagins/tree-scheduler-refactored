@@ -20,11 +20,10 @@
 #include "../include/tree.h"
 #include "../include/lib-io-tree-minmem.h"
 
-
-const bool verbose = false;
+bool verbose = true;
 
 void
-buildTreeDependentCluster(string argv, InputParser *input, Tree *tree, bool computeSmallCluster);
+buildTreeDependentCluster(InputParser *input, Tree *tree, bool computeSmallCluster);
 
 void initOutput() {
     if (!verbose) {
@@ -82,8 +81,9 @@ double threeSteps(Tree *tree) {
 }
 
 int main(int argc, char **argv) {
-    initOutput();
     InputParser *input = new InputParser(argc, argv);
+    verbose = input->getVerbosity();
+    initOutput();
     string treesToRerun = "";
 
     ifstream OpenFile(input->getPathToTreeList());
@@ -94,24 +94,6 @@ int main(int argc, char **argv) {
     double makespan, maxoutd, minMem;
     clock_t time;
 
-    float CCR = 0;
-    float NPR = 0;
-    int clusterConfigurationNumber = 0;
-
-    switch (input->getClusteringMode()) {
-        case staticClustering: {
-            clusterConfigurationNumber = (int) input->getStaticClusterConfigurationNumber();
-            break;
-        }
-        case treeDependent: {
-            CCR = input->getCCR();
-            NPR = input->getNPR();
-            clusterConfigurationNumber = (int) input->getStaticClusterConfigurationNumber();
-            break;
-        }
-        default:
-            break;
-    }
 
     if (input->getClusteringMode() == staticClustering) {
         double maxMinMem = 0;
@@ -140,7 +122,7 @@ int main(int argc, char **argv) {
         } while (OpenFilePreliminary.good());
         OpenFilePreliminary.close();
 
-        input->setClusterFromFile(argv[8], 1);
+        input->setClusterFromFile(1);
     }
 
     std::vector<int> brokenEdges;
@@ -170,7 +152,7 @@ int main(int argc, char **argv) {
         if (makespan == -1 &&computeSmallCluster) {
             cout << "small cluster too small" << endl;
             treesToRerun += treename + "\n";
-            buildTreeDependentCluster(argv[8], input, tree, false);
+            buildTreeDependentCluster(input, tree, false);
             time = clock();
             makespan = threeSteps(tree);
             time = clock() - time;
@@ -192,7 +174,7 @@ int main(int argc, char **argv) {
 }
 
 void
-buildTreeDependentCluster(string clusterFilename, InputParser *input, Tree *tree, bool computeSmallCluster) {
+buildTreeDependentCluster(InputParser *input, Tree *tree, bool computeSmallCluster) {
     double maxoutd, minMem;
     maxoutd = MaxOutDegree(tree, true);
 
@@ -203,9 +185,9 @@ buildTreeDependentCluster(string clusterFilename, InputParser *input, Tree *tree
     //smallCluster = computeSmallCluster && maxoutd * 100 / minMem < 93;
     cout << "small cluster " << (smallCluster ? "yes" : "no") << endl;
     cout << "maxoutD " << to_string(maxoutd) + "minmem " + to_string(minMem) << endl;
-    if (smallCluster) input->setClusterFromFileWithShrinkingFactor(clusterFilename, maxoutd, 3);
+    if (smallCluster) input->setClusterFromFileWithShrinkingFactor(maxoutd, 3);
     else {
-        input->setClusterFromFile(clusterFilename, maxoutd);
+        input->setClusterFromFile(maxoutd);
     }
     if(minMem> Cluster::getFixedCluster()->getCumulativeMemory()){
         throw "Cluster too small: cumulative memory: "+ to_string(Cluster::getFixedCluster()->getCumulativeMemory()) + " vs required "+

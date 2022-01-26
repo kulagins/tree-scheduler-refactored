@@ -6,7 +6,6 @@
 #include <string>
 #include <stdlib.h>
 #include <json.hpp>
-#include "inputEnums.h"
 #include "cluster.h"
 
 
@@ -18,15 +17,15 @@ protected:
 
     string workingDirectory;
     string pathToTree;
-    HeterogenityLevels heterogenityLevel;
+    string pathToCluster;
     ClusteringModes clusteringMode;
-    HeterogeneousAdaptationMode adaptationMode;
-protected:
-    double clusteringDependendArg1;
-    double clusteringDependendArg2;
-public:
-    InputParser(int argc, char **argv) {
 
+protected:
+    bool buildSmallCluster;
+    bool verbose;
+public:
+
+    InputParser(int argc, char **argv) {
         //cout << argc << endl;
         //cout << argv << endl;
         if (argc < 7) errorFunction(0);
@@ -34,23 +33,7 @@ public:
         this->workingDirectory = argv[1];
         cout << workingDirectory<<endl;
         this->pathToTree = this->workingDirectory + argv[2];
-
-        int hetLevel = atoi(argv[3]);
-        switch (hetLevel) {
-            case 0:
-                this->heterogenityLevel = homogeneus;
-                break;
-            case 1:
-                this->heterogenityLevel = memoryHeteregeneus;
-                break;
-            case 2:
-                this->heterogenityLevel = heterogeneus;
-                break;
-
-            default:
-                errorFunction(1);
-                break;
-        }
+        this->pathToCluster = argv[3];
 
         int cluMode = atoi(argv[4]);
         switch (cluMode) {
@@ -67,32 +50,9 @@ public:
                 break;
         }
 
-        this->clusteringDependendArg1 = atof(argv[5]);
-        this->clusteringDependendArg2 = atof(argv[6]);
-        if (argv[7]) {
-            int adaptMode = atof(argv[7]);
-            switch (adaptMode) {
-                case 0:
-                    this->adaptationMode = noAdaptation;
-                    break;
-                case 1:
-                    this->adaptationMode = manySmall;
-                    break;
-                case 2:
-                    this->adaptationMode = average;
-                    break;
-                case 3:
-                    this->adaptationMode = fewBig;
-                    break;
-
-                default:
-                    errorFunction(1);
-                    break;
-            }
-
+        this->buildSmallCluster = (bool)atoi((argv[5]));
+        this->verbose = (bool)atoi((argv[6]));
         
-        }
-
     }
 
     string getWorkingDirectory() {
@@ -102,52 +62,22 @@ public:
     string getPathToTreeList() {
         return this->pathToTree;
     }
-
-    HeterogenityLevels getHeterogenityLevel() {
-        return this->heterogenityLevel;
+    string getPathToCluster(){
+        return this->pathToCluster;
     }
-
     ClusteringModes getClusteringMode() {
         return this->clusteringMode;
     }
-    HeterogeneousAdaptationMode getAdaptationMode() const {
-        return adaptationMode;
+    bool getVerbosity(){
+        return verbose;
+    }
+    bool getBuildSmallClusters(){
+        return buildSmallCluster;
     }
 
-    double getCCR() {
-        switch (this->clusteringMode) {
-            case treeDependent:
-                return this->clusteringDependendArg1;
-                break;
-            default:
-                throw "This parameter doesn't exisit within the chosen clustering mode";
-                break;
-        }
-    }
-
-    double getNPR() {
-        switch (this->clusteringMode) {
-            case treeDependent:
-                return this->clusteringDependendArg2;
-                break;
-            default:
-                throw "This parameter doesn't exisit within the chosen clustering mode";
-                break;
-        }
-    }
-
-    int getStaticClusterConfigurationNumber() {
-        switch (this->clusteringMode) {
-            case staticClustering:
-                return this->clusteringDependendArg1;
-            default:
-                return this->clusteringDependendArg1;
-                //throw "This parameter doesn't exisit within the chosen clustering mode";
-        }
-    }
-
-    void setClusterFromFile(string filePath, double normedMemory){
-        ifstream inputFile(filePath);
+    void setClusterFromFile(double normedMemory){
+        cout <<this->pathToCluster<<endl;
+        ifstream inputFile(this->pathToCluster);
         json clusterDescription;
         inputFile >> clusterDescription;
 
@@ -173,9 +103,9 @@ public:
         Cluster::setFixedCluster(cluster);
 
     }
-    void setClusterFromFileWithShrinkingFactor(string filePath, double normedMemory, double shrinkingFactor){
+    void setClusterFromFileWithShrinkingFactor(double normedMemory, double shrinkingFactor){
         cout<<"small cluster"<<endl;
-        ifstream inputFile(filePath);
+        ifstream inputFile(this->pathToCluster);
         json clusterDescription;
         inputFile >> clusterDescription;
 

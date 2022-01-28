@@ -142,7 +142,7 @@ int main(int argc, char **argv) {
         cout << "Fanout: Max: " << fanouts[0] << ",  Avg: " << fanouts[1] << endl;
         bool computeSmallCluster =false;
         if (input->getClusteringMode() == treeDependent) {
-            buildTreeDependentCluster(argv[8], input, tree, computeSmallCluster);
+            buildTreeDependentCluster(input, tree, computeSmallCluster);
         }
 
         time = clock();

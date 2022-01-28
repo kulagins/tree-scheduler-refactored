@@ -4,41 +4,64 @@ Modification of MemComJournal for heterogeneous clusters
 
 ## Getting Started
 ### How to compile
-1. In the root directory, do `make all` to compile files for the include
-3. Move to the `./examples/` directory and compile the files there via `make all`. After the succesful compilation, there will be an executable file `./res` in the root directory
+In the root directory, do `make allmain`.
+### Input files
+#### Tree Description
+Input files are in the directory `./real_trees`. `trees` contain the trees generated from sparse matrices, while `random_trees` contain various random trees generated automatically.
+
+All trees have the same format. Each line is dedicated to a single unique task.
+Each line contains `id parent_id node_weight makespan_weight edge_weight`
+
+`id` is the number of the current task, `parent_id` is the id of the (unique) parent of the current task. 
+`node_weight` is the amount of memory required to execute this task on a processor,
+`edge_weight` is the amount of data needed to be transferred from parent to current task in order to start the execution on the current node.
+`makespan_weight` represents the runtime length of the execution of the task.
+
+All values are numbers without a measurement unit.
+
+When you create your own trees to run the program with, please be aware of the following assumptions that are made on the input file:
+1. Every task has to be declared _after_ its children in the input file. This particularly means that the root-node of the tree has to be declared at last.
+2. The ID of a node has to be higher than the ID of its children.
+3. The children of a node have to habe ascending IDs without any gaps.
+
+#### Cluster Description
+The `cluster-file` is a JSON-File that specifies the cluster that the programm should run at. The It specifies a list of groups of processors, each group consists of n equivalent processors running at the same speed and with the same memory.
+
+```code
+{
+    "groups":
+    [
+        {
+            "number": unsigned int
+            "memory": double
+            "speed": double
+        }, ...
+    ]
+}
+```
+Depending on the `clustering-mode`, the `memory` and `speed` values are interpreted differently: with static clustering, the numbers are given as absolute values. If the clustering mode is dependent on the tree, then the speed value stays an absolute number and the memory value acts as a scalar changing the processors' memory relative to the maximum memory usage of a single task in the tree. 
 
 ### How to run
 The executable requires the following input parameters:
 
--  `heterogeneity`:
-   -  `heterogeneity = 0`: both, memory and computing power are homogeneous
-   -  `heterogeneity = 1`: the memory is heterogeneous, but computing power is still homogeneous
-   -  `heterogeneity = 2`: both, memory and computing power are heterogeneous
-- `clustering-mode` : How many processors exist, how much memory does a processor have
-  - `clustering-mode = 0`: the clustering-mode is dependent on the tree instance, we will, just like in the MemComJournal, give the CCR, NPR-values as an input
-  - `clustering-mode = 1`: the clustering-mode is static, we will give the number of processors and their memory as input
+- `clustering-mode` : How many processors exist, how much memory does a processor have. For more information, please refer to the Cluster-Description, explained above.
+  - `clustering-mode = 0`: the clustering-mode is dependent on the tree instance.
+  - `clustering-mode = 1`: the clustering-mode is static.
+- `build-small-clusters`: has yet to be implemented
+- `verbosity`: Should all of the debugging output be printed when the program runs
+
 
 The basic call is then 
 ```Shell
-./res trees-directory trees-list heterogeneity clustering-mode cluster_arg_1 cluster_arg_2
+./main trees-directory trees-list cluster-file-path clustering-mode build-small-clusters verbosity
 ```
-Where `cluster_arg_1` and `cluster_arg_2` are the parameters that we give for the `clustering-mode`.
-
-Plugging in a fixed value for the `clustering-mode` then yields:
-
-```Shell
-./res trees-directory trees-list heterogeneity 0 CCR NPR 
-```
-if we use the tree-dependent clustering, or:
-```Shell
-./res trees-directory trees-list heterogeneity 1 number_processors processor_memory
-```
-if we use the static clustering.
 
 ### How to run tests and add new ones
-To compile all existing tests, do ```make alltests ``` in root.
+To compile all existing tests, do ```make alltests``` in root.
 
-To run currently existing ones, `./sample1_unittest`.
+The following tests have been written already and can be executed in the `test/` directory:
+- `cluster_unittest`
+- `task_tree_unittest`
 
 Add new tests in the directory `test`. Any tests added in the existing file `test.cpp` will be executed without further changes. If you add new test files, add them in the Makefile as new targets after line `100`.
 

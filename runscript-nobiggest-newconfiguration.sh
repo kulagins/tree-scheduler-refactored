@@ -2,17 +2,17 @@
 echo "small with extra output"
 echo "2-level"
 echo "heterogeneous"
-./main ./real_Trees/trees/ treesListNoBiggest.txt 1 0 1 -1 0 ./clusters/cluster-27proc-1-3.json
+./main ./real_Trees/trees/ treesListNoBiggest.txt ./clusters/cluster-27proc-1-3.json 0 0 0
 echo "homogeneous many small"
-./main ./real_Trees/trees/ treesListNoBiggest.txt 0 0 1 -1 1 ./clusters/cluster-hom-27proc-1.json
+./main ./real_Trees/trees/ treesListNoBiggest.txt ./clusters/cluster-hom-27proc-1.json 0 0 0
 echo "homogeneous few big"
-./main ./real_Trees/trees/ treesListNoBiggest.txt 0 0 1 -1 3 ./clusters/cluster-hom-18proc-3.json
+./main ./real_Trees/trees/ treesListNoBiggest.txt ./clusters/cluster-hom-18proc-3.json 0 0 0
 echo "3-level"
 echo "heterogeneous"
-./main ./real_Trees/trees/ treesListNoBiggest.txt 1 0 2 -1 0 ./cluster_27proc_1-1,5-3.json
+./main ./real_Trees/trees/ treesListNoBiggest.txt ./cluster_27proc_1-1,5-3.json 0 0 0
 echo "homogeneous many small"
-./main ./real_Trees/trees/ treesListNoBiggest.txt 0 0 2 -1 1 ./clusters/cluster-hom-27proc-1.json
+./main ./real_Trees/trees/ treesListNoBiggest.txt ./clusters/cluster-hom-27proc-1.json 0 0 0 
 echo "homogeneous average average"
-./main ./real_Trees/trees/ treesListNoBiggest.txt 0 0 2 -1 2 ./clusters/cluster-hom-18proc-1,5.json
+./main ./real_Trees/trees/ treesListNoBiggest.txt ./clusters/cluster-hom-18proc-1,5.json 0 0 0
 echo "homogeneous few big"
-./main ./real_Trees/trees/ treesListNoBiggest.txt 0 0 2 -1 3 ./clusters/cluster-hom-9proc-3.json
+./main ./real_Trees/trees/ treesListNoBiggest.txt ./clusters/cluster-hom-9proc-3.json 0 0 0

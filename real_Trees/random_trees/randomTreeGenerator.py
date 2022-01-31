@@ -153,39 +153,59 @@ class RandomTreeGenerator:
             returnString+=indexMap[i]
         return returnString
 
-'''
-treelengths = [2000]*10+ [4000]*10 + [10000]*10+ [20000]*5 + [30000]*5 +[50000]*5
-length = 10
+# the treelengths list should always be sorted as the file naming depends on that for now
+treelengths = [2000]*5+[4000]*5+[10000]*5+[20000]*5+[30000]*5+[50000]*5
+#treelengths = [2000]*5
 parameterList = [
-    RandomParameters(length,(11000,20000),(1000,5000),(0.01,0.9),1000,100),
-    RandomParameters(length,(11,200),(1000,5000),(10.0,50.0),10,100),
-    RandomParameters(length,(11,200),(10000,50000),(0.01,0.9),10,1000),
-    RandomParameters(length,(11000,20000),(10000,50000),(10.0,50.0),1000,1000),
-    RandomParameters(length,(1,20),(100,500),(0.001,0.09),1,10)
+    RandomParameters(10,(11,200),(1000,5000),(0.01,0.9),10,1000),
 ]
-description = [
-    "large_node_weights","large_edge_weights","large_makespan_weights","all_large","all_small"
-]'''
-
-treelengths = [5000]*3+[10000]*3+[15000]*3+[20000]*3+[25000]*3
-parameterList = [
-    RandomParameters(10,(11,200),(1000,5000),(0.01,0.9),10,100, 3,1),
-    RandomParameters(10,(11,200),(1000,5000),(0.01,0.9),10,100, 20,4),
-    RandomParameters(10,(11,200),(1000,5000),(0.01,0.9),10,100, 10,2),
-]
-description = ["3_children","10_children","20_children",]
+description = ["old_trees"]
 
 index = 1
 for i,length in enumerate(treelengths):
-    index = (1 if treelengths[i-1]!=length else index+ 1)  
-    for j, params in enumerate(parameterList):
-        params.numberNodes = length
-        r = RandomTreeGenerator(params)
-        g = r.createRandomTree()
+    index = (1 if i == 0 or treelengths[i-1]!=length else index+ 1)  
+    for j, params in enumerate(parameterList):   
         try: os.makedirs(f"{description[j]}/size_{length}")
         except FileExistsError:
             pass
-        print(f"{description[j]}/size_{length}/random_tree_{index}")
-        with open(f"{description[j]}/size_{length}/random_tree_{index}","w") as file:
+        try:
+            file=open(f"{description[j]}/size_{length}/random_tree_{index}","x")
+            params.numberNodes = length
+            r = RandomTreeGenerator(params)
+            g = r.createRandomTree()
             file.write(r.prettyString(g))
-        
+            print(f"generated {description[j]}/size_{length}/random_tree_{index}") 
+        except FileExistsError:
+            print(f"skipped {description[j]}/size_{length}/random_tree_{index}") 
+            
+"""
+
+# Parameters for different types of tree-generation:
+
+old Trees
+RandomParameters(length,(11,200),(1000,5000),(0.01,0.9),10,1000),
+
+3-children:
+RandomParameters(10,(11,200),(1000,5000),(0.01,0.9),10,100, 3,1),
+
+10-children:
+RandomParameters(10,(11,200),(1000,5000),(0.01,0.9),10,100, 20,4),
+
+20-children:
+RandomParameters(10,(11,200),(1000,5000),(0.01,0.9),10,100, 10,2),
+
+"large_node_weights",
+RandomParameters(length,(11000,20000),(1000,5000),(0.01,0.9),1000,100),
+
+"large_edge_weights",
+RandomParameters(length,(11,200),(1000,5000),(10.0,50.0),10,100),
+
+"large_makespan_weights",
+RandomParameters(length,(11,200),(10000,50000),(0.01,0.9),10,1000),
+
+"all_large",
+RandomParameters(length,(11000,20000),(10000,50000),(10.0,50.0),1000,1000),
+
+"all_small"
+RandomParameters(length,(1,20),(100,500),(0.001,0.09),1,10)
+"""

@@ -141,7 +141,7 @@ public:
                 this->processors.push_back(new Processor(memories->at(i),speeds->at(i)));
             }
         }
-        initHomogeneousBandwidth(memories->size(), 5);
+        initHomogeneousBandwidth(memories->size(), 60);
     }
 
 
@@ -184,6 +184,7 @@ public:
     }
 
     double getHomogeneousBandwidth() {
+        cout<<"HOMOG BW "<<this->bandwidths.at(0).at(0);
         return this->bandwidths.at(0).at(0);
     }
 

@@ -673,6 +673,10 @@ public:
                         std::map<int, bool> &isProcBusy);
 
     vector<Task *> buildCriticalPath(Tree *Qtree);
+    int numberOfLeaves();
+    double avgNodeWeight();
+    double avgEdgeWeight();
+    double avgMSWeight();
 };
 
 
@@ -690,6 +694,7 @@ void po_construct(const int N, const int *prnts, int **chstart, int **chend, int
 double MaxOutDegree(Tree *tree, int quiet);
 
 vector<double> maxAndAvgFanout(Tree *tree);
+int maxDepth(Task * root);
 
 double IOCounter(Tree *subtree, int *schedule,
                  bool divisible, int quiet, unsigned int &com_freq,

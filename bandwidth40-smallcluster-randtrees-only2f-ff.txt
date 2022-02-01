@@ -1,0 +1,596 @@
+2-level
+heterogeneous
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees
+!! /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/10_children
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/10_children
+&& size_10000/random_tree_1 2287.654132 1865967
+&& size_10000/random_tree_2 2824.925793 2004977
+&& size_10000/random_tree_3 2130.048343 1728494
+&& size_15000/random_tree_1 3653.207382 4555848
+&& size_15000/random_tree_2 3250.839426 4571912
+&& size_15000/random_tree_3 3088.443038 4458812
+&& size_20000/random_tree_1 3395.957251 7540258
+&& size_20000/random_tree_2 4767.224609 7612588
+&& size_20000/random_tree_3 3115.921258 8142510
+&& size_25000/random_tree_1 6592.085607 12932921
+&& size_25000/random_tree_2 4478.545008 12656641
+&& size_25000/random_tree_3 4783.271584 11558373
+&& size_5000/random_tree_1 1354.459858 430610
+&& size_5000/random_tree_2 1005.172690 407292
+&& size_5000/random_tree_3 1298.323622 465114
+&& size_5000/random_tree_3 1298.323622 466747
+!! /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large
+&& size_10000/random_tree_1 100164.011127 5560309
+&& size_10000/random_tree_10 146935.357108 5585413
+&& size_10000/random_tree_2 141592.171798 5607433
+&& size_10000/random_tree_3 121889.773372 5403061
+&& size_10000/random_tree_4 138498.464424 5509806
+&& size_10000/random_tree_5 108170.767979 5707866
+&& size_10000/random_tree_6 131843.051483 5514819
+&& size_10000/random_tree_7 135313.040842 5688029
+&& size_10000/random_tree_8 116199.886580 5499179
+&& size_10000/random_tree_9 132080.862614 5441230
+&& size_2000/random_tree_1 39998.184040 211127
+&& size_2000/random_tree_10 28555.440503 211080
+&& size_2000/random_tree_2 29855.037843 206187
+&& size_2000/random_tree_3 27698.015598 221051
+&& size_2000/random_tree_4 26234.885828 216669
+&& size_2000/random_tree_5 27718.242248 211856
+&& size_2000/random_tree_6 23620.736107 217193
+&& size_2000/random_tree_7 36011.076290 235591
+&& size_2000/random_tree_8 30132.500614 212351
+&& size_2000/random_tree_9 28388.486111 217444
+&& size_20000/random_tree_1 193622.206956 22987775
+&& size_20000/random_tree_2 239535.807221 22784623
+&& size_20000/random_tree_3 310851.823521 23186486
+&& size_20000/random_tree_4 229185.559934 22652380
+&& size_20000/random_tree_5 258759.270029 22725088
+&& size_30000/random_tree_1 461126.057715 52900924
+&& size_30000/random_tree_2 381774.334405 52855802
+&& size_30000/random_tree_3 389893.221769 53397693
+&& size_30000/random_tree_4 366411.669866 53276914
+&& size_30000/random_tree_5 296994.668141 52690938
+&& size_4000/random_tree_1 66830.904448 884113
+&& size_4000/random_tree_10 40560.935556 834755
+&& size_4000/random_tree_2 47074.230654 858117
+&& size_4000/random_tree_3 69571.788355 875905
+&& size_4000/random_tree_4 45625.524197 844408
+&& size_4000/random_tree_5 59345.289773 921897
+&& size_4000/random_tree_6 49350.799229 872597
+&& size_4000/random_tree_7 34469.114170 875016
+&& size_4000/random_tree_8 50990.417939 863090
+&& size_4000/random_tree_9 56374.506928 896503
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large and file size_50000/random_tree_1
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large and file size_50000/random_tree_2
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large and file size_50000/random_tree_3
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large and file size_50000/random_tree_4
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large and file size_50000/random_tree_5
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large and file size_50000/random_tree_5
+!! /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights
+&& size_10000/random_tree_1 4480.202461 490514
+&& size_10000/random_tree_10 6150.679791 269463
+&& size_10000/random_tree_2 6704.968180 299602
+&& size_10000/random_tree_3 6081.237377 316190
+&& size_10000/random_tree_4 3614.579508 353924
+&& size_10000/random_tree_5 2615.700313 307613
+&& size_10000/random_tree_6 3005.263212 299602
+&& size_10000/random_tree_7 5904.260536 535624
+&& size_10000/random_tree_8 5856.578878 366537
+&& size_10000/random_tree_9 6173.574416 325813
+&& size_2000/random_tree_1 2526.271928 39455
+&& size_2000/random_tree_10 1624.111752 32618
+&& size_2000/random_tree_2 2398.247722 43041
+&& size_2000/random_tree_3 3127.257622 45370
+&& size_2000/random_tree_4 2177.328824 73615
+&& size_2000/random_tree_5 2513.060449 67103
+&& size_2000/random_tree_6 2576.702041 87203
+&& size_2000/random_tree_7 3218.716464 19531
+&& size_2000/random_tree_8 2230.072652 31874
+&& size_2000/random_tree_9 2492.471527 45660
+&& size_20000/random_tree_1 6708.471164 1326230
+&& size_20000/random_tree_2 8568.621217 1153275
+&& size_20000/random_tree_3 5295.498408 1062328
+&& size_20000/random_tree_4 6000.684122 1225613
+&& size_20000/random_tree_5 4405.951940 1475531
+&& size_30000/random_tree_1 8482.464068 1973982
+&& size_30000/random_tree_2 10138.691312 2527258
+&& size_30000/random_tree_3 10915.320889 2095481
+&& size_30000/random_tree_4 8468.966692 2572000
+&& size_30000/random_tree_5 6953.745735 2399338
+&& size_4000/random_tree_1 2785.276776 72562
+&& size_4000/random_tree_10 3875.387822 142379
+&& size_4000/random_tree_2 3958.809956 128003
+&& size_4000/random_tree_3 3925.778840 138561
+&& size_4000/random_tree_4 3549.087301 97608
+&& size_4000/random_tree_5 3298.898993 186548
+&& size_4000/random_tree_6 3552.723232 223127
+&& size_4000/random_tree_7 2756.278685 63058
+&& size_4000/random_tree_8 3062.820054 66624
+&& size_4000/random_tree_9 2230.547614 65836
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights and file size_50000/random_tree_1
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights and file size_50000/random_tree_2
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights and file size_50000/random_tree_3
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights and file size_50000/random_tree_4
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights and file size_50000/random_tree_5
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights and file size_50000/random_tree_5
+!! /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/20_children
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/20_children
+&& size_10000/random_tree_1 3176.479579 1612161
+&& size_10000/random_tree_2 2247.411325 1527947
+&& size_10000/random_tree_3 2098.454839 1451551
+&& size_15000/random_tree_1 3649.861161 3685855
+&& size_15000/random_tree_2 3142.200882 3327393
+&& size_15000/random_tree_3 2865.752917 3455632
+&& size_20000/random_tree_1 4905.856079 6224555
+&& size_20000/random_tree_2 4067.585045 6069867
+&& size_20000/random_tree_3 5209.286207 6459336
+&& size_25000/random_tree_1 4565.871193 10158329
+&& size_25000/random_tree_2 6169.589881 10443817
+&& size_25000/random_tree_3 5163.325206 9900258
+&& size_5000/random_tree_1 1244.043422 362194
+&& size_5000/random_tree_2 1910.583922 356775
+&& size_5000/random_tree_3 1115.894114 338294
+&& size_5000/random_tree_3 1115.894114 338985
+!! /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small
+&& size_10000/random_tree_1 226.849152 1569719
+&& size_10000/random_tree_10 234.996661 1581229
+&& size_10000/random_tree_2 260.379639 1510966
+&& size_10000/random_tree_3 239.987003 1487619
+&& size_10000/random_tree_4 275.402370 1485246
+&& size_10000/random_tree_5 197.967336 1492707
+&& size_10000/random_tree_6 178.361433 1605488
+&& size_10000/random_tree_7 164.662287 1544399
+&& size_10000/random_tree_8 181.813189 1559057
+&& size_10000/random_tree_9 275.408127 1501386
+&& size_2000/random_tree_1 70.067640 60742
+&& size_2000/random_tree_10 66.143777 65078
+&& size_2000/random_tree_2 66.837835 64661
+&& size_2000/random_tree_3 83.056582 62931
+&& size_2000/random_tree_4 46.089696 64026
+&& size_2000/random_tree_5 68.145137 61334
+&& size_2000/random_tree_6 66.143465 58672
+&& size_2000/random_tree_7 86.011577 64787
+&& size_2000/random_tree_8 93.161615 75844
+&& size_2000/random_tree_9 50.002840 70677
+&& size_20000/random_tree_1 318.099080 5869352
+&& size_20000/random_tree_2 460.085331 6478623
+&& size_20000/random_tree_3 376.211489 6063146
+&& size_20000/random_tree_4 367.163202 6071920
+&& size_20000/random_tree_5 435.347179 6027177
+&& size_30000/random_tree_1 451.426192 13812454
+&& size_30000/random_tree_2 882.907247 13933350
+&& size_30000/random_tree_3 592.988457 13312367
+&& size_30000/random_tree_4 552.676223 14145200
+&& size_30000/random_tree_5 587.243531 14194563
+&& size_4000/random_tree_1 90.383735 268680
+&& size_4000/random_tree_10 119.736590 252831
+&& size_4000/random_tree_2 98.454356 246101
+&& size_4000/random_tree_3 128.638974 275188
+&& size_4000/random_tree_4 111.539006 244027
+&& size_4000/random_tree_5 113.326578 263235
+&& size_4000/random_tree_6 107.965757 248680
+&& size_4000/random_tree_7 93.858612 242132
+&& size_4000/random_tree_8 77.545300 248942
+&& size_4000/random_tree_9 131.038452 244769
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small and file size_50000/random_tree_1
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small and file size_50000/random_tree_2
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small and file size_50000/random_tree_3
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small and file size_50000/random_tree_4
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small and file size_50000/random_tree_5
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small and file size_50000/random_tree_5
+!! /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights
+&& size_10000/random_tree_1 2327.998896 1614587
+&& size_10000/random_tree_10 2457.743600 1485345
+&& size_10000/random_tree_2 2587.223444 1570258
+&& size_10000/random_tree_3 1893.340682 1613274
+&& size_10000/random_tree_4 2305.145928 1634214
+&& size_10000/random_tree_5 3156.695046 1598828
+&& size_10000/random_tree_6 2267.091102 1539191
+&& size_10000/random_tree_7 2198.179395 1741348
+&& size_10000/random_tree_8 2266.255889 1719995
+&& size_10000/random_tree_9 1774.167258 1485809
+&& size_2000/random_tree_1 865.862801 74502
+&& size_2000/random_tree_10 643.151333 72198
+&& size_2000/random_tree_2 673.606771 66854
+&& size_2000/random_tree_3 475.659325 67119
+&& size_2000/random_tree_4 521.308937 69539
+&& size_2000/random_tree_5 496.228416 71356
+&& size_2000/random_tree_6 572.422437 61617
+&& size_2000/random_tree_7 424.002062 74946
+&& size_2000/random_tree_8 633.582740 71812
+&& size_2000/random_tree_9 973.478393 68910
+&& size_20000/random_tree_1 4427.670716 6434309
+&& size_20000/random_tree_2 3954.095103 6432969
+&& size_20000/random_tree_3 3207.843985 6108798
+&& size_20000/random_tree_4 4968.885184 7380509
+&& size_20000/random_tree_5 3572.299659 5961839
+&& size_30000/random_tree_1 6148.465248 14939639
+&& size_30000/random_tree_2 4909.560917 15042108
+&& size_30000/random_tree_3 4807.030754 14327472
+&& size_30000/random_tree_4 5934.565777 15337029
+&& size_30000/random_tree_5 5650.429399 14343785
+&& size_4000/random_tree_1 1112.679320 251418
+&& size_4000/random_tree_10 1040.162048 235046
+&& size_4000/random_tree_2 928.208024 274893
+&& size_4000/random_tree_3 1119.155675 285331
+&& size_4000/random_tree_4 1075.085826 283945
+&& size_4000/random_tree_5 1022.209207 263888
+&& size_4000/random_tree_6 1114.322290 265469
+&& size_4000/random_tree_7 675.942019 274458
+&& size_4000/random_tree_8 1191.997665 265212
+&& size_4000/random_tree_9 912.406654 265500
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights and file size_50000/random_tree_1
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights and file size_50000/random_tree_2
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights and file size_50000/random_tree_3
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights and file size_50000/random_tree_4
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights and file size_50000/random_tree_5
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights and file size_50000/random_tree_5
+!! /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children
+&& size_10000/random_tree_1 2045.474800 2491482
+&& size_10000/random_tree_2 2453.501364 2253651
+&& size_10000/random_tree_3 3077.765126 4253726
+&& size_15/random_tree_1 120.923210 84
+&& size_15000/random_tree_1 3433.881012 6102503
+&& size_15000/random_tree_2 3191.722119 5183628
+&& size_15000/random_tree_3 2883.033706 6213762
+&& size_20/random_tree_1 222.353671 69
+&& size_20000/random_tree_1 3653.697895 12594239
+&& size_20000/random_tree_2 3057.241291 11473780
+&& size_20000/random_tree_3 3830.512254 8070806
+&& size_25000/random_tree_1 7525.376328 20402247
+&& size_25000/random_tree_2 4348.540596 12757985
+&& size_25000/random_tree_3 4367.624252 12725808
+&& size_5000/random_tree_1 1600.951923 799026
+&& size_5000/random_tree_2 1384.536608 592005
+&& size_5000/random_tree_3 1165.071250 527540
+&& size_5000/random_tree_3 1165.071250 528407
+!! /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights
+&& size_10000/random_tree_1 117206.085739 8683659
+&& size_10000/random_tree_10 89195.589901 8428282
+&& size_10000/random_tree_2 158615.999730 8461534
+&& size_10000/random_tree_3 98876.624415 8519031
+&& size_10000/random_tree_4 134981.593932 8479354
+&& size_10000/random_tree_5 120514.116974 8440226
+&& size_10000/random_tree_6 102533.657714 8403408
+&& size_10000/random_tree_7 83914.520464 8461768
+&& size_10000/random_tree_8 111945.126653 8435098
+&& size_10000/random_tree_9 138052.637934 8370258
+&& size_2000/random_tree_1 22532.480144 330753
+&& size_2000/random_tree_10 25831.284323 316531
+&& size_2000/random_tree_2 25505.081061 315053
+&& size_2000/random_tree_3 17247.389480 317951
+&& size_2000/random_tree_4 21633.786835 320094
+&& size_2000/random_tree_5 36037.622982 322358
+&& size_2000/random_tree_6 25228.243756 322259
+&& size_2000/random_tree_7 20213.699978 324585
+&& size_2000/random_tree_8 26626.725218 318917
+&& size_2000/random_tree_9 31725.234426 331520
+&& size_20000/random_tree_1 310987.953610 35018402
+&& size_20000/random_tree_2 255144.318242 35147968
+&& size_20000/random_tree_3 283324.616644 35008035
+&& size_20000/random_tree_4 339734.293294 37185086
+&& size_20000/random_tree_5 189367.343742 37217336
+&& size_30000/random_tree_1 361802.185926 84360076
+&& size_30000/random_tree_2 530058.576976 85759269
+&& size_30000/random_tree_3 299184.677688 82166106
+&& size_30000/random_tree_4 305479.527019 82603855
+&& size_30000/random_tree_5 398693.008321 82607281
+&& size_4000/random_tree_1 44882.132136 1313467
+&& size_4000/random_tree_10 84109.422019 1336536
+&& size_4000/random_tree_2 60499.997614 1304100
+&& size_4000/random_tree_3 44362.147184 1331050
+&& size_4000/random_tree_4 38733.267826 1299952
+&& size_4000/random_tree_5 49135.781423 1288555
+&& size_4000/random_tree_6 50210.034310 1315416
+&& size_4000/random_tree_7 39619.904082 1313675
+&& size_4000/random_tree_8 45700.305471 1266334
+&& size_4000/random_tree_9 41856.556011 1315617
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights and file size_50000/random_tree_1
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights and file size_50000/random_tree_2
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights and file size_50000/random_tree_3
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights and file size_50000/random_tree_4
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights and file size_50000/random_tree_5
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights and file size_50000/random_tree_5
+few big
+!! /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/10_children§
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/10_children
+&& size_10000/random_tree_1 2606.493973 1776145
+&& size_10000/random_tree_2 3018.888903 1896241
+&& size_10000/random_tree_3 2285.364926 1727132
+&& size_15000/random_tree_1 3892.069923 4042246
+&& size_15000/random_tree_2 3596.938711 4225656
+&& size_15000/random_tree_3 3816.945883 3983971
+&& size_20000/random_tree_1 3745.028091 7265634
+&& size_20000/random_tree_2 5314.440745 7162460
+&& size_20000/random_tree_3 4005.519498 7246419
+&& size_25000/random_tree_1 7158.558162 11571957
+&& size_25000/random_tree_2 5029.186338 11633208
+&& size_25000/random_tree_3 5423.430384 11166505
+&& size_5000/random_tree_1 1514.909352 431070
+&& size_5000/random_tree_2 1078.308447 408099
+&& size_5000/random_tree_3 1426.310646 463845
+&& size_5000/random_tree_3 1426.310646 459837
+!! /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large§
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large
+&& size_10000/random_tree_1 102555.365649 5563277
+&& size_10000/random_tree_10 176412.286366 5538058
+&& size_10000/random_tree_2 177308.488126 5602315
+&& size_10000/random_tree_3 137289.214980 5403657
+&& size_10000/random_tree_4 155373.344397 5779928
+&& size_10000/random_tree_5 132307.322242 5689435
+&& size_10000/random_tree_6 151277.779596 5469309
+&& size_10000/random_tree_7 145189.336769 5561513
+&& size_10000/random_tree_8 137068.002006 5502192
+&& size_10000/random_tree_9 171987.478903 5630986
+&& size_2000/random_tree_1 46569.141534 210768
+&& size_2000/random_tree_10 34624.729122 210548
+&& size_2000/random_tree_2 37012.832131 206568
+&& size_2000/random_tree_3 31466.949799 220849
+&& size_2000/random_tree_4 33764.965960 216146
+&& size_2000/random_tree_5 33859.956816 211544
+&& size_2000/random_tree_6 28129.217744 217580
+&& size_2000/random_tree_7 40557.589698 235714
+&& size_2000/random_tree_8 33334.178350 215421
+&& size_2000/random_tree_9 30649.515469 217406
+&& size_20000/random_tree_1 253093.674133 23193220
+&& size_20000/random_tree_2 289580.573335 23059570
+&& size_20000/random_tree_3 360102.115268 23032041
+&& size_20000/random_tree_4 306319.067220 23223292
+&& size_20000/random_tree_5 307766.668363 22938751
+&& size_30000/random_tree_1 564609.537689 54529484
+&& size_30000/random_tree_2 484146.435151 53934073
+&& size_30000/random_tree_3 467440.388498 53890125
+&& size_30000/random_tree_4 431673.266996 53527717
+&& size_30000/random_tree_5 349081.233818 52690308
+&& size_4000/random_tree_1 82777.385056 879532
+&& size_4000/random_tree_10 48432.624412 838933
+&& size_4000/random_tree_2 56255.744687 868710
+&& size_4000/random_tree_3 77592.922947 878596
+&& size_4000/random_tree_4 51002.704558 845833
+&& size_4000/random_tree_5 69602.166347 929009
+&& size_4000/random_tree_6 63690.309288 867373
+&& size_4000/random_tree_7 51744.675242 881318
+&& size_4000/random_tree_8 70052.186202 890589
+&& size_4000/random_tree_9 66395.999614 890015
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large and file size_50000/random_tree_1
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large and file size_50000/random_tree_2
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large and file size_50000/random_tree_3
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large and file size_50000/random_tree_4
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large and file size_50000/random_tree_5
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_large and file size_50000/random_tree_5
+!! /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights§
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights
+&& size_10000/random_tree_1 4755.000659 486792
+&& size_10000/random_tree_10 6843.623255 298787
+&& size_10000/random_tree_2 6939.726281 403045
+&& size_10000/random_tree_3 6470.823944 330073
+&& size_10000/random_tree_4 3729.538664 357104
+&& size_10000/random_tree_5 3174.758477 322900
+&& size_10000/random_tree_6 3483.314141 313714
+&& size_10000/random_tree_7 6085.648065 415716
+&& size_10000/random_tree_8 6353.545440 428465
+&& size_10000/random_tree_9 6670.331939 326935
+&& size_2000/random_tree_1 2526.271928 38622
+&& size_2000/random_tree_10 1624.111752 32711
+&& size_2000/random_tree_2 2398.247722 43243
+&& size_2000/random_tree_3 3127.257622 45629
+&& size_2000/random_tree_4 2177.328824 73731
+&& size_2000/random_tree_5 2513.060449 67111
+&& size_2000/random_tree_6 2576.702041 85415
+&& size_2000/random_tree_7 3218.716464 19638
+&& size_2000/random_tree_8 2230.072652 31935
+&& size_2000/random_tree_9 2492.471527 43645
+&& size_20000/random_tree_1 8049.105721 1383582
+&& size_20000/random_tree_2 9962.052545 1682076
+&& size_20000/random_tree_3 6003.648932 1076631
+&& size_20000/random_tree_4 6250.494638 1407470
+&& size_20000/random_tree_5 4857.057389 1754396
+&& size_30000/random_tree_1 11761.942235 4152114
+&& size_30000/random_tree_2 11141.871759 2504531
+&& size_30000/random_tree_3 11949.367656 2116486
+&& size_30000/random_tree_4 9825.349230 2405999
+&& size_30000/random_tree_5 8754.858941 3015883
+&& size_4000/random_tree_1 2785.276776 72712
+&& size_4000/random_tree_10 3875.387822 142429
+&& size_4000/random_tree_2 3958.809956 123563
+&& size_4000/random_tree_3 3925.778840 138739
+&& size_4000/random_tree_4 3549.087301 98513
+&& size_4000/random_tree_5 3298.898993 186904
+&& size_4000/random_tree_6 3552.723232 223443
+&& size_4000/random_tree_7 2832.042757 288878
+&& size_4000/random_tree_8 3089.356567 236099
+&& size_4000/random_tree_9 2476.643138 68517
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights and file size_50000/random_tree_1
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights and file size_50000/random_tree_2
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights and file size_50000/random_tree_3
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights and file size_50000/random_tree_4
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights and file size_50000/random_tree_5
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_makespan_weights and file size_50000/random_tree_5
+!! /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/20_children§
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/20_children
+&& size_10000/random_tree_1 3458.459343 1451968
+&& size_10000/random_tree_2 2487.077823 1529250
+&& size_10000/random_tree_3 2086.290766 1442726
+&& size_15000/random_tree_1 3673.843318 3469752
+&& size_15000/random_tree_2 3583.781079 3286701
+&& size_15000/random_tree_3 3264.429751 3422103
+&& size_20000/random_tree_1 5482.005106 5814243
+&& size_20000/random_tree_2 4349.499752 5989171
+&& size_20000/random_tree_3 5697.825453 6105444
+&& size_25000/random_tree_1 5432.652872 9567971
+&& size_25000/random_tree_2 7062.876056 9805158
+&& size_25000/random_tree_3 5064.618901 9590164
+&& size_5000/random_tree_1 1624.994971 372359
+&& size_5000/random_tree_2 2080.812138 359287
+&& size_5000/random_tree_3 1216.991094 342886
+&& size_5000/random_tree_3 1216.991094 343792
+!! /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small§
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small
+&& size_10000/random_tree_1 288.758800 1585619
+&& size_10000/random_tree_10 273.777614 1592718
+&& size_10000/random_tree_2 307.869313 1571245
+&& size_10000/random_tree_3 307.985938 1523670
+&& size_10000/random_tree_4 333.545937 1538921
+&& size_10000/random_tree_5 222.505803 1547590
+&& size_10000/random_tree_6 194.370852 1609054
+&& size_10000/random_tree_7 238.823150 1589403
+&& size_10000/random_tree_8 218.283444 1575030
+&& size_10000/random_tree_9 322.326003 1501821
+&& size_2000/random_tree_1 72.207664 62757
+&& size_2000/random_tree_10 76.447927 68164
+&& size_2000/random_tree_2 76.339789 65405
+&& size_2000/random_tree_3 97.853190 61529
+&& size_2000/random_tree_4 55.532221 65478
+&& size_2000/random_tree_5 79.053020 61211
+&& size_2000/random_tree_6 68.988758 59274
+&& size_2000/random_tree_7 92.630169 64236
+&& size_2000/random_tree_8 104.221132 70229
+&& size_2000/random_tree_9 56.057397 67091
+&& size_20000/random_tree_1 438.667953 5996855
+&& size_20000/random_tree_2 486.277408 6471468
+&& size_20000/random_tree_3 454.222153 6224942
+&& size_20000/random_tree_4 400.211052 6121301
+&& size_20000/random_tree_5 544.010126 6083886
+&& size_30000/random_tree_1 568.146154 13781834
+&& size_30000/random_tree_2 994.571426 13926972
+&& size_30000/random_tree_3 723.420828 13423918
+&& size_30000/random_tree_4 617.219960 14012572
+&& size_30000/random_tree_5 761.607703 14215981
+&& size_4000/random_tree_1 115.044583 265944
+&& size_4000/random_tree_10 140.847185 251656
+&& size_4000/random_tree_2 110.844196 252058
+&& size_4000/random_tree_3 132.501282 274821
+&& size_4000/random_tree_4 140.846062 239755
+&& size_4000/random_tree_5 131.653715 262075
+&& size_4000/random_tree_6 123.105885 252663
+&& size_4000/random_tree_7 113.334545 242850
+&& size_4000/random_tree_8 100.019158 279419
+&& size_4000/random_tree_9 148.711811 251806
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small and file size_50000/random_tree_1
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small and file size_50000/random_tree_2
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small and file size_50000/random_tree_3
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small and file size_50000/random_tree_4
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small and file size_50000/random_tree_5
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/all_small and file size_50000/random_tree_5
+!! /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights§
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights
+&& size_10000/random_tree_1 2731.208575 1581039
+&& size_10000/random_tree_10 3187.063264 1519230
+&& size_10000/random_tree_2 3189.559807 1578912
+&& size_10000/random_tree_3 2304.965356 1683847
+&& size_10000/random_tree_4 2759.456402 1618516
+&& size_10000/random_tree_5 3703.976464 1650817
+&& size_10000/random_tree_6 2686.992113 1616568
+&& size_10000/random_tree_7 2477.017535 1766290
+&& size_10000/random_tree_8 2412.019778 2105965
+&& size_10000/random_tree_9 2640.918897 1561096
+&& size_2000/random_tree_1 993.771934 75268
+&& size_2000/random_tree_10 729.800571 73273
+&& size_2000/random_tree_2 756.887767 94567
+&& size_2000/random_tree_3 520.094223 69872
+&& size_2000/random_tree_4 675.292604 72780
+&& size_2000/random_tree_5 557.294201 76474
+&& size_2000/random_tree_6 708.946887 65928
+&& size_2000/random_tree_7 457.065614 76683
+&& size_2000/random_tree_8 692.295274 73706
+&& size_2000/random_tree_9 1093.452927 77951
+&& size_20000/random_tree_1 5535.474304 6405516
+&& size_20000/random_tree_2 4514.056821 6388400
+&& size_20000/random_tree_3 4046.479022 6139094
+&& size_20000/random_tree_4 5743.468695 7341038
+&& size_20000/random_tree_5 3828.073917 5935000
+&& size_30000/random_tree_1 7572.977428 15344338
+&& size_30000/random_tree_2 6503.907454 15005637
+&& size_30000/random_tree_3 5495.779958 14267295
+&& size_30000/random_tree_4 6959.034184 15783298
+&& size_30000/random_tree_5 6730.274248 14421951
+&& size_4000/random_tree_1 1294.928486 255307
+&& size_4000/random_tree_10 1255.407354 258782
+&& size_4000/random_tree_2 1063.418389 298267
+&& size_4000/random_tree_3 1377.845980 306254
+&& size_4000/random_tree_4 1223.915495 284281
+&& size_4000/random_tree_5 1256.261277 261198
+&& size_4000/random_tree_6 1298.959771 276043
+&& size_4000/random_tree_7 739.995746 284243
+&& size_4000/random_tree_8 1431.599358 261334
+&& size_4000/random_tree_9 1211.482963 273024
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights and file size_50000/random_tree_1
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights and file size_50000/random_tree_2
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights and file size_50000/random_tree_3
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights and file size_50000/random_tree_4
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights and file size_50000/random_tree_5
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_node_weights and file size_50000/random_tree_5
+!! /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children§
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/3_children
+&& size_10000/random_tree_1 2220.452256 1810065
+&& size_10000/random_tree_2 2805.721294 1778944
+&& size_10000/random_tree_3 3578.844463 1857047
+&& size_15/random_tree_1 120.923210 69
+&& size_15000/random_tree_1 4220.569259 4146953
+&& size_15000/random_tree_2 3520.332957 3863949
+&& size_15000/random_tree_3 3439.765819 4226190
+&& size_20/random_tree_1 222.353671 72
+&& size_20000/random_tree_1 4567.505726 7947780
+&& size_20000/random_tree_2 3886.214416 7154327
+&& size_20000/random_tree_3 4715.468650 7044085
+&& size_25000/random_tree_1 8556.378860 12179411
+&& size_25000/random_tree_2 4746.893830 11208380
+&& size_25000/random_tree_3 5174.047543 10796903
+&& size_5000/random_tree_1 1742.266166 403964
+&& size_5000/random_tree_2 1562.552962 384882
+&& size_5000/random_tree_3 1225.370950 519981
+&& size_5000/random_tree_3 1225.370950 522636
+!! /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights§
+/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights
+&& size_10000/random_tree_1 137530.107050 8876982
+&& size_10000/random_tree_10 119464.734200 8528958
+&& size_10000/random_tree_2 187619.033321 8749911
+&& size_10000/random_tree_3 123297.466958 8630242
+&& size_10000/random_tree_4 147226.590215 8513154
+&& size_10000/random_tree_5 137923.337263 8510373
+&& size_10000/random_tree_6 133635.300279 8477297
+&& size_10000/random_tree_7 121171.994088 8578296
+&& size_10000/random_tree_8 138051.778539 8528796
+&& size_10000/random_tree_9 180358.245501 8477182
+&& size_2000/random_tree_1 27174.299052 332099
+&& size_2000/random_tree_10 33638.514317 318697
+&& size_2000/random_tree_2 33937.470936 319603
+&& size_2000/random_tree_3 21715.133548 317341
+&& size_2000/random_tree_4 25000.143721 322097
+&& size_2000/random_tree_5 42377.691119 323745
+&& size_2000/random_tree_6 30012.120022 323062
+&& size_2000/random_tree_7 21364.686634 326555
+&& size_2000/random_tree_8 33817.064676 320159
+&& size_2000/random_tree_9 37929.213056 344571
+&& size_20000/random_tree_1 401485.744320 35302745
+&& size_20000/random_tree_2 259439.091428 35737097
+&& size_20000/random_tree_3 333297.566439 35206218
+&& size_20000/random_tree_4 394689.521481 35270756
+&& size_20000/random_tree_5 246338.832610 35437958
+&& size_30000/random_tree_1 414787.509142 84513021
+&& size_30000/random_tree_2 325326.484398 84038821
+&& size_30000/random_tree_3 390661.721424 83045900
+&& size_30000/random_tree_4 382919.111733 82449384
+&& size_30000/random_tree_5 505104.956052 83056719
+&& size_4000/random_tree_1 52332.873141 1316459
+&& size_4000/random_tree_10 94448.974061 1341407
+&& size_4000/random_tree_2 76792.681371 1306747
+&& size_4000/random_tree_3 59542.211053 1349996
+&& size_4000/random_tree_4 46323.581963 1297910
+&& size_4000/random_tree_5 62736.848515 1304860
+&& size_4000/random_tree_6 64537.093485 1313085
+&& size_4000/random_tree_7 54688.474659 1307227
+&& size_4000/random_tree_8 55860.205793 1314116
+&& size_4000/random_tree_9 50810.276139 1318250
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights and file size_50000/random_tree_1
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights and file size_50000/random_tree_2
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights and file size_50000/random_tree_3
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights and file size_50000/random_tree_4
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights and file size_50000/random_tree_5
+Read empty tree with directory /home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored/real_Trees/random_trees/large_edge_weights and file size_50000/random_tree_5

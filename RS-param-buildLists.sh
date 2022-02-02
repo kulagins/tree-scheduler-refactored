@@ -32,7 +32,7 @@ for dir in $directories; do
     ./main $treeDir /treesList.txt clusters/cluster-27proc-1-3.json 0 0 1  
     cd real_Trees/random_trees
 done
-:'
+
 echo "many small"
 for dir in $directories; do
     cd "$dir"
@@ -95,4 +95,4 @@ for dir in $directories; do
     ./main $treeDir /treesList.txt clusters/cluster-hom-9proc-3.json 0 0 0
     cd real_Trees/random_trees
 done
-'
+

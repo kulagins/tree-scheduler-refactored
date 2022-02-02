@@ -41,7 +41,7 @@ double threeSteps(Tree *tree) {
     string stage2 = "FirstFit";
     unsigned int number_subtrees = 0;
     unsigned long sequentialLen;
-    unsigned int num_processors;
+    unsigned int num_processors= Cluster::getFixedCluster()->getNumberProcessors();
     list<Task *> parallelSubtrees;
     double makespan;
     // for counting how many subtrees produced, twolevel is set as false
@@ -72,9 +72,12 @@ double threeSteps(Tree *tree) {
 
 
     if (number_subtrees > num_processors) {
+        cout<<"merge"<<endl;
         makespan = tree->Merge(true);
     } else if (number_subtrees == num_processors) {
+        cout<<"nothing"<<endl;
     } else {
+        cout<<"splitAgain"<<endl;
         makespan = tree->SplitAgain();
     }
     return makespan;
@@ -162,7 +165,7 @@ int main(int argc, char **argv) {
         }
 
 
-        //   quietPrint("&& " + treename + " " + to_string(makespan) + " " + to_string(time));
+        quietPrint("&& " + treename + " " + to_string(makespan) + " " + to_string(time));
         // quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
         // quietPrint(Cluster::getFixedCluster()->getAverageLoadAndNumberOfUsedProcessors());
         //quietPrint(Cluster::getFixedCluster()->getUsageString());

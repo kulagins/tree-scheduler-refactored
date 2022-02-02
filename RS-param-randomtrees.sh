@@ -5,7 +5,7 @@ directories="10_children all_large large_makespan_weights 20_children all_small 
 
 : 
 echo "2-level"
-echo "heterogeneous"
+:echo "heterogeneous"
 
 pwd
 for dir in $directories; do
@@ -17,7 +17,7 @@ for dir in $directories; do
     cd real_Trees/random_trees
 done
 
-:'
+
 echo "many small"
 for dir in $directories; do
     cd "$dir"
@@ -28,7 +28,7 @@ for dir in $directories; do
    
     cd real_Trees/random_trees
 done
-'
+
 echo "few big"
 for dir in $directories; do
     cd "$dir"
@@ -40,7 +40,7 @@ for dir in $directories; do
     cd real_Trees/random_trees
 done
 
-: '
+
 echo "3-level"
 echo "heterogeneous"
 
@@ -81,4 +81,4 @@ for dir in $directories; do
     ./main $treeDir /treesList.txt clusters/cluster-hom-9proc-3.json 0 0 0
     cd real_Trees/random_trees
 done
-'
+

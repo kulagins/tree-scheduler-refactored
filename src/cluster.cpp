@@ -247,11 +247,11 @@ string Cluster::getShortUsageString() {
 
 void Cluster::clean() {
     for (Processor *p: getProcessors()) {
-        p->setAssignedTask(nullptr);
-        p->setAssignedTaskId(-1);
-        p->isBusy = false;
-        p->setOccupiedMemorySize(0);
+       delete p;
     }
+    processors.resize(0);
+    bandwidths.resize(0);
+    delete fixedCluster;
 
 }
 

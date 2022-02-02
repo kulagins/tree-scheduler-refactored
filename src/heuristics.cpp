@@ -1092,8 +1092,8 @@ double Tree::SplitAgainV2(unsigned int processor_number, unsigned int num_subtre
 double Tree::SplitAgain() {
     double MS_now;
     Tree *Qtreeobj = this->BuildQtree();
-//    cout<<"qtree initially "<<endl;
-    //  Qtreeobj->Print(cout);
+    cout<<"qtree initially "<<endl;
+    Qtreeobj->Print(cout);
     vector<Task *> CriticalPath;//Q nodes on Critical Path
     Task *node_i;
     Task *node_j;
@@ -1112,12 +1112,12 @@ double Tree::SplitAgain() {
         CriticalPath = buildCriticalPath(Qtreeobj);
         //cout<<"}"<<endl;
 
-        //cout<<"Idle processor now: "<<idleProcessors<<endl;
+        cout<<"Idle processor now: "<<idleProcessors<<endl;
         MSReduced = EstimateDecrease(idleProcessors, this, &CriticalPath, &onLastSubtree, &node_i, &node_j);
 
         if (MSReduced == true) {
             if (onLastSubtree == false) {
-                //cout<<"cut edge "<<node_i->getId()<<endl;
+               cout<<"cut edge "<<node_i->getId()<<endl;
                 node_i->breakEdge(); //C<-C\cup C_k
                 idleProcessors--;
 
@@ -1164,7 +1164,7 @@ double Tree::SplitAgain() {
                     }
                 }
             } else {
-                //cout<<"cut edge "<<node_i->getId()<<" and edge "<<node_j->getId()<<endl;
+                cout<<"cut edge "<<node_i->getId()<<" and edge "<<node_j->getId()<<endl;
                 node_i->breakEdge();//C<-C\cup C_k
                 node_j->breakEdge();//C<-C\cup C_k
                 idleProcessors = idleProcessors - 2;
@@ -1201,8 +1201,8 @@ double Tree::SplitAgain() {
             break;
         }
     }
-    //  cout<<"qtree after> "<<endl;
-    //  Qtreeobj->Print(cout);
+      cout<<"qtree after> "<<endl;
+      Qtreeobj->Print(cout);
 
     delete Qtreeobj;
 

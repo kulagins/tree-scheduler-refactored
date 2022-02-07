@@ -12,9 +12,12 @@
 #include "tree.fwd.h"
 #include <limits>
 #include <algorithm>
+
 //#include "inputParser.h"
 //#include <bits/stdc++.h>
-enum ClusteringModes {treeDependent, staticClustering};
+enum ClusteringModes {
+    treeDependent, staticClustering
+};
 using namespace std;
 
 
@@ -54,7 +57,11 @@ public:
         this->processorSpeed = processorSpeed;
         isBusy = false;
         assignedTask = nullptr;
-        assignedTaskId =-1;
+        assignedTaskId = -1;
+    }
+
+    ~Processor() {
+      //  if (assignedTask != nullptr) delete assignedTask;
     }
 
     double getMemorySize() const {
@@ -122,32 +129,28 @@ public:
         setMemorySizes(memories);
         initHomogeneousBandwidth(memories.size());
     }
-    Cluster(vector<unsigned int> *groupSizes, vector<double> *memories,vector<double> *speeds) {
-        if (adjacent_find( memories->begin(), memories->end(), not_equal_to<>() ) == memories->end() )
-        {
+
+    Cluster(vector<unsigned int> *groupSizes, vector<double> *memories, vector<double> *speeds) {
+        if (adjacent_find(memories->begin(), memories->end(), not_equal_to<>()) == memories->end()) {
             this->isMemoryHomogeneous = true;
-        }
-        else this->isMemoryHomogeneous = false;
+        } else this->isMemoryHomogeneous = false;
 
-        if (adjacent_find( speeds->begin(), speeds->end(), not_equal_to<>() ) == speeds->end() )
-        {
+        if (adjacent_find(speeds->begin(), speeds->end(), not_equal_to<>()) == speeds->end()) {
             this->isProcessorHomogeneous = true;
-        }
-        else this->isProcessorHomogeneous = false;
+        } else this->isProcessorHomogeneous = false;
 
-        for (int i = 0; i< groupSizes->size();i++){
+        for (int i = 0; i < groupSizes->size(); i++) {
             unsigned int groupSize = groupSizes->at(i);
-            for (unsigned int j = 0; j< groupSize; j++){
-                this->processors.push_back(new Processor(memories->at(i),speeds->at(i)));
+            for (unsigned int j = 0; j < groupSize; j++) {
+                this->processors.push_back(new Processor(memories->at(i), speeds->at(i)));
             }
         }
-        initHomogeneousBandwidth(memories->size());
+        initHomogeneousBandwidth(memories->size(), 20);
     }
 
 
     ~Cluster() {
         bandwidths.resize(0);
-
         for (unsigned long i = 0; i < processors.size(); i++) {
             delete processors.at(i);
         }
@@ -284,7 +287,7 @@ public:
         }
         avgLoad = sumLoad * 100 / sumMems;
         percentageUsed = numberUsed * 100 / this->getProcessors().size();
-        return "Load "+ to_string(avgLoad)+", Occupied "+ to_string(percentageUsed);
+        return "Load " + to_string(avgLoad) + ", Occupied " + to_string(percentageUsed);
     }
 
     static void setFixedCluster(Cluster *cluster) {

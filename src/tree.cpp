@@ -285,7 +285,7 @@ double Task::Sequence() {
 }
 
 Tree *read_tree(const char *filename) {
-    cout << filename << endl;
+   // cout <<"reading "<< filename << endl;
     ifstream OpenFile(filename);
     string line;
     stringstream line_stream;
@@ -1251,6 +1251,7 @@ double MaxOutDegree(Tree *tree, int quiet) {
 vector<double> maxAndAvgFanout(Tree *tree) {
     double max_fanout = 0;
     double avg_fanout = 0;
+    int tasks_not_leaves =0;
     for (unsigned int j = 1; j <= tree->getTasks()->size(); j++) {
         ////cout<<j<<endl;
         double currentFanout = tree->getTask(j)->getChildren()->size();
@@ -1258,8 +1259,9 @@ vector<double> maxAndAvgFanout(Tree *tree) {
             max_fanout = currentFanout;
         }
         avg_fanout += currentFanout;
+        if(currentFanout!=0) tasks_not_leaves++;
     }
-    avg_fanout /= tree->getTasks()->size();
+    avg_fanout /= tasks_not_leaves;
     return {max_fanout, avg_fanout};
 }
 
@@ -1342,5 +1344,50 @@ Tree *BuildSubtree(Tree *tree, Task *subtreeRoot) {
     Tree *treeobj = new Tree(tasksInNewSubtree, rootCopy, tree);
     return treeobj;
 }
+int maxDepth(Task * root){
 
+        if (root == NULL)
+            return -1;
+        else
+        {
+            /* compute the depth of each subtree */
+            vector<int> depths(root->getChildren()->size());
+            for(int i=0; i< root->getChildren()->size(); i++){
+                depths.at(i) = maxDepth(root->getChildren()->at(i));
+            }
+            auto result = depths.size()!=0? *(std::max_element(depths.begin(), depths.end())):1;
+            return result+1;
+        }
+
+}
+int Tree::numberOfLeaves(){
+    int numberOfLEaves =0;
+    for(Task *task: *this->getTasks()){
+        if(task->getChildren()->size()==0){
+            numberOfLEaves++;
+        }
+    }
+    return numberOfLEaves;
+}
+double Tree::avgNodeWeight() {
+    double nw =0;
+    for(Task *task: *this->getTasks()){
+     nw +=task->getNodeWeight();
+    }
+    return nw/this->size;
+}
+double Tree::avgEdgeWeight(){
+    double ew =0;
+    for(Task *task: *this->getTasks()){
+        ew +=task->getEdgeWeight();
+    }
+    return ew/this->size;
+}
+double Tree::avgMSWeight(){
+    double mw =0;
+    for(Task *task: *this->getTasks()){
+        mw +=task->getMakespanWeight();
+    }
+    return mw/this->size;
+}
 #endif

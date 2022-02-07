@@ -1,0 +1,10 @@
+{
+    "groups":
+    [
+        {
+            "number": 3,
+            "memory": 3,
+            "speed": 1
+        }
+    ]
+}

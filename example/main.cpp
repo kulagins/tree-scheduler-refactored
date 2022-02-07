@@ -41,7 +41,7 @@ double threeSteps(Tree *tree) {
     string stage2 = "FirstFit";
     unsigned int number_subtrees = 0;
     unsigned long sequentialLen;
-    unsigned int num_processors;
+    unsigned int num_processors= Cluster::getFixedCluster()->getNumberProcessors();
     list<Task *> parallelSubtrees;
     double makespan;
     // for counting how many subtrees produced, twolevel is set as false
@@ -72,9 +72,12 @@ double threeSteps(Tree *tree) {
 
 
     if (number_subtrees > num_processors) {
+        cout<<"merge"<<endl;
         makespan = tree->Merge(true);
     } else if (number_subtrees == num_processors) {
+        cout<<"nothing"<<endl;
     } else {
+        cout<<"splitAgain"<<endl;
         makespan = tree->SplitAgain();
     }
     return makespan;
@@ -138,9 +141,12 @@ int main(int argc, char **argv) {
         }
         Tree *untouchedTree = read_tree((input->getWorkingDirectory() + "/" + treename).c_str());
         Tree::setOriginalTree(untouchedTree);
-        const vector<double> fanouts = maxAndAvgFanout(tree);
-        cout << "Fanout: Max: " << fanouts[0] << ",  Avg: " << fanouts[1] << endl;
-        bool computeSmallCluster =false;
+      //  const vector<double> fanouts = maxAndAvgFanout(tree);
+     //   cout << treename << " Fanout: Max: " << fanouts[0] << ",  Avg: " << fanouts[1] <<
+       //      " Max depth " << maxDepth(tree->getRoot()) << " num leaves " << tree->numberOfLeaves()
+      //       << " #tasks: " << tree->getSize() << endl;
+
+        bool computeSmallCluster = false;
         if (input->getClusteringMode() == treeDependent) {
             buildTreeDependentCluster(input, tree, computeSmallCluster);
         }
@@ -149,7 +155,7 @@ int main(int argc, char **argv) {
         makespan = threeSteps(tree);
         time = clock() - time;
 
-        if (makespan == -1 &&computeSmallCluster) {
+        if (makespan == -1 && computeSmallCluster) {
             cout << "small cluster too small" << endl;
             treesToRerun += treename + "\n";
             buildTreeDependentCluster(input, tree, false);
@@ -183,14 +189,15 @@ buildTreeDependentCluster(InputParser *input, Tree *tree, bool computeSmallClust
     bool smallCluster = false;
     //computeSmall cluster? then compute. Else set to false directly
     //smallCluster = computeSmallCluster && maxoutd * 100 / minMem < 93;
-    cout << "small cluster " << (smallCluster ? "yes" : "no") << endl;
-    cout << "maxoutD " << to_string(maxoutd) + "minmem " + to_string(minMem) << endl;
+//    cout << "small cluster " << (smallCluster ? "yes" : "no") << endl;
+    //  cout << "maxoutD " << to_string(maxoutd) + "minmem " + to_string(minMem) << endl;
     if (smallCluster) input->setClusterFromFileWithShrinkingFactor(maxoutd, 3);
     else {
         input->setClusterFromFile(maxoutd);
     }
-    if(minMem> Cluster::getFixedCluster()->getCumulativeMemory()){
-        throw "Cluster too small: cumulative memory: "+ to_string(Cluster::getFixedCluster()->getCumulativeMemory()) + " vs required "+
-                                                                                                            to_string(minMem);
+    if (minMem > Cluster::getFixedCluster()->getCumulativeMemory()) {
+        throw "Cluster too small: cumulative memory: " + to_string(Cluster::getFixedCluster()->getCumulativeMemory()) +
+              " vs required " +
+              to_string(minMem);
     }
 }

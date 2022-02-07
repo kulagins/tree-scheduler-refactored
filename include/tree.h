@@ -673,9 +673,13 @@ public:
                         std::map<int, bool> &isProcBusy);
 
     vector<Task *> buildCriticalPath(Tree *Qtree);
+    int numberOfLeaves();
+    double avgNodeWeight();
+    double avgEdgeWeight();
+    double avgMSWeight();
 };
 
-
+double SplitAgainOld(Tree* tree, unsigned int processor_number, unsigned int num_subtrees);
 typedef map<unsigned int, double> io_map;
 typedef pair<unsigned int, unsigned int> node_sche;
 typedef pair<unsigned int, double> node_ew;
@@ -690,6 +694,7 @@ void po_construct(const int N, const int *prnts, int **chstart, int **chend, int
 double MaxOutDegree(Tree *tree, int quiet);
 
 vector<double> maxAndAvgFanout(Tree *tree);
+int maxDepth(Task * root);
 
 double IOCounter(Tree *subtree, int *schedule,
                  bool divisible, int quiet, unsigned int &com_freq,

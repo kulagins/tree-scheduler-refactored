@@ -99,7 +99,7 @@ public:
         }
 
         Cluster *cluster = new Cluster(&processorCounts,&mems,&speeds);
-       cout << cluster->getPrettyClusterString()<<endl;
+       //cout << cluster->getPrettyClusterString()<<endl;
         Cluster::setFixedCluster(cluster);
 
     }

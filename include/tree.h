@@ -679,7 +679,7 @@ public:
     double avgMSWeight();
 };
 
-
+double SplitAgainOld(Tree* tree, unsigned int processor_number, unsigned int num_subtrees);
 typedef map<unsigned int, double> io_map;
 typedef pair<unsigned int, unsigned int> node_sche;
 typedef pair<unsigned int, double> node_ew;

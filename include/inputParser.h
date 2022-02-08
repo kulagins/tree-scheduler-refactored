@@ -88,6 +88,7 @@ public:
         return buildSmallCluster;
     }
 
+/*
     void setClusterFromFile(double normedMemory){
         cout <<this->getPathToCluster()<<endl;
         ifstream inputFile(this->getPathToCluster());
@@ -116,33 +117,57 @@ public:
         Cluster::setFixedCluster(cluster);
 
     }
-    void setClusterFromFileWithShrinkingFactor(double normedMemory, double shrinkingFactor){
-        cout<<"small cluster"<<endl;
+    */ 
+
+    void setClusterFromFile(double normedMemory, double shrinkingFactor = 1){
         ifstream inputFile(this->getPathToCluster());
         json clusterDescription;
         inputFile >> clusterDescription;
 
-        vector<unsigned int> processorCounts;
-        vector<double> mems;
-        vector<double> speeds;
+        vector<unsigned int> *processorCounts = new vector<unsigned int>();
+        vector<double> *mems = new vector<double>();
+        vector<double> *speeds = new vector<double>();
+        bool heterogeneous = false;
+        vector<double>*BW_inside = new vector<double>();
+        vector<double>*BW_outside = new vector<double>();
+        for (auto element : clusterDescription["groups"]) {
+            if(element == clusterDescription["groups"].front()){ 
+                if(element.contains("BandwInside")){
+                    heterogeneous = true;
+                }
+            }
 
-        for (auto& element : clusterDescription["groups"]) {
             int numberProcessors = element["number"];
-            processorCounts.push_back(ceil(numberProcessors / shrinkingFactor));
-            mems.push_back(element["memory"]);
-            speeds.push_back(element["speed"]);
+            processorCounts->push_back(ceil(numberProcessors / shrinkingFactor));
+            mems->push_back(element["memory"]);
+            speeds->push_back(element["speed"]);
+            if(heterogeneous){
+                BW_inside->push_back(element["BandwInside"]);
+                BW_outside->push_back(element["BandwOutside"]);
+            }
+
         }
 
         if (this->getClusteringMode() == treeDependent){
-            for (auto it = begin(mems); it != end(mems); it++)
+            for (auto it = mems->begin(); it != mems->end(); it++)
             {
                 *it = (*it) * normedMemory;
             }
         }
-
-        Cluster *cluster = new Cluster(&processorCounts,&mems,&speeds);
-      cout << cluster->getPrettyClusterString()<<endl;
+        Cluster *cluster;
+        if(heterogeneous){
+            cluster = new Cluster(processorCounts,mems,speeds, BW_inside, BW_outside);    
+        }else{
+            cluster = new Cluster(processorCounts,mems,speeds);
+        }
         Cluster::setFixedCluster(cluster);
+
+        delete processorCounts;
+        delete mems;
+        delete speeds;
+        delete BW_inside;
+        delete BW_outside;
+        inputFile.close();
     }
 
 

@@ -67,8 +67,8 @@ double threeSteps(Tree *tree) {
     }
     cout << "2 step ready " << endl;
     makespan = tree->getRoot()->getMakespanCost(true, true);
-    number_subtrees = tree->HowmanySubtrees(true);
-    cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
+    number_subtrees = tree->HowmanySubtrees(false);
+    cout << "Makespan " << makespan << " #trees: " << number_subtrees << "weight "<<endl;
 
 
     if (number_subtrees > num_processors) {
@@ -78,7 +78,9 @@ double threeSteps(Tree *tree) {
         cout<<"nothing"<<endl;
     } else {
         cout<<"splitAgain"<<endl;
-        makespan = tree->SplitAgain();
+      //  makespan = tree->SplitAgain();
+      makespan = tree->SplitAgain();
+             // SplitAgainOld(tree, num_processors, tree->HowmanySubtrees(true));
     }
     return makespan;
 }
@@ -163,12 +165,16 @@ int main(int argc, char **argv) {
             makespan = threeSteps(tree);
             time = clock() - time;
         }
-
-
+       // cout<<"makespan "<<makespan<<endl;
+        tree->HowmanySubtrees(false);
+        //tree->getTaskByPos(345)->breakEdge();
+      //  makespan = tree->getRoot()->getMakespanCost(true, true);
+       // cout<<"makespan "<<makespan<<endl;
         quietPrint("&& " + treename + " " + to_string(makespan) + " " + to_string(time));
         // quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
         // quietPrint(Cluster::getFixedCluster()->getAverageLoadAndNumberOfUsedProcessors());
         //quietPrint(Cluster::getFixedCluster()->getUsageString());
+      //  quietPrint(Cluster::getFixedCluster()->printProcessors());
 
         delete tree;
         delete untouchedTree;

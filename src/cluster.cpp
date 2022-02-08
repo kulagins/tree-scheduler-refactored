@@ -158,10 +158,12 @@ Processor *Cluster::getFirstFreeProcessorOrSmallest() {
 }
 
 void Processor::assignTask(Task *taskToBeAssigned) {
-    this->assignedTask = taskToBeAssigned;
-    this->assignedTaskId = taskToBeAssigned->getId();
-    taskToBeAssigned->setAssignedProcessor(this);
-    this->isBusy = true;
+    if(this!=NULL) {
+        this->assignedTask = taskToBeAssigned;
+        this->assignedTaskId = taskToBeAssigned->getId();
+        taskToBeAssigned->setAssignedProcessor(this);
+        this->isBusy = true;
+    }
 }
 
 void Processor::assignTaskId(unsigned int taskToBeAssigned) {
@@ -208,15 +210,16 @@ string Cluster::getUsageString() {
     int i = 0;
     for (Processor *p: getProcessors()) {
         if (p->getAssignedTask() != nullptr) {
-            out += i + " " + to_string(p->getMemorySize()) + " " +
+            out += to_string(i) + " " + to_string(p->getMemorySize()) + " " +
                    to_string(p->getAssignedTask()->getMakespanWeight()) + " "
                    + to_string(p->getAssignedTask()->getCost()) + " " +
                    to_string(p->getAssignedTask()->getMakespanCost()) + " "
                    + to_string(p->getAssignedTask()->getCost() * 100 / p->getMemorySize()) + "% \n";
 
         } else {
-            out += "No task assigned   0%";
+            out += "No task assigned   0% \n";
         }
+        i++;
     }
     return out;
 

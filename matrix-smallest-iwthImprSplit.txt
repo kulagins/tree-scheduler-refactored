@@ -1,0 +1,41 @@
+small with extra output
+2-level
+heterogeneous
+./real_Trees/trees/
+&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 81937.986000 28724277
+&& dump.1.3.amd.QY.case39-2136.tree.nf -1.000000 7990543
+&& dump.1.2.amd.QY.case39-2136.tree.nf 351562.194000 12398473
+&& dump.0.1.metis.Goodwin.rim-447.tree.nf 22540.246000 5622735
+&& dump.1.1.metis.CPM.cz40948-2567.tree.nf 1766.434000 39046582
+&& dump.1.1.amd.QY.case39-2136.tree.nf -1.000000 18571679
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 74852.990000 96367753
+&& dump.0.1.amd.QY.case39-2136.tree.nf -1.000000 40976089
+&& dump.0.1.metis.CPM.cz40948-2567.tree.nf 2194.666667 72083320
+&& dump.0.1.amd.Bova.rma10-374.tree.nf 271699.530000 13402737
+&& dump.0.1.metis.Bova.rma10-374.tree.nf 120111.725333 11975669
+&& dump.0.1.metis.Bova.rma10-374.tree.nf 120111.725333 11976873
+homogeneous many small
+./real_Trees/trees/
+&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 81937.986000 28756223
+&& dump.1.3.amd.QY.case39-2136.tree.nf -1.000000 7977876
+&& dump.1.2.amd.QY.case39-2136.tree.nf -1.000000 12433196
+&& dump.0.1.metis.Goodwin.rim-447.tree.nf 22540.246000 5366595
+&& dump.1.1.metis.CPM.cz40948-2567.tree.nf 1766.434000 38835041
+&& dump.1.1.amd.QY.case39-2136.tree.nf -1.000000 18461548
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 74852.990000 95773207
+&& dump.0.1.amd.QY.case39-2136.tree.nf -1.000000 40578608
+&& dump.0.1.metis.CPM.cz40948-2567.tree.nf 2194.666667 71387023
+&& dump.0.1.amd.Bova.rma10-374.tree.nf 271699.530000 13302142
+&& dump.0.1.metis.Bova.rma10-374.tree.nf 120111.725333 12013991
+&& dump.0.1.metis.Bova.rma10-374.tree.nf 120111.725333 12018689
+homogeneous few big
+./real_Trees/trees/
+&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 81937.986000 28856739
+&& dump.1.3.amd.QY.case39-2136.tree.nf 139827.024667 7453457
+&& dump.1.2.amd.QY.case39-2136.tree.nf 135787.991333 11862423
+&& dump.0.1.metis.Goodwin.rim-447.tree.nf 28235.484000 5185239
+&& dump.1.1.metis.CPM.cz40948-2567.tree.nf 1308.902667 39238095
+&& dump.1.1.amd.QY.case39-2136.tree.nf 133792.661333 16712185
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 81958.299333 96990801
+&& dump.0.1.amd.QY.case39-2136.tree.nf 97893.334000 19960833
+&& dump.0.1.metis.CPM.cz40948-2567.tree.nf 1283.640667 72546349

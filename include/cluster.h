@@ -145,7 +145,7 @@ public:
                 this->processors.push_back(new Processor(memories->at(i), speeds->at(i)));
             }
         }
-        initHomogeneousBandwidth(memories->size(), 20);
+        initHomogeneousBandwidth(memories->size(), 500);
     }
 
 

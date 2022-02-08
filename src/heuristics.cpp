@@ -884,11 +884,12 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
     Task *SubtreeT = criticalPath->back();
     double MS_t, W_t;
 
-    //cout<<"   working on subtree ";
+    //cout<<"other subtrees"<<endl;
+   // cout<<"   working on subtree ";
     do {
         currentNode = tree->getTask(SubtreeT->getOtherSideId());
         SubtreeT = SubtreeT->getParent();
-        //cout<<"   "<<SubtreeT->getOtherSideId()<<"{ "<<endl;
+      //  cout<<"   "<<SubtreeT->getOtherSideId()<<"{ "<<endl;
         subtreeRoot = tree->getTask(SubtreeT->getOtherSideId());
         MS_t = SubtreeT->getMakespanCost(true, false);
         W_t = SubtreeT->getMakespanWeight();
@@ -902,7 +903,7 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
                 tempQue.pop_back();
                 for (vector<Task *>::iterator it = children->begin(); it != children->end(); ++it) {
                     if ((*it)->getId() != nodeOnPath->getId() && (!(*it)->isBroken())) {
-                        //cout<<"    "<<(*it)->getId()<<" W_i "<<(*it)->getSequentialPart()<<", MS(t) "<<MS_t<<", W_t "<<W_t<<", MS_tj "<<(*it)->getParallelPart()<<endl;
+                      //  cout<<"    "<<(*it)->getId()<<" W_i "<<(*it)->getSequentialPart()<<", MS(t) "<<MS_t<<", W_t "<<W_t<<", MS_tj "<<(*it)->getParallelPart()<<endl;
                         tempQue.push_back((*it));
                         temp = min((*it)->getSequentialPart(),
                                    MS_t - W_t - (*it)->getEdgeWeight() / homogeneousBandwidth -
@@ -915,11 +916,12 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
                 }
             }
         } while (!currentNode->isBroken());
-        //cout<<"   }"<<endl;
+     //   cout<<"   }"<<endl;
     } while (subtreeRoot->getId() != tree->getRootId());
-    //cout<<endl;
-
+  //  cout<<endl;
+   // cout<<" decrease: "<<decrease<<" other subtrees decrease: "<<decrease_othersubtrees;
     if (decrease_othersubtrees >= 0) {
+   //     cout<<"node "<<output_node->getId()<<endl;
         MSdecreased = true;
         if (decrease_othersubtrees < decrease) {
             *lastsubtree = true;
@@ -1092,8 +1094,8 @@ double Tree::SplitAgainV2(unsigned int processor_number, unsigned int num_subtre
 double Tree::SplitAgain() {
     double MS_now;
     Tree *Qtreeobj = this->BuildQtree();
-    cout<<"qtree initially "<<endl;
-    Qtreeobj->Print(cout);
+    //cout<<"qtree initially "<<endl;
+    //Qtreeobj->Print(cout);
     vector<Task *> CriticalPath;//Q nodes on Critical Path
     Task *node_i;
     Task *node_j;
@@ -1201,14 +1203,149 @@ double Tree::SplitAgain() {
             break;
         }
     }
-      cout<<"qtree after> "<<endl;
-      Qtreeobj->Print(cout);
+    //  cout<<"qtree after> "<<endl;
+   //   Qtreeobj->Print(cout);
 
     delete Qtreeobj;
 
     MS_now = this->getRoot()->getMakespanCost(true, true);
     return MS_now;
 }
+
+double SplitAgainOld(Tree* tree, unsigned int processor_number, unsigned int num_subtrees){
+    double MS_now;
+    Task* root=tree->getRoot();
+    Tree* Qtreeobj = tree->BuildQtreeOld();
+    //Qtreeobj->Print(cout);
+   // Qtreeobj = tree->BuildQtreeOld();
+    //Qtreeobj->Print(cout);
+   vector<Task*> CriticalPath;//Q nodes on Critical Path
+
+    Task* Qroot=Qtreeobj->getRoot();
+    Task* largestNode;
+    Task* node_i;
+    Task* node_j;
+    Task* parent;
+    double temp;
+    vector<Task*>* Children;
+    bool MSReduced, onLastSubtree;
+    vector<Task*> tempVector;
+
+    int idleProcessors=processor_number-num_subtrees;
+    while (idleProcessors>0) {
+        //cout<<"******** root id "<<tree->getRootId()<<" ********"<<endl;
+        CriticalPath.clear();
+        CriticalPath.push_back(Qroot);
+        MS_now=root->getMakespanCost(true, true);//update makespan
+        Qroot->getMakespanCost(true,true);//update critical path
+        largestNode=Qroot;
+        Children=Qroot->getChildren();
+        //cout<<"critical path (subtres' roots){1 ";
+        while (!Children->empty()) {//initialize critical path
+            temp=largestNode->getParallelPart();
+            for (vector<Task*>::iterator iter=Children->begin(); iter!=Children->end(); ++iter) {
+                if ((*iter)->getMakespanCost(true, false)==temp) {
+                    largestNode=(*iter);
+                    break;
+                }
+            }
+            //cout<<largestNode->GetothersideID()<<" ";
+            CriticalPath.push_back(largestNode);
+            Children=largestNode->getChildren();
+        }
+        //cout<<"}"<<endl;
+
+        //cout<<"Idle processor now: "<<idleProcessors<<endl;
+        MSReduced = EstimateDecrease(idleProcessors, tree, &CriticalPath, &onLastSubtree, &node_i, &node_j);
+
+        if (MSReduced==true) {
+            if (onLastSubtree==false) {
+                //cout<<"cut edge "<<node_i->getId()<<endl;
+                node_i->breakEdge();//C<-C\cup C_k
+                idleProcessors--;
+
+                node_i->setOtherSideId(Qtreeobj->getTasks()->size()+1);
+                parent=node_i->getParent();
+                while (!parent->isBroken()) {
+                    parent=parent->getParent();
+                }
+                Task* Qparent = Qtreeobj->getTask(parent->getOtherSideId());
+                Task* Qchild;
+                Task* newNode = new Task(parent->getOtherSideId(), 0, node_i->getEdgeWeight(), node_i->getSequentialPart());
+                newNode->setId(Qtreeobj->getTasks()->size()+1);
+                newNode->setParent(Qparent);
+                newNode->breakEdge();
+                newNode->setOtherSideId(node_i->getId());
+                Qparent->addChild(newNode);
+                Qtreeobj->addTask(newNode);
+                temp=Qparent->getMakespanWeight();
+                Qparent->setMakespanWeight(temp-newNode->getMakespanWeight());
+                //cout<<"create new Q node "<<newNode->getId()<<", msw "<<newNode->getMakespanWeight()<<", its parent "<<Qparent->getId()<<", msw "<<Qparent->getMakespanWeight()<<endl;
+
+                newNode->getChildren()->clear();
+                if (node_i->getParallelPart()>0) {
+                    //cout<<"went to here1."<<endl;
+                    tempVector.push_back(node_i);
+                    while (!tempVector.empty()) {
+                        Children = tempVector.back()->getChildren();
+                        tempVector.pop_back();
+                        for (vector<Task*>::iterator iter=Children->begin(); iter!=Children->end(); ++iter){
+                            if ((*iter)->isBroken()) {
+                                //cout<<"went to here2."<<endl;
+                                Qchild = Qtreeobj->getTask((*iter)->getOtherSideId());
+                              //  cout<<"qchild "<<Qchild->getId()<<endl;
+                                newNode->addChild(Qchild);
+                                Qchild->setParent(newNode);
+                                Qchild->setParentId(newNode->getId());
+                                Qparent->removeChild((*iter)->getOtherSideId());
+                            }else{
+                                tempVector.push_back((*iter));
+                            }
+                        }
+                    }
+                }
+            }else{
+                //cout<<"cut edge "<<node_i->getId()<<" and edge "<<node_j->getId()<<endl;
+                node_i->breakEdge();//C<-C\cup C_k
+                node_j->breakEdge();//C<-C\cup C_k
+                idleProcessors=idleProcessors-2;
+
+                node_i->setOtherSideId(Qtreeobj->getTasks()->size()+1);
+                node_j->setOtherSideId(Qtreeobj->getTasks()->size()+2);
+
+                Task* newNodeone = new Task(CriticalPath.back()->getId(), 0, node_i->getEdgeWeight(), node_i->getSequentialPart());
+                newNodeone->setId(Qtreeobj->getTasks()->size()+1);
+                newNodeone->getChildren()->clear();
+                newNodeone->setParent(CriticalPath.back());
+                newNodeone->breakEdge();
+                newNodeone->setOtherSideId(node_i->getId());
+                CriticalPath.back()->addChild(newNodeone);
+                Qtreeobj->addTask(newNodeone);
+                temp=CriticalPath.back()->getMakespanWeight();
+                temp=temp-newNodeone->getMakespanWeight();
+
+                Task* newNodetwo = new Task(CriticalPath.back()->getId(), 0, node_j->getEdgeWeight(), node_j->getSequentialPart());
+                newNodetwo->setId(Qtreeobj->getTasks()->size()+1);
+                newNodetwo->getChildren()->clear();
+                newNodetwo->setParent(CriticalPath.back());
+                newNodetwo->breakEdge();
+                newNodetwo->setOtherSideId(node_j->getId());
+                CriticalPath.back()->addChild(newNodetwo);
+                Qtreeobj->addTask(newNodetwo);
+                temp=temp-newNodetwo->getMakespanWeight();
+                CriticalPath.back()->setMakespanWeight(temp);
+                //cout<<"create new Q node "<<newNodetwo->getId()<<", msw "<<newNodetwo->getMakespanWeight()<<" and new node "<<newNodeone->getId()<<", msw "<<newNodeone->getMakespanWeight()<<", their parent "<<CriticalPath.back()->getId()<<", msw "<<CriticalPath.back()->getMakespanWeight()<<endl;
+            }
+        }else{break;}
+    }
+
+    delete Qtreeobj;
+
+    MS_now = root->getMakespanCost(true,true);
+    return MS_now;
+}
+
+
 
 vector<Task *> Tree::buildCriticalPath(Tree *Qtreeobj) {
     Task *Qroot = Qtreeobj->getRoot();

@@ -1,0 +1,350 @@
+Matrix Trees
+small with extra output
+2-level
+heterogeneous
+./real_Trees/trees/
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf Fanout: Max: 4,  Avg: 1.18374 Max depth 1155 num leaves 4546 #tasks: 29282
+small cluster no
+maxoutD 324288.000000minmem 393378.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 324288, MaxMemory: 972864.000000, CumulativeMemory: 20430144
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf Fanout: Max: 14796,  Avg: 7.82667 Max depth 29 num leaves 91806 #tasks: 105254
+small cluster no
+maxoutD 65558.000000minmem 80538.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 65558, MaxMemory: 196674.000000, CumulativeMemory: 4130154
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf Fanout: Max: 14796,  Avg: 13.0423 Max depth 20 num leaves 59562 #tasks: 64508
+small cluster no
+maxoutD 78554.000000minmem 84715.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 78554, MaxMemory: 235662.000000, CumulativeMemory: 4948902
+dump.0.1.amd.Bova.rma10-374.tree.nf Fanout: Max: 2,  Avg: 1.06885 Max depth 3886 num leaves 3018 #tasks: 46835
+small cluster no
+maxoutD 396050.000000minmem 478994.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 396050, MaxMemory: 1188150.000000, CumulativeMemory: 24951150
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf Fanout: Max: 14796,  Avg: 1.73255 Max depth 1092 num leaves 95701 #tasks: 226341
+small cluster no
+maxoutD 117681.000000minmem 125508.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 117681, MaxMemory: 353043.000000, CumulativeMemory: 7413903
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf Fanout: Max: 3,  Avg: 1.71422 Max depth 1281 num leaves 34132 #tasks: 81920
+small cluster no
+maxoutD 1384793.000000minmem 1529484.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 1384793, MaxMemory: 4154379.000000, CumulativeMemory: 87241959
+dump.0.1.amd.QY.case39-2136.tree.nf Fanout: Max: 10,  Avg: 1.33298 Max depth 816 num leaves 10047 #tasks: 40217
+small cluster no
+maxoutD 272090.000000minmem 290090.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 272090, MaxMemory: 816270.000000, CumulativeMemory: 17141670
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf Fanout: Max: 69,  Avg: 1.33172 Max depth 10758 num leaves 10497 #tasks: 42138
+small cluster no
+maxoutD 1471425.000000minmem 1509513.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 1471425, MaxMemory: 4414275.000000, CumulativeMemory: 92699775
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf Fanout: Max: 4,  Avg: 1.05336 Max depth 2206 num leaves 2652 #tasks: 52329
+small cluster no
+maxoutD 3607298.000000minmem 3913397.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 3607298, MaxMemory: 10821894.000000, CumulativeMemory: 227259774
+dump.0.1.metis.Bova.rma10-374.tree.nf Fanout: Max: 4,  Avg: 1.06241 Max depth 1131 num leaves 2752 #tasks: 46835
+small cluster no
+maxoutD 381938.000000minmem 439734.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 381938, MaxMemory: 1145814.000000, CumulativeMemory: 24062094
+dump.0.1.metis.CPM.cz40948-2567.tree.nf Fanout: Max: 3,  Avg: 1.24025 Max depth 217 num leaves 7933 #tasks: 40948
+small cluster no
+maxoutD 2312.000000minmem 2976.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 2312, MaxMemory: 6936.000000, CumulativeMemory: 145656
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf Fanout: Max: 36,  Avg: 1.15652 Max depth 5042 num leaves 24343 #tasks: 179861
+small cluster no
+maxoutD 21898962.000000minmem 22110993.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 21898962, MaxMemory: 65696886.000000, CumulativeMemory: 1379634606
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf Fanout: Max: 3,  Avg: 1.03879 Max depth 2137 num leaves 1604 #tasks: 42930
+small cluster no
+maxoutD 3432258.000000minmem 3609539.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 3432258, MaxMemory: 10296774.000000, CumulativeMemory: 216232254
+dump.0.1.metis.Goodwin.rim-447.tree.nf Fanout: Max: 4,  Avg: 1.18079 Max depth 571 num leaves 3455 #tasks: 22560
+small cluster no
+maxoutD 85552.000000minmem 121682.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 85552, MaxMemory: 256656.000000, CumulativeMemory: 5389776
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf Fanout: Max: 24,  Avg: 1.36709 Max depth 376 num leaves 50982 #tasks: 189861
+small cluster no
+maxoutD 46818.000000minmem 51318.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 46818, MaxMemory: 140454.000000, CumulativeMemory: 2949534
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf Fanout: Max: 7,  Avg: 1.41823 Max depth 5712 num leaves 30502 #tasks: 103430
+small cluster no
+maxoutD 30112566.000000minmem 34215856.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 30112566, MaxMemory: 90337698.000000, CumulativeMemory: 1897091658
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf Fanout: Max: 249,  Avg: 1.30295 Max depth 656 num leaves 19219 #tasks: 82655
+small cluster no
+maxoutD 262088.000000minmem 273841.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 262088, MaxMemory: 786264.000000, CumulativeMemory: 16511544
+dump.0.1.metis.Shyy.shyy161-809.tree.nf Fanout: Max: 4,  Avg: 1.59533 Max depth 819 num leaves 28541 #tasks: 76481
+small cluster no
+maxoutD 396050.000000minmem 421650.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 396050, MaxMemory: 1188150.000000, CumulativeMemory: 24951150
+dump.0.1.metis.Wang.wang4-833.tree.nf Fanout: Max: 6,  Avg: 1.67871 Max depth 1759 num leaves 10540 #tasks: 26068
+small cluster no
+maxoutD 3160098.000000minmem 3873649.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 3160098, MaxMemory: 9480294.000000, CumulativeMemory: 199086174
+dump.0.1.metis.Watson.Baumann-1855.tree.nf Fanout: Max: 6,  Avg: 1.71554 Max depth 3019 num leaves 46803 #tasks: 112211
+small cluster no
+maxoutD 5524488.000000minmem 6406585.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 5524488, MaxMemory: 16573464.000000, CumulativeMemory: 348042744
+dump.1.1.amd.QY.case39-2136.tree.nf Fanout: Max: 10,  Avg: 1.6034 Max depth 47 num leaves 10047 #tasks: 26696
+small cluster no
+maxoutD 272090.000000minmem 290090.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 272090, MaxMemory: 816270.000000, CumulativeMemory: 17141670
+dump.1.1.metis.CPM.cz40948-2567.tree.nf Fanout: Max: 3,  Avg: 1.46159 Max depth 85 num leaves 7933 #tasks: 25117
+small cluster no
+maxoutD 2211.000000minmem 3003.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 2211, MaxMemory: 6633.000000, CumulativeMemory: 139293
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf Fanout: Max: 14796,  Avg: 2.14101 Max depth 46 num leaves 102708 #tasks: 192722
+small cluster no
+maxoutD 65524.000000minmem 76173.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 65524, MaxMemory: 196572.000000, CumulativeMemory: 4128012
+dump.1.2.amd.QY.case39-2136.tree.nf Fanout: Max: 10,  Avg: 1.62504 Max depth 37 num leaves 6397 #tasks: 16630
+small cluster no
+maxoutD 272090.000000minmem 290090.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 272090, MaxMemory: 816270.000000, CumulativeMemory: 17141670
+dump.1.3.amd.QY.case39-2136.tree.nf Fanout: Max: 10,  Avg: 1.84186 Max depth 31 num leaves 3818 #tasks: 8352
+small cluster no
+maxoutD 272090.000000minmem 290090.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 272090, MaxMemory: 816270.000000, CumulativeMemory: 17141670
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf Fanout: Max: 1770,  Avg: 6.33268 Max depth 96 num leaves 133670 #tasks: 158736
+small cluster no
+maxoutD 34085496.000000minmem 42020844.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 34085496, MaxMemory: 102256488.000000, CumulativeMemory: 2147386248
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf Fanout: Max: 1770,  Avg: 13.4432 Max depth 60 num leaves 94370 #tasks: 101954
+small cluster no
+maxoutD 34085496.000000minmem 42020844.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 34085496, MaxMemory: 102256488.000000, CumulativeMemory: 2147386248
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf Fanout: Max: 773,  Avg: 1.09344 Max depth 815 num leaves 3228 #tasks: 37763
+small cluster no
+maxoutD 290322.000000minmem 323994.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 290322, MaxMemory: 870966.000000, CumulativeMemory: 18290286
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf Fanout: Max: 773,  Avg: 1.09344 Max depth 815 num leaves 3228 #tasks: 37763
+small cluster no
+maxoutD 290322.000000minmem 323994.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 290322, MaxMemory: 870966.000000, CumulativeMemory: 18290286
+
+Normal Random Trees
+2-level
+heterogeneous
+./real_Trees/random_trees/old_trees/
+Read empty tree with directory ./real_Trees/random_trees/old_trees/ and file tree_15
+./size_20000/random_tree_1_20000 Fanout: Max: 7,  Avg: 1.58182 Max depth 384 num leaves 7357 #tasks: 20000
+small cluster no
+maxoutD 13768.000000minmem 16994.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 13768, MaxMemory: 41304.000000, CumulativeMemory: 867384
+./size_20000/random_tree_11_20000 Fanout: Max: 7,  Avg: 1.58924 Max depth 389 num leaves 7416 #tasks: 20000
+small cluster no
+maxoutD 36345.000000minmem 44823.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 36345, MaxMemory: 109035.000000, CumulativeMemory: 2289735
+./size_20000/random_tree_0_20000 Fanout: Max: 7,  Avg: 1.58345 Max depth 265 num leaves 7370 #tasks: 20000
+small cluster no
+maxoutD 35553.000000minmem 44211.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 35553, MaxMemory: 106659.000000, CumulativeMemory: 2239839
+./size_20000/random_tree_2_20000 Fanout: Max: 9,  Avg: 1.58257 Max depth 522 num leaves 7363 #tasks: 20000
+small cluster no
+maxoutD 21133.000000minmem 21548.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 21133, MaxMemory: 63399.000000, CumulativeMemory: 1331379
+./size_20000/random_tree_3_20000 Fanout: Max: 8,  Avg: 1.58886 Max depth 367 num leaves 7413 #tasks: 20000
+small cluster no
+maxoutD 13390.000000minmem 14758.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 13390, MaxMemory: 40170.000000, CumulativeMemory: 843570
+./size_20000/random_tree_4_20000 Fanout: Max: 8,  Avg: 1.58082 Max depth 356 num leaves 7349 #tasks: 20000
+small cluster no
+maxoutD 16636.000000minmem 18160.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 16636, MaxMemory: 49908.000000, CumulativeMemory: 1048068
+./size_4000/random_tree_8_4000 Fanout: Max: 6,  Avg: 1.59196 Max depth 164 num leaves 1488 #tasks: 4000
+small cluster no
+maxoutD 12743.000000minmem 16383.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 12743, MaxMemory: 38229.000000, CumulativeMemory: 802809
+./size_4000/random_tree_7_4000 Fanout: Max: 6,  Avg: 1.57503 Max depth 211 num leaves 1461 #tasks: 4000
+small cluster no
+maxoutD 22917.000000minmem 26047.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 22917, MaxMemory: 68751.000000, CumulativeMemory: 1443771
+./size_4000/random_tree_6_4000 Fanout: Max: 6,  Avg: 1.55 Max depth 213 num leaves 1420 #tasks: 4000
+small cluster no
+maxoutD 23285.000000minmem 29700.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 23285, MaxMemory: 69855.000000, CumulativeMemory: 1466955
+./size_4000/random_tree_5_4000 Fanout: Max: 5,  Avg: 1.59704 Max depth 135 num leaves 1496 #tasks: 4000
+small cluster no
+maxoutD 23575.000000minmem 31043.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 23575, MaxMemory: 70725.000000, CumulativeMemory: 1485225
+./size_10000/random_tree_9_10000 Fanout: Max: 7,  Avg: 1.58087 Max depth 325 num leaves 3675 #tasks: 10000
+small cluster no
+maxoutD 31021.000000minmem 38322.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 31021, MaxMemory: 93063.000000, CumulativeMemory: 1954323
+./size_10000/random_tree_10_10000 Fanout: Max: 7,  Avg: 1.57912 Max depth 244 num leaves 3668 #tasks: 10000
+small cluster no
+maxoutD 39953.000000minmem 44867.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 39953, MaxMemory: 119859.000000, CumulativeMemory: 2517039
+./size_50000/random_tree_13_50000 Fanout: Max: 7,  Avg: 1.5798 Max depth 546 num leaves 18351 #tasks: 50000
+small cluster no
+maxoutD 28431.000000minmem 35344.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 28431, MaxMemory: 85293.000000, CumulativeMemory: 1791153
+./size_50000/random_tree_11_50000 Fanout: Max: 7,  Avg: 1.58591 Max depth 400 num leaves 18473 #tasks: 50000
+small cluster no
+maxoutD 31133.000000minmem 38833.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 31133, MaxMemory: 93399.000000, CumulativeMemory: 1961379
+./size_50000/random_tree_14_50000 Fanout: Max: 8,  Avg: 1.5801 Max depth 511 num leaves 18357 #tasks: 50000
+small cluster no
+maxoutD 14932.000000minmem 18045.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 14932, MaxMemory: 44796.000000, CumulativeMemory: 940716
+./size_50000/random_tree_10_50000 Fanout: Max: 7,  Avg: 1.58697 Max depth 401 num leaves 18494 #tasks: 50000
+small cluster no
+maxoutD 15606.000000minmem 19159.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 15606, MaxMemory: 46818.000000, CumulativeMemory: 983178
+./size_50000/random_tree_12_50000 Fanout: Max: 7,  Avg: 1.57845 Max depth 410 num leaves 18324 #tasks: 50000
+small cluster no
+maxoutD 26092.000000minmem 35210.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 26092, MaxMemory: 78276.000000, CumulativeMemory: 1643796
+./size_2000/random_tree_4_2000 Fanout: Max: 5,  Avg: 1.58399 Max depth 109 num leaves 738 #tasks: 2000
+small cluster no
+maxoutD 22484.000000minmem 29785.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 22484, MaxMemory: 67452.000000, CumulativeMemory: 1416492
+./size_2000/random_tree_1_2000 Fanout: Max: 8,  Avg: 1.59665 Max depth 68 num leaves 748 #tasks: 2000
+small cluster no
+maxoutD 15584.000000minmem 15584.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 15584, MaxMemory: 46752.000000, CumulativeMemory: 981792
+./size_2000/random_tree_2_2000 Fanout: Max: 6,  Avg: 1.5765 Max depth 87 num leaves 732 #tasks: 2000
+small cluster no
+maxoutD 9379.000000minmem 10636.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 9379, MaxMemory: 28137.000000, CumulativeMemory: 590877
+./size_2000/random_tree_3_2000 Fanout: Max: 6,  Avg: 1.58399 Max depth 132 num leaves 738 #tasks: 2000
+small cluster no
+maxoutD 29711.000000minmem 33750.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 29711, MaxMemory: 89133.000000, CumulativeMemory: 1871793
+./size_30000/random_tree_9_30000 Fanout: Max: 8,  Avg: 1.58381 Max depth 449 num leaves 11059 #tasks: 30000
+small cluster no
+maxoutD 25804.000000minmem 28377.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 25804, MaxMemory: 77412.000000, CumulativeMemory: 1625652
+./size_30000/random_tree_6_30000 Fanout: Max: 7,  Avg: 1.58935 Max depth 566 num leaves 11125 #tasks: 30000
+small cluster no
+maxoutD 18027.000000minmem 22320.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 18027, MaxMemory: 54081.000000, CumulativeMemory: 1135701
+./size_30000/random_tree_5_30000 Fanout: Max: 6,  Avg: 1.57318 Max depth 308 num leaves 10931 #tasks: 30000
+small cluster no
+maxoutD 15992.000000minmem 22379.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 15992, MaxMemory: 47976.000000, CumulativeMemory: 1007496
+./size_30000/random_tree_7_30000 Fanout: Max: 8,  Avg: 1.58373 Max depth 571 num leaves 11058 #tasks: 30000
+small cluster no
+maxoutD 22493.000000minmem 24861.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 22493, MaxMemory: 67479.000000, CumulativeMemory: 1417059
+./size_30000/random_tree_8_30000 Fanout: Max: 8,  Avg: 1.57964 Max depth 372 num leaves 11009 #tasks: 30000
+small cluster no
+maxoutD 43620.000000minmem 48333.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 43620, MaxMemory: 130860.000000, CumulativeMemory: 2748060
+./size_30000/random_tree_8_30000 Fanout: Max: 8,  Avg: 1.57964 Max depth 372 num leaves 11009 #tasks: 30000
+small cluster no
+maxoutD 43620.000000minmem 48333.000000
+./clusters/cluster-27proc-1-3.json
+Cluster:
+#Nodes: 27, Configuration: 0, MinMemory: 43620, MaxMemory: 130860.000000, CumulativeMemory: 2748060
+
+Variants of Random
+The End

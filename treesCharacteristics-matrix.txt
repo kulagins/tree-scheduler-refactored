@@ -1,0 +1,34 @@
+
+2-level
+heterogeneous
+./real_Trees/trees/
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf Fanout: Max: 4,  Avg: 1.18374 Max depth 1155 num leaves 4546 #tasks: 29282 maxoutD 324288 minmem 393378
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf Fanout: Max: 14796,  Avg: 7.82667 Max depth 29 num leaves 91806 #tasks: 105254 maxoutD 65558 minmem 80538
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf Fanout: Max: 14796,  Avg: 13.0423 Max depth 20 num leaves 59562 #tasks: 64508 maxoutD 78554 minmem 84715
+dump.0.1.amd.Bova.rma10-374.tree.nf Fanout: Max: 2,  Avg: 1.06885 Max depth 3886 num leaves 3018 #tasks: 46835 maxoutD 396050 minmem 478994
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf Fanout: Max: 14796,  Avg: 1.73255 Max depth 1092 num leaves 95701 #tasks: 226341 maxoutD 117681 minmem 125508
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf Fanout: Max: 3,  Avg: 1.71422 Max depth 1281 num leaves 34132 #tasks: 81920 maxoutD 1384793 minmem 1529484
+dump.0.1.amd.QY.case39-2136.tree.nf Fanout: Max: 10,  Avg: 1.33298 Max depth 816 num leaves 10047 #tasks: 40217 maxoutD 272090 minmem 290090
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf Fanout: Max: 69,  Avg: 1.33172 Max depth 10758 num leaves 10497 #tasks: 42138 maxoutD 1471425 minmem 1509513
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf Fanout: Max: 4,  Avg: 1.05336 Max depth 2206 num leaves 2652 #tasks: 52329 maxoutD 3607298 minmem 3913397
+dump.0.1.metis.Bova.rma10-374.tree.nf Fanout: Max: 4,  Avg: 1.06241 Max depth 1131 num leaves 2752 #tasks: 46835 maxoutD 381938 minmem 439734
+dump.0.1.metis.CPM.cz40948-2567.tree.nf Fanout: Max: 3,  Avg: 1.24025 Max depth 217 num leaves 7933 #tasks: 40948 maxoutD 2312 minmem 2976
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf Fanout: Max: 36,  Avg: 1.15652 Max depth 5042 num leaves 24343 #tasks: 179861 maxoutD 21898962 minmem 22110993
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf Fanout: Max: 3,  Avg: 1.03879 Max depth 2137 num leaves 1604 #tasks: 42930 maxoutD 3432258 minmem 3609539
+dump.0.1.metis.Goodwin.rim-447.tree.nf Fanout: Max: 4,  Avg: 1.18079 Max depth 571 num leaves 3455 #tasks: 22560 maxoutD 85552 minmem 121682
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf Fanout: Max: 24,  Avg: 1.36709 Max depth 376 num leaves 50982 #tasks: 189861 maxoutD 46818 minmem 51318
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf Fanout: Max: 7,  Avg: 1.41823 Max depth 5712 num leaves 30502 #tasks: 103430 maxoutD 30112566 minmem 34215856
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf Fanout: Max: 249,  Avg: 1.30295 Max depth 656 num leaves 19219 #tasks: 82655 maxoutD 262088 minmem 273841
+dump.0.1.metis.Shyy.shyy161-809.tree.nf Fanout: Max: 4,  Avg: 1.59533 Max depth 819 num leaves 28541 #tasks: 76481 maxoutD 396050 minmem 421650
+dump.0.1.metis.Wang.wang4-833.tree.nf Fanout: Max: 6,  Avg: 1.67871 Max depth 1759 num leaves 10540 #tasks: 26068 maxoutD 3160098 minmem 3873649
+dump.0.1.metis.Watson.Baumann-1855.tree.nf Fanout: Max: 6,  Avg: 1.71554 Max depth 3019 num leaves 46803 #tasks: 112211 maxoutD 5524488 minmem 6406585
+dump.1.1.amd.QY.case39-2136.tree.nf Fanout: Max: 10,  Avg: 1.6034 Max depth 47 num leaves 10047 #tasks: 26696 maxoutD 272090 minmem 290090
+dump.1.1.metis.CPM.cz40948-2567.tree.nf Fanout: Max: 3,  Avg: 1.46159 Max depth 85 num leaves 7933 #tasks: 25117 maxoutD 2211 minmem 3003
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf Fanout: Max: 14796,  Avg: 2.14101 Max depth 46 num leaves 102708 #tasks: 192722 maxoutD 65524 minmem 76173
+dump.1.2.amd.QY.case39-2136.tree.nf Fanout: Max: 10,  Avg: 1.62504 Max depth 37 num leaves 6397 #tasks: 16630 maxoutD 272090 minmem 290090
+dump.1.3.amd.QY.case39-2136.tree.nf Fanout: Max: 10,  Avg: 1.84186 Max depth 31 num leaves 3818 #tasks: 8352 maxoutD 272090 minmem 290090
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf Fanout: Max: 1770,  Avg: 6.33268 Max depth 96 num leaves 133670 #tasks: 158736 maxoutD 34085496 minmem 42020844
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf Fanout: Max: 1770,  Avg: 13.4432 Max depth 60 num leaves 94370 #tasks: 101954 maxoutD 34085496 minmem 42020844
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf Fanout: Max: 773,  Avg: 1.09344 Max depth 815 num leaves 3228 #tasks: 37763 maxoutD 290322 minmem 323994
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf Fanout: Max: 773,  Avg: 1.09344 Max depth 815 num leaves 3228 #tasks: 37763 maxoutD 290322 minmem 323994
+

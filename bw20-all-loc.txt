@@ -1,0 +1,70 @@
+Normal Random Trees
+2-level
+heterogeneous
+./real_Trees/random_trees/old_trees/
+&& size_10000/random_tree_1 1277.153563 230798
+&& size_10000/random_tree_2 2093.916599 300990
+&& size_10000/random_tree_3 1558.563248 242249
+&& size_10000/random_tree_4 1404.688898 239288
+&& size_10000/random_tree_5 1937.388176 255046
+&& size_2000/random_tree_1 973.437694 13450
+&& size_2000/random_tree_2 428.239856 15427
+&& size_2000/random_tree_3 1119.418607 17723
+&& size_2000/random_tree_4 646.937878 14185
+&& size_2000/random_tree_5 508.035192 18628
+&& size_20000/random_tree_1 2689.624457 1074203
+&& size_20000/random_tree_2 2725.834665 830492
+&& size_20000/random_tree_3 2341.838564 1243370
+&& size_20000/random_tree_4 2365.128057 915742
+&& size_20000/random_tree_5 2951.927352 1042074
+&& size_30000/random_tree_1 2822.072675 1934179
+&& size_30000/random_tree_2 3461.873641 1962520
+&& size_30000/random_tree_3 4052.361566 2144836
+&& size_30000/random_tree_4 3940.568420 2350692
+&& size_30000/random_tree_5 3818.529692 1918687
+&& size_4000/random_tree_1 552.779342 52371
+&& size_4000/random_tree_2 818.755613 46777
+&& size_4000/random_tree_3 1345.976779 64545
+&& size_4000/random_tree_4 1476.590084 62099
+&& size_4000/random_tree_5 1146.748422 52061
+&& size_50000/random_tree_1 6244.650593 6183573
+&& size_50000/random_tree_2 5332.020684 4888072
+&& size_50000/random_tree_3 5105.230692 6223248
+&& size_50000/random_tree_4 6001.475902 5351495
+&& size_50000/random_tree_5 4242.096900 5445909
+&& size_50000/random_tree_5 4242.096900 5391253
+homogeneous many small
+./real_Trees/random_trees/old_trees/
+&& size_10000/random_tree_1 1487.110204 282948
+&& size_10000/random_tree_2 2581.626160 707708
+&& size_10000/random_tree_3 1833.414342 315553
+&& size_10000/random_tree_4 1404.688898 235563
+&& size_10000/random_tree_5 1937.388176 232652
+&& size_2000/random_tree_1 973.437694 13397
+&& size_2000/random_tree_2 428.239856 15448
+&& size_2000/random_tree_3 2009.456268 38168
+&& size_2000/random_tree_4 749.685366 17702
+&& size_2000/random_tree_5 508.035192 18608
+&& size_20000/random_tree_1 3037.141432 3982789
+&& size_20000/random_tree_2 2725.834665 802564
+&& size_20000/random_tree_3 2776.911718 10322396
+&& size_20000/random_tree_4 2365.128057 923472
+&& size_20000/random_tree_5 2951.927352 790073
+&& size_30000/random_tree_1 2822.072675 1938759
+&& size_30000/random_tree_2 4282.579177 9114092
+&& size_30000/random_tree_3 4252.292754 2305421
+&& size_30000/random_tree_4 4673.357720 6130312
+&& size_30000/random_tree_5 3818.529692 1944121
+&& size_4000/random_tree_1 707.119762 158639
+&& size_4000/random_tree_2 1257.819393 511756
+&& size_4000/random_tree_3 1345.976779 65984
+&& size_4000/random_tree_4 1712.962380 80545
+&& size_4000/random_tree_5 1146.748422 52529
+&& size_50000/random_tree_1 7097.894058 8749571
+&& size_50000/random_tree_2 5332.020684 4865895
+&& size_50000/random_tree_3 6073.622492 18341095
+&& size_50000/random_tree_4 6634.872153 6715926
+&& size_50000/random_tree_5 -1.000000 48424378
+&& size_50000/random_tree_5 -1.000000 48427170
+Variants of Random
+The End

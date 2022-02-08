@@ -1,0 +1,38 @@
+Normal Random Trees
+2-level
+heterogeneous
+homogeneous many small
+./real_Trees/random_trees/old_trees/
+&& size_10000/random_tree_1 985.429165 981814
+&& size_10000/random_tree_2 1544.459493 1396927
+&& size_10000/random_tree_3 1211.675410 1151990
+&& size_10000/random_tree_4 850.969437 1130125
+&& size_10000/random_tree_5 1202.912604 951107
+&& size_2000/random_tree_1 304.663391 42162
+&& size_2000/random_tree_2 286.115773 44518
+&& size_2000/random_tree_3 530.355030 67109
+&& size_2000/random_tree_4 245.038354 40464
+&& size_2000/random_tree_5 277.727575 53368
+&& size_20000/random_tree_1 2750.808099 6824677
+&& size_20000/random_tree_2 2461.372200 3821063
+&& size_20000/random_tree_3 2171.085597 12929073
+&& size_20000/random_tree_4 2067.674999 3855134
+&& size_20000/random_tree_5 2382.333142 3449495
+&& size_30000/random_tree_1 2565.511744 8621156
+&& size_30000/random_tree_2 3512.266634 15724669
+&& size_30000/random_tree_3 3710.602319 8799309
+&& size_30000/random_tree_4 3773.634598 13741607
+&& size_30000/random_tree_5 3399.479038 8989283
+&& size_4000/random_tree_1 426.140812 264437
+&& size_4000/random_tree_2 572.449791 350015
+&& size_4000/random_tree_3 606.007748 164440
+&& size_4000/random_tree_4 679.757963 209041
+&& size_4000/random_tree_5 583.945655 172049
+&& size_50000/random_tree_1 6089.977391 28692281
+&& size_50000/random_tree_2 5156.187350 26132330
+&& size_50000/random_tree_3 5422.542433 39606308
+&& size_50000/random_tree_4 5593.122153 26826325
+&& size_50000/random_tree_5 -1.000000 66152516
+&& size_50000/random_tree_5 -1.000000 66535665
+Variants of Random
+The End

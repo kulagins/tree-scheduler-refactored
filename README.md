@@ -81,6 +81,20 @@ Depending on what new parameter you want to add, you have to change a different 
 |`treesList`| under the `experiments`-key, add a new entry with a useful name and change the path to the treesList.|
 |`clusterList` |make sure that the new `clusterList` is located in `./clusters/` and add it's name to the `instances`-`items`-key|
 
+## Evaluate Experiments
+
+The experiments can be evaluated using 
+```shell
+python3 output_analyser.py <path_to_output_file> [<path_to_csv>]
+```
+this will create a plot of the means to the makespan-ratios and a CSV-file for the calculated output.
+
+If `<path_to_csv>` is left empty, the csv will be printed to `out.csv` by default.
+
+Example call:
+```shell
+python3 output_analyser.py output/10_children/clusterList_27.out
+```
 
 ## Frequently Asked Questions and Common Errors
 

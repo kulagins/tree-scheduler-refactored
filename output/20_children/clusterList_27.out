@@ -1,13 +1,5 @@
 /Users/paulhinzer/Documents/shk/tree-scheduler-refactored/real_Trees/random_trees/20_children/
-treename	/Users/paulhinzer/Documents/shk/tree-scheduler-refactored/./clusters//cluster_27proc_1-1,5-2.json	/Users/paulhinzer/Documents/shk/tree-scheduler-refactored/./clusters//cluster_27proc_1-1,5-3.json	/Users/paulhinzer/Documents/shk/tree-scheduler-refactored/./clusters//cluster-27proc-1-3.json	
+treename	/Users/paulhinzer/Documents/shk/tree-scheduler-refactored/clusters/cluster_27proc_1-1,5-2.json	/Users/paulhinzer/Documents/shk/tree-scheduler-refactored/clusters/cluster_27proc_1-1,5-3.json	/Users/paulhinzer/Documents/shk/tree-scheduler-refactored/clusters/cluster-27proc-1-3.json	
 size_10000/random_tree_1	1060.353827	1060.353827	1060.353827	
 size_10000/random_tree_2	1204.177814	1204.177814	1204.177814	
 size_10000/random_tree_3	990.620119	931.525443	931.525443	
-size_10000/random_tree_4	1488.035128	1488.035128	1488.035128	
-size_10000/random_tree_5	1123.303554	1123.303554	1123.303554	
-size_2000/random_tree_1	244.288955	244.288955	244.288955	
-size_2000/random_tree_2	245.398636	220.702691	220.702691	
-size_2000/random_tree_3	284.770241	220.025859	220.025859	
-size_2000/random_tree_4	277.312057	277.312057	277.312057	
-size_2000/random_tree_5	304.596422	273.944419	273.944419	
-size_20000/random_tree_1	2185.062067	2185.062067	2185.062067	

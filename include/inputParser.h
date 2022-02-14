@@ -26,7 +26,7 @@ protected:
     vector<string>::iterator clusterIterator;
 
 protected:
-    bool buildSmallCluster;
+    bool runHomp;
     bool verbose;
 public:
 
@@ -59,7 +59,7 @@ public:
                 break;
         }
 
-        this->buildSmallCluster = (bool)atoi((argv[5]));
+        this->runHomp = (bool)atoi((argv[5]));
         this->verbose = (bool)atoi((argv[6]));
         
     }
@@ -85,7 +85,7 @@ public:
         return verbose;
     }
     bool getBuildSmallClusters(){
-        return buildSmallCluster;
+        return runHomp;
     }
 
 /*

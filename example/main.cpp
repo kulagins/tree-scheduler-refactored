@@ -208,7 +208,7 @@ buildTreeDependentCluster(InputParser *input, Tree *tree, bool computeSmallClust
     //smallCluster = computeSmallCluster && maxoutd * 100 / minMem < 93;
 //    cout << "small cluster " << (smallCluster ? "yes" : "no") << endl;
     //  cout << "maxoutD " << to_string(maxoutd) + "minmem " + to_string(minMem) << endl;
-    if (smallCluster) input->setClusterFromFileWithShrinkingFactor(maxoutd, 3);
+    if (smallCluster) input->setClusterFromFile(maxoutd, 3);
     else {
         input->setClusterFromFile(maxoutd);
     }

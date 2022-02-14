@@ -35,7 +35,7 @@ public:
         //cout << argv << endl;
         if (argc < 7) errorFunction(0);
 
-        this->workingDirectory = argv[1];
+        this->workingDirectory = initWorkingDir(argv[1]);
         cout << workingDirectory<<endl;
         this->pathToTree = this->workingDirectory + argv[2];
         string clusterlistPath = argv[3];
@@ -189,6 +189,14 @@ public:
                 exit(-1);
                 break;
         }
+    }
+
+    string initWorkingDir(string path){
+        string workingDir = path;
+        if(workingDir.substr(workingDir.find_last_of(".") + 1) == "txt"){
+            workingDir = workingDir.substr(0,path.find_last_of("/")+1); 
+        } 
+        return workingDir;
     }
 
     vector<string> * initClusterList(string path){

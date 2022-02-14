@@ -1,4 +1,7 @@
 *.o
+aux/*:
+aux
+*.cache
 *.log
 *.a
 *.vscode

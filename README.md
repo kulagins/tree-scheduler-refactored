@@ -40,6 +40,7 @@ The `cluster-file` is a JSON-File that specifies the cluster that the programm s
 }
 ```
 Depending on the `clustering-mode`, the `memory` and `speed` values are interpreted differently: with static clustering, the numbers are given as absolute values. If the clustering mode is dependent on the tree, then the speed value stays an absolute number and the memory value acts as a scalar changing the processors' memory relative to the maximum memory usage of a single task in the tree.
+
 The `cluster-file-path` can be called in two diffrent variants: either this is the path to a single JSON-File which contains the description for a cluster, or it is the path to a txt-File which then contains the paths to multiple Clusters, seperated by newlines. The base-path of each of this cluster is the directory where the txt-File ist stored.
 
 ### How to run
@@ -65,6 +66,21 @@ The following tests have been written already and can be executed in the `test/`
 - `task_tree_unittest`
 
 Add new tests in the directory `test`. Any tests added in the existing file `test.cpp` will be executed without further changes. If you add new test files, add them in the Makefile as new targets after line `100`.
+
+### How to run experiments using simexpal
+1. Install simexpal using `pip3 install simexpal`
+2. run experiments using `simex experiments run --all`
+
+You can delete the results using `simex experiments purge --all` and show the program output using `simex experiments print --all`.
+
+#### How to add new experiments to simexpal
+
+Depending on what new parameter you want to add, you have to change a different part of the `experiments.yml`:
+|Parameter|Descritption|
+|---|---|
+|`treesList`| under the `experiments`-key, add a new entry with a useful name and change the path to the treesList.|
+|`clusterList` |make sure that the new `clusterList` is located in `./clusters/` and add it's name to the `instances`-`items`-key|
+
 
 ## Frequently Asked Questions and Common Errors
 

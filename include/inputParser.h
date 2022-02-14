@@ -1,12 +1,15 @@
 #ifndef inputParse_h
 #define inputParse_h
 
+#include <sstream>
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <stdlib.h>
 #include <json.hpp>
+#include <vector>
 #include "cluster.h"
+
 
 
 using json = nlohmann::json;
@@ -17,8 +20,10 @@ protected:
 
     string workingDirectory;
     string pathToTree;
-    string pathToCluster;
+    string clusterListDir;
     ClusteringModes clusteringMode;
+    vector<string> *clusterList;
+    vector<string>::iterator clusterIterator;
 
 protected:
     bool buildSmallCluster;
@@ -33,7 +38,11 @@ public:
         this->workingDirectory = argv[1];
         cout << workingDirectory<<endl;
         this->pathToTree = this->workingDirectory + argv[2];
-        this->pathToCluster = argv[3];
+        string clusterlistPath = argv[3];
+        this->clusterList = initClusterList(clusterlistPath);
+
+        
+        resetClusterIterator();
 
         int cluMode = atoi(argv[4]);
         switch (cluMode) {
@@ -55,6 +64,10 @@ public:
         
     }
 
+    ~InputParser(){
+        delete this->clusterList;
+    }
+
     string getWorkingDirectory() {
         return this->workingDirectory;
     }
@@ -63,7 +76,7 @@ public:
         return this->pathToTree;
     }
     string getPathToCluster(){
-        return this->pathToCluster;
+        return this->clusterListDir+ *(this->clusterIterator);
     }
     ClusteringModes getClusteringMode() {
         return this->clusteringMode;
@@ -76,8 +89,8 @@ public:
     }
 
     void setClusterFromFile(double normedMemory){
-        cout <<this->pathToCluster<<endl;
-        ifstream inputFile(this->pathToCluster);
+        cout <<this->getPathToCluster()<<endl;
+        ifstream inputFile(this->getPathToCluster());
         json clusterDescription;
         inputFile >> clusterDescription;
 
@@ -105,7 +118,7 @@ public:
     }
     void setClusterFromFileWithShrinkingFactor(double normedMemory, double shrinkingFactor){
         cout<<"small cluster"<<endl;
-        ifstream inputFile(this->pathToCluster);
+        ifstream inputFile(this->getPathToCluster());
         json clusterDescription;
         inputFile >> clusterDescription;
 
@@ -130,7 +143,6 @@ public:
         Cluster *cluster = new Cluster(&processorCounts,&mems,&speeds);
       cout << cluster->getPrettyClusterString()<<endl;
         Cluster::setFixedCluster(cluster);
-
     }
 
 
@@ -154,7 +166,48 @@ public:
         }
     }
 
+    vector<string> * initClusterList(string path){
+        vector<string> *list = new vector<string>();
+        if(path.substr(path.find_last_of(".") + 1) == "json"){
+            
+            this->clusterListDir = path.substr(0,path.find_last_of("/")+1); 
+            list->push_back(path.substr(path.find_last_of("/")+1));
+            return list;
+        } 
 
+        ifstream OpenFile(path);
+        string line;
+        stringstream line_stream;
 
+        while (getline(OpenFile, line)) {
+            line_stream.clear();
+            line_stream.str(line);
+
+            if (!line_stream.str().empty()) {
+                string p;
+                line_stream >> p;
+                list->push_back(p);
+            }
+
+        }
+        OpenFile.close();
+        this->clusterListDir = path.substr(0,path.find_last_of("/")+1);
+        return list;
+    }
+
+    bool nextCluster(){
+        this->clusterIterator ++;
+        return (this->clusterIterator != this->clusterList->end());
+    }
+
+    void resetClusterIterator(){
+        this->clusterIterator = this->clusterList->begin();
+        if (this->clusterIterator == this->clusterList->end()){
+            throw "No Cluster Input Given";
+        }
+    }
 };
+
+
+
 #endif

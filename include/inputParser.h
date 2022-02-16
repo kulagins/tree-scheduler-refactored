@@ -84,7 +84,8 @@ public:
     bool getVerbosity(){
         return verbose;
     }
-    bool getBuildSmallClusters(){
+
+    bool getRunHomp(){
         return runHomp;
     }
 

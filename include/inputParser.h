@@ -21,7 +21,7 @@ protected:
     ClusteringModes clusteringMode;
 
 protected:
-    bool buildSmallCluster;
+    bool runHomp;
     bool verbose;
 public:
 
@@ -50,7 +50,7 @@ public:
                 break;
         }
 
-        this->buildSmallCluster = (bool)atoi((argv[5]));
+        this->runHomp = (bool)atoi((argv[5]));
         this->verbose = (bool)atoi((argv[6]));
         
     }
@@ -71,8 +71,8 @@ public:
     bool getVerbosity(){
         return verbose;
     }
-    bool getBuildSmallClusters(){
-        return buildSmallCluster;
+    bool getRunHomp(){
+        return runHomp;
     }
 
     void setClusterFromFile(double normedMemory){

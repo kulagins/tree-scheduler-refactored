@@ -1,12 +1,15 @@
 #ifndef inputParse_h
 #define inputParse_h
 
+#include <sstream>
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <stdlib.h>
 #include <json.hpp>
+#include <vector>
 #include "cluster.h"
+
 
 
 using json = nlohmann::json;
@@ -17,8 +20,10 @@ protected:
 
     string workingDirectory;
     string pathToTree;
-    string pathToCluster;
+    string clusterListDir;
     ClusteringModes clusteringMode;
+    vector<string> *clusterList;
+    vector<string>::iterator clusterIterator;
 
 protected:
     bool runHomp;
@@ -30,10 +35,14 @@ public:
         //cout << argv << endl;
         if (argc < 7) errorFunction(0);
 
-        this->workingDirectory = argv[1];
+        this->workingDirectory = initWorkingDir(argv[1]);
         cout << workingDirectory<<endl;
         this->pathToTree = this->workingDirectory + argv[2];
-        this->pathToCluster = argv[3];
+        string clusterlistPath = argv[3];
+        this->clusterList = initClusterList(clusterlistPath);
+
+        
+        resetClusterIterator();
 
         int cluMode = atoi(argv[4]);
         switch (cluMode) {
@@ -55,6 +64,10 @@ public:
         
     }
 
+    ~InputParser(){
+        delete this->clusterList;
+    }
+
     string getWorkingDirectory() {
         return this->workingDirectory;
     }
@@ -63,7 +76,7 @@ public:
         return this->pathToTree;
     }
     string getPathToCluster(){
-        return this->pathToCluster;
+        return this->clusterListDir+ *(this->clusterIterator);
     }
     ClusteringModes getClusteringMode() {
         return this->clusteringMode;
@@ -71,13 +84,15 @@ public:
     bool getVerbosity(){
         return verbose;
     }
+
     bool getRunHomp(){
         return runHomp;
     }
 
+/*
     void setClusterFromFile(double normedMemory){
-        cout <<this->pathToCluster<<endl;
-        ifstream inputFile(this->pathToCluster);
+        cout <<this->getPathToCluster()<<endl;
+        ifstream inputFile(this->getPathToCluster());
         json clusterDescription;
         inputFile >> clusterDescription;
 
@@ -103,34 +118,57 @@ public:
         Cluster::setFixedCluster(cluster);
 
     }
-    void setClusterFromFileWithShrinkingFactor(double normedMemory, double shrinkingFactor){
-        cout<<"small cluster"<<endl;
-        ifstream inputFile(this->pathToCluster);
+    */ 
+
+    void setClusterFromFile(double normedMemory, double shrinkingFactor = 1){
+        ifstream inputFile(this->getPathToCluster());
         json clusterDescription;
         inputFile >> clusterDescription;
 
-        vector<unsigned int> processorCounts;
-        vector<double> mems;
-        vector<double> speeds;
+        vector<unsigned int> *processorCounts = new vector<unsigned int>();
+        vector<double> *mems = new vector<double>();
+        vector<double> *speeds = new vector<double>();
+        bool heterogeneous = false;
+        vector<double>*BW_inside = new vector<double>();
+        vector<double>*BW_outside = new vector<double>();
+        for (auto element : clusterDescription["groups"]) {
+            if(element == clusterDescription["groups"].front()){ 
+                if(element.contains("BandwInside")){
+                    heterogeneous = true;
+                }
+            }
 
-        for (auto& element : clusterDescription["groups"]) {
             int numberProcessors = element["number"];
-            processorCounts.push_back(ceil(numberProcessors / shrinkingFactor));
-            mems.push_back(element["memory"]);
-            speeds.push_back(element["speed"]);
+            processorCounts->push_back(ceil(numberProcessors / shrinkingFactor));
+            mems->push_back(element["memory"]);
+            speeds->push_back(element["speed"]);
+            if(heterogeneous){
+                BW_inside->push_back(element["BandwInside"]);
+                BW_outside->push_back(element["BandwOutside"]);
+            }
+
         }
 
         if (this->getClusteringMode() == treeDependent){
-            for (auto it = begin(mems); it != end(mems); it++)
+            for (auto it = mems->begin(); it != mems->end(); it++)
             {
                 *it = (*it) * normedMemory;
             }
         }
-
-        Cluster *cluster = new Cluster(&processorCounts,&mems,&speeds);
-      cout << cluster->getPrettyClusterString()<<endl;
+        Cluster *cluster;
+        if(heterogeneous){
+            cluster = new Cluster(processorCounts,mems,speeds, BW_inside, BW_outside);    
+        }else{
+            cluster = new Cluster(processorCounts,mems,speeds);
+        }
         Cluster::setFixedCluster(cluster);
 
+        delete processorCounts;
+        delete mems;
+        delete speeds;
+        delete BW_inside;
+        delete BW_outside;
+        inputFile.close();
     }
 
 
@@ -154,7 +192,56 @@ public:
         }
     }
 
+    string initWorkingDir(string path){
+        string workingDir = path;
+        if(workingDir.substr(workingDir.find_last_of(".") + 1) == "txt"){
+            workingDir = workingDir.substr(0,path.find_last_of("/")+1); 
+        } 
+        return workingDir;
+    }
 
+    vector<string> * initClusterList(string path){
+        vector<string> *list = new vector<string>();
+        if(path.substr(path.find_last_of(".") + 1) == "json"){
+            
+            this->clusterListDir = path.substr(0,path.find_last_of("/")+1); 
+            list->push_back(path.substr(path.find_last_of("/")+1));
+            return list;
+        } 
 
+        ifstream OpenFile(path);
+        string line;
+        stringstream line_stream;
+
+        while (getline(OpenFile, line)) {
+            line_stream.clear();
+            line_stream.str(line);
+
+            if (!line_stream.str().empty()) {
+                string p;
+                line_stream >> p;
+                list->push_back(p);
+            }
+
+        }
+        OpenFile.close();
+        this->clusterListDir = path.substr(0,path.find_last_of("/")+1);
+        return list;
+    }
+
+    bool nextCluster(){
+        this->clusterIterator ++;
+        return (this->clusterIterator != this->clusterList->end());
+    }
+
+    void resetClusterIterator(){
+        this->clusterIterator = this->clusterList->begin();
+        if (this->clusterIterator == this->clusterList->end()){
+            throw "No Cluster Input Given";
+        }
+    }
 };
+
+
+
 #endif

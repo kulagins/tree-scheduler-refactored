@@ -1,0 +1,34 @@
+instances:
+  - repo: local
+    items:
+      - 'clusterList_36.txt'
+      - 'clusterList_27.txt'
+
+instdir: "clusters"
+
+
+experiments:
+  - name: 3_children
+    args: ['./main', '@BASE_DIR@/real_Trees/random_trees/3_children/','treesList.txt', '@INSTANCE@', '0','0','0']
+    stdout: out
+  - name: 10_children
+    args: ['./main', '@BASE_DIR@/real_Trees/random_trees/10_children/','treesList.txt', '@INSTANCE@', '0','0','0']
+    stdout: out
+  - name: 20_children
+    args: ['./main', '@BASE_DIR@/real_Trees/random_trees/20_children/','treesList.txt', '@INSTANCE@', '0','0','0']
+    stdout: out
+  - name: all_large
+    args: ['./main', '@BASE_DIR@/real_Trees/random_trees/all_large/','treesList.txt', '@INSTANCE@', '0','0','0']
+    stdout: out
+  - name: all_small
+    args: ['./main', '@BASE_DIR@/real_Trees/random_trees/all_small/','treesList.txt', '@INSTANCE@', '0','0','0']
+    stdout: out
+  - name: large_edge_weights
+    args: ['./main', '@BASE_DIR@/real_Trees/random_trees/large_edge_weights/','treesList.txt', '@INSTANCE@', '0','0','0']
+    stdout: out
+  - name: large_makespan_weights
+    args: ['./main', '@BASE_DIR@/real_Trees/random_trees/large_makespan_weights/','treesList.txt', '@INSTANCE@', '0','0','0']
+    stdout: out
+  - name: large_node_weights
+    args: ['./main', '@BASE_DIR@/real_Trees/random_trees/large_node_weights/','treesList.txt', '@INSTANCE@', '0','0','0']
+    stdout: out

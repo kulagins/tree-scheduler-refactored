@@ -212,6 +212,7 @@ public :
     void setAssignedProcessor(Processor *assignedProcessor) {
         Task::assignedProcessor = assignedProcessor;
     }
+
     void toggleRootStatus(bool newStatus) {
         if (this->isRoot() != newStatus) {
             __root = !__root;
@@ -345,6 +346,30 @@ public :
         return MS_sequentialPart;
     }
 
+    double getMakespanSequentialUnits(double &MS_parallel) {
+        MS_sequentialPart = MS_weight;
+        MS_parallelPart = 0;
+        double temp;
+        for (Task *child: *this->getChildren()) {
+            if (child->isBroken()) {
+                //cout<<"edge "<<(*iter)->getId()<<" broken"<<endl;
+                temp = child->getMakespanCostUnits();
+                if (temp > MS_parallelPart) {
+                    MS_parallelPart = temp;
+                }
+            } else {
+                MS_sequentialPart += child->getMakespanSequentialUnits(MS_parallelPart);
+                child->updateMakespanCost();
+            }
+        }
+
+        if (MS_parallelPart > MS_parallel) {
+            MS_parallel = MS_parallelPart;
+        }
+
+        return MS_sequentialPart;
+    }
+
     double getMakespanMinusComu() {
         if (Cluster::getFixedCluster()->isHomogeneous()) {
             return (makespan_nocommu - edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth());
@@ -379,12 +404,23 @@ public :
 
         makespan_computed = true;
         if (commulication == true) {
-            //cout<<id<<"-"<<makespan_nocommu<<endl;//test
+            cout<<id<<"-"<<makespan_nocommu<<endl;//test
+            cout<< (edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth())<<endl;
             return makespan_nocommu + edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth();
         }
 
-        //cout<<id<<"-"<<makespan_nocommu<<endl; //test
+        cout<<id<<"-"<<makespan_nocommu<<endl; //test
         return makespan_nocommu;
+    }
+
+    double getMakespanCostUnits() {
+        if (!(Cluster::getFixedCluster())->isBandwidthHomogeneous()) throw "Cluster not homogeneous";
+
+        MS_parallelPart = 0;
+        MS_sequentialPart = this->getMakespanSequentialUnits(MS_parallelPart);//MS_parallelPart will be update here.
+        makespan_nocommu = MS_sequentialPart + MS_parallelPart;
+        return makespan_nocommu + edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth();
+
     }
 
     void setOtherSideId(unsigned int qtreeID) {
@@ -663,6 +699,7 @@ public:
     double ASAP();
 
     double Merge(bool CheckMemory);
+    double MergeOld(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, bool CheckMemory);
 
     double
     MergeV2(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, bool CheckMemory);
@@ -673,13 +710,18 @@ public:
                         std::map<int, bool> &isProcBusy);
 
     vector<Task *> buildCriticalPath(Tree *Qtree);
+
     int numberOfLeaves();
+
     double avgNodeWeight();
+
     double avgEdgeWeight();
+
     double avgMSWeight();
 };
 
-double SplitAgainOld(Tree* tree, unsigned int processor_number, unsigned int num_subtrees);
+double SplitAgainOld(Tree *tree, unsigned int processor_number, unsigned int num_subtrees);
+
 typedef map<unsigned int, double> io_map;
 typedef pair<unsigned int, unsigned int> node_sche;
 typedef pair<unsigned int, double> node_ew;
@@ -694,7 +736,8 @@ void po_construct(const int N, const int *prnts, int **chstart, int **chend, int
 double MaxOutDegree(Tree *tree, int quiet);
 
 vector<double> maxAndAvgFanout(Tree *tree);
-int maxDepth(Task * root);
+
+int maxDepth(Task *root);
 
 double IOCounter(Tree *subtree, int *schedule,
                  bool divisible, int quiet, unsigned int &com_freq,

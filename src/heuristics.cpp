@@ -991,7 +991,15 @@ double Tree::ASAP() {
 
     return minimumMS;
 }
+bool checkRequiredMemSize(Tree * tree, Task *SubtreeRoot){
+    Tree *subtree = BuildSubtree(tree, SubtreeRoot);
+    double maxout, requiredMemorySize;
+    schedule_traversal *schedule_f = new schedule_traversal();
+    maxout = MaxOutDegree(subtree, true);
+    MinMem(subtree, maxout, requiredMemorySize, *schedule_f, true);
+    return Cluster::getFixedCluster()->smallestFreeProcessorFitting(requiredMemorySize)!=nullptr;
 
+}
 bool
 EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *lastsubtree, Task **node_i, Task **node_j) {
     //cout<<"   --------------estimate decrease in makespan-----------------"<<endl;
@@ -1024,7 +1032,7 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
                 temp = min(
                         (*largestNode)->getSequentialPart() - (*secondLargest)->getEdgeWeight() / homogeneousBandwidth,
                         (*secondLargest)->getSequentialPart() - (*largestNode)->getEdgeWeight() / homogeneousBandwidth);
-                if (temp > decrease) {
+                if (temp > decrease && checkRequiredMemSize(tree, *largestNode) && checkRequiredMemSize(tree, *secondLargest)) {
                     decrease = temp;
                     *node_i = *largestNode;
                     *node_j = *secondLargest;
@@ -1038,7 +1046,7 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
                                 (*secondLargest)->getEdgeWeight() / homogeneousBandwidth,
                                 (*secondLargest)->getSequentialPart() -
                                 (*largestNode)->getEdgeWeight() / homogeneousBandwidth);
-                        if (temp > decrease) {
+                        if (temp > decrease&& checkRequiredMemSize(tree, *largestNode) && checkRequiredMemSize(tree, *secondLargest)) {
                             decrease = temp;
                             *node_i = *largestNode;
                             *node_j = *it;
@@ -1071,11 +1079,11 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
     double MS_t, W_t;
 
     //cout<<"other subtrees"<<endl;
-   // cout<<"   working on subtree ";
+    // cout<<"   working on subtree ";
     do {
         currentNode = tree->getTask(SubtreeT->getOtherSideId());
         SubtreeT = SubtreeT->getParent();
-      //  cout<<"   "<<SubtreeT->getOtherSideId()<<"{ "<<endl;
+        //  cout<<"   "<<SubtreeT->getOtherSideId()<<"{ "<<endl;
         subtreeRoot = tree->getTask(SubtreeT->getOtherSideId());
         MS_t = SubtreeT->getMakespanCost(true, false);
         W_t = SubtreeT->getMakespanWeight();
@@ -1089,12 +1097,12 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
                 tempQue.pop_back();
                 for (vector<Task *>::iterator it = children->begin(); it != children->end(); ++it) {
                     if ((*it)->getId() != nodeOnPath->getId() && (!(*it)->isBroken())) {
-                      //  cout<<"    "<<(*it)->getId()<<" W_i "<<(*it)->getSequentialPart()<<", MS(t) "<<MS_t<<", W_t "<<W_t<<", MS_tj "<<(*it)->getParallelPart()<<endl;
+                        //  cout<<"    "<<(*it)->getId()<<" W_i "<<(*it)->getSequentialPart()<<", MS(t) "<<MS_t<<", W_t "<<W_t<<", MS_tj "<<(*it)->getParallelPart()<<endl;
                         tempQue.push_back((*it));
                         temp = min((*it)->getSequentialPart(),
                                    MS_t - W_t - (*it)->getEdgeWeight() / homogeneousBandwidth -
                                    (*it)->getParallelPart());
-                        if (temp > decrease_othersubtrees) {
+                        if (temp > decrease_othersubtrees && checkRequiredMemSize(tree, *it) ) {
                             decrease_othersubtrees = temp;
                             output_node = (*it);
                         }
@@ -1102,12 +1110,12 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
                 }
             }
         } while (!currentNode->isBroken());
-     //   cout<<"   }"<<endl;
+        //   cout<<"   }"<<endl;
     } while (subtreeRoot->getId() != tree->getRootId());
-  //  cout<<endl;
-   // cout<<" decrease: "<<decrease<<" other subtrees decrease: "<<decrease_othersubtrees;
+    //  cout<<endl;
+    // cout<<" decrease: "<<decrease<<" other subtrees decrease: "<<decrease_othersubtrees;
     if (decrease_othersubtrees >= 0) {
-   //     cout<<"node "<<output_node->getId()<<endl;
+        //     cout<<"node "<<output_node->getId()<<endl;
         MSdecreased = true;
         if (decrease_othersubtrees < decrease) {
             *lastsubtree = true;
@@ -1123,8 +1131,6 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
 
     return MSdecreased;
 }
-
-
 double Tree::SplitAgainV2(unsigned int processor_number, unsigned int num_subtrees, std::map<int, int> &taskToPrc,
                           std::map<int, bool> &isProcBusy) {
     double MS_now;

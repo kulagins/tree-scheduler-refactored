@@ -146,7 +146,8 @@ int main(int argc, char **argv) {
 
         input->setClusterFromFile(1);
     }
-
+    double processorUtilizationOverall =0;
+    int numTrees =0;
     std::vector<int> brokenEdges;
     do {
         OpenFile >> treename;
@@ -160,6 +161,7 @@ int main(int argc, char **argv) {
         }
         Tree *untouchedTree = read_tree((input->getWorkingDirectory() + "/" + treename).c_str());
         Tree::setOriginalTree(untouchedTree);
+        numTrees++;
         //  const vector<double> fanouts = maxAndAvgFanout(tree);
         //   cout << treename << " Fanout: Max: " << fanouts[0] << ",  Avg: " << fanouts[1] <<
         //      " Max depth " << maxDepth(tree->getRoot()) << " num leaves " << tree->numberOfLeaves()
@@ -171,7 +173,7 @@ int main(int argc, char **argv) {
         }
 
         time = clock();
-        makespan = threeSteps(tree, input->getBuildSmallClusters());
+        makespan = threeSteps(tree, input->getRunHomp());
         time = clock() - time;
 
         if (makespan == -1 && computeSmallCluster) {
@@ -179,7 +181,7 @@ int main(int argc, char **argv) {
             treesToRerun += treename + "\n";
             buildTreeDependentCluster(input, tree, false);
             time = clock();
-            makespan = threeSteps(tree, input->getBuildSmallClusters());
+            makespan = threeSteps(tree, input->getRunHomp());
             time = clock() - time;
         }
         // cout<<"makespan "<<makespan<<endl;
@@ -189,7 +191,15 @@ int main(int argc, char **argv) {
         // cout<<"makespan "<<makespan<<endl;
         quietPrint("&& " + treename + " " + to_string(makespan) + " " + to_string(time));
         // quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
-        // quietPrint(Cluster::getFixedCluster()->getAverageLoadAndNumberOfUsedProcessors());
+        double processorUtilization =0;
+        for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {
+            if (proc->isBusy) {
+                processorUtilization++;
+            }
+        }
+        processorUtilization/=Cluster::getFixedCluster()->getProcessors().size();
+        processorUtilizationOverall +=processorUtilization;
+       // quietPrint(Cluster::getFixedCluster()->getAverageLoadAndNumberOfUsedProcessors());
         //quietPrint(Cluster::getFixedCluster()->getUsageString());
         //  quietPrint(Cluster::getFixedCluster()->printProcessors());
 
@@ -198,6 +208,8 @@ int main(int argc, char **argv) {
         Cluster::getFixedCluster()->clean();
     } while (OpenFile.good());
     OpenFile.close();
+    processorUtilizationOverall/=numTrees;
+    quietPrint("proc util "+ to_string(processorUtilizationOverall));
     cout << treesToRerun << endl;
     exit(EXIT_SUCCESS);
 }

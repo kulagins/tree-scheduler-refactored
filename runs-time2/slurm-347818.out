@@ -1,0 +1,3932 @@
+single tree
+RS-36-split.sh
+matrix
+/work/kulagins/scheduler-homp2
+!! hom-27proc-1.json
+./real_Trees/trees/
+run homp memcheck
+&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 69319.134000 4483850
+run homp memcheck
+run homp
+&& dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 12355.743333 57967092
+run homp memcheck
+&& dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 20926.687333 34127939
+run homp memcheck
+&& dump.0.1.amd.Bova.rma10-374.tree.nf 297821.212667 4397833
+run homp memcheck
+run homp
+&& dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 31259.265333 573367341
+run homp memcheck
+&& dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 253959.528667 122143148
+run homp memcheck
+run homp
+&& dump.0.1.amd.QY.case39-2136.tree.nf 90510.608000 2930539
+run homp memcheck
+&& dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 978846.487333 35699539
+run homp memcheck
+&& dump.0.1.metis.Boeing.ct20stif-356.tree.nf 1353592.932000 8328554
+run homp memcheck
+&& dump.0.1.metis.Bova.rma10-374.tree.nf 138565.548667 4040608
+run homp memcheck
+run homp
+&& dump.0.1.metis.CPM.cz40948-2567.tree.nf 2082.897333 11828432
+run homp memcheck
+&& dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 30224720.039333 120132662
+run homp memcheck
+&& dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1399073.048000 3798019
+run homp memcheck
+&& dump.0.1.metis.Goodwin.rim-447.tree.nf 21593.692000 1820765
+run homp memcheck
+&& dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 7225.661333 12033853
+run homp memcheck
+run homp
+&& dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 52559288.326667 116384654
+run homp memcheck
+run homp
+&& dump.0.1.metis.Schmid.thermal1-1402.tree.nf 66942.238667 55638803
+run homp memcheck
+&& dump.0.1.metis.Shyy.shyy161-809.tree.nf 56851.273333 56664787
+run homp memcheck
+&& dump.0.1.metis.Wang.wang4-833.tree.nf 914723.726000 6500182
+run homp memcheck
+&& dump.0.1.metis.Watson.Baumann-1855.tree.nf 3282438.006667 141581244
+run homp memcheck
+run homp
+&& dump.1.1.amd.QY.case39-2136.tree.nf 124927.568000 1992985
+run homp memcheck
+run homp
+&& dump.1.1.metis.CPM.cz40948-2567.tree.nf 2881.357333 6894638
+run homp memcheck
+&& dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 10860.813333 27890352
+run homp memcheck
+run homp
+&& dump.1.2.amd.QY.case39-2136.tree.nf 126785.498000 4181928
+run homp memcheck
+run homp
+&& dump.1.3.amd.QY.case39-2136.tree.nf 130468.358000 1052489
+run homp memcheck
+&& dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 57241592.789334 124354974
+run homp memcheck
+&& dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 58301528.078668 14535965
+run homp memcheck
+run homp
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106805.390667 6710885
+run homp memcheck
+run homp
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106805.390667 6750006
+!! hom-18proc-1,5.json
+./real_Trees/trees/
+run homp memcheck
+&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 73719.632667 4343220
+run homp memcheck
+&& dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 12328.107333 47943734
+run homp memcheck
+&& dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 20929.909333 37496150
+run homp memcheck
+&& dump.0.1.amd.Bova.rma10-374.tree.nf 315365.912667 3881276
+run homp memcheck
+&& dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 31200.140000 497554220
+run homp memcheck
+&& dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 255507.481333 103030280
+run homp memcheck
+&& dump.0.1.amd.QY.case39-2136.tree.nf 72753.056000 2294445
+run homp memcheck
+&& dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 979425.487333 28898517
+run homp memcheck
+&& dump.0.1.metis.Boeing.ct20stif-356.tree.nf 1515172.248000 5488502
+run homp memcheck
+&& dump.0.1.metis.Bova.rma10-374.tree.nf 152759.245333 3086829
+run homp memcheck
+&& dump.0.1.metis.CPM.cz40948-2567.tree.nf 800.004000 10962237
+run homp memcheck
+&& dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 30224731.259333 104981708
+run homp memcheck
+&& dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1456834.454000 2527339
+run homp memcheck
+&& dump.0.1.metis.Goodwin.rim-447.tree.nf 26549.364000 1715022
+run homp memcheck
+&& dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 7546.920667 12099241
+run homp memcheck
+&& dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 53282265.498000 113384220
+run homp memcheck
+&& dump.0.1.metis.Schmid.thermal1-1402.tree.nf 67039.699333 58492227
+run homp memcheck
+&& dump.0.1.metis.Shyy.shyy161-809.tree.nf 59700.658667 59406290
+run homp memcheck
+&& dump.0.1.metis.Wang.wang4-833.tree.nf 922840.799333 6521929
+run homp memcheck
+&& dump.0.1.metis.Watson.Baumann-1855.tree.nf 4253856.327333 153283614
+run homp memcheck
+&& dump.1.1.amd.QY.case39-2136.tree.nf 100813.896000 1821295
+run homp memcheck
+&& dump.1.1.metis.CPM.cz40948-2567.tree.nf 822.634000 6400010
+run homp memcheck
+&& dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 10861.257333 27545468
+run homp memcheck
+&& dump.1.2.amd.QY.case39-2136.tree.nf 102197.700667 4267746
+run homp memcheck
+&& dump.1.3.amd.QY.case39-2136.tree.nf 104755.996667 1035255
+run homp memcheck
+&& dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 57241607.088001 114376819
+run homp memcheck
+&& dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 58301596.545334 15530234
+run homp memcheck
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106773.644000 6734304
+run homp memcheck
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106773.644000 6788529
+!! hom-9proc-3.json
+./real_Trees/trees/
+run homp memcheck
+&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 102246.135333 4320259
+run homp memcheck
+&& dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 12337.008667 44306037
+run homp memcheck
+&& dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 20967.100667 33546796
+run homp memcheck
+&& dump.0.1.amd.Bova.rma10-374.tree.nf 365895.203333 3995399
+run homp memcheck
+&& dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 31211.512000 489989940
+run homp memcheck
+&& dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 292508.115333 96099557
+run homp memcheck
+&& dump.0.1.amd.QY.case39-2136.tree.nf 91615.709333 2301811
+run homp memcheck
+&& dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 980004.487333 29574262
+run homp memcheck
+&& dump.0.1.metis.Boeing.ct20stif-356.tree.nf 1823829.878667 5120005
+run homp memcheck
+&& dump.0.1.metis.Bova.rma10-374.tree.nf 214622.800000 2960040
+run homp memcheck
+&& dump.0.1.metis.CPM.cz40948-2567.tree.nf 1461.671333 11244507
+run homp memcheck
+&& dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 30224888.014000 103819267
+run homp memcheck
+&& dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 2055500.616000 3162240
+run homp memcheck
+&& dump.0.1.metis.Goodwin.rim-447.tree.nf 31628.724000 1681794
+run homp memcheck
+&& dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 9759.977333 12020769
+run homp memcheck
+&& dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 53282266.371334 114519979
+run homp memcheck
+&& dump.0.1.metis.Schmid.thermal1-1402.tree.nf 67039.705333 57826742
+run homp memcheck
+&& dump.0.1.metis.Shyy.shyy161-809.tree.nf 85552.048000 57970067
+run homp memcheck
+&& dump.0.1.metis.Wang.wang4-833.tree.nf 1014742.393333 5921429
+run homp memcheck
+&& dump.0.1.metis.Watson.Baumann-1855.tree.nf 5057731.009333 143149350
+run homp memcheck
+&& dump.1.1.amd.QY.case39-2136.tree.nf 126833.229333 1870614
+run homp memcheck
+&& dump.1.1.metis.CPM.cz40948-2567.tree.nf 1497.163333 6461407
+run homp memcheck
+&& dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 10865.320667 27171241
+run homp memcheck
+&& dump.1.2.amd.QY.case39-2136.tree.nf 128662.467333 4126449
+run homp memcheck
+&& dump.1.3.amd.QY.case39-2136.tree.nf 132197.351333 1017690
+run homp memcheck
+&& dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 57241628.239334 110164744
+run homp memcheck
+&& dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 58301695.801334 15012872
+run homp memcheck
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106773.650000 6726399
+run homp memcheck
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106773.650000 6781883
+!! hom-36proc-1.json
+./real_Trees/trees/
+run homp memcheck
+&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 69189.252000 4324567
+run homp memcheck
+run homp
+&& dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 12354.616667 49961661
+run homp memcheck
+&& dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 20925.304667 32615987
+run homp memcheck
+&& dump.0.1.amd.Bova.rma10-374.tree.nf 255405.930667 4470970
+run homp memcheck
+run homp
+&& dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 31259.217333 526783112
+run homp memcheck
+&& dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 253033.811333 97621357
+run homp memcheck
+run homp
+&& dump.0.1.amd.QY.case39-2136.tree.nf -1.000000 2767620
+run homp memcheck
+&& dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 978267.487333 28943118
+run homp memcheck
+&& dump.0.1.metis.Boeing.ct20stif-356.tree.nf 1337775.504667 5548530
+run homp memcheck
+&& dump.0.1.metis.Bova.rma10-374.tree.nf 134395.228667 3130843
+run homp memcheck
+run homp
+&& dump.0.1.metis.CPM.cz40948-2567.tree.nf 1128.158667 10989117
+run homp memcheck
+&& dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 30224714.263333 108249021
+run homp memcheck
+&& dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1396672.712000 3460012
+run homp memcheck
+&& dump.0.1.metis.Goodwin.rim-447.tree.nf 16846.572000 1715396
+run homp memcheck
+&& dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 7223.644667 11914067
+run homp memcheck
+run homp
+&& dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 52559288.140667 118750048
+run homp memcheck
+run homp
+&& dump.0.1.metis.Schmid.thermal1-1402.tree.nf 66942.232667 59092179
+run homp memcheck
+&& dump.0.1.metis.Shyy.shyy161-809.tree.nf 56720.598667 57738747
+run homp memcheck
+&& dump.0.1.metis.Wang.wang4-833.tree.nf 914254.799333 6536948
+run homp memcheck
+&& dump.0.1.metis.Watson.Baumann-1855.tree.nf 3233619.972667 142011286
+run homp memcheck
+run homp
+&& dump.1.1.amd.QY.case39-2136.tree.nf -1.000000 1996581
+run homp memcheck
+run homp
+&& dump.1.1.metis.CPM.cz40948-2567.tree.nf 1934.800000 7034789
+run homp memcheck
+&& dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 10860.556667 27427424
+run homp memcheck
+run homp
+&& dump.1.2.amd.QY.case39-2136.tree.nf -1.000000 4396431
+run homp memcheck
+run homp
+&& dump.1.3.amd.QY.case39-2136.tree.nf -1.000000 1081684
+run homp memcheck
+&& dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 57241586.317334 122047313
+run homp memcheck
+&& dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 58301494.513334 14272119
+run homp memcheck
+run homp
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106805.384667 6743716
+run homp memcheck
+run homp
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106805.384667 6796811
+!! hom-18proc-3.json
+./real_Trees/trees/
+run homp memcheck
+&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 73719.632667 4323261
+run homp memcheck
+&& dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 12328.107333 42217081
+run homp memcheck
+&& dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 20929.909333 32191613
+run homp memcheck
+&& dump.0.1.amd.Bova.rma10-374.tree.nf 315365.912667 3984568
+run homp memcheck
+&& dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 31200.140000 484661414
+run homp memcheck
+&& dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 255507.481333 97503097
+run homp memcheck
+&& dump.0.1.amd.QY.case39-2136.tree.nf 72753.056000 2294469
+run homp memcheck
+&& dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 979425.487333 28539958
+run homp memcheck
+&& dump.0.1.metis.Boeing.ct20stif-356.tree.nf 1515172.248000 5188548
+run homp memcheck
+&& dump.0.1.metis.Bova.rma10-374.tree.nf 152759.245333 2985349
+run homp memcheck
+&& dump.0.1.metis.CPM.cz40948-2567.tree.nf 800.004000 10884524
+run homp memcheck
+&& dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 30224731.259333 107112594
+run homp memcheck
+&& dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1456834.454000 2495882
+run homp memcheck
+&& dump.0.1.metis.Goodwin.rim-447.tree.nf 26549.364000 1696495
+run homp memcheck
+&& dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 7546.920667 11997234
+run homp memcheck
+&& dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 53282265.498000 112451273
+run homp memcheck
+&& dump.0.1.metis.Schmid.thermal1-1402.tree.nf 67039.699333 59331005
+run homp memcheck
+&& dump.0.1.metis.Shyy.shyy161-809.tree.nf 59700.658667 59502025
+run homp memcheck
+&& dump.0.1.metis.Wang.wang4-833.tree.nf 922840.799333 6543774
+run homp memcheck
+&& dump.0.1.metis.Watson.Baumann-1855.tree.nf 4253856.327333 145081542
+run homp memcheck
+&& dump.1.1.amd.QY.case39-2136.tree.nf 100813.896000 1817085
+run homp memcheck
+&& dump.1.1.metis.CPM.cz40948-2567.tree.nf 822.634000 6481391
+run homp memcheck
+&& dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 10861.257333 26364983
+run homp memcheck
+&& dump.1.2.amd.QY.case39-2136.tree.nf 102197.700667 4259577
+run homp memcheck
+&& dump.1.3.amd.QY.case39-2136.tree.nf 104755.996667 1029520
+run homp memcheck
+&& dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 57241607.088001 95425656
+run homp memcheck
+&& dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 58301596.545334 13306345
+run homp memcheck
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106773.644000 6652083
+run homp memcheck
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106773.644000 6698332
+normal random
+!! hom-27proc-1.json
+./real_Trees/random_trees/old_trees/
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 897.306093 736104
+run homp memcheck
+run homp
+&& size_10000/random_tree_2 1343.632486 782945
+run homp memcheck
+run homp
+&& size_10000/random_tree_3 1102.775410 715687
+run homp memcheck
+&& size_10000/random_tree_4 744.958770 723579
+run homp memcheck
+&& size_10000/random_tree_5 1069.797938 748296
+run homp memcheck
+&& size_2000/random_tree_1 185.813859 26181
+run homp memcheck
+&& size_2000/random_tree_2 257.643627 27493
+run homp memcheck
+run homp
+&& size_2000/random_tree_3 264.301758 29802
+run homp memcheck
+run homp
+&& size_2000/random_tree_4 174.081020 26961
+run homp memcheck
+&& size_2000/random_tree_5 238.450242 27509
+run homp memcheck
+run homp
+&& size_20000/random_tree_1 2700.647432 3450335
+run homp memcheck
+&& size_20000/random_tree_2 2414.790867 2968959
+run homp memcheck
+run homp
+&& size_20000/random_tree_3 2065.074930 3996940
+run homp memcheck
+&& size_20000/random_tree_4 2019.509666 3010597
+run homp memcheck
+&& size_20000/random_tree_5 2282.086475 3005942
+run homp memcheck
+&& size_30000/random_tree_1 2520.617077 7454110
+run homp memcheck
+run homp
+&& size_30000/random_tree_2 3387.702634 8334244
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 3637.725403 7519974
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 3615.630598 8170472
+run homp memcheck
+&& size_30000/random_tree_5 3330.003038 7675031
+run homp memcheck
+run homp
+&& size_4000/random_tree_1 379.032812 116854
+run homp memcheck
+run homp
+&& size_4000/random_tree_2 462.933791 138798
+run homp memcheck
+&& size_4000/random_tree_3 474.016592 112586
+run homp memcheck
+run homp
+&& size_4000/random_tree_4 534.740364 116476
+run homp memcheck
+&& size_4000/random_tree_5 478.521655 108837
+run homp memcheck
+run homp
+&& size_50000/random_tree_1 5912.584058 25639021
+run homp memcheck
+&& size_50000/random_tree_2 5125.240684 24312596
+run homp memcheck
+run homp
+&& size_50000/random_tree_3 5309.330433 24633268
+run homp memcheck
+run homp
+&& size_50000/random_tree_4 5409.774153 23352913
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 27428780
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 26257874
+!! hom-18proc-1,5.json
+./real_Trees/random_trees/old_trees/
+run homp memcheck
+&& size_10000/random_tree_1 1054.728777 726484
+run homp memcheck
+&& size_10000/random_tree_2 1466.695022 735500
+run homp memcheck
+&& size_10000/random_tree_3 1297.431323 700792
+run homp memcheck
+&& size_10000/random_tree_4 889.159439 722614
+run homp memcheck
+&& size_10000/random_tree_5 1431.653072 745733
+run homp memcheck
+&& size_2000/random_tree_1 235.310285 26299
+run homp memcheck
+&& size_2000/random_tree_2 280.031790 27404
+run homp memcheck
+&& size_2000/random_tree_3 284.692040 27107
+run homp memcheck
+&& size_2000/random_tree_4 197.415251 26361
+run homp memcheck
+&& size_2000/random_tree_5 270.969461 27456
+run homp memcheck
+&& size_20000/random_tree_1 2879.884455 2999327
+run homp memcheck
+&& size_20000/random_tree_2 2734.675635 2979288
+run homp memcheck
+&& size_20000/random_tree_3 2097.876641 3041120
+run homp memcheck
+&& size_20000/random_tree_4 2303.687147 3029788
+run homp memcheck
+&& size_20000/random_tree_5 2820.871785 2975422
+run homp memcheck
+&& size_30000/random_tree_1 3331.441600 7464806
+run homp memcheck
+&& size_30000/random_tree_2 3744.043335 7425334
+run homp memcheck
+&& size_30000/random_tree_3 4199.561976 7631308
+run homp memcheck
+&& size_30000/random_tree_4 3973.607406 7927205
+run homp memcheck
+&& size_30000/random_tree_5 3668.839073 7702012
+run homp memcheck
+&& size_4000/random_tree_1 414.239744 108807
+run homp memcheck
+&& size_4000/random_tree_2 392.326721 109333
+run homp memcheck
+&& size_4000/random_tree_3 534.713879 112459
+run homp memcheck
+&& size_4000/random_tree_4 599.269302 114442
+run homp memcheck
+&& size_4000/random_tree_5 587.564543 108789
+run homp memcheck
+&& size_50000/random_tree_1 6549.177521 25527182
+run homp memcheck
+&& size_50000/random_tree_2 6359.243252 23747626
+run homp memcheck
+&& size_50000/random_tree_3 6128.500731 23992475
+run homp memcheck
+&& size_50000/random_tree_4 6364.051051 21789195
+run homp memcheck
+&& size_50000/random_tree_5 4896.975446 21550442
+run homp memcheck
+&& size_50000/random_tree_5 4896.975446 21782650
+!! hom-9proc-3.json
+./real_Trees/random_trees/old_trees/
+run homp memcheck
+&& size_10000/random_tree_1 1283.095232 728036
+run homp memcheck
+&& size_10000/random_tree_2 1927.100597 734568
+run homp memcheck
+&& size_10000/random_tree_3 2063.932346 700530
+run homp memcheck
+&& size_10000/random_tree_4 1540.021914 750535
+run homp memcheck
+&& size_10000/random_tree_5 1954.511075 760247
+run homp memcheck
+&& size_2000/random_tree_1 342.237560 27236
+run homp memcheck
+&& size_2000/random_tree_2 342.688293 27635
+run homp memcheck
+&& size_2000/random_tree_3 405.126336 27130
+run homp memcheck
+&& size_2000/random_tree_4 301.923742 26648
+run homp memcheck
+&& size_2000/random_tree_5 373.377504 27782
+run homp memcheck
+&& size_20000/random_tree_1 3489.561213 3011176
+run homp memcheck
+&& size_20000/random_tree_2 3711.686584 2963277
+run homp memcheck
+&& size_20000/random_tree_3 2819.423011 3074632
+run homp memcheck
+&& size_20000/random_tree_4 3253.936099 3075112
+run homp memcheck
+&& size_20000/random_tree_5 4045.156923 3017788
+run homp memcheck
+&& size_30000/random_tree_1 5900.583530 7624050
+run homp memcheck
+&& size_30000/random_tree_2 5958.147541 7668765
+run homp memcheck
+&& size_30000/random_tree_3 5477.745577 7651161
+run homp memcheck
+&& size_30000/random_tree_4 5126.734408 7769627
+run homp memcheck
+&& size_30000/random_tree_5 5591.668369 7805292
+run homp memcheck
+&& size_4000/random_tree_1 506.164152 109502
+run homp memcheck
+&& size_4000/random_tree_2 559.236815 112029
+run homp memcheck
+&& size_4000/random_tree_3 716.886642 112803
+run homp memcheck
+&& size_4000/random_tree_4 763.020785 114666
+run homp memcheck
+&& size_4000/random_tree_5 784.289981 108961
+run homp memcheck
+&& size_50000/random_tree_1 8432.925441 24723794
+run homp memcheck
+&& size_50000/random_tree_2 9605.320247 24806848
+run homp memcheck
+&& size_50000/random_tree_3 9448.553027 22351214
+run homp memcheck
+&& size_50000/random_tree_4 9943.825808 23270621
+run homp memcheck
+&& size_50000/random_tree_5 6861.323393 22450817
+run homp memcheck
+&& size_50000/random_tree_5 6861.323393 22443869
+!! hom-36proc-1.json
+./real_Trees/random_trees/old_trees/
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 786.513186 731234
+run homp memcheck
+run homp
+&& size_10000/random_tree_2 1193.009143 777999
+run homp memcheck
+run homp
+&& size_10000/random_tree_3 980.947493 713461
+run homp memcheck
+&& size_10000/random_tree_4 687.660909 715499
+run homp memcheck
+&& size_10000/random_tree_5 887.449590 742149
+run homp memcheck
+&& size_2000/random_tree_1 166.256651 26133
+run homp memcheck
+&& size_2000/random_tree_2 241.189118 27424
+run homp memcheck
+run homp
+&& size_2000/random_tree_3 223.033700 27809
+run homp memcheck
+run homp
+&& size_2000/random_tree_4 160.589066 26691
+run homp memcheck
+&& size_2000/random_tree_5 219.852041 27532
+run homp memcheck
+run homp
+&& size_20000/random_tree_1 2334.654606 3232067
+run homp memcheck
+&& size_20000/random_tree_2 2183.515388 2967248
+run homp memcheck
+run homp
+&& size_20000/random_tree_3 1833.673664 3893522
+run homp memcheck
+&& size_20000/random_tree_4 1857.602133 2983889
+run homp memcheck
+&& size_20000/random_tree_5 2001.231834 3014128
+run homp memcheck
+&& size_30000/random_tree_1 2146.749147 7485817
+run homp memcheck
+run homp
+&& size_30000/random_tree_2 2662.797045 7763031
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 3167.571023 7575437
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 3143.719954 8067682
+run homp memcheck
+&& size_30000/random_tree_5 3140.897859 7790732
+run homp memcheck
+run homp
+&& size_4000/random_tree_1 363.076640 117354
+run homp memcheck
+run homp
+&& size_4000/random_tree_2 339.755041 133814
+run homp memcheck
+&& size_4000/random_tree_3 421.277775 112502
+run homp memcheck
+run homp
+&& size_4000/random_tree_4 497.999798 116129
+run homp memcheck
+&& size_4000/random_tree_5 411.567021 109014
+run homp memcheck
+run homp
+&& size_50000/random_tree_1 5340.807908 24925324
+run homp memcheck
+&& size_50000/random_tree_2 4336.805558 24141059
+run homp memcheck
+run homp
+&& size_50000/random_tree_3 4310.307856 23872025
+run homp memcheck
+run homp
+&& size_50000/random_tree_4 4520.469258 23599873
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 4178.393305 26083511
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 4178.393305 25472439
+!! hom-18proc-3.json
+./real_Trees/random_trees/old_trees/
+run homp memcheck
+&& size_10000/random_tree_1 1054.728777 724550
+run homp memcheck
+&& size_10000/random_tree_2 1466.695022 734148
+run homp memcheck
+&& size_10000/random_tree_3 1297.431323 699970
+run homp memcheck
+&& size_10000/random_tree_4 889.159439 723214
+run homp memcheck
+&& size_10000/random_tree_5 1431.653072 744129
+run homp memcheck
+&& size_2000/random_tree_1 235.310285 26428
+run homp memcheck
+&& size_2000/random_tree_2 280.031790 27374
+run homp memcheck
+&& size_2000/random_tree_3 284.692040 27040
+run homp memcheck
+&& size_2000/random_tree_4 197.415251 26319
+run homp memcheck
+&& size_2000/random_tree_5 270.969461 27359
+run homp memcheck
+&& size_20000/random_tree_1 2879.884455 3000484
+run homp memcheck
+&& size_20000/random_tree_2 2734.675635 2998327
+run homp memcheck
+&& size_20000/random_tree_3 2097.876641 3044949
+run homp memcheck
+&& size_20000/random_tree_4 2303.687147 3020642
+run homp memcheck
+&& size_20000/random_tree_5 2820.871785 2977575
+run homp memcheck
+&& size_30000/random_tree_1 3331.441600 7410329
+run homp memcheck
+&& size_30000/random_tree_2 3744.043335 7487629
+run homp memcheck
+&& size_30000/random_tree_3 4199.561976 7554212
+run homp memcheck
+&& size_30000/random_tree_4 3973.607406 7852621
+run homp memcheck
+&& size_30000/random_tree_5 3668.839073 7710737
+run homp memcheck
+&& size_4000/random_tree_1 414.239744 108524
+run homp memcheck
+&& size_4000/random_tree_2 392.326721 108886
+run homp memcheck
+&& size_4000/random_tree_3 534.713879 112056
+run homp memcheck
+&& size_4000/random_tree_4 599.269302 114497
+run homp memcheck
+&& size_4000/random_tree_5 587.564543 108599
+run homp memcheck
+&& size_50000/random_tree_1 6549.177521 25712546
+run homp memcheck
+&& size_50000/random_tree_2 6359.243252 24818992
+run homp memcheck
+&& size_50000/random_tree_3 6128.500731 23705009
+run homp memcheck
+&& size_50000/random_tree_4 6364.051051 22195043
+run homp memcheck
+&& size_50000/random_tree_5 4896.975446 21832895
+run homp memcheck
+&& size_50000/random_tree_5 4896.975446 21687786
+/work/kulagins/scheduler-homp2
+/work/kulagins/scheduler-homp2/real_Trees/random_trees
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/10_children
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/10_children
+&& size_10000/random_tree_1 1188.061530 511084
+&& size_10000/random_tree_2 759.083879 503133
+&& size_10000/random_tree_3 1256.775512 514111
+&& size_10000/random_tree_4 1200.603662 522622
+&& size_10000/random_tree_5 798.450925 503558
+&& size_2000/random_tree_1 232.025893 17682
+&& size_2000/random_tree_2 232.170356 17381
+&& size_2000/random_tree_3 354.103351 20770
+&& size_2000/random_tree_4 253.655436 18340
+&& size_2000/random_tree_5 287.712366 17935
+&& size_20000/random_tree_1 2108.841383 2652365
+&& size_20000/random_tree_2 2280.715868 2834267
+&& size_20000/random_tree_3 1825.143464 2630588
+&& size_20000/random_tree_4 2334.229613 2685261
+&& size_20000/random_tree_5 2206.362019 2600023
+&& size_30000/random_tree_1 3509.702142 6814459
+&& size_30000/random_tree_2 2517.731518 6732153
+&& size_30000/random_tree_3 3580.499246 7055489
+&& size_30000/random_tree_4 2854.469614 6712670
+&& size_30000/random_tree_5 3063.341960 6888662
+&& size_4000/random_tree_1 421.212087 74834
+&& size_4000/random_tree_2 401.389859 75732
+&& size_4000/random_tree_3 471.551885 77894
+&& size_4000/random_tree_4 453.243252 74927
+&& size_4000/random_tree_5 563.445193 80815
+&& size_50000/random_tree_1 5670.070253 23671021
+&& size_50000/random_tree_2 4208.407959 21901985
+&& size_50000/random_tree_3 4485.640899 22158034
+&& size_50000/random_tree_4 6167.277085 22615440
+&& size_50000/random_tree_5 5050.834843 20676435
+&& size_50000/random_tree_5 5050.834843 21607988
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/all_large
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/all_large
+&& size_10000/random_tree_1 108645.279221 900531
+&& size_10000/random_tree_2 91064.131498 755985
+&& size_10000/random_tree_3 63658.043176 690613
+&& size_10000/random_tree_4 83472.926823 736876
+&& size_10000/random_tree_5 168726.287823 1040329
+&& size_2000/random_tree_1 18042.627439 25928
+&& size_2000/random_tree_2 21342.535067 27227
+&& size_2000/random_tree_3 18873.309523 26747
+&& size_2000/random_tree_4 25997.759433 27829
+&& size_2000/random_tree_5 22948.355201 27783
+&& size_20000/random_tree_1 213421.066311 3106887
+&& size_20000/random_tree_2 199754.527973 3111433
+&& size_20000/random_tree_3 133780.515963 3078229
+&& size_20000/random_tree_4 193054.123486 3114964
+&& size_20000/random_tree_5 184797.781437 3100726
+&& size_30000/random_tree_1 280808.256741 8333193
+&& size_30000/random_tree_2 344025.277320 7938744
+&& size_30000/random_tree_3 320404.422446 8085395
+&& size_30000/random_tree_4 326417.201677 8284687
+&& size_30000/random_tree_5 288969.510383 7823167
+&& size_4000/random_tree_1 54802.486563 117476
+&& size_4000/random_tree_2 41505.265193 123200
+&& size_4000/random_tree_3 32540.206002 110705
+&& size_4000/random_tree_4 39548.672298 109279
+&& size_4000/random_tree_5 38591.395706 116082
+&& size_50000/random_tree_1 463090.261268 26374504
+&& size_50000/random_tree_2 418830.090796 25232220
+&& size_50000/random_tree_3 481381.042912 25471599
+&& size_50000/random_tree_4 510513.767488 24507917
+&& size_50000/random_tree_5 524866.370075 24746307
+&& size_50000/random_tree_5 524866.370075 23183905
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_makespan_weights
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_makespan_weights
+&& size_10000/random_tree_1 1781.866165 55009
+&& size_10000/random_tree_2 2653.733438 48160
+&& size_10000/random_tree_3 1371.715338 52280
+&& size_10000/random_tree_4 2334.491789 128343
+&& size_10000/random_tree_5 1596.583753 43201
+&& size_2000/random_tree_1 1214.214540 2179
+&& size_2000/random_tree_2 1909.656552 3570
+&& size_2000/random_tree_3 1300.323502 3072
+&& size_2000/random_tree_4 1389.506488 1923
+&& size_2000/random_tree_5 1774.584342 5363
+&& size_20000/random_tree_1 2636.058606 216809
+&& size_20000/random_tree_2 3541.093649 381505
+&& size_20000/random_tree_3 2491.680029 228939
+&& size_20000/random_tree_4 2447.946538 152979
+&& size_20000/random_tree_5 2909.101726 164143
+&& size_30000/random_tree_1 5566.811545 746817
+&& size_30000/random_tree_2 5095.255386 931291
+&& size_30000/random_tree_3 4485.195703 605124
+&& size_30000/random_tree_4 3946.912970 460481
+&& size_30000/random_tree_5 3319.124469 374922
+&& size_4000/random_tree_1 1641.316354 14213
+&& size_4000/random_tree_2 1567.454959 15287
+&& size_4000/random_tree_3 2297.955899 21014
+&& size_4000/random_tree_4 1515.880532 11290
+&& size_4000/random_tree_5 2020.358240 10555
+&& size_50000/random_tree_1 5048.050443 1760943
+&& size_50000/random_tree_2 5806.053574 3722764
+&& size_50000/random_tree_3 7573.858043 1234117
+&& size_50000/random_tree_4 7819.247043 1285152
+&& size_50000/random_tree_5 11296.794570 4118053
+&& size_50000/random_tree_5 11296.794570 4128147
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/20_children
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/20_children
+&& size_10000/random_tree_1 1018.026557 284203
+&& size_10000/random_tree_2 1204.810084 303763
+&& size_10000/random_tree_3 982.639241 270872
+&& size_10000/random_tree_4 1386.646860 297086
+&& size_10000/random_tree_5 1084.343373 282029
+&& size_2000/random_tree_1 236.630843 9949
+&& size_2000/random_tree_2 237.433932 9724
+&& size_2000/random_tree_3 276.861982 9855
+&& size_2000/random_tree_4 269.674670 9637
+&& size_2000/random_tree_5 296.971472 9804
+&& size_20000/random_tree_1 2086.364569 1361809
+&& size_20000/random_tree_2 2061.171318 1439181
+&& size_20000/random_tree_3 1828.459758 1456904
+&& size_20000/random_tree_4 1877.285793 1414882
+&& size_20000/random_tree_5 2337.687097 1375928
+&& size_30000/random_tree_1 3935.806048 3652701
+&& size_30000/random_tree_2 3578.892683 3909486
+&& size_30000/random_tree_3 2360.941165 3584710
+&& size_30000/random_tree_4 3043.612996 3716902
+&& size_30000/random_tree_5 4675.841709 4064617
+&& size_4000/random_tree_1 574.642843 46131
+&& size_4000/random_tree_2 549.718531 44254
+&& size_4000/random_tree_3 466.431376 39183
+&& size_4000/random_tree_4 387.419944 39187
+&& size_4000/random_tree_5 523.439759 41164
+&& size_50000/random_tree_1 4647.739518 12162539
+&& size_50000/random_tree_2 5293.933487 12242243
+&& size_50000/random_tree_3 4503.076253 12233295
+&& size_50000/random_tree_4 6493.399149 12976869
+&& size_50000/random_tree_5 5163.563826 12861156
+&& size_50000/random_tree_5 5163.563826 12744862
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/all_small
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/all_small
+&& size_10000/random_tree_1 80.276041 1175485
+&& size_10000/random_tree_2 81.001573 1157572
+&& size_10000/random_tree_3 84.980904 1184112
+&& size_10000/random_tree_4 127.849442 1214358
+&& size_10000/random_tree_5 90.338455 1181127
+&& size_2000/random_tree_1 25.502079 43858
+&& size_2000/random_tree_2 30.475892 42654
+&& size_2000/random_tree_3 23.564077 43926
+&& size_2000/random_tree_4 17.432447 43107
+&& size_2000/random_tree_5 19.829161 43243
+&& size_20000/random_tree_1 200.245754 5098294
+&& size_20000/random_tree_2 193.154537 5064086
+&& size_20000/random_tree_3 211.742392 5172784
+&& size_20000/random_tree_4 223.634928 5146778
+&& size_20000/random_tree_5 199.016694 5108983
+&& size_30000/random_tree_1 317.303165 13198023
+&& size_30000/random_tree_2 237.886345 12948588
+&& size_30000/random_tree_3 254.489567 12634731
+&& size_30000/random_tree_4 265.298199 13182325
+&& size_30000/random_tree_5 259.067568 13105194
+&& size_4000/random_tree_1 41.952152 173274
+&& size_4000/random_tree_2 31.858138 167662
+&& size_4000/random_tree_3 37.300998 180659
+&& size_4000/random_tree_4 30.501429 171621
+&& size_4000/random_tree_5 42.014725 180281
+&& size_50000/random_tree_1 456.471027 42850799
+&& size_50000/random_tree_2 401.216038 42000784
+&& size_50000/random_tree_3 535.808030 42503129
+&& size_50000/random_tree_4 632.379470 39323362
+&& size_50000/random_tree_5 599.870201 39290511
+&& size_50000/random_tree_5 599.870201 42954411
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_node_weights
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_node_weights
+&& size_10000/random_tree_1 805.444907 757501
+&& size_10000/random_tree_2 825.300293 759038
+&& size_10000/random_tree_3 960.717780 914479
+&& size_10000/random_tree_4 1023.897645 771185
+&& size_10000/random_tree_5 1145.244706 792220
+&& size_2000/random_tree_1 249.255952 31979
+&& size_2000/random_tree_2 213.413445 29063
+&& size_2000/random_tree_3 299.261302 30535
+&& size_2000/random_tree_4 195.331343 27018
+&& size_2000/random_tree_5 160.340292 27203
+&& size_20000/random_tree_1 2816.725341 3261231
+&& size_20000/random_tree_2 2206.987095 3288941
+&& size_20000/random_tree_3 2515.579002 3319054
+&& size_20000/random_tree_4 2347.856995 3259799
+&& size_20000/random_tree_5 1731.857176 3174602
+&& size_30000/random_tree_1 2628.979574 8101134
+&& size_30000/random_tree_2 2820.446341 7938639
+&& size_30000/random_tree_3 2971.306233 7889718
+&& size_30000/random_tree_4 2731.431204 7922283
+&& size_30000/random_tree_5 2432.046821 8078979
+&& size_4000/random_tree_1 461.788740 127860
+&& size_4000/random_tree_2 374.384051 119940
+&& size_4000/random_tree_3 456.814520 117307
+&& size_4000/random_tree_4 573.594258 134423
+&& size_4000/random_tree_5 359.094448 109307
+&& size_50000/random_tree_1 5274.499630 25976226
+&& size_50000/random_tree_2 4856.258119 26633723
+&& size_50000/random_tree_3 4129.662793 25436619
+&& size_50000/random_tree_4 4587.324786 26348294
+&& size_50000/random_tree_5 5170.158110 27115852
+&& size_50000/random_tree_5 5170.158110 27780527
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/3_children
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/3_children
+&& size_10000/random_tree_1 1285.237551 912048
+&& size_10000/random_tree_2 1158.723559 867200
+&& size_10000/random_tree_3 876.760367 778119
+&& size_10000/random_tree_4 1025.954531 840339
+&& size_10000/random_tree_5 976.630284 859730
+&& size_2000/random_tree_1 239.808626 30325
+&& size_2000/random_tree_2 258.641542 28987
+&& size_2000/random_tree_3 211.032141 32714
+&& size_2000/random_tree_4 191.021394 29946
+&& size_2000/random_tree_5 239.483625 31052
+&& size_20000/random_tree_1 2163.867470 4076922
+&& size_20000/random_tree_2 2202.263015 4254182
+&& size_20000/random_tree_3 2401.961820 4326117
+&& size_20000/random_tree_4 2256.016512 4940157
+&& size_20000/random_tree_5 1555.403914 4151442
+&& size_30000/random_tree_1 2843.307609 11140565
+&& size_30000/random_tree_2 3738.875691 10704654
+&& size_30000/random_tree_3 2161.740939 10218124
+&& size_30000/random_tree_4 3281.759977 10418155
+&& size_30000/random_tree_5 2490.239673 10565614
+&& size_4000/random_tree_1 278.123961 125110
+&& size_4000/random_tree_2 329.384500 131342
+&& size_4000/random_tree_3 459.077430 122790
+&& size_4000/random_tree_4 334.131193 132771
+&& size_4000/random_tree_5 665.251584 185272
+&& size_50000/random_tree_1 3673.753745 35210701
+&& size_50000/random_tree_2 5936.384156 49356509
+&& size_50000/random_tree_3 4739.758203 33586095
+&& size_50000/random_tree_4 4705.846411 34381405
+&& size_50000/random_tree_5 6456.064562 34396986
+&& size_50000/random_tree_5 6456.064562 34442693
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_edge_weights
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_edge_weights
+&& size_10000/random_tree_1 88782.925398 1243302
+&& size_10000/random_tree_2 63664.680760 1212234
+&& size_10000/random_tree_3 108620.870117 1249618
+&& size_10000/random_tree_4 96187.319687 1305951
+&& size_10000/random_tree_5 89947.144688 1249699
+&& size_2000/random_tree_1 14555.065595 43330
+&& size_2000/random_tree_2 16414.883688 43809
+&& size_2000/random_tree_3 20907.865999 45075
+&& size_2000/random_tree_4 18288.846788 44551
+&& size_2000/random_tree_5 22308.204719 47366
+&& size_20000/random_tree_1 234787.361041 5339276
+&& size_20000/random_tree_2 201996.834065 5472264
+&& size_20000/random_tree_3 152996.948874 5396461
+&& size_20000/random_tree_4 146412.249940 5368214
+&& size_20000/random_tree_5 213463.594258 5476704
+&& size_30000/random_tree_1 298060.632483 13789879
+&& size_30000/random_tree_2 347608.242631 13892906
+&& size_30000/random_tree_3 258667.115173 13849449
+&& size_30000/random_tree_4 226967.197518 13672487
+&& size_30000/random_tree_5 298070.245033 13960638
+&& size_4000/random_tree_1 40315.133224 191428
+&& size_4000/random_tree_2 50051.314045 190446
+&& size_4000/random_tree_3 31409.870967 187734
+&& size_4000/random_tree_4 46278.147808 194237
+&& size_4000/random_tree_5 38232.992192 187429
+&& size_50000/random_tree_1 537982.177519 46775225
+&& size_50000/random_tree_2 495164.353511 47576331
+&& size_50000/random_tree_3 397734.500209 47671968
+&& size_50000/random_tree_4 418414.214385 45810248
+&& size_50000/random_tree_5 428560.385664 44415817
+&& size_50000/random_tree_5 428560.385664 41508038
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/10_children
+!! hom-27proc-1.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/10_children
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 -1.000000 720634
+run homp memcheck
+run homp
+&& size_10000/random_tree_2 -1.000000 685031
+run homp memcheck
+run homp
+&& size_10000/random_tree_3 -1.000000 756280
+run homp memcheck
+run homp
+&& size_10000/random_tree_4 1487.292037 619855
+run homp memcheck
+run homp
+&& size_10000/random_tree_5 -1.000000 680201
+run homp memcheck
+&& size_2000/random_tree_1 243.371948 17405
+run homp memcheck
+run homp
+&& size_2000/random_tree_2 278.126718 22715
+run homp memcheck
+run homp
+&& size_2000/random_tree_3 386.034949 21850
+run homp memcheck
+run homp
+&& size_2000/random_tree_4 263.176593 17667
+run homp memcheck
+run homp
+&& size_2000/random_tree_5 303.451290 18135
+run homp memcheck
+run homp
+&& size_20000/random_tree_1 -1.000000 3389722
+run homp memcheck
+run homp
+&& size_20000/random_tree_2 -1.000000 3442010
+run homp memcheck
+run homp
+&& size_20000/random_tree_3 -1.000000 3264197
+run homp memcheck
+run homp
+&& size_20000/random_tree_4 -1.000000 3702940
+run homp memcheck
+run homp
+&& size_20000/random_tree_5 3048.368161 2853194
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 -1.000000 9042667
+run homp memcheck
+run homp
+&& size_30000/random_tree_2 -1.000000 7993455
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 -1.000000 8106500
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 -1.000000 7116169
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 -1.000000 9378513
+run homp memcheck
+run homp
+&& size_4000/random_tree_1 -1.000000 141267
+run homp memcheck
+run homp
+&& size_4000/random_tree_2 -1.000000 91523
+run homp memcheck
+run homp
+&& size_4000/random_tree_3 -1.000000 117588
+run homp memcheck
+run homp
+&& size_4000/random_tree_4 498.699092 89191
+run homp memcheck
+run homp
+&& size_4000/random_tree_5 -1.000000 130147
+run homp memcheck
+run homp
+&& size_50000/random_tree_1 -1.000000 30418100
+run homp memcheck
+run homp
+&& size_50000/random_tree_2 -1.000000 28417810
+run homp memcheck
+run homp
+&& size_50000/random_tree_3 -1.000000 24070576
+run homp memcheck
+run homp
+&& size_50000/random_tree_4 -1.000000 26378055
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 25506447
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 25786117
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/all_large
+!! hom-27proc-1.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/all_large
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 124596.919146 718050
+run homp memcheck
+run homp
+&& size_10000/random_tree_2 107350.525202 772411
+run homp memcheck
+&& size_10000/random_tree_3 73523.535254 687332
+run homp memcheck
+&& size_10000/random_tree_4 93970.329150 718139
+run homp memcheck
+&& size_10000/random_tree_5 173985.966787 717528
+run homp memcheck
+&& size_2000/random_tree_1 20296.072700 25733
+run homp memcheck
+&& size_2000/random_tree_2 22952.593586 27141
+run homp memcheck
+&& size_2000/random_tree_3 21820.281245 26574
+run homp memcheck
+&& size_2000/random_tree_4 29201.386208 27266
+run homp memcheck
+run homp
+&& size_2000/random_tree_5 26206.421516 28275
+run homp memcheck
+&& size_20000/random_tree_1 229418.096686 3041862
+run homp memcheck
+run homp
+&& size_20000/random_tree_2 214667.625996 3134077
+run homp memcheck
+run homp
+&& size_20000/random_tree_3 153318.231828 3132314
+run homp memcheck
+run homp
+&& size_20000/random_tree_4 212527.782651 3107423
+run homp memcheck
+run homp
+&& size_20000/random_tree_5 228673.523569 3219992
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 350841.767998 8203733
+run homp memcheck
+&& size_30000/random_tree_2 352179.913061 7301625
+run homp memcheck
+&& size_30000/random_tree_3 346491.864377 7675716
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 398744.367411 7665785
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 -1.000000 10074548
+run homp memcheck
+run homp
+&& size_4000/random_tree_1 49106.547053 114404
+run homp memcheck
+run homp
+&& size_4000/random_tree_2 48111.984092 160021
+run homp memcheck
+&& size_4000/random_tree_3 35467.040376 109859
+run homp memcheck
+&& size_4000/random_tree_4 47273.241538 108329
+run homp memcheck
+&& size_4000/random_tree_5 43069.975355 111112
+run homp memcheck
+&& size_50000/random_tree_1 507293.607106 24941889
+run homp memcheck
+run homp
+&& size_50000/random_tree_2 -1.000000 26261007
+run homp memcheck
+run homp
+&& size_50000/random_tree_3 548985.961269 24557547
+run homp memcheck
+run homp
+&& size_50000/random_tree_4 533145.109529 24233698
+run homp memcheck
+&& size_50000/random_tree_5 587377.072916 23371883
+run homp memcheck
+&& size_50000/random_tree_5 587377.072916 22484530
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_makespan_weights
+!! hom-27proc-1.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_makespan_weights
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 2478.539836 85655
+run homp memcheck
+&& size_10000/random_tree_2 2705.402247 43842
+run homp memcheck
+&& size_10000/random_tree_3 1475.844107 49256
+run homp memcheck
+run homp
+&& size_10000/random_tree_4 2977.021530 63488
+run homp memcheck
+run homp
+&& size_10000/random_tree_5 2340.585452 174193
+run homp memcheck
+run homp
+&& size_2000/random_tree_1 1735.963573 7456
+run homp memcheck
+&& size_2000/random_tree_2 3967.056404 6068
+run homp memcheck
+&& size_2000/random_tree_3 1321.734656 3076
+run homp memcheck
+&& size_2000/random_tree_4 1396.014358 1934
+run homp memcheck
+&& size_2000/random_tree_5 5468.752985 18307
+run homp memcheck
+&& size_20000/random_tree_1 2727.461231 164216
+run homp memcheck
+run homp
+&& size_20000/random_tree_2 5047.761283 204887
+run homp memcheck
+&& size_20000/random_tree_3 2650.645533 166499
+run homp memcheck
+&& size_20000/random_tree_4 2514.299779 112292
+run homp memcheck
+&& size_20000/random_tree_5 3064.440800 149859
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 6537.247271 697355
+run homp memcheck
+run homp
+&& size_30000/random_tree_2 6121.345578 617307
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 6388.233039 3325678
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 4544.366663 401915
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 5468.175983 2981311
+run homp memcheck
+run homp
+&& size_4000/random_tree_1 2258.099866 22817
+run homp memcheck
+run homp
+&& size_4000/random_tree_2 2144.445587 12532
+run homp memcheck
+run homp
+&& size_4000/random_tree_3 1874.336717 18205
+run homp memcheck
+&& size_4000/random_tree_4 1573.850859 11290
+run homp memcheck
+run homp
+&& size_4000/random_tree_5 2173.091228 9520
+run homp memcheck
+run homp
+&& size_50000/random_tree_1 -1.000000 10587209
+run homp memcheck
+run homp
+&& size_50000/random_tree_2 6243.949179 842527
+run homp memcheck
+run homp
+&& size_50000/random_tree_3 9114.601052 4618551
+run homp memcheck
+&& size_50000/random_tree_4 5642.462918 637228
+run homp memcheck
+&& size_50000/random_tree_5 8016.190399 727497
+run homp memcheck
+&& size_50000/random_tree_5 8016.190399 728343
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/20_children
+!! hom-27proc-1.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/20_children
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 1284.088981 302830
+run homp memcheck
+run homp
+&& size_10000/random_tree_2 1240.082912 279537
+run homp memcheck
+run homp
+&& size_10000/random_tree_3 1015.510044 317030
+run homp memcheck
+run homp
+&& size_10000/random_tree_4 1519.044887 275582
+run homp memcheck
+run homp
+&& size_10000/random_tree_5 1185.121387 307005
+run homp memcheck
+&& size_2000/random_tree_1 244.288955 9917
+run homp memcheck
+&& size_2000/random_tree_2 245.398636 9684
+run homp memcheck
+&& size_2000/random_tree_3 284.770241 9835
+run homp memcheck
+run homp
+&& size_2000/random_tree_4 279.051310 10521
+run homp memcheck
+run homp
+&& size_2000/random_tree_5 316.492003 13225
+run homp memcheck
+run homp
+&& size_20000/random_tree_1 2890.338888 1648220
+run homp memcheck
+run homp
+&& size_20000/random_tree_2 2469.789965 1479769
+run homp memcheck
+run homp
+&& size_20000/random_tree_3 3112.472675 1727200
+run homp memcheck
+run homp
+&& size_20000/random_tree_4 -1.000000 1490100
+run homp memcheck
+run homp
+&& size_20000/random_tree_5 2500.547372 1815975
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 -1.000000 4175543
+run homp memcheck
+run homp
+&& size_30000/random_tree_2 4082.842251 5088510
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 -1.000000 4120153
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 3781.962489 4061612
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 -1.000000 5306072
+run homp memcheck
+run homp
+&& size_4000/random_tree_1 633.921581 52405
+run homp memcheck
+run homp
+&& size_4000/random_tree_2 597.673776 45168
+run homp memcheck
+run homp
+&& size_4000/random_tree_3 479.255756 42118
+run homp memcheck
+run homp
+&& size_4000/random_tree_4 408.804875 50527
+run homp memcheck
+run homp
+&& size_4000/random_tree_5 550.148095 40121
+run homp memcheck
+run homp
+&& size_50000/random_tree_1 -1.000000 14023384
+run homp memcheck
+run homp
+&& size_50000/random_tree_2 -1.000000 14630556
+run homp memcheck
+run homp
+&& size_50000/random_tree_3 6158.222227 12907445
+run homp memcheck
+run homp
+&& size_50000/random_tree_4 -1.000000 14322347
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 14285749
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 14247724
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/all_small
+!! hom-27proc-1.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/all_small
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 89.810140 1192510
+run homp memcheck
+&& size_10000/random_tree_2 84.930002 1147208
+run homp memcheck
+&& size_10000/random_tree_3 92.386545 1163616
+run homp memcheck
+run homp
+&& size_10000/random_tree_4 140.344210 1220849
+run homp memcheck
+run homp
+&& size_10000/random_tree_5 102.286859 1170920
+run homp memcheck
+run homp
+&& size_2000/random_tree_1 28.565432 44539
+run homp memcheck
+&& size_2000/random_tree_2 33.511407 41587
+run homp memcheck
+run homp
+&& size_2000/random_tree_3 27.843042 50569
+run homp memcheck
+&& size_2000/random_tree_4 20.097276 43150
+run homp memcheck
+&& size_2000/random_tree_5 22.884181 41913
+run homp memcheck
+run homp
+&& size_20000/random_tree_1 222.335517 6110996
+run homp memcheck
+&& size_20000/random_tree_2 204.437620 5065109
+run homp memcheck
+run homp
+&& size_20000/random_tree_3 230.401292 5174541
+run homp memcheck
+run homp
+&& size_20000/random_tree_4 247.502399 5085959
+run homp memcheck
+run homp
+&& size_20000/random_tree_5 240.478047 5234886
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 367.709007 13434416
+run homp memcheck
+&& size_30000/random_tree_2 276.791492 12893995
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 268.264081 13138539
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 318.001665 13976919
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 -1.000000 14326699
+run homp memcheck
+run homp
+&& size_4000/random_tree_1 44.161531 174301
+run homp memcheck
+run homp
+&& size_4000/random_tree_2 34.898030 170344
+run homp memcheck
+&& size_4000/random_tree_3 42.497166 179017
+run homp memcheck
+&& size_4000/random_tree_4 33.542397 173164
+run homp memcheck
+&& size_4000/random_tree_5 46.192099 180723
+run homp memcheck
+run homp
+&& size_50000/random_tree_1 -1.000000 45365526
+run homp memcheck
+&& size_50000/random_tree_2 456.353475 41681762
+run homp memcheck
+run homp
+&& size_50000/random_tree_3 668.449322 42364279
+run homp memcheck
+&& size_50000/random_tree_4 734.208520 38346302
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 642.937115 41411262
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 642.937115 38814068
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_node_weights
+!! hom-27proc-1.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_node_weights
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 1125.784377 725998
+run homp memcheck
+&& size_10000/random_tree_2 846.815936 721514
+run homp memcheck
+run homp
+&& size_10000/random_tree_3 1093.544689 753107
+run homp memcheck
+run homp
+&& size_10000/random_tree_4 768.165266 700289
+run homp memcheck
+&& size_10000/random_tree_5 1192.879282 730842
+run homp memcheck
+run homp
+&& size_2000/random_tree_1 277.612237 31823
+run homp memcheck
+&& size_2000/random_tree_2 230.235838 27231
+run homp memcheck
+run homp
+&& size_2000/random_tree_3 263.820510 27734
+run homp memcheck
+&& size_2000/random_tree_4 211.033200 25041
+run homp memcheck
+run homp
+&& size_2000/random_tree_5 168.487291 26881
+run homp memcheck
+&& size_20000/random_tree_1 3264.685349 3081326
+run homp memcheck
+run homp
+&& size_20000/random_tree_2 2404.007072 3006426
+run homp memcheck
+run homp
+&& size_20000/random_tree_3 2880.737577 3076222
+run homp memcheck
+run homp
+&& size_20000/random_tree_4 2553.910818 3075501
+run homp memcheck
+run homp
+&& size_20000/random_tree_5 1996.185996 3159564
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 3253.181744 7629481
+run homp memcheck
+run homp
+&& size_30000/random_tree_2 3152.490053 7464525
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 3782.682355 7772630
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 3331.854151 7582253
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 -1.000000 8300147
+run homp memcheck
+&& size_4000/random_tree_1 495.175767 113037
+run homp memcheck
+run homp
+&& size_4000/random_tree_2 480.855851 108744
+run homp memcheck
+&& size_4000/random_tree_3 473.548151 109473
+run homp memcheck
+&& size_4000/random_tree_4 638.666689 113255
+run homp memcheck
+&& size_4000/random_tree_5 375.509580 106717
+run homp memcheck
+run homp
+&& size_50000/random_tree_1 7017.830417 24364427
+run homp memcheck
+run homp
+&& size_50000/random_tree_2 5914.554902 24230104
+run homp memcheck
+&& size_50000/random_tree_3 5148.028712 21546357
+run homp memcheck
+run homp
+&& size_50000/random_tree_4 5381.031067 23254233
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 25544791
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 24823558
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/3_children
+!! hom-27proc-1.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/3_children
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 -1.000000 1491247
+run homp memcheck
+run homp
+&& size_10000/random_tree_2 -1.000000 1183486
+run homp memcheck
+run homp
+&& size_10000/random_tree_3 -1.000000 1219016
+run homp memcheck
+run homp
+&& size_10000/random_tree_4 -1.000000 1334682
+run homp memcheck
+run homp
+&& size_10000/random_tree_5 -1.000000 1460296
+run homp memcheck
+run homp
+&& size_2000/random_tree_1 -1.000000 61445
+run homp memcheck
+run homp
+&& size_2000/random_tree_2 -1.000000 51555
+run homp memcheck
+run homp
+&& size_2000/random_tree_3 -1.000000 42175
+run homp memcheck
+run homp
+&& size_2000/random_tree_4 -1.000000 50059
+run homp memcheck
+run homp
+&& size_2000/random_tree_5 -1.000000 48744
+run homp memcheck
+run homp
+&& size_20000/random_tree_1 -1.000000 5669487
+run homp memcheck
+run homp
+&& size_20000/random_tree_2 -1.000000 6331997
+run homp memcheck
+run homp
+&& size_20000/random_tree_3 -1.000000 5269911
+run homp memcheck
+run homp
+&& size_20000/random_tree_4 -1.000000 5269665
+run homp memcheck
+run homp
+&& size_20000/random_tree_5 -1.000000 5198995
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 -1.000000 15435717
+run homp memcheck
+run homp
+&& size_30000/random_tree_2 -1.000000 12920000
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 -1.000000 14007476
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 -1.000000 13721298
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 -1.000000 13401922
+run homp memcheck
+run homp
+&& size_4000/random_tree_1 -1.000000 213951
+run homp memcheck
+run homp
+&& size_4000/random_tree_2 -1.000000 214611
+run homp memcheck
+run homp
+&& size_4000/random_tree_3 -1.000000 319109
+run homp memcheck
+run homp
+&& size_4000/random_tree_4 -1.000000 214261
+run homp memcheck
+run homp
+&& size_4000/random_tree_5 -1.000000 274358
+run homp memcheck
+run homp
+&& size_50000/random_tree_1 -1.000000 44337257
+run homp memcheck
+run homp
+&& size_50000/random_tree_2 -1.000000 44503756
+run homp memcheck
+run homp
+&& size_50000/random_tree_3 -1.000000 36588602
+run homp memcheck
+run homp
+&& size_50000/random_tree_4 -1.000000 41849976
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 36008588
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 36214133
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_edge_weights
+!! hom-27proc-1.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_edge_weights
+run homp memcheck
+&& size_10000/random_tree_1 85835.685200 1228802
+run homp memcheck
+run homp
+&& size_10000/random_tree_2 90360.741154 1206105
+run homp memcheck
+&& size_10000/random_tree_3 115718.799688 1242259
+run homp memcheck
+run homp
+&& size_10000/random_tree_4 109237.013205 1240387
+run homp memcheck
+run homp
+&& size_10000/random_tree_5 105430.278690 1277162
+run homp memcheck
+run homp
+&& size_2000/random_tree_1 17021.105206 43892
+run homp memcheck
+run homp
+&& size_2000/random_tree_2 19084.258907 43651
+run homp memcheck
+&& size_2000/random_tree_3 24935.303805 45062
+run homp memcheck
+&& size_2000/random_tree_4 22022.244673 44269
+run homp memcheck
+run homp
+&& size_2000/random_tree_5 26858.997045 48516
+run homp memcheck
+run homp
+&& size_20000/random_tree_1 257337.053212 5575978
+run homp memcheck
+run homp
+&& size_20000/random_tree_2 -1.000000 5697681
+run homp memcheck
+run homp
+&& size_20000/random_tree_3 162241.379687 5556856
+run homp memcheck
+run homp
+&& size_20000/random_tree_4 -1.000000 6039014
+run homp memcheck
+run homp
+&& size_20000/random_tree_5 235283.958262 5489737
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 316793.612560 14543319
+run homp memcheck
+run homp
+&& size_30000/random_tree_2 390443.725877 14690957
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 296840.696413 14146834
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 252181.730321 13748900
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 343653.598131 14044151
+run homp memcheck
+&& size_4000/random_tree_1 43548.019319 190645
+run homp memcheck
+&& size_4000/random_tree_2 55148.184958 184305
+run homp memcheck
+&& size_4000/random_tree_3 37025.676755 183851
+run homp memcheck
+&& size_4000/random_tree_4 47684.905499 187150
+run homp memcheck
+&& size_4000/random_tree_5 41714.992121 183662
+run homp memcheck
+&& size_50000/random_tree_1 554796.210013 45888938
+run homp memcheck
+run homp
+&& size_50000/random_tree_2 557992.690985 43807043
+run homp memcheck
+run homp
+&& size_50000/random_tree_3 425393.593044 42487546
+run homp memcheck
+run homp
+&& size_50000/random_tree_4 526832.852214 44432249
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 590341.223732 48785022
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 590341.223732 45249146
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/10_children
+!! hom-18proc-1,5.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/10_children
+run homp memcheck
+&& size_10000/random_tree_1 1518.123607 495762
+run homp memcheck
+&& size_10000/random_tree_2 962.213249 493935
+run homp memcheck
+&& size_10000/random_tree_3 1414.435735 500363
+run homp memcheck
+&& size_10000/random_tree_4 1507.587519 503814
+run homp memcheck
+&& size_10000/random_tree_5 1014.916355 497567
+run homp memcheck
+&& size_2000/random_tree_1 295.159058 17192
+run homp memcheck
+&& size_2000/random_tree_2 259.581246 17282
+run homp memcheck
+&& size_2000/random_tree_3 409.123749 17618
+run homp memcheck
+&& size_2000/random_tree_4 295.227280 17127
+run homp memcheck
+&& size_2000/random_tree_5 345.251807 17647
+run homp memcheck
+&& size_20000/random_tree_1 2411.121667 2550531
+run homp memcheck
+&& size_20000/random_tree_2 2597.360598 2411162
+run homp memcheck
+&& size_20000/random_tree_3 2332.274753 2503740
+run homp memcheck
+&& size_20000/random_tree_4 2964.994084 2506888
+run homp memcheck
+&& size_20000/random_tree_5 2980.258404 2484688
+run homp memcheck
+&& size_30000/random_tree_1 4281.412467 6586468
+run homp memcheck
+&& size_30000/random_tree_2 3450.747186 6687980
+run homp memcheck
+&& size_30000/random_tree_3 4840.045127 6543677
+run homp memcheck
+&& size_30000/random_tree_4 4130.738926 6494609
+run homp memcheck
+&& size_30000/random_tree_5 3612.694804 6493099
+run homp memcheck
+&& size_4000/random_tree_1 497.023971 71157
+run homp memcheck
+&& size_4000/random_tree_2 540.297070 70504
+run homp memcheck
+&& size_4000/random_tree_3 534.240013 72001
+run homp memcheck
+&& size_4000/random_tree_4 503.460950 71164
+run homp memcheck
+&& size_4000/random_tree_5 697.152632 71744
+run homp memcheck
+&& size_50000/random_tree_1 8026.785397 21662561
+run homp memcheck
+&& size_50000/random_tree_2 5131.556539 21725405
+run homp memcheck
+&& size_50000/random_tree_3 5778.625132 21874228
+run homp memcheck
+&& size_50000/random_tree_4 7670.840233 22120432
+run homp memcheck
+&& size_50000/random_tree_5 6338.328831 21842176
+run homp memcheck
+&& size_50000/random_tree_5 6338.328831 22152998
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/all_large
+!! hom-18proc-1,5.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/all_large
+run homp memcheck
+&& size_10000/random_tree_1 157841.440154 704186
+run homp memcheck
+&& size_10000/random_tree_2 113809.536656 733543
+run homp memcheck
+&& size_10000/random_tree_3 95812.798520 686329
+run homp memcheck
+&& size_10000/random_tree_4 144408.736580 716392
+run homp memcheck
+&& size_10000/random_tree_5 198262.264109 711464
+run homp memcheck
+&& size_2000/random_tree_1 24755.712488 25746
+run homp memcheck
+&& size_2000/random_tree_2 26198.374788 27043
+run homp memcheck
+&& size_2000/random_tree_3 27302.677616 26718
+run homp memcheck
+&& size_2000/random_tree_4 36828.877905 27182
+run homp memcheck
+&& size_2000/random_tree_5 28471.042403 27702
+run homp memcheck
+&& size_20000/random_tree_1 272416.057093 3077931
+run homp memcheck
+&& size_20000/random_tree_2 251992.971645 3100047
+run homp memcheck
+&& size_20000/random_tree_3 179969.628017 3072867
+run homp memcheck
+&& size_20000/random_tree_4 245591.374895 3083095
+run homp memcheck
+&& size_20000/random_tree_5 223155.454355 3038318
+run homp memcheck
+&& size_30000/random_tree_1 405193.239452 7755510
+run homp memcheck
+&& size_30000/random_tree_2 412304.944105 7500778
+run homp memcheck
+&& size_30000/random_tree_3 426622.197393 7646673
+run homp memcheck
+&& size_30000/random_tree_4 440213.823505 7517451
+run homp memcheck
+&& size_30000/random_tree_5 372108.370358 7478649
+run homp memcheck
+&& size_4000/random_tree_1 58659.861626 113252
+run homp memcheck
+&& size_4000/random_tree_2 52465.105405 118099
+run homp memcheck
+&& size_4000/random_tree_3 41833.650224 109707
+run homp memcheck
+&& size_4000/random_tree_4 61737.673779 109747
+run homp memcheck
+&& size_4000/random_tree_5 57251.977324 111019
+run homp memcheck
+&& size_50000/random_tree_1 663921.853836 26346540
+run homp memcheck
+&& size_50000/random_tree_2 630459.261644 25423234
+run homp memcheck
+&& size_50000/random_tree_3 617427.734667 26473729
+run homp memcheck
+&& size_50000/random_tree_4 587517.903049 26660914
+run homp memcheck
+&& size_50000/random_tree_5 707146.478776 24989161
+run homp memcheck
+&& size_50000/random_tree_5 707146.478776 24737625
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_makespan_weights
+!! hom-18proc-1,5.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_makespan_weights
+run homp memcheck
+&& size_10000/random_tree_1 2184.642923 46591
+run homp memcheck
+&& size_10000/random_tree_2 2839.574916 43963
+run homp memcheck
+&& size_10000/random_tree_3 1654.388477 47525
+run homp memcheck
+&& size_10000/random_tree_4 2776.018810 51952
+run homp memcheck
+&& size_10000/random_tree_5 1800.982907 39338
+run homp memcheck
+&& size_2000/random_tree_1 1260.834372 2193
+run homp memcheck
+&& size_2000/random_tree_2 1909.656552 3632
+run homp memcheck
+&& size_2000/random_tree_3 1368.332350 3089
+run homp memcheck
+&& size_2000/random_tree_4 1410.072742 1950
+run homp memcheck
+&& size_2000/random_tree_5 1774.584342 5368
+run homp memcheck
+&& size_20000/random_tree_1 3026.622309 175162
+run homp memcheck
+&& size_20000/random_tree_2 4339.163017 191928
+run homp memcheck
+&& size_20000/random_tree_3 3045.259636 185701
+run homp memcheck
+&& size_20000/random_tree_4 2801.637485 111910
+run homp memcheck
+&& size_20000/random_tree_5 3344.693980 147921
+run homp memcheck
+&& size_30000/random_tree_1 6382.808047 447121
+run homp memcheck
+&& size_30000/random_tree_2 6414.042083 488358
+run homp memcheck
+&& size_30000/random_tree_3 5523.085825 388990
+run homp memcheck
+&& size_30000/random_tree_4 4541.562854 360724
+run homp memcheck
+&& size_30000/random_tree_5 3664.901269 315673
+run homp memcheck
+&& size_4000/random_tree_1 1723.592925 13361
+run homp memcheck
+&& size_4000/random_tree_2 1677.916799 9292
+run homp memcheck
+&& size_4000/random_tree_3 1977.377038 14566
+run homp memcheck
+&& size_4000/random_tree_4 1654.182448 11320
+run homp memcheck
+&& size_4000/random_tree_5 2096.033956 7960
+run homp memcheck
+&& size_50000/random_tree_1 6525.497185 1007449
+run homp memcheck
+&& size_50000/random_tree_2 6604.750455 740272
+run homp memcheck
+&& size_50000/random_tree_3 8722.608152 928481
+run homp memcheck
+&& size_50000/random_tree_4 7331.676836 616662
+run homp memcheck
+&& size_50000/random_tree_5 9066.114620 668221
+run homp memcheck
+&& size_50000/random_tree_5 9066.114620 669680
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/20_children
+!! hom-18proc-1,5.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/20_children
+run homp memcheck
+&& size_10000/random_tree_1 1171.812326 277988
+run homp memcheck
+&& size_10000/random_tree_2 1335.275219 279308
+run homp memcheck
+&& size_10000/random_tree_3 1077.573961 267301
+run homp memcheck
+&& size_10000/random_tree_4 1731.328555 272114
+run homp memcheck
+&& size_10000/random_tree_5 1251.367030 278527
+run homp memcheck
+&& size_2000/random_tree_1 252.207875 9841
+run homp memcheck
+&& size_2000/random_tree_2 257.517244 9626
+run homp memcheck
+&& size_2000/random_tree_3 308.621800 9883
+run homp memcheck
+&& size_2000/random_tree_4 285.212272 9587
+run homp memcheck
+&& size_2000/random_tree_5 325.105348 9754
+run homp memcheck
+&& size_20000/random_tree_1 2666.245808 1397361
+run homp memcheck
+&& size_20000/random_tree_2 2610.826630 1329478
+run homp memcheck
+&& size_20000/random_tree_3 2339.122146 1340179
+run homp memcheck
+&& size_20000/random_tree_4 2573.318017 1326922
+run homp memcheck
+&& size_20000/random_tree_5 2500.497637 1357166
+run homp memcheck
+&& size_30000/random_tree_1 5161.543270 3517906
+run homp memcheck
+&& size_30000/random_tree_2 4126.861877 3574945
+run homp memcheck
+&& size_30000/random_tree_3 3150.301871 3478361
+run homp memcheck
+&& size_30000/random_tree_4 3639.485585 3536222
+run homp memcheck
+&& size_30000/random_tree_5 5775.930206 3562840
+run homp memcheck
+&& size_4000/random_tree_1 669.004262 38891
+run homp memcheck
+&& size_4000/random_tree_2 661.797770 38384
+run homp memcheck
+&& size_4000/random_tree_3 526.607978 39269
+run homp memcheck
+&& size_4000/random_tree_4 417.129995 38993
+run homp memcheck
+&& size_4000/random_tree_5 612.809657 38832
+run homp memcheck
+&& size_50000/random_tree_1 6110.853145 11704014
+run homp memcheck
+&& size_50000/random_tree_2 7544.183010 11695765
+run homp memcheck
+&& size_50000/random_tree_3 5882.341659 11699150
+run homp memcheck
+&& size_50000/random_tree_4 7942.697181 11913498
+run homp memcheck
+&& size_50000/random_tree_5 5726.326712 11992607
+run homp memcheck
+&& size_50000/random_tree_5 5726.326712 12078131
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/all_small
+!! hom-18proc-1,5.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/all_small
+run homp memcheck
+&& size_10000/random_tree_1 94.758665 1161956
+run homp memcheck
+&& size_10000/random_tree_2 99.021656 1146179
+run homp memcheck
+&& size_10000/random_tree_3 119.841722 1158940
+run homp memcheck
+&& size_10000/random_tree_4 151.679595 1184442
+run homp memcheck
+&& size_10000/random_tree_5 128.914767 1156056
+run homp memcheck
+&& size_2000/random_tree_1 31.119988 43894
+run homp memcheck
+&& size_2000/random_tree_2 39.725150 41241
+run homp memcheck
+&& size_2000/random_tree_3 28.582380 41855
+run homp memcheck
+&& size_2000/random_tree_4 25.385635 42972
+run homp memcheck
+&& size_2000/random_tree_5 26.664393 41970
+run homp memcheck
+&& size_20000/random_tree_1 227.541571 5003709
+run homp memcheck
+&& size_20000/random_tree_2 241.906014 5188291
+run homp memcheck
+&& size_20000/random_tree_3 263.325056 5127696
+run homp memcheck
+&& size_20000/random_tree_4 293.939113 5013665
+run homp memcheck
+&& size_20000/random_tree_5 275.551881 5189438
+run homp memcheck
+&& size_30000/random_tree_1 430.440939 13010265
+run homp memcheck
+&& size_30000/random_tree_2 405.480192 12630171
+run homp memcheck
+&& size_30000/random_tree_3 298.187364 12871889
+run homp memcheck
+&& size_30000/random_tree_4 346.147517 12955141
+run homp memcheck
+&& size_30000/random_tree_5 337.711221 12737932
+run homp memcheck
+&& size_4000/random_tree_1 49.372202 172761
+run homp memcheck
+&& size_4000/random_tree_2 40.147789 168026
+run homp memcheck
+&& size_4000/random_tree_3 56.032693 178002
+run homp memcheck
+&& size_4000/random_tree_4 39.150707 172261
+run homp memcheck
+&& size_4000/random_tree_5 54.408978 179772
+run homp memcheck
+&& size_50000/random_tree_1 621.678349 45302103
+run homp memcheck
+&& size_50000/random_tree_2 594.957108 44294932
+run homp memcheck
+&& size_50000/random_tree_3 696.852416 42952505
+run homp memcheck
+&& size_50000/random_tree_4 899.903668 40640464
+run homp memcheck
+&& size_50000/random_tree_5 711.061207 41134196
+run homp memcheck
+&& size_50000/random_tree_5 711.061207 41573588
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_node_weights
+!! hom-18proc-1,5.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_node_weights
+run homp memcheck
+&& size_10000/random_tree_1 1143.934765 693673
+run homp memcheck
+&& size_10000/random_tree_2 1066.447908 719525
+run homp memcheck
+&& size_10000/random_tree_3 1240.014234 742249
+run homp memcheck
+&& size_10000/random_tree_4 877.037450 691280
+run homp memcheck
+&& size_10000/random_tree_5 1447.660711 733581
+run homp memcheck
+&& size_2000/random_tree_1 284.057447 27533
+run homp memcheck
+&& size_2000/random_tree_2 270.325039 27539
+run homp memcheck
+&& size_2000/random_tree_3 314.640968 26616
+run homp memcheck
+&& size_2000/random_tree_4 251.239971 24963
+run homp memcheck
+&& size_2000/random_tree_5 186.965388 26314
+run homp memcheck
+&& size_20000/random_tree_1 3887.405158 3027443
+run homp memcheck
+&& size_20000/random_tree_2 2996.277746 2977881
+run homp memcheck
+&& size_20000/random_tree_3 3441.223016 3051926
+run homp memcheck
+&& size_20000/random_tree_4 2861.767935 3064960
+run homp memcheck
+&& size_20000/random_tree_5 2276.942482 3031962
+run homp memcheck
+&& size_30000/random_tree_1 3669.154959 7902302
+run homp memcheck
+&& size_30000/random_tree_2 3697.551349 7564297
+run homp memcheck
+&& size_30000/random_tree_3 4083.103858 7289198
+run homp memcheck
+&& size_30000/random_tree_4 3687.295148 7064891
+run homp memcheck
+&& size_30000/random_tree_5 3687.876508 7204170
+run homp memcheck
+&& size_4000/random_tree_1 571.986532 111430
+run homp memcheck
+&& size_4000/random_tree_2 612.037284 104431
+run homp memcheck
+&& size_4000/random_tree_3 521.672865 108314
+run homp memcheck
+&& size_4000/random_tree_4 765.756413 112257
+run homp memcheck
+&& size_4000/random_tree_5 417.431790 105843
+run homp memcheck
+&& size_50000/random_tree_1 7563.864497 23067652
+run homp memcheck
+&& size_50000/random_tree_2 5972.398007 22741709
+run homp memcheck
+&& size_50000/random_tree_3 6049.584431 23107571
+run homp memcheck
+&& size_50000/random_tree_4 5759.984536 23221635
+run homp memcheck
+&& size_50000/random_tree_5 8129.584022 23421857
+run homp memcheck
+&& size_50000/random_tree_5 8129.584022 23201370
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/3_children
+!! hom-18proc-1,5.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/3_children
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 1765.530857 840435
+run homp memcheck
+run homp
+&& size_10000/random_tree_2 1629.143188 779605
+run homp memcheck
+&& size_10000/random_tree_3 1099.661222 768904
+run homp memcheck
+&& size_10000/random_tree_4 1350.323429 778567
+run homp memcheck
+&& size_10000/random_tree_5 1127.733941 803109
+run homp memcheck
+&& size_2000/random_tree_1 298.676695 29335
+run homp memcheck
+&& size_2000/random_tree_2 309.638324 26685
+run homp memcheck
+&& size_2000/random_tree_3 318.586905 29583
+run homp memcheck
+&& size_2000/random_tree_4 243.376240 28501
+run homp memcheck
+&& size_2000/random_tree_5 296.721168 29710
+run homp memcheck
+run homp
+&& size_20000/random_tree_1 -1.000000 3830952
+run homp memcheck
+run homp
+&& size_20000/random_tree_2 3065.304803 3748553
+run homp memcheck
+&& size_20000/random_tree_3 3039.365147 3567085
+run homp memcheck
+&& size_20000/random_tree_4 2697.635436 3560309
+run homp memcheck
+&& size_20000/random_tree_5 1914.942965 3576532
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 -1.000000 10409433
+run homp memcheck
+run homp
+&& size_30000/random_tree_2 -1.000000 10036728
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 -1.000000 9763024
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 -1.000000 11449847
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 -1.000000 10128040
+run homp memcheck
+&& size_4000/random_tree_1 348.086634 114726
+run homp memcheck
+&& size_4000/random_tree_2 406.692907 116660
+run homp memcheck
+run homp
+&& size_4000/random_tree_3 541.202435 118068
+run homp memcheck
+&& size_4000/random_tree_4 399.784495 115988
+run homp memcheck
+&& size_4000/random_tree_5 802.927300 118892
+run homp memcheck
+&& size_50000/random_tree_1 6349.069357 31113378
+run homp memcheck
+run homp
+&& size_50000/random_tree_2 -1.000000 35044730
+run homp memcheck
+&& size_50000/random_tree_3 5064.773362 27793139
+run homp memcheck
+run homp
+&& size_50000/random_tree_4 -1.000000 31135017
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 30586368
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 33386052
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_edge_weights
+!! hom-18proc-1,5.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_edge_weights
+run homp memcheck
+&& size_10000/random_tree_1 112679.076768 1225318
+run homp memcheck
+&& size_10000/random_tree_2 111884.184249 1201447
+run homp memcheck
+&& size_10000/random_tree_3 140947.083476 1247997
+run homp memcheck
+&& size_10000/random_tree_4 131336.550183 1238628
+run homp memcheck
+&& size_10000/random_tree_5 118900.619084 1225518
+run homp memcheck
+&& size_2000/random_tree_1 21434.972215 43455
+run homp memcheck
+&& size_2000/random_tree_2 22442.089179 43082
+run homp memcheck
+&& size_2000/random_tree_3 33587.325273 44975
+run homp memcheck
+&& size_2000/random_tree_4 27200.758099 44541
+run homp memcheck
+&& size_2000/random_tree_5 32334.230063 46707
+run homp memcheck
+&& size_20000/random_tree_1 296584.191783 5387628
+run homp memcheck
+&& size_20000/random_tree_2 250975.132436 5328611
+run homp memcheck
+&& size_20000/random_tree_3 171172.636844 5400554
+run homp memcheck
+&& size_20000/random_tree_4 202994.213052 5250476
+run homp memcheck
+&& size_20000/random_tree_5 278733.424494 5345616
+run homp memcheck
+&& size_30000/random_tree_1 344791.439906 13799924
+run homp memcheck
+&& size_30000/random_tree_2 428697.826426 13567338
+run homp memcheck
+&& size_30000/random_tree_3 323564.727717 13791840
+run homp memcheck
+&& size_30000/random_tree_4 292468.344539 12592143
+run homp memcheck
+&& size_30000/random_tree_5 390387.527654 12228183
+run homp memcheck
+&& size_4000/random_tree_1 50103.879082 184716
+run homp memcheck
+&& size_4000/random_tree_2 68835.011939 178953
+run homp memcheck
+&& size_4000/random_tree_3 50023.267390 180064
+run homp memcheck
+&& size_4000/random_tree_4 52103.017106 182407
+run homp memcheck
+&& size_4000/random_tree_5 50420.858132 177700
+run homp memcheck
+&& size_50000/random_tree_1 639703.510405 42710485
+run homp memcheck
+&& size_50000/random_tree_2 676886.012315 43146496
+run homp memcheck
+&& size_50000/random_tree_3 496925.291817 44091181
+run homp memcheck
+&& size_50000/random_tree_4 625931.375836 43181863
+run homp memcheck
+&& size_50000/random_tree_5 607817.075886 44619616
+run homp memcheck
+&& size_50000/random_tree_5 607817.075886 43980395
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/10_children
+!! hom-9proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/10_children
+run homp memcheck
+&& size_10000/random_tree_1 2019.855741 489038
+run homp memcheck
+&& size_10000/random_tree_2 1356.642419 496854
+run homp memcheck
+&& size_10000/random_tree_3 1733.059116 502700
+run homp memcheck
+&& size_10000/random_tree_4 1859.510641 510955
+run homp memcheck
+&& size_10000/random_tree_5 1444.791504 488497
+run homp memcheck
+&& size_2000/random_tree_1 453.853644 17426
+run homp memcheck
+&& size_2000/random_tree_2 362.697210 17326
+run homp memcheck
+&& size_2000/random_tree_3 452.818866 17593
+run homp memcheck
+&& size_2000/random_tree_4 389.765751 17578
+run homp memcheck
+&& size_2000/random_tree_5 429.613945 17702
+run homp memcheck
+&& size_20000/random_tree_1 3466.695580 2617916
+run homp memcheck
+&& size_20000/random_tree_2 3276.713497 2497787
+run homp memcheck
+&& size_20000/random_tree_3 3689.764681 2511115
+run homp memcheck
+&& size_20000/random_tree_4 4336.266918 2538327
+run homp memcheck
+&& size_20000/random_tree_5 4083.067381 2562591
+run homp memcheck
+&& size_30000/random_tree_1 5311.685117 6704748
+run homp memcheck
+&& size_30000/random_tree_2 5035.465837 6652650
+run homp memcheck
+&& size_30000/random_tree_3 7085.663839 6589993
+run homp memcheck
+&& size_30000/random_tree_4 5531.747582 6708439
+run homp memcheck
+&& size_30000/random_tree_5 4438.604883 6672352
+run homp memcheck
+&& size_4000/random_tree_1 757.103876 71256
+run homp memcheck
+&& size_4000/random_tree_2 785.178501 71412
+run homp memcheck
+&& size_4000/random_tree_3 691.623499 72223
+run homp memcheck
+&& size_4000/random_tree_4 767.392627 71530
+run homp memcheck
+&& size_4000/random_tree_5 925.667187 71812
+run homp memcheck
+&& size_50000/random_tree_1 11935.663357 21610272
+run homp memcheck
+&& size_50000/random_tree_2 7595.878868 21660096
+run homp memcheck
+&& size_50000/random_tree_3 9841.894309 21438030
+run homp memcheck
+&& size_50000/random_tree_4 9387.224774 21757682
+run homp memcheck
+&& size_50000/random_tree_5 8488.768050 22035233
+run homp memcheck
+&& size_50000/random_tree_5 8488.768050 21828773
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/all_large
+!! hom-9proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/all_large
+run homp memcheck
+&& size_10000/random_tree_1 204012.283738 703092
+run homp memcheck
+&& size_10000/random_tree_2 151334.977917 735053
+run homp memcheck
+&& size_10000/random_tree_3 138638.240392 693885
+run homp memcheck
+&& size_10000/random_tree_4 226254.879005 728373
+run homp memcheck
+&& size_10000/random_tree_5 222082.619650 710041
+run homp memcheck
+&& size_2000/random_tree_1 34559.254468 25925
+run homp memcheck
+&& size_2000/random_tree_2 35237.351632 26985
+run homp memcheck
+&& size_2000/random_tree_3 35163.257771 26848
+run homp memcheck
+&& size_2000/random_tree_4 51766.970639 27669
+run homp memcheck
+&& size_2000/random_tree_5 35952.251848 27939
+run homp memcheck
+&& size_20000/random_tree_1 343374.775779 3075095
+run homp memcheck
+&& size_20000/random_tree_2 377138.463637 3149956
+run homp memcheck
+&& size_20000/random_tree_3 318462.232109 3124453
+run homp memcheck
+&& size_20000/random_tree_4 302748.146656 3083200
+run homp memcheck
+&& size_20000/random_tree_5 282294.146091 3035715
+run homp memcheck
+&& size_30000/random_tree_1 531440.930894 7693258
+run homp memcheck
+&& size_30000/random_tree_2 521030.427165 7335235
+run homp memcheck
+&& size_30000/random_tree_3 643404.342540 7626306
+run homp memcheck
+&& size_30000/random_tree_4 605114.559536 7548960
+run homp memcheck
+&& size_30000/random_tree_5 564440.083916 7514679
+run homp memcheck
+&& size_4000/random_tree_1 79008.871568 114256
+run homp memcheck
+&& size_4000/random_tree_2 67699.829189 118625
+run homp memcheck
+&& size_4000/random_tree_3 75012.833107 109321
+run homp memcheck
+&& size_4000/random_tree_4 76974.946701 108810
+run homp memcheck
+&& size_4000/random_tree_5 81727.581438 111337
+run homp memcheck
+&& size_50000/random_tree_1 1212367.755026 24145575
+run homp memcheck
+&& size_50000/random_tree_2 853398.945041 25001859
+run homp memcheck
+&& size_50000/random_tree_3 827425.781528 25459266
+run homp memcheck
+&& size_50000/random_tree_4 786795.086354 25921096
+run homp memcheck
+&& size_50000/random_tree_5 951985.933586 25641373
+run homp memcheck
+&& size_50000/random_tree_5 951985.933586 25140062
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_makespan_weights
+!! hom-9proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_makespan_weights
+run homp memcheck
+&& size_10000/random_tree_1 3011.229428 50502
+run homp memcheck
+&& size_10000/random_tree_2 3419.745365 57164
+run homp memcheck
+&& size_10000/random_tree_3 2360.499999 48773
+run homp memcheck
+&& size_10000/random_tree_4 3478.468887 53949
+run homp memcheck
+&& size_10000/random_tree_5 2422.467680 48552
+run homp memcheck
+&& size_2000/random_tree_1 1334.497329 2391
+run homp memcheck
+&& size_2000/random_tree_2 1909.656552 3654
+run homp memcheck
+&& size_2000/random_tree_3 1449.286201 7867
+run homp memcheck
+&& size_2000/random_tree_4 1463.706737 2105
+run homp memcheck
+&& size_2000/random_tree_5 1774.584342 5399
+run homp memcheck
+&& size_20000/random_tree_1 3394.813887 203536
+run homp memcheck
+&& size_20000/random_tree_2 4869.187214 212999
+run homp memcheck
+&& size_20000/random_tree_3 4085.971307 193062
+run homp memcheck
+&& size_20000/random_tree_4 3535.241735 134361
+run homp memcheck
+&& size_20000/random_tree_5 4328.535468 170717
+run homp memcheck
+&& size_30000/random_tree_1 8171.351944 502465
+run homp memcheck
+&& size_30000/random_tree_2 7936.000374 494947
+run homp memcheck
+&& size_30000/random_tree_3 7313.426384 435606
+run homp memcheck
+&& size_30000/random_tree_4 5526.866480 354558
+run homp memcheck
+&& size_30000/random_tree_5 5720.423007 340921
+run homp memcheck
+&& size_4000/random_tree_1 1873.093774 13160
+run homp memcheck
+&& size_4000/random_tree_2 1870.411538 10265
+run homp memcheck
+&& size_4000/random_tree_3 2282.926330 16207
+run homp memcheck
+&& size_4000/random_tree_4 1795.103454 11800
+run homp memcheck
+&& size_4000/random_tree_5 2277.379377 8495
+run homp memcheck
+&& size_50000/random_tree_1 8404.432979 1532402
+run homp memcheck
+&& size_50000/random_tree_2 8723.461048 732226
+run homp memcheck
+&& size_50000/random_tree_3 10666.598325 1020060
+run homp memcheck
+&& size_50000/random_tree_4 9466.012945 1148413
+run homp memcheck
+&& size_50000/random_tree_5 9904.386423 692356
+run homp memcheck
+&& size_50000/random_tree_5 9904.386423 691945
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/20_children
+!! hom-9proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/20_children
+run homp memcheck
+&& size_10000/random_tree_1 1777.596812 286249
+run homp memcheck
+&& size_10000/random_tree_2 1669.141882 285565
+run homp memcheck
+&& size_10000/random_tree_3 1395.957905 273408
+run homp memcheck
+&& size_10000/random_tree_4 2086.355412 286986
+run homp memcheck
+&& size_10000/random_tree_5 1577.508581 282968
+run homp memcheck
+&& size_2000/random_tree_1 282.866302 9827
+run homp memcheck
+&& size_2000/random_tree_2 392.087406 9816
+run homp memcheck
+&& size_2000/random_tree_3 357.519186 10187
+run homp memcheck
+&& size_2000/random_tree_4 364.862266 9551
+run homp memcheck
+&& size_2000/random_tree_5 387.024398 9904
+run homp memcheck
+&& size_20000/random_tree_1 4444.037964 1344704
+run homp memcheck
+&& size_20000/random_tree_2 3760.085056 1413143
+run homp memcheck
+&& size_20000/random_tree_3 3298.914990 1435243
+run homp memcheck
+&& size_20000/random_tree_4 4101.739714 1354197
+run homp memcheck
+&& size_20000/random_tree_5 2870.996816 1354062
+run homp memcheck
+&& size_30000/random_tree_1 7349.316709 3563689
+run homp memcheck
+&& size_30000/random_tree_2 4915.446195 3600195
+run homp memcheck
+&& size_30000/random_tree_3 4174.896342 3494250
+run homp memcheck
+&& size_30000/random_tree_4 5099.587304 3531542
+run homp memcheck
+&& size_30000/random_tree_5 7167.798575 3625773
+run homp memcheck
+&& size_4000/random_tree_1 848.294230 39237
+run homp memcheck
+&& size_4000/random_tree_2 901.000743 38941
+run homp memcheck
+&& size_4000/random_tree_3 754.688049 39411
+run homp memcheck
+&& size_4000/random_tree_4 635.889462 39241
+run homp memcheck
+&& size_4000/random_tree_5 772.195387 39026
+run homp memcheck
+&& size_50000/random_tree_1 9494.981107 12303011
+run homp memcheck
+&& size_50000/random_tree_2 11238.964968 12365561
+run homp memcheck
+&& size_50000/random_tree_3 8730.357193 12141022
+run homp memcheck
+&& size_50000/random_tree_4 9641.908189 12013764
+run homp memcheck
+&& size_50000/random_tree_5 7631.464477 11849245
+run homp memcheck
+&& size_50000/random_tree_5 7631.464477 11813458
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/all_small
+!! hom-9proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/all_small
+run homp memcheck
+&& size_10000/random_tree_1 142.133159 1167417
+run homp memcheck
+&& size_10000/random_tree_2 171.536369 1151686
+run homp memcheck
+&& size_10000/random_tree_3 171.506666 1162126
+run homp memcheck
+&& size_10000/random_tree_4 214.160060 1184383
+run homp memcheck
+&& size_10000/random_tree_5 186.352164 1161074
+run homp memcheck
+&& size_2000/random_tree_1 44.562266 44042
+run homp memcheck
+&& size_2000/random_tree_2 50.119858 41592
+run homp memcheck
+&& size_2000/random_tree_3 38.370207 42400
+run homp memcheck
+&& size_2000/random_tree_4 37.951253 43653
+run homp memcheck
+&& size_2000/random_tree_5 33.677807 42362
+run homp memcheck
+&& size_20000/random_tree_1 289.065424 5140366
+run homp memcheck
+&& size_20000/random_tree_2 308.371034 5029289
+run homp memcheck
+&& size_20000/random_tree_3 360.382303 5065114
+run homp memcheck
+&& size_20000/random_tree_4 388.364209 4985344
+run homp memcheck
+&& size_20000/random_tree_5 419.109992 5114847
+run homp memcheck
+&& size_30000/random_tree_1 653.467983 13098171
+run homp memcheck
+&& size_30000/random_tree_2 689.774880 12634536
+run homp memcheck
+&& size_30000/random_tree_3 519.403548 12923304
+run homp memcheck
+&& size_30000/random_tree_4 434.079442 12712035
+run homp memcheck
+&& size_30000/random_tree_5 531.621849 11747932
+run homp memcheck
+&& size_4000/random_tree_1 61.788204 168557
+run homp memcheck
+&& size_4000/random_tree_2 69.334082 165134
+run homp memcheck
+&& size_4000/random_tree_3 94.221069 173934
+run homp memcheck
+&& size_4000/random_tree_4 48.925418 169374
+run homp memcheck
+&& size_4000/random_tree_5 72.910717 175449
+run homp memcheck
+&& size_50000/random_tree_1 857.193757 42050956
+run homp memcheck
+&& size_50000/random_tree_2 951.015308 42153097
+run homp memcheck
+&& size_50000/random_tree_3 1105.347724 40540964
+run homp memcheck
+&& size_50000/random_tree_4 1148.154975 40062963
+run homp memcheck
+&& size_50000/random_tree_5 885.479575 41416436
+run homp memcheck
+&& size_50000/random_tree_5 885.479575 41834528
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_node_weights
+!! hom-9proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_node_weights
+run homp memcheck
+&& size_10000/random_tree_1 1562.658330 700319
+run homp memcheck
+&& size_10000/random_tree_2 1869.521058 721555
+run homp memcheck
+&& size_10000/random_tree_3 1758.116255 743657
+run homp memcheck
+&& size_10000/random_tree_4 1549.960434 695952
+run homp memcheck
+&& size_10000/random_tree_5 1997.346456 732057
+run homp memcheck
+&& size_2000/random_tree_1 335.796137 27694
+run homp memcheck
+&& size_2000/random_tree_2 343.134633 28170
+run homp memcheck
+&& size_2000/random_tree_3 388.896406 27220
+run homp memcheck
+&& size_2000/random_tree_4 395.698101 25414
+run homp memcheck
+&& size_2000/random_tree_5 301.991646 26802
+run homp memcheck
+&& size_20000/random_tree_1 4835.856552 3048894
+run homp memcheck
+&& size_20000/random_tree_2 4159.179433 2997946
+run homp memcheck
+&& size_20000/random_tree_3 4663.622780 3081851
+run homp memcheck
+&& size_20000/random_tree_4 3786.309149 3082901
+run homp memcheck
+&& size_20000/random_tree_5 3403.817905 3031191
+run homp memcheck
+&& size_30000/random_tree_1 5281.090426 7872352
+run homp memcheck
+&& size_30000/random_tree_2 5006.017958 7512493
+run homp memcheck
+&& size_30000/random_tree_3 5679.296856 7217735
+run homp memcheck
+&& size_30000/random_tree_4 5870.734806 7024953
+run homp memcheck
+&& size_30000/random_tree_5 5192.070243 7110291
+run homp memcheck
+&& size_4000/random_tree_1 775.496895 112682
+run homp memcheck
+&& size_4000/random_tree_2 929.984016 106279
+run homp memcheck
+&& size_4000/random_tree_3 665.398780 107393
+run homp memcheck
+&& size_4000/random_tree_4 893.848749 114254
+run homp memcheck
+&& size_4000/random_tree_5 536.336876 105602
+run homp memcheck
+&& size_50000/random_tree_1 9593.211582 23077636
+run homp memcheck
+&& size_50000/random_tree_2 7014.706305 22725949
+run homp memcheck
+&& size_50000/random_tree_3 7938.679553 21966788
+run homp memcheck
+&& size_50000/random_tree_4 8435.848934 22985180
+run homp memcheck
+&& size_50000/random_tree_5 10413.712436 23383337
+run homp memcheck
+&& size_50000/random_tree_5 10413.712436 23232440
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/3_children
+!! hom-9proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/3_children
+run homp memcheck
+&& size_10000/random_tree_1 2126.795796 797908
+run homp memcheck
+&& size_10000/random_tree_2 2257.252141 764683
+run homp memcheck
+&& size_10000/random_tree_3 1938.205624 770236
+run homp memcheck
+&& size_10000/random_tree_4 2104.860646 780397
+run homp memcheck
+&& size_10000/random_tree_5 1798.844613 798385
+run homp memcheck
+&& size_2000/random_tree_1 338.061650 30655
+run homp memcheck
+&& size_2000/random_tree_2 412.106388 26832
+run homp memcheck
+&& size_2000/random_tree_3 399.033878 29625
+run homp memcheck
+&& size_2000/random_tree_4 403.204333 28939
+run homp memcheck
+&& size_2000/random_tree_5 404.086442 29641
+run homp memcheck
+&& size_20000/random_tree_1 4172.089609 3552550
+run homp memcheck
+&& size_20000/random_tree_2 3921.644121 3785555
+run homp memcheck
+&& size_20000/random_tree_3 3623.802930 3651799
+run homp memcheck
+&& size_20000/random_tree_4 4071.111267 3540442
+run homp memcheck
+&& size_20000/random_tree_5 3500.392103 3637970
+run homp memcheck
+&& size_30000/random_tree_1 4502.634035 8957290
+run homp memcheck
+&& size_30000/random_tree_2 8399.230861 9164123
+run homp memcheck
+&& size_30000/random_tree_3 6439.469129 8905921
+run homp memcheck
+&& size_30000/random_tree_4 5071.720061 8984771
+run homp memcheck
+&& size_30000/random_tree_5 5122.563183 8851188
+run homp memcheck
+&& size_4000/random_tree_1 490.027606 115071
+run homp memcheck
+&& size_4000/random_tree_2 652.895884 117608
+run homp memcheck
+&& size_4000/random_tree_3 677.008531 116491
+run homp memcheck
+&& size_4000/random_tree_4 642.415999 118480
+run homp memcheck
+&& size_4000/random_tree_5 949.392702 117559
+run homp memcheck
+&& size_50000/random_tree_1 7431.888848 31645014
+run homp memcheck
+&& size_50000/random_tree_2 8814.484298 30555556
+run homp memcheck
+&& size_50000/random_tree_3 6555.270072 29637117
+run homp memcheck
+&& size_50000/random_tree_4 9324.715823 29241762
+run homp memcheck
+&& size_50000/random_tree_5 9499.221803 27376833
+run homp memcheck
+&& size_50000/random_tree_5 9499.221803 29175618
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_edge_weights
+!! hom-9proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_edge_weights
+run homp memcheck
+&& size_10000/random_tree_1 187685.505033 1228964
+run homp memcheck
+&& size_10000/random_tree_2 151387.313099 1207351
+run homp memcheck
+&& size_10000/random_tree_3 173293.236146 1238599
+run homp memcheck
+&& size_10000/random_tree_4 179477.463371 1247419
+run homp memcheck
+&& size_10000/random_tree_5 149079.412881 1230186
+run homp memcheck
+&& size_2000/random_tree_1 34546.199680 43633
+run homp memcheck
+&& size_2000/random_tree_2 28906.611105 43368
+run homp memcheck
+&& size_2000/random_tree_3 52608.193492 45100
+run homp memcheck
+&& size_2000/random_tree_4 40303.614254 44530
+run homp memcheck
+&& size_2000/random_tree_5 47689.704954 47134
+run homp memcheck
+&& size_20000/random_tree_1 369564.212460 5339131
+run homp memcheck
+&& size_20000/random_tree_2 302697.771600 5215192
+run homp memcheck
+&& size_20000/random_tree_3 240334.110330 5325989
+run homp memcheck
+&& size_20000/random_tree_4 336549.145485 5252042
+run homp memcheck
+&& size_20000/random_tree_5 377766.642942 5433036
+run homp memcheck
+&& size_30000/random_tree_1 565116.026915 13418781
+run homp memcheck
+&& size_30000/random_tree_2 583250.402580 13544954
+run homp memcheck
+&& size_30000/random_tree_3 469799.908427 13825913
+run homp memcheck
+&& size_30000/random_tree_4 411330.636231 13532268
+run homp memcheck
+&& size_30000/random_tree_5 572178.470914 13794540
+run homp memcheck
+&& size_4000/random_tree_1 70408.125190 189562
+run homp memcheck
+&& size_4000/random_tree_2 95459.515268 186333
+run homp memcheck
+&& size_4000/random_tree_3 77776.508871 184110
+run homp memcheck
+&& size_4000/random_tree_4 68778.811200 189430
+run homp memcheck
+&& size_4000/random_tree_5 68832.720662 185083
+run homp memcheck
+&& size_50000/random_tree_1 774445.786447 48845308
+run homp memcheck
+&& size_50000/random_tree_2 984583.134908 47051998
+run homp memcheck
+&& size_50000/random_tree_3 687596.473076 45914941
+run homp memcheck
+&& size_50000/random_tree_4 819609.832561 44440890
+run homp memcheck
+&& size_50000/random_tree_5 1015790.199736 43004145
+run homp memcheck
+&& size_50000/random_tree_5 1015790.199736 43998745
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/10_children
+!! hom-36proc-1.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/10_children
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 -1.000000 654319
+run homp memcheck
+run homp
+&& size_10000/random_tree_2 -1.000000 713123
+run homp memcheck
+run homp
+&& size_10000/random_tree_3 1359.011184 692225
+run homp memcheck
+run homp
+&& size_10000/random_tree_4 1229.626431 581403
+run homp memcheck
+run homp
+&& size_10000/random_tree_5 -1.000000 671477
+run homp memcheck
+&& size_2000/random_tree_1 230.251592 17398
+run homp memcheck
+run homp
+&& size_2000/random_tree_2 242.904948 23782
+run homp memcheck
+run homp
+&& size_2000/random_tree_3 346.255726 19173
+run homp memcheck
+run homp
+&& size_2000/random_tree_4 245.925535 17573
+run homp memcheck
+run homp
+&& size_2000/random_tree_5 287.712366 18174
+run homp memcheck
+run homp
+&& size_20000/random_tree_1 -1.000000 3381601
+run homp memcheck
+run homp
+&& size_20000/random_tree_2 -1.000000 3213842
+run homp memcheck
+run homp
+&& size_20000/random_tree_3 -1.000000 3200866
+run homp memcheck
+run homp
+&& size_20000/random_tree_4 -1.000000 3549284
+run homp memcheck
+run homp
+&& size_20000/random_tree_5 2567.544095 2921316
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 -1.000000 8855212
+run homp memcheck
+run homp
+&& size_30000/random_tree_2 -1.000000 7899543
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 -1.000000 7707672
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 -1.000000 7520472
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 -1.000000 8286516
+run homp memcheck
+run homp
+&& size_4000/random_tree_1 458.919528 129204
+run homp memcheck
+run homp
+&& size_4000/random_tree_2 -1.000000 137703
+run homp memcheck
+run homp
+&& size_4000/random_tree_3 565.162002 128594
+run homp memcheck
+run homp
+&& size_4000/random_tree_4 482.451011 84470
+run homp memcheck
+run homp
+&& size_4000/random_tree_5 628.947101 121065
+run homp memcheck
+run homp
+&& size_50000/random_tree_1 -1.000000 27602016
+run homp memcheck
+run homp
+&& size_50000/random_tree_2 -1.000000 29384776
+run homp memcheck
+run homp
+&& size_50000/random_tree_3 -1.000000 25781453
+run homp memcheck
+run homp
+&& size_50000/random_tree_4 -1.000000 29004311
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 27581333
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 27291838
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/all_large
+!! hom-36proc-1.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/all_large
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 104522.010191 725969
+run homp memcheck
+run homp
+&& size_10000/random_tree_2 91759.695805 766364
+run homp memcheck
+&& size_10000/random_tree_3 61899.422209 687207
+run homp memcheck
+&& size_10000/random_tree_4 79433.733081 718765
+run homp memcheck
+run homp
+&& size_10000/random_tree_5 155922.467198 742044
+run homp memcheck
+&& size_2000/random_tree_1 18042.627439 25883
+run homp memcheck
+&& size_2000/random_tree_2 21143.637861 26789
+run homp memcheck
+&& size_2000/random_tree_3 18873.309523 26589
+run homp memcheck
+&& size_2000/random_tree_4 25703.732634 27213
+run homp memcheck
+run homp
+&& size_2000/random_tree_5 23930.281552 28268
+run homp memcheck
+&& size_20000/random_tree_1 206182.689453 3078540
+run homp memcheck
+run homp
+&& size_20000/random_tree_2 193864.547449 3136232
+run homp memcheck
+run homp
+&& size_20000/random_tree_3 131349.126818 3117928
+run homp memcheck
+run homp
+&& size_20000/random_tree_4 187913.372237 3126194
+run homp memcheck
+run homp
+&& size_20000/random_tree_5 194086.500710 3234088
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 279745.612958 7889658
+run homp memcheck
+&& size_30000/random_tree_2 303847.510990 7457264
+run homp memcheck
+&& size_30000/random_tree_3 302213.516336 7810147
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 340639.450089 7778646
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 -1.000000 10867478
+run homp memcheck
+run homp
+&& size_4000/random_tree_1 42892.976143 114208
+run homp memcheck
+run homp
+&& size_4000/random_tree_2 45187.171385 166371
+run homp memcheck
+&& size_4000/random_tree_3 32304.803033 109586
+run homp memcheck
+&& size_4000/random_tree_4 39548.672298 108446
+run homp memcheck
+&& size_4000/random_tree_5 36169.834066 110989
+run homp memcheck
+&& size_50000/random_tree_1 440916.140273 24452364
+run homp memcheck
+run homp
+&& size_50000/random_tree_2 -1.000000 26366015
+run homp memcheck
+run homp
+&& size_50000/random_tree_3 472530.998881 24680728
+run homp memcheck
+run homp
+&& size_50000/random_tree_4 497808.199418 23597403
+run homp memcheck
+&& size_50000/random_tree_5 504750.988832 23074231
+run homp memcheck
+&& size_50000/random_tree_5 504750.988832 22691482
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_makespan_weights
+!! hom-36proc-1.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_makespan_weights
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 2339.746179 87407
+run homp memcheck
+&& size_10000/random_tree_2 2619.612737 43476
+run homp memcheck
+&& size_10000/random_tree_3 1351.861339 47295
+run homp memcheck
+run homp
+&& size_10000/random_tree_4 2681.787640 60525
+run homp memcheck
+run homp
+&& size_10000/random_tree_5 2195.881667 170441
+run homp memcheck
+run homp
+&& size_2000/random_tree_1 1720.559653 7445
+run homp memcheck
+&& size_2000/random_tree_2 3945.552568 6430
+run homp memcheck
+&& size_2000/random_tree_3 1300.323502 3074
+run homp memcheck
+&& size_2000/random_tree_4 1389.506488 1922
+run homp memcheck
+&& size_2000/random_tree_5 5468.052509 18417
+run homp memcheck
+&& size_20000/random_tree_1 2571.475175 157697
+run homp memcheck
+run homp
+&& size_20000/random_tree_2 4245.520679 210718
+run homp memcheck
+&& size_20000/random_tree_3 2387.396627 168157
+run homp memcheck
+&& size_20000/random_tree_4 2311.119117 108722
+run homp memcheck
+&& size_20000/random_tree_5 2870.968452 145696
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 5791.082699 568557
+run homp memcheck
+run homp
+&& size_30000/random_tree_2 5487.423042 594599
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 6483.047097 2163577
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 4241.731326 401975
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 4034.933716 2331293
+run homp memcheck
+&& size_4000/random_tree_1 1619.074088 11297
+run homp memcheck
+run homp
+&& size_4000/random_tree_2 2150.503924 10429
+run homp memcheck
+run homp
+&& size_4000/random_tree_3 1809.776508 18691
+run homp memcheck
+&& size_4000/random_tree_4 1515.880532 11419
+run homp memcheck
+run homp
+&& size_4000/random_tree_5 2056.063831 9505
+run homp memcheck
+run homp
+&& size_50000/random_tree_1 6264.932412 9406244
+run homp memcheck
+run homp
+&& size_50000/random_tree_2 5521.908566 788141
+run homp memcheck
+run homp
+&& size_50000/random_tree_3 8500.679156 3608535
+run homp memcheck
+&& size_50000/random_tree_4 4901.083747 636441
+run homp memcheck
+&& size_50000/random_tree_5 7355.781800 772070
+run homp memcheck
+&& size_50000/random_tree_5 7355.781800 760311
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/20_children
+!! hom-36proc-1.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/20_children
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 1013.049942 290934
+run homp memcheck
+run homp
+&& size_10000/random_tree_2 1109.748434 266842
+run homp memcheck
+run homp
+&& size_10000/random_tree_3 923.626915 319801
+run homp memcheck
+run homp
+&& size_10000/random_tree_4 1319.456850 275905
+run homp memcheck
+run homp
+&& size_10000/random_tree_5 1084.420266 296513
+run homp memcheck
+&& size_2000/random_tree_1 236.630843 9907
+run homp memcheck
+&& size_2000/random_tree_2 237.433932 9669
+run homp memcheck
+&& size_2000/random_tree_3 276.861982 9828
+run homp memcheck
+run homp
+&& size_2000/random_tree_4 271.333338 10521
+run homp memcheck
+run homp
+&& size_2000/random_tree_5 308.752455 13300
+run homp memcheck
+run homp
+&& size_20000/random_tree_1 2227.548541 1561618
+run homp memcheck
+run homp
+&& size_20000/random_tree_2 2033.145811 1392507
+run homp memcheck
+run homp
+&& size_20000/random_tree_3 1993.509929 1574433
+run homp memcheck
+run homp
+&& size_20000/random_tree_4 2274.434142 1600521
+run homp memcheck
+run homp
+&& size_20000/random_tree_5 2367.343325 1801462
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 -1.000000 4210976
+run homp memcheck
+run homp
+&& size_30000/random_tree_2 -1.000000 4436749
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 -1.000000 4740830
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 3158.723206 3887243
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 -1.000000 4945843
+run homp memcheck
+run homp
+&& size_4000/random_tree_1 538.199845 43639
+run homp memcheck
+run homp
+&& size_4000/random_tree_2 506.396917 39507
+run homp memcheck
+run homp
+&& size_4000/random_tree_3 471.322405 42233
+run homp memcheck
+run homp
+&& size_4000/random_tree_4 400.975550 50825
+run homp memcheck
+&& size_4000/random_tree_5 513.205165 38999
+run homp memcheck
+run homp
+&& size_50000/random_tree_1 -1.000000 14919171
+run homp memcheck
+run homp
+&& size_50000/random_tree_2 -1.000000 14146103
+run homp memcheck
+run homp
+&& size_50000/random_tree_3 4716.463680 12417314
+run homp memcheck
+run homp
+&& size_50000/random_tree_4 -1.000000 13812730
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 14302323
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 14279058
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/all_small
+!! hom-36proc-1.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/all_small
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 79.136697 1166467
+run homp memcheck
+&& size_10000/random_tree_2 78.407349 1150356
+run homp memcheck
+&& size_10000/random_tree_3 76.278709 1161335
+run homp memcheck
+run homp
+&& size_10000/random_tree_4 125.858854 1194225
+run homp memcheck
+run homp
+&& size_10000/random_tree_5 86.005024 1161754
+run homp memcheck
+run homp
+&& size_2000/random_tree_1 26.425803 44621
+run homp memcheck
+&& size_2000/random_tree_2 29.406663 41438
+run homp memcheck
+run homp
+&& size_2000/random_tree_3 25.972758 44469
+run homp memcheck
+&& size_2000/random_tree_4 17.432447 43065
+run homp memcheck
+&& size_2000/random_tree_5 19.097706 41868
+run homp memcheck
+run homp
+&& size_20000/random_tree_1 214.270002 5528351
+run homp memcheck
+&& size_20000/random_tree_2 183.569119 5033421
+run homp memcheck
+run homp
+&& size_20000/random_tree_3 206.407517 5019125
+run homp memcheck
+run homp
+&& size_20000/random_tree_4 212.860529 5077155
+run homp memcheck
+run homp
+&& size_20000/random_tree_5 198.878515 5033980
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 308.632767 12678939
+run homp memcheck
+&& size_30000/random_tree_2 216.902551 12301420
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 249.700017 12159240
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 288.754593 12688234
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 318.825767 12820573
+run homp memcheck
+run homp
+&& size_4000/random_tree_1 41.952152 170897
+run homp memcheck
+run homp
+&& size_4000/random_tree_2 32.068397 166184
+run homp memcheck
+&& size_4000/random_tree_3 35.950690 174148
+run homp memcheck
+&& size_4000/random_tree_4 30.501429 168839
+run homp memcheck
+&& size_4000/random_tree_5 41.471941 176310
+run homp memcheck
+run homp
+&& size_50000/random_tree_1 491.414969 42943448
+run homp memcheck
+&& size_50000/random_tree_2 377.640163 42735871
+run homp memcheck
+run homp
+&& size_50000/random_tree_3 722.374728 43134641
+run homp memcheck
+&& size_50000/random_tree_4 611.864680 43566883
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 575.186047 42949086
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 575.186047 43454463
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_node_weights
+!! hom-36proc-1.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_node_weights
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 830.738004 726317
+run homp memcheck
+&& size_10000/random_tree_2 751.214643 712433
+run homp memcheck
+run homp
+&& size_10000/random_tree_3 956.420395 757480
+run homp memcheck
+&& size_10000/random_tree_4 665.580774 692692
+run homp memcheck
+&& size_10000/random_tree_5 1036.990701 726049
+run homp memcheck
+run homp
+&& size_2000/random_tree_1 -1.000000 36697
+run homp memcheck
+&& size_2000/random_tree_2 204.585508 27212
+run homp memcheck
+run homp
+&& size_2000/random_tree_3 222.160991 26738
+run homp memcheck
+&& size_2000/random_tree_4 185.088963 24924
+run homp memcheck
+run homp
+&& size_2000/random_tree_5 162.543949 26993
+run homp memcheck
+&& size_20000/random_tree_1 2780.246332 3023912
+run homp memcheck
+run homp
+&& size_20000/random_tree_2 2018.516783 3033187
+run homp memcheck
+run homp
+&& size_20000/random_tree_3 2491.765487 3105292
+run homp memcheck
+run homp
+&& size_20000/random_tree_4 2305.336085 3104387
+run homp memcheck
+run homp
+&& size_20000/random_tree_5 1752.972346 3150651
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 2696.863278 7635780
+run homp memcheck
+run homp
+&& size_30000/random_tree_2 2813.505981 7540731
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 3040.728197 7689513
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 2831.026107 7676560
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 2903.894550 8084729
+run homp memcheck
+&& size_4000/random_tree_1 439.987282 129664
+run homp memcheck
+run homp
+&& size_4000/random_tree_2 367.462395 109550
+run homp memcheck
+&& size_4000/random_tree_3 446.752231 110728
+run homp memcheck
+&& size_4000/random_tree_4 547.649296 114002
+run homp memcheck
+&& size_4000/random_tree_5 359.094448 108008
+run homp memcheck
+run homp
+&& size_50000/random_tree_1 5499.261613 25794310
+run homp memcheck
+run homp
+&& size_50000/random_tree_2 5098.533997 27177017
+run homp memcheck
+&& size_50000/random_tree_3 4677.988042 24772025
+run homp memcheck
+run homp
+&& size_50000/random_tree_4 4546.968225 25857351
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 26414919
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 25899235
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/3_children
+!! hom-36proc-1.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/3_children
+run homp memcheck
+run homp
+&& size_10000/random_tree_1 -1.000000 1401876
+run homp memcheck
+run homp
+&& size_10000/random_tree_2 -1.000000 1207807
+run homp memcheck
+run homp
+&& size_10000/random_tree_3 -1.000000 1391711
+run homp memcheck
+run homp
+&& size_10000/random_tree_4 -1.000000 1355709
+run homp memcheck
+run homp
+&& size_10000/random_tree_5 -1.000000 1510025
+run homp memcheck
+run homp
+&& size_2000/random_tree_1 -1.000000 68583
+run homp memcheck
+run homp
+&& size_2000/random_tree_2 -1.000000 49758
+run homp memcheck
+run homp
+&& size_2000/random_tree_3 -1.000000 42653
+run homp memcheck
+run homp
+&& size_2000/random_tree_4 -1.000000 59007
+run homp memcheck
+run homp
+&& size_2000/random_tree_5 -1.000000 57659
+run homp memcheck
+run homp
+&& size_20000/random_tree_1 -1.000000 5425978
+run homp memcheck
+run homp
+&& size_20000/random_tree_2 -1.000000 5581821
+run homp memcheck
+run homp
+&& size_20000/random_tree_3 -1.000000 5836847
+run homp memcheck
+run homp
+&& size_20000/random_tree_4 -1.000000 6308319
+run homp memcheck
+run homp
+&& size_20000/random_tree_5 -1.000000 5009813
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 -1.000000 15357920
+run homp memcheck
+run homp
+&& size_30000/random_tree_2 -1.000000 13205835
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 -1.000000 14235359
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 -1.000000 13551806
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 -1.000000 13681962
+run homp memcheck
+run homp
+&& size_4000/random_tree_1 -1.000000 245541
+run homp memcheck
+run homp
+&& size_4000/random_tree_2 -1.000000 185504
+run homp memcheck
+run homp
+&& size_4000/random_tree_3 -1.000000 347493
+run homp memcheck
+run homp
+&& size_4000/random_tree_4 -1.000000 233454
+run homp memcheck
+run homp
+&& size_4000/random_tree_5 -1.000000 191656
+run homp memcheck
+run homp
+&& size_50000/random_tree_1 -1.000000 40557725
+run homp memcheck
+run homp
+&& size_50000/random_tree_2 -1.000000 40637814
+run homp memcheck
+run homp
+&& size_50000/random_tree_3 -1.000000 36777656
+run homp memcheck
+run homp
+&& size_50000/random_tree_4 -1.000000 39236781
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 36523566
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 -1.000000 37639998
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_edge_weights
+!! hom-36proc-1.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_edge_weights
+run homp memcheck
+&& size_10000/random_tree_1 72835.023382 1230861
+run homp memcheck
+run homp
+&& size_10000/random_tree_2 78221.048586 1206658
+run homp memcheck
+&& size_10000/random_tree_3 103670.113881 1242064
+run homp memcheck
+&& size_10000/random_tree_4 85333.961153 1230185
+run homp memcheck
+run homp
+&& size_10000/random_tree_5 85999.005657 1230572
+run homp memcheck
+&& size_2000/random_tree_1 14555.065595 43220
+run homp memcheck
+run homp
+&& size_2000/random_tree_2 15898.323298 43429
+run homp memcheck
+&& size_2000/random_tree_3 20907.865999 44947
+run homp memcheck
+&& size_2000/random_tree_4 18288.846788 44391
+run homp memcheck
+run homp
+&& size_2000/random_tree_5 22699.092380 48180
+run homp memcheck
+run homp
+&& size_20000/random_tree_1 224302.649496 5339631
+run homp memcheck
+run homp
+&& size_20000/random_tree_2 207019.425244 5745749
+run homp memcheck
+run homp
+&& size_20000/random_tree_3 154550.733038 5537649
+run homp memcheck
+run homp
+&& size_20000/random_tree_4 -1.000000 6334201
+run homp memcheck
+run homp
+&& size_20000/random_tree_5 204944.305606 5475546
+run homp memcheck
+run homp
+&& size_30000/random_tree_1 269053.489153 14155781
+run homp memcheck
+run homp
+&& size_30000/random_tree_2 347921.823800 14055314
+run homp memcheck
+run homp
+&& size_30000/random_tree_3 254243.809573 14024310
+run homp memcheck
+run homp
+&& size_30000/random_tree_4 222817.690689 12336891
+run homp memcheck
+run homp
+&& size_30000/random_tree_5 295445.745695 13139541
+run homp memcheck
+&& size_4000/random_tree_1 39950.173639 184650
+run homp memcheck
+&& size_4000/random_tree_2 47101.751185 177855
+run homp memcheck
+&& size_4000/random_tree_3 29461.541373 180378
+run homp memcheck
+&& size_4000/random_tree_4 44069.567914 179851
+run homp memcheck
+&& size_4000/random_tree_5 37140.535027 178274
+run homp memcheck
+&& size_50000/random_tree_1 504271.791028 43614342
+run homp memcheck
+run homp
+&& size_50000/random_tree_2 481032.718867 45073552
+run homp memcheck
+run homp
+&& size_50000/random_tree_3 379763.659094 44104449
+run homp memcheck
+&& size_50000/random_tree_4 383567.472280 45057389
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 498218.741827 45795006
+run homp memcheck
+run homp
+&& size_50000/random_tree_5 498218.741827 46890751
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/10_children
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/10_children
+run homp memcheck
+&& size_10000/random_tree_1 1518.123607 495261
+run homp memcheck
+&& size_10000/random_tree_2 962.213249 496543
+run homp memcheck
+&& size_10000/random_tree_3 1414.435735 496146
+run homp memcheck
+&& size_10000/random_tree_4 1507.587519 507182
+run homp memcheck
+&& size_10000/random_tree_5 1014.916355 502576
+run homp memcheck
+&& size_2000/random_tree_1 295.159058 17198
+run homp memcheck
+&& size_2000/random_tree_2 259.581246 17351
+run homp memcheck
+&& size_2000/random_tree_3 409.123749 17678
+run homp memcheck
+&& size_2000/random_tree_4 295.227280 17136
+run homp memcheck
+&& size_2000/random_tree_5 345.251807 17602
+run homp memcheck
+&& size_20000/random_tree_1 2411.121667 2512188
+run homp memcheck
+&& size_20000/random_tree_2 2597.360598 2422026
+run homp memcheck
+&& size_20000/random_tree_3 2332.274753 2499612
+run homp memcheck
+&& size_20000/random_tree_4 2964.994084 2512646
+run homp memcheck
+&& size_20000/random_tree_5 2980.258404 2479681
+run homp memcheck
+&& size_30000/random_tree_1 4281.412467 6645464
+run homp memcheck
+&& size_30000/random_tree_2 3450.747186 6581129
+run homp memcheck
+&& size_30000/random_tree_3 4840.045127 6528586
+run homp memcheck
+&& size_30000/random_tree_4 4130.738926 6549133
+run homp memcheck
+&& size_30000/random_tree_5 3612.694804 6511176
+run homp memcheck
+&& size_4000/random_tree_1 497.023971 71129
+run homp memcheck
+&& size_4000/random_tree_2 540.297070 70609
+run homp memcheck
+&& size_4000/random_tree_3 534.240013 72036
+run homp memcheck
+&& size_4000/random_tree_4 503.460950 71088
+run homp memcheck
+&& size_4000/random_tree_5 697.152632 71736
+run homp memcheck
+&& size_50000/random_tree_1 8026.785397 21638368
+run homp memcheck
+&& size_50000/random_tree_2 5131.556539 21757886
+run homp memcheck
+&& size_50000/random_tree_3 5778.625132 21807585
+run homp memcheck
+&& size_50000/random_tree_4 7670.840233 22164327
+run homp memcheck
+&& size_50000/random_tree_5 6338.328831 22033290
+run homp memcheck
+&& size_50000/random_tree_5 6338.328831 22226173
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/all_large
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/all_large
+run homp memcheck
+&& size_10000/random_tree_1 157841.440154 703921
+run homp memcheck
+&& size_10000/random_tree_2 113809.536656 733821
+run homp memcheck
+&& size_10000/random_tree_3 95812.798520 688899
+run homp memcheck
+&& size_10000/random_tree_4 144408.736580 719162
+run homp memcheck
+&& size_10000/random_tree_5 198262.264109 712171
+run homp memcheck
+&& size_2000/random_tree_1 24755.712488 25802
+run homp memcheck
+&& size_2000/random_tree_2 26198.374788 27027
+run homp memcheck
+&& size_2000/random_tree_3 27302.677616 26746
+run homp memcheck
+&& size_2000/random_tree_4 36828.877905 27211
+run homp memcheck
+&& size_2000/random_tree_5 28471.042403 27738
+run homp memcheck
+&& size_20000/random_tree_1 272416.057093 3076818
+run homp memcheck
+&& size_20000/random_tree_2 251992.971645 3100642
+run homp memcheck
+&& size_20000/random_tree_3 179969.628017 3068696
+run homp memcheck
+&& size_20000/random_tree_4 245591.374895 3068764
+run homp memcheck
+&& size_20000/random_tree_5 223155.454355 3054395
+run homp memcheck
+&& size_30000/random_tree_1 405193.239452 7778766
+run homp memcheck
+&& size_30000/random_tree_2 412304.944105 7457173
+run homp memcheck
+&& size_30000/random_tree_3 426622.197393 7767125
+run homp memcheck
+&& size_30000/random_tree_4 440213.823505 7507749
+run homp memcheck
+&& size_30000/random_tree_5 372108.370358 7525257
+run homp memcheck
+&& size_4000/random_tree_1 58659.861626 113235
+run homp memcheck
+&& size_4000/random_tree_2 52465.105405 118438
+run homp memcheck
+&& size_4000/random_tree_3 41833.650224 109588
+run homp memcheck
+&& size_4000/random_tree_4 61737.673779 110029
+run homp memcheck
+&& size_4000/random_tree_5 57251.977324 111577
+run homp memcheck
+&& size_50000/random_tree_1 663921.853836 26380202
+run homp memcheck
+&& size_50000/random_tree_2 630459.261644 25571047
+run homp memcheck
+&& size_50000/random_tree_3 617427.734667 26146559
+run homp memcheck
+&& size_50000/random_tree_4 587517.903049 26256318
+run homp memcheck
+&& size_50000/random_tree_5 707146.478776 24614792
+run homp memcheck
+&& size_50000/random_tree_5 707146.478776 24783564
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_makespan_weights
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_makespan_weights
+run homp memcheck
+&& size_10000/random_tree_1 2184.642923 46825
+run homp memcheck
+&& size_10000/random_tree_2 2839.574916 43656
+run homp memcheck
+&& size_10000/random_tree_3 1654.388477 47734
+run homp memcheck
+&& size_10000/random_tree_4 2776.018810 51838
+run homp memcheck
+&& size_10000/random_tree_5 1800.982907 39325
+run homp memcheck
+&& size_2000/random_tree_1 1260.834372 2195
+run homp memcheck
+&& size_2000/random_tree_2 1909.656552 3625
+run homp memcheck
+&& size_2000/random_tree_3 1368.332350 3076
+run homp memcheck
+&& size_2000/random_tree_4 1410.072742 1952
+run homp memcheck
+&& size_2000/random_tree_5 1774.584342 5404
+run homp memcheck
+&& size_20000/random_tree_1 3026.622309 176818
+run homp memcheck
+&& size_20000/random_tree_2 4339.163017 191419
+run homp memcheck
+&& size_20000/random_tree_3 3045.259636 184811
+run homp memcheck
+&& size_20000/random_tree_4 2801.637485 111396
+run homp memcheck
+&& size_20000/random_tree_5 3344.693980 147166
+run homp memcheck
+&& size_30000/random_tree_1 6382.808047 444953
+run homp memcheck
+&& size_30000/random_tree_2 6414.042083 491785
+run homp memcheck
+&& size_30000/random_tree_3 5523.085825 388849
+run homp memcheck
+&& size_30000/random_tree_4 4541.562854 361679
+run homp memcheck
+&& size_30000/random_tree_5 3664.901269 317968
+run homp memcheck
+&& size_4000/random_tree_1 1723.592925 13194
+run homp memcheck
+&& size_4000/random_tree_2 1677.916799 9217
+run homp memcheck
+&& size_4000/random_tree_3 1977.377038 14533
+run homp memcheck
+&& size_4000/random_tree_4 1654.182448 11161
+run homp memcheck
+&& size_4000/random_tree_5 2096.033956 7953
+run homp memcheck
+&& size_50000/random_tree_1 6525.497185 1008756
+run homp memcheck
+&& size_50000/random_tree_2 6604.750455 725011
+run homp memcheck
+&& size_50000/random_tree_3 8722.608152 923551
+run homp memcheck
+&& size_50000/random_tree_4 7331.676836 615011
+run homp memcheck
+&& size_50000/random_tree_5 9066.114620 662445
+run homp memcheck
+&& size_50000/random_tree_5 9066.114620 667557
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/20_children
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/20_children
+run homp memcheck
+&& size_10000/random_tree_1 1171.812326 284304
+run homp memcheck
+&& size_10000/random_tree_2 1335.275219 281992
+run homp memcheck
+&& size_10000/random_tree_3 1077.573961 269649
+run homp memcheck
+&& size_10000/random_tree_4 1731.328555 272524
+run homp memcheck
+&& size_10000/random_tree_5 1251.367030 276851
+run homp memcheck
+&& size_2000/random_tree_1 252.207875 9860
+run homp memcheck
+&& size_2000/random_tree_2 257.517244 9720
+run homp memcheck
+&& size_2000/random_tree_3 308.621800 9896
+run homp memcheck
+&& size_2000/random_tree_4 285.212272 9641
+run homp memcheck
+&& size_2000/random_tree_5 325.105348 9777
+run homp memcheck
+&& size_20000/random_tree_1 2666.245808 1397669
+run homp memcheck
+&& size_20000/random_tree_2 2610.826630 1341204
+run homp memcheck
+&& size_20000/random_tree_3 2339.122146 1337609
+run homp memcheck
+&& size_20000/random_tree_4 2573.318017 1322109
+run homp memcheck
+&& size_20000/random_tree_5 2500.497637 1340665
+run homp memcheck
+&& size_30000/random_tree_1 5161.543270 3544258
+run homp memcheck
+&& size_30000/random_tree_2 4126.861877 3504928
+run homp memcheck
+&& size_30000/random_tree_3 3150.301871 3490663
+run homp memcheck
+&& size_30000/random_tree_4 3639.485585 3527742
+run homp memcheck
+&& size_30000/random_tree_5 5775.930206 3546655
+run homp memcheck
+&& size_4000/random_tree_1 669.004262 39452
+run homp memcheck
+&& size_4000/random_tree_2 661.797770 38426
+run homp memcheck
+&& size_4000/random_tree_3 526.607978 39088
+run homp memcheck
+&& size_4000/random_tree_4 417.129995 39041
+run homp memcheck
+&& size_4000/random_tree_5 612.809657 38945
+run homp memcheck
+&& size_50000/random_tree_1 6110.853145 11625803
+run homp memcheck
+&& size_50000/random_tree_2 7544.183010 11714926
+run homp memcheck
+&& size_50000/random_tree_3 5882.341659 11743965
+run homp memcheck
+&& size_50000/random_tree_4 7942.697181 11920896
+run homp memcheck
+&& size_50000/random_tree_5 5726.326712 11965309
+run homp memcheck
+&& size_50000/random_tree_5 5726.326712 12102605
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/all_small
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/all_small
+run homp memcheck
+&& size_10000/random_tree_1 94.758665 1165605
+run homp memcheck
+&& size_10000/random_tree_2 99.021656 1147958
+run homp memcheck
+&& size_10000/random_tree_3 119.841722 1159942
+run homp memcheck
+&& size_10000/random_tree_4 151.679595 1192462
+run homp memcheck
+&& size_10000/random_tree_5 128.914767 1155937
+run homp memcheck
+&& size_2000/random_tree_1 31.119988 43950
+run homp memcheck
+&& size_2000/random_tree_2 39.725150 41319
+run homp memcheck
+&& size_2000/random_tree_3 28.582380 41887
+run homp memcheck
+&& size_2000/random_tree_4 25.385635 43030
+run homp memcheck
+&& size_2000/random_tree_5 26.664393 41913
+run homp memcheck
+&& size_20000/random_tree_1 227.541571 5006496
+run homp memcheck
+&& size_20000/random_tree_2 241.906014 5236188
+run homp memcheck
+&& size_20000/random_tree_3 263.325056 5132563
+run homp memcheck
+&& size_20000/random_tree_4 293.939113 5021026
+run homp memcheck
+&& size_20000/random_tree_5 275.551881 5217902
+run homp memcheck
+&& size_30000/random_tree_1 430.440939 13132624
+run homp memcheck
+&& size_30000/random_tree_2 405.480192 12764313
+run homp memcheck
+&& size_30000/random_tree_3 298.187364 12999033
+run homp memcheck
+&& size_30000/random_tree_4 346.147517 12947519
+run homp memcheck
+&& size_30000/random_tree_5 337.711221 12378458
+run homp memcheck
+&& size_4000/random_tree_1 49.372202 168473
+run homp memcheck
+&& size_4000/random_tree_2 40.147789 163440
+run homp memcheck
+&& size_4000/random_tree_3 56.032693 173447
+run homp memcheck
+&& size_4000/random_tree_4 39.150707 167773
+run homp memcheck
+&& size_4000/random_tree_5 54.408978 175755
+run homp memcheck
+&& size_50000/random_tree_1 621.678349 42540450
+run homp memcheck
+&& size_50000/random_tree_2 594.957108 40247095
+run homp memcheck
+&& size_50000/random_tree_3 696.852416 41420199
+run homp memcheck
+&& size_50000/random_tree_4 899.903668 41445295
+run homp memcheck
+&& size_50000/random_tree_5 711.061207 41961061
+run homp memcheck
+&& size_50000/random_tree_5 711.061207 41835273
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_node_weights
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_node_weights
+run homp memcheck
+&& size_10000/random_tree_1 1143.934765 692612
+run homp memcheck
+&& size_10000/random_tree_2 1066.447908 718464
+run homp memcheck
+&& size_10000/random_tree_3 1240.014234 741094
+run homp memcheck
+&& size_10000/random_tree_4 877.037450 692044
+run homp memcheck
+&& size_10000/random_tree_5 1447.660711 730567
+run homp memcheck
+&& size_2000/random_tree_1 284.057447 27539
+run homp memcheck
+&& size_2000/random_tree_2 270.325039 27452
+run homp memcheck
+&& size_2000/random_tree_3 314.640968 26520
+run homp memcheck
+&& size_2000/random_tree_4 251.239971 24898
+run homp memcheck
+&& size_2000/random_tree_5 186.965388 26326
+run homp memcheck
+&& size_20000/random_tree_1 3887.405158 3023229
+run homp memcheck
+&& size_20000/random_tree_2 2996.277746 2997602
+run homp memcheck
+&& size_20000/random_tree_3 3441.223016 3061449
+run homp memcheck
+&& size_20000/random_tree_4 2861.767935 3062524
+run homp memcheck
+&& size_20000/random_tree_5 2276.942482 3038065
+run homp memcheck
+&& size_30000/random_tree_1 3669.154959 8018717
+run homp memcheck
+&& size_30000/random_tree_2 3697.551349 7633530
+run homp memcheck
+&& size_30000/random_tree_3 4083.103858 7533857
+run homp memcheck
+&& size_30000/random_tree_4 3687.295148 7480807
+run homp memcheck
+&& size_30000/random_tree_5 3687.876508 7735944
+run homp memcheck
+&& size_4000/random_tree_1 571.986532 113949
+run homp memcheck
+&& size_4000/random_tree_2 612.037284 107218
+run homp memcheck
+&& size_4000/random_tree_3 521.672865 110253
+run homp memcheck
+&& size_4000/random_tree_4 765.756413 114781
+run homp memcheck
+&& size_4000/random_tree_5 417.431790 107565
+run homp memcheck
+&& size_50000/random_tree_1 7563.864497 24689427
+run homp memcheck
+&& size_50000/random_tree_2 5972.398007 23639412
+run homp memcheck
+&& size_50000/random_tree_3 6049.584431 23571249
+run homp memcheck
+&& size_50000/random_tree_4 5759.984536 23017890
+run homp memcheck
+&& size_50000/random_tree_5 8129.584022 23189419
+run homp memcheck
+&& size_50000/random_tree_5 8129.584022 23090971
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/3_children
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/3_children
+run homp memcheck
+&& size_10000/random_tree_1 1591.323872 795266
+run homp memcheck
+&& size_10000/random_tree_2 1511.995839 764041
+run homp memcheck
+&& size_10000/random_tree_3 1099.661222 763885
+run homp memcheck
+&& size_10000/random_tree_4 1350.323429 776116
+run homp memcheck
+&& size_10000/random_tree_5 1127.733941 793454
+run homp memcheck
+&& size_2000/random_tree_1 298.676695 29197
+run homp memcheck
+&& size_2000/random_tree_2 309.638324 26637
+run homp memcheck
+&& size_2000/random_tree_3 318.586905 29619
+run homp memcheck
+&& size_2000/random_tree_4 243.376240 28426
+run homp memcheck
+&& size_2000/random_tree_5 296.721168 29640
+run homp memcheck
+&& size_20000/random_tree_1 2914.332354 3447707
+run homp memcheck
+&& size_20000/random_tree_2 2880.861614 3730417
+run homp memcheck
+&& size_20000/random_tree_3 3039.365147 3629502
+run homp memcheck
+&& size_20000/random_tree_4 2697.635436 3504697
+run homp memcheck
+&& size_20000/random_tree_5 1914.942965 3721701
+run homp memcheck
+&& size_30000/random_tree_1 3259.038455 8795173
+run homp memcheck
+&& size_30000/random_tree_2 5675.183195 8981520
+run homp memcheck
+&& size_30000/random_tree_3 3456.912988 8889539
+run homp memcheck
+&& size_30000/random_tree_4 4068.753943 9034410
+run homp memcheck
+&& size_30000/random_tree_5 3368.600758 8854269
+run homp memcheck
+&& size_4000/random_tree_1 348.086634 114349
+run homp memcheck
+&& size_4000/random_tree_2 406.692907 117134
+run homp memcheck
+&& size_4000/random_tree_3 524.975277 115669
+run homp memcheck
+&& size_4000/random_tree_4 399.784495 117203
+run homp memcheck
+&& size_4000/random_tree_5 802.927300 119469
+run homp memcheck
+&& size_50000/random_tree_1 6349.069357 30838910
+run homp memcheck
+&& size_50000/random_tree_2 6310.611285 29300698
+run homp memcheck
+&& size_50000/random_tree_3 5064.773362 29020031
+run homp memcheck
+&& size_50000/random_tree_4 6213.638428 28711723
+run homp memcheck
+&& size_50000/random_tree_5 8174.237750 28097268
+run homp memcheck
+&& size_50000/random_tree_5 8174.237750 28375594
+!! /work/kulagins/scheduler-homp2/real_Trees/random_trees/large_edge_weights
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp2/real_Trees/random_trees/large_edge_weights
+run homp memcheck
+&& size_10000/random_tree_1 112679.076768 1224845
+run homp memcheck
+&& size_10000/random_tree_2 111884.184249 1199116
+run homp memcheck
+&& size_10000/random_tree_3 140947.083476 1239740
+run homp memcheck
+&& size_10000/random_tree_4 131336.550183 1235738
+run homp memcheck
+&& size_10000/random_tree_5 118900.619084 1227643
+run homp memcheck
+&& size_2000/random_tree_1 21434.972215 43427
+run homp memcheck
+&& size_2000/random_tree_2 22442.089179 43036
+run homp memcheck
+&& size_2000/random_tree_3 33587.325273 44971
+run homp memcheck
+&& size_2000/random_tree_4 27200.758099 44382
+run homp memcheck
+&& size_2000/random_tree_5 32334.230063 46694
+run homp memcheck
+&& size_20000/random_tree_1 296584.191783 5289838
+run homp memcheck
+&& size_20000/random_tree_2 250975.132436 5320738
+run homp memcheck
+&& size_20000/random_tree_3 171172.636844 5390566
+run homp memcheck
+&& size_20000/random_tree_4 202994.213052 5244554
+run homp memcheck
+&& size_20000/random_tree_5 278733.424494 5400381
+run homp memcheck
+&& size_30000/random_tree_1 344791.439906 13764667
+run homp memcheck
+&& size_30000/random_tree_2 428697.826426 13717743
+run homp memcheck
+&& size_30000/random_tree_3 323564.727717 13641160
+run homp memcheck
+&& size_30000/random_tree_4 292468.344539 13322435
+run homp memcheck
+&& size_30000/random_tree_5 390387.527654 13434874
+run homp memcheck
+&& size_4000/random_tree_1 50103.879082 189623
+run homp memcheck
+&& size_4000/random_tree_2 68835.011939 184310
+run homp memcheck
+&& size_4000/random_tree_3 50023.267390 184448
+run homp memcheck
+&& size_4000/random_tree_4 52103.017106 187246
+run homp memcheck
+&& size_4000/random_tree_5 50420.858132 183431
+run homp memcheck
+&& size_50000/random_tree_1 639703.510405 46759168
+run homp memcheck
+&& size_50000/random_tree_2 676886.012315 48352334
+run homp memcheck
+&& size_50000/random_tree_3 496925.291817 48341151
+run homp memcheck
+&& size_50000/random_tree_4 625931.375836 47485077
+run homp memcheck
+&& size_50000/random_tree_5 607817.075886 48869890
+run homp memcheck
+&& size_50000/random_tree_5 607817.075886 47690492

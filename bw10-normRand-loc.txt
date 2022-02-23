@@ -1,6 +1,0 @@
-2-level
-heterogeneous
-./real_Trees/random_trees/old_trees/
-&& size_10000/random_tree_1 1277.153563 230371
-&& size_10000/random_tree_2 2093.916599 294224
-&& size_10000/random_tree_3 1558.563248 241039

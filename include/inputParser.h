@@ -155,6 +155,7 @@ public:
                 *it = (*it) * normedMemory;
             }
         }
+        
         Cluster *cluster;
         if(heterogeneous){
             cluster = new Cluster(processorCounts,mems,speeds, BW_inside, BW_outside);    

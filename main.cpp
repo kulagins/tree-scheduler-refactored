@@ -220,7 +220,7 @@ int main(int argc, char **argv) {
     } while (OpenFile.good());
     OpenFile.close();
     processorUtilizationOverall/=numTrees;
-    quietPrint("proc util "+ to_string(processorUtilizationOverall));
+    //quietPrint("proc util "+ to_string(processorUtilizationOverall));
     cout << treesToRerun << endl;
     exit(EXIT_SUCCESS);
 

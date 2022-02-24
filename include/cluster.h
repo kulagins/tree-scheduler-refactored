@@ -346,8 +346,6 @@ public:
 
     static vector<double> buildHomogeneousMemorySizes(double memSize, unsigned int num_processors);
 
-    static std::map<int, int> buildProcessorSpeeds(int num_processors);
-
     void SetBandwidth(double CCR, Tree *treeobj);
 
     Processor *getFirstFreeProcessorOrSmallest();
@@ -356,24 +354,13 @@ public:
 
     void assignTasksForIds(Tree *tree);
 
-    static void buildStatic2LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights);
-
-    static void
-    buildTreeDepHomBandwidths(double CCR, unsigned int num_processors, Tree *treeobj, double &minMem, double &maxoutd,
-                              schedule_traversal *&temp_schedule);
-
     static vector<double> buildNLevelMemorySizes(vector<double> memories, vector<unsigned int> processorGroupSizes);
-
-    static void buildStatic3LevelCluster(double maxMinMem, double maxEdgesToMakespanWeights);
 
     string getUsageString();
 
     void clean();
 
     string getShortUsageString();
-
-    static void
-    BuildFixedClusterWithMemories(double maxEdgesToMakespanWeights, int num_processors, vector<double> &memorySizes);
 
     Processor *smallestFreeProcessorFitting(double requiredMem);
 

@@ -7,7 +7,7 @@ echo "matrix"
 pwd
 for cluster in $clusters; do 
     echo "!! $cluster"
-    ./main ./real_Trees/trees/ treesListGHS.txt ./clusters/36-proc/$cluster 0 0 1      
+    ./main ./data/trees/ treesListGHS.txt ./clusters/36-proc/$cluster 0 0 1      
 done
 
 

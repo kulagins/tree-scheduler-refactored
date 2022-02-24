@@ -58,6 +58,11 @@ The basic call is then
 ./main trees-directory trees-list cluster-file-path clustering-mode build-small-clusters verbosity
 ```
 
+There are a range of pre-written scripts to run the experiments on given data. You can find them in the `runscripts`-directory. They can be called from the root directory using
+```shell
+./runscripts/<runscript_name>.sh
+```
+
 ### How to run tests and add new ones
 To compile all existing tests, do ```make alltests``` in root.
 

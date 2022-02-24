@@ -69,9 +69,9 @@ Add new tests in the directory `test`. Any tests added in the existing file `tes
 
 ### How to run experiments using simexpal
 1. Install simexpal using `pip3 install simexpal`
-2. run experiments using `simex experiments run --all`
+2. run experiments using `simex experiments launch --all`
 
-You can delete the results using `simex experiments purge --all` and show the program output using `simex experiments print --all`.
+You can delete the results using `simex experiments purge --all -f` and show the program output using `simex experiments print --all`.
 
 #### How to add new experiments to simexpal
 
@@ -85,16 +85,11 @@ Depending on what new parameter you want to add, you have to change a different 
 
 The experiments can be evaluated using 
 ```shell
-python3 output_analyser.py <path_to_output_file> [<path_to_csv>]
+python3 output_analyser.py [<path_to_csv>]
 ```
-this will create a plot of the means to the makespan-ratios and a CSV-file for the calculated output.
+this will create a plot of the means to the makespan-ratios and a CSV-file for the calculated output.  If `<path_to_csv>` is left empty, the csv will be printed to `out.csv` by default.
 
-If `<path_to_csv>` is left empty, the csv will be printed to `out.csv` by default.
-
-Example call:
-```shell
-python3 output_analyser.py output/10_children/clusterList_27.out
-```
+The order of the plots is dependent on the order of the clusters in the `clusterList`. The first element in the `clusterList` will be the cluster that all the other ones are being compared with. The plots will appear in ascending order regarding the clusters in the `clusterList`.
 
 ## Frequently Asked Questions and Common Errors
 

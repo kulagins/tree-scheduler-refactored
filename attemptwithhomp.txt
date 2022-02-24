@@ -1,5 +1,0 @@
-matrix
-/home/kulaginasv/workspace/MemComRefactored/tree-scheduler-refactored
-./real_Trees/trees/
-&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 70015.149333 28220326
-&& dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 12325.782667 205943062

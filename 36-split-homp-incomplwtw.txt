@@ -1,0 +1,1943 @@
+single tree
+RS-36-split.sh
+matrix
+/work/kulagins/scheduler-homp
+./real_Trees/trees/
+&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 70015.149333 4285919
+&& dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 12325.782667 38675465
+&& dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 20925.304667 28757858
+&& dump.0.1.amd.Bova.rma10-374.tree.nf 255405.930667 3887166
+&& dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 31200.044000 453569646
+&& dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 253033.811333 98874135
+&& dump.0.1.amd.QY.case39-2136.tree.nf 73538.160000 2288628
+&& dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 978267.487333 28469832
+&& dump.0.1.metis.Boeing.ct20stif-356.tree.nf 1337775.504667 5380108
+&& dump.0.1.metis.Bova.rma10-374.tree.nf 134395.228667 3045893
+&& dump.0.1.metis.CPM.cz40948-2567.tree.nf 1135.662667 10919316
+&& dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 30224714.263333 108364443
+&& dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1396672.712000 3360858
+&& dump.0.1.metis.Goodwin.rim-447.tree.nf 19829.576000 1715752
+&& dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 7223.644667 12282365
+&& dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 53282265.126000 122146728
+&& dump.0.1.metis.Schmid.thermal1-1402.tree.nf 67039.687333 59366620
+&& dump.0.1.metis.Shyy.shyy161-809.tree.nf 56720.598667 58031209
+&& dump.0.1.metis.Wang.wang4-833.tree.nf 914254.799333 6672366
+&& dump.0.1.metis.Watson.Baumann-1855.tree.nf 3261835.380000 140573798
+&& dump.1.1.amd.QY.case39-2136.tree.nf 100865.428000 1887177
+&& dump.1.1.metis.CPM.cz40948-2567.tree.nf 1165.833333 6998027
+&& dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 10860.556667 27513851
+&& dump.1.2.amd.QY.case39-2136.tree.nf -2.000000 244717974
+&& dump.1.3.amd.QY.case39-2136.tree.nf -2.000000 241375072
+&& dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 57241586.317334 115730465
+&& dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 58301494.513334 13524699
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106773.632000 6675979
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106773.632000 6722526
+!! hom-27proc-1.json
+./real_Trees/trees/
+&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 69319.134000 4271708
+run homp
+&& dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 12355.743333 47295287
+&& dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 20926.687333 27355581
+&& dump.0.1.amd.Bova.rma10-374.tree.nf 297821.212667 4359784
+run homp
+&& dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 31259.265333 498550644
+&& dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 253959.528667 106543334
+run homp
+&& dump.0.1.amd.QY.case39-2136.tree.nf 90510.608000 2882658
+&& dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 978846.487333 31994551
+&& dump.0.1.metis.Boeing.ct20stif-356.tree.nf 1353592.932000 6497661
+&& dump.0.1.metis.Bova.rma10-374.tree.nf 138565.548667 3644328
+run homp
+&& dump.0.1.metis.CPM.cz40948-2567.tree.nf 2082.897333 11603585
+&& dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 30224720.039333 115544234
+&& dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1399073.048000 3755745
+&& dump.0.1.metis.Goodwin.rim-447.tree.nf 21593.692000 1923317
+&& dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 7225.661333 12186201
+run homp
+&& dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 52559288.326667 125905743
+run homp
+&& dump.0.1.metis.Schmid.thermal1-1402.tree.nf 66942.238667 64674936
+&& dump.0.1.metis.Shyy.shyy161-809.tree.nf 56851.273333 61930327
+&& dump.0.1.metis.Wang.wang4-833.tree.nf 914723.726000 7499822
+&& dump.0.1.metis.Watson.Baumann-1855.tree.nf 3282438.006667 148825894
+run homp
+&& dump.1.1.amd.QY.case39-2136.tree.nf 124927.568000 2097159
+run homp
+&& dump.1.1.metis.CPM.cz40948-2567.tree.nf 2881.357333 7136155
+&& dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 10860.813333 27463733
+run homp
+&& dump.1.2.amd.QY.case39-2136.tree.nf 126785.498000 4590202
+run homp
+&& dump.1.3.amd.QY.case39-2136.tree.nf 130468.358000 1169072
+&& dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 57241592.789334 107058231
+&& dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 58301528.078668 14148605
+run homp
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106805.390667 6835033
+run homp
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106805.390667 6902080
+!! hom-18proc-1,5.json
+./real_Trees/trees/
+&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 73719.632667 4295340
+&& dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 12328.107333 40611665
+&& dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 20929.909333 31866538
+&& dump.0.1.amd.Bova.rma10-374.tree.nf 315365.912667 3995348
+&& dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 31200.140000 456662147
+&& dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 255507.481333 97467935
+&& dump.0.1.amd.QY.case39-2136.tree.nf 72753.056000 2296478
+&& dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 979425.487333 28716100
+&& dump.0.1.metis.Boeing.ct20stif-356.tree.nf 1515172.248000 5383959
+&& dump.0.1.metis.Bova.rma10-374.tree.nf 152759.245333 3041070
+&& dump.0.1.metis.CPM.cz40948-2567.tree.nf 800.004000 10863879
+&& dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 30224731.259333 105478566
+&& dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1456834.454000 2596843
+&& dump.0.1.metis.Goodwin.rim-447.tree.nf 26549.364000 1746524
+&& dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 7546.920667 11819899
+&& dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 53282265.498000 116699591
+&& dump.0.1.metis.Schmid.thermal1-1402.tree.nf 67039.699333 60420651
+&& dump.0.1.metis.Shyy.shyy161-809.tree.nf 59700.658667 61382962
+&& dump.0.1.metis.Wang.wang4-833.tree.nf 922840.799333 6618526
+&& dump.0.1.metis.Watson.Baumann-1855.tree.nf 4253856.327333 147833670
+&& dump.1.1.amd.QY.case39-2136.tree.nf 100813.896000 1877978
+&& dump.1.1.metis.CPM.cz40948-2567.tree.nf 822.634000 6405688
+&& dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 10861.257333 28511759
+&& dump.1.2.amd.QY.case39-2136.tree.nf 102197.700667 4378632
+&& dump.1.3.amd.QY.case39-2136.tree.nf 104755.996667 1033799
+&& dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 57241607.088001 129534038
+&& dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 58301596.545334 16047722
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106773.644000 6718652
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106773.644000 6772316
+!! hom-9proc-3.json
+./real_Trees/trees/
+&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 102246.135333 4282573
+&& dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 12337.008667 43646833
+&& dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 20967.100667 30573034
+&& dump.0.1.amd.Bova.rma10-374.tree.nf 365895.203333 3747173
+&& dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 31211.512000 524608766
+&& dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 292508.115333 99009472
+&& dump.0.1.amd.QY.case39-2136.tree.nf 91615.709333 2335589
+&& dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 980004.487333 30262748
+&& dump.0.1.metis.Boeing.ct20stif-356.tree.nf 1823829.878667 6103691
+&& dump.0.1.metis.Bova.rma10-374.tree.nf 214622.800000 3184470
+&& dump.0.1.metis.CPM.cz40948-2567.tree.nf 1461.671333 11007459
+&& dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 30224888.014000 110599971
+&& dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 2055500.616000 3580157
+&& dump.0.1.metis.Goodwin.rim-447.tree.nf 31628.724000 1806700
+&& dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 9759.977333 12056514
+&& dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 53282266.371334 128894260
+&& dump.0.1.metis.Schmid.thermal1-1402.tree.nf 67039.705333 62730920
+&& dump.0.1.metis.Shyy.shyy161-809.tree.nf 85552.048000 64235572
+&& dump.0.1.metis.Wang.wang4-833.tree.nf 1014742.393333 7333713
+&& dump.0.1.metis.Watson.Baumann-1855.tree.nf 5057731.009333 154653787
+&& dump.1.1.amd.QY.case39-2136.tree.nf 126833.229333 1993608
+&& dump.1.1.metis.CPM.cz40948-2567.tree.nf 1497.163333 6567320
+&& dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 10865.320667 27382548
+&& dump.1.2.amd.QY.case39-2136.tree.nf 128662.467333 4264385
+&& dump.1.3.amd.QY.case39-2136.tree.nf 132197.351333 1079841
+&& dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 57241628.239334 115580553
+&& dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 58301695.801334 14295192
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106773.650000 6750965
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106773.650000 6824627
+!! 36proc-1-3.json
+./real_Trees/trees/
+&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 70015.149333 4293307
+&& dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 12325.782667 41624760
+&& dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 20925.304667 32348044
+&& dump.0.1.amd.Bova.rma10-374.tree.nf 255405.930667 4029400
+&& dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 31200.044000 560972422
+&& dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 253033.811333 100188822
+&& dump.0.1.amd.QY.case39-2136.tree.nf 49855.349333 2291389
+&& dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 978267.487333 29167539
+&& dump.0.1.metis.Boeing.ct20stif-356.tree.nf 1337775.504667 5745216
+&& dump.0.1.metis.Bova.rma10-374.tree.nf 134395.228667 3182943
+&& dump.0.1.metis.CPM.cz40948-2567.tree.nf 463.146667 10868938
+&& dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 30224714.263333 110830447
+&& dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1396672.712000 3444618
+&& dump.0.1.metis.Goodwin.rim-447.tree.nf 19829.576000 1724553
+&& dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 7223.644667 12355574
+&& dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 53282265.126000 122813074
+&& dump.0.1.metis.Schmid.thermal1-1402.tree.nf 67039.687333 59276726
+&& dump.0.1.metis.Shyy.shyy161-809.tree.nf 56720.598667 58661280
+&& dump.0.1.metis.Wang.wang4-833.tree.nf 914254.799333 6500912
+&& dump.0.1.metis.Watson.Baumann-1855.tree.nf 3261835.380000 155360789
+&& dump.1.1.amd.QY.case39-2136.tree.nf 68181.177333 1912222
+&& dump.1.1.metis.CPM.cz40948-2567.tree.nf 479.194667 6650684
+&& dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 10860.556667 27663368
+&& dump.1.2.amd.QY.case39-2136.tree.nf 69270.759333 4095689
+&& dump.1.3.amd.QY.case39-2136.tree.nf 71555.521333 1030796
+&& dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 57241586.317334 125637952
+&& dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 58301494.513334 15472950
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106773.632000 6689734
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106773.632000 6750032
+!! hom-36proc-1.json
+./real_Trees/trees/
+&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 69189.252000 4298798
+run homp
+&& dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 12354.616667 51488872
+&& dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 20925.304667 28280907
+&& dump.0.1.amd.Bova.rma10-374.tree.nf 255405.930667 4478514
+run homp
+&& dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 31259.217333 537579776
+&& dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 253033.811333 109778906
+run homp
+&& dump.0.1.amd.QY.case39-2136.tree.nf -1.000000 3035160
+&& dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 978267.487333 32584035
+&& dump.0.1.metis.Boeing.ct20stif-356.tree.nf 1337775.504667 7136714
+&& dump.0.1.metis.Bova.rma10-374.tree.nf 134395.228667 3805740
+run homp
+&& dump.0.1.metis.CPM.cz40948-2567.tree.nf 1128.158667 11513765
+&& dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 30224714.263333 120584260
+&& dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1396672.712000 4215705
+&& dump.0.1.metis.Goodwin.rim-447.tree.nf 16846.572000 1927968
+&& dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 7223.644667 12436163
+run homp
+&& dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 52559288.140667 131273449
+run homp
+&& dump.0.1.metis.Schmid.thermal1-1402.tree.nf 66942.232667 60122940
+&& dump.0.1.metis.Shyy.shyy161-809.tree.nf 56720.598667 57282454
+&& dump.0.1.metis.Wang.wang4-833.tree.nf 914254.799333 6453220
+&& dump.0.1.metis.Watson.Baumann-1855.tree.nf 3233619.972667 135895253
+run homp
+&& dump.1.1.amd.QY.case39-2136.tree.nf -1.000000 1981537
+run homp
+&& dump.1.1.metis.CPM.cz40948-2567.tree.nf 1934.800000 6791518
+&& dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 10860.556667 26614290
+run homp
+&& dump.1.2.amd.QY.case39-2136.tree.nf -1.000000 4242410
+run homp
+&& dump.1.3.amd.QY.case39-2136.tree.nf -1.000000 1092424
+&& dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 57241586.317334 135043358
+&& dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 58301494.513334 13570273
+run homp
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106805.384667 6649270
+run homp
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106805.384667 6479807
+!! hom-18proc-3.json
+./real_Trees/trees/
+&& dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf 73719.632667 4279715
+&& dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf 12328.107333 43538396
+&& dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf 20929.909333 33134205
+&& dump.0.1.amd.Bova.rma10-374.tree.nf 315365.912667 4012071
+&& dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf 31200.140000 532444658
+&& dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf 255507.481333 113771921
+&& dump.0.1.amd.QY.case39-2136.tree.nf 72753.056000 2428149
+&& dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf 979425.487333 31963463
+&& dump.0.1.metis.Boeing.ct20stif-356.tree.nf 1515172.248000 6221844
+&& dump.0.1.metis.Bova.rma10-374.tree.nf 152759.245333 3552659
+&& dump.0.1.metis.CPM.cz40948-2567.tree.nf 800.004000 11450130
+&& dump.0.1.metis.DNVS.shipsec5-1280.tree.nf 30224731.259333 115831221
+&& dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf 1456834.454000 2857617
+&& dump.0.1.metis.Goodwin.rim-447.tree.nf 26549.364000 1809622
+&& dump.0.1.metis.HVDC.hvdc2-1875.tree.nf 7546.920667 12379425
+&& dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf 53282265.498000 127059724
+&& dump.0.1.metis.Schmid.thermal1-1402.tree.nf 67039.699333 66059074
+&& dump.0.1.metis.Shyy.shyy161-809.tree.nf 59700.658667 65423608
+&& dump.0.1.metis.Wang.wang4-833.tree.nf 922840.799333 7661317
+&& dump.0.1.metis.Watson.Baumann-1855.tree.nf 4253856.327333 155613103
+&& dump.1.1.amd.QY.case39-2136.tree.nf 100813.896000 2161561
+&& dump.1.1.metis.CPM.cz40948-2567.tree.nf 822.634000 6547588
+&& dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf 10861.257333 27833444
+&& dump.1.2.amd.QY.case39-2136.tree.nf 102197.700667 4991649
+&& dump.1.3.amd.QY.case39-2136.tree.nf 104755.996667 1122397
+&& dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf 57241607.088001 125376825
+&& dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf 58301596.545334 16242392
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106773.644000 6794756
+&& dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf 106773.644000 6859525
+normal random
+./real_Trees/random_trees/old_trees/
+&& size_10000/random_tree_1 818.489276 748093
+&& size_10000/random_tree_2 1200.634168 757465
+&& size_10000/random_tree_3 1015.168376 724408
+&& size_10000/random_tree_4 693.277444 723535
+&& size_10000/random_tree_5 881.068884 765120
+&& size_2000/random_tree_1 166.256651 26231
+&& size_2000/random_tree_2 241.189118 27350
+&& size_2000/random_tree_3 213.723060 26723
+&& size_2000/random_tree_4 159.635917 26508
+&& size_2000/random_tree_5 219.852041 27575
+&& size_20000/random_tree_1 2242.739706 3234876
+&& size_20000/random_tree_2 2325.977794 3139989
+&& size_20000/random_tree_3 2156.900110 3087882
+&& size_20000/random_tree_4 1919.950399 3059610
+&& size_20000/random_tree_5 2124.752777 3100637
+&& size_30000/random_tree_1 2284.889059 7817068
+&& size_30000/random_tree_2 2552.093126 7954839
+&& size_30000/random_tree_3 3312.666341 7828565
+&& size_30000/random_tree_4 3112.533442 8353517
+&& size_30000/random_tree_5 3234.752345 7912258
+&& size_4000/random_tree_1 357.595177 110295
+&& size_4000/random_tree_2 297.084937 110647
+&& size_4000/random_tree_3 421.277775 113046
+&& size_4000/random_tree_4 495.075107 116491
+&& size_4000/random_tree_5 436.495128 114575
+&& size_50000/random_tree_1 5458.004704 27064161
+&& size_50000/random_tree_2 4872.058085 26557226
+&& size_50000/random_tree_3 4244.718416 25255120
+&& size_50000/random_tree_4 4780.129253 25969196
+&& size_50000/random_tree_5 3298.216572 25669517
+&& size_50000/random_tree_5 3298.216572 26127928
+!! hom-27proc-1.json
+./real_Trees/random_trees/old_trees/
+run homp
+&& size_10000/random_tree_1 897.306093 735619
+run homp
+&& size_10000/random_tree_2 1343.632486 782276
+run homp
+&& size_10000/random_tree_3 1102.775410 713280
+&& size_10000/random_tree_4 744.958770 719708
+&& size_10000/random_tree_5 1069.797938 748194
+&& size_2000/random_tree_1 185.813859 26226
+&& size_2000/random_tree_2 257.643627 27386
+run homp
+&& size_2000/random_tree_3 264.301758 29643
+run homp
+&& size_2000/random_tree_4 174.081020 27009
+&& size_2000/random_tree_5 238.450242 27412
+run homp
+&& size_20000/random_tree_1 2700.647432 3355537
+&& size_20000/random_tree_2 2414.790867 2962488
+run homp
+&& size_20000/random_tree_3 2065.074930 4003304
+&& size_20000/random_tree_4 2019.509666 3040398
+&& size_20000/random_tree_5 2282.086475 2969447
+&& size_30000/random_tree_1 2520.617077 7786357
+run homp
+&& size_30000/random_tree_2 3387.702634 8549524
+run homp
+&& size_30000/random_tree_3 3637.725403 7573323
+run homp
+&& size_30000/random_tree_4 3615.630598 8401223
+&& size_30000/random_tree_5 3330.003038 7879254
+run homp
+&& size_4000/random_tree_1 379.032812 117584
+run homp
+&& size_4000/random_tree_2 462.933791 139115
+&& size_4000/random_tree_3 474.016592 112642
+run homp
+&& size_4000/random_tree_4 534.740364 116610
+&& size_4000/random_tree_5 478.521655 108805
+run homp
+&& size_50000/random_tree_1 5912.584058 25882230
+&& size_50000/random_tree_2 5125.240684 25058031
+run homp
+&& size_50000/random_tree_3 5309.330433 25568027
+run homp
+&& size_50000/random_tree_4 5409.774153 24042582
+run homp
+&& size_50000/random_tree_5 -1.000000 27719524
+run homp
+&& size_50000/random_tree_5 -1.000000 26205780
+!! hom-18proc-1,5.json
+./real_Trees/random_trees/old_trees/
+&& size_10000/random_tree_1 1054.728777 726667
+&& size_10000/random_tree_2 1466.695022 735120
+&& size_10000/random_tree_3 1297.431323 708996
+&& size_10000/random_tree_4 889.159439 723673
+&& size_10000/random_tree_5 1431.653072 752423
+&& size_2000/random_tree_1 235.310285 26496
+&& size_2000/random_tree_2 280.031790 27575
+&& size_2000/random_tree_3 284.692040 27089
+&& size_2000/random_tree_4 197.415251 26432
+&& size_2000/random_tree_5 270.969461 27345
+&& size_20000/random_tree_1 2879.884455 3024537
+&& size_20000/random_tree_2 2734.675635 2959563
+&& size_20000/random_tree_3 2097.876641 2989763
+&& size_20000/random_tree_4 2303.687147 2886737
+&& size_20000/random_tree_5 2820.871785 2849785
+&& size_30000/random_tree_1 3331.441600 7087713
+&& size_30000/random_tree_2 3744.043335 7040060
+&& size_30000/random_tree_3 4199.561976 7106206
+&& size_30000/random_tree_4 3973.607406 7379931
+&& size_30000/random_tree_5 3668.839073 7318683
+&& size_4000/random_tree_1 414.239744 106580
+&& size_4000/random_tree_2 392.326721 107295
+&& size_4000/random_tree_3 534.713879 110001
+&& size_4000/random_tree_4 599.269302 111997
+&& size_4000/random_tree_5 587.564543 106012
+&& size_50000/random_tree_1 6549.177521 24859137
+&& size_50000/random_tree_2 6359.243252 23962923
+&& size_50000/random_tree_3 6128.500731 24348891
+&& size_50000/random_tree_4 6364.051051 23210911
+&& size_50000/random_tree_5 4896.975446 22912671
+&& size_50000/random_tree_5 4896.975446 23057281
+!! hom-9proc-3.json
+./real_Trees/random_trees/old_trees/
+&& size_10000/random_tree_1 1283.095232 727761
+&& size_10000/random_tree_2 1927.100597 735946
+&& size_10000/random_tree_3 2063.932346 705396
+&& size_10000/random_tree_4 1540.021914 754153
+&& size_10000/random_tree_5 1954.511075 765096
+&& size_2000/random_tree_1 342.237560 27261
+&& size_2000/random_tree_2 342.688293 27716
+&& size_2000/random_tree_3 405.126336 27215
+&& size_2000/random_tree_4 301.923742 26634
+&& size_2000/random_tree_5 373.377504 27749
+&& size_20000/random_tree_1 3489.561213 3030763
+&& size_20000/random_tree_2 3711.686584 2978874
+&& size_20000/random_tree_3 2819.423011 3094556
+&& size_20000/random_tree_4 3253.936099 3089559
+&& size_20000/random_tree_5 4045.156923 3043419
+&& size_30000/random_tree_1 5900.583530 7699119
+&& size_30000/random_tree_2 5958.147541 7691964
+&& size_30000/random_tree_3 5477.745577 7760795
+&& size_30000/random_tree_4 5126.734408 7901333
+&& size_30000/random_tree_5 5591.668369 7981552
+&& size_4000/random_tree_1 506.164152 110210
+&& size_4000/random_tree_2 559.236815 112444
+&& size_4000/random_tree_3 716.886642 112853
+&& size_4000/random_tree_4 763.020785 115632
+&& size_4000/random_tree_5 784.289981 109344
+&& size_50000/random_tree_1 8432.925441 25103882
+&& size_50000/random_tree_2 9605.320247 25950956
+&& size_50000/random_tree_3 9448.553027 24259503
+&& size_50000/random_tree_4 9943.825808 25826258
+&& size_50000/random_tree_5 6861.323393 25826803
+&& size_50000/random_tree_5 6861.323393 25447029
+!! 36proc-1-3.json
+./real_Trees/random_trees/old_trees/
+&& size_10000/random_tree_1 774.772410 723206
+&& size_10000/random_tree_2 1134.338085 731930
+&& size_10000/random_tree_3 962.409585 701504
+&& size_10000/random_tree_4 687.660909 718037
+&& size_10000/random_tree_5 887.449590 743630
+&& size_2000/random_tree_1 166.256651 26281
+&& size_2000/random_tree_2 241.189118 27422
+&& size_2000/random_tree_3 213.723060 26675
+&& size_2000/random_tree_4 159.635917 26323
+&& size_2000/random_tree_5 219.852041 27559
+&& size_20000/random_tree_1 2180.044532 2998419
+&& size_20000/random_tree_2 2183.515388 3023118
+&& size_20000/random_tree_3 1696.928597 3028938
+&& size_20000/random_tree_4 1857.602133 3028979
+&& size_20000/random_tree_5 2001.231834 2979868
+&& size_30000/random_tree_1 2146.749147 7383784
+&& size_30000/random_tree_2 2435.409656 7410610
+&& size_30000/random_tree_3 3118.089585 7471669
+&& size_30000/random_tree_4 2968.563301 7871687
+&& size_30000/random_tree_5 3140.897859 7708828
+&& size_4000/random_tree_1 356.278234 108838
+&& size_4000/random_tree_2 288.352959 108688
+&& size_4000/random_tree_3 421.277775 112388
+&& size_4000/random_tree_4 484.625312 114770
+&& size_4000/random_tree_5 411.567021 109240
+&& size_50000/random_tree_1 5197.995245 25636376
+&& size_50000/random_tree_2 4336.805558 25349308
+&& size_50000/random_tree_3 4080.859988 25690364
+&& size_50000/random_tree_4 4463.167366 25404032
+&& size_50000/random_tree_5 3158.999613 25634746
+&& size_50000/random_tree_5 3158.999613 24771690
+!! hom-36proc-1.json
+./real_Trees/random_trees/old_trees/
+run homp
+&& size_10000/random_tree_1 786.513186 731846
+run homp
+&& size_10000/random_tree_2 1193.009143 784142
+run homp
+&& size_10000/random_tree_3 980.947493 715255
+&& size_10000/random_tree_4 687.660909 716856
+&& size_10000/random_tree_5 887.449590 742036
+&& size_2000/random_tree_1 166.256651 26041
+&& size_2000/random_tree_2 241.189118 27295
+run homp
+&& size_2000/random_tree_3 223.033700 27829
+run homp
+&& size_2000/random_tree_4 160.589066 26694
+&& size_2000/random_tree_5 219.852041 27530
+run homp
+&& size_20000/random_tree_1 2334.654606 3147351
+&& size_20000/random_tree_2 2183.515388 2985906
+run homp
+&& size_20000/random_tree_3 1833.673664 3935363
+&& size_20000/random_tree_4 1857.602133 3007884
+&& size_20000/random_tree_5 2001.231834 2998825
+&& size_30000/random_tree_1 2146.749147 7585059
+run homp
+&& size_30000/random_tree_2 2662.797045 7764268
+run homp
+&& size_30000/random_tree_3 3167.571023 7634468
+run homp
+&& size_30000/random_tree_4 3143.719954 8105825
+&& size_30000/random_tree_5 3140.897859 7816534
+run homp
+&& size_4000/random_tree_1 363.076640 118230
+run homp
+&& size_4000/random_tree_2 339.755041 134087
+&& size_4000/random_tree_3 421.277775 112649
+run homp
+&& size_4000/random_tree_4 497.999798 115820
+&& size_4000/random_tree_5 411.567021 109246
+run homp
+&& size_50000/random_tree_1 5340.807908 26429375
+&& size_50000/random_tree_2 4336.805558 24570852
+run homp
+&& size_50000/random_tree_3 4310.307856 25925592
+run homp
+&& size_50000/random_tree_4 4520.469258 25595592
+run homp
+&& size_50000/random_tree_5 4178.393305 27911413
+run homp
+&& size_50000/random_tree_5 4178.393305 27867256
+!! hom-18proc-3.json
+./real_Trees/random_trees/old_trees/
+&& size_10000/random_tree_1 1054.728777 726921
+&& size_10000/random_tree_2 1466.695022 738361
+&& size_10000/random_tree_3 1297.431323 703780
+&& size_10000/random_tree_4 889.159439 722415
+&& size_10000/random_tree_5 1431.653072 749352
+&& size_2000/random_tree_1 235.310285 26411
+&& size_2000/random_tree_2 280.031790 27626
+&& size_2000/random_tree_3 284.692040 27132
+&& size_2000/random_tree_4 197.415251 26451
+&& size_2000/random_tree_5 270.969461 27397
+&& size_20000/random_tree_1 2879.884455 3105241
+&& size_20000/random_tree_2 2734.675635 3041459
+&& size_20000/random_tree_3 2097.876641 3036030
+&& size_20000/random_tree_4 2303.687147 3032972
+&& size_20000/random_tree_5 2820.871785 3003044
+&& size_30000/random_tree_1 3331.441600 7554575
+&& size_30000/random_tree_2 3744.043335 7625577
+&& size_30000/random_tree_3 4199.561976 7637621
+&& size_30000/random_tree_4 3973.607406 8007707
+&& size_30000/random_tree_5 3668.839073 7858270
+&& size_4000/random_tree_1 414.239744 108991
+&& size_4000/random_tree_2 392.326721 109499
+&& size_4000/random_tree_3 534.713879 112992
+&& size_4000/random_tree_4 599.269302 114363
+&& size_4000/random_tree_5 587.564543 108590
+&& size_50000/random_tree_1 6549.177521 27482842
+&& size_50000/random_tree_2 6359.243252 26411664
+&& size_50000/random_tree_3 6128.500731 26563613
+&& size_50000/random_tree_4 6364.051051 24822533
+&& size_50000/random_tree_5 4896.975446 24846401
+&& size_50000/random_tree_5 4896.975446 24887068
+/work/kulagins/scheduler-homp
+/work/kulagins/scheduler-homp/real_Trees/random_trees
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/10_children
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/10_children
+&& size_10000/random_tree_1 1188.061530 511433
+&& size_10000/random_tree_2 759.083879 505023
+&& size_10000/random_tree_3 1256.775512 513505
+&& size_10000/random_tree_4 1200.603662 518109
+&& size_10000/random_tree_5 798.450925 509743
+&& size_2000/random_tree_1 232.025893 17658
+&& size_2000/random_tree_2 232.170356 17283
+&& size_2000/random_tree_3 354.103351 20752
+&& size_2000/random_tree_4 253.655436 18320
+&& size_2000/random_tree_5 287.712366 17967
+&& size_20000/random_tree_1 2108.841383 2461062
+&& size_20000/random_tree_2 2280.715868 2837854
+&& size_20000/random_tree_3 1825.143464 2632713
+&& size_20000/random_tree_4 2334.229613 2765515
+&& size_20000/random_tree_5 2206.362019 2680428
+&& size_30000/random_tree_1 3509.702142 6999872
+&& size_30000/random_tree_2 2517.731518 7017875
+&& size_30000/random_tree_3 3580.499246 7163216
+&& size_30000/random_tree_4 2854.469614 7003706
+&& size_30000/random_tree_5 3063.341960 7106192
+&& size_4000/random_tree_1 421.212087 74166
+&& size_4000/random_tree_2 401.389859 75891
+&& size_4000/random_tree_3 471.551885 77920
+&& size_4000/random_tree_4 453.243252 74894
+&& size_4000/random_tree_5 563.445193 80826
+&& size_50000/random_tree_1 5670.070253 25805437
+&& size_50000/random_tree_2 4208.407959 25159733
+&& size_50000/random_tree_3 4485.640899 25024843
+&& size_50000/random_tree_4 6167.277085 26098420
+&& size_50000/random_tree_5 5050.834843 25913023
+&& size_50000/random_tree_5 5050.834843 25656891
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/all_large
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/all_large
+&& size_10000/random_tree_1 108645.279221 908738
+&& size_10000/random_tree_2 91064.131498 756574
+&& size_10000/random_tree_3 63658.043176 691559
+&& size_10000/random_tree_4 83472.926823 742094
+&& size_10000/random_tree_5 168726.287823 1050207
+&& size_2000/random_tree_1 18042.627439 25815
+&& size_2000/random_tree_2 21342.535067 27195
+&& size_2000/random_tree_3 18873.309523 26607
+&& size_2000/random_tree_4 25997.759433 27799
+&& size_2000/random_tree_5 22948.355201 27649
+&& size_20000/random_tree_1 213421.066311 3112884
+&& size_20000/random_tree_2 199754.527973 3093466
+&& size_20000/random_tree_3 133780.515963 3068130
+&& size_20000/random_tree_4 193054.123486 3149292
+&& size_20000/random_tree_5 184797.781437 3080095
+&& size_30000/random_tree_1 280808.256741 8218211
+&& size_30000/random_tree_2 344025.277320 7898067
+&& size_30000/random_tree_3 320404.422446 8079154
+&& size_30000/random_tree_4 326417.201677 8318717
+&& size_30000/random_tree_5 288969.510383 7793531
+&& size_4000/random_tree_1 54802.486563 117021
+&& size_4000/random_tree_2 41505.265193 123118
+&& size_4000/random_tree_3 32540.206002 110826
+&& size_4000/random_tree_4 39548.672298 108783
+&& size_4000/random_tree_5 38591.395706 116069
+&& size_50000/random_tree_1 463090.261268 25982772
+&& size_50000/random_tree_2 418830.090796 25799382
+&& size_50000/random_tree_3 481381.042912 26900489
+&& size_50000/random_tree_4 510513.767488 25727812
+&& size_50000/random_tree_5 524866.370075 26975457
+&& size_50000/random_tree_5 524866.370075 27267676
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/large_makespan_weights
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/large_makespan_weights
+&& size_10000/random_tree_1 1781.866165 56342
+&& size_10000/random_tree_2 2653.733438 50163
+&& size_10000/random_tree_3 1371.715338 54339
+&& size_10000/random_tree_4 2334.491789 132848
+&& size_10000/random_tree_5 1596.583753 44783
+&& size_2000/random_tree_1 1214.214540 2191
+&& size_2000/random_tree_2 1909.656552 3589
+&& size_2000/random_tree_3 1300.323502 3058
+&& size_2000/random_tree_4 1389.506488 1915
+&& size_2000/random_tree_5 1774.584342 5329
+&& size_20000/random_tree_1 2636.058606 232641
+&& size_20000/random_tree_2 3541.093649 415444
+&& size_20000/random_tree_3 2491.680029 245937
+&& size_20000/random_tree_4 2447.946538 165555
+&& size_20000/random_tree_5 2909.101726 175316
+&& size_30000/random_tree_1 5566.811545 830755
+&& size_30000/random_tree_2 5095.255386 1000021
+&& size_30000/random_tree_3 4485.195703 689194
+&& size_30000/random_tree_4 3946.912970 505993
+&& size_30000/random_tree_5 3319.124469 418873
+&& size_4000/random_tree_1 1641.316354 14766
+&& size_4000/random_tree_2 1567.454959 15632
+&& size_4000/random_tree_3 2297.955899 21785
+&& size_4000/random_tree_4 1515.880532 11509
+&& size_4000/random_tree_5 2020.358240 10924
+&& size_50000/random_tree_1 5048.050443 2147022
+&& size_50000/random_tree_2 5806.053574 3991818
+&& size_50000/random_tree_3 7573.858043 1447584
+&& size_50000/random_tree_4 7819.247043 1583411
+&& size_50000/random_tree_5 11296.794570 4400123
+&& size_50000/random_tree_5 11296.794570 4428260
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/20_children
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/20_children
+&& size_10000/random_tree_1 1018.026557 284587
+&& size_10000/random_tree_2 1204.810084 309234
+&& size_10000/random_tree_3 982.639241 274796
+&& size_10000/random_tree_4 1386.646860 303014
+&& size_10000/random_tree_5 1084.343373 284142
+&& size_2000/random_tree_1 236.630843 9918
+&& size_2000/random_tree_2 237.433932 9696
+&& size_2000/random_tree_3 276.861982 9861
+&& size_2000/random_tree_4 269.674670 9617
+&& size_2000/random_tree_5 296.971472 9816
+&& size_20000/random_tree_1 2086.364569 1391150
+&& size_20000/random_tree_2 2061.171318 1448846
+&& size_20000/random_tree_3 1828.459758 1440027
+&& size_20000/random_tree_4 1877.285793 1417045
+&& size_20000/random_tree_5 2337.687097 1376609
+&& size_30000/random_tree_1 3935.806048 3794889
+&& size_30000/random_tree_2 3578.892683 4084142
+&& size_30000/random_tree_3 2360.941165 3674883
+&& size_30000/random_tree_4 3043.612996 3862139
+&& size_30000/random_tree_5 4675.841709 4195114
+&& size_4000/random_tree_1 574.642843 46118
+&& size_4000/random_tree_2 549.718531 44356
+&& size_4000/random_tree_3 466.431376 39237
+&& size_4000/random_tree_4 387.419944 39507
+&& size_4000/random_tree_5 523.439759 41347
+&& size_50000/random_tree_1 4647.739518 13859923
+&& size_50000/random_tree_2 5293.933487 13562562
+&& size_50000/random_tree_3 4503.076253 13771992
+&& size_50000/random_tree_4 6493.399149 14526675
+&& size_50000/random_tree_5 5163.563826 14584628
+&& size_50000/random_tree_5 5163.563826 14563982
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/all_small
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/all_small
+&& size_10000/random_tree_1 80.276041 1176162
+&& size_10000/random_tree_2 81.001573 1162407
+&& size_10000/random_tree_3 84.980904 1185042
+&& size_10000/random_tree_4 127.849442 1215683
+&& size_10000/random_tree_5 90.338455 1186770
+&& size_2000/random_tree_1 25.502079 43901
+&& size_2000/random_tree_2 30.475892 42529
+&& size_2000/random_tree_3 23.564077 43856
+&& size_2000/random_tree_4 17.432447 42970
+&& size_2000/random_tree_5 19.829161 43067
+&& size_20000/random_tree_1 200.245754 5072931
+&& size_20000/random_tree_2 193.154537 5106787
+&& size_20000/random_tree_3 211.742392 5181516
+&& size_20000/random_tree_4 223.634928 5230849
+&& size_20000/random_tree_5 199.016694 5155991
+&& size_30000/random_tree_1 317.303165 13225256
+&& size_30000/random_tree_2 237.886345 12999433
+&& size_30000/random_tree_3 254.489567 12695810
+&& size_30000/random_tree_4 265.298199 13282473
+&& size_30000/random_tree_5 259.067568 13189479
+&& size_4000/random_tree_1 41.952152 175118
+&& size_4000/random_tree_2 31.858138 169912
+&& size_4000/random_tree_3 37.300998 182214
+&& size_4000/random_tree_4 30.501429 172766
+&& size_4000/random_tree_5 42.014725 181565
+&& size_50000/random_tree_1 456.471027 47479543
+&& size_50000/random_tree_2 401.216038 47160858
+&& size_50000/random_tree_3 535.808030 47601607
+&& size_50000/random_tree_4 632.379470 45090307
+&& size_50000/random_tree_5 599.870201 42373867
+&& size_50000/random_tree_5 599.870201 42101684
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/large_node_weights
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/large_node_weights
+&& size_10000/random_tree_1 805.444907 759328
+&& size_10000/random_tree_2 825.300293 758728
+&& size_10000/random_tree_3 960.717780 921684
+&& size_10000/random_tree_4 1023.897645 775153
+&& size_10000/random_tree_5 1145.244706 791116
+&& size_2000/random_tree_1 249.255952 31846
+&& size_2000/random_tree_2 213.413445 28927
+&& size_2000/random_tree_3 299.261302 30454
+&& size_2000/random_tree_4 195.331343 26919
+&& size_2000/random_tree_5 160.340292 27049
+&& size_20000/random_tree_1 2816.725341 3307023
+&& size_20000/random_tree_2 2206.987095 3335907
+&& size_20000/random_tree_3 2515.579002 3306930
+&& size_20000/random_tree_4 2347.856995 3261222
+&& size_20000/random_tree_5 1731.857176 3154285
+&& size_30000/random_tree_1 2628.979574 8065977
+&& size_30000/random_tree_2 2820.446341 7791798
+&& size_30000/random_tree_3 2971.306233 7774848
+&& size_30000/random_tree_4 2731.431204 7924530
+&& size_30000/random_tree_5 2432.046821 8240363
+&& size_4000/random_tree_1 461.788740 126794
+&& size_4000/random_tree_2 374.384051 119559
+&& size_4000/random_tree_3 456.814520 117031
+&& size_4000/random_tree_4 573.594258 135180
+&& size_4000/random_tree_5 359.094448 108829
+&& size_50000/random_tree_1 5274.499630 26090829
+&& size_50000/random_tree_2 4856.258119 26106855
+&& size_50000/random_tree_3 4129.662793 25791042
+&& size_50000/random_tree_4 4587.324786 26196555
+&& size_50000/random_tree_5 5170.158110 27309035
+&& size_50000/random_tree_5 5170.158110 27148745
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/3_children
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/3_children
+&& size_10000/random_tree_1 1285.237551 904713
+&& size_10000/random_tree_2 1158.723559 870140
+&& size_10000/random_tree_3 876.760367 772478
+&& size_10000/random_tree_4 1025.954531 836278
+&& size_10000/random_tree_5 976.630284 859448
+&& size_2000/random_tree_1 239.808626 30066
+&& size_2000/random_tree_2 258.641542 28844
+&& size_2000/random_tree_3 211.032141 32675
+&& size_2000/random_tree_4 191.021394 29693
+&& size_2000/random_tree_5 239.483625 31035
+&& size_20000/random_tree_1 2163.867470 4064202
+&& size_20000/random_tree_2 2202.263015 4293341
+&& size_20000/random_tree_3 2401.961820 4436538
+&& size_20000/random_tree_4 2256.016512 5091841
+&& size_20000/random_tree_5 1555.403914 4143889
+&& size_30000/random_tree_1 2843.307609 11102981
+&& size_30000/random_tree_2 3738.875691 10783876
+&& size_30000/random_tree_3 2161.740939 10384971
+&& size_30000/random_tree_4 3281.759977 10423086
+&& size_30000/random_tree_5 2490.239673 10620317
+&& size_4000/random_tree_1 278.123961 124848
+&& size_4000/random_tree_2 329.384500 131487
+&& size_4000/random_tree_3 459.077430 122932
+&& size_4000/random_tree_4 334.131193 133142
+&& size_4000/random_tree_5 665.251584 186849
+&& size_50000/random_tree_1 3673.753745 36054135
+&& size_50000/random_tree_2 5936.384156 49856694
+&& size_50000/random_tree_3 4739.758203 34106630
+&& size_50000/random_tree_4 4705.846411 35355463
+&& size_50000/random_tree_5 6456.064562 35431210
+&& size_50000/random_tree_5 6456.064562 36057733
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/large_edge_weights
+!! hom-18proc-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/large_edge_weights
+&& size_10000/random_tree_1 88782.925398 1247344
+&& size_10000/random_tree_2 63664.680760 1215964
+&& size_10000/random_tree_3 108620.870117 1255158
+&& size_10000/random_tree_4 96187.319687 1310762
+&& size_10000/random_tree_5 89947.144688 1251328
+&& size_2000/random_tree_1 14555.065595 43664
+&& size_2000/random_tree_2 16414.883688 44067
+&& size_2000/random_tree_3 20907.865999 45009
+&& size_2000/random_tree_4 18288.846788 44360
+&& size_2000/random_tree_5 22308.204719 47043
+&& size_20000/random_tree_1 234787.361041 5327857
+&& size_20000/random_tree_2 201996.834065 5451945
+&& size_20000/random_tree_3 152996.948874 5287448
+&& size_20000/random_tree_4 146412.249940 5323336
+&& size_20000/random_tree_5 213463.594258 5532785
+&& size_30000/random_tree_1 298060.632483 14358830
+&& size_30000/random_tree_2 347608.242631 13964681
+&& size_30000/random_tree_3 258667.115173 13716933
+&& size_30000/random_tree_4 226967.197518 13499166
+&& size_30000/random_tree_5 298070.245033 14164766
+&& size_4000/random_tree_1 40315.133224 191605
+&& size_4000/random_tree_2 50051.314045 190648
+&& size_4000/random_tree_3 31409.870967 188108
+&& size_4000/random_tree_4 46278.147808 194637
+&& size_4000/random_tree_5 38232.992192 187267
+&& size_50000/random_tree_1 537982.177519 48154924
+&& size_50000/random_tree_2 495164.353511 49895263
+&& size_50000/random_tree_3 397734.500209 48982269
+&& size_50000/random_tree_4 418414.214385 52053136
+&& size_50000/random_tree_5 428560.385664 50039358
+&& size_50000/random_tree_5 428560.385664 50079214
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/10_children
+!! hom-27proc-1.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/10_children
+run homp
+&& size_10000/random_tree_1 -1.000000 719440
+run homp
+&& size_10000/random_tree_2 -1.000000 691797
+run homp
+&& size_10000/random_tree_3 -1.000000 765783
+run homp
+&& size_10000/random_tree_4 1487.292037 622320
+run homp
+&& size_10000/random_tree_5 -1.000000 684367
+&& size_2000/random_tree_1 243.371948 17340
+run homp
+&& size_2000/random_tree_2 278.126718 22766
+run homp
+&& size_2000/random_tree_3 386.034949 21746
+run homp
+&& size_2000/random_tree_4 263.176593 17645
+run homp
+&& size_2000/random_tree_5 303.451290 18163
+run homp
+&& size_20000/random_tree_1 -1.000000 3407051
+run homp
+&& size_20000/random_tree_2 -1.000000 3418226
+run homp
+&& size_20000/random_tree_3 -1.000000 3275713
+run homp
+&& size_20000/random_tree_4 -1.000000 3711547
+run homp
+&& size_20000/random_tree_5 3048.368161 2892450
+run homp
+&& size_30000/random_tree_1 -1.000000 9145366
+run homp
+&& size_30000/random_tree_2 -1.000000 8161276
+run homp
+&& size_30000/random_tree_3 -1.000000 8262580
+run homp
+&& size_30000/random_tree_4 -1.000000 7275964
+run homp
+&& size_30000/random_tree_5 -1.000000 9586181
+run homp
+&& size_4000/random_tree_1 -1.000000 142967
+run homp
+&& size_4000/random_tree_2 -1.000000 91779
+run homp
+&& size_4000/random_tree_3 -1.000000 118234
+run homp
+&& size_4000/random_tree_4 498.699092 89074
+run homp
+&& size_4000/random_tree_5 -1.000000 129656
+run homp
+&& size_50000/random_tree_1 -1.000000 32940159
+run homp
+&& size_50000/random_tree_2 -1.000000 31666975
+run homp
+&& size_50000/random_tree_3 -1.000000 27723690
+run homp
+&& size_50000/random_tree_4 -1.000000 31228743
+run homp
+&& size_50000/random_tree_5 -1.000000 31354853
+run homp
+&& size_50000/random_tree_5 -1.000000 31674017
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/all_large
+!! hom-27proc-1.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/all_large
+run homp
+&& size_10000/random_tree_1 124596.919146 734445
+run homp
+&& size_10000/random_tree_2 107350.525202 786792
+&& size_10000/random_tree_3 73523.535254 700573
+&& size_10000/random_tree_4 93970.329150 737239
+&& size_10000/random_tree_5 173985.966787 733145
+&& size_2000/random_tree_1 20296.072700 26301
+&& size_2000/random_tree_2 22952.593586 27758
+&& size_2000/random_tree_3 21820.281245 27182
+&& size_2000/random_tree_4 29201.386208 27654
+run homp
+&& size_2000/random_tree_5 26206.421516 28698
+&& size_20000/random_tree_1 229418.096686 3161104
+run homp
+&& size_20000/random_tree_2 214667.625996 3143597
+run homp
+&& size_20000/random_tree_3 153318.231828 3185389
+run homp
+&& size_20000/random_tree_4 212527.782651 3175274
+run homp
+&& size_20000/random_tree_5 228673.523569 3286130
+run homp
+&& size_30000/random_tree_1 350841.767998 8380924
+&& size_30000/random_tree_2 352179.913061 7508560
+&& size_30000/random_tree_3 346491.864377 7735503
+run homp
+&& size_30000/random_tree_4 398744.367411 7809234
+run homp
+&& size_30000/random_tree_5 -1.000000 10206519
+run homp
+&& size_4000/random_tree_1 49106.547053 116282
+run homp
+&& size_4000/random_tree_2 48111.984092 161773
+&& size_4000/random_tree_3 35467.040376 111860
+&& size_4000/random_tree_4 47273.241538 110470
+&& size_4000/random_tree_5 43069.975355 113113
+&& size_50000/random_tree_1 507293.607106 24993074
+run homp
+&& size_50000/random_tree_2 -1.000000 26922124
+run homp
+&& size_50000/random_tree_3 548985.961269 26546326
+run homp
+&& size_50000/random_tree_4 533145.109529 25878633
+&& size_50000/random_tree_5 587377.072916 25224471
+&& size_50000/random_tree_5 587377.072916 25487341
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/large_makespan_weights
+!! hom-27proc-1.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/large_makespan_weights
+run homp
+&& size_10000/random_tree_1 2478.539836 88276
+&& size_10000/random_tree_2 2705.402247 45542
+&& size_10000/random_tree_3 1475.844107 50509
+run homp
+&& size_10000/random_tree_4 2977.021530 65112
+run homp
+&& size_10000/random_tree_5 2340.585452 179855
+run homp
+&& size_2000/random_tree_1 1735.963573 7520
+&& size_2000/random_tree_2 3967.056404 6067
+&& size_2000/random_tree_3 1321.734656 3108
+&& size_2000/random_tree_4 1396.014358 1943
+&& size_2000/random_tree_5 5468.752985 18507
+&& size_20000/random_tree_1 2727.461231 173217
+run homp
+&& size_20000/random_tree_2 5047.761283 219049
+&& size_20000/random_tree_3 2650.645533 174575
+&& size_20000/random_tree_4 2514.299779 120299
+&& size_20000/random_tree_5 3064.440800 158489
+run homp
+&& size_30000/random_tree_1 6537.247271 729766
+run homp
+&& size_30000/random_tree_2 6121.345578 636959
+run homp
+&& size_30000/random_tree_3 6388.233039 3369344
+run homp
+&& size_30000/random_tree_4 4544.366663 426978
+run homp
+&& size_30000/random_tree_5 5468.175983 3042781
+run homp
+&& size_4000/random_tree_1 2258.099866 23188
+run homp
+&& size_4000/random_tree_2 2144.445587 12794
+run homp
+&& size_4000/random_tree_3 1874.336717 18838
+&& size_4000/random_tree_4 1573.850859 11435
+run homp
+&& size_4000/random_tree_5 2173.091228 9776
+run homp
+&& size_50000/random_tree_1 -1.000000 10881019
+run homp
+&& size_50000/random_tree_2 6243.949179 1011159
+run homp
+&& size_50000/random_tree_3 9114.601052 4767762
+&& size_50000/random_tree_4 5642.462918 754998
+&& size_50000/random_tree_5 8016.190399 829768
+&& size_50000/random_tree_5 8016.190399 833432
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/20_children
+!! hom-27proc-1.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/20_children
+run homp
+&& size_10000/random_tree_1 1284.088981 300559
+run homp
+&& size_10000/random_tree_2 1240.082912 278181
+run homp
+&& size_10000/random_tree_3 1015.510044 318349
+run homp
+&& size_10000/random_tree_4 1519.044887 282003
+run homp
+&& size_10000/random_tree_5 1185.121387 309719
+&& size_2000/random_tree_1 244.288955 9926
+&& size_2000/random_tree_2 245.398636 9687
+&& size_2000/random_tree_3 284.770241 9824
+run homp
+&& size_2000/random_tree_4 279.051310 10515
+run homp
+&& size_2000/random_tree_5 316.492003 13292
+run homp
+&& size_20000/random_tree_1 2890.338888 1560396
+run homp
+&& size_20000/random_tree_2 2469.789965 1474843
+run homp
+&& size_20000/random_tree_3 3112.472675 1703905
+run homp
+&& size_20000/random_tree_4 -1.000000 1483224
+run homp
+&& size_20000/random_tree_5 2500.547372 1825017
+run homp
+&& size_30000/random_tree_1 -1.000000 4313345
+run homp
+&& size_30000/random_tree_2 4082.842251 5240641
+run homp
+&& size_30000/random_tree_3 -1.000000 4238138
+run homp
+&& size_30000/random_tree_4 3781.962489 4145447
+run homp
+&& size_30000/random_tree_5 -1.000000 5471693
+run homp
+&& size_4000/random_tree_1 633.921581 52762
+run homp
+&& size_4000/random_tree_2 597.673776 45513
+run homp
+&& size_4000/random_tree_3 479.255756 42191
+run homp
+&& size_4000/random_tree_4 408.804875 50908
+run homp
+&& size_4000/random_tree_5 550.148095 40360
+run homp
+&& size_50000/random_tree_1 -1.000000 15734663
+run homp
+&& size_50000/random_tree_2 -1.000000 16228571
+run homp
+&& size_50000/random_tree_3 6158.222227 14538081
+run homp
+&& size_50000/random_tree_4 -1.000000 15860298
+run homp
+&& size_50000/random_tree_5 -1.000000 16037511
+run homp
+&& size_50000/random_tree_5 -1.000000 15828147
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/all_small
+!! hom-27proc-1.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/all_small
+run homp
+&& size_10000/random_tree_1 89.810140 1193118
+&& size_10000/random_tree_2 84.930002 1152767
+&& size_10000/random_tree_3 92.386545 1162148
+run homp
+&& size_10000/random_tree_4 140.344210 1227682
+run homp
+&& size_10000/random_tree_5 102.286859 1172183
+run homp
+&& size_2000/random_tree_1 28.565432 44574
+&& size_2000/random_tree_2 33.511407 41408
+run homp
+&& size_2000/random_tree_3 27.843042 50283
+&& size_2000/random_tree_4 20.097276 42930
+&& size_2000/random_tree_5 22.884181 41724
+run homp
+&& size_20000/random_tree_1 222.335517 5991287
+&& size_20000/random_tree_2 204.437620 5025560
+run homp
+&& size_20000/random_tree_3 230.401292 5091600
+run homp
+&& size_20000/random_tree_4 247.502399 5038922
+run homp
+&& size_20000/random_tree_5 240.478047 5156447
+run homp
+&& size_30000/random_tree_1 367.709007 13152455
+&& size_30000/random_tree_2 276.791492 12793784
+run homp
+&& size_30000/random_tree_3 268.264081 13066095
+run homp
+&& size_30000/random_tree_4 318.001665 13673205
+run homp
+&& size_30000/random_tree_5 -1.000000 14196053
+run homp
+&& size_4000/random_tree_1 44.161531 174478
+run homp
+&& size_4000/random_tree_2 34.898030 169888
+&& size_4000/random_tree_3 42.497166 178447
+&& size_4000/random_tree_4 33.542397 172510
+&& size_4000/random_tree_5 46.192099 179962
+run homp
+&& size_50000/random_tree_1 -1.000000 47602645
+&& size_50000/random_tree_2 456.353475 45854384
+run homp
+&& size_50000/random_tree_3 668.449322 46716697
+&& size_50000/random_tree_4 734.208520 45421218
+run homp
+&& size_50000/random_tree_5 642.937115 45216129
+run homp
+&& size_50000/random_tree_5 642.937115 44310302
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/large_node_weights
+!! hom-27proc-1.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/large_node_weights
+run homp
+&& size_10000/random_tree_1 1125.784377 727600
+&& size_10000/random_tree_2 846.815936 723166
+run homp
+&& size_10000/random_tree_3 1093.544689 752114
+run homp
+&& size_10000/random_tree_4 768.165266 699238
+&& size_10000/random_tree_5 1192.879282 733950
+run homp
+&& size_2000/random_tree_1 277.612237 31818
+&& size_2000/random_tree_2 230.235838 27247
+run homp
+&& size_2000/random_tree_3 263.820510 27678
+&& size_2000/random_tree_4 211.033200 24953
+run homp
+&& size_2000/random_tree_5 168.487291 26816
+&& size_20000/random_tree_1 3264.685349 3025691
+run homp
+&& size_20000/random_tree_2 2404.007072 3021101
+run homp
+&& size_20000/random_tree_3 2880.737577 3076050
+run homp
+&& size_20000/random_tree_4 2553.910818 2973342
+run homp
+&& size_20000/random_tree_5 1996.185996 3071639
+run homp
+&& size_30000/random_tree_1 3253.181744 7524494
+run homp
+&& size_30000/random_tree_2 3152.490053 7260533
+run homp
+&& size_30000/random_tree_3 3782.682355 7573639
+run homp
+&& size_30000/random_tree_4 3331.854151 7064945
+run homp
+&& size_30000/random_tree_5 -1.000000 7890724
+&& size_4000/random_tree_1 495.175767 111316
+run homp
+&& size_4000/random_tree_2 480.855851 107596
+&& size_4000/random_tree_3 473.548151 107687
+&& size_4000/random_tree_4 638.666689 111516
+&& size_4000/random_tree_5 375.509580 105494
+run homp
+&& size_50000/random_tree_1 7017.830417 24715363
+run homp
+&& size_50000/random_tree_2 5914.554902 24871981
+&& size_50000/random_tree_3 5148.028712 23393255
+run homp
+&& size_50000/random_tree_4 5381.031067 24440598
+run homp
+&& size_50000/random_tree_5 -1.000000 26747887
+run homp
+&& size_50000/random_tree_5 -1.000000 27361505
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/3_children
+!! hom-27proc-1.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/3_children
+run homp
+&& size_10000/random_tree_1 -1.000000 1499343
+run homp
+&& size_10000/random_tree_2 -1.000000 1192985
+run homp
+&& size_10000/random_tree_3 -1.000000 1228040
+run homp
+&& size_10000/random_tree_4 -1.000000 1338808
+run homp
+&& size_10000/random_tree_5 -1.000000 1474432
+run homp
+&& size_2000/random_tree_1 -1.000000 61470
+run homp
+&& size_2000/random_tree_2 -1.000000 51585
+run homp
+&& size_2000/random_tree_3 -1.000000 42090
+run homp
+&& size_2000/random_tree_4 -1.000000 50191
+run homp
+&& size_2000/random_tree_5 -1.000000 48927
+run homp
+&& size_20000/random_tree_1 -1.000000 5772120
+run homp
+&& size_20000/random_tree_2 -1.000000 6433695
+run homp
+&& size_20000/random_tree_3 -1.000000 5284712
+run homp
+&& size_20000/random_tree_4 -1.000000 5312015
+run homp
+&& size_20000/random_tree_5 -1.000000 5231394
+run homp
+&& size_30000/random_tree_1 -1.000000 15659999
+run homp
+&& size_30000/random_tree_2 -1.000000 13027564
+run homp
+&& size_30000/random_tree_3 -1.000000 14303878
+run homp
+&& size_30000/random_tree_4 -1.000000 13879999
+run homp
+&& size_30000/random_tree_5 -1.000000 13606994
+run homp
+&& size_4000/random_tree_1 -1.000000 214673
+run homp
+&& size_4000/random_tree_2 -1.000000 215947
+run homp
+&& size_4000/random_tree_3 -1.000000 321642
+run homp
+&& size_4000/random_tree_4 -1.000000 215293
+run homp
+&& size_4000/random_tree_5 -1.000000 275163
+run homp
+&& size_50000/random_tree_1 -1.000000 45005672
+run homp
+&& size_50000/random_tree_2 -1.000000 47990627
+run homp
+&& size_50000/random_tree_3 -1.000000 43329966
+run homp
+&& size_50000/random_tree_4 -1.000000 49517082
+run homp
+&& size_50000/random_tree_5 -1.000000 43826856
+run homp
+&& size_50000/random_tree_5 -1.000000 43957993
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/large_edge_weights
+!! hom-27proc-1.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/large_edge_weights
+&& size_10000/random_tree_1 85835.685200 1227120
+run homp
+&& size_10000/random_tree_2 90360.741154 1209720
+&& size_10000/random_tree_3 115718.799688 1242600
+run homp
+&& size_10000/random_tree_4 109237.013205 1243264
+run homp
+&& size_10000/random_tree_5 105430.278690 1279507
+run homp
+&& size_2000/random_tree_1 17021.105206 43893
+run homp
+&& size_2000/random_tree_2 19084.258907 43314
+&& size_2000/random_tree_3 24935.303805 44895
+&& size_2000/random_tree_4 22022.244673 44276
+run homp
+&& size_2000/random_tree_5 26858.997045 48147
+run homp
+&& size_20000/random_tree_1 257337.053212 5300727
+run homp
+&& size_20000/random_tree_2 -1.000000 5726846
+run homp
+&& size_20000/random_tree_3 162241.379687 5551337
+run homp
+&& size_20000/random_tree_4 -1.000000 5993352
+run homp
+&& size_20000/random_tree_5 235283.958262 5474768
+run homp
+&& size_30000/random_tree_1 316793.612560 14498839
+run homp
+&& size_30000/random_tree_2 390443.725877 14225735
+run homp
+&& size_30000/random_tree_3 296840.696413 14282990
+run homp
+&& size_30000/random_tree_4 252181.730321 13788360
+run homp
+&& size_30000/random_tree_5 343653.598131 14075599
+&& size_4000/random_tree_1 43548.019319 190575
+&& size_4000/random_tree_2 55148.184958 184376
+&& size_4000/random_tree_3 37025.676755 183995
+&& size_4000/random_tree_4 47684.905499 187596
+&& size_4000/random_tree_5 41714.992121 184412
+&& size_50000/random_tree_1 554796.210013 50123371
+run homp
+&& size_50000/random_tree_2 557992.690985 51311762
+run homp
+&& size_50000/random_tree_3 425393.593044 49241560
+run homp
+&& size_50000/random_tree_4 526832.852214 49191652
+run homp
+&& size_50000/random_tree_5 590341.223732 53401358
+run homp
+&& size_50000/random_tree_5 590341.223732 53075957
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/10_children
+!! hom-18proc-1,5.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/10_children
+&& size_10000/random_tree_1 1518.123607 484564
+&& size_10000/random_tree_2 962.213249 486311
+&& size_10000/random_tree_3 1414.435735 504807
+&& size_10000/random_tree_4 1507.587519 512172
+&& size_10000/random_tree_5 1014.916355 492057
+&& size_2000/random_tree_1 295.159058 17059
+&& size_2000/random_tree_2 259.581246 17246
+&& size_2000/random_tree_3 409.123749 17880
+&& size_2000/random_tree_4 295.227280 17134
+&& size_2000/random_tree_5 345.251807 17603
+&& size_20000/random_tree_1 2411.121667 2455848
+&& size_20000/random_tree_2 2597.360598 2500495
+&& size_20000/random_tree_3 2332.274753 2483993
+&& size_20000/random_tree_4 2964.994084 2512887
+&& size_20000/random_tree_5 2980.258404 2521542
+&& size_30000/random_tree_1 4281.412467 6577979
+&& size_30000/random_tree_2 3450.747186 6670656
+&& size_30000/random_tree_3 4840.045127 6619085
+&& size_30000/random_tree_4 4130.738926 6674568
+&& size_30000/random_tree_5 3612.694804 6671545
+&& size_4000/random_tree_1 497.023971 71342
+&& size_4000/random_tree_2 540.297070 70531
+&& size_4000/random_tree_3 534.240013 72094
+&& size_4000/random_tree_4 503.460950 71166
+&& size_4000/random_tree_5 697.152632 71706
+&& size_50000/random_tree_1 8026.785397 22894230
+&& size_50000/random_tree_2 5131.556539 23779841
+&& size_50000/random_tree_3 5778.625132 24675528
+&& size_50000/random_tree_4 7670.840233 23464087
+&& size_50000/random_tree_5 6338.328831 24420814
+&& size_50000/random_tree_5 6338.328831 23960269
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/all_large
+!! hom-18proc-1,5.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/all_large
+&& size_10000/random_tree_1 157841.440154 702276
+&& size_10000/random_tree_2 113809.536656 738109
+&& size_10000/random_tree_3 95812.798520 689097
+&& size_10000/random_tree_4 144408.736580 719782
+&& size_10000/random_tree_5 198262.264109 715439
+&& size_2000/random_tree_1 24755.712488 25852
+&& size_2000/random_tree_2 26198.374788 27305
+&& size_2000/random_tree_3 27302.677616 26805
+&& size_2000/random_tree_4 36828.877905 27375
+&& size_2000/random_tree_5 28471.042403 27533
+&& size_20000/random_tree_1 272416.057093 3130139
+&& size_20000/random_tree_2 251992.971645 3070196
+&& size_20000/random_tree_3 179969.628017 3154937
+&& size_20000/random_tree_4 245591.374895 3110366
+&& size_20000/random_tree_5 223155.454355 3066447
+&& size_30000/random_tree_1 405193.239452 8035606
+&& size_30000/random_tree_2 412304.944105 7610108
+&& size_30000/random_tree_3 426622.197393 7885615
+&& size_30000/random_tree_4 440213.823505 7818900
+&& size_30000/random_tree_5 372108.370358 7763324
+&& size_4000/random_tree_1 58659.861626 113115
+&& size_4000/random_tree_2 52465.105405 118752
+&& size_4000/random_tree_3 41833.650224 108928
+&& size_4000/random_tree_4 61737.673779 109598
+&& size_4000/random_tree_5 57251.977324 111083
+&& size_50000/random_tree_1 663921.853836 25201846
+&& size_50000/random_tree_2 630459.261644 25458633
+&& size_50000/random_tree_3 617427.734667 25667671
+&& size_50000/random_tree_4 587517.903049 26139754
+&& size_50000/random_tree_5 707146.478776 26453582
+&& size_50000/random_tree_5 707146.478776 25752907
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/large_makespan_weights
+!! hom-18proc-1,5.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/large_makespan_weights
+&& size_10000/random_tree_1 2184.642923 48181
+&& size_10000/random_tree_2 2839.574916 45454
+&& size_10000/random_tree_3 1654.388477 48386
+&& size_10000/random_tree_4 2776.018810 53615
+&& size_10000/random_tree_5 1800.982907 40432
+&& size_2000/random_tree_1 1260.834372 2208
+&& size_2000/random_tree_2 1909.656552 3620
+&& size_2000/random_tree_3 1368.332350 3089
+&& size_2000/random_tree_4 1410.072742 1952
+&& size_2000/random_tree_5 1774.584342 5350
+&& size_20000/random_tree_1 3026.622309 182708
+&& size_20000/random_tree_2 4339.163017 199047
+&& size_20000/random_tree_3 3045.259636 192801
+&& size_20000/random_tree_4 2801.637485 118248
+&& size_20000/random_tree_5 3344.693980 156340
+&& size_30000/random_tree_1 6382.808047 461363
+&& size_30000/random_tree_2 6414.042083 507185
+&& size_30000/random_tree_3 5523.085825 401332
+&& size_30000/random_tree_4 4541.562854 377872
+&& size_30000/random_tree_5 3664.901269 338280
+&& size_4000/random_tree_1 1723.592925 13219
+&& size_4000/random_tree_2 1677.916799 9319
+&& size_4000/random_tree_3 1977.377038 14432
+&& size_4000/random_tree_4 1654.182448 11287
+&& size_4000/random_tree_5 2096.033956 7969
+&& size_50000/random_tree_1 6525.497185 1200303
+&& size_50000/random_tree_2 6604.750455 871299
+&& size_50000/random_tree_3 8722.608152 1026785
+&& size_50000/random_tree_4 7331.676836 724863
+&& size_50000/random_tree_5 9066.114620 765076
+&& size_50000/random_tree_5 9066.114620 774107
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/20_children
+!! hom-18proc-1,5.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/20_children
+&& size_10000/random_tree_1 1171.812326 278450
+&& size_10000/random_tree_2 1335.275219 282600
+&& size_10000/random_tree_3 1077.573961 266497
+&& size_10000/random_tree_4 1731.328555 273021
+&& size_10000/random_tree_5 1251.367030 277074
+&& size_2000/random_tree_1 252.207875 9857
+&& size_2000/random_tree_2 257.517244 9682
+&& size_2000/random_tree_3 308.621800 9843
+&& size_2000/random_tree_4 285.212272 9667
+&& size_2000/random_tree_5 325.105348 9812
+&& size_20000/random_tree_1 2666.245808 1333169
+&& size_20000/random_tree_2 2610.826630 1355040
+&& size_20000/random_tree_3 2339.122146 1396834
+&& size_20000/random_tree_4 2573.318017 1343569
+&& size_20000/random_tree_5 2500.497637 1357040
+&& size_30000/random_tree_1 5161.543270 3623259
+&& size_30000/random_tree_2 4126.861877 3584266
+&& size_30000/random_tree_3 3150.301871 3554241
+&& size_30000/random_tree_4 3639.485585 3638358
+&& size_30000/random_tree_5 5775.930206 3673212
+&& size_4000/random_tree_1 669.004262 39234
+&& size_4000/random_tree_2 661.797770 38701
+&& size_4000/random_tree_3 526.607978 39010
+&& size_4000/random_tree_4 417.129995 39452
+&& size_4000/random_tree_5 612.809657 39318
+&& size_50000/random_tree_1 6110.853145 13383336
+&& size_50000/random_tree_2 7544.183010 13665764
+&& size_50000/random_tree_3 5882.341659 13923387
+&& size_50000/random_tree_4 7942.697181 13905906
+&& size_50000/random_tree_5 5726.326712 13677686
+&& size_50000/random_tree_5 5726.326712 13858067
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/all_small
+!! hom-18proc-1,5.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/all_small
+&& size_10000/random_tree_1 94.758665 1167187
+&& size_10000/random_tree_2 99.021656 1147765
+&& size_10000/random_tree_3 119.841722 1168619
+&& size_10000/random_tree_4 151.679595 1186693
+&& size_10000/random_tree_5 128.914767 1157613
+&& size_2000/random_tree_1 31.119988 43762
+&& size_2000/random_tree_2 39.725150 41626
+&& size_2000/random_tree_3 28.582380 42096
+&& size_2000/random_tree_4 25.385635 42908
+&& size_2000/random_tree_5 26.664393 42189
+&& size_20000/random_tree_1 227.541571 5244583
+&& size_20000/random_tree_2 241.906014 5164989
+&& size_20000/random_tree_3 263.325056 5045435
+&& size_20000/random_tree_4 293.939113 4940610
+&& size_20000/random_tree_5 275.551881 5072053
+&& size_30000/random_tree_1 430.440939 13136297
+&& size_30000/random_tree_2 405.480192 12609209
+&& size_30000/random_tree_3 298.187364 12936265
+&& size_30000/random_tree_4 346.147517 13106050
+&& size_30000/random_tree_5 337.711221 12819410
+&& size_4000/random_tree_1 49.372202 172529
+&& size_4000/random_tree_2 40.147789 167853
+&& size_4000/random_tree_3 56.032693 179031
+&& size_4000/random_tree_4 39.150707 172447
+&& size_4000/random_tree_5 54.408978 180155
+&& size_50000/random_tree_1 621.678349 46236040
+&& size_50000/random_tree_2 594.957108 46389884
+&& size_50000/random_tree_3 696.852416 45878161
+&& size_50000/random_tree_4 899.903668 46964345
+&& size_50000/random_tree_5 711.061207 46463533
+&& size_50000/random_tree_5 711.061207 45780678
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/large_node_weights
+!! hom-18proc-1,5.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/large_node_weights
+&& size_10000/random_tree_1 1143.934765 694394
+&& size_10000/random_tree_2 1066.447908 718975
+&& size_10000/random_tree_3 1240.014234 743929
+&& size_10000/random_tree_4 877.037450 692144
+&& size_10000/random_tree_5 1447.660711 733034
+&& size_2000/random_tree_1 284.057447 27545
+&& size_2000/random_tree_2 270.325039 27435
+&& size_2000/random_tree_3 314.640968 26343
+&& size_2000/random_tree_4 251.239971 24868
+&& size_2000/random_tree_5 186.965388 26415
+&& size_20000/random_tree_1 3887.405158 3045318
+&& size_20000/random_tree_2 2996.277746 3019159
+&& size_20000/random_tree_3 3441.223016 3121527
+&& size_20000/random_tree_4 2861.767935 3081237
+&& size_20000/random_tree_5 2276.942482 3061845
+&& size_30000/random_tree_1 3669.154959 7908717
+&& size_30000/random_tree_2 3697.551349 7742091
+&& size_30000/random_tree_3 4083.103858 7573846
+&& size_30000/random_tree_4 3687.295148 7272919
+&& size_30000/random_tree_5 3687.876508 7375579
+&& size_4000/random_tree_1 571.986532 111871
+&& size_4000/random_tree_2 612.037284 104923
+&& size_4000/random_tree_3 521.672865 108177
+&& size_4000/random_tree_4 765.756413 112617
+&& size_4000/random_tree_5 417.431790 106209
+&& size_50000/random_tree_1 7563.864497 23345835
+&& size_50000/random_tree_2 5972.398007 22755260
+&& size_50000/random_tree_3 6049.584431 22420348
+&& size_50000/random_tree_4 5759.984536 22754450
+&& size_50000/random_tree_5 8129.584022 22738692
+&& size_50000/random_tree_5 8129.584022 22760673
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/3_children
+!! hom-18proc-1,5.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/3_children
+run homp
+&& size_10000/random_tree_1 1765.530857 834771
+run homp
+&& size_10000/random_tree_2 1629.143188 779537
+&& size_10000/random_tree_3 1099.661222 762630
+&& size_10000/random_tree_4 1350.323429 779781
+&& size_10000/random_tree_5 1127.733941 800281
+&& size_2000/random_tree_1 298.676695 29374
+&& size_2000/random_tree_2 309.638324 26744
+&& size_2000/random_tree_3 318.586905 29601
+&& size_2000/random_tree_4 243.376240 28394
+&& size_2000/random_tree_5 296.721168 29616
+run homp
+&& size_20000/random_tree_1 -1.000000 3621873
+run homp
+&& size_20000/random_tree_2 3065.304803 3660161
+&& size_20000/random_tree_3 3039.365147 3523882
+&& size_20000/random_tree_4 2697.635436 3556006
+&& size_20000/random_tree_5 1914.942965 3537654
+run homp
+&& size_30000/random_tree_1 -1.000000 10840884
+run homp
+&& size_30000/random_tree_2 -1.000000 9829503
+run homp
+&& size_30000/random_tree_3 -1.000000 9512423
+run homp
+&& size_30000/random_tree_4 -1.000000 11239250
+run homp
+&& size_30000/random_tree_5 -1.000000 9998230
+&& size_4000/random_tree_1 348.086634 115128
+&& size_4000/random_tree_2 406.692907 117550
+run homp
+&& size_4000/random_tree_3 541.202435 119180
+&& size_4000/random_tree_4 399.784495 117303
+&& size_4000/random_tree_5 802.927300 119652
+&& size_50000/random_tree_1 6349.069357 32984348
+run homp
+&& size_50000/random_tree_2 -1.000000 38223378
+&& size_50000/random_tree_3 5064.773362 33417232
+run homp
+&& size_50000/random_tree_4 -1.000000 33984173
+run homp
+&& size_50000/random_tree_5 -1.000000 36960996
+run homp
+&& size_50000/random_tree_5 -1.000000 35606078
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/large_edge_weights
+!! hom-18proc-1,5.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/large_edge_weights
+&& size_10000/random_tree_1 112679.076768 1225367
+&& size_10000/random_tree_2 111884.184249 1199794
+&& size_10000/random_tree_3 140947.083476 1236622
+&& size_10000/random_tree_4 131336.550183 1236540
+&& size_10000/random_tree_5 118900.619084 1235383
+&& size_2000/random_tree_1 21434.972215 43346
+&& size_2000/random_tree_2 22442.089179 43112
+&& size_2000/random_tree_3 33587.325273 44846
+&& size_2000/random_tree_4 27200.758099 44341
+&& size_2000/random_tree_5 32334.230063 46606
+&& size_20000/random_tree_1 296584.191783 5273983
+&& size_20000/random_tree_2 250975.132436 5447838
+&& size_20000/random_tree_3 171172.636844 5312683
+&& size_20000/random_tree_4 202994.213052 5286776
+&& size_20000/random_tree_5 278733.424494 5364816
+&& size_30000/random_tree_1 344791.439906 13413957
+&& size_30000/random_tree_2 428697.826426 13973571
+&& size_30000/random_tree_3 323564.727717 13831936
+&& size_30000/random_tree_4 292468.344539 13764685
+&& size_30000/random_tree_5 390387.527654 13798689
+&& size_4000/random_tree_1 50103.879082 190306
+&& size_4000/random_tree_2 68835.011939 183971
+&& size_4000/random_tree_3 50023.267390 183969
+&& size_4000/random_tree_4 52103.017106 187764
+&& size_4000/random_tree_5 50420.858132 184569
+&& size_50000/random_tree_1 639703.510405 46220151
+&& size_50000/random_tree_2 676886.012315 46646407
+&& size_50000/random_tree_3 496925.291817 47136539
+&& size_50000/random_tree_4 625931.375836 47719992
+&& size_50000/random_tree_5 607817.075886 49805176
+&& size_50000/random_tree_5 607817.075886 48170116
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/10_children
+!! hom-9proc-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/10_children
+&& size_10000/random_tree_1 2019.855741 491771
+&& size_10000/random_tree_2 1356.642419 493883
+&& size_10000/random_tree_3 1733.059116 494766
+&& size_10000/random_tree_4 1859.510641 518519
+&& size_10000/random_tree_5 1444.791504 498260
+&& size_2000/random_tree_1 453.853644 17448
+&& size_2000/random_tree_2 362.697210 17275
+&& size_2000/random_tree_3 452.818866 17572
+&& size_2000/random_tree_4 389.765751 17619
+&& size_2000/random_tree_5 429.613945 17625
+&& size_20000/random_tree_1 3466.695580 2580494
+&& size_20000/random_tree_2 3276.713497 2490197
+&& size_20000/random_tree_3 3689.764681 2530407
+&& size_20000/random_tree_4 4336.266918 2590132
+&& size_20000/random_tree_5 4083.067381 2521684
+&& size_30000/random_tree_1 5311.685117 6941153
+&& size_30000/random_tree_2 5035.465837 6802540
+&& size_30000/random_tree_3 7085.663839 6881328
+&& size_30000/random_tree_4 5531.747582 6924156
+&& size_30000/random_tree_5 4438.604883 6909912
+&& size_4000/random_tree_1 757.103876 71397
+&& size_4000/random_tree_2 785.178501 71576
+&& size_4000/random_tree_3 691.623499 72333
+&& size_4000/random_tree_4 767.392627 71605
+&& size_4000/random_tree_5 925.667187 72003
+&& size_50000/random_tree_1 11935.663357 21985322
+&& size_50000/random_tree_2 7595.878868 22488477
+&& size_50000/random_tree_3 9841.894309 22182262
+&& size_50000/random_tree_4 9387.224774 22884735
+&& size_50000/random_tree_5 8488.768050 23361802
+&& size_50000/random_tree_5 8488.768050 22907034
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/all_large
+!! hom-9proc-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/all_large
+&& size_10000/random_tree_1 204012.283738 703693
+&& size_10000/random_tree_2 151334.977917 737420
+&& size_10000/random_tree_3 138638.240392 697030
+&& size_10000/random_tree_4 226254.879005 730550
+&& size_10000/random_tree_5 222082.619650 711052
+&& size_2000/random_tree_1 34559.254468 25977
+&& size_2000/random_tree_2 35237.351632 26968
+&& size_2000/random_tree_3 35163.257771 26846
+&& size_2000/random_tree_4 51766.970639 27713
+&& size_2000/random_tree_5 35952.251848 27872
+&& size_20000/random_tree_1 343374.775779 3072784
+&& size_20000/random_tree_2 377138.463637 3139085
+&& size_20000/random_tree_3 318462.232109 3085233
+&& size_20000/random_tree_4 302748.146656 3111270
+&& size_20000/random_tree_5 282294.146091 3037421
+&& size_30000/random_tree_1 531440.930894 7716730
+&& size_30000/random_tree_2 521030.427165 7418883
+&& size_30000/random_tree_3 643404.342540 7665668
+&& size_30000/random_tree_4 605114.559536 7468840
+&& size_30000/random_tree_5 564440.083916 7535639
+&& size_4000/random_tree_1 79008.871568 115109
+&& size_4000/random_tree_2 67699.829189 118641
+&& size_4000/random_tree_3 75012.833107 109704
+&& size_4000/random_tree_4 76974.946701 108938
+&& size_4000/random_tree_5 81727.581438 111746
+&& size_50000/random_tree_1 1212367.755026 24193560
+&& size_50000/random_tree_2 853398.945041 25082474
+&& size_50000/random_tree_3 827425.781528 25398809
+&& size_50000/random_tree_4 786795.086354 26625545
+&& size_50000/random_tree_5 951985.933586 25597885
+&& size_50000/random_tree_5 951985.933586 26070086
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/large_makespan_weights
+!! hom-9proc-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/large_makespan_weights
+&& size_10000/random_tree_1 3011.229428 51813
+&& size_10000/random_tree_2 3419.745365 58770
+&& size_10000/random_tree_3 2360.499999 49699
+&& size_10000/random_tree_4 3478.468887 55330
+&& size_10000/random_tree_5 2422.467680 49686
+&& size_2000/random_tree_1 1334.497329 2374
+&& size_2000/random_tree_2 1909.656552 3603
+&& size_2000/random_tree_3 1449.286201 7829
+&& size_2000/random_tree_4 1463.706737 2106
+&& size_2000/random_tree_5 1774.584342 5376
+&& size_20000/random_tree_1 3394.813887 209842
+&& size_20000/random_tree_2 4869.187214 218543
+&& size_20000/random_tree_3 4085.971307 199221
+&& size_20000/random_tree_4 3535.241735 140392
+&& size_20000/random_tree_5 4328.535468 177769
+&& size_30000/random_tree_1 8171.351944 522895
+&& size_30000/random_tree_2 7936.000374 516717
+&& size_30000/random_tree_3 7313.426384 450526
+&& size_30000/random_tree_4 5526.866480 369840
+&& size_30000/random_tree_5 5720.423007 373663
+&& size_4000/random_tree_1 1873.093774 13410
+&& size_4000/random_tree_2 1870.411538 10294
+&& size_4000/random_tree_3 2282.926330 16913
+&& size_4000/random_tree_4 1795.103454 12049
+&& size_4000/random_tree_5 2277.379377 8514
+&& size_50000/random_tree_1 8404.432979 1611744
+&& size_50000/random_tree_2 8723.461048 825468
+&& size_50000/random_tree_3 10666.598325 1084981
+&& size_50000/random_tree_4 9466.012945 1212403
+&& size_50000/random_tree_5 9904.386423 758456
+&& size_50000/random_tree_5 9904.386423 761529
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/20_children
+!! hom-9proc-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/20_children
+&& size_10000/random_tree_1 1777.596812 280396
+&& size_10000/random_tree_2 1669.141882 281471
+&& size_10000/random_tree_3 1395.957905 271562
+&& size_10000/random_tree_4 2086.355412 278594
+&& size_10000/random_tree_5 1577.508581 280115
+&& size_2000/random_tree_1 282.866302 9788
+&& size_2000/random_tree_2 392.087406 9780
+&& size_2000/random_tree_3 357.519186 10162
+&& size_2000/random_tree_4 364.862266 9490
+&& size_2000/random_tree_5 387.024398 9932
+&& size_20000/random_tree_1 4444.037964 1345052
+&& size_20000/random_tree_2 3760.085056 1415133
+&& size_20000/random_tree_3 3298.914990 1402489
+&& size_20000/random_tree_4 4101.739714 1360360
+&& size_20000/random_tree_5 2870.996816 1339243
+&& size_30000/random_tree_1 7349.316709 3583288
+&& size_30000/random_tree_2 4915.446195 3613203
+&& size_30000/random_tree_3 4174.896342 3514103
+&& size_30000/random_tree_4 5099.587304 3565673
+&& size_30000/random_tree_5 7167.798575 3601911
+&& size_4000/random_tree_1 848.294230 39255
+&& size_4000/random_tree_2 901.000743 38837
+&& size_4000/random_tree_3 754.688049 39467
+&& size_4000/random_tree_4 635.889462 39216
+&& size_4000/random_tree_5 772.195387 38908
+&& size_50000/random_tree_1 9494.981107 12983555
+&& size_50000/random_tree_2 11238.964968 13303843
+&& size_50000/random_tree_3 8730.357193 12896891
+&& size_50000/random_tree_4 9641.908189 12573223
+&& size_50000/random_tree_5 7631.464477 12881334
+&& size_50000/random_tree_5 7631.464477 12689937
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/all_small
+!! hom-9proc-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/all_small
+&& size_10000/random_tree_1 142.133159 1165010
+&& size_10000/random_tree_2 171.536369 1153099
+&& size_10000/random_tree_3 171.506666 1162251
+&& size_10000/random_tree_4 214.160060 1177768
+&& size_10000/random_tree_5 186.352164 1160544
+&& size_2000/random_tree_1 44.562266 44182
+&& size_2000/random_tree_2 50.119858 41705
+&& size_2000/random_tree_3 38.370207 41990
+&& size_2000/random_tree_4 37.951253 43553
+&& size_2000/random_tree_5 33.677807 42435
+&& size_20000/random_tree_1 289.065424 5145453
+&& size_20000/random_tree_2 308.371034 5006478
+&& size_20000/random_tree_3 360.382303 5070212
+&& size_20000/random_tree_4 388.364209 4995329
+&& size_20000/random_tree_5 419.109992 5092954
+&& size_30000/random_tree_1 653.467983 13152671
+&& size_30000/random_tree_2 689.774880 12606440
+&& size_30000/random_tree_3 519.403548 13002801
+&& size_30000/random_tree_4 434.079442 13128152
+&& size_30000/random_tree_5 531.621849 12633662
+&& size_4000/random_tree_1 61.788204 172381
+&& size_4000/random_tree_2 69.334082 168705
+&& size_4000/random_tree_3 94.221069 178422
+&& size_4000/random_tree_4 48.925418 173983
+&& size_4000/random_tree_5 72.910717 179318
+&& size_50000/random_tree_1 857.193757 45771812
+&& size_50000/random_tree_2 951.015308 46520767
+&& size_50000/random_tree_3 1105.347724 44771098
+&& size_50000/random_tree_4 1148.154975 44409451
+&& size_50000/random_tree_5 885.479575 45735078
+&& size_50000/random_tree_5 885.479575 46989527
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/large_node_weights
+!! hom-9proc-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/large_node_weights
+&& size_10000/random_tree_1 1562.658330 701039
+&& size_10000/random_tree_2 1869.521058 720064
+&& size_10000/random_tree_3 1758.116255 745920
+&& size_10000/random_tree_4 1549.960434 696713
+&& size_10000/random_tree_5 1997.346456 738361
+&& size_2000/random_tree_1 335.796137 27660
+&& size_2000/random_tree_2 343.134633 28214
+&& size_2000/random_tree_3 388.896406 27447
+&& size_2000/random_tree_4 395.698101 25373
+&& size_2000/random_tree_5 301.991646 26767
+&& size_20000/random_tree_1 4835.856552 3058448
+&& size_20000/random_tree_2 4159.179433 3006064
+&& size_20000/random_tree_3 4663.622780 3106977
+&& size_20000/random_tree_4 3786.309149 3061331
+&& size_20000/random_tree_5 3403.817905 3042648
+&& size_30000/random_tree_1 5281.090426 7896378
+&& size_30000/random_tree_2 5006.017958 7674071
+&& size_30000/random_tree_3 5679.296856 7564209
+&& size_30000/random_tree_4 5870.734806 7443756
+&& size_30000/random_tree_5 5192.070243 7707545
+&& size_4000/random_tree_1 775.496895 115711
+&& size_4000/random_tree_2 929.984016 109329
+&& size_4000/random_tree_3 665.398780 110667
+&& size_4000/random_tree_4 893.848749 118781
+&& size_4000/random_tree_5 536.336876 108234
+&& size_50000/random_tree_1 9593.211582 25135326
+&& size_50000/random_tree_2 7014.706305 25315065
+&& size_50000/random_tree_3 7938.679553 23614837
+&& size_50000/random_tree_4 8435.848934 24477418
+&& size_50000/random_tree_5 10413.712436 23679895
+&& size_50000/random_tree_5 10413.712436 23387361
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/3_children
+!! hom-9proc-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/3_children
+&& size_10000/random_tree_1 2126.795796 793816
+&& size_10000/random_tree_2 2257.252141 763303
+&& size_10000/random_tree_3 1938.205624 769629
+&& size_10000/random_tree_4 2104.860646 777202
+&& size_10000/random_tree_5 1798.844613 763667
+&& size_2000/random_tree_1 338.061650 30166
+&& size_2000/random_tree_2 412.106388 26258
+&& size_2000/random_tree_3 399.033878 29054
+&& size_2000/random_tree_4 403.204333 28387
+&& size_2000/random_tree_5 404.086442 29038
+&& size_20000/random_tree_1 4172.089609 3494188
+&& size_20000/random_tree_2 3921.644121 3721786
+&& size_20000/random_tree_3 3623.802930 3562529
+&& size_20000/random_tree_4 4071.111267 3444921
+&& size_20000/random_tree_5 3500.392103 3630302
+&& size_30000/random_tree_1 4502.634035 8662838
+&& size_30000/random_tree_2 8399.230861 8882837
+&& size_30000/random_tree_3 6439.469129 8740878
+&& size_30000/random_tree_4 5071.720061 8762667
+&& size_30000/random_tree_5 5122.563183 8843201
+&& size_4000/random_tree_1 490.027606 112563
+&& size_4000/random_tree_2 652.895884 115004
+&& size_4000/random_tree_3 677.008531 114050
+&& size_4000/random_tree_4 642.415999 116262
+&& size_4000/random_tree_5 949.392702 115503
+&& size_50000/random_tree_1 7431.888848 31658608
+&& size_50000/random_tree_2 8814.484298 31655086
+&& size_50000/random_tree_3 6555.270072 31626120
+&& size_50000/random_tree_4 9324.715823 32059671
+&& size_50000/random_tree_5 9499.221803 31382076
+&& size_50000/random_tree_5 9499.221803 31587297
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/large_edge_weights
+!! hom-9proc-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/large_edge_weights
+&& size_10000/random_tree_1 187685.505033 1229037
+&& size_10000/random_tree_2 151387.313099 1204199
+&& size_10000/random_tree_3 173293.236146 1247278
+&& size_10000/random_tree_4 179477.463371 1252487
+&& size_10000/random_tree_5 149079.412881 1230377
+&& size_2000/random_tree_1 34546.199680 43507
+&& size_2000/random_tree_2 28906.611105 43243
+&& size_2000/random_tree_3 52608.193492 44920
+&& size_2000/random_tree_4 40303.614254 44442
+&& size_2000/random_tree_5 47689.704954 47133
+&& size_20000/random_tree_1 369564.212460 5349406
+&& size_20000/random_tree_2 302697.771600 5265180
+&& size_20000/random_tree_3 240334.110330 5358591
+&& size_20000/random_tree_4 336549.145485 5269352
+&& size_20000/random_tree_5 377766.642942 5416442
+&& size_30000/random_tree_1 565116.026915 13350123
+&& size_30000/random_tree_2 583250.402580 13677997
+&& size_30000/random_tree_3 469799.908427 13661754
+&& size_30000/random_tree_4 411330.636231 13464590
+&& size_30000/random_tree_5 572178.470914 13606294
+&& size_4000/random_tree_1 70408.125190 189666
+&& size_4000/random_tree_2 95459.515268 186370
+&& size_4000/random_tree_3 77776.508871 183828
+&& size_4000/random_tree_4 68778.811200 189438
+&& size_4000/random_tree_5 68832.720662 184899
+&& size_50000/random_tree_1 774445.786447 49959306
+&& size_50000/random_tree_2 984583.134908 50310890
+&& size_50000/random_tree_3 687596.473076 50655917
+&& size_50000/random_tree_4 819609.832561 49830033
+&& size_50000/random_tree_5 1015790.199736 47963670
+&& size_50000/random_tree_5 1015790.199736 48973606
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/10_children
+!! 36proc-1-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/10_children
+&& size_10000/random_tree_1 1131.672020 490116
+&& size_10000/random_tree_2 702.333849 488217
+&& size_10000/random_tree_3 1214.670042 492815
+&& size_10000/random_tree_4 1097.913462 496650
+&& size_10000/random_tree_5 752.535801 474315
+&& size_2000/random_tree_1 230.251592 17211
+&& size_2000/random_tree_2 232.170356 17215
+&& size_2000/random_tree_3 335.660694 17529
+&& size_2000/random_tree_4 245.048444 16964
+&& size_2000/random_tree_5 286.821965 17514
+run homp
+&& size_20000/random_tree_1 1977.565685 2627174
+run homp
+&& size_20000/random_tree_2 2114.519042 2383526
+run homp
+&& size_20000/random_tree_3 1535.502787 2505752
+run homp
+&& size_20000/random_tree_4 2068.018192 2453241
+&& size_20000/random_tree_5 2098.099070 2539871
+run homp
+&& size_30000/random_tree_1 3151.451858 6566156
+&& size_30000/random_tree_2 2420.953553 6627165
+run homp
+&& size_30000/random_tree_3 3127.695913 6576802
+&& size_30000/random_tree_4 2749.816405 6596591
+run homp
+&& size_30000/random_tree_5 2813.084831 6563127
+&& size_4000/random_tree_1 414.393563 71329
+&& size_4000/random_tree_2 371.664455 70482
+&& size_4000/random_tree_3 446.325404 71952
+&& size_4000/random_tree_4 429.209947 71300
+&& size_4000/random_tree_5 518.758550 71232
+run homp
+&& size_50000/random_tree_1 4947.222594 23468943
+run homp
+&& size_50000/random_tree_2 3858.912127 23626008
+run homp
+&& size_50000/random_tree_3 4137.591997 23012886
+run homp
+&& size_50000/random_tree_4 5904.568125 23620528
+run homp
+&& size_50000/random_tree_5 4755.494714 24081032
+run homp
+&& size_50000/random_tree_5 4755.494714 23828393
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/all_large
+!! 36proc-1-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/all_large
+&& size_10000/random_tree_1 100673.898880 704940
+&& size_10000/random_tree_2 86264.906997 730888
+&& size_10000/random_tree_3 61899.422209 690087
+&& size_10000/random_tree_4 79433.733081 719639
+&& size_10000/random_tree_5 155780.384203 722033
+&& size_2000/random_tree_1 18042.627439 25882
+&& size_2000/random_tree_2 21143.637861 26753
+&& size_2000/random_tree_3 18873.309523 26577
+&& size_2000/random_tree_4 25703.732634 27330
+&& size_2000/random_tree_5 22948.355201 27608
+&& size_20000/random_tree_1 206182.689453 3061404
+&& size_20000/random_tree_2 191341.690908 3085713
+&& size_20000/random_tree_3 126425.873514 3058721
+&& size_20000/random_tree_4 183748.767670 3041477
+&& size_20000/random_tree_5 176915.755880 2991239
+&& size_30000/random_tree_1 264551.371955 7671775
+&& size_30000/random_tree_2 303847.510990 7484573
+&& size_30000/random_tree_3 302213.516336 7609996
+&& size_30000/random_tree_4 313379.578854 7495466
+&& size_30000/random_tree_5 268795.692720 7534992
+&& size_4000/random_tree_1 41478.068267 113188
+&& size_4000/random_tree_2 40205.817038 117370
+&& size_4000/random_tree_3 32304.803033 109748
+&& size_4000/random_tree_4 39548.672298 108609
+&& size_4000/random_tree_5 36169.834066 111261
+&& size_50000/random_tree_1 440916.140273 24686117
+&& size_50000/random_tree_2 387045.560339 24468459
+&& size_50000/random_tree_3 462639.842112 24918448
+&& size_50000/random_tree_4 494599.338187 25746204
+&& size_50000/random_tree_5 504750.988832 26011056
+&& size_50000/random_tree_5 504750.988832 25431537
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/large_makespan_weights
+!! 36proc-1-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/large_makespan_weights
+&& size_10000/random_tree_1 1728.824459 44043
+&& size_10000/random_tree_2 2619.612737 43704
+&& size_10000/random_tree_3 1351.861339 48040
+&& size_10000/random_tree_4 2263.496883 52309
+&& size_10000/random_tree_5 1576.609710 39031
+&& size_2000/random_tree_1 1214.214540 2157
+&& size_2000/random_tree_2 1909.656552 3582
+&& size_2000/random_tree_3 1300.323502 3043
+&& size_2000/random_tree_4 1389.506488 1900
+&& size_2000/random_tree_5 1774.584342 5308
+&& size_20000/random_tree_1 2571.475175 166703
+&& size_20000/random_tree_2 3430.734746 166608
+&& size_20000/random_tree_3 2387.396627 173439
+&& size_20000/random_tree_4 2311.119117 114219
+&& size_20000/random_tree_5 2870.968452 153331
+&& size_30000/random_tree_1 4999.881769 454204
+&& size_30000/random_tree_2 4976.744613 509713
+&& size_30000/random_tree_3 4397.167389 365536
+&& size_30000/random_tree_4 3813.545244 373446
+&& size_30000/random_tree_5 3216.620600 321485
+&& size_4000/random_tree_1 1619.074088 11138
+&& size_4000/random_tree_2 1539.355767 8817
+&& size_4000/random_tree_3 1786.644508 14671
+&& size_4000/random_tree_4 1515.880532 11120
+&& size_4000/random_tree_5 1985.848961 7786
+&& size_50000/random_tree_1 4885.291416 1284698
+&& size_50000/random_tree_2 5464.448348 914520
+&& size_50000/random_tree_3 7402.853801 1040921
+&& size_50000/random_tree_4 4901.083747 739206
+&& size_50000/random_tree_5 7355.781800 944495
+&& size_50000/random_tree_5 7355.781800 1020237
+!! /work/kulagins/scheduler-homp/real_Trees/random_trees/20_children
+!! 36proc-1-3.json
+/work/kulagins/scheduler-homp/real_Trees/random_trees/20_children
+&& size_10000/random_tree_1 952.161983 281051
+&& size_10000/random_tree_2 1098.823799 283571
+&& size_10000/random_tree_3 982.639241 271325
+&& size_10000/random_tree_4 1304.327545 280003
+&& size_10000/random_tree_5 1039.906505 279912
+&& size_2000/random_tree_1 236.630843 9884
+&& size_2000/random_tree_2 237.433932 9658
+&& size_2000/random_tree_3 276.861982 9924
+&& size_2000/random_tree_4 269.674670 9619
+&& size_2000/random_tree_5 296.971472 9820
+&& size_20000/random_tree_1 1958.265687 1326743
+&& size_20000/random_tree_2 1931.958932 1352331
+&& size_20000/random_tree_3 1686.899998 1302298
+&& size_20000/random_tree_4 1725.616840 1353944
+&& size_20000/random_tree_5 2279.940635 1399097
+&& size_30000/random_tree_1 3784.857457 3582377
+&& size_30000/random_tree_2 3464.649841 3643646
+&& size_30000/random_tree_3 2286.943835 3562284
+&& size_30000/random_tree_4 2884.699238 3644855
+&& size_30000/random_tree_5 4335.514408 3629032
+&& size_4000/random_tree_1 511.921886 39437
+&& size_4000/random_tree_2 498.626384 38724
+&& size_4000/random_tree_3 466.431376 39090
+&& size_4000/random_tree_4 387.419944 39264
+&& size_4000/random_tree_5 513.205165 39013
+&& size_50000/random_tree_1 4375.921012 12032405
+&& size_50000/random_tree_2 4995.095550 13792163
+&& size_50000/random_tree_3 4264.206872 13495930

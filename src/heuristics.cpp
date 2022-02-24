@@ -43,7 +43,7 @@ bool operator==(const CompareMapEntries &c, const std::pair<int, int> &p) {
 }
 
 template<class T, class U>
-void GetTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest) {
+void getTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest) {
     if (container->front()->getMakespanCost(true, false) > container->at(1)->getMakespanCost(true, false)) {
         Largest = container->front();
         secondLargest = container->at(1);
@@ -66,7 +66,7 @@ void GetTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest) {
     }
 }
 
-void GetTwoLargestElementTypethree(vector<Task *> *container, vector<Task *>::iterator &Largest,
+void getTwoLargestElementTypethree(vector<Task *> *container, vector<Task *>::iterator &Largest,
                                    vector<Task *>::iterator &secondLargest) {
     if (container->front()->getMakespanCost(false, false) >= container->back()->getMakespanCost(false, false)) {
         Largest = container->begin();
@@ -92,7 +92,7 @@ void GetTwoLargestElementTypethree(vector<Task *> *container, vector<Task *>::it
     }
 }
 
-void GetTwoSmallestElement(list<Task *> *container, list<Task *>::iterator &Smallest,
+void getTwoSmallestElement(list<Task *> *container, list<Task *>::iterator &Smallest,
                            list<Task *>::iterator &secondSmallest) {
     if (container->front()->getMakespanWeight() <= container->back()->getMakespanWeight()) {
         Smallest = container->begin();
@@ -395,7 +395,7 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, Processor *&proces
                     increase = -currentQNode->getEdgeWeight() / homogeneousBandwidth;
                 } else {
 
-                    GetTwoLargestElementTypetwo(children, LargestNode,
+                    getTwoLargestElementTypetwo(children, LargestNode,
                                                 secondLargest); //no-increasing, communication counted
 
                     if (currentQNode->getId() == LargestNode->getId()) {
@@ -411,7 +411,7 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, Processor *&proces
                 if (children->size() == 1) {
                     increase = -currentQNode->getEdgeWeight() / homogeneousBandwidth;
                 } else {
-                    GetTwoLargestElementTypetwo(children, LargestNode,
+                    getTwoLargestElementTypetwo(children, LargestNode,
                                                 secondLargest); //no-increasing, communication counted
 
                     if (currentQNode->getId() == LargestNode->getId()) {
@@ -477,6 +477,124 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, Processor *&proces
     //  cout<<processorToMergeTo->getMemorySize()<<endl;
     return feasible;
 }
+
+bool estimateMSOld(Tree* tree, Tree* Qtree, Task* & smallestNode, double memory_size, bool CheckMemory){
+    //cout<<"   ---start compute the minimum combination"<<endl;
+
+    Task* currentQNode;
+    double increase;
+    bool memoryEnough;
+    Task* LargestNode;
+    Task* secondLargest;
+    bool leaf=false;
+    const vector<Task*>* subtrees = Qtree->getTasks();
+    vector<Task*>* children;
+
+    if (subtrees->front()->getId()!=1) {//the root is supposed to be the first element in vector nodes
+        cout<<"error in function estimateMS"<<endl;
+        return false;
+    }
+
+    vector<Task*> tempQue;
+    currentQNode = Qtree->getRoot();
+    currentQNode->setMakespanDiff(0);
+    children = currentQNode->getChildren();
+    tempQue.insert(tempQue.end(), children->begin(), children->end());
+    //cout<<"   ---compute makespan difference---"<<endl;
+    while (!tempQue.empty()) {
+        currentQNode = tempQue.back();
+        tempQue.pop_back();
+        currentQNode->setMakespanDiff(currentQNode->getParent()->getMakespanDiff()+currentQNode->getParent()->getParallelPart()-currentQNode->getMakespanCost(true,false));
+        //cout<<"   subtree "<<currentQNode->getothersideID()<<", makespan difference: "<<currentQNode->getMakespanDiff()<<endl;
+        children = currentQNode->getChildren();
+        tempQue.insert(tempQue.end(), children->begin(), children->end());
+    }
+    //cout<<"   ----------------------------------"<<endl;
+
+
+    list<pair<double, Task*>> list_increase_id;
+    vector<Task*>::const_iterator iter=subtrees->begin();
+    ++iter;
+    unsigned long size=subtrees->size()-1;
+//  #pragma omp parallel for
+    for (unsigned int step=0; step<size; ++step) {
+        currentQNode = *(iter+step);
+
+        if (tree->getTask(currentQNode->getOtherSideId())->isBroken()==true) {//this subtree has not been merged yet
+            children=currentQNode->getChildren();
+            if (children->empty()) {//this is a leaf node
+                children=currentQNode->getParent()->getChildren();
+                if (children->size()==2) {
+                    increase=children->front()->getMakespanWeight()+children->back()->getMakespanWeight()-currentQNode->getParent()->getParallelPart();
+                }else if(children->size()==1){
+                    increase=-currentQNode->getEdgeWeight()/Cluster::getFixedCluster()->getHomogeneousBandwidth();;
+                }else {
+
+                    getTwoLargestElementTypetwo(children,LargestNode, secondLargest);//no-increasing, communication counted
+
+                    if (currentQNode->getId() == LargestNode->getId()) {
+                        increase = currentQNode->getMakespanWeight() + secondLargest->getMakespanCost(true,false) - currentQNode->getMakespanCost(true,false);
+                    }else{
+                        increase = currentQNode->getMakespanWeight();
+                    }
+                }
+            }else{//not a leaf node
+                children=currentQNode->getParent()->getChildren();
+
+                if (children->size()==1) {
+                    increase=-currentQNode->getEdgeWeight()/Cluster::getFixedCluster()->getHomogeneousBandwidth();;
+                }else{
+                    getTwoLargestElementTypetwo(children,LargestNode, secondLargest);//no-increasing, communication counted
+
+                    if (currentQNode->getId()==LargestNode->getId()) {
+                        increase = currentQNode->getMakespanWeight()+max(secondLargest->getMakespanCost(true,false), currentQNode->getParallelPart())-currentQNode->getMakespanCost(true,false);
+                    }else{
+                        increase = currentQNode->getMakespanWeight();
+                    }
+                }
+            }
+
+            //now consider the "slack" between the parent of current node with siblings of its parent
+            increase = increase - currentQNode->getParent()->getMakespanDiff();
+
+            //cout<<"merge, increase in MS(r) "<<increase<<endl;
+            list_increase_id.push_back(pair<double, Task*>(increase,currentQNode));
+        }
+    }
+
+    bool feasible=false;
+    list<pair<double, Task*>>::iterator smallest_iter;
+    while (feasible==false&&list_increase_id.empty()==false) {
+        smallest_iter = min_element(list_increase_id.begin(), list_increase_id.end(), cmp_merge_smallest);
+        currentQNode = (*smallest_iter).second;
+        cout<<"   increase in MS(r) estimated: "<<(*smallest_iter).first<<endl;
+
+        children=currentQNode->getChildren();
+        if (children->empty()) {
+            leaf=true;
+        }
+
+        if (CheckMemory==true) {
+            double requiredMemorySize;
+            memoryEnough=tree->MemoryEnough( currentQNode->getParent(), currentQNode, leaf, memory_size, requiredMemorySize);
+        }else{
+            memoryEnough=true;
+        }
+
+        if (memoryEnough == true) {
+            feasible = true;
+            smallestNode = currentQNode;
+        }else{
+            list_increase_id.erase(smallest_iter);
+        }
+    }
+
+    //cout<<"   ---end compute the minimum combination"<<endl;
+    return feasible;
+}
+
+
+
 void freeProcessorIfAvailable(Task * task){
     if(task->getAssignedProcessor()!=NULL){
         task->getAssignedProcessor()->setAssignedTask(NULL);
@@ -562,6 +680,74 @@ double Tree::Merge(bool CheckMemory) {
 
     return temp;
 }
+
+double Tree:: MergeOld(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, bool CheckMemory){
+    Task* root=this->getRoot();
+
+    if (processor_number>=num_subtrees) {
+        return root->getMakespanCost(true, true);
+    }
+
+    Tree* Qtreeobj =this->BuildQtree();
+
+    Task* node_smallest_increase;
+    Task* parent;
+    int shortage = num_subtrees-processor_number;
+    double temp;
+    Task* nodeone;
+    Task* nodetwo;
+    bool memoryEnough;
+
+    while (shortage>0) {//merge subtree
+        //cout<<"shortage "<<shortage<<endl;
+        temp = Qtreeobj->getRoot()->getMakespanCost(true, true);//initilize ms
+        temp = this->getRoot()->getMakespanCost(true,true);//update ms
+
+        //memoryEnough=increaseMS(tree, Qtreeobj, node_smallest_increase, chstart, childrenID, memory_size, CheckMemory);
+        memoryEnough=estimateMSOld(this, Qtreeobj, node_smallest_increase, memory_size, CheckMemory);
+
+        //when parameter checkMemory is false, memoryEnough will always be true;
+        if (memoryEnough==true) {
+            //merge currentNode (or and its sibling) to its parent
+            if (node_smallest_increase->isLeaf()) {
+                parent = node_smallest_increase->getParent();
+                if (parent->getChildren()->size()==2) {
+                    nodeone=parent->getChildren()->front();
+                    nodetwo=parent->getChildren()->back();
+                    //cout<<"Merge node "<<nodeone->getothersideID()<<" and its sibling "<<nodetwo->getothersideID()<<endl;
+                    nodeone->mergeToParent();
+                    nodetwo->mergeToParent();
+                    shortage=shortage-2;
+                    this->getTask(nodeone->getOtherSideId())->restoreEdge();
+                    this->getTask(nodetwo->getOtherSideId())->restoreEdge();
+                }else{
+                    //cout<<"Merge node "<<node_smallest_increase->getothersideID()<<endl;
+                    node_smallest_increase->mergeToParent();
+                    shortage--;
+                    this->getTask(node_smallest_increase->getOtherSideId())->restoreEdge();
+                }
+            }else{
+                //cout<<"Merge node "<<node_smallest_increase->getothersideID()<<endl;
+                node_smallest_increase->mergeToParent();
+                shortage--;
+                this->getTask(node_smallest_increase->getOtherSideId())->restoreEdge();
+            }
+            //cout<<"------------------------"<<endl;
+        } else {
+            break;
+        }
+    }
+
+    if (shortage>0) {//failure
+        temp = -1;
+    } else {
+        temp = root->getMakespanCost(true, true);
+    }
+    delete Qtreeobj;
+
+    return temp;
+}
+
 
 double
 Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, bool CheckMemory) {
@@ -660,7 +846,7 @@ Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, double c
                 //for (Task *task: Llist) {
                 //     cout << "task id " << task->getId() << endl;
                 // }
-                GetTwoSmallestElement(&Llist, smallest, secondSmallest);
+                getTwoSmallestElement(&Llist, smallest, secondSmallest);
             }
 
             if ((*smallest)->isLeaf()) {
@@ -805,7 +991,15 @@ double Tree::ASAP() {
 
     return minimumMS;
 }
+bool checkRequiredMemSize(Tree * tree, Task *SubtreeRoot){
+    Tree *subtree = BuildSubtree(tree, SubtreeRoot);
+    double maxout, requiredMemorySize;
+    schedule_traversal *schedule_f = new schedule_traversal();
+    maxout = MaxOutDegree(subtree, true);
+    MinMem(subtree, maxout, requiredMemorySize, *schedule_f, true);
+    return Cluster::getFixedCluster()->smallestFreeProcessorFitting(requiredMemorySize)!=nullptr;
 
+}
 bool
 EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *lastsubtree, Task **node_i, Task **node_j) {
     //cout<<"   --------------estimate decrease in makespan-----------------"<<endl;
@@ -833,12 +1027,12 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
             tempQue.pop_back();
             if (children->size() >
                 1) {                                                                        //has at least 2 children
-                GetTwoLargestElementTypethree(children, largestNode,
+                getTwoLargestElementTypethree(children, largestNode,
                                               secondLargest); //node_i is the largest, in terms of W
                 temp = min(
                         (*largestNode)->getSequentialPart() - (*secondLargest)->getEdgeWeight() / homogeneousBandwidth,
                         (*secondLargest)->getSequentialPart() - (*largestNode)->getEdgeWeight() / homogeneousBandwidth);
-                if (temp > decrease) {
+                if (temp > decrease && checkRequiredMemSize(tree, *largestNode) && checkRequiredMemSize(tree, *secondLargest)) {
                     decrease = temp;
                     *node_i = *largestNode;
                     *node_j = *secondLargest;
@@ -852,7 +1046,7 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
                                 (*secondLargest)->getEdgeWeight() / homogeneousBandwidth,
                                 (*secondLargest)->getSequentialPart() -
                                 (*largestNode)->getEdgeWeight() / homogeneousBandwidth);
-                        if (temp > decrease) {
+                        if (temp > decrease&& checkRequiredMemSize(tree, *largestNode) && checkRequiredMemSize(tree, *secondLargest)) {
                             decrease = temp;
                             *node_i = *largestNode;
                             *node_j = *it;
@@ -885,11 +1079,11 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
     double MS_t, W_t;
 
     //cout<<"other subtrees"<<endl;
-   // cout<<"   working on subtree ";
+    // cout<<"   working on subtree ";
     do {
         currentNode = tree->getTask(SubtreeT->getOtherSideId());
         SubtreeT = SubtreeT->getParent();
-      //  cout<<"   "<<SubtreeT->getOtherSideId()<<"{ "<<endl;
+        //  cout<<"   "<<SubtreeT->getOtherSideId()<<"{ "<<endl;
         subtreeRoot = tree->getTask(SubtreeT->getOtherSideId());
         MS_t = SubtreeT->getMakespanCost(true, false);
         W_t = SubtreeT->getMakespanWeight();
@@ -903,12 +1097,12 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
                 tempQue.pop_back();
                 for (vector<Task *>::iterator it = children->begin(); it != children->end(); ++it) {
                     if ((*it)->getId() != nodeOnPath->getId() && (!(*it)->isBroken())) {
-                      //  cout<<"    "<<(*it)->getId()<<" W_i "<<(*it)->getSequentialPart()<<", MS(t) "<<MS_t<<", W_t "<<W_t<<", MS_tj "<<(*it)->getParallelPart()<<endl;
+                        //  cout<<"    "<<(*it)->getId()<<" W_i "<<(*it)->getSequentialPart()<<", MS(t) "<<MS_t<<", W_t "<<W_t<<", MS_tj "<<(*it)->getParallelPart()<<endl;
                         tempQue.push_back((*it));
                         temp = min((*it)->getSequentialPart(),
                                    MS_t - W_t - (*it)->getEdgeWeight() / homogeneousBandwidth -
                                    (*it)->getParallelPart());
-                        if (temp > decrease_othersubtrees) {
+                        if (temp > decrease_othersubtrees && checkRequiredMemSize(tree, *it) ) {
                             decrease_othersubtrees = temp;
                             output_node = (*it);
                         }
@@ -916,12 +1110,12 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
                 }
             }
         } while (!currentNode->isBroken());
-     //   cout<<"   }"<<endl;
+        //   cout<<"   }"<<endl;
     } while (subtreeRoot->getId() != tree->getRootId());
-  //  cout<<endl;
-   // cout<<" decrease: "<<decrease<<" other subtrees decrease: "<<decrease_othersubtrees;
+    //  cout<<endl;
+    // cout<<" decrease: "<<decrease<<" other subtrees decrease: "<<decrease_othersubtrees;
     if (decrease_othersubtrees >= 0) {
-   //     cout<<"node "<<output_node->getId()<<endl;
+        //     cout<<"node "<<output_node->getId()<<endl;
         MSdecreased = true;
         if (decrease_othersubtrees < decrease) {
             *lastsubtree = true;
@@ -937,8 +1131,6 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
 
     return MSdecreased;
 }
-
-
 double Tree::SplitAgainV2(unsigned int processor_number, unsigned int num_subtrees, std::map<int, int> &taskToPrc,
                           std::map<int, bool> &isProcBusy) {
     double MS_now;
@@ -1249,7 +1441,7 @@ double SplitAgainOld(Tree* tree, unsigned int processor_number, unsigned int num
                     break;
                 }
             }
-            //cout<<largestNode->GetothersideID()<<" ";
+            //cout<<largestNode->getothersideID()<<" ";
             CriticalPath.push_back(largestNode);
             Children=largestNode->getChildren();
         }
@@ -1512,8 +1704,7 @@ int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcess
              double rhsMem = get<0>(rhs);
              return lhsMem > rhsMem;
          });
-
-
+   //processors are sorted when read
     unsigned int com_freq;
     vector<unsigned int> BrokenEdgesID;
     while (!subtreeRoots.empty()) {
@@ -1524,6 +1715,7 @@ int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcess
         double currentMemorySize;
 
         try {
+            //this is possible, because both subtrees and processors are sorted by size
             mostSuitableProcessor = Cluster::getFixedCluster()->getBiggestFreeProcessor();
         }
         catch (exception e) {
@@ -1576,6 +1768,88 @@ int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcess
         // cout << "deleting" << endl;
         //  delete get<1>(subtreeRootAndMemReq);
         //   delete get<2>(subtreeRootAndMemReq);
+    }
+
+
+    for (vector<unsigned int>::iterator iter = BrokenEdgesID.begin(); iter != BrokenEdgesID.end(); ++iter) {
+        tree->getTask(*iter)->breakEdge();
+    }
+    // for (Processor *p: Cluster::getFixedCluster()->getProcessors()) {
+    //     if(p->getAssignedTaskId()!=)
+    //      p->assignTask(tree->getTask(p->getAssignedTaskId()));
+    //   }
+    // Cluster::getFixedCluster()->printProcessors();
+
+    for (auto tuple: subtreeRoots) {
+        delete get<1>(tuple);
+        delete get<2>(tuple);
+    }
+    return 0;
+}
+
+
+
+int MemoryCheckHomp(Tree *tree, io_method_t method, double processor_memory_size) {
+    vector<std::tuple<double, Tree *, schedule_traversal *, Task *>> subtreeRoots;
+    Task *currentnode;
+    std::tuple<double, Tree *, schedule_traversal *, Task *> subtreeRootAndMemReq;
+    tree->getRoot()->breakEdge();
+    //subtreeRoots = tree->getBrokenTasks();
+    for (unsigned int i = tree->getSize(); i >= 1; --i) {
+        double maxoutD, memory_required;
+        currentnode = tree->getTask(i);
+        if (currentnode->isBroken()) {
+            //cout<<i<<" ";
+            Tree *subtree = BuildSubtree(tree, currentnode);
+            maxoutD = MaxOutDegree(subtree, true);
+            schedule_traversal *schedule_f = new schedule_traversal();
+            MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
+            tuple<double, Tree *, schedule_traversal *, Task *> tuple{
+                    memory_required,
+                    subtree, schedule_f,
+                    currentnode};
+            subtreeRoots.push_back(tuple);
+        }
+    }
+    unsigned int com_freq;
+    vector<unsigned int> BrokenEdgesID;
+    while (!subtreeRoots.empty()) {
+        //   tree->HowmanySubtrees(false);
+        subtreeRootAndMemReq = subtreeRoots.front();
+        subtreeRoots.erase(subtreeRoots.begin());
+        cout << "Subtree " << get<3>(subtreeRootAndMemReq)->getId() << " needs memory " << get<0>(subtreeRootAndMemReq)
+             << endl;
+        if (get<0>(subtreeRootAndMemReq) > processor_memory_size) {
+            cout << ", larger than what is available: " << processor_memory_size << endl;
+
+            int *schedule_copy = copyScheduleBackwards(get<2>(subtreeRootAndMemReq));
+
+            switch (method) {
+                case FIRST_FIT:
+                    try {
+                        IOCounter(get<1>(subtreeRootAndMemReq), schedule_copy, false, true,
+                                  com_freq, &BrokenEdgesID,
+                                  FIRST_FIT);
+                    }
+                    catch (exception e) {
+                        cout << "not enough processors";
+                        return -1;
+                    }
+                    break;
+                case LARGEST_FIT:
+                    IOCounter(get<1>(subtreeRootAndMemReq), schedule_copy, false, true,
+                              com_freq, &BrokenEdgesID,
+                              LARGEST_FIT);
+                    break;
+                case IMMEDIATELY:
+                    Immediately(get<1>(subtreeRootAndMemReq), schedule_copy, processor_memory_size, &BrokenEdgesID);
+                    break;
+
+                default:
+                    break;
+            }
+            delete[] schedule_copy;
+        }
     }
 
 

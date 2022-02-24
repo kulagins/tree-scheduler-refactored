@@ -1363,7 +1363,7 @@ int maxDepth(Task * root){
 int Tree::numberOfLeaves(){
     int numberOfLEaves =0;
     for(Task *task: *this->getTasks()){
-        if(task->getChildren()->size()==0){
+        if(task->getChildren()->empty()){
             numberOfLEaves++;
         }
     }

@@ -74,6 +74,7 @@ protected:
     unsigned int Qtree_id;
     bool __root{};
     Processor *assignedProcessor;
+    vector<Processor *> feasibleProcessors;
 
 public :
     unsigned int Ci;
@@ -90,6 +91,7 @@ public :
         children = new vector<Task *>();
         assignedProcessor = nullptr;
         Qtree_id = 0;
+        feasibleProcessors.resize(0);
     }
 
     Task(double nw, double ew, double mw, bool root = false) {
@@ -111,6 +113,7 @@ public :
         } else {
             this->__root = false;
         }
+        feasibleProcessors.resize(0);
     }
 
     Task(unsigned int pparent_id, double nw, double ew, double mw) {
@@ -128,6 +131,7 @@ public :
         makespan_nocommu = mw;
         parent_id = pparent_id;
         Qtree_id = 0;
+        feasibleProcessors.resize(0);
     }
 
     Task(const Task &otherTask, const unsigned int newId, Task *newParent)
@@ -153,6 +157,7 @@ public :
         children = new vector<Task *>();
         __root = false;
         assignedProcessor = nullptr;
+        feasibleProcessors.resize(0);
     }
 
     ~Task() {
@@ -278,6 +283,15 @@ public :
 
     int getLabel() const {
         return label;
+    }
+
+    vector<Processor *> getFeasibleProcessors(){
+        return this->feasibleProcessors;
+    }
+
+    //Todo: sort?
+    void addFeasibleProcessor(Processor * proc){
+         this->feasibleProcessors.push_back(proc);
     }
 
     void Print(ostream &out) const {

@@ -2028,3 +2028,65 @@ copyScheduleBackwards(schedule_traversal *schedule_f) {
 
     return schedule_copy;
 }
+
+class TMaxHeap{
+    public:
+        bool operator()(Task * t1, Task* t2){
+            return t1->getTMax()<t2->getTMax();
+        }
+
+
+// since we are going over the heap from top to bottom,
+// everything above the idx is already compliant with the heap constraint 
+        static void siftUp(vector<Task*> *heap, int idx){
+            int parent_idx;
+            Task* tmp;
+
+            while (idx > 0)
+            {
+                parent_idx = (int) (idx-1)/2;
+                tmp = heap->at(idx);
+                if (heap->at(parent_idx)->getTMax()<heap->at(idx)->getTMax()){
+                    heap->at(idx) = heap->at(parent_idx);
+                    heap->at(parent_idx) = tmp;
+                    idx = parent_idx;
+                }else{
+                    break;
+                }
+
+            } 
+
+        }
+
+};
+
+
+
+void distributeProcessors(Tree * qTree){
+    auto tasks = qTree->getTasks();
+    
+    vector<Task*> * taskHeap = new vector<Task*>(tasks->size());
+    for (auto task:*tasks){
+        task->updateTMax();
+        taskHeap->push_back(task);
+    }
+    make_heap(taskHeap->begin(), taskHeap->end(),TMaxHeap());
+
+    while(taskHeap->size()>0){
+        pop_heap(taskHeap->begin(), taskHeap->end(),TMaxHeap());
+        Task* task = taskHeap->back();
+        taskHeap->pop_back();
+        Processor* pFast = task->getFastestFeasibleProcessor();
+        task->setAssignedProcessor(pFast);
+
+        for(int i = 0; i<taskHeap->size();i++){
+            taskHeap->at(i)->deleteFeasible(pFast);
+            taskHeap->at(i)->updateTMax();
+            TMaxHeap::siftUp(taskHeap,i);
+        }
+
+    }
+
+
+    delete taskHeap;
+}

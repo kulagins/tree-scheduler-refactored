@@ -75,6 +75,8 @@ protected:
     bool __root{};
     Processor *assignedProcessor;
     vector<Processor *> feasibleProcessors;
+    double minMemUnderlying;
+
 
 public :
     unsigned int Ci;
@@ -92,6 +94,7 @@ public :
         assignedProcessor = nullptr;
         Qtree_id = 0;
         feasibleProcessors.resize(0);
+        minMemUnderlying=0;
     }
 
     Task(double nw, double ew, double mw, bool root = false) {
@@ -114,6 +117,7 @@ public :
             this->__root = false;
         }
         feasibleProcessors.resize(0);
+        minMemUnderlying=0;
     }
 
     Task(unsigned int pparent_id, double nw, double ew, double mw) {
@@ -132,6 +136,7 @@ public :
         parent_id = pparent_id;
         Qtree_id = 0;
         feasibleProcessors.resize(0);
+        minMemUnderlying=0;
     }
 
     Task(const Task &otherTask, const unsigned int newId, Task *newParent)
@@ -158,6 +163,7 @@ public :
         __root = false;
         assignedProcessor = nullptr;
         feasibleProcessors.resize(0);
+        minMemUnderlying=0;
     }
 
     ~Task() {
@@ -249,10 +255,6 @@ public :
         label = pid;
     }
 
-    void setEdgeWeight(double ew) {
-        edge_weight = ew;
-    }
-
     void setNodeWeight(double nw) {
         node_weight = nw;
     }
@@ -281,10 +283,6 @@ public :
         return id;
     }
 
-    int getLabel() const {
-        return label;
-    }
-
     vector<Processor *> getFeasibleProcessors(){
         return this->feasibleProcessors;
     }
@@ -292,6 +290,13 @@ public :
     //Todo: sort?
     void addFeasibleProcessor(Processor * proc){
          this->feasibleProcessors.push_back(proc);
+    }
+
+    void setMinMemUnderlying(double minMem){
+        this->minMemUnderlying = minMem;
+    }
+    double getMinMemUnderlying(){
+        return this->minMemUnderlying;
     }
 
     void Print(ostream &out) const {
@@ -477,7 +482,7 @@ public :
     list<Task *> fillParallelRootsUntilBestMakespan(vector<double> &makespansOfSplittings,
                                                     unsigned long stepsUntilMinimalMakespan) const;
 
-
+    void precomputeMinMems(Tree * tree);
 };
 
 class Tree {
@@ -732,6 +737,8 @@ public:
     double avgEdgeWeight();
 
     double avgMSWeight();
+
+
 };
 
 double SplitAgainOld(Tree *tree, unsigned int processor_number, unsigned int num_subtrees);
@@ -777,6 +784,7 @@ double getWeightSurplusFromSmallestNodes(list<Task *> &parallelRoots, int limit)
 
 int *
 copyScheduleBackwards(schedule_traversal *schedule_f);
+
 
 #endif
 #endif

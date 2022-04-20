@@ -36,17 +36,25 @@ void quietPrint(string text) {
     cout << text << endl;
     initOutput();
 }
+double a2Steps(Tree *tree){
+    tree->getRoot()->precomputeMinMems(tree);
+    //seqSetAndFeasSets(tree);
+    //assignToBestProcessors(tree);
 
+    for(Task * task: *tree->getTasks()){
+        cout<<"Task "<<task->getId()<< " child of "<< task->getParentId()<<" MM "<<task->getMinMemUnderlying()<<" #procs "<< task->getFeasibleProcessors().size()<<endl;
+    }
+}
 double threeSteps(Tree *tree, bool runHomp) {
     string stage2 = "FirstFit";
     unsigned int number_subtrees = 0;
     unsigned long sequentialLen;
     unsigned int num_processors = Cluster::getFixedCluster()->getNumberProcessors();
-    list<Task *> parallelSubtrees;
+    list < Task * > parallelSubtrees;
     double makespan;
     // for counting how many subtrees produced, twolevel is set as false
     makespan = tree->ASAP();
-            //tree->getRoot()->SplitSubtrees(false, parallelSubtrees, sequentialLen, -1);
+    //tree->getRoot()->SplitSubtrees(false, parallelSubtrees, sequentialLen, -1);
     // tree->ImprovedSplit();
 
 
@@ -118,19 +126,19 @@ int main(int argc, char **argv) {
 
 
     if (input->getClusteringMode() == staticClustering) {
-        double maxMinMem = 0;
-        double maxMaxoutD = 0;
-        double maxEdgesToMakespanWeights = 0;
-        double sum_edges = 0;
-        double sum_weights = 0;
-
+        double maxMinMem = 0, maxMaxoutD = 0, sum_edges = 0, sum_weights = 0, maxEdgesToMakespanWeights = 0;
         do {
-            schedule_traversal *schedule_f = new schedule_traversal();
+
             OpenFilePreliminary >> treename;
             Tree *tree = read_tree((input->getWorkingDirectory() + treename).c_str());
+
             maxoutd = MaxOutDegree(tree, true);
             if (maxoutd > maxMaxoutD) maxMaxoutD = maxoutd;
+
+            schedule_traversal *schedule_f = new schedule_traversal();
             MinMem(tree, maxoutd, minMem, *schedule_f, true);
+            delete schedule_f;
+
             if (minMem > maxMinMem) {
                 maxMinMem = minMem;
                 for (Task *task: *tree->getTasks()) {
@@ -140,7 +148,7 @@ int main(int argc, char **argv) {
                 maxEdgesToMakespanWeights = sum_edges / sum_weights;
             }
             delete tree;
-            delete schedule_f;
+
         } while (OpenFilePreliminary.good());
         OpenFilePreliminary.close();
 
@@ -148,13 +156,14 @@ int main(int argc, char **argv) {
     }
 
     string header_column = "treename\t";
-    do{
-        header_column+= input->getPathToCluster() +"\t";
-    }while(input->nextCluster());
+    do {
+        header_column += input->getPathToCluster() + "\t";
+    } while (input->nextCluster());
+
     input->resetClusterIterator();
     quietPrint(header_column);
-    double processorUtilizationOverall =0;
-    int numTrees =0;
+    double processorUtilizationOverall = 0;
+    int numTrees = 0;
     std::vector<int> brokenEdges;
     do {
         OpenFile >> treename;
@@ -173,45 +182,41 @@ int main(int argc, char **argv) {
         //   cout << treename << " Fanout: Max: " << fanouts[0] << ",  Avg: " << fanouts[1] <<
         //      " Max depth " << maxDepth(tree->getRoot()) << " num leaves " << tree->numberOfLeaves()
         //       << " #tasks: " << tree->getSize() << endl;
-        string tree_column = treename+"\t";
-        do{
+        string tree_column = treename + "\t";
+        do {
             bool computeSmallCluster = false;
             if (input->getClusteringMode() == treeDependent) {
                 buildTreeDependentCluster(input, tree, computeSmallCluster);
             }
 
-        time = clock();
-        makespan = threeSteps(tree, input->getRunHomp());
-        time = clock() - time;
+            time = clock();
+           // makespan = threeSteps(tree, input->getRunHomp());
+            a2Steps(tree);
+            time = clock() - time;
 
-            if (makespan == -1 && computeSmallCluster) {
-                cout << "small cluster too small" << endl;
-                treesToRerun += treename + "\n";
-                buildTreeDependentCluster(input, tree, false);
-                time = clock();
-                makespan = threeSteps(tree, input->getRunHomp());
-                time = clock() - time;
+            if (makespan == -1) {
+                cout << "no solution" << endl;
             }
-        // cout<<"makespan "<<makespan<<endl;
+            // cout<<"makespan "<<makespan<<endl;
             tree->HowmanySubtrees(false);
-            //tree->getTaskByPos(345)->breakEdge();
-        //  makespan = tree->getRoot()->getMakespanCost(true, true);
-        // cout<<"makespan "<<makespan<<endl;
+
+            //  makespan = tree->getRoot()->getMakespanCost(true, true);
+            // cout<<"makespan "<<makespan<<endl;
             //quietPrint("&& " + treename + " " + to_string(makespan) + " " + to_string(time));
             // quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
             // quietPrint(Cluster::getFixedCluster()->getAverageLoadAndNumberOfUsedProcessors());
             //quietPrint(Cluster::getFixedCluster()->getUsageString());
-        //  quietPrint(Cluster::getFixedCluster()->printProcessors());
-            tree_column+=to_string(makespan)+"\t";
-             double processorUtilization =0;
-        for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {
-            if (proc->isBusy) {
-                processorUtilization++;
+            //  quietPrint(Cluster::getFixedCluster()->printProcessors());
+            tree_column += to_string(makespan) + "\t";
+            double processorUtilization = 0;
+            for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {
+                if (proc->isBusy) {
+                    processorUtilization++;
+                }
             }
-        }
-        processorUtilization/=Cluster::getFixedCluster()->getProcessors().size();
-        processorUtilizationOverall +=processorUtilization;
-        }while(input->nextCluster());
+            processorUtilization /= Cluster::getFixedCluster()->getProcessors().size();
+            processorUtilizationOverall += processorUtilization;
+        } while (input->nextCluster());
         quietPrint(tree_column);
         delete tree;
         delete untouchedTree;
@@ -219,7 +224,7 @@ int main(int argc, char **argv) {
         input->resetClusterIterator();
     } while (OpenFile.good());
     OpenFile.close();
-    processorUtilizationOverall/=numTrees;
+    processorUtilizationOverall /= numTrees;
     //quietPrint("proc util "+ to_string(processorUtilizationOverall));
     cout << treesToRerun << endl;
     exit(EXIT_SUCCESS);

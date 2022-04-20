@@ -2028,3 +2028,9 @@ copyScheduleBackwards(schedule_traversal *schedule_f) {
 
     return schedule_copy;
 }
+void seqSetAndFeasSets(Tree * tree){
+    throw "not implemented";
+}
+void assignToBestProcessors( Tree *tree){
+    throw "not implemented";
+}

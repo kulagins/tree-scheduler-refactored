@@ -27,5 +27,7 @@ int MemoryCheckHomp(Tree *tree, io_method_t method, double processor_memory_size
 
 void SetBandwidth(double CCR, unsigned long tree_size, double *ewghts, double *timewghts);
 
+void seqSetAndFeasSets(Tree * tree);
+void assignToBestProcessors( Tree *tree);
 
 #endif /* heuristics_h */

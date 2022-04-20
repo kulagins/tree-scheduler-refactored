@@ -1251,7 +1251,7 @@ double MaxOutDegree(Tree *tree, int quiet) {
 vector<double> maxAndAvgFanout(Tree *tree) {
     double max_fanout = 0;
     double avg_fanout = 0;
-    int tasks_not_leaves =0;
+    int tasks_not_leaves = 0;
     for (unsigned int j = 1; j <= tree->getTasks()->size(); j++) {
         ////cout<<j<<endl;
         double currentFanout = tree->getTask(j)->getChildren()->size();
@@ -1259,7 +1259,7 @@ vector<double> maxAndAvgFanout(Tree *tree) {
             max_fanout = currentFanout;
         }
         avg_fanout += currentFanout;
-        if(currentFanout!=0) tasks_not_leaves++;
+        if (currentFanout != 0) tasks_not_leaves++;
     }
     avg_fanout /= tasks_not_leaves;
     return {max_fanout, avg_fanout};
@@ -1344,50 +1344,86 @@ Tree *BuildSubtree(Tree *tree, Task *subtreeRoot) {
     Tree *treeobj = new Tree(tasksInNewSubtree, rootCopy, tree);
     return treeobj;
 }
-int maxDepth(Task * root){
 
-        if (root == NULL)
-            return -1;
-        else
-        {
-            /* compute the depth of each subtree */
-            vector<int> depths(root->getChildren()->size());
-            for(int i=0; i< root->getChildren()->size(); i++){
-                depths.at(i) = maxDepth(root->getChildren()->at(i));
-            }
-            auto result = depths.size()!=0? *(std::max_element(depths.begin(), depths.end())):1;
-            return result+1;
+int maxDepth(Task *root) {
+
+    if (root == NULL)
+        return -1;
+    else {
+        /* compute the depth of each subtree */
+        vector<int> depths(root->getChildren()->size());
+        for (int i = 0; i < root->getChildren()->size(); i++) {
+            depths.at(i) = maxDepth(root->getChildren()->at(i));
         }
+        auto result = depths.size() != 0 ? *(std::max_element(depths.begin(), depths.end())) : 1;
+        return result + 1;
+    }
 
 }
-int Tree::numberOfLeaves(){
-    int numberOfLEaves =0;
-    for(Task *task: *this->getTasks()){
-        if(task->getChildren()->empty()){
+
+int Tree::numberOfLeaves() {
+    int numberOfLEaves = 0;
+    for (Task *task: *this->getTasks()) {
+        if (task->getChildren()->empty()) {
             numberOfLEaves++;
         }
     }
     return numberOfLEaves;
 }
+
 double Tree::avgNodeWeight() {
-    double nw =0;
-    for(Task *task: *this->getTasks()){
-     nw +=task->getNodeWeight();
+    double nw = 0;
+    for (Task *task: *this->getTasks()) {
+        nw += task->getNodeWeight();
     }
-    return nw/this->size;
+    return nw / this->size;
 }
-double Tree::avgEdgeWeight(){
-    double ew =0;
-    for(Task *task: *this->getTasks()){
-        ew +=task->getEdgeWeight();
+
+double Tree::avgEdgeWeight() {
+    double ew = 0;
+    for (Task *task: *this->getTasks()) {
+        ew += task->getEdgeWeight();
     }
-    return ew/this->size;
+    return ew / this->size;
 }
-double Tree::avgMSWeight(){
-    double mw =0;
-    for(Task *task: *this->getTasks()){
-        mw +=task->getMakespanWeight();
+
+double Tree::avgMSWeight() {
+    double mw = 0;
+    for (Task *task: *this->getTasks()) {
+        mw += task->getMakespanWeight();
     }
-    return mw/this->size;
+    return mw / this->size;
 }
+
+void Task::precomputeMinMems(Tree *tree) {
+    //cout<<"precomputing minMems on "<<endl;
+    // cout<<this->getId()<<endl;
+    if (this->getMinMemUnderlying() != 0) {
+        cout << "already computed for " << this->getId() << " " << endl;
+    }
+    if (this == NULL) {
+        return;
+    }
+    if (this->getChildren()->size() == 0) {
+       // cout<<"no childs"<<endl;
+    }
+    for (Task *child: *this->getChildren()) {
+        child->precomputeMinMems(tree);
+    }
+    schedule_traversal *schedule_f = new schedule_traversal();
+    Tree *subtree = BuildSubtree(tree, this);
+    double maxoutd = MaxOutDegree(subtree, true);
+    double minMem;
+    MinMem(subtree, maxoutd, minMem, *schedule_f, true);
+    delete schedule_f;
+    this->setMinMemUnderlying(minMem);
+    //TODO improve by sorting procs and only taking biggest
+    for (Processor *processor: Cluster::getFixedCluster()->getProcessors()) {
+        if (processor->getMemorySize() > minMem) {
+            this->addFeasibleProcessor(processor);
+        }
+    }
+
+}
+
 #endif

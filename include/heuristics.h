@@ -26,6 +26,7 @@ int MemoryCheckHomp(Tree *tree, io_method_t method, double processor_memory_size
 //MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t method, bool skipBig);
 
 void SetBandwidth(double CCR, unsigned long tree_size, double *ewghts, double *timewghts);
+void distributeProcessors(Tree * qTree);
 
 void seqSetAndFeasSets(Tree * tree);
 void assignToBestProcessors( Tree *tree);

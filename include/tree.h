@@ -21,6 +21,7 @@
 #include <assert.h>
 #include <map>
 #include <algorithm>
+#include <float.h>
 #include "cluster.h"
 
 #ifndef DEBUG_MEMUSAGE
@@ -77,6 +78,7 @@ protected:
     vector<Processor *> feasibleProcessors;
     double minMemUnderlying;
 
+    double tMax;
 
 public :
     unsigned int Ci;
@@ -95,6 +97,7 @@ public :
         Qtree_id = 0;
         feasibleProcessors.resize(0);
         minMemUnderlying = 0;
+        tMax = 0;
     }
 
     Task(double nw, double ew, double mw, bool root = false) {
@@ -118,6 +121,7 @@ public :
         }
         feasibleProcessors.resize(0);
         minMemUnderlying = 0;
+        tMax = 0;
     }
 
     Task(unsigned int pparent_id, double nw, double ew, double mw) {
@@ -136,6 +140,7 @@ public :
         parent_id = pparent_id;
         Qtree_id = 0;
         feasibleProcessors.resize(0);
+        tMax = 0;
         minMemUnderlying = 0;
     }
 
@@ -286,7 +291,14 @@ public :
     vector<Processor *> getFeasibleProcessors() {
         return this->feasibleProcessors;
     }
+    int getLabel() const {
+        return label;
+    }
 
+  /*  vector<Processor *> *getFeasibleProcessors(){
+        return &this->feasibleProcessors;
+    }
+*/
     //Todo: sort?
     void addFeasibleProcessor(Processor *proc) {
         this->feasibleProcessors.push_back(proc);
@@ -485,8 +497,38 @@ public :
 
     void precomputeMinMems(Tree *tree);
 
+    void updateTMax(){
+        if(this->feasibleProcessors.size() == 0){
+            throw "No Schedule Possible";
+            return;
+        }
+        if(this->feasibleProcessors.size() == 1) this->tMax = DBL_MAX;
+        else {
+            double s_max = this->getFastestFeasibleProcessor()->getProcessorSpeed();
+            double beta = Cluster::getFixedCluster()->getHomogeneousBandwidth();
+            this->tMax = this->edge_weight/beta + this->MS_weight/s_max;
+        }
+    }
+
+    double getTMax(){return tMax;}
+
+
+    // Asserts that feasibleProcessors is ordered!
+    Processor * getFastestFeasibleProcessor(){
+        return feasibleProcessors.front();
+    }
+
+    void deleteFeasible(Processor* proc){
+        auto position_it = find(feasibleProcessors.begin(),feasibleProcessors.end(), proc);
+        if (position_it != feasibleProcessors.end()){
+            feasibleProcessors.erase(position_it);
+        }
+    }
+
     void assignFeasibleProcessorsToSubtree(Tree *tree);
 };
+
+
 
 class Tree {
 protected:

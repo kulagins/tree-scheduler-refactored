@@ -82,7 +82,7 @@ CXXFLAGStest += -std=c++14 -g -Wall -Wextra -pthread
 
 # All tests produced by t his Makefile.  Remember to add new tests you
 # created to the list.
-TESTS = cluster_unittest task_tree_unittest
+TESTS = cluster_unittest task_tree_unittest distributeProcessors_unittest
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
@@ -119,10 +119,16 @@ sample1.o: $(USER_DIR)/test_tree.cpp $(GTEST_HEADERS)
 sample2.o: $(USER_DIR)/test_cluster.cpp $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGStest) $(CXXFLAGStest) -c $(USER_DIR)/test_cluster.cpp -o $@
 
+sample3.o: $(USER_DIR)/test_distributeProcessors.cpp $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGStest) $(CXXFLAGStest) -c $(USER_DIR)/test_distributeProcessors.cpp -o $@
+
 task_tree_unittest : sample1.o gtest_main.a lib/heuristics.a
 	$(CXX) $(CPPFLAGStest) $(CXXFLAGStest) $(LIBS) -lpthread $^ -o ${TEST_BIN_PATH}/$@
 
 cluster_unittest : sample2.o gtest_main.a lib/heuristics.a
+	$(CXX) $(CPPFLAGStest) $(CXXFLAGStest) $(LIBS) -lpthread $^ -o ${TEST_BIN_PATH}/$@
+
+distributeProcessors_unittest : sample3.o gtest_main.a lib/heuristics.a
 	$(CXX) $(CPPFLAGStest) $(CXXFLAGStest) $(LIBS) -lpthread $^ -o ${TEST_BIN_PATH}/$@
 
 .PHONY: clean all

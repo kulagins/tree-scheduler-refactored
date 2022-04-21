@@ -510,7 +510,9 @@ public :
         }
     }
 
-    double getTMax(){return tMax;}
+    double getTMax() { return tMax; }
+
+    void setTMax(double tMax) { this->tMax = tMax; }
 
 
     // Asserts that feasibleProcessors is ordered!
@@ -812,6 +814,7 @@ public:
 
     double avgMSWeight();
 
+    void clearComputedValues();
 
 };
 

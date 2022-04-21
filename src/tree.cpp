@@ -1442,4 +1442,14 @@ void Task::assignFeasibleProcessorsToSubtree(Tree *tree) {
     }
 }
 
+void Tree::clearComputedValues() {
+    for (Task *task: *this->getTasks()) {
+        task->setMinMemUnderlying(0);
+        task->setTMax(0);
+        task->setMakespanUncomputed();
+        setTaskMaxMemRequirement(NULL);
+        setTaskMaxMakespan(NULL);
+    }
+}
+
 #endif

@@ -2086,7 +2086,7 @@ class TMaxHeap{
 void distributeProcessors(Tree * qTree){
     auto tasks = qTree->getTasks();
 
-    vector<Task*> * taskHeap = new vector<Task*>(tasks->size());
+    vector<Task*> * taskHeap = new vector<Task*>();//tasks->size());
     for (auto task:*tasks){
         task->updateTMax();
         taskHeap->push_back(task);
@@ -2139,5 +2139,5 @@ void assignToBestProcessors(Tree *tree) {
     Tree *qTree = tree->BuildQtree();
     qTree->getRoot()->precomputeMinMems(qTree);
 
-    throw "not implemented";
+    distributeProcessors(qTree);
 }

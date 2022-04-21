@@ -41,12 +41,13 @@ void quietPrint(string text) {
 double a2Steps(Tree *tree) {
     tree->getRoot()->precomputeMinMems(tree);
     seqSetAndFeasSets(tree);
-    //assignToBestProcessors(tree);
+    assignToBestProcessors(tree);
 
     for (Task *task: *tree->getTasks()) {
         cout << "Task " << task->getId() << " child of " << task->getParentId() << " MM " << task->getMinMemUnderlying()
              << " #procs " << task->getFeasibleProcessors().size() << endl;
     }
+
 }
 
 double threeSteps(Tree *tree, bool runHomp) {

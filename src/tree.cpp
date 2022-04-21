@@ -1395,35 +1395,51 @@ double Tree::avgMSWeight() {
     return mw / this->size;
 }
 
+
 void Task::precomputeMinMems(Tree *tree) {
     //cout<<"precomputing minMems on "<<endl;
     // cout<<this->getId()<<endl;
     if (this->getMinMemUnderlying() != 0) {
-        cout << "already computed for " << this->getId() << " " << endl;
+        cout << "already computed for " << this->getId() << " " << this->getMinMemUnderlying() << endl;
     }
     if (this == NULL) {
         return;
     }
-    if (this->getChildren()->size() == 0) {
-       // cout<<"no childs"<<endl;
+
+   /* if (tree->getTaskMaxMakespan() == NULL ||
+        (tree->getTaskMaxMakespan() != NULL &&
+         this->getMakespanCost(true, false) > tree->getTaskMaxMakespan()->getMakespanCost(true, false))) {
+        tree->setTaskMaxMakespan(this);
     }
+    if (tree->getTaskMaxMemRequirement() == NULL ||
+        (tree->getTaskMaxMemRequirement() != NULL &&
+        this->getNodeWeight() > tree->getTaskMaxMemRequirement()->getNodeWeight())) {
+        tree->setTaskMaxMemRequirement(this);
+    }
+    */
+
     for (Task *child: *this->getChildren()) {
         child->precomputeMinMems(tree);
     }
+
+    assignFeasibleProcessorsToSubtree(tree);
+
+}
+
+void Task::assignFeasibleProcessorsToSubtree(Tree *tree) {
     schedule_traversal *schedule_f = new schedule_traversal();
     Tree *subtree = BuildSubtree(tree, this);
     double maxoutd = MaxOutDegree(subtree, true);
     double minMem;
     MinMem(subtree, maxoutd, minMem, *schedule_f, true);
     delete schedule_f;
-    this->setMinMemUnderlying(minMem);
+    setMinMemUnderlying(minMem);
     //TODO improve by sorting procs and only taking biggest
     for (Processor *processor: Cluster::getFixedCluster()->getProcessors()) {
         if (processor->getMemorySize() > minMem) {
-            this->addFeasibleProcessor(processor);
+            addFeasibleProcessor(processor);
         }
     }
-
 }
 
 #endif

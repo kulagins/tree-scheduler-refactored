@@ -256,6 +256,22 @@ void breakPreparedEdges(Task *root, list<Task *> &parallelRoots) {
     }
 }
 
+//TODO: n^2, think of improving
+list<Task *> buildParallelRootsFromSequentialSet(Task *root, list<Task *> &sequentialSet) {
+    list<Task *> parallelRoots;
+    for (auto iter = sequentialSet.begin(); iter != sequentialSet.end(); ++iter) {
+        for (Task *child: *(*iter)->getChildren()) {
+            auto it = std::find(sequentialSet.begin(), sequentialSet.end(), child);
+            //If the child is not itself in the sequential set, then it is the root of a subtree
+            if (it == sequentialSet.end()) {
+                parallelRoots.push_back(child);
+            }
+        }
+
+    }
+    return parallelRoots;
+}
+
 void popSmallestRootsToFitToCluster(list<Task *> &parallelRoots, unsigned long amountSubtrees, int limit) {
     int limitToPartitioning = limit == -1 ? Cluster::getFixedCluster()->getNumberProcessors() : limit;
     if (amountSubtrees > limitToPartitioning) {
@@ -416,7 +432,8 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, Processor *&proces
 
                     if (currentQNode->getId() == LargestNode->getId()) {
                         increase = currentQNode->getMakespanWeight() +
-                                   max(secondLargest->getMakespanCost(true, false), currentQNode->getParallelPart()) -
+                                   max(secondLargest->getMakespanCost(true, false),
+                                       currentQNode->getParallelPart()) -
                                    currentQNode->getMakespanCost(true, false);
                     } else {
                         increase = currentQNode->getMakespanWeight();
@@ -451,7 +468,8 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, Processor *&proces
             Cluster::getFixedCluster()->hasFreeProcessor()) {
             processorToMergeTo = Cluster::getFixedCluster()->smallestFreeProcessorFitting(requiredMemory);
         } else
-            processorToMergeTo = Cluster::getFixedCluster()->findSmallestFittingProcessorForMerge(currentQNode, tree,
+            processorToMergeTo = Cluster::getFixedCluster()->findSmallestFittingProcessorForMerge(currentQNode,
+                                                                                                  tree,
                                                                                                   requiredMemory);
 
         if (CheckMemory) {
@@ -661,9 +679,10 @@ double Tree::Merge(bool CheckMemory) {
                 node_smallest_increase->mergeToParent();
                 shortage--;
                 this->getTask(node_smallest_increase->getOtherSideId())->restoreEdge();
-                freeProcessorIfAvailable( this->getTask(node_smallest_increase->getOtherSideId()));
+                freeProcessorIfAvailable(this->getTask(node_smallest_increase->getOtherSideId()));
                 freeProcessorIfAvailable(this->getTask(node_smallest_increase->getParent()->getOtherSideId()));
-                processorToMergeTo->assignTask(this->getTask(node_smallest_increase->getParent()->getOtherSideId()));
+                processorToMergeTo->assignTask(
+                        this->getTask(node_smallest_increase->getParent()->getOtherSideId()));
             }
             //cout<<"------------------------"<<endl;
         } else {
@@ -750,7 +769,8 @@ double Tree:: MergeOld(unsigned int num_subtrees, unsigned int processor_number,
 
 
 double
-Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, bool CheckMemory) {
+Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, double const memory_size,
+              bool CheckMemory) {
     if (processor_number >= num_subtrees) {
         return this->getRoot()->getMakespanCost(true, true);
     }
@@ -1102,7 +1122,7 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
                         temp = min((*it)->getSequentialPart(),
                                    MS_t - W_t - (*it)->getEdgeWeight() / homogeneousBandwidth -
                                    (*it)->getParallelPart());
-                        if (temp > decrease_othersubtrees && checkRequiredMemSize(tree, *it) ) {
+                        if (temp > decrease_othersubtrees && checkRequiredMemSize(tree, *it)) {
                             decrease_othersubtrees = temp;
                             output_node = (*it);
                         }
@@ -1704,7 +1724,7 @@ int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcess
              double rhsMem = get<0>(rhs);
              return lhsMem > rhsMem;
          });
-   //processors are sorted when read
+    //processors are sorted when read
     unsigned int com_freq;
     vector<unsigned int> BrokenEdgesID;
     while (!subtreeRoots.empty()) {
@@ -1726,7 +1746,8 @@ int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcess
 
         cout << "using proc of memory " << mostSuitableProcessor->getMemorySize() << "for task "
              << get<3>(subtreeRootAndMemReq)->getId() << endl;
-        cout << "Subtree " << get<3>(subtreeRootAndMemReq)->getId() << " needs memory " << get<0>(subtreeRootAndMemReq)
+        cout << "Subtree " << get<3>(subtreeRootAndMemReq)->getId() << " needs memory "
+             << get<0>(subtreeRootAndMemReq)
              << endl;
         if (get<0>(subtreeRootAndMemReq) > currentMemorySize) {
             cout << ", larger than what is available: " << currentMemorySize << endl;
@@ -1788,7 +1809,6 @@ int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcess
 }
 
 
-
 int MemoryCheckHomp(Tree *tree, io_method_t method, double processor_memory_size) {
     vector<std::tuple<double, Tree *, schedule_traversal *, Task *>> subtreeRoots;
     Task *currentnode;
@@ -1817,7 +1837,8 @@ int MemoryCheckHomp(Tree *tree, io_method_t method, double processor_memory_size
         //   tree->HowmanySubtrees(false);
         subtreeRootAndMemReq = subtreeRoots.front();
         subtreeRoots.erase(subtreeRoots.begin());
-        cout << "Subtree " << get<3>(subtreeRootAndMemReq)->getId() << " needs memory " << get<0>(subtreeRootAndMemReq)
+        cout << "Subtree " << get<3>(subtreeRootAndMemReq)->getId() << " needs memory "
+             << get<0>(subtreeRootAndMemReq)
              << endl;
         if (get<0>(subtreeRootAndMemReq) > processor_memory_size) {
             cout << ", larger than what is available: " << processor_memory_size << endl;
@@ -2028,9 +2049,34 @@ copyScheduleBackwards(schedule_traversal *schedule_f) {
 
     return schedule_copy;
 }
-void seqSetAndFeasSets(Tree * tree){
-    throw "not implemented";
+
+void growSeqSet(Task *task, list<Task *> &seqSet) {
+    if (task->getFeasibleProcessors().empty()) {
+        seqSet.push_back(task);
+    }
+    for (Task *child: *task->getChildren()) {
+        growSeqSet(child, seqSet);
+    }
 }
-void assignToBestProcessors( Tree *tree){
+
+void seqSetAndFeasSets(Tree *tree) {
+    list<Task *> sequentialSet;
+    sequentialSet.clear();
+    //sequentialSet.emplace_front(tree->getRoot());
+    growSeqSet(tree->getRoot(), sequentialSet);
+    auto parallelRoots = buildParallelRootsFromSequentialSet(tree->getRoot(), sequentialSet);
+    breakPreparedEdges(tree->getRoot(), parallelRoots);
+
+    tree->getRoot()->assignFeasibleProcessorsToSubtree(tree);
+
+    for (Task *root: parallelRoots) {
+        root->assignFeasibleProcessorsToSubtree(tree);
+    }
+}
+
+void assignToBestProcessors(Tree *tree) {
+    Tree *qTree = tree->BuildQtree();
+    qTree->getRoot()->precomputeMinMems(qTree);
+
     throw "not implemented";
 }

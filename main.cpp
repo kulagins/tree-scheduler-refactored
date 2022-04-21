@@ -19,11 +19,12 @@
 #include "../include/inputParser.h"
 #include "../include/tree.h"
 #include "../include/lib-io-tree-minmem.h"
+#include "include/inputParser.h"
 
 bool verbose = true;
 
 void
-buildTreeDependentCluster(InputParser *input, Tree *tree, bool computeSmallCluster);
+buildTreeDependentCluster(InputParser *input, Tree *tree);
 
 void initOutput() {
     if (!verbose) {
@@ -36,15 +37,18 @@ void quietPrint(string text) {
     cout << text << endl;
     initOutput();
 }
-double a2Steps(Tree *tree){
+
+double a2Steps(Tree *tree) {
     tree->getRoot()->precomputeMinMems(tree);
-    //seqSetAndFeasSets(tree);
+    seqSetAndFeasSets(tree);
     //assignToBestProcessors(tree);
 
-    for(Task * task: *tree->getTasks()){
-        cout<<"Task "<<task->getId()<< " child of "<< task->getParentId()<<" MM "<<task->getMinMemUnderlying()<<" #procs "<< task->getFeasibleProcessors().size()<<endl;
+    for (Task *task: *tree->getTasks()) {
+        cout << "Task " << task->getId() << " child of " << task->getParentId() << " MM " << task->getMinMemUnderlying()
+             << " #procs " << task->getFeasibleProcessors().size() << endl;
     }
 }
+
 double threeSteps(Tree *tree, bool runHomp) {
     string stage2 = "FirstFit";
     unsigned int number_subtrees = 0;
@@ -54,7 +58,7 @@ double threeSteps(Tree *tree, bool runHomp) {
     double makespan;
     // for counting how many subtrees produced, twolevel is set as false
     makespan = tree->ASAP();
-    //tree->getRoot()->SplitSubtrees(false, parallelSubtrees, sequentialLen, -1);
+    tree->getRoot()->SplitSubtrees(false, parallelSubtrees, sequentialLen, -1);
     // tree->ImprovedSplit();
 
 
@@ -184,13 +188,13 @@ int main(int argc, char **argv) {
         //       << " #tasks: " << tree->getSize() << endl;
         string tree_column = treename + "\t";
         do {
-            bool computeSmallCluster = false;
+
             if (input->getClusteringMode() == treeDependent) {
-                buildTreeDependentCluster(input, tree, computeSmallCluster);
+                buildTreeDependentCluster(input, tree);
             }
 
             time = clock();
-           // makespan = threeSteps(tree, input->getRunHomp());
+            // makespan = threeSteps(tree, input->getRunHomp());
             a2Steps(tree);
             time = clock() - time;
 
@@ -232,21 +236,15 @@ int main(int argc, char **argv) {
 }
 
 void
-buildTreeDependentCluster(InputParser *input, Tree *tree, bool computeSmallCluster) {
+buildTreeDependentCluster(InputParser *input, Tree *tree) {
     double maxoutd, minMem;
     maxoutd = MaxOutDegree(tree, true);
 
     schedule_traversal *schedule_f = new schedule_traversal();
     MinMem(tree, maxoutd, minMem, *schedule_f, true);
-    bool smallCluster = false;
-    //computeSmall cluster? then compute. Else set to false directly
-    //smallCluster = computeSmallCluster && maxoutd * 100 / minMem < 93;
-//    cout << "small cluster " << (smallCluster ? "yes" : "no") << endl;
-    //  cout << "maxoutD " << to_string(maxoutd) + "minmem " + to_string(minMem) << endl;
-    if (smallCluster) input->setClusterFromFile(maxoutd, 3);
-    else {
-        input->setClusterFromFile(maxoutd);
-    }
+
+    input->setClusterFromFile(maxoutd);
+
     if (minMem > Cluster::getFixedCluster()->getCumulativeMemory()) {
         throw "Cluster too small: cumulative memory: " + to_string(Cluster::getFixedCluster()->getCumulativeMemory()) +
               " vs required " +

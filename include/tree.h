@@ -94,7 +94,7 @@ public :
         assignedProcessor = nullptr;
         Qtree_id = 0;
         feasibleProcessors.resize(0);
-        minMemUnderlying=0;
+        minMemUnderlying = 0;
     }
 
     Task(double nw, double ew, double mw, bool root = false) {
@@ -117,7 +117,7 @@ public :
             this->__root = false;
         }
         feasibleProcessors.resize(0);
-        minMemUnderlying=0;
+        minMemUnderlying = 0;
     }
 
     Task(unsigned int pparent_id, double nw, double ew, double mw) {
@@ -136,7 +136,7 @@ public :
         parent_id = pparent_id;
         Qtree_id = 0;
         feasibleProcessors.resize(0);
-        minMemUnderlying=0;
+        minMemUnderlying = 0;
     }
 
     Task(const Task &otherTask, const unsigned int newId, Task *newParent)
@@ -163,7 +163,7 @@ public :
         __root = false;
         assignedProcessor = nullptr;
         feasibleProcessors.resize(0);
-        minMemUnderlying=0;
+        minMemUnderlying = 0;
     }
 
     ~Task() {
@@ -283,19 +283,20 @@ public :
         return id;
     }
 
-    vector<Processor *> getFeasibleProcessors(){
+    vector<Processor *> getFeasibleProcessors() {
         return this->feasibleProcessors;
     }
 
     //Todo: sort?
-    void addFeasibleProcessor(Processor * proc){
-         this->feasibleProcessors.push_back(proc);
+    void addFeasibleProcessor(Processor *proc) {
+        this->feasibleProcessors.push_back(proc);
     }
 
-    void setMinMemUnderlying(double minMem){
+    void setMinMemUnderlying(double minMem) {
         this->minMemUnderlying = minMem;
     }
-    double getMinMemUnderlying(){
+
+    double getMinMemUnderlying() {
         return this->minMemUnderlying;
     }
 
@@ -423,12 +424,12 @@ public :
 
         makespan_computed = true;
         if (commulication == true) {
-            cout<<id<<"-"<<makespan_nocommu<<endl;//test
-            cout<< (edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth())<<endl;
+            // cout<<id<<"-"<<makespan_nocommu<<endl;//test
+            // cout<< (edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth())<<endl;
             return makespan_nocommu + edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth();
         }
 
-        cout<<id<<"-"<<makespan_nocommu<<endl; //test
+        //  cout<<id<<"-"<<makespan_nocommu<<endl; //test
         return makespan_nocommu;
     }
 
@@ -482,7 +483,9 @@ public :
     list<Task *> fillParallelRootsUntilBestMakespan(vector<double> &makespansOfSplittings,
                                                     unsigned long stepsUntilMinimalMakespan) const;
 
-    void precomputeMinMems(Tree * tree);
+    void precomputeMinMems(Tree *tree);
+
+    void assignFeasibleProcessorsToSubtree(Tree *tree);
 };
 
 class Tree {
@@ -493,7 +496,10 @@ protected:
     unsigned int tree_id;
     unsigned int size;
     Task *root;
+    Task *taskMaxMakespan;
+    Task *taskMaxMemRequirement;
     static Tree *originalTree;
+
 
 public:
 
@@ -503,6 +509,8 @@ public:
         tree_id = 1;
         tasks = new vector<Task *>();
         size = 0;
+        taskMaxMakespan = NULL;
+        taskMaxMemRequirement = NULL;
     }
 
     Tree(int N, int *prnts, double *nwghts, double *ewghts, double *mswghts) {
@@ -510,6 +518,8 @@ public:
         offset_id = 0;
         tree_id = 1;
         tasks = new vector<Task *>();
+        taskMaxMakespan = NULL;
+        taskMaxMemRequirement = NULL;
         Task *cur_node;
 
         for (int i = 1; i < N + 1; i++) {
@@ -538,6 +548,8 @@ public:
         this->tasks = nodes;
         this->size = nodes->size();
         this->originalTree = originalTree;
+        taskMaxMakespan = NULL;
+        taskMaxMemRequirement = NULL;
     }
 
 
@@ -548,6 +560,8 @@ public:
         }
 
         delete tasks;
+        delete taskMaxMakespan;
+        delete taskMaxMemRequirement;
     }
 
 
@@ -673,6 +687,22 @@ public:
         return broken;
     }
 
+    Task *getTaskMaxMakespan() const {
+        return taskMaxMakespan;
+    }
+
+    void setTaskMaxMakespan(Task *taskMaxMakespan) {
+        Tree::taskMaxMakespan = taskMaxMakespan;
+    }
+
+    Task *getTaskMaxMemRequirement() const {
+        return taskMaxMemRequirement;
+    }
+
+    void setTaskMaxMemRequirement(Task *taskMaxMemRequirement) {
+        Tree::taskMaxMemRequirement = taskMaxMemRequirement;
+    }
+
     void printBrokenEdges() {
         cout << "Print broken edges" << endl;
         unsigned long treeSize = this->getTasks()->size();
@@ -698,9 +728,9 @@ public:
 
     }
 
-    Tree *BuildQtree();
+    Tree * BuildQtree();
 
-    Tree *BuildQtreeOld();
+    Tree * BuildQtreeOld();
 
     unsigned int HowmanySubtrees(bool quiet);
 
@@ -718,7 +748,9 @@ public:
     double ASAP();
 
     double Merge(bool CheckMemory);
-    double MergeOld(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, bool CheckMemory);
+
+    double
+    MergeOld(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, bool CheckMemory);
 
     double
     MergeV2(unsigned int num_subtrees, unsigned int processor_number, double const memory_size, bool CheckMemory);
@@ -777,6 +809,8 @@ Tree *BuildSubtreeOld(Tree *tree, Task *SubtreeRoot, unsigned int new_tree_size,
 void popSmallestRootsToFitToCluster(list<Task *> &parallelRoots, unsigned long amountSubtrees, int limit);
 
 void breakPreparedEdges(Task *root, list<Task *> &parallelRoots);
+
+list<Task *> buildParallelRootsFromSequentialSet(Task *root, list<Task *> &sequentialSet);
 
 double getWeightPQ(list<Task *> &parallelRoots, Task *currentNode);
 

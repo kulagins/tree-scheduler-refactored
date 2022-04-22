@@ -26,7 +26,7 @@ protected:
     vector<string>::iterator clusterIterator;
 
 protected:
-    bool runHomp;
+    bool runA1;
     bool verbose;
 public:
 
@@ -36,12 +36,12 @@ public:
         if (argc < 7) errorFunction(0);
 
         this->workingDirectory = initWorkingDir(argv[1]);
-        cout << workingDirectory<<endl;
+        cout << workingDirectory << endl;
         this->pathToTree = this->workingDirectory + argv[2];
         string clusterlistPath = argv[3];
         this->clusterList = initClusterList(clusterlistPath);
 
-        
+
         resetClusterIterator();
 
         int cluMode = atoi(argv[4]);
@@ -54,17 +54,17 @@ public:
                 break;
 
             default:
-                cout<<"clustering mode "<<cluMode<<endl;
+                cout << "clustering mode " << cluMode << endl;
                 errorFunction(2);
                 break;
         }
 
-        this->runHomp = (bool)atoi((argv[5]));
-        this->verbose = (bool)atoi((argv[6]));
-        
+        this->runA1 = (bool) atoi((argv[5]));
+        this->verbose = (bool) atoi((argv[6]));
+
     }
 
-    ~InputParser(){
+    ~InputParser() {
         delete this->clusterList;
     }
 
@@ -75,18 +75,21 @@ public:
     string getPathToTreeList() {
         return this->pathToTree;
     }
-    string getPathToCluster(){
-        return this->clusterListDir+ *(this->clusterIterator);
+
+    string getPathToCluster() {
+        return this->clusterListDir + *(this->clusterIterator);
     }
+
     ClusteringModes getClusteringMode() {
         return this->clusteringMode;
     }
-    bool getVerbosity(){
+
+    bool getVerbosity() {
         return verbose;
     }
 
-    bool getRunHomp(){
-        return runHomp;
+    bool getRunA1() {
+        return runA1;
     }
 
 /*
@@ -118,9 +121,9 @@ public:
         Cluster::setFixedCluster(cluster);
 
     }
-    */ 
+    */
 
-    void setClusterFromFile(double normedMemory, double shrinkingFactor = 1){
+    void setClusterFromFile(double normedMemory, double shrinkingFactor = 1) {
         ifstream inputFile(this->getPathToCluster());
         json clusterDescription;
         inputFile >> clusterDescription;
@@ -129,11 +132,12 @@ public:
         vector<double> *mems = new vector<double>();
         vector<double> *speeds = new vector<double>();
         bool heterogeneous = false;
-        vector<double>*BW_inside = new vector<double>();
-        vector<double>*BW_outside = new vector<double>();
-        for (auto element : clusterDescription["groups"]) {
-            if(element == clusterDescription["groups"].front()){ 
-                if(element.contains("BandwInside")){
+        vector<double> *BW_inside = new vector<double>();
+        vector<double> *BW_outside = new vector<double>();
+
+        for (auto element: clusterDescription["groups"]) {
+            if (element == clusterDescription["groups"].front()) {
+                if (element.contains("BandwInside")) {
                     heterogeneous = true;
                 }
             }
@@ -142,26 +146,28 @@ public:
             processorCounts->push_back(ceil(numberProcessors / shrinkingFactor));
             mems->push_back(element["memory"]);
             speeds->push_back(element["speed"]);
-            if(heterogeneous){
+            if (heterogeneous) {
                 BW_inside->push_back(element["BandwInside"]);
                 BW_outside->push_back(element["BandwOutside"]);
             }
 
         }
 
-        if (this->getClusteringMode() == treeDependent){
-            for (auto it = mems->begin(); it != mems->end(); it++)
-            {
+        if (this->getClusteringMode() == treeDependent) {
+            for (auto it = mems->begin(); it != mems->end(); it++) {
                 *it = (*it) * normedMemory;
             }
         }
-        
+
         Cluster *cluster;
-        if(heterogeneous){
-            cluster = new Cluster(processorCounts,mems,speeds, BW_inside, BW_outside);    
-        }else{
-            cluster = new Cluster(processorCounts,mems,speeds);
+        if (heterogeneous) {
+            cluster = new Cluster(processorCounts, mems, speeds, BW_inside, BW_outside);
+        } else {
+            cluster = new Cluster(processorCounts, mems, speeds);
         }
+        clusterDescription["groups"].size() == 1 ? cluster->setMemoryHomogeneity(true) :
+        cluster->setMemoryHomogeneity(false);
+
         Cluster::setFixedCluster(cluster);
 
         delete processorCounts;
@@ -193,22 +199,22 @@ public:
         }
     }
 
-    string initWorkingDir(string path){
+    string initWorkingDir(string path) {
         string workingDir = path;
-        if(workingDir.substr(workingDir.find_last_of(".") + 1) == "txt"){
-            workingDir = workingDir.substr(0,path.find_last_of("/")+1); 
-        } 
+        if (workingDir.substr(workingDir.find_last_of(".") + 1) == "txt") {
+            workingDir = workingDir.substr(0, path.find_last_of("/") + 1);
+        }
         return workingDir;
     }
 
-    vector<string> * initClusterList(string path){
+    vector<string> *initClusterList(string path) {
         vector<string> *list = new vector<string>();
-        if(path.substr(path.find_last_of(".") + 1) == "json"){
-            
-            this->clusterListDir = path.substr(0,path.find_last_of("/")+1); 
-            list->push_back(path.substr(path.find_last_of("/")+1));
+        if (path.substr(path.find_last_of(".") + 1) == "json") {
+
+            this->clusterListDir = path.substr(0, path.find_last_of("/") + 1);
+            list->push_back(path.substr(path.find_last_of("/") + 1));
             return list;
-        } 
+        }
 
         ifstream OpenFile(path);
         string line;
@@ -226,23 +232,22 @@ public:
 
         }
         OpenFile.close();
-        this->clusterListDir = path.substr(0,path.find_last_of("/")+1);
+        this->clusterListDir = path.substr(0, path.find_last_of("/") + 1);
         return list;
     }
 
-    bool nextCluster(){
-        this->clusterIterator ++;
+    bool nextCluster() {
+        this->clusterIterator++;
         return (this->clusterIterator != this->clusterList->end());
     }
 
-    void resetClusterIterator(){
+    void resetClusterIterator() {
         this->clusterIterator = this->clusterList->begin();
-        if (this->clusterIterator == this->clusterList->end()){
+        if (this->clusterIterator == this->clusterList->end()) {
             throw "No Cluster Input Given";
         }
     }
 };
-
 
 
 #endif

@@ -14,48 +14,31 @@
 //#include "../include/cluster.h"
 
 #include <inputParser.h>
+#include "OutputPrinter.h"
+
 #include <lib-io-tree-minmem.h>
 #include "../include/heuristics.h"
 #include "../include/inputParser.h"
+#include "../include/OutputPrinter.h"
 #include "../include/tree.h"
 #include "../include/lib-io-tree-minmem.h"
-#include "include/inputParser.h"
-
-bool verbose = true;
 
 void
 buildTreeDependentCluster(InputParser *input, Tree *tree);
 
-void initOutput() {
-    if (!verbose) {
-        cout.setstate(std::ios_base::failbit);
-    }
-}
-
-void quietPrint(string text) {
-    cout.clear();
-    cout << text << endl;
-    initOutput();
-}
-
-double a2Steps(Tree *tree) {
+double a2Steps(Tree *tree, OutputPrinter *printer) {
     tree->getRoot()->precomputeMinMems(tree);
     seqSetAndFeasSets(tree);
     assignToBestProcessors(tree);
 
-    for (Task *task: *tree->getTasks()) {
-        cout << "Task " << task->getId() << " child of " << task->getParentId() << " MM " << task->getMinMemUnderlying()
-             << " #procs " << task->getFeasibleProcessors().size() << endl;
-    }
-
 }
 
-double threeSteps(Tree *tree, bool runHomp) {
+double threeSteps(Tree *tree, OutputPrinter *printer) {
     string stage2 = "FirstFit";
     unsigned int number_subtrees = 0;
     unsigned long sequentialLen;
     unsigned int num_processors = Cluster::getFixedCluster()->getNumberProcessors();
-    list < Task * > parallelSubtrees;
+    list<Task *> parallelSubtrees;
     double makespan;
     // for counting how many subtrees produced, twolevel is set as false
     makespan = tree->ASAP();
@@ -70,21 +53,23 @@ double threeSteps(Tree *tree, bool runHomp) {
     int ret = 0;
     double processorMemorySize = Cluster::getFixedCluster()->getProcessors().at(0)->getMemorySize();
     if (stage2 == "LargestFirst") {
-        if (runHomp) {
-            quietPrint("run homp memcheck");
+        if (Cluster::getFixedCluster()->isMemoryHomogeneous()) {
+            printer->quietPrint("run homp memcheck");
             ret = MemoryCheckHomp(tree, LARGEST_FIT, processorMemorySize);
         } else {
             ret = MemoryCheck(tree, LARGEST_FIT, false);
         }
     } else if (stage2 == "FirstFit") {
-        if (runHomp) {
-            quietPrint("run homp memcheck");
+        if (Cluster::getFixedCluster()->isMemoryHomogeneous()) {
+            printer->quietPrint("run homp memcheck");
             ret = MemoryCheckHomp(tree, FIRST_FIT, processorMemorySize);
         } else {
             ret = MemoryCheck(tree, FIRST_FIT, false);
         }
     } else if (stage2 == "Immediately") {
-        ret = runHomp ? MemoryCheckHomp(tree, IMMEDIATELY, processorMemorySize) : MemoryCheck(tree, IMMEDIATELY, false);
+        ret = Cluster::getFixedCluster()->isMemoryHomogeneous() ? MemoryCheckHomp(tree, IMMEDIATELY,
+                                                                                  processorMemorySize) : MemoryCheck(
+                tree, IMMEDIATELY, false);
     }
     if (ret == -1) {
         cout << "unsolvable currently" << endl;
@@ -98,8 +83,8 @@ double threeSteps(Tree *tree, bool runHomp) {
 
     if (number_subtrees > num_processors) {
         cout << "merge" << endl;
-        if (runHomp) {
-            quietPrint("run homp");
+        if (Cluster::getFixedCluster()->isMemoryHomogeneous()) {
+            printer->quietPrint("run homp");
             // nsigned int num_subtrees, unsigned int processor_number, double const memory_size, bool CheckMemory)
             makespan = tree->MergeOld(number_subtrees, num_processors, processorMemorySize, true);
         } else
@@ -117,8 +102,9 @@ double threeSteps(Tree *tree, bool runHomp) {
 
 int main(int argc, char **argv) {
     InputParser *input = new InputParser(argc, argv);
-    verbose = input->getVerbosity();
-    initOutput();
+    OutputPrinter * printer = new OutputPrinter;
+    printer->setVerbose(input->getVerbosity());
+    printer-> initOutput();
     string treesToRerun = "";
 
     ifstream OpenFile(input->getPathToTreeList());
@@ -166,7 +152,7 @@ int main(int argc, char **argv) {
     } while (input->nextCluster());
 
     input->resetClusterIterator();
-    quietPrint(header_column);
+    printer->quietPrint(header_column);
     double processorUtilizationOverall = 0;
     int numTrees = 0;
     std::vector<int> brokenEdges;
@@ -177,7 +163,7 @@ int main(int argc, char **argv) {
         Tree *tree = read_tree((input->getWorkingDirectory() + extraSlash +
                                 treename).c_str());
         if (tree->getSize() == 0) {
-            quietPrint("Read empty tree with directory " + input->getWorkingDirectory() + " and file " + treename);
+            printer-> quietPrint("Read empty tree with directory " + input->getWorkingDirectory() + " and file " + treename);
             continue;
         }
         Tree *untouchedTree = read_tree((input->getWorkingDirectory() + "/" + treename).c_str());
@@ -195,8 +181,7 @@ int main(int argc, char **argv) {
             }
 
             time = clock();
-            // makespan = threeSteps(tree, input->getRunHomp());
-            a2Steps(tree);
+            input->getRunA1() ? makespan = threeSteps(tree, printer) : a2Steps(tree, printer);
             time = clock() - time;
 
             if (makespan == -1) {
@@ -221,8 +206,9 @@ int main(int argc, char **argv) {
             }
             processorUtilization /= Cluster::getFixedCluster()->getProcessors().size();
             processorUtilizationOverall += processorUtilization;
+            tree->clearComputedValues();
         } while (input->nextCluster());
-        quietPrint(tree_column);
+        printer->quietPrint(tree_column);
         delete tree;
         delete untouchedTree;
         Cluster::getFixedCluster()->clean();

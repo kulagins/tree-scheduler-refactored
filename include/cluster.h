@@ -94,9 +94,9 @@ public:
 
 class Cluster {
 protected:
-    bool isMemoryHomogeneous;
-    bool isProcessorHomogeneous;
-    bool isBandwidthHomogenenous;
+    bool memoryHomogeneous;
+    bool processorHomogeneous;
+    bool bandwidthHomogenenous;
 
     vector<Processor *> processors;
     vector<vector<double>> bandwidths;
@@ -104,7 +104,7 @@ protected:
 
 public:
     Cluster() {
-        this->isMemoryHomogeneous = this->isProcessorHomogeneous = this->isBandwidthHomogenenous = true;
+        this->memoryHomogeneous = this->processorHomogeneous = this->bandwidthHomogenenous = true;
 
         processors.resize(3, new Processor());
         bandwidths.resize(3);
@@ -114,8 +114,8 @@ public:
     }
 
     Cluster(unsigned int clusterSize, bool isMemoryHomogeneous) {
-        this->isMemoryHomogeneous = isMemoryHomogeneous;
-        this->isProcessorHomogeneous = this->isBandwidthHomogenenous = true;
+        this->memoryHomogeneous = isMemoryHomogeneous;
+        this->processorHomogeneous = this->bandwidthHomogenenous = true;
 
         processors.resize(clusterSize);
         for (unsigned long i = 0; i < clusterSize; i++) {
@@ -125,19 +125,19 @@ public:
     }
 
     Cluster(vector<double> memories) {
-        isProcessorHomogeneous = isBandwidthHomogenenous = true;
+        processorHomogeneous = bandwidthHomogenenous = true;
         setMemorySizes(memories);
         initHomogeneousBandwidth(memories.size());
     }
 
     Cluster(vector<unsigned int> *groupSizes, vector<double> *memories, vector<double> *speeds, vector<double> *BW_inside = NULL, vector<double> *BW_outside = NULL) {
         if (adjacent_find(memories->begin(), memories->end(), not_equal_to<>()) == memories->end()) {
-            this->isMemoryHomogeneous = true;
-        } else this->isMemoryHomogeneous = false;
+            this->memoryHomogeneous = true;
+        } else this->memoryHomogeneous = false;
 
         if (adjacent_find(speeds->begin(), speeds->end(), not_equal_to<>()) == speeds->end()) {
-            this->isProcessorHomogeneous = true;
-        } else this->isProcessorHomogeneous = false;
+            this->processorHomogeneous = true;
+        } else this->processorHomogeneous = false;
 
         for (int i = 0; i < groupSizes->size(); i++) {
             unsigned int groupSize = groupSizes->at(i);
@@ -168,15 +168,20 @@ public:
 
 public:
     bool isHomogeneous() const {
-        return isMemoryHomogeneous && isProcessorHomogeneous && isBandwidthHomogenenous;
+        return memoryHomogeneous && processorHomogeneous && bandwidthHomogenenous;
     }
+
+    bool isMemoryHomogeneous() const {
+        return memoryHomogeneous;
+    }
+
 
     bool isBandwidthHomogeneous() const {
-        return isBandwidthHomogenenous;
+        return bandwidthHomogenenous;
     }
 
-    void setHomogeneity(bool homogeneity) {
-        isMemoryHomogeneous = homogeneity;
+    void setMemoryHomogeneity(bool homogeneity) {
+        memoryHomogeneous = homogeneity;
     }
 
     vector<Processor *> getProcessors() {
@@ -196,7 +201,7 @@ public:
     }
 
     void initHeterogeneousBandwidth(vector<unsigned int> *groupSizes, vector<double> *BW_inside, vector<double> *BW_outside){
-        this->isBandwidthHomogenenous = false;
+        this->bandwidthHomogenenous = false;
         bandwidths.resize(processors.size());
         int groupBeginning = 0;
         int groupIndex = 0;
@@ -235,11 +240,11 @@ public:
                 bandwidths.at(i).at(j) = bandwidth;
             }
         }
-        this->isBandwidthHomogenenous = true;
+        this->bandwidthHomogenenous = true;
     }
 
     void setMemorySizes(vector<double> &memories) {
-        //  isMemoryHomogeneous = false;
+        //  memoryHomogeneous = false;
         if (processors.size() != memories.size()) {
             processors.resize(memories.size());
             for (unsigned long i = 0; i < memories.size(); i++) {
@@ -265,7 +270,7 @@ public:
         for (vector<Processor *>::iterator iter = this->processors.begin(); iter < processors.end(); iter++) {
             cumulativeMemory += (*iter)->getMemorySize();
         }
-        cout << fixed << (isMemoryHomogeneous ? "Homogeneous" : "Heterogeneous") << " cluster with "
+        cout << fixed << (memoryHomogeneous ? "Homogeneous" : "Heterogeneous") << " cluster with "
              << processors.size()
              << " processors," << " cumulative memory " << cumulativeMemory << endl;
 

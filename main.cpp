@@ -26,10 +26,47 @@
 void
 buildTreeDependentCluster(InputParser *input, Tree *tree);
 
+OutputPrinter printer;
+
 double a2Steps(Tree *tree, OutputPrinter *printer) {
+    unsigned int number_subtrees = 0;
+    double makespan;
     tree->getRoot()->precomputeMinMems(tree);
-    seqSetAndFeasSets(tree);
-    assignToBestProcessors(tree);
+    number_subtrees = tree->HowmanySubtrees(true);
+    makespan = tree->getRoot()->getMakespanCost(true, true);
+    cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
+
+    int numberUnfeasibleTasks = 0;
+
+    for (Task *task: *tree->getTasks()) {
+        if (task->getFeasibleProcessors().empty()) {
+            numberUnfeasibleTasks++;
+        }
+    }
+
+    cout << "#unfeasible tasks: " << numberUnfeasibleTasks << endl;
+
+
+    try {
+        seqSetAndFeasSets(tree);
+
+        number_subtrees = tree->HowmanySubtrees(true);
+        makespan = tree->getRoot()->getMakespanCost(true, true);
+        cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
+
+        assignToBestProcessors(tree);
+        number_subtrees = tree->HowmanySubtrees(true);
+        makespan = tree->getRoot()->getMakespanCost(true, true);
+        cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
+    }
+    catch (exception e) {
+        printer->quietPrint("An error has occurred: ");//+ e.what());  // Not executed
+    }
+    catch (const char *str) {
+        printer->quietPrint( "No solution"); //<< str << endl;
+        makespan = -1;
+    }
+    return makespan;
 
 }
 
@@ -38,7 +75,7 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
     unsigned int number_subtrees = 0;
     unsigned long sequentialLen;
     unsigned int num_processors = Cluster::getFixedCluster()->getNumberProcessors();
-    list<Task *> parallelSubtrees;
+    list < Task * > parallelSubtrees;
     double makespan;
     // for counting how many subtrees produced, twolevel is set as false
     makespan = tree->ASAP();
@@ -102,9 +139,9 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
 
 int main(int argc, char **argv) {
     InputParser *input = new InputParser(argc, argv);
-    OutputPrinter * printer = new OutputPrinter;
+    OutputPrinter *printer = new OutputPrinter;
     printer->setVerbose(input->getVerbosity());
-    printer-> initOutput();
+    printer->initOutput();
     string treesToRerun = "";
 
     ifstream OpenFile(input->getPathToTreeList());
@@ -163,7 +200,8 @@ int main(int argc, char **argv) {
         Tree *tree = read_tree((input->getWorkingDirectory() + extraSlash +
                                 treename).c_str());
         if (tree->getSize() == 0) {
-            printer-> quietPrint("Read empty tree with directory " + input->getWorkingDirectory() + " and file " + treename);
+            printer->quietPrint(
+                    "Read empty tree with directory " + input->getWorkingDirectory() + " and file " + treename);
             continue;
         }
         Tree *untouchedTree = read_tree((input->getWorkingDirectory() + "/" + treename).c_str());
@@ -181,7 +219,7 @@ int main(int argc, char **argv) {
             }
 
             time = clock();
-            input->getRunA1() ? makespan = threeSteps(tree, printer) : a2Steps(tree, printer);
+            makespan =  input->getRunA1() ? threeSteps(tree, printer) : a2Steps(tree, printer);
             time = clock() - time;
 
             if (makespan == -1) {

@@ -58,6 +58,7 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
     rootCopy = new Task(*root, 1, nullptr);
     rootCopy->setNodeWeight(root->getSequentialPart());
     rootCopy->setMakespanWeight(root->getSequentialPart());
+    rootCopy->setAssignedProcessor(root->getAssignedProcessor());
     //rootCopy->toggleRootStatus(true);
     tasksInQtree->push_back(rootCopy);
     root->setOtherSideId(1);
@@ -74,6 +75,9 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
             copy->setMakespanWeight(currentNode->getSequentialPart());
             currentNode->setOtherSideId(nodeIdCounter);
             copy->setOtherSideId(currentNode->getId());
+            if (currentNode->getAssignedProcessor() != NULL) {
+                copy->setAssignedProcessor(currentNode->getAssignedProcessor());
+            }
             tasksInQtree->push_back(copy);
             nodeIdCounter++;
         }
@@ -188,7 +192,7 @@ Tree *Tree::BuildQtreeOld() { //Qtree is for makespan side, so do not use it for
 
 unsigned int Tree::HowmanySubtrees(bool quiet) {
     unsigned int number_subtrees = 0;
-    this->getRoot()->breakEdge();
+    // this->getRoot()->breakEdge();
     const vector<Task *> *Nodes = this->getTasks();
     if (quiet == false) {
         cout << "Broken Edges { ";
@@ -285,7 +289,7 @@ double Task::Sequence() {
 }
 
 Tree *read_tree(const char *filename) {
-   // cout <<"reading "<< filename << endl;
+    // cout <<"reading "<< filename << endl;
     ifstream OpenFile(filename);
     string line;
     stringstream line_stream;
@@ -1406,17 +1410,17 @@ void Task::precomputeMinMems(Tree *tree) {
         return;
     }
 
-   /* if (tree->getTaskMaxMakespan() == NULL ||
-        (tree->getTaskMaxMakespan() != NULL &&
-         this->getMakespanCost(true, false) > tree->getTaskMaxMakespan()->getMakespanCost(true, false))) {
-        tree->setTaskMaxMakespan(this);
-    }
-    if (tree->getTaskMaxMemRequirement() == NULL ||
-        (tree->getTaskMaxMemRequirement() != NULL &&
-        this->getNodeWeight() > tree->getTaskMaxMemRequirement()->getNodeWeight())) {
-        tree->setTaskMaxMemRequirement(this);
-    }
-    */
+    /* if (tree->getTaskMaxMakespan() == NULL ||
+         (tree->getTaskMaxMakespan() != NULL &&
+          this->getMakespanCost(true, false) > tree->getTaskMaxMakespan()->getMakespanCost(true, false))) {
+         tree->setTaskMaxMakespan(this);
+     }
+     if (tree->getTaskMaxMemRequirement() == NULL ||
+         (tree->getTaskMaxMemRequirement() != NULL &&
+         this->getNodeWeight() > tree->getTaskMaxMemRequirement()->getNodeWeight())) {
+         tree->setTaskMaxMemRequirement(this);
+     }
+     */
 
     for (Task *child: *this->getChildren()) {
         child->precomputeMinMems(tree);
@@ -1436,10 +1440,11 @@ void Task::assignFeasibleProcessorsToSubtree(Tree *tree) {
     setMinMemUnderlying(minMem);
     //TODO improve by sorting procs and only taking biggest
     for (Processor *processor: Cluster::getFixedCluster()->getProcessors()) {
-        if (processor->getMemorySize() > minMem) {
+        if (!processor->isBusy && processor->getMemorySize() > minMem) {
             addFeasibleProcessor(processor);
         }
     }
+
 }
 
 void Tree::clearComputedValues() {

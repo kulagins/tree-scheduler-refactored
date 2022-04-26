@@ -130,7 +130,8 @@ public:
         initHomogeneousBandwidth(memories.size());
     }
 
-    Cluster(vector<unsigned int> *groupSizes, vector<double> *memories, vector<double> *speeds, vector<double> *BW_inside = NULL, vector<double> *BW_outside = NULL) {
+    Cluster(vector<unsigned int> *groupSizes, vector<double> *memories, vector<double> *speeds,
+            vector<double> *BW_inside = NULL, vector<double> *BW_outside = NULL) {
         if (adjacent_find(memories->begin(), memories->end(), not_equal_to<>()) == memories->end()) {
             this->memoryHomogeneous = true;
         } else this->memoryHomogeneous = false;
@@ -146,9 +147,9 @@ public:
             }
         }
 
-        if (!BW_inside){
+        if (!BW_inside) {
             initHomogeneousBandwidth(memories->size(), 500);
-        }else{
+        } else {
             initHeterogeneousBandwidth(groupSizes, BW_inside, BW_outside);
         }
     }
@@ -192,6 +193,12 @@ public:
         return this->processors.size();
     }
 
+    unsigned int getNumberFreeProcessors() {
+        int res = count_if(this->processors.begin(), this->processors.end(),
+                           [](const Processor* i) { return !i->isBusy; });
+        return res;
+    }
+
     double getBandwidthBetween(int firstProcessor, int secondProcessor) {
         return this->bandwidths.at(firstProcessor).at(secondProcessor);
     }
@@ -200,27 +207,28 @@ public:
         return this->bandwidths.at(0).at(0);
     }
 
-    void initHeterogeneousBandwidth(vector<unsigned int> *groupSizes, vector<double> *BW_inside, vector<double> *BW_outside){
+    void initHeterogeneousBandwidth(vector<unsigned int> *groupSizes, vector<double> *BW_inside,
+                                    vector<double> *BW_outside) {
         this->bandwidthHomogenenous = false;
         bandwidths.resize(processors.size());
         int groupBeginning = 0;
         int groupIndex = 0;
         int nextGroup = groupSizes->at(groupIndex);
-        
-        for (unsigned int i = 0; i< this->processors.size(); i++){
+
+        for (unsigned int i = 0; i < this->processors.size(); i++) {
             bandwidths.at(i).resize(0);
-            if(i == nextGroup){
+            if (i == nextGroup) {
                 groupBeginning = nextGroup;
                 nextGroup += groupSizes->at(++groupIndex);
             }
-            for (unsigned int j = 0; j<this->processors.size(); j++){
-                if (i == j){
+            for (unsigned int j = 0; j < this->processors.size(); j++) {
+                if (i == j) {
                     bandwidths.at(i).push_back(-1);
                     continue;
                 }
-                if(j >= groupBeginning && j < nextGroup){
+                if (j >= groupBeginning && j < nextGroup) {
                     bandwidths.at(i).push_back(BW_inside->at(groupIndex));
-                }else{
+                } else {
                     bandwidths.at(i).push_back(BW_outside->at(groupIndex));
                 }
             }
@@ -276,12 +284,12 @@ public:
 
     }
 
-    void printBandwidths(){
-        for (auto row:bandwidths){
-            for (auto cell: row){
-                cout << cell<<" ";
+    void printBandwidths() {
+        for (auto row: bandwidths) {
+            for (auto cell: row) {
+                cout << cell << " ";
             }
-            cout<<endl;
+            cout << endl;
         }
     }
 

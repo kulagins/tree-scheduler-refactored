@@ -2130,8 +2130,8 @@ void distributeProcessors(Tree *qTree) {
 }
 
 void growSeqSet(Task *task, list<Task *> &seqSet, Task *treeRoot) {
-    if (task->getFeasibleProcessors().empty() && (buildParallelRootsFromSequentialSet(treeRoot, seqSet)).size() <
-                                                 Cluster::getFixedCluster()->getNumberProcessors() - 1) {
+    if (task->getFeasibleProcessors().empty()) { // && (buildParallelRootsFromSequentialSet(treeRoot, seqSet)).size() <
+        //Cluster::getFixedCluster()->getNumberProcessors() - 1) {
         seqSet.push_back(task);
     }
     for (Task *child: *task->getChildren()) {
@@ -2144,15 +2144,16 @@ void seqSetAndFeasSets(Tree *tree) {
     sequentialSet.clear();
     //sequentialSet.emplace_front(tree->getRoot());
     growSeqSet(tree->getRoot(), sequentialSet, tree->getRoot());
-    for (Task *task: sequentialSet) {
-        cout << task->getId() << " " << task->getParentId() << endl;
-    }
-    cout << endl;
     auto parallelRoots = buildParallelRootsFromSequentialSet(tree->getRoot(), sequentialSet);
+
+    if (parallelRoots.size() >= Cluster::getFixedCluster()->getNumberProcessors()) {
+        throw "too many parallel roots after growing SeqSet: ";// + to_string(parallelRoots.size());
+    }
+
     breakPreparedEdges(tree->getRoot(), parallelRoots);
 
     tree->getRoot()->assignFeasibleProcessorsToSubtree(tree);
-    if(tree->getRoot()->getFeasibleProcessors().empty()){
+    if (tree->getRoot()->getFeasibleProcessors().empty()) {
         throw "SeqSet has 0 feasible processors";
     }
     Processor *pFast = tree->getRoot()->getFastestFeasibleProcessor();

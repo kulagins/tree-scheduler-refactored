@@ -204,6 +204,7 @@ int main(int argc, char **argv) {
                     "Read empty tree with directory " + input->getWorkingDirectory() + " and file " + treename);
             continue;
         }
+        printer->quietPrint(treename);
         Tree *untouchedTree = read_tree((input->getWorkingDirectory() + "/" + treename).c_str());
         Tree::setOriginalTree(untouchedTree);
         numTrees++;
@@ -211,6 +212,9 @@ int main(int argc, char **argv) {
         //   cout << treename << " Fanout: Max: " << fanouts[0] << ",  Avg: " << fanouts[1] <<
         //      " Max depth " << maxDepth(tree->getRoot()) << " num leaves " << tree->numberOfLeaves()
         //       << " #tasks: " << tree->getSize() << endl;
+
+
+
         string tree_column = treename + "\t";
         do {
 
@@ -220,6 +224,13 @@ int main(int argc, char **argv) {
 
             time = clock();
             makespan =  input->getRunA1() ? threeSteps(tree, printer) : a2Steps(tree, printer);
+            //maxoutd = MaxOutDegree(tree, true);
+
+            //schedule_traversal *schedule_f = new schedule_traversal();
+            //MinMem(tree, maxoutd, minMem, *schedule_f, true);
+            //delete schedule_f;
+
+            //makespan = (maxoutd/(minMem+maxoutd))*100;
             time = clock() - time;
 
             if (makespan == -1) {

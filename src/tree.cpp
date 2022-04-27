@@ -59,6 +59,11 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
     rootCopy->setNodeWeight(root->getSequentialPart());
     rootCopy->setMakespanWeight(root->getSequentialPart());
     rootCopy->setAssignedProcessor(root->getAssignedProcessor());
+    rootCopy->setMinMemUnderlying(root->getMinMemUnderlying());
+    for(Processor * feasible: root->getFeasibleProcessors()){
+        rootCopy->addFeasibleProcessor(feasible);
+    }
+
     //rootCopy->toggleRootStatus(true);
     tasksInQtree->push_back(rootCopy);
     root->setOtherSideId(1);
@@ -77,6 +82,10 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
             copy->setOtherSideId(currentNode->getId());
             if (currentNode->getAssignedProcessor() != NULL) {
                 copy->setAssignedProcessor(currentNode->getAssignedProcessor());
+            }
+            copy->setMinMemUnderlying(currentNode->getMinMemUnderlying());
+            for(Processor * feasible: currentNode->getFeasibleProcessors()){
+                copy->addFeasibleProcessor(feasible);
             }
             tasksInQtree->push_back(copy);
             nodeIdCounter++;
@@ -1403,6 +1412,7 @@ double Tree::avgMSWeight() {
 void Task::precomputeMinMems(Tree *tree) {
     //cout<<"precomputing minMems on "<<endl;
     // cout<<this->getId()<<endl;
+    bool unaccessible = false;
     if (this->getMinMemUnderlying() != 0) {
         cout << "already computed for " << this->getId() << " " << this->getMinMemUnderlying() << endl;
     }
@@ -1424,9 +1434,14 @@ void Task::precomputeMinMems(Tree *tree) {
 
     for (Task *child: *this->getChildren()) {
         child->precomputeMinMems(tree);
+        if (child->getFeasibleProcessors().empty()) {
+            cout << "child has no feasible, no computing parent" << endl;
+            unaccessible = true;
+        }
     }
 
-    assignFeasibleProcessorsToSubtree(tree);
+    if (!unaccessible) { assignFeasibleProcessorsToSubtree(tree); }
+    //else do nothing, if at least one child has no feasible processors, than the parent doesn't too
 
 }
 

@@ -2129,6 +2129,19 @@ void distributeProcessors(Tree *qTree) {
     delete taskHeap;
 }
 
+void growSeqSetWhileImproves(list<Task *> &seqSet, Tree *tree) {
+    list<Task *> frontier;
+    for (Task *task: seqSet) {
+        for (Task *child: *task->getChildren())
+            frontier.push_back(child);
+    }
+
+    while (!frontier.empty()) {
+        Task *potentialAddition = frontier.front();
+
+    }
+}
+
 void growSeqSet(Task *task, list<Task *> &seqSet, Task *treeRoot) {
     if (task->getFeasibleProcessors().empty()) { // && (buildParallelRootsFromSequentialSet(treeRoot, seqSet)).size() <
         //Cluster::getFixedCluster()->getNumberProcessors() - 1) {
@@ -2152,7 +2165,8 @@ void seqSetAndFeasSets(Tree *tree) {
 
     breakPreparedEdges(tree->getRoot(), parallelRoots);
 
-    tree->getRoot()->assignFeasibleProcessorsToSubtree(tree);
+    double minMem = tree->getRoot()->computeMinMemUnderlying(tree);
+    tree->getRoot()->assignFeasibleProcessorsToSubtree(tree, minMem);
     if (tree->getRoot()->getFeasibleProcessors().empty()) {
         throw "SeqSet has 0 feasible processors";
     }
@@ -2160,7 +2174,8 @@ void seqSetAndFeasSets(Tree *tree) {
     pFast->assignTask(tree->getRoot());
 
     for (Task *root: parallelRoots) {
-        root->assignFeasibleProcessorsToSubtree(tree);
+        double minMem = root->computeMinMemUnderlying(tree);
+        root->assignFeasibleProcessorsToSubtree(tree, minMem);
     }
 }
 

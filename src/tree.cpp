@@ -1414,7 +1414,7 @@ void Task::precomputeMinMems(Tree *tree) {
     // cout<<this->getId()<<endl;
     bool unaccessible = false;
     if (this->getMinMemUnderlying() != 0) {
-        cout << "already computed for " << this->getId() << " " << this->getMinMemUnderlying() << endl;
+     //   cout << "already computed for " << this->getId() << " " << this->getMinMemUnderlying() << endl;
     }
     if (this == NULL) {
         return;
@@ -1439,20 +1439,27 @@ void Task::precomputeMinMems(Tree *tree) {
             unaccessible = true;
         }
     }
-
-    if (!unaccessible) { assignFeasibleProcessorsToSubtree(tree); }
+    double minMem = computeMinMemUnderlying(tree);
+    cout<<"Task: "<<getId()<<" MM: "<<minMem<<endl;
+    //if (!unaccessible) {
+        assignFeasibleProcessorsToSubtree(tree, minMem); //}
     //else do nothing, if at least one child has no feasible processors, than the parent doesn't too
 
 }
 
-void Task::assignFeasibleProcessorsToSubtree(Tree *tree) {
+double Task::computeMinMemUnderlying(Tree *tree) {
     schedule_traversal *schedule_f = new schedule_traversal();
     Tree *subtree = BuildSubtree(tree, this);
-    double maxoutd = MaxOutDegree(subtree, true);
     double minMem;
+    double maxoutd = MaxOutDegree(tree, true);
     MinMem(subtree, maxoutd, minMem, *schedule_f, true);
     delete schedule_f;
     setMinMemUnderlying(minMem);
+    return minMem;
+}
+
+void Task::assignFeasibleProcessorsToSubtree(Tree *tree, double minMem) {
+
     //TODO improve by sorting procs and only taking biggest
     for (Processor *processor: Cluster::getFixedCluster()->getProcessors()) {
         if (!processor->isBusy && processor->getMemorySize() > minMem) {

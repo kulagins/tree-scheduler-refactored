@@ -82,7 +82,7 @@ void explore(Task *node, double available_memory, list<Task *> *L_init, schedule
 
             explore(*current_node, (*current_node)->Mavail, NULL, NULL, m_j, Lj, Sj, (*current_node)->Mpeak, quiet,
                     depth + 1);
-
+            //cout<<"Task: "<<(*current_node)->getId()<<" MJ: "<<m_j<<endl;
             if (m_j <= (*current_node)->getEdgeWeight()) {
 
                 min_sub_cut.remove(*current_node);
@@ -125,7 +125,8 @@ void explore(Task *node, double available_memory, list<Task *> *L_init, schedule
             Mpeak = (*current_node)->Mpeak + available_memory - (*current_node)->Mavail;
         }
     }
-
+   // if (cut_value > 0)
+   //     cout << "Task: " << node->getId() << " CV: " << cut_value << endl;
     delete candidates;
     return;
 }

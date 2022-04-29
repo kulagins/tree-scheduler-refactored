@@ -31,6 +31,13 @@ OutputPrinter printer;
 double a2Steps(Tree *tree, OutputPrinter *printer) {
     unsigned int number_subtrees = 0;
     double makespan;
+
+    /* double maxoutd = MaxOutDegree(tree, true);
+     double minMem;
+     schedule_traversal *schedule_f = new schedule_traversal();
+     MinMem(tree, maxoutd, minMem, *schedule_f, true);
+     delete schedule_f;
+     */
     tree->getRoot()->precomputeMinMems(tree);
     number_subtrees = tree->HowmanySubtrees(true);
     makespan = tree->getRoot()->getMakespanCost(true, true);
@@ -63,7 +70,7 @@ double a2Steps(Tree *tree, OutputPrinter *printer) {
         printer->quietPrint("An error has occurred: ");//+ e.what());  // Not executed
     }
     catch (const char *str) {
-        printer->quietPrint( "No solution"); //<< str << endl;
+        printer->quietPrint("No solution"); //<< str << endl;
         makespan = -1;
     }
     return makespan;
@@ -223,7 +230,7 @@ int main(int argc, char **argv) {
             }
 
             time = clock();
-            makespan =  input->getRunA1() ? threeSteps(tree, printer) : a2Steps(tree, printer);
+            makespan = input->getRunA1() ? threeSteps(tree, printer) : a2Steps(tree, printer);
             //maxoutd = MaxOutDegree(tree, true);
 
             //schedule_traversal *schedule_f = new schedule_traversal();

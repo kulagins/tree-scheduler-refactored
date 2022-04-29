@@ -527,7 +527,9 @@ public :
         }
     }
 
-    void assignFeasibleProcessorsToSubtree(Tree *tree);
+    void assignFeasibleProcessorsToSubtree(Tree *tree, double minMem);
+
+    double computeMinMemUnderlying(Tree *tree);
 };
 
 

@@ -1,0 +1,915 @@
+single tree
+runscripts/RS-36proc-A2-all.sh
+/work/kulagins/scheduler-a2
+matrix
+/work/kulagins/scheduler-a2
+./data/trees/
+treename	./clusters/36-proc/36proc_0,3-0,5-0,8-1.json	
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf
+No solution
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	-1.000000	
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf
+No solution
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	-1.000000	
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf
+No solution
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	-1.000000	
+dump.0.1.amd.Bova.rma10-374.tree.nf
+No solution
+dump.0.1.amd.Bova.rma10-374.tree.nf	-1.000000	
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf
+No solution
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	-1.000000	
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf
+No solution
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	-1.000000	
+dump.0.1.amd.QY.case39-2136.tree.nf
+No solution
+dump.0.1.amd.QY.case39-2136.tree.nf	-1.000000	
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf
+No solution
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	-1.000000	
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf
+No solution
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	-1.000000	
+dump.0.1.metis.Bova.rma10-374.tree.nf
+No solution
+dump.0.1.metis.Bova.rma10-374.tree.nf	-1.000000	
+dump.0.1.metis.CPM.cz40948-2567.tree.nf
+No solution
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	-1.000000	
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf
+/work/kulagins/scheduler-a2/runscripts/RS-36proc-A2-all.sh: line 6: 3640915 Killed                  ./main ./data/trees/ treesListNoBiggest.txt ./clusters/clusterList_single_small.txt 0 0 0
+normal random
+./data/random_trees/random/
+treename	./clusters/36-proc/36proc_0,3-0,5-0,8-1.json	
+size_10000/random_tree_1
+No solution
+size_10000/random_tree_1	-1.000000	
+size_10000/random_tree_2
+No solution
+size_10000/random_tree_2	-1.000000	
+size_10000/random_tree_3
+No solution
+size_10000/random_tree_3	-1.000000	
+size_10000/random_tree_4
+No solution
+size_10000/random_tree_4	-1.000000	
+size_10000/random_tree_5
+No solution
+size_10000/random_tree_5	-1.000000	
+size_2000/random_tree_1
+No solution
+size_2000/random_tree_1	-1.000000	
+size_2000/random_tree_2
+No solution
+size_2000/random_tree_2	-1.000000	
+size_2000/random_tree_3
+No solution
+size_2000/random_tree_3	-1.000000	
+size_2000/random_tree_4
+No solution
+size_2000/random_tree_4	-1.000000	
+size_2000/random_tree_5
+No solution
+size_2000/random_tree_5	-1.000000	
+size_20000/random_tree_1
+No solution
+size_20000/random_tree_1	-1.000000	
+size_20000/random_tree_2
+No solution
+size_20000/random_tree_2	-1.000000	
+size_20000/random_tree_3
+No solution
+size_20000/random_tree_3	-1.000000	
+size_20000/random_tree_4
+No solution
+size_20000/random_tree_4	-1.000000	
+size_20000/random_tree_5
+No solution
+size_20000/random_tree_5	-1.000000	
+size_30000/random_tree_1
+No solution
+size_30000/random_tree_1	-1.000000	
+size_30000/random_tree_2
+No solution
+size_30000/random_tree_2	-1.000000	
+size_30000/random_tree_3
+No solution
+size_30000/random_tree_3	-1.000000	
+size_30000/random_tree_4
+No solution
+size_30000/random_tree_4	-1.000000	
+size_30000/random_tree_5
+No solution
+size_30000/random_tree_5	-1.000000	
+size_4000/random_tree_1
+No solution
+size_4000/random_tree_1	-1.000000	
+size_4000/random_tree_2
+No solution
+size_4000/random_tree_2	-1.000000	
+size_4000/random_tree_3
+No solution
+size_4000/random_tree_3	-1.000000	
+size_4000/random_tree_4
+No solution
+size_4000/random_tree_4	-1.000000	
+size_4000/random_tree_5
+No solution
+size_4000/random_tree_5	-1.000000	
+size_50000/random_tree_1
+No solution
+size_50000/random_tree_1	-1.000000	
+size_50000/random_tree_2
+No solution
+size_50000/random_tree_2	-1.000000	
+size_50000/random_tree_3
+No solution
+size_50000/random_tree_3	-1.000000	
+size_50000/random_tree_4
+No solution
+size_50000/random_tree_4	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+/work/kulagins/scheduler-a2
+/work/kulagins/scheduler-a2/data/random_trees
+!! /work/kulagins/scheduler-a2/data/random_trees/10_children
+!! 
+/work/kulagins/scheduler-a2/data/random_trees/10_children
+treename	./clusters/36-proc/36proc_0,3-0,5-0,8-1.json	
+size_10000/random_tree_1
+No solution
+size_10000/random_tree_1	-1.000000	
+size_10000/random_tree_2
+No solution
+size_10000/random_tree_2	-1.000000	
+size_10000/random_tree_3
+No solution
+size_10000/random_tree_3	-1.000000	
+size_10000/random_tree_4
+No solution
+size_10000/random_tree_4	-1.000000	
+size_10000/random_tree_5
+No solution
+size_10000/random_tree_5	-1.000000	
+size_2000/random_tree_1
+No solution
+size_2000/random_tree_1	-1.000000	
+size_2000/random_tree_2
+No solution
+size_2000/random_tree_2	-1.000000	
+size_2000/random_tree_3
+No solution
+size_2000/random_tree_3	-1.000000	
+size_2000/random_tree_4
+No solution
+size_2000/random_tree_4	-1.000000	
+size_2000/random_tree_5
+No solution
+size_2000/random_tree_5	-1.000000	
+size_20000/random_tree_1
+No solution
+size_20000/random_tree_1	-1.000000	
+size_20000/random_tree_2
+No solution
+size_20000/random_tree_2	-1.000000	
+size_20000/random_tree_3
+No solution
+size_20000/random_tree_3	-1.000000	
+size_20000/random_tree_4
+No solution
+size_20000/random_tree_4	-1.000000	
+size_20000/random_tree_5
+No solution
+size_20000/random_tree_5	-1.000000	
+size_30000/random_tree_1
+No solution
+size_30000/random_tree_1	-1.000000	
+size_30000/random_tree_2
+No solution
+size_30000/random_tree_2	-1.000000	
+size_30000/random_tree_3
+No solution
+size_30000/random_tree_3	-1.000000	
+size_30000/random_tree_4
+No solution
+size_30000/random_tree_4	-1.000000	
+size_30000/random_tree_5
+No solution
+size_30000/random_tree_5	-1.000000	
+size_4000/random_tree_1
+No solution
+size_4000/random_tree_1	-1.000000	
+size_4000/random_tree_2
+No solution
+size_4000/random_tree_2	-1.000000	
+size_4000/random_tree_3
+No solution
+size_4000/random_tree_3	-1.000000	
+size_4000/random_tree_4
+No solution
+size_4000/random_tree_4	-1.000000	
+size_4000/random_tree_5
+No solution
+size_4000/random_tree_5	-1.000000	
+size_50000/random_tree_1
+No solution
+size_50000/random_tree_1	-1.000000	
+size_50000/random_tree_2
+No solution
+size_50000/random_tree_2	-1.000000	
+size_50000/random_tree_3
+No solution
+size_50000/random_tree_3	-1.000000	
+size_50000/random_tree_4
+No solution
+size_50000/random_tree_4	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+!! /work/kulagins/scheduler-a2/data/random_trees/all_large
+!! 
+/work/kulagins/scheduler-a2/data/random_trees/all_large
+treename	./clusters/36-proc/36proc_0,3-0,5-0,8-1.json	
+size_10000/random_tree_1
+No solution
+size_10000/random_tree_1	-1.000000	
+size_10000/random_tree_2
+No solution
+size_10000/random_tree_2	-1.000000	
+size_10000/random_tree_3
+No solution
+size_10000/random_tree_3	-1.000000	
+size_10000/random_tree_4
+No solution
+size_10000/random_tree_4	-1.000000	
+size_10000/random_tree_5
+No solution
+size_10000/random_tree_5	-1.000000	
+size_2000/random_tree_1
+size_2000/random_tree_1	30158.286558	
+size_2000/random_tree_2
+size_2000/random_tree_2	36614.723384	
+size_2000/random_tree_3
+No solution
+size_2000/random_tree_3	-1.000000	
+size_2000/random_tree_4
+No solution
+size_2000/random_tree_4	-1.000000	
+size_2000/random_tree_5
+No solution
+size_2000/random_tree_5	-1.000000	
+size_20000/random_tree_1
+No solution
+size_20000/random_tree_1	-1.000000	
+size_20000/random_tree_2
+No solution
+size_20000/random_tree_2	-1.000000	
+size_20000/random_tree_3
+No solution
+size_20000/random_tree_3	-1.000000	
+size_20000/random_tree_4
+No solution
+size_20000/random_tree_4	-1.000000	
+size_20000/random_tree_5
+No solution
+size_20000/random_tree_5	-1.000000	
+size_30000/random_tree_1
+No solution
+size_30000/random_tree_1	-1.000000	
+size_30000/random_tree_2
+No solution
+size_30000/random_tree_2	-1.000000	
+size_30000/random_tree_3
+No solution
+size_30000/random_tree_3	-1.000000	
+size_30000/random_tree_4
+No solution
+size_30000/random_tree_4	-1.000000	
+size_30000/random_tree_5
+No solution
+size_30000/random_tree_5	-1.000000	
+size_4000/random_tree_1
+No solution
+size_4000/random_tree_1	-1.000000	
+size_4000/random_tree_2
+No solution
+size_4000/random_tree_2	-1.000000	
+size_4000/random_tree_3
+No solution
+size_4000/random_tree_3	-1.000000	
+size_4000/random_tree_4
+No solution
+size_4000/random_tree_4	-1.000000	
+size_4000/random_tree_5
+No solution
+size_4000/random_tree_5	-1.000000	
+size_50000/random_tree_1
+No solution
+size_50000/random_tree_1	-1.000000	
+size_50000/random_tree_2
+No solution
+size_50000/random_tree_2	-1.000000	
+size_50000/random_tree_3
+No solution
+size_50000/random_tree_3	-1.000000	
+size_50000/random_tree_4
+No solution
+size_50000/random_tree_4	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+!! /work/kulagins/scheduler-a2/data/random_trees/large_makespan_weights
+!! 
+/work/kulagins/scheduler-a2/data/random_trees/large_makespan_weights
+treename	./clusters/36-proc/36proc_0,3-0,5-0,8-1.json	
+size_10000/random_tree_1
+No solution
+size_10000/random_tree_1	-1.000000	
+size_10000/random_tree_2
+No solution
+size_10000/random_tree_2	-1.000000	
+size_10000/random_tree_3
+No solution
+size_10000/random_tree_3	-1.000000	
+size_10000/random_tree_4
+No solution
+size_10000/random_tree_4	-1.000000	
+size_10000/random_tree_5
+No solution
+size_10000/random_tree_5	-1.000000	
+size_2000/random_tree_1
+No solution
+size_2000/random_tree_1	-1.000000	
+size_2000/random_tree_2
+No solution
+size_2000/random_tree_2	-1.000000	
+size_2000/random_tree_3
+No solution
+size_2000/random_tree_3	-1.000000	
+size_2000/random_tree_4
+No solution
+size_2000/random_tree_4	-1.000000	
+size_2000/random_tree_5
+No solution
+size_2000/random_tree_5	-1.000000	
+size_20000/random_tree_1
+No solution
+size_20000/random_tree_1	-1.000000	
+size_20000/random_tree_2
+No solution
+size_20000/random_tree_2	-1.000000	
+size_20000/random_tree_3
+No solution
+size_20000/random_tree_3	-1.000000	
+size_20000/random_tree_4
+No solution
+size_20000/random_tree_4	-1.000000	
+size_20000/random_tree_5
+No solution
+size_20000/random_tree_5	-1.000000	
+size_30000/random_tree_1
+No solution
+size_30000/random_tree_1	-1.000000	
+size_30000/random_tree_2
+No solution
+size_30000/random_tree_2	-1.000000	
+size_30000/random_tree_3
+No solution
+size_30000/random_tree_3	-1.000000	
+size_30000/random_tree_4
+No solution
+size_30000/random_tree_4	-1.000000	
+size_30000/random_tree_5
+No solution
+size_30000/random_tree_5	-1.000000	
+size_4000/random_tree_1
+No solution
+size_4000/random_tree_1	-1.000000	
+size_4000/random_tree_2
+No solution
+size_4000/random_tree_2	-1.000000	
+size_4000/random_tree_3
+No solution
+size_4000/random_tree_3	-1.000000	
+size_4000/random_tree_4
+No solution
+size_4000/random_tree_4	-1.000000	
+size_4000/random_tree_5
+No solution
+size_4000/random_tree_5	-1.000000	
+size_50000/random_tree_1
+No solution
+size_50000/random_tree_1	-1.000000	
+size_50000/random_tree_2
+No solution
+size_50000/random_tree_2	-1.000000	
+size_50000/random_tree_3
+No solution
+size_50000/random_tree_3	-1.000000	
+size_50000/random_tree_4
+No solution
+size_50000/random_tree_4	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+!! /work/kulagins/scheduler-a2/data/random_trees/20_children
+!! 
+/work/kulagins/scheduler-a2/data/random_trees/20_children
+treename	./clusters/36-proc/36proc_0,3-0,5-0,8-1.json	
+size_10000/random_tree_1
+No solution
+size_10000/random_tree_1	-1.000000	
+size_10000/random_tree_2
+No solution
+size_10000/random_tree_2	-1.000000	
+size_10000/random_tree_3
+No solution
+size_10000/random_tree_3	-1.000000	
+size_10000/random_tree_4
+No solution
+size_10000/random_tree_4	-1.000000	
+size_10000/random_tree_5
+No solution
+size_10000/random_tree_5	-1.000000	
+size_2000/random_tree_1
+No solution
+size_2000/random_tree_1	-1.000000	
+size_2000/random_tree_2
+No solution
+size_2000/random_tree_2	-1.000000	
+size_2000/random_tree_3
+No solution
+size_2000/random_tree_3	-1.000000	
+size_2000/random_tree_4
+No solution
+size_2000/random_tree_4	-1.000000	
+size_2000/random_tree_5
+No solution
+size_2000/random_tree_5	-1.000000	
+size_20000/random_tree_1
+No solution
+size_20000/random_tree_1	-1.000000	
+size_20000/random_tree_2
+No solution
+size_20000/random_tree_2	-1.000000	
+size_20000/random_tree_3
+No solution
+size_20000/random_tree_3	-1.000000	
+size_20000/random_tree_4
+No solution
+size_20000/random_tree_4	-1.000000	
+size_20000/random_tree_5
+No solution
+size_20000/random_tree_5	-1.000000	
+size_30000/random_tree_1
+No solution
+size_30000/random_tree_1	-1.000000	
+size_30000/random_tree_2
+No solution
+size_30000/random_tree_2	-1.000000	
+size_30000/random_tree_3
+No solution
+size_30000/random_tree_3	-1.000000	
+size_30000/random_tree_4
+No solution
+size_30000/random_tree_4	-1.000000	
+size_30000/random_tree_5
+No solution
+size_30000/random_tree_5	-1.000000	
+size_4000/random_tree_1
+No solution
+size_4000/random_tree_1	-1.000000	
+size_4000/random_tree_2
+No solution
+size_4000/random_tree_2	-1.000000	
+size_4000/random_tree_3
+No solution
+size_4000/random_tree_3	-1.000000	
+size_4000/random_tree_4
+No solution
+size_4000/random_tree_4	-1.000000	
+size_4000/random_tree_5
+No solution
+size_4000/random_tree_5	-1.000000	
+size_50000/random_tree_1
+No solution
+size_50000/random_tree_1	-1.000000	
+size_50000/random_tree_2
+No solution
+size_50000/random_tree_2	-1.000000	
+size_50000/random_tree_3
+No solution
+size_50000/random_tree_3	-1.000000	
+size_50000/random_tree_4
+No solution
+size_50000/random_tree_4	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+!! /work/kulagins/scheduler-a2/data/random_trees/all_small
+!! 
+/work/kulagins/scheduler-a2/data/random_trees/all_small
+treename	./clusters/36-proc/36proc_0,3-0,5-0,8-1.json	
+size_10000/random_tree_1
+No solution
+size_10000/random_tree_1	-1.000000	
+size_10000/random_tree_2
+No solution
+size_10000/random_tree_2	-1.000000	
+size_10000/random_tree_3
+No solution
+size_10000/random_tree_3	-1.000000	
+size_10000/random_tree_4
+No solution
+size_10000/random_tree_4	-1.000000	
+size_10000/random_tree_5
+No solution
+size_10000/random_tree_5	-1.000000	
+size_2000/random_tree_1
+No solution
+size_2000/random_tree_1	-1.000000	
+size_2000/random_tree_2
+No solution
+size_2000/random_tree_2	-1.000000	
+size_2000/random_tree_3
+No solution
+size_2000/random_tree_3	-1.000000	
+size_2000/random_tree_4
+No solution
+size_2000/random_tree_4	-1.000000	
+size_2000/random_tree_5
+No solution
+size_2000/random_tree_5	-1.000000	
+size_20000/random_tree_1
+No solution
+size_20000/random_tree_1	-1.000000	
+size_20000/random_tree_2
+No solution
+size_20000/random_tree_2	-1.000000	
+size_20000/random_tree_3
+No solution
+size_20000/random_tree_3	-1.000000	
+size_20000/random_tree_4
+No solution
+size_20000/random_tree_4	-1.000000	
+size_20000/random_tree_5
+No solution
+size_20000/random_tree_5	-1.000000	
+size_30000/random_tree_1
+No solution
+size_30000/random_tree_1	-1.000000	
+size_30000/random_tree_2
+No solution
+size_30000/random_tree_2	-1.000000	
+size_30000/random_tree_3
+No solution
+size_30000/random_tree_3	-1.000000	
+size_30000/random_tree_4
+No solution
+size_30000/random_tree_4	-1.000000	
+size_30000/random_tree_5
+No solution
+size_30000/random_tree_5	-1.000000	
+size_4000/random_tree_1
+No solution
+size_4000/random_tree_1	-1.000000	
+size_4000/random_tree_2
+No solution
+size_4000/random_tree_2	-1.000000	
+size_4000/random_tree_3
+No solution
+size_4000/random_tree_3	-1.000000	
+size_4000/random_tree_4
+No solution
+size_4000/random_tree_4	-1.000000	
+size_4000/random_tree_5
+No solution
+size_4000/random_tree_5	-1.000000	
+size_50000/random_tree_1
+No solution
+size_50000/random_tree_1	-1.000000	
+size_50000/random_tree_2
+No solution
+size_50000/random_tree_2	-1.000000	
+size_50000/random_tree_3
+No solution
+size_50000/random_tree_3	-1.000000	
+size_50000/random_tree_4
+No solution
+size_50000/random_tree_4	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+!! /work/kulagins/scheduler-a2/data/random_trees/large_node_weights
+!! 
+/work/kulagins/scheduler-a2/data/random_trees/large_node_weights
+treename	./clusters/36-proc/36proc_0,3-0,5-0,8-1.json	
+size_10000/random_tree_1
+No solution
+size_10000/random_tree_1	-1.000000	
+size_10000/random_tree_2
+No solution
+size_10000/random_tree_2	-1.000000	
+size_10000/random_tree_3
+No solution
+size_10000/random_tree_3	-1.000000	
+size_10000/random_tree_4
+No solution
+size_10000/random_tree_4	-1.000000	
+size_10000/random_tree_5
+No solution
+size_10000/random_tree_5	-1.000000	
+size_2000/random_tree_1
+No solution
+size_2000/random_tree_1	-1.000000	
+size_2000/random_tree_2
+No solution
+size_2000/random_tree_2	-1.000000	
+size_2000/random_tree_3
+No solution
+size_2000/random_tree_3	-1.000000	
+size_2000/random_tree_4
+No solution
+size_2000/random_tree_4	-1.000000	
+size_2000/random_tree_5
+No solution
+size_2000/random_tree_5	-1.000000	
+size_20000/random_tree_1
+No solution
+size_20000/random_tree_1	-1.000000	
+size_20000/random_tree_2
+No solution
+size_20000/random_tree_2	-1.000000	
+size_20000/random_tree_3
+No solution
+size_20000/random_tree_3	-1.000000	
+size_20000/random_tree_4
+No solution
+size_20000/random_tree_4	-1.000000	
+size_20000/random_tree_5
+No solution
+size_20000/random_tree_5	-1.000000	
+size_30000/random_tree_1
+No solution
+size_30000/random_tree_1	-1.000000	
+size_30000/random_tree_2
+No solution
+size_30000/random_tree_2	-1.000000	
+size_30000/random_tree_3
+No solution
+size_30000/random_tree_3	-1.000000	
+size_30000/random_tree_4
+No solution
+size_30000/random_tree_4	-1.000000	
+size_30000/random_tree_5
+No solution
+size_30000/random_tree_5	-1.000000	
+size_4000/random_tree_1
+No solution
+size_4000/random_tree_1	-1.000000	
+size_4000/random_tree_2
+No solution
+size_4000/random_tree_2	-1.000000	
+size_4000/random_tree_3
+No solution
+size_4000/random_tree_3	-1.000000	
+size_4000/random_tree_4
+No solution
+size_4000/random_tree_4	-1.000000	
+size_4000/random_tree_5
+No solution
+size_4000/random_tree_5	-1.000000	
+size_50000/random_tree_1
+No solution
+size_50000/random_tree_1	-1.000000	
+size_50000/random_tree_2
+No solution
+size_50000/random_tree_2	-1.000000	
+size_50000/random_tree_3
+No solution
+size_50000/random_tree_3	-1.000000	
+size_50000/random_tree_4
+No solution
+size_50000/random_tree_4	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+!! /work/kulagins/scheduler-a2/data/random_trees/3_children
+!! 
+/work/kulagins/scheduler-a2/data/random_trees/3_children
+treename	./clusters/36-proc/36proc_0,3-0,5-0,8-1.json	
+size_10000/random_tree_1
+No solution
+size_10000/random_tree_1	-1.000000	
+size_10000/random_tree_2
+No solution
+size_10000/random_tree_2	-1.000000	
+size_10000/random_tree_3
+No solution
+size_10000/random_tree_3	-1.000000	
+size_10000/random_tree_4
+No solution
+size_10000/random_tree_4	-1.000000	
+size_10000/random_tree_5
+No solution
+size_10000/random_tree_5	-1.000000	
+size_2000/random_tree_1
+No solution
+size_2000/random_tree_1	-1.000000	
+size_2000/random_tree_2
+No solution
+size_2000/random_tree_2	-1.000000	
+size_2000/random_tree_3
+No solution
+size_2000/random_tree_3	-1.000000	
+size_2000/random_tree_4
+No solution
+size_2000/random_tree_4	-1.000000	
+size_2000/random_tree_5
+No solution
+size_2000/random_tree_5	-1.000000	
+size_20000/random_tree_1
+No solution
+size_20000/random_tree_1	-1.000000	
+size_20000/random_tree_2
+No solution
+size_20000/random_tree_2	-1.000000	
+size_20000/random_tree_3
+No solution
+size_20000/random_tree_3	-1.000000	
+size_20000/random_tree_4
+No solution
+size_20000/random_tree_4	-1.000000	
+size_20000/random_tree_5
+No solution
+size_20000/random_tree_5	-1.000000	
+size_30000/random_tree_1
+No solution
+size_30000/random_tree_1	-1.000000	
+size_30000/random_tree_2
+No solution
+size_30000/random_tree_2	-1.000000	
+size_30000/random_tree_3
+No solution
+size_30000/random_tree_3	-1.000000	
+size_30000/random_tree_4
+No solution
+size_30000/random_tree_4	-1.000000	
+size_30000/random_tree_5
+No solution
+size_30000/random_tree_5	-1.000000	
+size_4000/random_tree_1
+No solution
+size_4000/random_tree_1	-1.000000	
+size_4000/random_tree_2
+No solution
+size_4000/random_tree_2	-1.000000	
+size_4000/random_tree_3
+No solution
+size_4000/random_tree_3	-1.000000	
+size_4000/random_tree_4
+No solution
+size_4000/random_tree_4	-1.000000	
+size_4000/random_tree_5
+No solution
+size_4000/random_tree_5	-1.000000	
+size_50000/random_tree_1
+No solution
+size_50000/random_tree_1	-1.000000	
+size_50000/random_tree_2
+No solution
+size_50000/random_tree_2	-1.000000	
+size_50000/random_tree_3
+No solution
+size_50000/random_tree_3	-1.000000	
+size_50000/random_tree_4
+No solution
+size_50000/random_tree_4	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+!! /work/kulagins/scheduler-a2/data/random_trees/large_edge_weights
+!! 
+/work/kulagins/scheduler-a2/data/random_trees/large_edge_weights
+treename	./clusters/36-proc/36proc_0,3-0,5-0,8-1.json	
+size_10000/random_tree_1
+No solution
+size_10000/random_tree_1	-1.000000	
+size_10000/random_tree_2
+No solution
+size_10000/random_tree_2	-1.000000	
+size_10000/random_tree_3
+No solution
+size_10000/random_tree_3	-1.000000	
+size_10000/random_tree_4
+No solution
+size_10000/random_tree_4	-1.000000	
+size_10000/random_tree_5
+No solution
+size_10000/random_tree_5	-1.000000	
+size_2000/random_tree_1
+No solution
+size_2000/random_tree_1	-1.000000	
+size_2000/random_tree_2
+No solution
+size_2000/random_tree_2	-1.000000	
+size_2000/random_tree_3
+No solution
+size_2000/random_tree_3	-1.000000	
+size_2000/random_tree_4
+No solution
+size_2000/random_tree_4	-1.000000	
+size_2000/random_tree_5
+No solution
+size_2000/random_tree_5	-1.000000	
+size_20000/random_tree_1
+No solution
+size_20000/random_tree_1	-1.000000	
+size_20000/random_tree_2
+No solution
+size_20000/random_tree_2	-1.000000	
+size_20000/random_tree_3
+No solution
+size_20000/random_tree_3	-1.000000	
+size_20000/random_tree_4
+No solution
+size_20000/random_tree_4	-1.000000	
+size_20000/random_tree_5
+No solution
+size_20000/random_tree_5	-1.000000	
+size_30000/random_tree_1
+No solution
+size_30000/random_tree_1	-1.000000	
+size_30000/random_tree_2
+No solution
+size_30000/random_tree_2	-1.000000	
+size_30000/random_tree_3
+No solution
+size_30000/random_tree_3	-1.000000	
+size_30000/random_tree_4
+No solution
+size_30000/random_tree_4	-1.000000	
+size_30000/random_tree_5
+No solution
+size_30000/random_tree_5	-1.000000	
+size_4000/random_tree_1
+No solution
+size_4000/random_tree_1	-1.000000	
+size_4000/random_tree_2
+No solution
+size_4000/random_tree_2	-1.000000	
+size_4000/random_tree_3
+No solution
+size_4000/random_tree_3	-1.000000	
+size_4000/random_tree_4
+No solution
+size_4000/random_tree_4	-1.000000	
+size_4000/random_tree_5
+No solution
+size_4000/random_tree_5	-1.000000	
+size_50000/random_tree_1
+No solution
+size_50000/random_tree_1	-1.000000	
+size_50000/random_tree_2
+No solution
+size_50000/random_tree_2	-1.000000	
+size_50000/random_tree_3
+No solution
+size_50000/random_tree_3	-1.000000	
+size_50000/random_tree_4
+No solution
+size_50000/random_tree_4	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+size_50000/random_tree_5
+No solution
+size_50000/random_tree_5	-1.000000	
+slurmstepd: error: Detected 1 oom-kill event(s) in step 367085.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.

@@ -31,6 +31,8 @@ OutputPrinter printer;
 double a2Steps(Tree *tree, OutputPrinter *printer) {
     unsigned int number_subtrees = 0;
     double makespan;
+    clock_t time;
+    time = clock();
 
     /* double maxoutd = MaxOutDegree(tree, true);
      double minMem;
@@ -52,7 +54,8 @@ double a2Steps(Tree *tree, OutputPrinter *printer) {
     }
 
     cout << "#unfeasible tasks: " << numberUnfeasibleTasks << endl;
-
+    cout<<"1 step: "<<clock()-time<<endl;
+    time = clock();
 
     try {
         seqSetAndFeasSets(tree);
@@ -61,10 +64,14 @@ double a2Steps(Tree *tree, OutputPrinter *printer) {
         makespan = tree->getRoot()->getMakespanCost(true, true);
         cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
 
+        cout<<"2 step: "<<clock()-time<<endl;
+        time = clock();
         assignToBestProcessors(tree);
         number_subtrees = tree->HowmanySubtrees(true);
         makespan = tree->getRoot()->getMakespanCost(true, true);
         cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
+        cout<<"3 step: "<<clock()-time<<endl;
+        time = clock();
     }
     catch (exception e) {
         printer->quietPrint("An error has occurred: ");//+ e.what());  // Not executed
@@ -224,9 +231,15 @@ int main(int argc, char **argv) {
 
         string tree_column = treename + "\t";
         do {
+            try {
 
-            if (input->getClusteringMode() == treeDependent) {
-                buildTreeDependentCluster(input, tree);
+                if (input->getClusteringMode() == treeDependent) {
+                    buildTreeDependentCluster(input, tree);
+                }
+            }
+            catch (const char *str) {
+                printer->quietPrint(str); //<< str << endl
+                continue;
             }
 
             time = clock();

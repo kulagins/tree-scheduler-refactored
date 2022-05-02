@@ -126,6 +126,9 @@ public:
     void setClusterFromFile(double normedMemory, double shrinkingFactor = 1) {
         ifstream inputFile(this->getPathToCluster());
         json clusterDescription;
+        if(!inputFile.is_open()){
+            throw "Could not open cluster file!";
+        }
         inputFile >> clusterDescription;
 
         vector<unsigned int> *processorCounts = new vector<unsigned int>();

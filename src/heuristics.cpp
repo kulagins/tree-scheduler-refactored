@@ -28,6 +28,11 @@ bool cmp_noIn_noCommu(Task *a, Task *b) {
     return (a->getMakespanCost(false, false) >= b->getMakespanCost(false, false));
 };
 
+bool cmp_Mem_nodecreasing(Task *a, Task *b) {
+    return (a->getNodeWeight() >= b->getNodeWeight());
+};
+
+
 struct CompareMapEntries {
     int val;
 
@@ -2129,17 +2134,54 @@ void distributeProcessors(Tree *qTree) {
     delete taskHeap;
 }
 
-void growSeqSetWhileImproves(list<Task *> &seqSet, Tree *tree) {
+void growSeqSetWhileImprovesMakespan(list<Task *> &seqSet, Tree *tree) {
+    int cntrAdditionToSS = 0;
+    int cntTries = 0;
+    Task *root = tree->getRoot();
     list<Task *> frontier;
-    for (Task *task: seqSet) {
-        for (Task *child: *task->getChildren())
-            frontier.push_back(child);
+
+    for (Task *task: *tree->getTasks()) {
+        if (task->isBroken())
+            frontier.push_back(task);
     }
+    if (frontier.empty()) {
+        frontier.push_back(root);
+        root->breakEdge();
+        for (Task *child: *root->getChildren()) {
+            child->breakEdge();
+        }
+    }
+    double minMakespan = root->getMakespanCost(true, true);
+    //TODO sort by some criterion
+    frontier.sort(cmp_Mem_nodecreasing);
 
     while (!frontier.empty()) {
         Task *potentialAddition = frontier.front();
-
+        frontier.pop_front();
+        potentialAddition->restoreEdge();
+        for (Task *child: *potentialAddition->getChildren()) {
+            child->breakEdge();
+        }
+        double potentialMakespan = root->getMakespanCost(true, true);
+        cout<<potentialMakespan<< " "<< minMakespan<<endl;
+        cntTries++;
+        if (potentialMakespan <= minMakespan) {
+            cntrAdditionToSS++;
+            minMakespan = potentialMakespan;
+            //no breaking back the edge, we accept this improvement
+            // instead add children of newly added task
+            for (Task *child: *potentialAddition->getChildren()) {
+                frontier.push_back(child);
+            }
+        } else {
+            potentialAddition->breakEdge();
+            for (Task *child: *potentialAddition->getChildren()) {
+                child->restoreEdge();
+            }
+            // no adding children
+        }
     }
+    cout << "tried " << cntTries << " added to SS " << cntrAdditionToSS << endl;
 }
 
 void growSeqSet(Task *task, list<Task *> &seqSet, Task *treeRoot) {
@@ -2158,12 +2200,14 @@ void seqSetAndFeasSets(Tree *tree) {
     //sequentialSet.emplace_front(tree->getRoot());
     growSeqSet(tree->getRoot(), sequentialSet, tree->getRoot());
     auto parallelRoots = buildParallelRootsFromSequentialSet(tree->getRoot(), sequentialSet);
+    breakPreparedEdges(tree->getRoot(), parallelRoots);
 
-    if (parallelRoots.size() >= Cluster::getFixedCluster()->getNumberProcessors()) {
+    growSeqSetWhileImprovesMakespan(sequentialSet, tree);
+    cout << "end growSSIMproves" << endl;
+    if (tree->HowmanySubtrees(true) >= Cluster::getFixedCluster()->getNumberProcessors()) {
         throw "too many parallel roots after growing SeqSet: ";// + to_string(parallelRoots.size());
     }
 
-    breakPreparedEdges(tree->getRoot(), parallelRoots);
 
     double minMem = tree->getRoot()->computeMinMemUnderlying(tree);
     tree->getRoot()->assignFeasibleProcessorsToSubtree(tree, minMem);

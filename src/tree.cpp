@@ -60,7 +60,7 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
     rootCopy->setMakespanWeight(root->getSequentialPart());
     rootCopy->setAssignedProcessor(root->getAssignedProcessor());
     rootCopy->setMinMemUnderlying(root->getMinMemUnderlying());
-    for(Processor * feasible: root->getFeasibleProcessors()){
+    for (Processor *feasible: root->getFeasibleProcessors()) {
         rootCopy->addFeasibleProcessor(feasible);
     }
 
@@ -84,7 +84,7 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
                 copy->setAssignedProcessor(currentNode->getAssignedProcessor());
             }
             copy->setMinMemUnderlying(currentNode->getMinMemUnderlying());
-            for(Processor * feasible: currentNode->getFeasibleProcessors()){
+            for (Processor *feasible: currentNode->getFeasibleProcessors()) {
                 copy->addFeasibleProcessor(feasible);
             }
             tasksInQtree->push_back(copy);
@@ -1414,7 +1414,7 @@ void Task::precomputeMinMems(Tree *tree) {
     // cout<<this->getId()<<endl;
     bool unaccessible = false;
     if (this->getMinMemUnderlying() != 0) {
-     //   cout << "already computed for " << this->getId() << " " << this->getMinMemUnderlying() << endl;
+        //   cout << "already computed for " << this->getId() << " " << this->getMinMemUnderlying() << endl;
     }
     if (this == NULL) {
         return;
@@ -1435,16 +1435,17 @@ void Task::precomputeMinMems(Tree *tree) {
     for (Task *child: *this->getChildren()) {
         child->precomputeMinMems(tree);
         if (child->getFeasibleProcessors().empty()) {
-            cout << "child has no feasible, no computing parent" << endl;
+            //cout << "child has no feasible, no computing parent" << endl;
             unaccessible = true;
         }
     }
-    double minMem = computeMinMemUnderlying(tree);
-    cout<<"Task: "<<getId()<<" MM: "<<minMem<<endl;
-    //if (!unaccessible) {
-        assignFeasibleProcessorsToSubtree(tree, minMem); //}
-    //else do nothing, if at least one child has no feasible processors, than the parent doesn't too
 
+
+    if (!unaccessible) {
+        double minMem = computeMinMemUnderlying(tree);
+        assignFeasibleProcessorsToSubtree(tree, minMem);
+        //else do nothing, if at least one child has no feasible processors, than the parent doesn't too
+    }
 }
 
 double Task::computeMinMemUnderlying(Tree *tree) {
@@ -1462,7 +1463,7 @@ void Task::assignFeasibleProcessorsToSubtree(Tree *tree, double minMem) {
 
     //TODO improve by sorting procs and only taking biggest
     for (Processor *processor: Cluster::getFixedCluster()->getProcessors()) {
-        if (!processor->isBusy && processor->getMemorySize() > minMem) {
+        if (!processor->isBusy && processor->getMemorySize() >= minMem) {
             addFeasibleProcessor(processor);
         }
     }

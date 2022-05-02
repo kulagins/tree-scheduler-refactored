@@ -1,0 +1,625 @@
+matrix	
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	48.113236	
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	45.186480	
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	44.873234	
+dump.0.1.amd.Bova.rma10-374.tree.nf
+dump.0.1.amd.Bova.rma10-374.tree.nf	45.260581	
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	48.390758	
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	47.517549	
+dump.0.1.amd.QY.case39-2136.tree.nf
+dump.0.1.amd.QY.case39-2136.tree.nf	48.399089	
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	49.361141	
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	47.964955	
+dump.0.1.metis.Bova.rma10-374.tree.nf
+dump.0.1.metis.Bova.rma10-374.tree.nf	46.483025	
+dump.0.1.metis.CPM.cz40948-2567.tree.nf
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	43.721634	
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf	49.759110	
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf
+dump.0.1.metis.FEMLAB.sme3Dc-932.tree.nf	48.741223	
+dump.0.1.metis.Goodwin.rim-447.tree.nf
+dump.0.1.metis.Goodwin.rim-447.tree.nf	41.282801	
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf
+dump.0.1.metis.HVDC.hvdc2-1875.tree.nf	47.707263	
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf
+dump.0.1.metis.Schenk_IBMSDS.matrix_9-959.tree.nf	46.810671	
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf
+dump.0.1.metis.Schmid.thermal1-1402.tree.nf	48.903493	
+dump.0.1.metis.Shyy.shyy161-809.tree.nf
+dump.0.1.metis.Shyy.shyy161-809.tree.nf	48.434634	
+dump.0.1.metis.Wang.wang4-833.tree.nf
+dump.0.1.metis.Wang.wang4-833.tree.nf	44.927661	
+dump.0.1.metis.Watson.Baumann-1855.tree.nf
+dump.0.1.metis.Watson.Baumann-1855.tree.nf	46.303363	
+dump.1.1.amd.QY.case39-2136.tree.nf
+dump.1.1.amd.QY.case39-2136.tree.nf	48.399089	
+dump.1.1.metis.CPM.cz40948-2567.tree.nf
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	42.405063	
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf
+dump.1.1.metis.IPSO.HTC_336_4438-2534.tree.nf	46.242334	
+dump.1.2.amd.QY.case39-2136.tree.nf
+dump.1.2.amd.QY.case39-2136.tree.nf	48.399089	
+dump.1.3.amd.QY.case39-2136.tree.nf
+dump.1.3.amd.QY.case39-2136.tree.nf	48.399089	
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf
+dump.1.3.metis.Schenk_IBMNA.c-big-1579.tree.nf	44.786671	
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf
+dump.1.4.metis.Schenk_IBMNA.c-big-1579.tree.nf	44.786671	
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	47.259391	
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	47.259391	
+normal_random	
+size_10000/random_tree_1
+size_10000/random_tree_1	46.900358	
+size_10000/random_tree_2
+size_10000/random_tree_2	44.870118	
+size_10000/random_tree_3
+size_10000/random_tree_3	45.776579	
+size_10000/random_tree_4
+size_10000/random_tree_4	47.176694	
+size_10000/random_tree_5
+size_10000/random_tree_5	46.103691	
+size_2000/random_tree_1
+size_2000/random_tree_1	47.465282	
+size_2000/random_tree_2
+size_2000/random_tree_2	48.646586	
+size_2000/random_tree_3
+size_2000/random_tree_3	42.655211	
+size_2000/random_tree_4
+size_2000/random_tree_4	47.020725	
+size_2000/random_tree_5
+size_2000/random_tree_5	47.541760	
+size_20000/random_tree_1
+size_20000/random_tree_1	46.309173	
+size_20000/random_tree_2
+size_20000/random_tree_2	47.728489	
+size_20000/random_tree_3
+size_20000/random_tree_3	44.139058	
+size_20000/random_tree_4
+size_20000/random_tree_4	48.963916	
+size_20000/random_tree_5
+size_20000/random_tree_5	48.145052	
+size_30000/random_tree_1
+size_30000/random_tree_1	48.048701	
+size_30000/random_tree_2
+size_30000/random_tree_2	45.421447	
+size_30000/random_tree_3
+size_30000/random_tree_3	46.551761	
+size_30000/random_tree_4
+size_30000/random_tree_4	46.987676	
+size_30000/random_tree_5
+size_30000/random_tree_5	50.000000	
+size_4000/random_tree_1
+size_4000/random_tree_1	45.212456	
+size_4000/random_tree_2
+size_4000/random_tree_2	41.964054	
+size_4000/random_tree_3
+size_4000/random_tree_3	47.371616	
+size_4000/random_tree_4
+size_4000/random_tree_4	49.423120	
+size_4000/random_tree_5
+size_4000/random_tree_5	47.257467	
+size_50000/random_tree_1
+size_50000/random_tree_1	45.497525	
+size_50000/random_tree_2
+size_50000/random_tree_2	49.594062	
+size_50000/random_tree_3
+size_50000/random_tree_3	45.474720	
+size_50000/random_tree_4
+size_50000/random_tree_4	45.893905	
+size_50000/random_tree_5
+size_50000/random_tree_5	44.075664	
+size_50000/random_tree_5
+size_50000/random_tree_5	44.075664	
+10_children	
+size_10000/random_tree_1
+size_10000/random_tree_1	45.166496	
+size_10000/random_tree_2
+size_10000/random_tree_2	45.007900	
+size_10000/random_tree_3
+size_10000/random_tree_3	45.329930	
+size_10000/random_tree_4
+size_10000/random_tree_4	46.817155	
+size_10000/random_tree_5
+size_10000/random_tree_5	44.686066	
+size_2000/random_tree_1
+size_2000/random_tree_1	49.072435	
+size_2000/random_tree_2
+size_2000/random_tree_2	46.387841	
+size_2000/random_tree_3
+size_2000/random_tree_3	47.173095	
+size_2000/random_tree_4
+size_2000/random_tree_4	48.384304	
+size_2000/random_tree_5
+size_2000/random_tree_5	48.154799	
+size_20000/random_tree_1
+size_20000/random_tree_1	44.652786	
+size_20000/random_tree_2
+size_20000/random_tree_2	44.481963	
+size_20000/random_tree_3
+size_20000/random_tree_3	43.851347	
+size_20000/random_tree_4
+size_20000/random_tree_4	42.897603	
+size_20000/random_tree_5
+size_20000/random_tree_5	46.983056	
+size_30000/random_tree_1
+size_30000/random_tree_1	43.949511	
+size_30000/random_tree_2
+size_30000/random_tree_2	45.698414	
+size_30000/random_tree_3
+size_30000/random_tree_3	45.246162	
+size_30000/random_tree_4
+size_30000/random_tree_4	46.333587	
+size_30000/random_tree_5
+size_30000/random_tree_5	44.608497	
+size_4000/random_tree_1
+size_4000/random_tree_1	45.775612	
+size_4000/random_tree_2
+size_4000/random_tree_2	45.272387	
+size_4000/random_tree_3
+size_4000/random_tree_3	44.977738	
+size_4000/random_tree_4
+size_4000/random_tree_4	46.290549	
+size_4000/random_tree_5
+size_4000/random_tree_5	45.899573	
+size_50000/random_tree_1
+size_50000/random_tree_1	44.058650	
+size_50000/random_tree_2
+size_50000/random_tree_2	42.442239	
+size_50000/random_tree_3
+size_50000/random_tree_3	45.526270	
+size_50000/random_tree_4
+size_50000/random_tree_4	45.086849	
+size_50000/random_tree_5
+size_50000/random_tree_5	43.445402	
+size_50000/random_tree_5
+size_50000/random_tree_5	43.445402	
+all_large	
+size_10000/random_tree_1
+size_10000/random_tree_1	46.750511	
+size_10000/random_tree_2
+size_10000/random_tree_2	45.706692	
+size_10000/random_tree_3
+size_10000/random_tree_3	50.000000	
+size_10000/random_tree_4
+size_10000/random_tree_4	47.552447	
+size_10000/random_tree_5
+size_10000/random_tree_5	48.098736	
+size_2000/random_tree_1
+size_2000/random_tree_1	47.337132	
+size_2000/random_tree_2
+size_2000/random_tree_2	47.398194	
+size_2000/random_tree_3
+size_2000/random_tree_3	48.812443	
+size_2000/random_tree_4
+size_2000/random_tree_4	46.951650	
+size_2000/random_tree_5
+size_2000/random_tree_5	48.119888	
+size_20000/random_tree_1
+size_20000/random_tree_1	47.973670	
+size_20000/random_tree_2
+size_20000/random_tree_2	46.136943	
+size_20000/random_tree_3
+size_20000/random_tree_3	45.414483	
+size_20000/random_tree_4
+size_20000/random_tree_4	47.137897	
+size_20000/random_tree_5
+size_20000/random_tree_5	44.048066	
+size_30000/random_tree_1
+size_30000/random_tree_1	46.139701	
+size_30000/random_tree_2
+size_30000/random_tree_2	49.426367	
+size_30000/random_tree_3
+size_30000/random_tree_3	48.541777	
+size_30000/random_tree_4
+size_30000/random_tree_4	44.812886	
+size_30000/random_tree_5
+size_30000/random_tree_5	43.336224	
+size_4000/random_tree_1
+size_4000/random_tree_1	45.263980	
+size_4000/random_tree_2
+size_4000/random_tree_2	42.492941	
+size_4000/random_tree_3
+size_4000/random_tree_3	49.011231	
+size_4000/random_tree_4
+size_4000/random_tree_4	49.639038	
+size_4000/random_tree_5
+size_4000/random_tree_5	48.412921	
+size_50000/random_tree_1
+size_50000/random_tree_1	48.232508	
+size_50000/random_tree_2
+size_50000/random_tree_2	45.802909	
+size_50000/random_tree_3
+size_50000/random_tree_3	47.515032	
+size_50000/random_tree_4
+size_50000/random_tree_4	46.744231	
+size_50000/random_tree_5
+size_50000/random_tree_5	46.734479	
+size_50000/random_tree_5
+size_50000/random_tree_5	46.734479	
+large_makespan_weights	
+size_10000/random_tree_1
+size_10000/random_tree_1	44.133306	
+size_10000/random_tree_2
+size_10000/random_tree_2	47.698403	
+size_10000/random_tree_3
+size_10000/random_tree_3	50.000000	
+size_10000/random_tree_4
+size_10000/random_tree_4	47.233396	
+size_10000/random_tree_5
+size_10000/random_tree_5	43.636955	
+size_2000/random_tree_1
+size_2000/random_tree_1	44.974945	
+size_2000/random_tree_2
+size_2000/random_tree_2	49.913165	
+size_2000/random_tree_3
+size_2000/random_tree_3	47.747632	
+size_2000/random_tree_4
+size_2000/random_tree_4	47.364971	
+size_2000/random_tree_5
+size_2000/random_tree_5	44.478035	
+size_20000/random_tree_1
+size_20000/random_tree_1	48.221783	
+size_20000/random_tree_2
+size_20000/random_tree_2	44.974397	
+size_20000/random_tree_3
+size_20000/random_tree_3	49.081604	
+size_20000/random_tree_4
+size_20000/random_tree_4	46.827733	
+size_20000/random_tree_5
+size_20000/random_tree_5	50.000000	
+size_30000/random_tree_1
+size_30000/random_tree_1	45.541152	
+size_30000/random_tree_2
+size_30000/random_tree_2	46.427542	
+size_30000/random_tree_3
+size_30000/random_tree_3	44.116971	
+size_30000/random_tree_4
+size_30000/random_tree_4	47.728939	
+size_30000/random_tree_5
+size_30000/random_tree_5	43.445804	
+size_4000/random_tree_1
+size_4000/random_tree_1	46.870312	
+size_4000/random_tree_2
+size_4000/random_tree_2	44.013173	
+size_4000/random_tree_3
+size_4000/random_tree_3	46.996464	
+size_4000/random_tree_4
+size_4000/random_tree_4	48.947735	
+size_4000/random_tree_5
+size_4000/random_tree_5	48.600818	
+size_50000/random_tree_1
+size_50000/random_tree_1	44.288295	
+size_50000/random_tree_2
+size_50000/random_tree_2	47.262281	
+size_50000/random_tree_3
+size_50000/random_tree_3	45.519625	
+size_50000/random_tree_4
+size_50000/random_tree_4	47.939966	
+size_50000/random_tree_5
+size_50000/random_tree_5	49.041260	
+size_50000/random_tree_5
+size_50000/random_tree_5	49.041260	
+20_children	
+size_10000/random_tree_1
+size_10000/random_tree_1	48.148890	
+size_10000/random_tree_2
+size_10000/random_tree_2	49.185487	
+size_10000/random_tree_3
+size_10000/random_tree_3	47.572853	
+size_10000/random_tree_4
+size_10000/random_tree_4	48.688566	
+size_10000/random_tree_5
+size_10000/random_tree_5	48.079344	
+size_2000/random_tree_1
+size_2000/random_tree_1	49.145606	
+size_2000/random_tree_2
+size_2000/random_tree_2	48.826342	
+size_2000/random_tree_3
+size_2000/random_tree_3	49.038475	
+size_2000/random_tree_4
+size_2000/random_tree_4	48.915037	
+size_2000/random_tree_5
+size_2000/random_tree_5	48.586113	
+size_20000/random_tree_1
+size_20000/random_tree_1	48.187392	
+size_20000/random_tree_2
+size_20000/random_tree_2	48.413319	
+size_20000/random_tree_3
+size_20000/random_tree_3	48.007996	
+size_20000/random_tree_4
+size_20000/random_tree_4	47.836624	
+size_20000/random_tree_5
+size_20000/random_tree_5	48.150716	
+size_30000/random_tree_1
+size_30000/random_tree_1	48.243758	
+size_30000/random_tree_2
+size_30000/random_tree_2	47.264350	
+size_30000/random_tree_3
+size_30000/random_tree_3	47.634085	
+size_30000/random_tree_4
+size_30000/random_tree_4	47.964951	
+size_30000/random_tree_5
+size_30000/random_tree_5	47.374650	
+size_4000/random_tree_1
+size_4000/random_tree_1	47.789589	
+size_4000/random_tree_2
+size_4000/random_tree_2	48.233817	
+size_4000/random_tree_3
+size_4000/random_tree_3	48.907535	
+size_4000/random_tree_4
+size_4000/random_tree_4	47.821675	
+size_4000/random_tree_5
+size_4000/random_tree_5	49.468735	
+size_50000/random_tree_1
+size_50000/random_tree_1	47.902383	
+size_50000/random_tree_2
+size_50000/random_tree_2	47.376988	
+size_50000/random_tree_3
+size_50000/random_tree_3	48.292796	
+size_50000/random_tree_4
+size_50000/random_tree_4	48.007754	
+size_50000/random_tree_5
+size_50000/random_tree_5	46.128818	
+size_50000/random_tree_5
+size_50000/random_tree_5	46.128818	
+all_small	
+size_10000/random_tree_1
+size_10000/random_tree_1	44.486740	
+size_10000/random_tree_2
+size_10000/random_tree_2	44.980185	
+size_10000/random_tree_3
+size_10000/random_tree_3	45.147059	
+size_10000/random_tree_4
+size_10000/random_tree_4	43.920105	
+size_10000/random_tree_5
+size_10000/random_tree_5	43.820225	
+size_2000/random_tree_1
+size_2000/random_tree_1	43.129843	
+size_2000/random_tree_2
+size_2000/random_tree_2	46.826366	
+size_2000/random_tree_3
+size_2000/random_tree_3	43.047035	
+size_2000/random_tree_4
+size_2000/random_tree_4	46.608668	
+size_2000/random_tree_5
+size_2000/random_tree_5	43.583333	
+size_20000/random_tree_1
+size_20000/random_tree_1	41.573491	
+size_20000/random_tree_2
+size_20000/random_tree_2	47.426068	
+size_20000/random_tree_3
+size_20000/random_tree_3	44.588977	
+size_20000/random_tree_4
+size_20000/random_tree_4	44.649586	
+size_20000/random_tree_5
+size_20000/random_tree_5	44.485430	
+size_30000/random_tree_1
+size_30000/random_tree_1	44.884259	
+size_30000/random_tree_2
+size_30000/random_tree_2	47.421537	
+size_30000/random_tree_3
+size_30000/random_tree_3	45.154343	
+size_30000/random_tree_4
+size_30000/random_tree_4	41.365047	
+size_30000/random_tree_5
+size_30000/random_tree_5	44.380049	
+size_4000/random_tree_1
+size_4000/random_tree_1	47.131738	
+size_4000/random_tree_2
+size_4000/random_tree_2	44.458653	
+size_4000/random_tree_3
+size_4000/random_tree_3	47.287129	
+size_4000/random_tree_4
+size_4000/random_tree_4	50.000000	
+size_4000/random_tree_5
+size_4000/random_tree_5	46.741482	
+size_50000/random_tree_1
+size_50000/random_tree_1	42.251478	
+size_50000/random_tree_2
+size_50000/random_tree_2	45.102480	
+size_50000/random_tree_3
+size_50000/random_tree_3	44.508321	
+size_50000/random_tree_4
+size_50000/random_tree_4	47.482639	
+size_50000/random_tree_5
+size_50000/random_tree_5	45.196065	
+size_50000/random_tree_5
+size_50000/random_tree_5	45.196065	
+large_node_weights	
+size_10000/random_tree_1	45.244661	
+size_10000/random_tree_2
+size_10000/random_tree_2	47.804959	
+size_10000/random_tree_3
+size_10000/random_tree_3	48.941829	
+size_10000/random_tree_4
+size_10000/random_tree_4	47.077557	
+size_10000/random_tree_5
+size_10000/random_tree_5	48.614413	
+size_2000/random_tree_1
+size_2000/random_tree_1	46.296335	
+size_2000/random_tree_2
+size_2000/random_tree_2	49.281351	
+size_2000/random_tree_3
+size_2000/random_tree_3	48.081631	
+size_2000/random_tree_4
+size_2000/random_tree_4	49.500227	
+size_2000/random_tree_5
+size_2000/random_tree_5	48.022351	
+size_20000/random_tree_1
+size_20000/random_tree_1	49.047008	
+size_20000/random_tree_2
+size_20000/random_tree_2	46.275684	
+size_20000/random_tree_3
+size_20000/random_tree_3	48.122930	
+size_20000/random_tree_4
+size_20000/random_tree_4	47.159184	
+size_20000/random_tree_5
+size_20000/random_tree_5	47.671919	
+size_30000/random_tree_1
+size_30000/random_tree_1	45.982658	
+size_30000/random_tree_2
+size_30000/random_tree_2	47.572446	
+size_30000/random_tree_3
+size_30000/random_tree_3	46.045723	
+size_30000/random_tree_4
+size_30000/random_tree_4	48.099599	
+size_30000/random_tree_5
+size_30000/random_tree_5	46.012618	
+size_4000/random_tree_1
+size_4000/random_tree_1	49.380676	
+size_4000/random_tree_2
+size_4000/random_tree_2	45.359487	
+size_4000/random_tree_3
+size_4000/random_tree_3	49.651912	
+size_4000/random_tree_4
+size_4000/random_tree_4	48.403597	
+size_4000/random_tree_5
+size_4000/random_tree_5	50.000000	
+size_50000/random_tree_1
+size_50000/random_tree_1	45.195006	
+size_50000/random_tree_2
+size_50000/random_tree_2	47.343288	
+size_50000/random_tree_3
+size_50000/random_tree_3	49.392637	
+size_50000/random_tree_4
+size_50000/random_tree_4	45.557341	
+size_50000/random_tree_5
+size_50000/random_tree_5	44.753342	
+size_50000/random_tree_5
+size_50000/random_tree_5	44.753342	
+3_children	
+size_10000/random_tree_1
+size_10000/random_tree_1	35.862182	
+size_10000/random_tree_2
+size_10000/random_tree_2	37.487316	
+size_10000/random_tree_3
+size_10000/random_tree_3	39.594936	
+size_10000/random_tree_4
+size_10000/random_tree_4	40.283929	
+size_10000/random_tree_5
+size_10000/random_tree_5	36.901522	
+size_2000/random_tree_1
+size_2000/random_tree_1	40.974427	
+size_2000/random_tree_2
+size_2000/random_tree_2	42.729775	
+size_2000/random_tree_3
+size_2000/random_tree_3	39.885072	
+size_2000/random_tree_4
+size_2000/random_tree_4	39.167962	
+size_2000/random_tree_5
+size_2000/random_tree_5	37.477687	
+size_20000/random_tree_1
+size_20000/random_tree_1	36.619475	
+size_20000/random_tree_2
+size_20000/random_tree_2	36.242051	
+size_20000/random_tree_3
+size_20000/random_tree_3	38.294970	
+size_20000/random_tree_4
+size_20000/random_tree_4	40.239928	
+size_20000/random_tree_5
+size_20000/random_tree_5	38.710660	
+size_30000/random_tree_1
+size_30000/random_tree_1	33.997311	
+size_30000/random_tree_2
+size_30000/random_tree_2	36.093034	
+size_30000/random_tree_3
+size_30000/random_tree_3	36.003268	
+size_30000/random_tree_4
+size_30000/random_tree_4	35.086024	
+size_30000/random_tree_5
+size_30000/random_tree_5	33.658641	
+size_4000/random_tree_1
+size_4000/random_tree_1	36.952078	
+size_4000/random_tree_2
+size_4000/random_tree_2	41.456091	
+size_4000/random_tree_3
+size_4000/random_tree_3	36.497169	
+size_4000/random_tree_4
+size_4000/random_tree_4	38.932184	
+size_4000/random_tree_5
+size_4000/random_tree_5	39.035133	
+size_50000/random_tree_1
+size_50000/random_tree_1	37.805645	
+size_50000/random_tree_2
+size_50000/random_tree_2	33.788863	
+size_50000/random_tree_3
+size_50000/random_tree_3	41.196991	
+size_50000/random_tree_4
+size_50000/random_tree_4	35.601225	
+size_50000/random_tree_5
+size_50000/random_tree_5	33.921869	
+size_50000/random_tree_5
+size_50000/random_tree_5	33.921869	
+large_edge_weights	
+size_10000/random_tree_1
+size_10000/random_tree_1	46.999489	
+size_10000/random_tree_2
+size_10000/random_tree_2	47.322971	
+size_10000/random_tree_3
+size_10000/random_tree_3	48.048121	
+size_10000/random_tree_4
+size_10000/random_tree_4	47.442190	
+size_10000/random_tree_5
+size_10000/random_tree_5	44.924889	
+size_2000/random_tree_1
+size_2000/random_tree_1	47.839290	
+size_2000/random_tree_2
+size_2000/random_tree_2	44.137833	
+size_2000/random_tree_3
+size_2000/random_tree_3	50.000000	
+size_2000/random_tree_4
+size_2000/random_tree_4	46.355756	
+size_2000/random_tree_5
+size_2000/random_tree_5	45.790226	
+size_20000/random_tree_1
+size_20000/random_tree_1	46.103360	
+size_20000/random_tree_2
+size_20000/random_tree_2	44.288805	
+size_20000/random_tree_3
+size_20000/random_tree_3	44.917534	
+size_20000/random_tree_4
+size_20000/random_tree_4	43.860545	
+size_20000/random_tree_5
+size_20000/random_tree_5	46.262906	
+size_30000/random_tree_1
+size_30000/random_tree_1	45.258381	
+size_30000/random_tree_2
+size_30000/random_tree_2	45.652319	
+size_30000/random_tree_3
+size_30000/random_tree_3	44.564734	
+size_30000/random_tree_4
+size_30000/random_tree_4	45.509693	
+size_30000/random_tree_5
+size_30000/random_tree_5	44.712275	
+size_4000/random_tree_1
+size_4000/random_tree_1	46.447826	
+size_4000/random_tree_2
+size_4000/random_tree_2	45.502297	
+size_4000/random_tree_3
+size_4000/random_tree_3	47.362471	
+size_4000/random_tree_4
+size_4000/random_tree_4	47.240855	
+size_4000/random_tree_5
+size_4000/random_tree_5	47.853950	
+size_50000/random_tree_1
+size_50000/random_tree_1	50.000000	
+size_50000/random_tree_2
+size_50000/random_tree_2	48.620322	
+size_50000/random_tree_3
+size_50000/random_tree_3	47.290210	
+size_50000/random_tree_4
+size_50000/random_tree_4	46.788915	
+size_50000/random_tree_5
+size_50000/random_tree_5	43.808605	
+size_50000/random_tree_5
+size_50000/random_tree_5	43.808605	

@@ -325,7 +325,7 @@ public :
     }
 
     void restoreEdge() {
-        broken = false;//resotre this edge
+        this->broken = false;//resotre this edge
     }
 
     bool isBroken() {

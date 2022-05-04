@@ -2144,6 +2144,7 @@ void growSeqSetWhileImprovesMakespan(list<Task *> &seqSet, Tree *tree) {
         if (task->isBroken())
             frontier.push_back(task);
     }
+
     if (frontier.empty()) {
         frontier.push_back(root);
         root->breakEdge();
@@ -2158,9 +2159,11 @@ void growSeqSetWhileImprovesMakespan(list<Task *> &seqSet, Tree *tree) {
     while (!frontier.empty()) {
         Task *potentialAddition = frontier.front();
         frontier.pop_front();
-        potentialAddition->restoreEdge();
+       Task * treeTask = tree->getTask(potentialAddition->getId());
+       treeTask->restoreEdge();
         for (Task *child: *potentialAddition->getChildren()) {
-            child->breakEdge();
+            treeTask = tree->getTask(child->getId());
+            treeTask->breakEdge();
         }
         double potentialMakespan = root->getMakespanCost(true, true);
         cout<<potentialMakespan<< " "<< minMakespan<<endl;
@@ -2174,8 +2177,9 @@ void growSeqSetWhileImprovesMakespan(list<Task *> &seqSet, Tree *tree) {
                 frontier.push_back(child);
             }
         } else {
-            potentialAddition->breakEdge();
-            for (Task *child: *potentialAddition->getChildren()) {
+             treeTask = tree->getTask(potentialAddition->getId());
+             treeTask->breakEdge();
+            for (Task *child: *treeTask->getChildren()) {
                 child->restoreEdge();
             }
             // no adding children
@@ -2184,13 +2188,13 @@ void growSeqSetWhileImprovesMakespan(list<Task *> &seqSet, Tree *tree) {
     cout << "tried " << cntTries << " added to SS " << cntrAdditionToSS << endl;
 }
 
-void growSeqSet(Task *task, list<Task *> &seqSet, Task *treeRoot) {
+void growSeqSetWithUnfeasible(Task *task, list<Task *> &seqSet, Task *treeRoot) {
     if (task->getFeasibleProcessors().empty()) { // && (buildParallelRootsFromSequentialSet(treeRoot, seqSet)).size() <
         //Cluster::getFixedCluster()->getNumberProcessors() - 1) {
         seqSet.push_back(task);
     }
     for (Task *child: *task->getChildren()) {
-        growSeqSet(child, seqSet, treeRoot);
+        growSeqSetWithUnfeasible(child, seqSet, treeRoot);
     }
 }
 
@@ -2198,7 +2202,7 @@ void seqSetAndFeasSets(Tree *tree) {
     list<Task *> sequentialSet;
     sequentialSet.clear();
     //sequentialSet.emplace_front(tree->getRoot());
-    growSeqSet(tree->getRoot(), sequentialSet, tree->getRoot());
+    growSeqSetWithUnfeasible(tree->getRoot(), sequentialSet, tree->getRoot());
     auto parallelRoots = buildParallelRootsFromSequentialSet(tree->getRoot(), sequentialSet);
     breakPreparedEdges(tree->getRoot(), parallelRoots);
 

@@ -218,7 +218,6 @@ int main(int argc, char **argv) {
                     "Read empty tree with directory " + input->getWorkingDirectory() + " and file " + treename);
             continue;
         }
-        printer->quietPrint(treename);
         Tree *untouchedTree = read_tree((input->getWorkingDirectory() + "/" + treename).c_str());
         Tree::setOriginalTree(untouchedTree);
         numTrees++;

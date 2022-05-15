@@ -1428,7 +1428,7 @@ void Task::precomputeMinMems(Tree *tree) {
 
     for (Task *child: *this->getChildren()) {
         child->precomputeMinMems(tree);
-        if (child->getFeasibleProcessors().empty()) {
+        if (child->getFeasibleProcessors()->empty()) {
             //cout << "child has no feasible, no computing parent" << endl;
             unaccessible = true;
         }

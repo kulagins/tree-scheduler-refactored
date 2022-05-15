@@ -516,7 +516,7 @@ public :
     void precomputeMinMems(Tree *tree);
 
     void updateTMax(){
-        if(this->feasibleProcessors.size() == 0){
+        if(this->feasibleProcessors->size() == 0){
              cout<<"Task" << to_string(this->getId()) << " has 0 feasible processors during iterations. "<<Cluster::getFixedCluster()->getNumberFreeProcessors() <<" are still free.";
             throw "No Schedule Possible";
         }

@@ -1,4 +1,7 @@
 *.o
+aux/*:
+aux
+*.cache
 *.log
 *.a
 *.vscode
@@ -9,3 +12,5 @@ res
 lib/heuristics.a
 .idea
 main
+test/cluster_unittest
+test/distributeProcessors_unittest

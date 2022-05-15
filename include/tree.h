@@ -346,20 +346,28 @@ public :
         return MS_sequentialPart;
     }
 
-    double getMakespanSequentialUnits(double &MS_parallel) {
-        MS_sequentialPart = MS_weight;
+    double getMakespanSequentialWithSpeeds(bool updateEnforce, double &MS_parallel) {
+
+        double assignedProcSpeed = this->getAssignedProcessor()->getProcessorSpeed();
+        if ((makespan_computed == true) & (updateEnforce == false)) {
+            return MS_sequentialPart;
+        }
+
+        MS_sequentialPart = MS_weight / assignedProcSpeed;
         MS_parallelPart = 0;
         double temp;
         for (Task *child: *this->getChildren()) {
             if (child->isBroken()) {
                 //cout<<"edge "<<(*iter)->getId()<<" broken"<<endl;
-                temp = child->getMakespanCostUnits();
+                temp = child->getMakespanCostWithSpeeds(true, updateEnforce);
                 if (temp > MS_parallelPart) {
                     MS_parallelPart = temp;
                 }
             } else {
-                MS_sequentialPart += child->getMakespanSequentialUnits(MS_parallelPart);
-                child->updateMakespanCost();
+                MS_sequentialPart += child->getMakespanSequentialWithSpeeds(updateEnforce, MS_parallelPart);
+                if (updateEnforce == true) {
+                    child->updateMakespanCost();
+                }
             }
         }
 
@@ -368,18 +376,6 @@ public :
         }
 
         return MS_sequentialPart;
-    }
-
-    double getMakespanMinusComu() {
-        if (Cluster::getFixedCluster()->isHomogeneous()) {
-            return (makespan_nocommu - edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth());
-        } else throw "Cluster not homogeneous";
-    }
-
-    double getMakespanMinusW() {
-        if (Cluster::getFixedCluster()->isHomogeneous()) {
-            return (makespan_nocommu + edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth() - MS_weight);
-        } else throw "Cluster not homogeneous";
     }
 
     void setMakespanUncomputed() {
@@ -413,14 +409,28 @@ public :
         return makespan_nocommu;
     }
 
-    double getMakespanCostUnits() {
+    double getMakespanCostWithSpeeds(bool commulication = false, bool updateEnforce = false) {
         if (!(Cluster::getFixedCluster())->isBandwidthHomogeneous()) throw "Cluster not homogeneous";
+        // double assignedRootProcessorSpeed = this->getAssignedProcessorSpeed();
+
+        if ((makespan_computed == true) & (updateEnforce == false)) {
+            if (commulication == true) {
+                return makespan_nocommu + edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth();
+            } else {
+                return makespan_nocommu;
+            }
+        }
 
         MS_parallelPart = 0;
-        MS_sequentialPart = this->getMakespanSequentialUnits(MS_parallelPart);//MS_parallelPart will be update here.
+        MS_sequentialPart = this->getMakespanSequentialWithSpeeds(updateEnforce,
+                                                                  MS_parallelPart);//MS_parallelPart will be update here.
         makespan_nocommu = MS_sequentialPart + MS_parallelPart;
-        return makespan_nocommu + edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth();
 
+        makespan_computed = true;
+        if (commulication == true) {
+            return makespan_nocommu + edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth();
+        }
+        return makespan_nocommu;
     }
 
     void setOtherSideId(unsigned int qtreeID) {
@@ -612,13 +622,14 @@ public:
     }
 
     Task *getTask(unsigned int node_id) const {
-        Task *task = tasks->at(node_id - 1);
+        Task *task = tasks->at(node_id == 0 ? 0 : node_id - 1);
         if (task->getId() == node_id) {
             return task;
         } else {
             for (Task *taskSequential: *this->getTasks()) {
-                if (taskSequential->getId() == node_id) {}
-                return task;
+                if (taskSequential->getId() == node_id) {
+                    return taskSequential;
+                }
             }
             throw runtime_error("Task not found for id " + to_string(node_id));
         }

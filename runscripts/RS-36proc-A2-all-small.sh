@@ -3,11 +3,11 @@
 pwd
 echo "matrix"
 pwd
-./main ./data/trees/ treesListNoBiggest.txt ./clusters/clusterList_single_small.txt 0 0 0   
+./main ./data/trees/ treesListSmall.txt ./clusters/clusterList_single_small.txt 0 0 0   
 
 
 echo "normal random"
- ./main ./data/random_trees/random/ treesList.txt ./clusters/clusterList_single_small.txt 0 0 0   
+ ./main ./data/random_trees/random/ treesListSmall.txt ./clusters/clusterList_single_small.txt 0 0 0   
 
 pwd
 cd data/random_trees
@@ -20,8 +20,7 @@ pwd
         cd ../../..
         echo "!! $treeDir"
         echo "!! $cluster"
-        ./main $treeDir /treesList.txt ./clusters/clusterList_single_small.txt 0 0 0           
+        ./main $treeDir /treesListSmall.txt ./clusters/clusterList_single_small.txt 0 0 0           
         cd data/random_trees
  done
-
 

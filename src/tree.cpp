@@ -60,7 +60,7 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
     rootCopy->setMakespanWeight(root->getSequentialPart());
     rootCopy->setAssignedProcessor(root->getAssignedProcessor());
     rootCopy->setMinMemUnderlying(root->getMinMemUnderlying());
-    for (Processor *feasible: root->getFeasibleProcessors()) {
+    for (Processor *feasible: * root->getFeasibleProcessors()) {
         rootCopy->addFeasibleProcessor(feasible);
     }
 
@@ -73,7 +73,7 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
     int nodeIdCounter = 2;
     for (unsigned int i = 2; i <= this->getSize(); ++i) {
         currentNode = this->getTask(i);
-        if (currentNode->isBroken()) {
+        if (currentNode->isBroken() && !currentNode->isRoot()) {
             //   cout <<"cpy "<<currentNode->getId()<<" osideid "<<nodeIdCounter<<endl;
             copy = new Task(*currentNode, nodeIdCounter, nullptr);
             copy->setNodeWeight(currentNode->getSequentialPart());
@@ -84,7 +84,7 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
                 copy->setAssignedProcessor(currentNode->getAssignedProcessor());
             }
             copy->setMinMemUnderlying(currentNode->getMinMemUnderlying());
-            for (Processor *feasible: currentNode->getFeasibleProcessors()) {
+            for (Processor *feasible: * currentNode->getFeasibleProcessors()) {
                 copy->addFeasibleProcessor(feasible);
             }
             tasksInQtree->push_back(copy);
@@ -97,16 +97,13 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
     brokenTasksWithoutRoot.erase(brokenTasksWithoutRoot.begin());
 
     for (Task *brokenTask: brokenTasksWithoutRoot) {
-        //cout<<"broken task id " <<brokenTask->getId()<<endl;
         parent = brokenTask->getParent();
         while (parent != nullptr && !parent->isBroken()) {
             parent = parent->getParent();
         }
         if (parent != nullptr) {
-            // cout<<"prnt "<<parent->getOtherSideId()<<endl;
             for (Task *childTask: *tasksInQtree) {
                 if (childTask->getId() == nodeIdCounter) {
-                    //   cout<<"set it on task "<<childTask->getId()<<endl;
                     childTask->setParentId(parent->getOtherSideId());
                 }
             }
@@ -122,16 +119,13 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
         Qtreeobj->getTask(i)->breakEdge();
     }
 
-    unsigned long treeSize = Qtreeobj->getTasks()->size();
-    for (unsigned int i = 0; i < treeSize; i++) {
-        Task *task = Qtreeobj->getTaskByPos(i);
+    for (Task *task: *Qtreeobj->getTasks()) {
         if (!task->isRoot()) {
             parent = Qtreeobj->getTask(task->getParentId());
             task->setParent(parent);
             parent->addChild(task);
         }
     }
-
     return Qtreeobj;
 }
 
@@ -1443,7 +1437,7 @@ void Task::precomputeMinMems(Tree *tree) {
 
     if (!unaccessible) {
         double minMem = computeMinMemUnderlying(tree);
-        assignFeasibleProcessorsToSubtree(tree, minMem);
+        assignFeasibleProcessorsToSubtree( minMem);
         //else do nothing, if at least one child has no feasible processors, than the parent doesn't too
     }
 }
@@ -1452,15 +1446,15 @@ double Task::computeMinMemUnderlying(Tree *tree) {
     schedule_traversal *schedule_f = new schedule_traversal();
     Tree *subtree = BuildSubtree(tree, this);
     double minMem;
-    double maxoutd = MaxOutDegree(tree, true);
+    double maxoutd = MaxOutDegree(subtree, true);
     MinMem(subtree, maxoutd, minMem, *schedule_f, true);
     delete schedule_f;
+    delete subtree;
     setMinMemUnderlying(minMem);
     return minMem;
 }
 
-void Task::assignFeasibleProcessorsToSubtree(Tree *tree, double minMem) {
-
+void Task::assignFeasibleProcessorsToSubtree(double minMem) {
     //TODO improve by sorting procs and only taking biggest
     for (Processor *processor: Cluster::getFixedCluster()->getProcessors()) {
         if (!processor->isBusy && processor->getMemorySize() >= minMem) {

@@ -4,7 +4,7 @@
         {
             "number": 9,
             "memory": 3,
-            "speed": 1
+            "speed": 0.5
         },
         {
             "number": 9,
@@ -14,12 +14,12 @@
         {
             "number": 9,
             "memory": 1,
-            "speed": 1
+            "speed": 1.5
         },
         {
             "number": 9,
             "memory": 0.5,
-            "speed": 1
+            "speed": 3
         }
     ]
 }

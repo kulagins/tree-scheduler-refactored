@@ -30,5 +30,6 @@ void distributeProcessors(Tree * qTree);
 
 void seqSetAndFeasSets(Tree * tree);
 void assignToBestProcessors( Tree *tree);
+void removeProcessorFromAllFeasSets(Processor * processor, Tree * tree);
 
 #endif /* heuristics_h */

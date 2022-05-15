@@ -12,3 +12,5 @@ res
 lib/heuristics.a
 .idea
 main
+test/cluster_unittest
+test/distributeProcessors_unittest

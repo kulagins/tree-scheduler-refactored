@@ -42,13 +42,13 @@ double a2Steps(Tree *tree, OutputPrinter *printer) {
      */
     tree->getRoot()->precomputeMinMems(tree);
     number_subtrees = tree->HowmanySubtrees(true);
-    makespan = tree->getRoot()->getMakespanCost(true, true);
+    makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
     cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
 
     int numberUnfeasibleTasks = 0;
 
     for (Task *task: *tree->getTasks()) {
-        if (task->getFeasibleProcessors().empty()) {
+        if (task->getFeasibleProcessors()->empty()) {
             numberUnfeasibleTasks++;
         }
     }
@@ -61,14 +61,14 @@ double a2Steps(Tree *tree, OutputPrinter *printer) {
         seqSetAndFeasSets(tree);
 
         number_subtrees = tree->HowmanySubtrees(true);
-        makespan = tree->getRoot()->getMakespanCost(true, true);
+        makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
         cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
 
         cout<<"2 step: "<<clock()-time<<endl;
         time = clock();
         assignToBestProcessors(tree);
         number_subtrees = tree->HowmanySubtrees(true);
-        makespan = tree->getRoot()->getMakespanCost(true, true);
+        makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
         cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
         cout<<"3 step: "<<clock()-time<<endl;
         time = clock();

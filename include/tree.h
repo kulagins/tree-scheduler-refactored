@@ -75,7 +75,7 @@ protected:
     unsigned int Qtree_id;
     bool __root{};
     Processor *assignedProcessor;
-    vector<Processor *> feasibleProcessors;
+    vector<Processor *> *feasibleProcessors;
     double minMemUnderlying;
 
     double tMax;
@@ -95,7 +95,7 @@ public :
         children = new vector<Task *>();
         assignedProcessor = nullptr;
         Qtree_id = 0;
-        feasibleProcessors.resize(0);
+        feasibleProcessors = new vector<Processor *>();
         minMemUnderlying = 0;
         tMax = 0;
     }
@@ -119,7 +119,7 @@ public :
         } else {
             this->__root = false;
         }
-        feasibleProcessors.resize(0);
+        feasibleProcessors = new vector<Processor *>();
         minMemUnderlying = 0;
         tMax = 0;
     }
@@ -139,7 +139,7 @@ public :
         makespan_nocommu = mw;
         parent_id = pparent_id;
         Qtree_id = 0;
-        feasibleProcessors.resize(0);
+        feasibleProcessors = new vector<Processor *>();
         tMax = 0;
         minMemUnderlying = 0;
     }
@@ -167,7 +167,7 @@ public :
         children = new vector<Task *>();
         __root = false;
         assignedProcessor = nullptr;
-        feasibleProcessors.resize(0);
+        feasibleProcessors = new vector<Processor *>();
         minMemUnderlying = 0;
     }
 
@@ -226,7 +226,12 @@ public :
     }
 
     void setAssignedProcessor(Processor *assignedProcessor) {
-        Task::assignedProcessor = assignedProcessor;
+        this->assignedProcessor = assignedProcessor;
+    }
+
+    double getAssignedProcessorSpeed() {
+        if (this->assignedProcessor == NULL) return 1;
+        else return this->assignedProcessor->getProcessorSpeed();
     }
 
     void toggleRootStatus(bool newStatus) {
@@ -288,7 +293,7 @@ public :
         return id;
     }
 
-    vector<Processor *> getFeasibleProcessors() {
+    vector<Processor *> *getFeasibleProcessors() {
         return this->feasibleProcessors;
     }
     int getLabel() const {
@@ -301,7 +306,10 @@ public :
 */
     //Todo: sort?
     void addFeasibleProcessor(Processor *proc) {
-        this->feasibleProcessors.push_back(proc);
+        auto position_it = find(feasibleProcessors->begin(), feasibleProcessors->end(), proc);
+        if (position_it == feasibleProcessors->end()) {
+            this->feasibleProcessors->push_back(proc);
+        }
     }
 
     void setMinMemUnderlying(double minMem) {
@@ -378,20 +386,28 @@ public :
         return MS_sequentialPart;
     }
 
-    double getMakespanSequentialUnits(double &MS_parallel) {
-        MS_sequentialPart = MS_weight;
+    double getMakespanSequentialWithSpeeds(bool updateEnforce, double &MS_parallel) {
+
+        double assignedProcSpeed = this->getAssignedProcessorSpeed();
+        if ((makespan_computed == true) & (updateEnforce == false)) {
+            return MS_sequentialPart;
+        }
+
+        MS_sequentialPart = MS_weight / assignedProcSpeed;
         MS_parallelPart = 0;
         double temp;
         for (Task *child: *this->getChildren()) {
             if (child->isBroken()) {
                 //cout<<"edge "<<(*iter)->getId()<<" broken"<<endl;
-                temp = child->getMakespanCostUnits();
+                temp = child->getMakespanCostWithSpeeds(true, updateEnforce);
                 if (temp > MS_parallelPart) {
                     MS_parallelPart = temp;
                 }
             } else {
-                MS_sequentialPart += child->getMakespanSequentialUnits(MS_parallelPart);
-                child->updateMakespanCost();
+                MS_sequentialPart += child->getMakespanSequentialWithSpeeds(updateEnforce, MS_parallelPart);
+                if (updateEnforce == true) {
+                    child->updateMakespanCost();
+                }
             }
         }
 
@@ -400,18 +416,6 @@ public :
         }
 
         return MS_sequentialPart;
-    }
-
-    double getMakespanMinusComu() {
-        if (Cluster::getFixedCluster()->isHomogeneous()) {
-            return (makespan_nocommu - edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth());
-        } else throw "Cluster not homogeneous";
-    }
-
-    double getMakespanMinusW() {
-        if (Cluster::getFixedCluster()->isHomogeneous()) {
-            return (makespan_nocommu + edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth() - MS_weight);
-        } else throw "Cluster not homogeneous";
     }
 
     void setMakespanUncomputed() {
@@ -445,14 +449,28 @@ public :
         return makespan_nocommu;
     }
 
-    double getMakespanCostUnits() {
+    double getMakespanCostWithSpeeds(bool commulication = false, bool updateEnforce = false) {
         if (!(Cluster::getFixedCluster())->isBandwidthHomogeneous()) throw "Cluster not homogeneous";
+        // double assignedRootProcessorSpeed = this->getAssignedProcessorSpeed();
+
+        if ((makespan_computed == true) & (updateEnforce == false)) {
+            if (commulication == true) {
+                return makespan_nocommu + edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth();
+            } else {
+                return makespan_nocommu;
+            }
+        }
 
         MS_parallelPart = 0;
-        MS_sequentialPart = this->getMakespanSequentialUnits(MS_parallelPart);//MS_parallelPart will be update here.
+        MS_sequentialPart = this->getMakespanSequentialWithSpeeds(updateEnforce,
+                                                                  MS_parallelPart);//MS_parallelPart will be update here.
         makespan_nocommu = MS_sequentialPart + MS_parallelPart;
-        return makespan_nocommu + edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth();
 
+        makespan_computed = true;
+        if (commulication == true) {
+            return makespan_nocommu + edge_weight / Cluster::getFixedCluster()->getHomogeneousBandwidth();
+        }
+        return makespan_nocommu;
     }
 
     void setOtherSideId(unsigned int qtreeID) {
@@ -502,11 +520,11 @@ public :
              cout<<"Task" << to_string(this->getId()) << " has 0 feasible processors during iterations. "<<Cluster::getFixedCluster()->getNumberFreeProcessors() <<" are still free.";
             throw "No Schedule Possible";
         }
-        if(this->feasibleProcessors.size() == 1) this->tMax = DBL_MAX;
+        if (this->feasibleProcessors->size() == 1) this->tMax = DBL_MAX;
         else {
             double s_max = this->getFastestFeasibleProcessor()->getProcessorSpeed();
             double beta = Cluster::getFixedCluster()->getHomogeneousBandwidth();
-            this->tMax = this->edge_weight/beta + this->MS_weight/s_max;
+            this->tMax = this->edge_weight / beta + this->MS_weight / s_max;
         }
     }
 
@@ -516,22 +534,45 @@ public :
 
 
     // Asserts that feasibleProcessors is ordered!
-    Processor * getFastestFeasibleProcessor(){
-        return feasibleProcessors.front();
+    Processor *getFastestFeasibleProcessor() {
+        return feasibleProcessors->front();
     }
 
-    void deleteFeasible(Processor* proc){
-        auto position_it = find(feasibleProcessors.begin(),feasibleProcessors.end(), proc);
-        if (position_it != feasibleProcessors.end()){
-            feasibleProcessors.erase(position_it);
+    void deleteFeasible(Processor *proc) {
+        auto position_it = find(feasibleProcessors->begin(), feasibleProcessors->end(), proc);
+        if (position_it != feasibleProcessors->end()) {
+            feasibleProcessors->erase(position_it);
         }
     }
 
-    void assignFeasibleProcessorsToSubtree(Tree *tree, double minMem);
+    void assignFeasibleProcessorsToSubtree(double minMem);
 
     double computeMinMemUnderlying(Tree *tree);
-};
 
+    vector<Task *> *tasksInSubtreeRootedHere() {
+        vector<Task *> *result = new vector<Task *>();
+        result->push_back(this);
+        vector<Task *> candidates;
+        for (Task *child: *this->getChildren()) {
+            if (!child->isBroken())
+                candidates.push_back(child);
+        }
+
+        while (!candidates.empty()) {
+            Task *candidate = candidates.back();
+            candidates.pop_back();
+
+            result->push_back(candidate);
+            for (Task *child: *candidate->getChildren()) {
+                if (!child->isBroken())
+                    candidates.push_back(child);
+            }
+
+        }
+        return result;
+
+    }
+};
 
 
 class Tree {
@@ -691,13 +732,14 @@ public:
     }
 
     Task *getTask(unsigned int node_id) const {
-        Task *task = tasks->at(node_id - 1);
+        Task *task = tasks->at(node_id == 0 ? 0 : node_id - 1);
         if (task->getId() == node_id) {
             return task;
         } else {
             for (Task *taskSequential: *this->getTasks()) {
-                if (taskSequential->getId() == node_id) {}
-                return task;
+                if (taskSequential->getId() == node_id) {
+                    return taskSequential;
+                }
             }
             throw runtime_error("Task not found for id " + to_string(node_id));
         }
@@ -774,9 +816,9 @@ public:
 
     }
 
-    Tree * BuildQtree();
+    Tree *BuildQtree();
 
-    Tree * BuildQtreeOld();
+    Tree *BuildQtreeOld();
 
     unsigned int HowmanySubtrees(bool quiet);
 

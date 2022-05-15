@@ -30,7 +30,7 @@ namespace {
 
 }
 
-
+/*
 TEST_F(ClusterTest, buildStatic2LevelClusterIsHeterogeneous){
     Cluster::buildStatic2LevelCluster(100,10);
     Cluster *cluster = Cluster::getFixedCluster();
@@ -94,6 +94,7 @@ TEST_F(ClusterTest, buildStatic3LevelClusterIs3Level){
         EXPECT_TRUE(double_equal(mem,mem1)||double_equal(mem,mem2)||double_equal(mem,mem3));
     }
 }
+*/
 
 TEST_F(ClusterTest, testBuildNLevelMemorySizescorrectSize){
     Cluster * cluster = Cluster::getFixedCluster();

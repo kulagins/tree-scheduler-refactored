@@ -2,8 +2,10 @@
 #include "../googletest-main/googletest/include/gtest/gtest.h"
 #include "../include/cluster.h"
 #include "../include/tree.h"
+#include "../include/heuristics.h"
 #include <stdio.h>
 #include <math.h>
+#include <iostream>
 bool double_ge(double v1, double v2){
     return v1-v2 > -1e-10;
 
@@ -13,9 +15,9 @@ namespace {
         protected:
 
         DistributeTest() {
-            vector <unsigned int> processorCounts = {2,2,1};
-            vector <double> mems = {10,7,5};
-            vector <double> speeds = {5,8,10};
+            vector <unsigned int> processorCounts = {1,1,1, 1};
+            vector <double> mems = {100, 50, 10,15};
+            vector <double> speeds = {1,2,3, 4};
 
             Cluster *cluster = new Cluster(&processorCounts,&mems,&speeds);
             Cluster::setFixedCluster(cluster);
@@ -56,13 +58,13 @@ namespace {
             t5->setParent(t6);
             t6->addChild(t5);
 
-            for (auto task: *tree->getTasks()){
+            /*for (auto task: *tree->getTasks()){
                 for(auto proc:cluster->getProcessors() ){
                     if(double_ge(proc->getMemorySize(),task->getNodeWeight())){
                         task->addFeasibleProcessor(proc);
                     }
                 }
-            }
+            } */
 
         }
 
@@ -73,8 +75,40 @@ namespace {
 
     };
 }
+TEST_F(DistributeTest, testFirst){
+    for(Task *task: * tree->getTasks()){
+        Task * treeTask = tree->getTask(task->getId());
+        EXPECT_EQ(treeTask->getId(), task->getId());
+    }
+}
 
-//TEST_F(DistributeTest, )
+TEST_F(DistributeTest, testPrecompute){
+    Cluster * cluster = Cluster::getFixedCluster();
+    EXPECT_EQ(5, cluster->getNumberProcessors());
+    //for(Task *task: * tree->getTasks()){
+    //std::cout<<task->getId()<<" "<<task->getMinMemUnderlying()<<" "<<task->getFeasibleProcessors().size()<<std::endl;
+    //}
+   tree->getRoot()->precomputeMinMems(tree);
+   double makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+    double makespan1 = tree->getRoot()->getMakespanCost(true, true);
+   ///for(Task *task: * tree->getTasks()){
+    //   std::cout<<task->getId()<<" "<<task->getMinMemUnderlying()<<" "<<task->getFeasibleProcessors().size()<<std::endl;
+   //}
+
+    seqSetAndFeasSets(tree);
+
+   /* for(Task *task: * tree->getTasks()){
+        std::cout<<task->getId()<<" "<<(task->isBroken()?"yes":"no")<<" "<<task->getMinMemUnderlying()<<" "<<task->getFeasibleProcessors()->size()<<std::endl;
+    }
+*/
+    assignToBestProcessors(tree);
+   /* for(Task *task: * tree->getTasks()){
+        std::cout<<task->getId()<<" "<<task->getMinMemUnderlying()<<" "<<task->getAssignedProcessorSpeed()<<std::endl;//<<" "<<task->getAssignedProcessor()->getMemorySize()<<std::endl;
+    }*/
+    EXPECT_EQ(5, makespan);
+    EXPECT_EQ(5, makespan1);
+
+}
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);

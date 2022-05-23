@@ -220,6 +220,7 @@ int main(int argc, char **argv) {
         }
         Tree *untouchedTree = read_tree((input->getWorkingDirectory() + "/" + treename).c_str());
         Tree::setOriginalTree(untouchedTree);
+        tree->getRoot()->breakEdge();
         numTrees++;
         //  const vector<double> fanouts = maxAndAvgFanout(tree);
         //   cout << treename << " Fanout: Max: " << fanouts[0] << ",  Avg: " << fanouts[1] <<

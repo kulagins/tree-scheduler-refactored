@@ -1,0 +1,580 @@
+
+matrix
+	
+Makespan 614547 
+tried 35 added to SS 14 max # children 6
+Makespan 113004 #trees: 22
+2 step: 76003
+Makespan 226001 #trees: 22
+3 step: 47991
+Broken Edges { 1 6 19 161 303 445 591 1632 2951 4270 5589 6908 8227 8240 8254 8268 8282 8296 8310 8324 8338 8352 }
+dump.1.3.amd.QY.case39-2136.tree.nf	226000.813333	
+Makespan 598205 #trees: 0
+#unfeasible tasks: 0
+1 step: 5332705
+tried 37 added to SS 16 max # children 6
+Makespan 110372 #trees: 22
+2 step: 244011
+Makespan 220736 #trees: 22
+3 step: 159968
+Broken Edges { 1 8 37 324 611 898 1189 3283 5902 8521 11140 13759 16378 16406 16434 16462 16490 16518 16546 16574 16602 16630 }
+dump.1.2.amd.QY.case39-2136.tree.nf	220736.130667	
+Makespan 178239 #trees: 0
+#unfeasible tasks: 0
+1 step: 157901588
+tried 1 added to SS 0 max # children 1
+Makespan 178239 #trees: 1
+2 step: 516007
+Makespan 356479 #trees: 1
+3 step: 56001
+Broken Edges { 1 }
+dump.0.1.metis.Goodwin.rim-447.tree.nf	356478.544000	
+Makespan 11024.3 #trees: 0
+#unfeasible tasks: 0
+1 step: 14172065
+tried 10 added to SS 4 max # children 3
+Makespan 2774.42 #trees: 7
+2 step: 207994
+Makespan 5536.1 #trees: 7
+3 step: 152004
+Broken Edges { 1 2 6279 12570 15667 18848 21812 }
+dump.1.1.metis.CPM.cz40948-2567.tree.nf	5536.101333	
+Makespan 589638 #trees: 0
+#unfeasible tasks: 0
+1 step: 9152117
+tried 41 added to SS 20 max # children 6
+Makespan 108956 #trees: 22
+2 step: 360009
+Makespan 217905 #trees: 22
+3 step: 160004
+Broken Edges { 1 12 58 511 964 1417 1874 5204 9423 13642 17861 22080 26299 26344 26388 26432 26476 26520 26564 26608 26652 26696 }
+dump.1.1.amd.QY.case39-2136.tree.nf	217905.497333	
+Makespan 2.47285e+06 #trees: 0
+#unfeasible tasks: 0
+1 step: 1268298193
+tried 1 added to SS 0 max # children 1
+Makespan 2.47285e+06 #trees: 1
+2 step: 1159947
+Makespan 4.94571e+06 #trees: 1
+3 step: 63990
+Broken Edges { 1 }
+dump.0.1.metis.Wang.wang4-833.tree.nf	4945707.333333	
+Makespan 197814 #trees: 0
+#unfeasible tasks: 0
+1 step: 249574967
+tried 1 added to SS 0 max # children 1
+Makespan 197814 #trees: 1
+2 step: 423986
+Makespan 395627 #trees: 1
+3 step: 80000
+Broken Edges { 1 }
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	395627.046667	
+Makespan 433141 #trees: 0
+#unfeasible tasks: 0
+1 step: 846751382
+tried 774 added to SS 1 max # children 773
+No solution
+no solution
+Broken Edges { 1 2 36992 36993 36994 36995 36996 36997 36998 36999 37000 37001 37002 37003 37004 37005 37006 37007 37008 37009 37010 37011 37012 37013 37014 37015 37016 37017 37018 37019 37020 37021 37022 37023 37024 37025 37026 37027 37028 37029 37030 37031 37032 37033 37034 37035 37036 37037 37038 37039 37040 37041 37042 37043 37044 37045 37046 37047 37048 37049 37050 37051 37052 37053 37054 37055 37056 37057 37058 37059 37060 37061 37062 37063 37064 37065 37066 37067 37068 37069 37070 37071 37072 37073 37074 37075 37076 37077 37078 37079 37080 37081 37082 37083 37084 37085 37086 37087 37088 37089 37090 37091 37092 37093 37094 37095 37096 37097 37098 37099 37100 37101 37102 37103 37104 37105 37106 37107 37108 37109 37110 37111 37112 37113 37114 37115 37116 37117 37118 37119 37120 37121 37122 37123 37124 37125 37126 37127 37128 37129 37130 37131 37132 37133 37134 37135 37136 37137 37138 37139 37140 37141 37142 37143 37144 37145 37146 37147 37148 37149 37150 37151 37152 37153 37154 37155 37156 37157 37158 37159 37160 37161 37162 37163 37164 37165 37166 37167 37168 37169 37170 37171 37172 37173 37174 37175 37176 37177 37178 37179 37180 37181 37182 37183 37184 37185 37186 37187 37188 37189 37190 37191 37192 37193 37194 37195 37196 37197 37198 37199 37200 37201 37202 37203 37204 37205 37206 37207 37208 37209 37210 37211 37212 37213 37214 37215 37216 37217 37218 37219 37220 37221 37222 37223 37224 37225 37226 37227 37228 37229 37230 37231 37232 37233 37234 37235 37236 37237 37238 37239 37240 37241 37242 37243 37244 37245 37246 37247 37248 37249 37250 37251 37252 37253 37254 37255 37256 37257 37258 37259 37260 37261 37262 37263 37264 37265 37266 37267 37268 37269 37270 37271 37272 37273 37274 37275 37276 37277 37278 37279 37280 37281 37282 37283 37284 37285 37286 37287 37288 37289 37290 37291 37292 37293 37294 37295 37296 37297 37298 37299 37300 37301 37302 37303 37304 37305 37306 37307 37308 37309 37310 37311 37312 37313 37314 37315 37316 37317 37318 37319 37320 37321 37322 37323 37324 37325 37326 37327 37328 37329 37330 37331 37332 37333 37334 37335 37336 37337 37338 37339 37340 37341 37342 37343 37344 37345 37346 37347 37348 37349 37350 37351 37352 37353 37354 37355 37356 37357 37358 37359 37360 37361 37362 37363 37364 37365 37366 37367 37368 37369 37370 37371 37372 37373 37374 37375 37376 37377 37378 37379 37380 37381 37382 37383 37384 37385 37386 37387 37388 37389 37390 37391 37392 37393 37394 37395 37396 37397 37398 37399 37400 37401 37402 37403 37404 37405 37406 37407 37408 37409 37410 37411 37412 37413 37414 37415 37416 37417 37418 37419 37420 37421 37422 37423 37424 37425 37426 37427 37428 37429 37430 37431 37432 37433 37434 37435 37436 37437 37438 37439 37440 37441 37442 37443 37444 37445 37446 37447 37448 37449 37450 37451 37452 37453 37454 37455 37456 37457 37458 37459 37460 37461 37462 37463 37464 37465 37466 37467 37468 37469 37470 37471 37472 37473 37474 37475 37476 37477 37478 37479 37480 37481 37482 37483 37484 37485 37486 37487 37488 37489 37490 37491 37492 37493 37494 37495 37496 37497 37498 37499 37500 37501 37502 37503 37504 37505 37506 37507 37508 37509 37510 37511 37512 37513 37514 37515 37516 37517 37518 37519 37520 37521 37522 37523 37524 37525 37526 37527 37528 37529 37530 37531 37532 37533 37534 37535 37536 37537 37538 37539 37540 37541 37542 37543 37544 37545 37546 37547 37548 37549 37550 37551 37552 37553 37554 37555 37556 37557 37558 37559 37560 37561 37562 37563 37564 37565 37566 37567 37568 37569 37570 37571 37572 37573 37574 37575 37576 37577 37578 37579 37580 37581 37582 37583 37584 37585 37586 37587 37588 37589 37590 37591 37592 37593 37594 37595 37596 37597 37598 37599 37600 37601 37602 37603 37604 37605 37606 37607 37608 37609 37610 37611 37612 37613 37614 37615 37616 37617 37618 37619 37620 37621 37622 37623 37624 37625 37626 37627 37628 37629 37630 37631 37632 37633 37634 37635 37636 37637 37638 37639 37640 37641 37642 37643 37644 37645 37646 37647 37648 37649 37650 37651 37652 37653 37654 37655 37656 37657 37658 37659 37660 37661 37662 37663 37664 37665 37666 37667 37668 37669 37670 37671 37672 37673 37674 37675 37676 37677 37678 37679 37680 37681 37682 37683 37684 37685 37686 37687 37688 37689 37690 37691 37692 37693 37694 37695 37696 37697 37698 37699 37700 37701 37702 37703 37704 37705 37706 37707 37708 37709 37710 37711 37712 37713 37714 37715 37716 37717 37718 37719 37720 37721 37722 37723 37724 37725 37726 37727 37728 37729 37730 37731 37732 37733 37734 37735 37736 37737 37738 37739 37740 37741 37742 37743 37744 37745 37746 37747 37748 37749 37750 37751 37752 37753 37754 37755 37756 37757 37758 37759 37760 37761 37762 37763 }
+dump.0.1.metis.Mancktelow.viscorocks-1879.tree.nf	-1.000000	
+
+normal random
+./data/random_trees/random/
+treename	./clusters/36-proc/36proc_0,5-1-1,5-3.json	
+Makespan 911.732 #trees: 0
+#unfeasible tasks: 0
+1 step: 2100015
+tried 1 added to SS 0 max # children 1
+Makespan 912.252 #trees: 1
+2 step: 292001
+Makespan 1815.13 #trees: 1
+3 step: 4000
+Broken Edges { 1 }
+size_2000/random_tree_1	1815.133824	
+Makespan 926.719 #trees: 0
+#unfeasible tasks: 0
+1 step: 1763934
+tried 1 added to SS 0 max # children 2
+Makespan 926.852 #trees: 1
+2 step: 68001
+Makespan 1851.85 #trees: 1
+3 step: 4000
+Broken Edges { 1 }
+size_2000/random_tree_2	1851.851022	
+Makespan 933.549 #trees: 0
+#unfeasible tasks: 0
+1 step: 3927832
+tried 1 added to SS 0 max # children 2
+Makespan 933.754 #trees: 1
+2 step: 267958
+Makespan 1858.3 #trees: 1
+3 step: 8000
+Broken Edges { 1 }
+size_2000/random_tree_3	1858.299209	
+Makespan 921.584 #trees: 0
+#unfeasible tasks: 0
+1 step: 5835521
+tried 1 added to SS 0 max # children 2
+Makespan 922.476 #trees: 1
+2 step: 175973
+Makespan 1838.57 #trees: 1
+3 step: 4000
+Broken Edges { 1 }
+size_2000/random_tree_4	1838.565607	
+Makespan 915.014 #trees: 0
+#unfeasible tasks: 0
+1 step: 10279724
+tried 1 added to SS 0 max # children 2
+Makespan 915.033 #trees: 1
+2 step: 372002
+Makespan 1827.15 #trees: 1
+3 step: 3999
+Broken Edges { 1 }
+size_2000/random_tree_5	1827.153084	
+Makespan 915.014 #trees: 0
+#unfeasible tasks: 0
+1 step: 11987550
+tried 1 added to SS 0 max # children 2
+Makespan 915.033 #trees: 1
+2 step: 267949
+Makespan 1827.15 #trees: 1
+3 step: 4000
+Broken Edges { 1 }
+size_2000/random_tree_5	1827.153084	
+
+
+/home/kulagins/workspace/tree-scheduler-refactored/data/random_trees/all_large	
+Makespan 92574.7 #trees: 0
+#unfeasible tasks: 0
+1 step: 2947904
+tried 3 added to SS 1 max # children 3
+Makespan 82067.2 #trees: 3
+2 step: 4000
+Makespan 163020 #trees: 3
+3 step: 8001
+Broken Edges { 1 2 3 }
+size_2000/random_tree_1	163019.760518	
+Makespan 93686.8 #trees: 0
+#unfeasible tasks: 0
+1 step: 4299534
+tried 1 added to SS 0 max # children 1
+Makespan 93691.4 #trees: 1
+2 step: 135999
+Makespan 186546 #trees: 1
+3 step: 4001
+Broken Edges { 1 }
+size_2000/random_tree_2	186545.763090	
+Makespan 92102.3 #trees: 0
+#unfeasible tasks: 0
+1 step: 2535976
+tried 1 added to SS 0 max # children 1
+Makespan 92138 #trees: 1
+2 step: 127996
+Makespan 183914 #trees: 1
+3 step: 3997
+Broken Edges { 1 }
+size_2000/random_tree_3	183913.515436	
+Makespan 93197.5 #trees: 0
+#unfeasible tasks: 0
+1 step: 6063650
+tried 1 added to SS 0 max # children 3
+Makespan 93220 #trees: 1
+2 step: 91998
+Makespan 185457 #trees: 1
+3 step: 0
+Broken Edges { 1 }
+size_2000/random_tree_4	185457.156608	
+Makespan 93130.6 #trees: 0
+#unfeasible tasks: 0
+1 step: 9960809
+tried 1 added to SS 0 max # children 1
+Makespan 93195.3 #trees: 1
+2 step: 302587
+Makespan 185472 #trees: 1
+3 step: 7994
+Broken Edges { 1 }
+size_2000/random_tree_5	185471.803155	
+Makespan 93130.6 #trees: 0
+#unfeasible tasks: 0
+1 step: 11495260
+tried 1 added to SS 0 max # children 1
+Makespan 93195.3 #trees: 1
+2 step: 144003
+Makespan 185472 #trees: 1
+3 step: 4000
+Broken Edges { 1 }
+size_2000/random_tree_5	185471.803155	
+
+large_makespan_weights
+#unfeasible tasks: 0
+1 step: 1675878
+tried 1 added to SS 0 max # children 1
+Makespan 1495.93 #trees: 1
+2 step: 56001
+Makespan 2405.89 #trees: 1
+3 step: 4000
+Broken Edges { 1 }
+size_2000/random_tree_1	2405.888185	
+Makespan 1909.66 #trees: 0
+#unfeasible tasks: 0
+1 step: 3763871
+tried 1 added to SS 0 max # children 1
+Makespan 1910.29 #trees: 1
+2 step: 108002
+Makespan 2816.98 #trees: 1
+3 step: 8000
+Broken Edges { 1 }
+size_2000/random_tree_2	2816.981103	
+Makespan 1449.29 #trees: 0
+#unfeasible tasks: 0
+1 step: 9759279
+tried 1 added to SS 0 max # children 2
+Makespan 1449.57 #trees: 1
+2 step: 172004
+Makespan 2373.95 #trees: 1
+3 step: 4001
+Broken Edges { 1 }
+size_2000/random_tree_3	2373.948403	
+Makespan 1574.83 #trees: 0
+#unfeasible tasks: 0
+1 step: 1827965
+tried 1 added to SS 0 max # children 2
+Makespan 1575.25 #trees: 1
+2 step: 135996
+Makespan 2477.83 #trees: 1
+3 step: 4002
+Broken Edges { 1 }
+size_2000/random_tree_4	2477.825916	
+Makespan 1774.58 #trees: 0
+#unfeasible tasks: 0
+1 step: 8619577
+tried 1 added to SS 0 max # children 1
+Makespan 1775.02 #trees: 1
+2 step: 100002
+Makespan 2678.56 #trees: 1
+3 step: 4001
+Broken Edges { 1 }
+size_2000/random_tree_5	2678.556684	
+Makespan 1774.58 #trees: 0
+#unfeasible tasks: 0
+1 step: 7895672
+tried 1 added to SS 0 max # children 1
+Makespan 1775.02 #trees: 1
+2 step: 103970
+Makespan 2678.56 #trees: 1
+3 step: 0
+Broken Edges { 1 }
+size_2000/random_tree_5	2678.556684	
+
+20_children
+Makespan 911.73 #trees: 0
+#unfeasible tasks: 0
+1 step: 408002
+tried 1 added to SS 0 max # children 1
+Makespan 911.92 #trees: 1
+2 step: 59994
+Makespan 1822.02 #trees: 1
+3 step: 4001
+Broken Edges { 1 }
+size_2000/random_tree_1	1822.020379	
+Makespan 897.62 #trees: 0
+#unfeasible tasks: 0
+1 step: 939991
+tried 1 added to SS 0 max # children 1
+Makespan 898.037 #trees: 1
+2 step: 180005
+Makespan 1785.56 #trees: 1
+3 step: 4000
+Broken Edges { 1 }
+size_2000/random_tree_2	1785.564312	
+Makespan 939.279 #trees: 0
+#unfeasible tasks: 0
+1 step: 1231929
+tried 1 added to SS 0 max # children 1
+Makespan 939.615 #trees: 1
+2 step: 163946
+Makespan 1870.33 #trees: 1
+3 step: 8000
+Broken Edges { 1 }
+size_2000/random_tree_3	1870.334424	
+Makespan 903.681 #trees: 0
+#unfeasible tasks: 0
+1 step: 1287943
+tried 1 added to SS 0 max # children 1
+Makespan 904.15 #trees: 1
+2 step: 140004
+Makespan 1801.99 #trees: 1
+3 step: 0
+Broken Edges { 1 }
+size_2000/random_tree_4	1801.986091	
+Makespan 909.212 #trees: 0
+#unfeasible tasks: 0
+1 step: 611953
+tried 1 added to SS 0 max # children 1
+Makespan 910.017 #trees: 1
+2 step: 132004
+Makespan 1808.37 #trees: 1
+3 step: 4000
+Broken Edges { 1 }
+size_2000/random_tree_5	1808.368807	
+Makespan 909.212 #trees: 0
+#unfeasible tasks: 0
+1 step: 739952
+tried 1 added to SS 0 max # children 1
+Makespan 910.017 #trees: 1
+2 step: 139987
+Makespan 1808.37 #trees: 1
+3 step: 4001
+Broken Edges { 1 }
+size_2000/random_tree_5	1808.368807	
+
+all_small
+Makespan 92.3712 #trees: 0
+#unfeasible tasks: 0
+1 step: 5555792
+tried 1 added to SS 0 max # children 3
+Makespan 92.3724 #trees: 1
+2 step: 115995
+Makespan 183.982 #trees: 1
+3 step: 0
+Broken Edges { 1 }
+size_2000/random_tree_1	183.982328	
+Makespan 92.4172 #trees: 0
+#unfeasible tasks: 0
+1 step: 1799904
+tried 1 added to SS 0 max # children 2
+Makespan 92.4282 #trees: 1
+2 step: 28001
+Makespan 183.96 #trees: 1
+3 step: 4000
+Broken Edges { 1 }
+size_2000/random_tree_2	183.960499	
+Makespan 89.5888 #trees: 0
+#unfeasible tasks: 0
+1 step: 5863698
+tried 25 added to SS 10 max # children 4
+Makespan 77.9857 #trees: 16
+2 step: 12000
+Makespan 154.763 #trees: 16
+3 step: 8001
+Broken Edges { 1 2 7 8 9 18 24 33 34 35 47 66 67 85 86 107 }
+size_2000/random_tree_3	154.763369	
+Makespan 92.4175 #trees: 0
+#unfeasible tasks: 0
+1 step: 2655962
+tried 1 added to SS 0 max # children 3
+Makespan 92.4814 #trees: 1
+2 step: 108003
+Makespan 184.013 #trees: 1
+3 step: 4000
+Broken Edges { 1 }
+size_2000/random_tree_4	184.013013	
+Makespan 93.206 #trees: 0
+#unfeasible tasks: 0
+1 step: 5507825
+tried 1 added to SS 0 max # children 1
+Makespan 93.2122 #trees: 1
+2 step: 155993
+Makespan 186.078 #trees: 1
+3 step: 3999
+Broken Edges { 1 }
+size_2000/random_tree_5	186.077907	
+Makespan 93.206 #trees: 0
+#unfeasible tasks: 0
+1 step: 2791844
+tried 1 added to SS 0 max # children 1
+Makespan 93.2122 #trees: 1
+2 step: 64002
+Makespan 186.078 #trees: 1
+3 step: 4001
+Broken Edges { 1 }
+size_2000/random_tree_5	186.077907	
+
+large_node_weights	
+Makespan 894.832 #trees: 0
+#unfeasible tasks: 0
+1 step: 8487646
+tried 1 added to SS 0 max # children 1
+Makespan 895.728 #trees: 1
+2 step: 147996
+Makespan 1782.08 #trees: 1
+3 step: 3999
+Broken Edges { 1 }
+size_2000/random_tree_1	1782.080900	
+Makespan 933.843 #trees: 0
+#unfeasible tasks: 0
+1 step: 5815605
+tried 1 added to SS 0 max # children 1
+Makespan 934.202 #trees: 1
+2 step: 120004
+Makespan 1861.07 #trees: 1
+3 step: 3999
+Broken Edges { 1 }
+size_2000/random_tree_2	1861.069411	
+Makespan 907.602 #trees: 0
+#unfeasible tasks: 0
+1 step: 5523423
+tried 18 added to SS 7 max # children 4
+Makespan 463.097 #trees: 12
+2 step: 12001
+Makespan 918.829 #trees: 12
+3 step: 11999
+Broken Edges { 1 2 7 8 13 23 24 25 33 42 43 44 }
+size_2000/random_tree_3	918.829440	
+Makespan 899.369 #trees: 0
+#unfeasible tasks: 0
+1 step: 8719752
+tried 1 added to SS 0 max # children 1
+Makespan 899.991 #trees: 1
+2 step: 112002
+Makespan 1796.12 #trees: 1
+3 step: 4001
+Broken Edges { 1 }
+size_2000/random_tree_4	1796.115284	
+Makespan 905.155 #trees: 0
+#unfeasible tasks: 0
+1 step: 3231979
+tried 1 added to SS 0 max # children 2
+Makespan 905.919 #trees: 1
+2 step: 252139
+Makespan 1804.45 #trees: 1
+3 step: 3791
+Broken Edges { 1 }
+size_2000/random_tree_5	1804.453675	
+Makespan 905.155 #trees: 0
+#unfeasible tasks: 0
+1 step: 5855778
+tried 1 added to SS 0 max # children 2
+Makespan 905.919 #trees: 1
+2 step: 156004
+Makespan 1804.45 #trees: 1
+3 step: 4000
+Broken Edges { 1 }
+size_2000/random_tree_5	1804.453675	
+
+3_children
+
+Makespan 918.689 #trees: 0
+#unfeasible tasks: 0
+1 step: 5359553
+tried 1 added to SS 0 max # children 1
+Makespan 919.445 #trees: 1
+2 step: 123991
+Makespan 1833.09 #trees: 1
+3 step: 4001
+Broken Edges { 1 }
+size_2000/random_tree_1	1833.091502	
+Makespan 903.675 #trees: 0
+#unfeasible tasks: 0
+1 step: 2299934
+tried 1 added to SS 0 max # children 4
+Makespan 904.203 #trees: 1
+2 step: 52002
+Makespan 1803.4 #trees: 1
+3 step: 3999
+Broken Edges { 1 }
+size_2000/random_tree_2	1803.400051	
+Makespan 924.151 #trees: 0
+#unfeasible tasks: 0
+1 step: 14171581
+tried 1 added to SS 0 max # children 1
+Makespan 924.336 #trees: 1
+2 step: 299961
+Makespan 1843.45 #trees: 1
+3 step: 0
+Broken Edges { 1 }
+size_2000/random_tree_3	1843.447417	
+Makespan 898.792 #trees: 0
+#unfeasible tasks: 0
+1 step: 4931697
+tried 1 added to SS 0 max # children 1
+Makespan 899.05 #trees: 1
+2 step: 128004
+Makespan 1792.44 #trees: 1
+3 step: 8001
+Broken Edges { 1 }
+size_2000/random_tree_4	1792.440147	
+Makespan 928.777 #trees: 0
+#unfeasible tasks: 0
+1 step: 1960013
+tried 1 added to SS 0 max # children 1
+Makespan 929.325 #trees: 1
+2 step: 60001
+Makespan 1847.67 #trees: 1
+3 step: 4001
+Broken Edges { 1 }
+size_2000/random_tree_5	1847.670209	
+Makespan 928.777 #trees: 0
+#unfeasible tasks: 0
+1 step: 1396000
+tried 1 added to SS 0 max # children 1
+Makespan 929.325 #trees: 1
+2 step: 64002
+Makespan 1847.67 #trees: 1
+3 step: 4000
+Broken Edges { 1 }
+size_2000/random_tree_5	1847.670209	
+
+large_edge_weights
+	
+Makespan 88781.2 #trees: 0
+#unfeasible tasks: 0
+1 step: 5687891
+tried 10 added to SS 3 max # children 5
+Makespan 78691.9 #trees: 8
+2 step: 4000
+Makespan 157348 #trees: 8
+3 step: 8000
+Broken Edges { 1 2 5 6 7 8 13 14 }
+size_2000/random_tree_1	157348.376266	
+Makespan 91384.3 #trees: 0
+#unfeasible tasks: 0
+1 step: 3311977
+tried 1 added to SS 0 max # children 1
+Makespan 91436.1 #trees: 1
+2 step: 339995
+Makespan 182762 #trees: 1
+3 step: 4000
+Broken Edges { 1 }
+size_2000/random_tree_2	182762.152474	
+Makespan 92016.2 #trees: 0
+#unfeasible tasks: 0
+1 step: 4415842
+tried 4 added to SS 1 max # children 3
+Makespan 90191.3 #trees: 4
+2 step: 0
+Makespan 180335 #trees: 4
+3 step: 4000
+Broken Edges { 1 2 3 4 }
+size_2000/random_tree_3	180335.267266	
+Makespan 88446.3 #trees: 0
+#unfeasible tasks: 0
+1 step: 14855637
+tried 20 added to SS 8 max # children 5
+Makespan 75986.9 #trees: 13
+2 step: 7999
+Makespan 151957 #trees: 13
+3 step: 8001
+Broken Edges { 1 2 4 7 10 13 14 22 23 24 26 42 43 }
+size_2000/random_tree_4	151956.682188	
+Makespan 91549.4 #trees: 0
+#unfeasible tasks: 0
+1 step: 11734986
+tried 12 added to SS 5 max # children 4
+Makespan 90488.9 #trees: 8
+2 step: 16002
+Makespan 180917 #trees: 8
+3 step: 11999
+Broken Edges { 1 2 6 9 15 16 17 18 }
+size_2000/random_tree_5	180917.153332	
+Makespan 91549.4 #trees: 0
+#unfeasible tasks: 0
+1 step: 13071006
+tried 12 added to SS 5 max # children 4
+Makespan 90488.9 #trees: 8
+2 step: 4001
+Makespan 180917 #trees: 8
+3 step: 7999
+Broken Edges { 1 2 6 9 15 16 17 18 }
+size_2000/random_tree_5	180917.153332	
+

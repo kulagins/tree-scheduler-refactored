@@ -2146,7 +2146,7 @@ void growSeqSetWhileImprovesMakespan2(list<Task *> &seqSet, Tree *tree) {
             frontier.push_back(task);
         }
     }
-    double minMakespan = root->getMakespanCost(true, true);
+    double minMakespan = root->getMakespanCostWithSpeeds(true, true);
     frontier.sort(cmp_Mem_nodecreasing);
     int maxNumberChildren = 0;
     while (!frontier.empty()) {
@@ -2158,10 +2158,12 @@ void growSeqSetWhileImprovesMakespan2(list<Task *> &seqSet, Tree *tree) {
         for (Task *child: *potentialAddition->getChildren()) {
             child->breakEdge();
         }
-        double potentialMakespan = root->getMakespanCost(true, true);
-        //cout << potentialMakespan << " " << minMakespan << endl;
+        cout.precision(20 );
+        double potentialMakespan = root->getMakespanCostWithSpeeds(true, true);
+        cout <<"potential: "<< potentialMakespan<<", current min: " << " " << minMakespan<< " equals? "<<(potentialMakespan == minMakespan? "y":"n");// << endl;
         cntTries++;
         if (potentialMakespan <= minMakespan) {
+            cout<<" add!"<<endl;
             cntrAdditionToSS++;
             minMakespan = potentialMakespan;
             //no breaking back the edge, we accept this improvement
@@ -2172,6 +2174,7 @@ void growSeqSetWhileImprovesMakespan2(list<Task *> &seqSet, Tree *tree) {
                 frontier.insert(it, child);
             }
         } else {
+            cout<<" no add!"<<endl;
             potentialAddition->breakEdge();
             for (Task *child: *potentialAddition->getChildren()) {
                 child->restoreEdge();

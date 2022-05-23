@@ -1,0 +1,2209 @@
+single tree
+runscripts/RS-36proc-A2-all.sh
+matrix
+./data/trees/
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf
+
+Makespan 119681 #trees: 0
+#unfeasible tasks: 0
+S1_step: 103337886
+tried 15178 added to SS 5
+end growSSIMproves
+No solution
+no solution
+dump.1.4.metis.IPSO.HTC_336_4438-2534.tree.nf	-1.000000	
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf
+
+Makespan 197814 #trees: 0
+#unfeasible tasks: 0
+S1_step: 78669215
+tried 2 added to SS 1
+end growSSIMproves
+Makespan 197814 #trees: 1
+S2_step: 25307
+checking for tasks without processors
+assigned 2 TO proc with mem 972864
+Makespan 197814 #trees: 2
+S3_step: 8558
+dump.0.1.amd.Dehghani.light_in_tissue-1873.tree.nf	197813.525333	
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf
+
+Makespan 59547.1 #trees: 0
+#unfeasible tasks: 0
+S1_step: 439031721
+tried 14904 added to SS 2
+end growSSIMproves
+No solution
+no solution
+dump.1.3.metis.IPSO.HTC_336_4438-2534.tree.nf	-1.000000	
+dump.0.1.amd.Bova.rma10-374.tree.nf
+
+Makespan 710442 #trees: 0
+#unfeasible tasks: 0
+S1_step: 385192948
+tried 2 added to SS 1
+end growSSIMproves
+Makespan 710442 #trees: 1
+S2_step: 46807
+checking for tasks without processors
+assigned 2 TO proc with mem 1.18815e+06
+Makespan 710442 #trees: 2
+S3_step: 14521
+dump.0.1.amd.Bova.rma10-374.tree.nf	710441.713333	
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf
+
+Makespan 55537.7 #trees: 0
+#unfeasible tasks: 0
+S1_step: 8602512026
+tried 14799 added to SS 2
+end growSSIMproves
+No solution
+no solution
+dump.0.1.amd.IPSO.HTC_336_4438-2534.tree.nf	-1.000000	
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf
+
+Makespan 582400 #trees: 0
+#unfeasible tasks: 0
+S1_step: 479852233
+tried 2 added to SS 1
+end growSSIMproves
+Makespan 582400 #trees: 1
+S2_step: 107233
+checking for tasks without processors
+assigned 2 TO proc with mem 4.15438e+06
+Makespan 582400 #trees: 2
+S3_step: 33427
+dump.0.1.amd.MaxPlanck.shallow_water1-2261.tree.nf	582399.717333	
+dump.0.1.amd.QY.case39-2136.tree.nf
+
+Makespan 428927 #trees: 0
+#unfeasible tasks: 0
+S1_step: 349213526
+tried 3 added to SS 1
+end growSSIMproves
+Makespan 428927 #trees: 2
+S2_step: 45890
+checking for tasks without processors
+assigned 2 TO proc with mem 816270
+assigned 3 TO proc with mem 816270
+Makespan 428927 #trees: 3
+S3_step: 13436
+dump.0.1.amd.QY.case39-2136.tree.nf	428927.492667	
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf
+
+Makespan 2.80828e+06 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1928131727
+tried 2 added to SS 1
+end growSSIMproves
+Makespan 2.80828e+06 #trees: 1
+S2_step: 52391
+checking for tasks without processors
+assigned 2 TO proc with mem 4.41428e+06
+Makespan 2.80828e+06 #trees: 2
+S3_step: 17519
+dump.0.1.amd.TSOPF.TSOPF_RS_b300_c3-2239.tree.nf	2808284.878000	
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf
+
+Makespan 4.68318e+06 #trees: 0
+#unfeasible tasks: 0
+S1_step: 2672645428
+tried 2 added to SS 1
+end growSSIMproves
+Makespan 4.68318e+06 #trees: 1
+S2_step: 69334
+checking for tasks without processors
+assigned 2 TO proc with mem 1.08219e+07
+Makespan 4.68318e+06 #trees: 2
+S3_step: 19954
+dump.0.1.metis.Boeing.ct20stif-356.tree.nf	4683181.508000	
+dump.0.1.metis.Bova.rma10-374.tree.nf
+
+Makespan 837503 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1788545333
+tried 2 added to SS 1
+end growSSIMproves
+Makespan 837503 #trees: 1
+S2_step: 55370
+checking for tasks without processors
+assigned 2 TO proc with mem 1.14581e+06
+Makespan 837503 #trees: 2
+S3_step: 15607
+dump.0.1.metis.Bova.rma10-374.tree.nf	837502.771333	
+dump.0.1.metis.CPM.cz40948-2567.tree.nf
+
+Makespan 10809.6 #trees: 0
+#unfeasible tasks: 0
+S1_step: 199489170
+tried 2 added to SS 1
+end growSSIMproves
+Makespan 10809.6 #trees: 1
+S2_step: 42572
+checking for tasks without processors
+assigned 2 TO proc with mem 6936
+Makespan 10809.6 #trees: 2
+S3_step: 13358
+dump.0.1.metis.CPM.cz40948-2567.tree.nf	10809.584667	
+dump.0.1.metis.DNVS.shipsec5-1280.tree.nf
+
+normal random
+./data/random_trees/random/
+size_10000/random_tree_1
+
+Makespan 4561.41 #trees: 0
+#unfeasible tasks: 0
+S1_step: 64133870
+tried 8 added to SS 4
+end growSSIMproves
+Makespan 4562.84 #trees: 4
+S2_step: 10611
+checking for tasks without processors
+assigned 5 TO proc with mem 55833
+assigned 4 TO proc with mem 55833
+assigned 3 TO proc with mem 55833
+assigned 2 TO proc with mem 55833
+Makespan 4562.84 #trees: 5
+S3_step: 3045
+size_10000/random_tree_1	4562.838657	
+size_10000/random_tree_2
+
+Makespan 4574.77 #trees: 0
+#unfeasible tasks: 0
+S1_step: 108657960
+tried 8 added to SS 2
+end growSSIMproves
+Makespan 4578.49 #trees: 6
+S2_step: 13557
+checking for tasks without processors
+assigned 7 TO proc with mem 97785
+assigned 2 TO proc with mem 97785
+assigned 3 TO proc with mem 97785
+assigned 6 TO proc with mem 97785
+assigned 4 TO proc with mem 97785
+assigned 5 TO proc with mem 97785
+Makespan 4578.49 #trees: 7
+S3_step: 4077
+size_10000/random_tree_2	4578.490341	
+size_10000/random_tree_3
+
+Makespan 4501.08 #trees: 0
+#unfeasible tasks: 0
+S1_step: 53345580
+tried 3 added to SS 1
+end growSSIMproves
+Makespan 4504.84 #trees: 2
+S2_step: 9183
+checking for tasks without processors
+assigned 3 TO proc with mem 63618
+assigned 2 TO proc with mem 63618
+Makespan 4504.84 #trees: 3
+S3_step: 3310
+size_10000/random_tree_3	4504.838675	
+size_10000/random_tree_4
+
+Makespan 4568.48 #trees: 0
+#unfeasible tasks: 0
+S1_step: 44052488
+tried 13 added to SS 4
+end growSSIMproves
+Makespan 4555.99 #trees: 9
+S2_step: 18417
+checking for tasks without processors
+assigned 10 TO proc with mem 82638
+assigned 6 TO proc with mem 82638
+assigned 9 TO proc with mem 82638
+assigned 8 TO proc with mem 82638
+assigned 4 TO proc with mem 82638
+assigned 2 TO proc with mem 82638
+assigned 7 TO proc with mem 82638
+assigned 3 TO proc with mem 82638
+assigned 5 TO proc with mem 82638
+Makespan 4555.99 #trees: 10
+S3_step: 4837
+size_10000/random_tree_4	4555.989674	
+size_10000/random_tree_5
+
+Makespan 4617.03 #trees: 0
+#unfeasible tasks: 0
+S1_step: 102648835
+tried 23 added to SS 9
+end growSSIMproves
+Makespan 3803.35 #trees: 14
+S2_step: 27716
+checking for tasks without processors
+assigned 15 TO proc with mem 113700
+assigned 5 TO proc with mem 113700
+assigned 3 TO proc with mem 113700
+assigned 14 TO proc with mem 113700
+assigned 11 TO proc with mem 113700
+assigned 13 TO proc with mem 113700
+assigned 2 TO proc with mem 113700
+assigned 6 TO proc with mem 113700
+assigned 7 TO proc with mem 113700
+assigned 12 TO proc with mem 56850
+assigned 10 TO proc with mem 56850
+assigned 8 TO proc with mem 56850
+assigned 4 TO proc with mem 56850
+assigned 9 TO proc with mem 56850
+Makespan 3803.35 #trees: 15
+S3_step: 5998
+size_10000/random_tree_5	3803.345612	
+size_2000/random_tree_1
+
+Makespan 911.732 #trees: 0
+#unfeasible tasks: 0
+S1_step: 610701
+tried 4 added to SS 2
+end growSSIMproves
+Makespan 561.476 #trees: 2
+S2_step: 1458
+checking for tasks without processors
+assigned 3 TO proc with mem 88284
+assigned 2 TO proc with mem 88284
+Makespan 561.476 #trees: 3
+S3_step: 527
+size_2000/random_tree_1	561.475753	
+size_2000/random_tree_2
+
+Makespan 926.719 #trees: 0
+#unfeasible tasks: 0
+S1_step: 427371
+tried 11 added to SS 4
+end growSSIMproves
+Makespan 923.794 #trees: 7
+S2_step: 2308
+checking for tasks without processors
+assigned 8 TO proc with mem 28683
+assigned 5 TO proc with mem 28683
+assigned 4 TO proc with mem 28683
+assigned 3 TO proc with mem 28683
+assigned 2 TO proc with mem 28683
+assigned 6 TO proc with mem 28683
+assigned 7 TO proc with mem 28683
+Makespan 923.794 #trees: 8
+S3_step: 789
+size_2000/random_tree_2	923.793795	
+size_2000/random_tree_3
+
+Makespan 933.549 #trees: 0
+#unfeasible tasks: 0
+S1_step: 980318
+tried 5 added to SS 2
+end growSSIMproves
+Makespan 939.879 #trees: 3
+S2_step: 1623
+checking for tasks without processors
+assigned 4 TO proc with mem 92340
+assigned 3 TO proc with mem 92340
+assigned 2 TO proc with mem 92340
+Makespan 939.879 #trees: 4
+S3_step: 584
+size_2000/random_tree_3	939.878758	
+size_2000/random_tree_4
+
+Makespan 921.584 #trees: 0
+#unfeasible tasks: 0
+S1_step: 895543
+tried 5 added to SS 2
+end growSSIMproves
+Makespan 924.69 #trees: 3
+S2_step: 1605
+checking for tasks without processors
+assigned 4 TO proc with mem 54450
+assigned 3 TO proc with mem 54450
+assigned 2 TO proc with mem 54450
+Makespan 924.69 #trees: 4
+S3_step: 591
+size_2000/random_tree_4	924.690290	
+size_2000/random_tree_5
+
+Makespan 915.014 #trees: 0
+#unfeasible tasks: 0
+S1_step: 2048762
+tried 4 added to SS 2
+end growSSIMproves
+Makespan 917.166 #trees: 2
+S2_step: 1516
+checking for tasks without processors
+assigned 3 TO proc with mem 36117
+assigned 2 TO proc with mem 36117
+Makespan 917.166 #trees: 3
+S3_step: 537
+size_2000/random_tree_5	917.166424	
+size_20000/random_tree_1
+
+Makespan 9044.46 #trees: 0
+#unfeasible tasks: 0
+S1_step: 666292539
+tried 5 added to SS 2
+end growSSIMproves
+Makespan 9043.82 #trees: 3
+S2_step: 19133
+checking for tasks without processors
+assigned 4 TO proc with mem 35364
+assigned 2 TO proc with mem 35364
+assigned 3 TO proc with mem 35364
+Makespan 9043.82 #trees: 4
+S3_step: 6347
+size_20000/random_tree_1	9043.816338	
+size_20000/random_tree_2
+
+Makespan 9103.65 #trees: 0
+#unfeasible tasks: 0
+S1_step: 89869820
+tried 5 added to SS 2
+end growSSIMproves
+Makespan 9104.17 #trees: 3
+S2_step: 23068
+checking for tasks without processors
+assigned 4 TO proc with mem 40122
+assigned 3 TO proc with mem 40122
+assigned 2 TO proc with mem 40122
+Makespan 9104.17 #trees: 4
+S3_step: 7835
+size_20000/random_tree_2	9104.165886	
+size_20000/random_tree_3
+
+Makespan 9088.57 #trees: 0
+#unfeasible tasks: 0
+S1_step: 104615737
+tried 7 added to SS 3
+end growSSIMproves
+Makespan 4758.48 #trees: 4
+S2_step: 26655
+checking for tasks without processors
+assigned 5 TO proc with mem 60753
+assigned 4 TO proc with mem 60753
+assigned 2 TO proc with mem 60753
+assigned 3 TO proc with mem 60753
+Makespan 4758.48 #trees: 5
+S3_step: 8431
+size_20000/random_tree_3	4758.478778	
+size_20000/random_tree_4
+
+Makespan 9067.92 #trees: 0
+#unfeasible tasks: 0
+S1_step: 254013964
+tried 5 added to SS 3
+end growSSIMproves
+Makespan 9067.49 #trees: 2
+S2_step: 23389
+checking for tasks without processors
+assigned 3 TO proc with mem 49338
+assigned 2 TO proc with mem 49338
+Makespan 9067.49 #trees: 3
+S3_step: 7486
+size_20000/random_tree_4	9067.494456	
+size_20000/random_tree_5
+
+Makespan 9060.39 #trees: 0
+#unfeasible tasks: 0
+S1_step: 79312674
+tried 7 added to SS 3
+end growSSIMproves
+Makespan 9057.5 #trees: 4
+S2_step: 27032
+checking for tasks without processors
+assigned 5 TO proc with mem 103677
+assigned 3 TO proc with mem 103677
+assigned 4 TO proc with mem 103677
+assigned 2 TO proc with mem 103677
+Makespan 9057.5 #trees: 5
+S3_step: 8665
+size_20000/random_tree_5	9057.504175	
+size_30000/random_tree_1
+
+Makespan 13565.7 #trees: 0
+#unfeasible tasks: 0
+S1_step: 817439748
+tried 2 added to SS 1
+end growSSIMproves
+Makespan 13568.9 #trees: 1
+S2_step: 28846
+checking for tasks without processors
+assigned 2 TO proc with mem 53040
+Makespan 13568.9 #trees: 2
+S3_step: 10193
+size_30000/random_tree_1	13568.934681	
+size_30000/random_tree_2
+
+Makespan 13653.5 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1064372094
+tried 12 added to SS 5
+end growSSIMproves
+Makespan 13343.5 #trees: 7
+S2_step: 52178
+checking for tasks without processors
+assigned 8 TO proc with mem 74106
+assigned 7 TO proc with mem 74106
+assigned 4 TO proc with mem 74106
+assigned 2 TO proc with mem 74106
+assigned 5 TO proc with mem 74106
+assigned 6 TO proc with mem 74106
+assigned 3 TO proc with mem 74106
+Makespan 13343.5 #trees: 8
+S3_step: 14217
+size_30000/random_tree_2	13343.502256	
+size_30000/random_tree_3
+
+Makespan 13623.3 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1306332095
+tried 12 added to SS 6
+end growSSIMproves
+Makespan 13601.3 #trees: 6
+S2_step: 54162
+checking for tasks without processors
+assigned 7 TO proc with mem 64497
+assigned 6 TO proc with mem 64497
+assigned 3 TO proc with mem 64497
+assigned 2 TO proc with mem 64497
+assigned 4 TO proc with mem 64497
+assigned 5 TO proc with mem 64497
+Makespan 13601.3 #trees: 7
+S3_step: 13305
+size_30000/random_tree_3	13601.340238	
+size_30000/random_tree_4
+
+Makespan 13714.4 #trees: 0
+#unfeasible tasks: 0
+S1_step: 694482340
+tried 12 added to SS 5
+end growSSIMproves
+Makespan 13679.4 #trees: 7
+S2_step: 52081
+checking for tasks without processors
+assigned 8 TO proc with mem 73890
+assigned 5 TO proc with mem 73890
+assigned 4 TO proc with mem 73890
+assigned 7 TO proc with mem 73890
+assigned 3 TO proc with mem 73890
+assigned 6 TO proc with mem 73890
+assigned 2 TO proc with mem 73890
+Makespan 13679.4 #trees: 8
+S3_step: 14167
+size_30000/random_tree_4	13679.377946	
+size_30000/random_tree_5
+
+Makespan 13731.6 #trees: 0
+#unfeasible tasks: 0
+S1_step: 105680909
+tried 8 added to SS 3
+end growSSIMproves
+Makespan 13720.6 #trees: 5
+S2_step: 41981
+checking for tasks without processors
+assigned 6 TO proc with mem 76746
+assigned 5 TO proc with mem 76746
+assigned 4 TO proc with mem 76746
+assigned 2 TO proc with mem 76746
+assigned 3 TO proc with mem 76746
+Makespan 13720.6 #trees: 6
+S3_step: 12770
+size_30000/random_tree_5	13720.551284	
+size_4000/random_tree_1
+
+Makespan 1829.69 #trees: 0
+#unfeasible tasks: 0
+S1_step: 3489477
+tried 2 added to SS 1
+end growSSIMproves
+Makespan 1831.39 #trees: 1
+S2_step: 2764
+checking for tasks without processors
+assigned 2 TO proc with mem 27963
+Makespan 1831.39 #trees: 2
+S3_step: 977
+size_4000/random_tree_1	1831.386139	
+size_4000/random_tree_2
+
+Makespan 1859.89 #trees: 0
+#unfeasible tasks: 0
+S1_step: 5964326
+tried 4 added to SS 2
+end growSSIMproves
+Makespan 1863.58 #trees: 2
+S2_step: 3253
+checking for tasks without processors
+assigned 3 TO proc with mem 43638
+assigned 2 TO proc with mem 43638
+Makespan 1863.58 #trees: 3
+S3_step: 1070
+size_4000/random_tree_2	1863.576154	
+size_4000/random_tree_3
+
+Makespan 1836.66 #trees: 0
+#unfeasible tasks: 0
+S1_step: 4000170
+tried 11 added to SS 4
+end growSSIMproves
+Makespan 1786.16 #trees: 7
+S2_step: 5136
+checking for tasks without processors
+assigned 8 TO proc with mem 117060
+assigned 4 TO proc with mem 117060
+assigned 3 TO proc with mem 117060
+assigned 7 TO proc with mem 117060
+assigned 6 TO proc with mem 117060
+assigned 2 TO proc with mem 117060
+assigned 5 TO proc with mem 117060
+Makespan 1786.16 #trees: 8
+S3_step: 1488
+size_4000/random_tree_3	1786.157590	
+size_4000/random_tree_4
+
+Makespan 1813.09 #trees: 0
+#unfeasible tasks: 0
+S1_step: 6204219
+tried 12 added to SS 5
+end growSSIMproves
+Makespan 1748.74 #trees: 7
+S2_step: 5325
+checking for tasks without processors
+assigned 8 TO proc with mem 118743
+assigned 2 TO proc with mem 118743
+assigned 7 TO proc with mem 118743
+assigned 4 TO proc with mem 118743
+assigned 3 TO proc with mem 118743
+assigned 6 TO proc with mem 118743
+assigned 5 TO proc with mem 118743
+Makespan 1748.74 #trees: 8
+S3_step: 1495
+size_4000/random_tree_4	1748.743757	
+size_4000/random_tree_5
+
+Makespan 1811.64 #trees: 0
+#unfeasible tasks: 0
+S1_step: 5384837
+tried 14 added to SS 5
+end growSSIMproves
+Makespan 1763.46 #trees: 9
+S2_step: 5829
+checking for tasks without processors
+assigned 10 TO proc with mem 78885
+assigned 7 TO proc with mem 78885
+assigned 8 TO proc with mem 78885
+assigned 2 TO proc with mem 78885
+assigned 3 TO proc with mem 78885
+assigned 9 TO proc with mem 78885
+assigned 4 TO proc with mem 78885
+assigned 6 TO proc with mem 78885
+assigned 5 TO proc with mem 78885
+Makespan 1763.46 #trees: 10
+S3_step: 1678
+size_4000/random_tree_5	1763.459119	
+size_50000/random_tree_1
+
+Makespan 22892.2 #trees: 0
+#unfeasible tasks: 0
+S1_step: 2445488507
+tried 4 added to SS 2
+end growSSIMproves
+Makespan 22897.5 #trees: 2
+S2_step: 51720
+checking for tasks without processors
+assigned 3 TO proc with mem 79683
+assigned 2 TO proc with mem 79683
+Makespan 22897.5 #trees: 3
+S3_step: 14848
+size_50000/random_tree_1	22897.512989	
+size_50000/random_tree_2
+
+Makespan 22742 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1415404889
+tried 9 added to SS 5
+end growSSIMproves
+Makespan 22554.8 #trees: 4
+S2_step: 92318
+checking for tasks without processors
+assigned 5 TO proc with mem 44898
+assigned 3 TO proc with mem 44898
+assigned 4 TO proc with mem 44898
+assigned 2 TO proc with mem 44898
+Makespan 22554.8 #trees: 5
+S3_step: 21776
+size_50000/random_tree_2	22554.764450	
+size_50000/random_tree_3
+
+Makespan 22706.7 #trees: 0
+#unfeasible tasks: 0
+S1_step: 2230103028
+tried 9 added to SS 4
+end growSSIMproves
+Makespan 22701.3 #trees: 5
+S2_step: 92602
+checking for tasks without processors
+assigned 6 TO proc with mem 70695
+assigned 5 TO proc with mem 70695
+assigned 2 TO proc with mem 70695
+assigned 3 TO proc with mem 70695
+assigned 4 TO proc with mem 70695
+Makespan 22701.3 #trees: 6
+S3_step: 23411
+size_50000/random_tree_3	22701.348255	
+size_50000/random_tree_4
+
+Makespan 22778.1 #trees: 0
+#unfeasible tasks: 0
+S1_step: 3434816079
+tried 2 added to SS 1
+end growSSIMproves
+Makespan 22786 #trees: 1
+S2_step: 56715
+checking for tasks without processors
+assigned 2 TO proc with mem 114978
+Makespan 22786 #trees: 2
+S3_step: 18121
+size_50000/random_tree_4	22785.954625	
+size_50000/random_tree_5
+
+Makespan 22721.1 #trees: 0
+#unfeasible tasks: 0
+S1_step: 942136211
+tried 7 added to SS 3
+end growSSIMproves
+Makespan 22724.8 #trees: 4
+S2_step: 81768
+checking for tasks without processors
+assigned 5 TO proc with mem 79758
+assigned 4 TO proc with mem 79758
+assigned 2 TO proc with mem 79758
+assigned 3 TO proc with mem 79758
+Makespan 22724.8 #trees: 5
+S3_step: 22909
+size_50000/random_tree_5	22724.795938	
+size_50000/random_tree_5
+
+Makespan 22721.1 #trees: 0
+#unfeasible tasks: 0
+S1_step: 945491958
+tried 7 added to SS 3
+end growSSIMproves
+Makespan 22724.8 #trees: 4
+S2_step: 84275
+checking for tasks without processors
+assigned 5 TO proc with mem 79758
+assigned 4 TO proc with mem 79758
+assigned 2 TO proc with mem 79758
+assigned 3 TO proc with mem 79758
+Makespan 22724.8 #trees: 5
+S3_step: 23367
+size_50000/random_tree_5	22724.795938	
+!! 
+!! 
+size_10000/random_tree_1
+
+Makespan 4548.95 #trees: 0
+#unfeasible tasks: 0
+S1_step: 5367077
+tried 594 added to SS 59
+end growSSIMproves
+No solution
+no solution
+size_10000/random_tree_1	-1.000000	
+size_10000/random_tree_2
+
+Makespan 4559.11 #trees: 0
+#unfeasible tasks: 0
+S1_step: 5887516
+tried 290 added to SS 30
+end growSSIMproves
+No solution
+no solution
+size_10000/random_tree_2	-1.000000	
+size_10000/random_tree_3
+
+Makespan 4529.75 #trees: 0
+#unfeasible tasks: 0
+S1_step: 9134378
+tried 578 added to SS 57
+end growSSIMproves
+No solution
+no solution
+size_10000/random_tree_3	-1.000000	
+size_10000/random_tree_4
+
+Makespan 4546.61 #trees: 0
+#unfeasible tasks: 0
+S1_step: 8305672
+tried 420 added to SS 42
+end growSSIMproves
+No solution
+no solution
+size_10000/random_tree_4	-1.000000	
+size_10000/random_tree_5
+
+Makespan 4573.9 #trees: 0
+#unfeasible tasks: 0
+S1_step: 5019051
+tried 361 added to SS 36
+end growSSIMproves
+No solution
+no solution
+size_10000/random_tree_5	-1.000000	
+size_2000/random_tree_1
+
+Makespan 923.316 #trees: 0
+#unfeasible tasks: 0
+S1_step: 323159
+tried 276 added to SS 28
+end growSSIMproves
+No solution
+no solution
+size_2000/random_tree_1	-1.000000	
+size_2000/random_tree_2
+
+Makespan 926.984 #trees: 0
+#unfeasible tasks: 0
+S1_step: 262755
+tried 218 added to SS 23
+end growSSIMproves
+No solution
+no solution
+size_2000/random_tree_2	-1.000000	
+size_2000/random_tree_3
+
+Makespan 900.1 #trees: 0
+#unfeasible tasks: 0
+S1_step: 474230
+tried 228 added to SS 24
+end growSSIMproves
+No solution
+no solution
+size_2000/random_tree_3	-1.000000	
+size_2000/random_tree_4
+
+Makespan 887.105 #trees: 0
+#unfeasible tasks: 0
+S1_step: 271854
+tried 155 added to SS 16
+end growSSIMproves
+No solution
+no solution
+size_2000/random_tree_4	-1.000000	
+size_2000/random_tree_5
+
+Makespan 900.307 #trees: 0
+#unfeasible tasks: 0
+S1_step: 350397
+tried 302 added to SS 30
+end growSSIMproves
+No solution
+no solution
+size_2000/random_tree_5	-1.000000	
+size_20000/random_tree_1
+
+Makespan 9150.2 #trees: 0
+#unfeasible tasks: 0
+S1_step: 27596834
+tried 386 added to SS 38
+end growSSIMproves
+No solution
+no solution
+size_20000/random_tree_1	-1.000000	
+size_20000/random_tree_2
+
+Makespan 9147.02 #trees: 0
+#unfeasible tasks: 0
+S1_step: 35782518
+tried 690 added to SS 68
+end growSSIMproves
+No solution
+no solution
+size_20000/random_tree_2	-1.000000	
+size_20000/random_tree_3
+
+Makespan 9199.05 #trees: 0
+#unfeasible tasks: 0
+S1_step: 25731348
+tried 517 added to SS 52
+end growSSIMproves
+No solution
+no solution
+size_20000/random_tree_3	-1.000000	
+size_20000/random_tree_4
+
+Makespan 9106.26 #trees: 0
+#unfeasible tasks: 0
+S1_step: 74468166
+tried 619 added to SS 60
+end growSSIMproves
+No solution
+no solution
+size_20000/random_tree_4	-1.000000	
+size_20000/random_tree_5
+
+Makespan 9136.89 #trees: 0
+#unfeasible tasks: 0
+S1_step: 39893763
+tried 720 added to SS 74
+end growSSIMproves
+No solution
+no solution
+size_20000/random_tree_5	-1.000000	
+size_30000/random_tree_1
+
+Makespan 13642.2 #trees: 0
+#unfeasible tasks: 0
+S1_step: 98069205
+tried 790 added to SS 80
+end growSSIMproves
+No solution
+no solution
+size_30000/random_tree_1	-1.000000	
+size_30000/random_tree_2
+
+Makespan 13637.3 #trees: 0
+#unfeasible tasks: 0
+S1_step: 113553469
+tried 825 added to SS 82
+end growSSIMproves
+No solution
+no solution
+size_30000/random_tree_2	-1.000000	
+size_30000/random_tree_3
+
+Makespan 13667.9 #trees: 0
+#unfeasible tasks: 0
+S1_step: 160559401
+tried 1287 added to SS 124
+end growSSIMproves
+No solution
+no solution
+size_30000/random_tree_3	-1.000000	
+size_30000/random_tree_4
+
+Makespan 13594.6 #trees: 0
+#unfeasible tasks: 0
+S1_step: 152526352
+tried 358 added to SS 36
+end growSSIMproves
+No solution
+no solution
+size_30000/random_tree_4	-1.000000	
+size_30000/random_tree_5
+
+Makespan 13639.7 #trees: 0
+#unfeasible tasks: 0
+S1_step: 57230763
+tried 465 added to SS 46
+end growSSIMproves
+No solution
+no solution
+size_30000/random_tree_5	-1.000000	
+size_4000/random_tree_1
+
+Makespan 1814.57 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1532770
+tried 281 added to SS 27
+end growSSIMproves
+No solution
+no solution
+size_4000/random_tree_1	-1.000000	
+size_4000/random_tree_2
+
+Makespan 1835.51 #trees: 0
+#unfeasible tasks: 0
+S1_step: 974035
+tried 96 added to SS 11
+end growSSIMproves
+No solution
+no solution
+size_4000/random_tree_2	-1.000000	
+size_4000/random_tree_3
+
+Makespan 1824.24 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1479488
+tried 226 added to SS 23
+end growSSIMproves
+No solution
+no solution
+size_4000/random_tree_3	-1.000000	
+size_4000/random_tree_4
+
+Makespan 1810.58 #trees: 0
+#unfeasible tasks: 0
+S1_step: 975676
+tried 328 added to SS 33
+end growSSIMproves
+No solution
+no solution
+size_4000/random_tree_4	-1.000000	
+size_4000/random_tree_5
+
+Makespan 1825.12 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1689637
+tried 430 added to SS 43
+end growSSIMproves
+No solution
+no solution
+size_4000/random_tree_5	-1.000000	
+size_50000/random_tree_1
+
+Makespan 22735.9 #trees: 0
+#unfeasible tasks: 0
+S1_step: 383010119
+tried 1603 added to SS 156
+end growSSIMproves
+No solution
+no solution
+size_50000/random_tree_1	-1.000000	
+size_50000/random_tree_2
+
+Makespan 22782.2 #trees: 0
+#unfeasible tasks: 0
+S1_step: 266626693
+tried 287 added to SS 27
+end growSSIMproves
+No solution
+no solution
+size_50000/random_tree_2	-1.000000	
+size_50000/random_tree_3
+
+Makespan 22743.3 #trees: 0
+#unfeasible tasks: 0
+S1_step: 254488230
+tried 1189 added to SS 117
+end growSSIMproves
+No solution
+no solution
+size_50000/random_tree_3	-1.000000	
+size_50000/random_tree_4
+
+Makespan 22747 #trees: 0
+#unfeasible tasks: 0
+S1_step: 175043924
+tried 1290 added to SS 129
+end growSSIMproves
+No solution
+no solution
+size_50000/random_tree_4	-1.000000	
+size_50000/random_tree_5
+
+Makespan 22865.2 #trees: 0
+#unfeasible tasks: 0
+S1_step: 199449662
+tried 823 added to SS 82
+end growSSIMproves
+No solution
+no solution
+size_50000/random_tree_5	-1.000000	
+size_50000/random_tree_5
+
+Makespan 22865.2 #trees: 0
+#unfeasible tasks: 0
+S1_step: 200783932
+tried 823 added to SS 82
+end growSSIMproves
+No solution
+no solution
+size_50000/random_tree_5	-1.000000	
+!! 
+!! 
+size_10000/random_tree_1
+
+Makespan 452029 #trees: 0
+#unfeasible tasks: 0
+S1_step: 35973650
+tried 14 added to SS 6
+end growSSIMproves
+Makespan 450635 #trees: 8
+S2_step: 13701
+checking for tasks without processors
+assigned 9 TO proc with mem 4.86406e+06
+assigned 4 TO proc with mem 4.86406e+06
+assigned 7 TO proc with mem 4.86406e+06
+assigned 5 TO proc with mem 4.86406e+06
+assigned 3 TO proc with mem 4.86406e+06
+assigned 6 TO proc with mem 4.86406e+06
+assigned 2 TO proc with mem 4.86406e+06
+assigned 8 TO proc with mem 4.86406e+06
+Makespan 450635 #trees: 9
+S3_step: 3759
+size_10000/random_tree_1	450635.307141	
+size_10000/random_tree_2
+
+Makespan 463583 #trees: 0
+#unfeasible tasks: 0
+S1_step: 33415111
+tried 8 added to SS 3
+end growSSIMproves
+Makespan 376431 #trees: 5
+S2_step: 12381
+checking for tasks without processors
+assigned 5 TO proc with mem 7.70095e+06
+assigned 6 TO proc with mem 7.70095e+06
+assigned 4 TO proc with mem 7.70095e+06
+assigned 2 TO proc with mem 7.70095e+06
+assigned 3 TO proc with mem 7.70095e+06
+Makespan 376431 #trees: 6
+S3_step: 3423
+size_10000/random_tree_2	376431.318633	
+size_10000/random_tree_3
+
+Makespan 457744 #trees: 0
+#unfeasible tasks: 0
+S1_step: 7819757
+tried 16 added to SS 7
+end growSSIMproves
+Makespan 449983 #trees: 9
+S2_step: 20590
+checking for tasks without processors
+assigned 10 TO proc with mem 1.1405e+07
+assigned 9 TO proc with mem 1.1405e+07
+assigned 2 TO proc with mem 1.1405e+07
+assigned 5 TO proc with mem 1.1405e+07
+assigned 6 TO proc with mem 1.1405e+07
+assigned 8 TO proc with mem 1.1405e+07
+assigned 4 TO proc with mem 1.1405e+07
+assigned 3 TO proc with mem 1.1405e+07
+assigned 7 TO proc with mem 1.1405e+07
+Makespan 449983 #trees: 10
+S3_step: 4596
+size_10000/random_tree_3	449983.377488	
+size_10000/random_tree_4
+
+Makespan 456795 #trees: 0
+#unfeasible tasks: 0
+S1_step: 19981011
+tried 5 added to SS 2
+end growSSIMproves
+Makespan 457177 #trees: 3
+S2_step: 10250
+checking for tasks without processors
+assigned 4 TO proc with mem 6.79192e+06
+assigned 3 TO proc with mem 6.79192e+06
+assigned 2 TO proc with mem 6.79192e+06
+Makespan 457177 #trees: 4
+S3_step: 3174
+size_10000/random_tree_4	457176.990411	
+size_10000/random_tree_5
+
+Makespan 453867 #trees: 0
+#unfeasible tasks: 0
+S1_step: 26562786
+tried 19 added to SS 9
+end growSSIMproves
+Makespan 452901 #trees: 10
+S2_step: 21887
+checking for tasks without processors
+assigned 11 TO proc with mem 5.1629e+06
+assigned 5 TO proc with mem 5.1629e+06
+assigned 10 TO proc with mem 5.1629e+06
+assigned 9 TO proc with mem 5.1629e+06
+assigned 3 TO proc with mem 5.1629e+06
+assigned 4 TO proc with mem 5.1629e+06
+assigned 6 TO proc with mem 5.1629e+06
+assigned 2 TO proc with mem 5.1629e+06
+assigned 8 TO proc with mem 5.1629e+06
+assigned 7 TO proc with mem 2.58145e+06
+Makespan 452901 #trees: 11
+S3_step: 4543
+size_10000/random_tree_5	452900.862201	
+size_2000/random_tree_1
+
+Makespan 92574.7 #trees: 0
+#unfeasible tasks: 0
+S1_step: 862007
+tried 3 added to SS 1
+end growSSIMproves
+Makespan 81994.5 #trees: 2
+S2_step: 1280
+checking for tasks without processors
+assigned 3 TO proc with mem 6.12079e+06
+assigned 2 TO proc with mem 6.12079e+06
+Makespan 81994.5 #trees: 3
+S3_step: 466
+size_2000/random_tree_1	81994.530259	
+size_2000/random_tree_2
+
+Makespan 93686.8 #trees: 0
+#unfeasible tasks: 0
+S1_step: 650955
+tried 2 added to SS 1
+end growSSIMproves
+Makespan 94518.9 #trees: 1
+S2_step: 1123
+checking for tasks without processors
+assigned 2 TO proc with mem 9.07096e+06
+Makespan 94518.9 #trees: 2
+S3_step: 417
+size_2000/random_tree_2	94518.947545	
+size_2000/random_tree_3
+
+Makespan 92102.3 #trees: 0
+#unfeasible tasks: 0
+S1_step: 844028
+tried 4 added to SS 2
+end growSSIMproves
+Makespan 91634.8 #trees: 2
+S2_step: 1333
+checking for tasks without processors
+assigned 3 TO proc with mem 3.51254e+06
+assigned 2 TO proc with mem 3.51254e+06
+Makespan 91634.8 #trees: 3
+S3_step: 475
+size_2000/random_tree_3	91634.846084	
+size_2000/random_tree_4
+
+Makespan 93197.5 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1164411
+tried 7 added to SS 2
+end growSSIMproves
+Makespan 92805.5 #trees: 5
+S2_step: 1660
+checking for tasks without processors
+assigned 6 TO proc with mem 9.34545e+06
+assigned 4 TO proc with mem 9.34545e+06
+assigned 2 TO proc with mem 9.34545e+06
+assigned 5 TO proc with mem 9.34545e+06
+assigned 3 TO proc with mem 9.34545e+06
+Makespan 92805.5 #trees: 6
+S3_step: 626
+size_2000/random_tree_4	92805.538371	
+size_2000/random_tree_5
+
+Makespan 93130.6 #trees: 0
+#unfeasible tasks: 0
+S1_step: 2264502
+tried 9 added to SS 3
+end growSSIMproves
+Makespan 93618.3 #trees: 6
+S2_step: 1867
+checking for tasks without processors
+assigned 7 TO proc with mem 9.38213e+06
+assigned 2 TO proc with mem 9.38213e+06
+assigned 5 TO proc with mem 9.38213e+06
+assigned 4 TO proc with mem 9.38213e+06
+assigned 6 TO proc with mem 9.38213e+06
+assigned 3 TO proc with mem 9.38213e+06
+Makespan 93618.3 #trees: 7
+S3_step: 664
+size_2000/random_tree_5	93618.279052	
+size_20000/random_tree_1
+
+Makespan 913494 #trees: 0
+#unfeasible tasks: 0
+S1_step: 295343330
+tried 4 added to SS 1
+end growSSIMproves
+Makespan 912065 #trees: 3
+S2_step: 17694
+checking for tasks without processors
+assigned 4 TO proc with mem 8.2761e+06
+assigned 3 TO proc with mem 8.2761e+06
+assigned 2 TO proc with mem 8.2761e+06
+Makespan 912065 #trees: 4
+S3_step: 6347
+size_20000/random_tree_1	912065.371518	
+size_20000/random_tree_2
+
+Makespan 914521 #trees: 0
+#unfeasible tasks: 0
+S1_step: 263298272
+tried 8 added to SS 4
+end growSSIMproves
+Makespan 912318 #trees: 4
+S2_step: 28536
+checking for tasks without processors
+assigned 5 TO proc with mem 9.87161e+06
+assigned 4 TO proc with mem 9.87161e+06
+assigned 2 TO proc with mem 9.87161e+06
+assigned 3 TO proc with mem 9.87161e+06
+Makespan 912318 #trees: 5
+S3_step: 8361
+size_20000/random_tree_2	912317.915979	
+size_20000/random_tree_3
+
+Makespan 913834 #trees: 0
+#unfeasible tasks: 0
+S1_step: 226637331
+tried 9 added to SS 3
+end growSSIMproves
+Makespan 905197 #trees: 6
+S2_step: 30412
+checking for tasks without processors
+assigned 7 TO proc with mem 1.08305e+07
+assigned 3 TO proc with mem 1.08305e+07
+assigned 4 TO proc with mem 1.08305e+07
+assigned 6 TO proc with mem 1.08305e+07
+assigned 2 TO proc with mem 1.08305e+07
+assigned 5 TO proc with mem 1.08305e+07
+Makespan 905197 #trees: 7
+S3_step: 9454
+size_20000/random_tree_3	905196.813656	
+size_20000/random_tree_4
+
+Makespan 911466 #trees: 0
+#unfeasible tasks: 0
+S1_step: 470556245
+tried 3 added to SS 1
+end growSSIMproves
+Makespan 911962 #trees: 2
+S2_step: 19472
+checking for tasks without processors
+assigned 3 TO proc with mem 6.48607e+06
+assigned 2 TO proc with mem 6.48607e+06
+Makespan 911962 #trees: 3
+S3_step: 7420
+size_20000/random_tree_4	911961.855760	
+size_20000/random_tree_5
+
+Makespan 913861 #trees: 0
+#unfeasible tasks: 0
+S1_step: 149474558
+tried 3 added to SS 1
+end growSSIMproves
+Makespan 914210 #trees: 2
+S2_step: 19818
+checking for tasks without processors
+assigned 3 TO proc with mem 6.73162e+06
+assigned 2 TO proc with mem 6.73162e+06
+Makespan 914210 #trees: 3
+S3_step: 7623
+size_20000/random_tree_5	914210.363365	
+size_30000/random_tree_1
+
+Makespan 1.37645e+06 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1120634559
+tried 4 added to SS 2
+end growSSIMproves
+Makespan 1.37661e+06 #trees: 2
+S2_step: 34892
+checking for tasks without processors
+assigned 3 TO proc with mem 3.13133e+06
+assigned 2 TO proc with mem 3.13133e+06
+Makespan 1.37661e+06 #trees: 3
+S3_step: 11581
+size_30000/random_tree_1	1376605.988281	
+size_30000/random_tree_2
+
+Makespan 1.36034e+06 #trees: 0
+#unfeasible tasks: 0
+S1_step: 115685376
+tried 3 added to SS 1
+end growSSIMproves
+Makespan 1.35907e+06 #trees: 2
+S2_step: 31516
+checking for tasks without processors
+assigned 3 TO proc with mem 2.82789e+06
+assigned 2 TO proc with mem 2.82789e+06
+Makespan 1.35907e+06 #trees: 3
+S3_step: 11443
+size_30000/random_tree_2	1359074.911234	
+size_30000/random_tree_3
+
+Makespan 1.3645e+06 #trees: 0
+#unfeasible tasks: 0
+S1_step: 250255591
+tried 2 added to SS 1
+end growSSIMproves
+Makespan 1.36462e+06 #trees: 1
+S2_step: 29247
+checking for tasks without processors
+assigned 2 TO proc with mem 2.6215e+06
+Makespan 1.36462e+06 #trees: 2
+S3_step: 10835
+size_30000/random_tree_3	1364623.215770	
+size_30000/random_tree_4
+
+Makespan 1.36845e+06 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1194002738
+tried 10 added to SS 4
+end growSSIMproves
+Makespan 1.36799e+06 #trees: 6
+S2_step: 54804
+checking for tasks without processors
+assigned 7 TO proc with mem 9.45116e+06
+assigned 5 TO proc with mem 9.45116e+06
+assigned 4 TO proc with mem 9.45116e+06
+assigned 2 TO proc with mem 9.45116e+06
+assigned 6 TO proc with mem 9.45116e+06
+assigned 3 TO proc with mem 9.45116e+06
+Makespan 1.36799e+06 #trees: 7
+S3_step: 15372
+size_30000/random_tree_4	1367988.760374	
+size_30000/random_tree_5
+
+Makespan 1.37216e+06 #trees: 0
+#unfeasible tasks: 0
+S1_step: 472185936
+tried 15 added to SS 6
+end growSSIMproves
+Makespan 1.26211e+06 #trees: 9
+S2_step: 66805
+checking for tasks without processors
+assigned 10 TO proc with mem 9.48779e+06
+assigned 7 TO proc with mem 9.48779e+06
+assigned 8 TO proc with mem 9.48779e+06
+assigned 3 TO proc with mem 9.48779e+06
+assigned 6 TO proc with mem 9.48779e+06
+assigned 2 TO proc with mem 9.48779e+06
+assigned 5 TO proc with mem 9.48779e+06
+assigned 4 TO proc with mem 9.48779e+06
+assigned 9 TO proc with mem 9.48779e+06
+Makespan 1.26211e+06 #trees: 10
+S3_step: 18069
+size_30000/random_tree_5	1262106.315117	
+size_4000/random_tree_1
+
+Makespan 182811 #trees: 0
+#unfeasible tasks: 0
+S1_step: 25342875
+tried 19 added to SS 7
+end growSSIMproves
+Makespan 167978 #trees: 12
+S2_step: 8350
+checking for tasks without processors
+assigned 13 TO proc with mem 1.06982e+07
+assigned 2 TO proc with mem 1.06982e+07
+assigned 6 TO proc with mem 1.06982e+07
+assigned 5 TO proc with mem 1.06982e+07
+assigned 4 TO proc with mem 1.06982e+07
+assigned 10 TO proc with mem 1.06982e+07
+assigned 7 TO proc with mem 1.06982e+07
+assigned 8 TO proc with mem 1.06982e+07
+assigned 12 TO proc with mem 1.06982e+07
+assigned 9 TO proc with mem 5.34912e+06
+assigned 11 TO proc with mem 5.34912e+06
+assigned 3 TO proc with mem 5.34912e+06
+Makespan 167978 #trees: 13
+S3_step: 2206
+size_4000/random_tree_1	167978.236028	
+size_4000/random_tree_2
+
+Makespan 182269 #trees: 0
+#unfeasible tasks: 0
+S1_step: 25831690
+tried 15 added to SS 6
+end growSSIMproves
+Makespan 180780 #trees: 9
+S2_step: 7025
+checking for tasks without processors
+assigned 10 TO proc with mem 7.55213e+06
+assigned 6 TO proc with mem 7.55213e+06
+assigned 2 TO proc with mem 7.55213e+06
+assigned 5 TO proc with mem 7.55213e+06
+assigned 9 TO proc with mem 7.55213e+06
+assigned 8 TO proc with mem 7.55213e+06
+assigned 3 TO proc with mem 7.55213e+06
+assigned 7 TO proc with mem 7.55213e+06
+assigned 4 TO proc with mem 7.55213e+06
+Makespan 180780 #trees: 10
+S3_step: 1916
+size_4000/random_tree_2	180780.268786	
+size_4000/random_tree_3
+
+Makespan 182542 #trees: 0
+#unfeasible tasks: 0
+S1_step: 5351558
+tried 12 added to SS 4
+end growSSIMproves
+Makespan 170199 #trees: 8
+S2_step: 6191
+checking for tasks without processors
+assigned 9 TO proc with mem 2.50008e+06
+assigned 3 TO proc with mem 2.50008e+06
+assigned 8 TO proc with mem 2.50008e+06
+assigned 6 TO proc with mem 2.50008e+06
+assigned 2 TO proc with mem 2.50008e+06
+assigned 5 TO proc with mem 2.50008e+06
+assigned 7 TO proc with mem 2.50008e+06
+assigned 4 TO proc with mem 2.50008e+06
+Makespan 170199 #trees: 9
+S3_step: 1833
+size_4000/random_tree_3	170199.328853	
+size_4000/random_tree_4
+
+Makespan 181984 #trees: 0
+#unfeasible tasks: 0
+S1_step: 6225098
+tried 8 added to SS 5
+end growSSIMproves
+Makespan 173742 #trees: 3
+S2_step: 4942
+checking for tasks without processors
+assigned 4 TO proc with mem 1.31271e+07
+assigned 3 TO proc with mem 1.31271e+07
+assigned 2 TO proc with mem 1.31271e+07
+Makespan 173742 #trees: 4
+S3_step: 1371
+size_4000/random_tree_4	173741.827575	
+size_4000/random_tree_5
+
+Makespan 185748 #trees: 0
+#unfeasible tasks: 0
+S1_step: 3826207
+tried 19 added to SS 5
+end growSSIMproves
+Makespan 181918 #trees: 14
+S2_step: 8441
+checking for tasks without processors
+assigned 15 TO proc with mem 6.13766e+06
+assigned 11 TO proc with mem 6.13766e+06
+assigned 12 TO proc with mem 6.13766e+06
+assigned 13 TO proc with mem 6.13766e+06
+assigned 14 TO proc with mem 6.13766e+06
+assigned 2 TO proc with mem 6.13766e+06
+assigned 7 TO proc with mem 6.13766e+06
+assigned 5 TO proc with mem 6.13766e+06
+assigned 6 TO proc with mem 6.13766e+06
+assigned 10 TO proc with mem 3.06883e+06
+assigned 4 TO proc with mem 3.06883e+06
+assigned 3 TO proc with mem 3.06883e+06
+assigned 8 TO proc with mem 3.06883e+06
+assigned 9 TO proc with mem 3.06883e+06
+Makespan 181918 #trees: 15
+S3_step: 2427
+size_4000/random_tree_5	181917.670473	
+size_50000/random_tree_1
+
+Makespan 2.27418e+06 #trees: 0
+#unfeasible tasks: 0
+S1_step: 2453723667
+tried 4 added to SS 2
+end growSSIMproves
+Makespan 2.27485e+06 #trees: 2
+S2_step: 51796
+checking for tasks without processors
+assigned 3 TO proc with mem 1.12242e+07
+assigned 2 TO proc with mem 1.12242e+07
+Makespan 2.27485e+06 #trees: 3
+S3_step: 14639
+size_50000/random_tree_1	2274845.954195	
+size_50000/random_tree_2
+
+Makespan 2.27936e+06 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1606747833
+tried 10 added to SS 4
+end growSSIMproves
+Makespan 2.27928e+06 #trees: 6
+S2_step: 94971
+checking for tasks without processors
+assigned 7 TO proc with mem 8.00417e+06
+assigned 4 TO proc with mem 8.00417e+06
+assigned 3 TO proc with mem 8.00417e+06
+assigned 6 TO proc with mem 8.00417e+06
+assigned 5 TO proc with mem 8.00417e+06
+assigned 2 TO proc with mem 8.00417e+06
+Makespan 2.27928e+06 #trees: 7
+S3_step: 24452
+size_50000/random_tree_2	2279280.411351	
+size_50000/random_tree_3
+
+Makespan 2.28096e+06 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1986545214
+tried 11 added to SS 6
+end growSSIMproves
+Makespan 2.27906e+06 #trees: 5
+S2_step: 100289
+checking for tasks without processors
+assigned 6 TO proc with mem 4.35769e+06
+assigned 3 TO proc with mem 4.35769e+06
+assigned 4 TO proc with mem 4.35769e+06
+assigned 2 TO proc with mem 4.35769e+06
+assigned 5 TO proc with mem 4.35769e+06
+Makespan 2.27906e+06 #trees: 6
+S3_step: 23537
+size_50000/random_tree_3	2279059.713399	
+size_50000/random_tree_4
+
+Makespan 2.27349e+06 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1258241531
+tried 20 added to SS 10
+end growSSIMproves
+Makespan 2.25326e+06 #trees: 10
+S2_step: 143897
+checking for tasks without processors
+assigned 11 TO proc with mem 9.68182e+06
+assigned 4 TO proc with mem 9.68182e+06
+assigned 6 TO proc with mem 9.68182e+06
+assigned 9 TO proc with mem 9.68182e+06
+assigned 3 TO proc with mem 9.68182e+06
+assigned 5 TO proc with mem 9.68182e+06
+assigned 10 TO proc with mem 9.68182e+06
+assigned 7 TO proc with mem 9.68182e+06
+assigned 2 TO proc with mem 9.68182e+06
+assigned 8 TO proc with mem 4.84091e+06
+Makespan 2.25326e+06 #trees: 11
+S3_step: 30757
+size_50000/random_tree_4	2253262.206717	
+size_50000/random_tree_5
+
+Makespan 2.26741e+06 #trees: 0
+#unfeasible tasks: 0
+S1_step: 5102369425
+tried 4 added to SS 2
+end growSSIMproves
+Makespan 2.26809e+06 #trees: 2
+S2_step: 66915
+checking for tasks without processors
+assigned 3 TO proc with mem 1.11153e+07
+assigned 2 TO proc with mem 1.11153e+07
+Makespan 2.26809e+06 #trees: 3
+S3_step: 20135
+size_50000/random_tree_5	2268086.758363	
+size_50000/random_tree_5
+
+Makespan 2.26741e+06 #trees: 0
+#unfeasible tasks: 0
+S1_step: 5105573315
+tried 4 added to SS 2
+end growSSIMproves
+Makespan 2.26809e+06 #trees: 2
+S2_step: 67629
+checking for tasks without processors
+assigned 3 TO proc with mem 1.11153e+07
+assigned 2 TO proc with mem 1.11153e+07
+Makespan 2.26809e+06 #trees: 3
+S3_step: 20578
+size_50000/random_tree_5	2268086.758363	
+!! 
+!! 
+size_10000/random_tree_1
+
+Makespan 5015.84 #trees: 0
+#unfeasible tasks: 0
+S1_step: 44600162
+tried 8 added to SS 3
+end growSSIMproves
+Makespan 5484.17 #trees: 5
+S2_step: 10170
+checking for tasks without processors
+assigned 6 TO proc with mem 6.02646e+06
+assigned 2 TO proc with mem 6.02646e+06
+assigned 3 TO proc with mem 6.02646e+06
+assigned 5 TO proc with mem 6.02646e+06
+assigned 4 TO proc with mem 6.02646e+06
+Makespan 5484.17 #trees: 6
+S3_step: 3209
+size_10000/random_tree_1	5484.165979	
+size_10000/random_tree_2
+
+Makespan 5541.82 #trees: 0
+#unfeasible tasks: 0
+S1_step: 113434978
+tried 6 added to SS 2
+end growSSIMproves
+Makespan 6470.71 #trees: 4
+S2_step: 11849
+checking for tasks without processors
+assigned 5 TO proc with mem 1.13802e+07
+assigned 2 TO proc with mem 1.13802e+07
+assigned 3 TO proc with mem 1.13802e+07
+assigned 4 TO proc with mem 1.13802e+07
+Makespan 6470.71 #trees: 5
+S3_step: 3706
+size_10000/random_tree_2	6470.709604	
+size_10000/random_tree_3
+
+Makespan 4795.54 #trees: 0
+#unfeasible tasks: 0
+S1_step: 17674771
+tried 4 added to SS 2
+end growSSIMproves
+Makespan 4981.22 #trees: 2
+S2_step: 10114
+checking for tasks without processors
+assigned 3 TO proc with mem 4.00342e+06
+assigned 2 TO proc with mem 4.00342e+06
+Makespan 4981.22 #trees: 3
+S3_step: 3313
+size_10000/random_tree_3	4981.217033	
+size_10000/random_tree_4
+
+Makespan 5112.99 #trees: 0
+#unfeasible tasks: 0
+S1_step: 33205290
+tried 4 added to SS 2
+end growSSIMproves
+Makespan 5710.61 #trees: 2
+S2_step: 10143
+checking for tasks without processors
+assigned 3 TO proc with mem 6.93176e+06
+assigned 2 TO proc with mem 6.93176e+06
+Makespan 5710.61 #trees: 3
+S3_step: 3332
+size_10000/random_tree_4	5710.611119	
+size_10000/random_tree_5
+
+Makespan 5055.54 #trees: 0
+#unfeasible tasks: 0
+S1_step: 98709381
+tried 6 added to SS 3
+end growSSIMproves
+Makespan 5414.8 #trees: 3
+S2_step: 12128
+checking for tasks without processors
+assigned 4 TO proc with mem 4.91871e+06
+assigned 2 TO proc with mem 4.91871e+06
+assigned 3 TO proc with mem 4.91871e+06
+Makespan 5414.8 #trees: 4
+S3_step: 3631
+size_10000/random_tree_5	5414.797244	
+size_2000/random_tree_1
+
+Makespan 1495.31 #trees: 0
+#unfeasible tasks: 0
+S1_step: 579146
+tried 7 added to SS 3
+end growSSIMproves
+Makespan 1706.59 #trees: 4
+S2_step: 1843
+checking for tasks without processors
+assigned 5 TO proc with mem 4.74626e+06
+assigned 4 TO proc with mem 4.74626e+06
+assigned 2 TO proc with mem 4.74626e+06
+assigned 3 TO proc with mem 4.74626e+06
+Makespan 1706.59 #trees: 5
+S3_step: 645
+size_2000/random_tree_1	1706.585177	
+size_2000/random_tree_2
+
+Makespan 1909.66 #trees: 0
+#unfeasible tasks: 0
+S1_step: 689646
+tried 5 added to SS 2
+end growSSIMproves
+Makespan 2805.76 #trees: 3
+S2_step: 1611
+checking for tasks without processors
+assigned 4 TO proc with mem 1.2039e+07
+assigned 3 TO proc with mem 1.2039e+07
+assigned 2 TO proc with mem 1.2039e+07
+Makespan 2805.76 #trees: 4
+S3_step: 587
+size_2000/random_tree_2	2805.758819	
+size_2000/random_tree_3
+
+Makespan 1449.29 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1792890
+tried 3 added to SS 1
+end growSSIMproves
+Makespan 1978.7 #trees: 2
+S2_step: 1379
+checking for tasks without processors
+assigned 3 TO proc with mem 7.02008e+06
+assigned 2 TO proc with mem 7.02008e+06
+Makespan 1978.7 #trees: 3
+S3_step: 534
+size_2000/random_tree_3	1978.698321	
+size_2000/random_tree_4
+
+Makespan 1574.83 #trees: 0
+#unfeasible tasks: 0
+S1_step: 605031
+tried 5 added to SS 2
+end growSSIMproves
+Makespan 2005.7 #trees: 3
+S2_step: 1612
+checking for tasks without processors
+assigned 4 TO proc with mem 6.90835e+06
+assigned 2 TO proc with mem 6.90835e+06
+assigned 3 TO proc with mem 6.90835e+06
+Makespan 2005.7 #trees: 4
+S3_step: 594
+size_2000/random_tree_4	2005.698064	
+size_2000/random_tree_5
+
+Makespan 1774.58 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1756938
+tried 11 added to SS 6
+end growSSIMproves
+Makespan 2486.64 #trees: 5
+S2_step: 2355
+checking for tasks without processors
+assigned 6 TO proc with mem 8.54372e+06
+assigned 4 TO proc with mem 8.54372e+06
+assigned 5 TO proc with mem 8.54372e+06
+assigned 3 TO proc with mem 8.54372e+06
+assigned 2 TO proc with mem 8.54372e+06
+Makespan 2486.64 #trees: 6
+S3_step: 707
+size_2000/random_tree_5	2486.638970	
+size_20000/random_tree_1
+
+Makespan 9322.99 #trees: 0
+#unfeasible tasks: 0
+S1_step: 243805241
+tried 4 added to SS 1
+end growSSIMproves
+Makespan 9530.57 #trees: 3
+S2_step: 18627
+checking for tasks without processors
+assigned 4 TO proc with mem 4.02016e+06
+assigned 3 TO proc with mem 4.02016e+06
+assigned 2 TO proc with mem 4.02016e+06
+Makespan 9530.57 #trees: 4
+S3_step: 6747
+size_20000/random_tree_1	9530.573817	
+size_20000/random_tree_2
+
+Makespan 9817.5 #trees: 0
+#unfeasible tasks: 0
+S1_step: 195943661
+tried 4 added to SS 1
+end growSSIMproves
+Makespan 10587.9 #trees: 3
+S2_step: 21487
+checking for tasks without processors
+assigned 4 TO proc with mem 9.90154e+06
+assigned 3 TO proc with mem 9.90154e+06
+assigned 2 TO proc with mem 9.90154e+06
+Makespan 10587.9 #trees: 4
+S3_step: 7919
+size_20000/random_tree_2	10587.884255	
+size_20000/random_tree_3
+
+Makespan 9456.27 #trees: 0
+#unfeasible tasks: 0
+S1_step: 301259280
+tried 4 added to SS 3
+end growSSIMproves
+Makespan 9852.59 #trees: 1
+S2_step: 21415
+checking for tasks without processors
+assigned 2 TO proc with mem 6.6941e+06
+Makespan 9852.59 #trees: 2
+S3_step: 6815
+size_20000/random_tree_3	9852.586785	
+size_20000/random_tree_4
+
+Makespan 9587.47 #trees: 0
+#unfeasible tasks: 0
+S1_step: 142397617
+tried 3 added to SS 1
+end growSSIMproves
+Makespan 9946.1 #trees: 2
+S2_step: 19802
+checking for tasks without processors
+assigned 3 TO proc with mem 5.54492e+06
+assigned 2 TO proc with mem 5.54492e+06
+Makespan 9946.1 #trees: 3
+S3_step: 7435
+size_20000/random_tree_4	9946.098337	
+size_20000/random_tree_5
+
+Makespan 9645.05 #trees: 0
+#unfeasible tasks: 0
+S1_step: 42184603
+tried 5 added to SS 2
+end growSSIMproves
+Makespan 10098.2 #trees: 3
+S2_step: 23574
+checking for tasks without processors
+assigned 4 TO proc with mem 8.52233e+06
+assigned 2 TO proc with mem 8.52233e+06
+assigned 3 TO proc with mem 8.52233e+06
+Makespan 10098.2 #trees: 4
+S3_step: 8171
+size_20000/random_tree_5	10098.230267	
+size_30000/random_tree_1
+
+Makespan 14452.3 #trees: 0
+#unfeasible tasks: 0
+S1_step: 2333987415
+tried 7 added to SS 3
+end growSSIMproves
+Makespan 14767.5 #trees: 4
+S2_step: 43944
+checking for tasks without processors
+assigned 5 TO proc with mem 9.70881e+06
+assigned 4 TO proc with mem 9.70881e+06
+assigned 2 TO proc with mem 9.70881e+06
+assigned 3 TO proc with mem 9.70881e+06
+Makespan 14767.5 #trees: 5
+S3_step: 12197
+size_30000/random_tree_1	14767.458255	
+size_30000/random_tree_2
+
+Makespan 14158.4 #trees: 0
+#unfeasible tasks: 0
+S1_step: 3146740321
+tried 2 added to SS 1
+end growSSIMproves
+Makespan 14644.5 #trees: 1
+S2_step: 29007
+checking for tasks without processors
+assigned 2 TO proc with mem 6.9871e+06
+Makespan 14644.5 #trees: 2
+S3_step: 9076
+size_30000/random_tree_2	14644.451128	
+size_30000/random_tree_3
+
+Makespan 14565.3 #trees: 0
+#unfeasible tasks: 0
+S1_step: 785765173
+tried 3 added to SS 1
+end growSSIMproves
+Makespan 15389.4 #trees: 2
+S2_step: 31520
+checking for tasks without processors
+assigned 3 TO proc with mem 9.57607e+06
+assigned 2 TO proc with mem 9.57607e+06
+Makespan 15389.4 #trees: 3
+S3_step: 9907
+size_30000/random_tree_3	15389.441360	
+size_30000/random_tree_4
+
+Makespan 14149.1 #trees: 0
+#unfeasible tasks: 0
+S1_step: 363560256
+tried 3 added to SS 2
+end growSSIMproves
+Makespan 14561.2 #trees: 1
+S2_step: 29675
+checking for tasks without processors
+assigned 2 TO proc with mem 6.39213e+06
+Makespan 14561.2 #trees: 2
+S3_step: 9247
+size_30000/random_tree_4	14561.200199	
+size_30000/random_tree_5
+
+Makespan 14136.8 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1253309159
+tried 4 added to SS 1
+end growSSIMproves
+Makespan 14573.6 #trees: 3
+S2_step: 34907
+checking for tasks without processors
+assigned 4 TO proc with mem 6.46786e+06
+assigned 3 TO proc with mem 6.46786e+06
+assigned 2 TO proc with mem 6.46786e+06
+Makespan 14573.6 #trees: 4
+S3_step: 10841
+size_30000/random_tree_5	14573.586150	
+size_4000/random_tree_1
+
+Makespan 2365.18 #trees: 0
+#unfeasible tasks: 0
+S1_step: 5852161
+tried 2 added to SS 1
+end growSSIMproves
+Makespan 2928.13 #trees: 1
+S2_step: 2684
+checking for tasks without processors
+assigned 2 TO proc with mem 6.72785e+06
+Makespan 2928.13 #trees: 2
+S3_step: 926
+size_4000/random_tree_1	2928.126090	
+size_4000/random_tree_2
+
+Makespan 2418.6 #trees: 0
+#unfeasible tasks: 0
+S1_step: 4175017
+tried 3 added to SS 1
+end growSSIMproves
+Makespan 2993.06 #trees: 2
+S2_step: 2909
+checking for tasks without processors
+assigned 3 TO proc with mem 5.97515e+06
+assigned 2 TO proc with mem 5.97515e+06
+Makespan 2993.06 #trees: 3
+S3_step: 1018
+size_4000/random_tree_2	2993.059015	
+size_4000/random_tree_3
+
+Makespan 2504.08 #trees: 0
+#unfeasible tasks: 0
+S1_step: 7386679
+tried 3 added to SS 2
+end growSSIMproves
+Makespan 3139.77 #trees: 1
+S2_step: 2920
+checking for tasks without processors
+assigned 2 TO proc with mem 7.22281e+06
+Makespan 3139.77 #trees: 2
+S3_step: 928
+size_4000/random_tree_3	3139.771864	
+size_4000/random_tree_4
+
+Makespan 2379.65 #trees: 0
+#unfeasible tasks: 0
+S1_step: 6317794
+tried 4 added to SS 1
+end growSSIMproves
+Makespan 2537.52 #trees: 3
+S2_step: 3181
+checking for tasks without processors
+assigned 4 TO proc with mem 6.29955e+06
+assigned 3 TO proc with mem 6.29955e+06
+assigned 2 TO proc with mem 6.29955e+06
+Makespan 2537.52 #trees: 4
+S3_step: 1112
+size_4000/random_tree_4	2537.521535	
+size_4000/random_tree_5
+
+Makespan 2605.82 #trees: 0
+#unfeasible tasks: 0
+S1_step: 3143557
+tried 3 added to SS 1
+end growSSIMproves
+Makespan 3431.91 #trees: 2
+S2_step: 2918
+checking for tasks without processors
+assigned 3 TO proc with mem 1.04145e+07
+assigned 2 TO proc with mem 1.04145e+07
+Makespan 3431.91 #trees: 3
+S3_step: 1021
+size_4000/random_tree_5	3431.913479	
+size_50000/random_tree_1
+
+Makespan 23285.5 #trees: 0
+#unfeasible tasks: 0
+S1_step: 7806131999
+tried 3 added to SS 1
+end growSSIMproves
+Makespan 23585.3 #trees: 2
+S2_step: 47847
+checking for tasks without processors
+assigned 3 TO proc with mem 4.4454e+06
+assigned 2 TO proc with mem 4.4454e+06
+Makespan 23585.3 #trees: 3
+S3_step: 14320
+size_50000/random_tree_1	23585.292238	
+size_50000/random_tree_2
+
+Makespan 23098.5 #trees: 0
+#unfeasible tasks: 0
+S1_step: 3073649290
+tried 3 added to SS 1
+end growSSIMproves
+Makespan 23426.8 #trees: 2
+S2_step: 58857
+checking for tasks without processors
+assigned 3 TO proc with mem 4.63532e+06
+assigned 2 TO proc with mem 4.63532e+06
+Makespan 23426.8 #trees: 3
+S3_step: 17062
+size_50000/random_tree_2	23426.816147	
+size_50000/random_tree_3
+
+Makespan 23675.8 #trees: 0
+#unfeasible tasks: 0
+S1_step: 1370133755
+tried 2 added to SS 1
+end growSSIMproves
+Makespan 24507.5 #trees: 1
+S2_step: 53926
+checking for tasks without processors
+assigned 2 TO proc with mem 1.05881e+07
+Makespan 24507.5 #trees: 2
+S3_step: 15892
+size_50000/random_tree_3	24507.538359	
+size_50000/random_tree_4
+
+Makespan 23443.4 #trees: 0
+#unfeasible tasks: 0
+S1_step: 3028731327
+tried 5 added to SS 1
+end growSSIMproves
+Makespan 24063.9 #trees: 4
+S2_step: 66599
+checking for tasks without processors
+assigned 5 TO proc with mem 9.65752e+06
+assigned 4 TO proc with mem 9.65752e+06
+assigned 3 TO proc with mem 9.65752e+06
+assigned 2 TO proc with mem 9.65752e+06
+Makespan 24063.9 #trees: 5
+S3_step: 19434
+size_50000/random_tree_4	24063.899955	
+size_50000/random_tree_5
+
+Makespan 23547.7 #trees: 0
+#unfeasible tasks: 0
+S1_step: 618678684
+tried 3 added to SS 1
+end growSSIMproves
+Makespan 24403.6 #trees: 2
+S2_step: 57272
+checking for tasks without processors
+assigned 3 TO proc with mem 1.21018e+07
+assigned 2 TO proc with mem 1.21018e+07
+Makespan 24403.6 #trees: 3
+S3_step: 16978
+size_50000/random_tree_5	24403.553941	
+size_50000/random_tree_5
+
+Makespan 23547.7 #trees: 0
+#unfeasible tasks: 0
+S1_step: 619540882
+tried 3 added to SS 1
+end growSSIMproves
+Makespan 24403.6 #trees: 2
+S2_step: 54936
+checking for tasks without processors
+assigned 3 TO proc with mem 1.21018e+07
+assigned 2 TO proc with mem 1.21018e+07
+Makespan 24403.6 #trees: 3
+S3_step: 16962
+size_50000/random_tree_5	24403.553941	
+!! 
+!! 
+size_10000/random_tree_1
+
+Makespan 4568.44 #trees: 0
+#unfeasible tasks: 0
+S1_step: 5163114
+tried 330 added to SS 17
+end growSSIMproves
+No solution
+no solution
+size_10000/random_tree_1	-1.000000	
+size_10000/random_tree_2
+
+Makespan 4561.76 #trees: 0
+#unfeasible tasks: 0
+S1_step: 6464264
+tried 499 added to SS 26
+end growSSIMproves
+No solution
+no solution
+size_10000/random_tree_2	-1.000000	
+size_10000/random_tree_3
+
+Makespan 4553.68 #trees: 0
+#unfeasible tasks: 0
+S1_step: 4315622
+tried 265 added to SS 14
+end growSSIMproves
+No solution
+no solution
+size_10000/random_tree_3	-1.000000	
+size_10000/random_tree_4
+
+Makespan 4606.12 #trees: 0
+#unfeasible tasks: 0
+S1_step: 5522277
+tried 486 added to SS 25
+end growSSIMproves
+No solution
+no solution
+size_10000/random_tree_4	-1.000000	
+size_10000/random_tree_5
+
+Makespan 4544.64 #trees: 0
+#unfeasible tasks: 0
+S1_step: 11096961
+tried 525 added to SS 27
+end growSSIMproves
+No solution
+no solution
+size_10000/random_tree_5	-1.000000	
+size_2000/random_tree_1
+
+Makespan 911.73 #trees: 0
+#unfeasible tasks: 0
+S1_step: 176305
+tried 187 added to SS 10
+end growSSIMproves
+No solution
+no solution
+size_2000/random_tree_1	-1.000000	
+size_2000/random_tree_2
+
+Makespan 897.62 #trees: 0
+#unfeasible tasks: 0
+S1_step: 223883
+tried 265 added to SS 14
+end growSSIMproves
+No solution
+no solution
+size_2000/random_tree_2	-1.000000	
+size_2000/random_tree_3
+
+Makespan 939.279 #trees: 0
+#unfeasible tasks: 0
+S1_step: 216696
+tried 156 added to SS 8
+end growSSIMproves
+No solution
+no solution
+size_2000/random_tree_3	-1.000000	
+size_2000/random_tree_4
+
+Makespan 903.681 #trees: 0
+#unfeasible tasks: 0
+S1_step: 381000
+tried 321 added to SS 17
+end growSSIMproves
+No solution
+no solution
+size_2000/random_tree_4	-1.000000	
+size_2000/random_tree_5
+
+Makespan 909.212 #trees: 0
+#unfeasible tasks: 0
+S1_step: 250606
+tried 180 added to SS 10
+end growSSIMproves
+No solution
+no solution
+size_2000/random_tree_5	-1.000000	
+size_20000/random_tree_1
+
+Makespan 9069.76 #trees: 0
+#unfeasible tasks: 0
+S1_step: 42934841
+tried 1352 added to SS 68
+end growSSIMproves
+No solution
+no solution
+size_20000/random_tree_1	-1.000000	
+size_20000/random_tree_2
+
+Makespan 9059.25 #trees: 0
+#unfeasible tasks: 0
+S1_step: 33302238
+tried 1114 added to SS 57
+end growSSIMproves
+No solution
+no solution
+size_20000/random_tree_2	-1.000000	
+size_20000/random_tree_3
+
+Makespan 9109.58 #trees: 0
+#unfeasible tasks: 0
+S1_step: 28492327
+tried 541 added to SS 27
+end growSSIMproves
+No solution
+no solution
+size_20000/random_tree_3	-1.000000	
+size_20000/random_tree_4
+
+Makespan 9062.4 #trees: 0
+#unfeasible tasks: 0
+S1_step: 63214718
+tried 991 added to SS 51
+end growSSIMproves
+No solution
+no solution
+size_20000/random_tree_4	-1.000000	
+size_20000/random_tree_5
+
+Makespan 9112.68 #trees: 0
+#unfeasible tasks: 0
+S1_step: 38196099
+tried 875 added to SS 45
+end growSSIMproves
+No solution
+no solution
+size_20000/random_tree_5	-1.000000	
+size_30000/random_tree_1
+

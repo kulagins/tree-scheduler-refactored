@@ -49,7 +49,7 @@ double u_wseconds(void) {
 // BUilds quotient tree for the whole original tree
 Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for space side
     root->breakEdge();
-    root->getMakespanCost(true, true); //update
+   // root->getMakespanCostWithSpeeds(true, true); //update
 
     Task *copy;
     Task *parent;

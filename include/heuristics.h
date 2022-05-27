@@ -29,7 +29,7 @@ void SetBandwidth(double CCR, unsigned long tree_size, double *ewghts, double *t
 void distributeProcessors(Tree * qTree);
 
 void seqSetAndFeasSets(Tree * tree);
-void assignToBestProcessors( Tree *tree);
+double assignToBestProcessors(Tree *tree);
 void removeProcessorFromAllFeasSets(Processor * processor, Tree * tree);
 
 #endif /* heuristics_h */

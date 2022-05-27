@@ -230,7 +230,7 @@ public :
     }
 
     double getAssignedProcessorSpeed() {
-        if (this->assignedProcessor == NULL) return 1;
+        if (this->assignedProcessor == NULL) throw "NO PROCESSOR";
         else return this->assignedProcessor->getProcessorSpeed();
     }
 
@@ -859,6 +859,13 @@ public:
     double avgMSWeight();
 
     void clearComputedValues();
+
+    void cleanAssignedAndReassignFeasible() {
+        for (Task *task: * tasks) {
+            task->assignFeasibleProcessorsToSubtree(task->getMinMemUnderlying());
+            task->setAssignedProcessor(NULL);
+        }
+    }
 
 };
 

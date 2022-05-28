@@ -43,7 +43,7 @@ double a2Steps(Tree *tree, OutputPrinter *printer) {
     tree->getRoot()->precomputeMinMems(tree);
     number_subtrees = tree->HowmanySubtrees(true);
     //makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-    cout<<"1 step: " << "Makespan " << "still unknown" << " #trees: " << number_subtrees;
+    cout << "1 step: " << "Makespan " << "still unknown" << " #trees: " << number_subtrees;
 
     int numberUnfeasibleTasks = 0;
 
@@ -54,22 +54,22 @@ double a2Steps(Tree *tree, OutputPrinter *printer) {
     }
 
 // cout << "#unfeasible tasks: " << numberUnfeasibleTasks << endl;
-    cout<<clock()-time<<endl;
+    cout << clock() - time << endl;
     time = clock();
 
     try {
         seqSetAndFeasSets(tree);
 
 //        number_subtrees = tree->HowmanySubtrees(true);
-  //      makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-    //    cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
+        //      makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+        //    cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
 
-      //  cout<<"2 step: "<<clock()-time<<endl;
+        //  cout<<"2 step: "<<clock()-time<<endl;
         //time = clock();
 
         makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
         cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
-        cout<<"2&3 step: "<<clock()-time<<endl;
+        cout << "2&3 step: " << clock() - time << endl;
     }
     catch (exception e) {
         printer->quietPrint("An error has occurred: ");//+ e.what());  // Not executed
@@ -208,7 +208,8 @@ int main(int argc, char **argv) {
     std::vector<int> brokenEdges;
     do {
         OpenFile >> treename;
-
+        printer->quietPrint(treename);
+        cout << treename << endl;
         string extraSlash = input->getWorkingDirectory().back() != '/' ? "/" : "";
         Tree *tree = read_tree((input->getWorkingDirectory() + extraSlash +
                                 treename).c_str());

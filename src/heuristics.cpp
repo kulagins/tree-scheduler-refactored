@@ -2263,7 +2263,7 @@ double assignToBestProcessors(Tree *tree) {
 
   //  cout<<"q tree is "<<endl;
     for (Task *task: *qTree->getTasks()) {
-        cout<<task->getId()<<", mMunderl: "<<task->getMinMemUnderlying()<<", no feas proc "<<task->getFeasibleProcessors()->size()<<endl;
+        //cout<<task->getId()<<", mMunderl: "<<task->getMinMemUnderlying()<<", no feas proc "<<task->getFeasibleProcessors()->size()<<endl;
         task->setOtherSideId(qTree1->getTask(task->getId())->getOtherSideId());
     }
 
@@ -2280,7 +2280,7 @@ double assignToBestProcessors(Tree *tree) {
        return std::numeric_limits<int>::max();
     }
     assignCorrespondingTreeTasks(tree, qTree);
-    double resultingMakespan = tree->getRoot()->getMakespanCost(true, true);
+    double resultingMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
     delete qTree;
     return resultingMakespan;
 }

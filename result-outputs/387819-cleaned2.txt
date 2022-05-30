@@ -1,0 +1,1721 @@
+single tree
+runscripts/RS-36proc-A2-all-randfirst.sh
+normal random
+./data/random_trees/random/
+treename	./clusters/36-proc/36proc_0,5-1-1,5-3.json	
+
+
+Makespan 9118.6701305340211547 #trees: 1
+
+
+size_10000/random_tree_1	9118.670131	
+
+
+Makespan 9140.9343165256304928 #trees: 1
+
+
+size_10000/random_tree_2	9140.934317	
+
+
+Makespan 8997.3779121172010491 #trees: 1
+
+
+size_10000/random_tree_3	8997.377912	
+
+
+Makespan 9129.6841301907352317 #trees: 1
+
+
+size_10000/random_tree_4	9129.684130	
+
+
+Makespan 7589.4552235498240407 #trees: 1
+
+
+size_10000/random_tree_5	7589.455224	
+
+
+Makespan 1815.1338235530733982 #trees: 1
+
+
+size_2000/random_tree_1	1815.133824	
+
+
+Makespan 1851.8510219942099866 #trees: 1
+
+
+size_2000/random_tree_2	1851.851022	
+
+
+Makespan 1858.299208635451123 #trees: 1
+
+
+size_2000/random_tree_3	1858.299209	
+
+
+Makespan 1838.5656065068617409 #trees: 1
+
+
+size_2000/random_tree_4	1838.565607	
+
+
+Makespan 1827.1530835057278637 #trees: 1
+
+
+size_2000/random_tree_5	1827.153084	
+
+
+Makespan 18086.29151749801531 #trees: 1
+
+
+size_20000/random_tree_1	18086.291517	
+
+
+Makespan 18203.244681095449778 #trees: 1
+
+
+size_20000/random_tree_2	18203.244681	
+
+
+Makespan 18171.608853627531062 #trees: 1
+
+
+size_20000/random_tree_3	18171.608854	
+
+
+Makespan 18131.8708245112648 #trees: 1
+
+
+size_20000/random_tree_4	18131.870825	
+
+
+Makespan 18113.700808851070178 #trees: 1
+
+
+size_20000/random_tree_5	18113.700809	
+
+
+Makespan 27128.40536114322822 #trees: 1
+
+
+size_30000/random_tree_1	27128.405361	
+
+
+Makespan 27301.167911139629723 #trees: 1
+
+
+size_30000/random_tree_2	27301.167911	
+
+
+Makespan 27192.716476105746551 #trees: 1
+
+
+size_30000/random_tree_3	27192.716476	
+
+
+Makespan 27422.17486833881776 #trees: 1
+
+
+size_30000/random_tree_4	27422.174868	
+
+
+Makespan 27458.314700594852184 #trees: 1
+
+
+size_30000/random_tree_5	27458.314701	
+
+
+Makespan 3657.5782782706769467 #trees: 1
+
+
+size_4000/random_tree_1	3657.578278	
+
+
+Makespan 3714.1763896831921556 #trees: 1
+
+
+size_4000/random_tree_2	3714.176390	
+
+
+Makespan 3664.3747579896694333 #trees: 1
+
+
+size_4000/random_tree_3	3664.374758	
+
+
+Makespan 3478.2995139104154987 #trees: 1
+
+
+size_4000/random_tree_4	3478.299514	
+
+
+Makespan 3616.2286145971279439 #trees: 1
+
+
+size_4000/random_tree_5	3616.228615	
+
+
+Makespan 45777.428537847008556 #trees: 1
+
+
+size_50000/random_tree_1	45777.428538	
+
+
+Makespan 45481.727974400979292 #trees: 1
+
+
+size_50000/random_tree_2	45481.727974	
+
+
+Makespan 45408.212693885732733 #trees: 1
+
+
+size_50000/random_tree_3	45408.212694	
+
+
+Makespan 45547.457249304563447 #trees: 1
+
+
+size_50000/random_tree_4	45547.457249	
+
+
+Makespan 45435.487603019719245 #trees: 1
+
+
+size_50000/random_tree_5	45435.487603	
+
+
+Makespan 45435.487603019719245 #trees: 1
+
+
+size_50000/random_tree_5	45435.487603	
+/work/kulagins/scheduler-a2
+/work/kulagins/scheduler-a2/data/random_trees
+!! /work/kulagins/scheduler-a2/data/random_trees/10_children
+!! 
+/work/kulagins/scheduler-a2/data/random_trees/10_children
+treename	./clusters/36-proc/36proc_0,5-1-1,5-3.json	
+
+
+Makespan 9087.6672987091515097 #trees: 1
+
+
+size_10000/random_tree_1	9087.667299	
+
+
+Makespan 9111.7346733335089084 #trees: 1
+
+
+size_10000/random_tree_2	9111.734673	
+
+
+Makespan 9052.479652895950494 #trees: 1
+
+
+size_10000/random_tree_3	9052.479653	
+
+
+Makespan 9091.5352412758256833 #trees: 1
+
+
+size_10000/random_tree_4	9091.535241	
+
+
+Makespan 9141.2971298534921516 #trees: 1
+
+
+size_10000/random_tree_5	9141.297130	
+
+
+Makespan 1844.3570396411669208 #trees: 1
+
+
+size_2000/random_tree_1	1844.357040	
+
+
+Makespan 1848.5387763743710821 #trees: 1
+
+
+size_2000/random_tree_2	1848.538776	
+
+
+Makespan 1797.408850072806672 #trees: 1
+
+
+size_2000/random_tree_3	1797.408850	
+
+
+Makespan 1771.7231173631923866 #trees: 1
+
+
+size_2000/random_tree_4	1771.723117	
+
+
+Makespan 1798.264800009638293 #trees: 1
+
+
+size_2000/random_tree_5	1798.264800	
+
+
+Makespan 18295.040470849242411 #trees: 1
+
+
+size_20000/random_tree_1	18295.040471	
+
+
+Makespan 18286.092374106636271 #trees: 1
+
+
+size_20000/random_tree_2	18286.092374	
+
+
+Makespan 18389.924511042259837 #trees: 1
+
+
+size_20000/random_tree_3	18389.924511	
+
+
+
+Makespan 4715.7952025278927977 #trees: 1
+
+
+size_20000/random_tree_4	4715.795203	
+
+
+Makespan 18271.603705642872228 #trees: 1
+
+
+size_20000/random_tree_5	18271.603706	
+
+
+Makespan 27276.342661591646902 #trees: 1
+
+
+size_30000/random_tree_1	27276.342662	
+
+
+Makespan 27271.151747310177598 #trees: 1
+
+
+size_30000/random_tree_2	27271.151747	
+
+
+
+
+
+Makespan 4215.6364827357974718 #trees: 1
+
+
+size_30000/random_tree_3	4215.636483	
+
+
+Makespan 27187.296222223867517 #trees: 1
+
+
+size_30000/random_tree_4	27187.296222	
+
+
+Makespan 27275.497359099997993 #trees: 1
+
+
+size_30000/random_tree_5	27275.497359	
+
+
+Makespan 3621.8887176689518128 #trees: 1
+
+
+size_4000/random_tree_1	3621.888718	
+
+
+Makespan 3664.7857991010109799 #trees: 1
+
+
+size_4000/random_tree_2	3664.785799	
+
+
+Makespan 978.14563860609609947 #trees: 1
+
+
+size_4000/random_tree_3	978.145639	
+
+
+Makespan 3615.567916377111942 #trees: 1
+
+
+size_4000/random_tree_4	3615.567916	
+
+
+Makespan 3643.3823096026717394 #trees: 1
+
+
+size_4000/random_tree_5	3643.382310	
+
+
+Makespan 45465.379620178413461 #trees: 1
+
+
+size_50000/random_tree_1	45465.379620	
+
+
+Makespan 17938.91412266489715 #trees: 1
+
+
+size_50000/random_tree_2	17938.914123	
+
+
+Makespan 45483.499270744810929 #trees: 1
+
+
+size_50000/random_tree_3	45483.499271	
+
+
+Makespan 45488.272522972270963 #trees: 1
+
+
+size_50000/random_tree_4	45488.272523	
+
+
+Makespan 45723.429370534344343 #trees: 1
+
+
+size_50000/random_tree_5	45723.429371	
+
+
+Makespan 45723.429370534344343 #trees: 1
+
+
+size_50000/random_tree_5	45723.429371	
+!! /work/kulagins/scheduler-a2/data/random_trees/all_large
+!! 
+/work/kulagins/scheduler-a2/data/random_trees/all_large
+treename	./clusters/36-proc/36proc_0,5-1-1,5-3.json	
+
+
+Makespan 903708.60826729622204 #trees: 1
+
+
+size_10000/random_tree_1	903708.608267	
+
+
+Makespan 926428.7525590750156 #trees: 1
+
+
+size_10000/random_tree_2	926428.752559	
+
+
+Makespan 898521.25097562803421 #trees: 1
+
+
+size_10000/random_tree_3	898521.250976	
+
+
+Makespan 913027.52726898342371 #trees: 1
+
+
+size_10000/random_tree_4	913027.527269	
+
+
+Makespan 907247.33187221433036 #trees: 1
+
+
+size_10000/random_tree_5	907247.331872	
+
+
+Makespan 163019.76051820756402 #trees: 1
+
+
+size_2000/random_tree_1	163019.760518	
+
+
+Makespan 186545.76308951032115 #trees: 1
+
+
+size_2000/random_tree_2	186545.763090	
+
+
+Makespan 183913.51543588537606 #trees: 1
+
+
+size_2000/random_tree_3	183913.515436	
+
+
+Makespan 185457.15660790106631 #trees: 1
+
+
+size_2000/random_tree_4	185457.156608	
+
+
+Makespan 185471.80315478274133 #trees: 1
+
+
+size_2000/random_tree_5	185471.803155	
+
+
+Makespan 1822855.2450353992172 #trees: 1
+
+
+size_20000/random_tree_1	1822855.245035	
+
+
+Makespan 1828307.1339862758759 #trees: 1
+
+
+size_20000/random_tree_2	1828307.133986	
+
+
+Makespan 1808711.3473129062913 #trees: 1
+
+
+size_20000/random_tree_3	1808711.347313	
+
+
+Makespan 1822516.2169108996168 #trees: 1
+
+
+size_20000/random_tree_4	1822516.216911	
+
+
+Makespan 1827111.6777561400086 #trees: 1
+
+
+size_20000/random_tree_5	1827111.677756	
+
+
+Makespan 2752617.034355444368 #trees: 1
+
+
+size_30000/random_tree_1	2752617.034355	
+
+
+Makespan 2717867.9244681387208 #trees: 1
+
+
+size_30000/random_tree_2	2717867.924468	
+
+
+Makespan 2728799.7275406122208 #trees: 1
+
+
+size_30000/random_tree_3	2728799.727541	
+
+
+Makespan 2736173.5113013708033 #trees: 1
+
+
+size_30000/random_tree_4	2736173.511301	
+
+
+Makespan 2743470.2798228850588 #trees: 1
+
+
+size_30000/random_tree_5	2743470.279823	
+
+
+Makespan 334057.07405520550674 #trees: 1
+
+
+size_4000/random_tree_1	334057.074055	
+
+
+Makespan 363787.92075263528386 #trees: 1
+
+
+size_4000/random_tree_2	363787.920753	
+
+
+Makespan 364891.03587413136847 #trees: 1
+
+
+size_4000/random_tree_3	364891.035874	
+
+
+Makespan 362891.78085429401835 #trees: 1
+
+
+size_4000/random_tree_4	362891.780854	
+
+
+Makespan 370917.45651489967713 #trees: 1
+
+
+size_4000/random_tree_5	370917.456515	
+
+
+Makespan 4547539.5616075256839 #trees: 1
+
+
+size_50000/random_tree_1	4547539.561608	
+
+
+Makespan 4558002.0831478657201 #trees: 1
+
+
+size_50000/random_tree_2	4558002.083148	
+
+
+Makespan 4561623.8913179440424 #trees: 1
+
+
+size_50000/random_tree_3	4561623.891318	
+
+
+Makespan 4546363.5901042874902 #trees: 1
+
+
+size_50000/random_tree_4	4546363.590104	
+
+
+Makespan 4534073.4821752188727 #trees: 1
+
+
+size_50000/random_tree_5	4534073.482175	
+
+
+Makespan 4534073.4821752188727 #trees: 1
+
+
+size_50000/random_tree_5	4534073.482175	
+!! /work/kulagins/scheduler-a2/data/random_trees/large_makespan_weights
+!! 
+/work/kulagins/scheduler-a2/data/random_trees/large_makespan_weights
+treename	./clusters/36-proc/36proc_0,5-1-1,5-3.json	
+
+
+Makespan 9567.7202742750650941 #trees: 1
+
+
+size_10000/random_tree_1	9567.720274	
+
+
+Makespan 10103.819554570032778 #trees: 1
+
+
+size_10000/random_tree_2	10103.819555	
+
+
+Makespan 9351.1821205189717148 #trees: 1
+
+
+size_10000/random_tree_3	9351.182121	
+
+
+Makespan 9599.7431970047073264 #trees: 1
+
+
+size_10000/random_tree_4	9599.743197	
+
+
+Makespan 9600.2337455489760032 #trees: 1
+
+
+size_10000/random_tree_5	9600.233746	
+
+
+Makespan 2405.8881850123621007 #trees: 1
+
+
+size_2000/random_tree_1	2405.888185	
+
+
+Makespan 2816.981103088794498 #trees: 1
+
+
+size_2000/random_tree_2	2816.981103	
+
+
+Makespan 2373.9484027814319234 #trees: 1
+
+
+size_2000/random_tree_3	2373.948403	
+
+
+Makespan 2477.8259156321355476 #trees: 1
+
+
+size_2000/random_tree_4	2477.825916	
+
+
+Makespan 2678.5566839681937381 #trees: 1
+
+
+size_2000/random_tree_5	2678.556684	
+
+
+Makespan 18375.775487673130556 #trees: 1
+
+
+size_20000/random_tree_1	18375.775488	
+
+
+Makespan 18875.943487986118271 #trees: 1
+
+
+size_20000/random_tree_2	18875.943488	
+
+
+Makespan 18521.235569210293761 #trees: 1
+
+
+size_20000/random_tree_3	18521.235569	
+
+
+Makespan 18702.210495672377874 #trees: 1
+
+
+size_20000/random_tree_4	18702.210496	
+
+
+Makespan 18790.617339745211211 #trees: 1
+
+
+size_20000/random_tree_5	18790.617340	
+
+
+Makespan 28096.85888491017613 #trees: 1
+
+
+size_30000/random_tree_1	28096.858885	
+
+
+Makespan 27803.482255833689123 #trees: 1
+
+
+size_30000/random_tree_2	27803.482256	
+
+
+Makespan 28215.697329446065851 #trees: 1
+
+
+size_30000/random_tree_3	28215.697329	
+
+
+Makespan 27883.656398197319504 #trees: 1
+
+
+size_30000/random_tree_4	27883.656398	
+
+
+Makespan 27795.445458817663166 #trees: 1
+
+
+size_30000/random_tree_5	27795.445459	
+
+
+Makespan 4167.1261809249963335 #trees: 1
+
+
+size_4000/random_tree_1	4167.126181	
+
+
+Makespan 4248.1538100512243545 #trees: 1
+
+
+size_4000/random_tree_2	4248.153810	
+
+
+Makespan 4341.6757278493269041 #trees: 1
+
+
+size_4000/random_tree_3	4341.675728	
+
+
+Makespan 4181.0311561480011733 #trees: 1
+
+
+size_4000/random_tree_4	4181.031156	
+
+
+Makespan 4401.0463866069476353 #trees: 1
+
+
+size_4000/random_tree_5	4401.046387	
+
+
+Makespan 46146.381403228835552 #trees: 1
+
+
+size_50000/random_tree_1	46146.381403	
+
+
+Makespan 45753.906218065567373 #trees: 1
+
+
+size_50000/random_tree_2	45753.906218	
+
+
+Makespan 46437.736718744934478 #trees: 1
+
+
+size_50000/random_tree_3	46437.736719	
+
+
+Makespan 46294.167423608174431 #trees: 1
+
+
+size_50000/random_tree_4	46294.167424	
+
+
+Makespan 46244.713711456970486 #trees: 1
+
+
+size_50000/random_tree_5	46244.713711	
+
+
+Makespan 46244.713711456970486 #trees: 1
+
+
+size_50000/random_tree_5	46244.713711	
+!! /work/kulagins/scheduler-a2/data/random_trees/20_children
+!! 
+/work/kulagins/scheduler-a2/data/random_trees/20_children
+treename	./clusters/36-proc/36proc_0,5-1-1,5-3.json	
+
+
+Makespan 9132.1634044972124684 #trees: 1
+
+
+size_10000/random_tree_1	9132.163404	
+
+
+Makespan 9120.7849765011105774 #trees: 1
+
+
+size_10000/random_tree_2	9120.784977	
+
+
+Makespan 9102.0117291306778498 #trees: 1
+
+
+size_10000/random_tree_3	9102.011729	
+
+
+Makespan 9208.6698229776520748 #trees: 1
+
+
+size_10000/random_tree_4	9208.669823	
+
+
+Makespan 9081.9543801731142594 #trees: 1
+
+
+size_10000/random_tree_5	9081.954380	
+
+
+Makespan 1822.0203794504946018 #trees: 1
+
+
+size_2000/random_tree_1	1822.020379	
+
+
+Makespan 1785.5643116214941983 #trees: 1
+
+
+size_2000/random_tree_2	1785.564312	
+
+
+Makespan 1870.3344243814806305 #trees: 1
+
+
+size_2000/random_tree_3	1870.334424	
+
+
+Makespan 1801.9860909686296964 #trees: 1
+
+
+size_2000/random_tree_4	1801.986091	
+
+
+Makespan 1808.3688067961613797 #trees: 1
+
+
+size_2000/random_tree_5	1808.368807	
+
+
+Makespan 18135.70963282962839 #trees: 1
+
+
+size_20000/random_tree_1	18135.709633	
+
+
+Makespan 18115.302525769922795 #trees: 1
+
+
+size_20000/random_tree_2	18115.302526	
+
+
+Makespan 18215.049274752767815 #trees: 1
+
+
+size_20000/random_tree_3	18215.049275	
+
+
+Makespan 18115.266879004375369 #trees: 1
+
+
+size_20000/random_tree_4	18115.266879	
+
+
+Makespan 18220.240149572728114 #trees: 1
+
+
+size_20000/random_tree_5	18220.240150	
+
+
+Makespan 27375.227975333695213 #trees: 1
+
+
+size_30000/random_tree_1	27375.227975	
+
+
+Makespan 27112.230455009110301 #trees: 1
+
+
+size_30000/random_tree_2	27112.230455	
+
+
+Makespan 27270.736001121262234 #trees: 1
+
+
+size_30000/random_tree_3	27270.736001	
+
+
+Makespan 27381.877875469413993 #trees: 1
+
+
+size_30000/random_tree_4	27381.877875	
+
+
+Makespan 27467.387662212753639 #trees: 1
+
+
+size_30000/random_tree_5	27467.387662	
+
+
+Makespan 3638.1063295060844212 #trees: 1
+
+
+size_4000/random_tree_1	3638.106330	
+
+
+Makespan 3671.6827565976004735 #trees: 1
+
+
+size_4000/random_tree_2	3671.682757	
+
+
+Makespan 3632.581057660523129 #trees: 1
+
+
+size_4000/random_tree_3	3632.581058	
+
+
+Makespan 3686.4910594797584054 #trees: 1
+
+
+size_4000/random_tree_4	3686.491059	
+
+
+Makespan 3636.0394973507409304 #trees: 1
+
+
+size_4000/random_tree_5	3636.039497	
+
+
+Makespan 45527.774978249777632 #trees: 1
+
+
+size_50000/random_tree_1	45527.774978	
+
+
+Makespan 45531.590304882811324 #trees: 1
+
+
+size_50000/random_tree_2	45531.590305	
+
+
+Makespan 45476.998001194144308 #trees: 1
+
+
+size_50000/random_tree_3	45476.998001	
+
+
+Makespan 45441.711310632068489 #trees: 1
+
+
+size_50000/random_tree_4	45441.711311	
+
+
+Makespan 45673.174706513062119 #trees: 1
+
+
+size_50000/random_tree_5	45673.174707	
+
+
+Makespan 45673.174706513062119 #trees: 1
+
+
+size_50000/random_tree_5	45673.174707	
+!! /work/kulagins/scheduler-a2/data/random_trees/all_small
+!! 
+/work/kulagins/scheduler-a2/data/random_trees/all_small
+treename	./clusters/36-proc/36proc_0,5-1-1,5-3.json	
+
+
+Makespan 915.64139180151676101 #trees: 1
+
+
+size_10000/random_tree_1	915.641392	
+
+
+Makespan 906.62610945913127125 #trees: 1
+
+
+size_10000/random_tree_2	906.626109	
+
+
+Makespan 906.86072334415075602 #trees: 1
+
+
+size_10000/random_tree_3	906.860723	
+
+
+Makespan 914.13757275899320121 #trees: 1
+
+
+size_10000/random_tree_4	914.137573	
+
+
+Makespan 905.69470914283260754 #trees: 1
+
+
+size_10000/random_tree_5	905.694709	
+
+
+Makespan 183.98232777844879138 #trees: 1
+
+
+size_2000/random_tree_1	183.982328	
+
+
+Makespan 183.96049866514420046 #trees: 1
+
+
+size_2000/random_tree_2	183.960499	
+
+
+Makespan 154.76336943164403692 #trees: 1
+
+
+size_2000/random_tree_3	154.763369	
+
+
+Makespan 184.01301334911445906 #trees: 1
+
+
+size_2000/random_tree_4	184.013013	
+
+
+Makespan 186.07790720256136296 #trees: 1
+
+
+size_2000/random_tree_5	186.077907	
+
+
+Makespan 1824.7685161144297581 #trees: 1
+
+
+size_20000/random_tree_1	1824.768516	
+
+
+Makespan 1821.759920122068479 #trees: 1
+
+
+size_20000/random_tree_2	1821.759920	
+
+
+Makespan 1813.1568144457141898 #trees: 1
+
+
+size_20000/random_tree_3	1813.156814	
+
+
+Makespan 1812.4434932985202522 #trees: 1
+
+
+size_20000/random_tree_4	1812.443493	
+
+
+Makespan 1751.8036137860119652 #trees: 1
+
+
+size_20000/random_tree_5	1751.803614	
+
+
+Makespan 2731.96487492941651 #trees: 1
+
+
+size_30000/random_tree_1	2731.964875	
+
+
+Makespan 2666.7045006584376097 #trees: 1
+
+
+size_30000/random_tree_2	2666.704501	
+
+
+Makespan 2721.5212604357202508 #trees: 1
+
+
+size_30000/random_tree_3	2721.521260	
+
+
+Makespan 2729.2310785828522057 #trees: 1
+
+
+size_30000/random_tree_4	2729.231079	
+
+
+Makespan 2732.4380317409700183 #trees: 1
+
+
+size_30000/random_tree_5	2732.438032	
+
+
+Makespan 353.52590412098396655 #trees: 1
+
+
+size_4000/random_tree_1	353.525904	
+
+
+Makespan 364.76158637857861322 #trees: 1
+
+
+size_4000/random_tree_2	364.761586	
+
+
+Makespan 368.28524730915688679 #trees: 1
+
+
+size_4000/random_tree_3	368.285247	
+
+
+Makespan 300.8480542535220934 #trees: 1
+
+
+size_4000/random_tree_4	300.848054	
+
+
+Makespan 365.99670025965610876 #trees: 1
+
+
+size_4000/random_tree_5	365.996700	
+
+
+Makespan 4555.7522309851419777 #trees: 1
+
+
+size_50000/random_tree_1	4555.752231	
+
+
+Makespan 4557.4826611812786723 #trees: 1
+
+
+size_50000/random_tree_2	4557.482661	
+
+
+Makespan 4537.222224938562249 #trees: 1
+
+
+size_50000/random_tree_3	4537.222225	
+
+
+Makespan 4558.9434366864561525 #trees: 1
+
+
+size_50000/random_tree_4	4558.943437	
+
+
+Makespan 4554.505774735110208 #trees: 1
+
+
+size_50000/random_tree_5	4554.505775	
+
+
+Makespan 4554.505774735110208 #trees: 1
+
+
+size_50000/random_tree_5	4554.505775	
+!! /work/kulagins/scheduler-a2/data/random_trees/large_node_weights
+!! 
+/work/kulagins/scheduler-a2/data/random_trees/large_node_weights
+treename	./clusters/36-proc/36proc_0,5-1-1,5-3.json	
+
+
+Makespan 9109.0494595894306258 #trees: 1
+
+
+size_10000/random_tree_1	9109.049460	
+
+
+Makespan 9113.3845919594277802 #trees: 1
+
+
+size_10000/random_tree_2	9113.384592	
+
+
+Makespan 9115.18721212122 #trees: 1
+
+
+size_10000/random_tree_3	9115.187212	
+
+
+Makespan 9091.8639670321826998 #trees: 1
+
+
+size_10000/random_tree_4	9091.863967	
+
+
+Makespan 9113.2206772132267361 #trees: 1
+
+
+size_10000/random_tree_5	9113.220677	
+
+
+Makespan 1782.0808996355394811 #trees: 1
+
+
+size_2000/random_tree_1	1782.080900	
+
+
+Makespan 1861.0694111551913466 #trees: 1
+
+
+size_2000/random_tree_2	1861.069411	
+
+
+Makespan 918.82943977501952304 #trees: 1
+
+
+size_2000/random_tree_3	918.829440	
+
+
+Makespan 1796.1152843121235492 #trees: 1
+
+
+size_2000/random_tree_4	1796.115284	
+
+
+Makespan 1804.4536753278443939 #trees: 1
+
+
+size_2000/random_tree_5	1804.453675	
+
+
+Makespan 18152.300847074631747 #trees: 1
+
+
+size_20000/random_tree_1	18152.300847	
+
+
+Makespan 18251.972482870351087 #trees: 1
+
+
+size_20000/random_tree_2	18251.972483	
+
+
+Makespan 18295.766472199993586 #trees: 1
+
+
+size_20000/random_tree_3	18295.766472	
+
+
+Makespan 18274.300039144352922 #trees: 1
+
+
+size_20000/random_tree_4	18274.300039	
+
+
+Makespan 18204.505500565810507 #trees: 1
+
+
+size_20000/random_tree_5	18204.505501	
+
+
+Makespan 27381.823690298217116 #trees: 1
+
+
+size_30000/random_tree_1	27381.823690	
+
+
+Makespan 27330.86810495923055 #trees: 1
+
+
+size_30000/random_tree_2	27330.868105	
+
+
+Makespan 27361.694783180089871 #trees: 1
+
+
+size_30000/random_tree_3	27361.694783	
+
+
+Makespan 27280.644616400622908 #trees: 1
+
+
+size_30000/random_tree_4	27280.644616	
+
+
+Makespan 27286.829039650583582 #trees: 1
+
+
+size_30000/random_tree_5	27286.829040	
+
+
+Makespan 3622.148231223314724 #trees: 1
+
+
+size_4000/random_tree_1	3622.148231	
+
+
+Makespan 3682.0372840545196595 #trees: 1
+
+
+size_4000/random_tree_2	3682.037284	
+
+
+Makespan 3599.7240580627376403 #trees: 1
+
+
+size_4000/random_tree_3	3599.724058	
+
+
+Makespan 3661.2548031464179985 #trees: 1
+
+
+size_4000/random_tree_4	3661.254803	
+
+
+Makespan 1376.5778719296338295 #trees: 1
+
+
+size_4000/random_tree_5	1376.577872	
+
+
+Makespan 45399.182143403100781 #trees: 1
+
+
+size_50000/random_tree_1	45399.182143	
+
+
+Makespan 45075.193230860662879 #trees: 1
+
+
+size_50000/random_tree_2	45075.193231	
+
+
+Makespan 45655.466677123993577 #trees: 1
+
+
+size_50000/random_tree_3	45655.466677	
+
+
+Makespan 45344.861509359579941 #trees: 1
+
+
+size_50000/random_tree_4	45344.861509	
+
+
+Makespan 45340.506059486273443 #trees: 1
+
+
+size_50000/random_tree_5	45340.506059	
+
+
+Makespan 45340.506059486273443 #trees: 1
+
+
+size_50000/random_tree_5	45340.506059	
+!! /work/kulagins/scheduler-a2/data/random_trees/3_children
+!! 
+/work/kulagins/scheduler-a2/data/random_trees/3_children
+treename	./clusters/36-proc/36proc_0,5-1-1,5-3.json	
+
+
+Makespan 9140.0578591669600428 #trees: 1
+
+
+size_10000/random_tree_1	9140.057859	
+
+
+Makespan 9103.0649078610167635 #trees: 1
+
+
+size_10000/random_tree_2	9103.064908	
+
+
+Makespan 9072.0484160138585139 #trees: 1
+
+
+size_10000/random_tree_3	9072.048416	
+
+
+Makespan 9101.5872344860945304 #trees: 1
+
+
+size_10000/random_tree_4	9101.587234	
+
+
+Makespan 9009.9605447437734256 #trees: 1
+
+
+size_10000/random_tree_5	9009.960545	
+
+
+Makespan 1833.0915019665385444 #trees: 1
+
+
+size_2000/random_tree_1	1833.091502	
+
+
+Makespan 1803.4000505213027736 #trees: 1
+
+
+size_2000/random_tree_2	1803.400051	
+
+
+Makespan 1843.4474170978476195 #trees: 1
+
+
+size_2000/random_tree_3	1843.447417	
+
+
+Makespan 1792.4401474078952106 #trees: 1
+
+
+size_2000/random_tree_4	1792.440147	
+
+
+Makespan 1847.6702088738466045 #trees: 1
+
+
+size_2000/random_tree_5	1847.670209	
+
+
+Makespan 18111.309190161751758 #trees: 1
+
+
+size_20000/random_tree_1	18111.309190	
+
+
+Makespan 18089.851004571140948 #trees: 1
+
+
+size_20000/random_tree_2	18089.851005	
+
+
+Makespan 18153.586184898751526 #trees: 1
+
+
+size_20000/random_tree_3	18153.586185	
+
+
+Makespan 18286.078267744687764 #trees: 1
+
+
+size_20000/random_tree_4	18286.078268	
+
+
+Makespan 18242.08975259575891 #trees: 1
+
+
+size_20000/random_tree_5	18242.089753	
+
+
+Makespan 27404.871503804784879 #trees: 1
+
+
+size_30000/random_tree_1	27404.871504	
+
+
+Makespan 27335.062176298451959 #trees: 1
+
+
+size_30000/random_tree_2	27335.062176	
+
+
+Makespan 27323.399464629012073 #trees: 1
+
+
+size_30000/random_tree_3	27323.399465	
+
+
+Makespan 27303.600423925665382 #trees: 1
+
+
+size_30000/random_tree_4	27303.600424	
+
+
+Makespan 27305.634570775317115 #trees: 1
+
+
+size_30000/random_tree_5	27305.634571	
+
+
+Makespan 3666.0404453769242537 #trees: 1
+
+
+size_4000/random_tree_1	3666.040445	
+
+
+Makespan 3648.4612827724740782 #trees: 1
+
+
+size_4000/random_tree_2	3648.461283	
+
+
+Makespan 3664.4582499502848805 #trees: 1
+
+
+size_4000/random_tree_3	3664.458250	
+
+
+Makespan 3658.5325348465867137 #trees: 1
+
+
+size_4000/random_tree_4	3658.532535	
+
+
+Makespan 3602.4208008266596153 #trees: 1
+
+
+size_4000/random_tree_5	3602.420801	
+
+
+Makespan 45601.54340953189967 #trees: 1
+
+
+size_50000/random_tree_1	45601.543410	
+
+
+Makespan 45086.12853141897358 #trees: 1
+
+
+size_50000/random_tree_2	45086.128531	
+
+
+Makespan 45627.792871836740233 #trees: 1
+
+
+size_50000/random_tree_3	45627.792872	
+
+
+Makespan 45631.575410689947603 #trees: 1
+
+
+size_50000/random_tree_4	45631.575411	
+
+
+Makespan 45442.924031952075893 #trees: 1
+
+
+size_50000/random_tree_5	45442.924032	
+
+
+Makespan 45442.924031952075893 #trees: 1
+
+
+size_50000/random_tree_5	45442.924032	
+!! /work/kulagins/scheduler-a2/data/random_trees/large_edge_weights
+!! 
+/work/kulagins/scheduler-a2/data/random_trees/large_edge_weights
+treename	./clusters/36-proc/36proc_0,5-1-1,5-3.json	
+
+
+Makespan 908790.72458083892707 #trees: 1
+
+
+size_10000/random_tree_1	908790.724581	
+
+
+Makespan 907028.96634899801575 #trees: 1
+
+
+size_10000/random_tree_2	907028.966349	
+
+
+Makespan 917018.52139294787776 #trees: 1
+
+
+size_10000/random_tree_3	917018.521393	
+
+
+Makespan 917061.57866845675744 #trees: 1
+
+
+size_10000/random_tree_4	917061.578668	
+
+
+Makespan 912118.39064475591294 #trees: 1
+
+
+size_10000/random_tree_5	912118.390645	
+
+
+Makespan 157348.37626606604317 #trees: 1
+
+
+size_2000/random_tree_1	157348.376266	
+
+
+Makespan 182762.15247388280113 #trees: 1
+
+
+size_2000/random_tree_2	182762.152474	
+
+
+Makespan 180335.26726617908571 #trees: 1
+
+
+size_2000/random_tree_3	180335.267266	
+
+
+Makespan 151956.68218833045103 #trees: 1
+
+
+size_2000/random_tree_4	151956.682188	
+
+
+Makespan 180917.15333219268359 #trees: 1
+
+
+size_2000/random_tree_5	180917.153332	
+
+
+Makespan 1772109.5366376931779 #trees: 1
+
+
+size_20000/random_tree_1	1772109.536638	
+
+
+Makespan 1821853.5478529259562 #trees: 1
+
+
+size_20000/random_tree_2	1821853.547853	
+
+
+Makespan 1816167.109759258572 #trees: 1
+
+
+size_20000/random_tree_3	1816167.109759	
+
+
+Makespan 1820075.2822787475307 #trees: 1
+
+
+size_20000/random_tree_4	1820075.282279	
+
+
+Makespan 1807314.6611483967863 #trees: 1
+
+
+size_20000/random_tree_5	1807314.661148	
+
+
+Makespan 2723659.117392858956 #trees: 1
+
+
+size_30000/random_tree_1	2723659.117393	
+
+
+Makespan 2734969.0392139446922 #trees: 1
+
+
+size_30000/random_tree_2	2734969.039214	
+
+
+Makespan 2741900.7897112006322 #trees: 1
+
+
+size_30000/random_tree_3	2741900.789711	
+
+
+Makespan 2715598.89498400921 #trees: 1
+
+
+size_30000/random_tree_4	2715598.894984	
+
+
+Makespan 2733638.0871551907621 #trees: 1
+
+
+size_30000/random_tree_5	2733638.087155	
+
+
+Makespan 367087.38073264580453 #trees: 1
+
+
+size_4000/random_tree_1	367087.380733	
+
+
+Makespan 353898.45972833648557 #trees: 1
+
+
+size_4000/random_tree_2	353898.459728	
+
+
+Makespan 363780.37556969787693 #trees: 1
+
+
+size_4000/random_tree_3	363780.375570	
+
+
+Makespan 370021.71012943785172 #trees: 1
+
+
+size_4000/random_tree_4	370021.710129	
+
+
+Makespan 348381.71302308002487 #trees: 1
+
+
+size_4000/random_tree_5	348381.713023	
+
+
+Makespan 4531411.686591854319 #trees: 1
+
+
+size_50000/random_tree_1	4531411.686592	
+
+
+Makespan 4551858.1914040390402 #trees: 1
+
+
+size_50000/random_tree_2	4551858.191404	
+
+
+Makespan 4551089.0714641399682 #trees: 1
+
+
+size_50000/random_tree_3	4551089.071464	
+
+
+Makespan 4537132.0930741876364 #trees: 1
+
+
+size_50000/random_tree_4	4537132.093074	
+
+
+Makespan 4549114.6352338353172 #trees: 1
+
+
+size_50000/random_tree_5	4549114.635234	
+
+
+Makespan 4549114.6352338353172 #trees: 1
+
+
+size_50000/random_tree_5	4549114.635234	
+/work/kulagins
+matrix
+/work/kulagins
+/work/kulagins/scheduler-a2/runscripts/RS-36proc-A2-all-randfirst.sh: line 31: ./main: No such file or directory

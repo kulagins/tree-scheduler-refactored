@@ -915,6 +915,12 @@ double getWeightSurplusFromSmallestNodes(list<Task *> &parallelRoots, int limit)
 int *
 copyScheduleBackwards(schedule_traversal *schedule_f);
 
+class SeqSet{
+protected:
+    vector<Task *> * seqSet;
+    vector<Task *> * parallelRoots;
+    double makespan;
+};
 
 #endif
 #endif

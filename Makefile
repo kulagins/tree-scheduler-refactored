@@ -11,7 +11,7 @@ BIN_PATH = ${path_only}/
 TEST_BIN_PATH = ${path_only}/test
 
 CPP = g++
-PEDANTIC_PARANOID_FREAK =       -O0 -Wshadow -Wcast-align \
+PEDANTIC_PARANOID_FREAK =       -O2 -Wshadow -Wcast-align \
 				-Waggregate-return -Wmissing-prototypes -Wmissing-declarations \
 				-Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations \
 				-Wmissing-noreturn -Wredundant-decls -Wnested-externs \
@@ -19,6 +19,7 @@ PEDANTIC_PARANOID_FREAK =       -O0 -Wshadow -Wcast-align \
 REASONABLY_CAREFUL_DUDE =	-Wall
 NO_PRAYER_FOR_THE_WICKED =	-w -O0
 WARNINGS = $(REASONABLY_CAREFUL_DUDE)
+#CFLAGS = $(WARNINGS) -O2 -DNOASSERT -std=c++14 -Xpreprocessor -fopenmp
 CFLAGS = $(WARNINGS) -g -O0 -pg -DNOASSERT -std=c++14 -Xpreprocessor -fopenmp
 INCLUDES = -I${INC_PATH}
 DEFS = 

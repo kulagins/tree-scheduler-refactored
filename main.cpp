@@ -58,7 +58,7 @@ string a2Steps(Tree *tree, OutputPrinter *printer, double & makespan) {
     time = clock();
 
     try {
-        seqSetAndFeasSets(tree);
+         result += seqSetAndFeasSets(tree);
 
 //        number_subtrees = tree->HowmanySubtrees(true);
         //      makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);

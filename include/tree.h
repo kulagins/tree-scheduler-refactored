@@ -517,7 +517,7 @@ public :
 
     void updateTMax(){
         if(this->feasibleProcessors->size() == 0){
-             cout<<"Task" << to_string(this->getId()) << " has 0 feasible processors during iterations. "<<Cluster::getFixedCluster()->getNumberFreeProcessors() <<" are still free.";
+             //cout<<"Task" << to_string(this->getId()) << " has 0 feasible processors during iterations. "<<Cluster::getFixedCluster()->getNumberFreeProcessors() <<" are still free.";
             throw "No Schedule Possible";
         }
         if (this->feasibleProcessors->size() == 1) this->tMax = DBL_MAX;
@@ -920,6 +920,7 @@ protected:
     vector<Task *> * seqSet;
     vector<Task *> * parallelRoots;
     double makespan;
+    int numberSteps;
 
 public:
    SeqSet(Tree * tree, double makespan){
@@ -927,12 +928,21 @@ public:
        this->seqSet = root->tasksInSubtreeRootedHere();
        this->parallelRoots = tree->getBrokenTasks();
        this->makespan = makespan;
+       numberSteps =0;
+    }
+
+    SeqSet(Tree * tree, double makespan, int steps){
+        Task * root = tree->getRoot();
+        this->seqSet = root->tasksInSubtreeRootedHere();
+        this->parallelRoots = tree->getBrokenTasks();
+        this->makespan = makespan;
+        numberSteps =steps;
     }
 
     string print(){
        string result = "";
        result+="Size of SeqSet: "+ to_string(seqSet->size())+ ",\t Number of Subtrees: "+ to_string(parallelRoots->size())
-               +",\t Makespan: "+ to_string(makespan);
+               +",\t Makespan: "+ to_string(makespan)+",\t Steps: "+ to_string(numberSteps);
        return result;
    }
     string printDetailed(){

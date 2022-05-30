@@ -2178,8 +2178,8 @@ void growSeqSetWhileImprovesMakespan2(list<Task *> &seqSet, Tree *tree) {
         cout.precision(20);
 
         double potentialMakespan = assignToBestProcessors(tree);
-        cout << "potential: " << potentialMakespan << ", current min: " << " " << minMakespan << " equals? "
-             << (potentialMakespan == minMakespan ? "y" : "n");// << endl;
+        //cout << "potential: " << potentialMakespan << ", current min: " << " " << minMakespan << " equals? "
+         //    << (potentialMakespan == minMakespan ? "y" : "n");// << endl;
         cntTries++;
 
         if (potentialMakespan <= minMakespan) {
@@ -2204,8 +2204,8 @@ void growSeqSetWhileImprovesMakespan2(list<Task *> &seqSet, Tree *tree) {
         }
         // cout << "#trees " << tree->HowmanySubtrees(false) << " added " << cntrAdditionToSS << endl;
     }
-    cout << "tried " << cntTries << " added to SS " << cntrAdditionToSS << " max # children " << maxNumberChildren
-         << endl;
+   // cout << "tried " << cntTries << " added to SS " << cntrAdditionToSS << " max # children " << maxNumberChildren
+         //<< endl;
 }
 
 void growSeqSetWhileImprovesMakespanAllowWorse(list<Task *> &seqSet, Tree *tree) {
@@ -2287,8 +2287,8 @@ void seqSetAndFeasSets(Tree *tree) {
     if (tree->HowmanySubtrees(true) >= Cluster::getFixedCluster()->getNumberProcessors()) {
         throw "too many parallel roots after growing SeqSet: ";// + to_string(parallelRoots.size());
     }
-   //growSeqSetWhileImprovesMakespan2(sequentialSet, tree);
-   growSeqSetWhileImprovesMakespanAllowWorse(sequentialSet, tree);
+   growSeqSetWhileImprovesMakespan2(sequentialSet, tree);
+   //growSeqSetWhileImprovesMakespanAllowWorse(sequentialSet, tree);
 
 
 }

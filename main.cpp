@@ -28,9 +28,9 @@ buildTreeDependentCluster(InputParser *input, Tree *tree);
 
 OutputPrinter printer;
 
-double a2Steps(Tree *tree, OutputPrinter *printer) {
+string a2Steps(Tree *tree, OutputPrinter *printer, double & makespan) {
     unsigned int number_subtrees = 0;
-    double makespan;
+
     clock_t time;
     time = clock();
 
@@ -43,7 +43,7 @@ double a2Steps(Tree *tree, OutputPrinter *printer) {
     tree->getRoot()->precomputeMinMems(tree);
     number_subtrees = tree->HowmanySubtrees(true);
     //makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-    cout << "1 step: " << clock() - time << " ";
+    string result = "1 step: " + to_string(clock() - time)+ " ";
 
     // int numberUnfeasibleTasks = 0;
 
@@ -69,7 +69,7 @@ double a2Steps(Tree *tree, OutputPrinter *printer) {
 
         makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
         number_subtrees = tree->HowmanySubtrees(true);
-        cout << "2&3 step: " << clock() - time <<endl; //<<" #trees: " << number_subtrees << endl;
+        result+=  " 2&3 step: " + to_string( clock() - time)+ " " ; //<<" #trees: " << number_subtrees << endl;
     }
     catch (exception e) {
         printer->quietPrint("An error has occurred: ");//+ e.what());  // Not executed
@@ -79,7 +79,7 @@ double a2Steps(Tree *tree, OutputPrinter *printer) {
         printer->quietPrint("No solution"); //<< str << endl;
         makespan = -1;
     }
-    return makespan;
+    return result;
 
 }
 
@@ -243,7 +243,8 @@ int main(int argc, char **argv) {
             }
 
             time = clock();
-            makespan = input->getRunA1() ? threeSteps(tree, printer) : a2Steps(tree, printer);
+          //  makespan = input->getRunA1() ? threeSteps(tree, printer) : a2Steps(tree, printer);
+             string result = a2Steps(tree, printer, makespan);
             //maxoutd = MaxOutDegree(tree, true);
 
             //schedule_traversal *schedule_f = new schedule_traversal();
@@ -266,7 +267,7 @@ int main(int argc, char **argv) {
             // quietPrint(Cluster::getFixedCluster()->getAverageLoadAndNumberOfUsedProcessors());
             //quietPrint(Cluster::getFixedCluster()->getUsageString());
             //  quietPrint(Cluster::getFixedCluster()->printProcessors());
-            tree_column += to_string(makespan) + "\t" + to_string(num_subtrees) + "\t";
+            tree_column += to_string(makespan) + "\t" + to_string(num_subtrees) + "\t"+ result;
             double processorUtilization = 0;
             for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {
                 if (proc->isBusy) {

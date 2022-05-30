@@ -2149,6 +2149,8 @@ void growSeqSetWhileImprovesMakespan2(list<Task *> &seqSet, Tree *tree) {
     Task *root = tree->getRoot();
     list<Task *> frontier;
 
+
+
     for (Task *task: *tree->getTasks()) {
         if (task->isBroken()) {
             frontier.push_back(task);
@@ -2156,23 +2158,9 @@ void growSeqSetWhileImprovesMakespan2(list<Task *> &seqSet, Tree *tree) {
     }
     frontier.sort(cmp_Mem_nodecreasing);
 
-    /*double minMem = tree->getRoot()->computeMinMemUnderlying(tree);
-    tree->getRoot()->assignFeasibleProcessorsToSubtree(minMem);
-    if (tree->getRoot()->getFeasibleProcessors()->empty()) {
-        throw "SeqSet has 0 feasible processors";
-    }
-    Processor *pFast = tree->getRoot()->getFastestFeasibleProcessor();
-    pFast->assignTask(tree->getRoot());
-    removeProcessorFromAllFeasSets(pFast, tree);
-
-    for (Task *root: parallelRoots) {
-        double minMem = root->computeMinMemUnderlying(tree);
-        root->assignFeasibleProcessorsToSubtree(minMem);
-    }
-        */
-
     double minMakespan = assignToBestProcessors(tree);
     tree->cleanAssignedAndReassignFeasible();
+    SeqSet optimalSeqSet = SeqSet(tree, minMakespan);
 
     int maxNumberChildren = 0;
     while (!frontier.empty()) {
@@ -2220,6 +2208,64 @@ void growSeqSetWhileImprovesMakespan2(list<Task *> &seqSet, Tree *tree) {
          << endl;
 }
 
+void growSeqSetWhileImprovesMakespanAllowWorse(list<Task *> &seqSet, Tree *tree) {
+
+    int cntrAdditionToSS = 0;
+    int cntTries = 0;
+    Task *root = tree->getRoot();
+    list<Task *> frontier;
+
+
+
+    for (Task *task: *tree->getTasks()) {
+        if (task->isBroken()) {
+            frontier.push_back(task);
+        }
+    }
+    frontier.sort(cmp_Mem_nodecreasing);
+
+    double minMakespan = assignToBestProcessors(tree);
+    tree->cleanAssignedAndReassignFeasible();
+    SeqSet optimalSeqSet = SeqSet(tree, minMakespan);
+
+
+    while (!frontier.empty()) {
+        // cout<<"try add new"<<endl;
+        Task *potentialAddition = frontier.front();
+        frontier.pop_front();
+
+
+        if (!potentialAddition->isRoot()) potentialAddition->restoreEdge();
+        for (Task *child: *potentialAddition->getChildren()) {
+            child->breakEdge();
+        }
+        cout.precision(20);
+
+        double potentialMakespan = assignToBestProcessors(tree);
+      //  cout << "potential: " << potentialMakespan << ", current min: " << " " << minMakespan << " equals? "
+        //     << (potentialMakespan == minMakespan ? "y" : "n");// << endl;
+        cntTries++;
+        for (Task *child: *potentialAddition->getChildren()) {
+            auto it = upper_bound(frontier.begin(), frontier.end(), child,
+                                  cmp_Mem_nodecreasing);
+            frontier.insert(it, child);
+        }
+        if (potentialMakespan <= minMakespan) {
+           // cout << " add!" << endl;
+            cntrAdditionToSS++;
+            minMakespan = potentialMakespan;
+            optimalSeqSet = SeqSet(tree, minMakespan);
+          //  optimalSeqSet.print();
+
+        } else {
+            //cout << " no add!" << endl;
+            // no adding children
+        }
+        // cout << "#trees " << tree->HowmanySubtrees(false) << " added " << cntrAdditionToSS << endl;
+    }
+    optimalSeqSet.implementSeqSet(tree);
+    assignToBestProcessors(tree);
+}
 void growSeqSetWithUnfeasible(Task *task, list<Task *> &seqSet, Task *treeRoot) {
     if (task->getFeasibleProcessors()->empty()) { // && (buildParallelRootsFromSequentialSet(treeRoot, seqSet)).size() <
         //Cluster::getFixedCluster()->getNumberProcessors() - 1) {
@@ -2241,7 +2287,8 @@ void seqSetAndFeasSets(Tree *tree) {
     if (tree->HowmanySubtrees(true) >= Cluster::getFixedCluster()->getNumberProcessors()) {
         throw "too many parallel roots after growing SeqSet: ";// + to_string(parallelRoots.size());
     }
-    growSeqSetWhileImprovesMakespan2(sequentialSet, tree);
+   //growSeqSetWhileImprovesMakespan2(sequentialSet, tree);
+   growSeqSetWhileImprovesMakespanAllowWorse(sequentialSet, tree);
 
 
 }

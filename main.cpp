@@ -43,18 +43,18 @@ double a2Steps(Tree *tree, OutputPrinter *printer) {
     tree->getRoot()->precomputeMinMems(tree);
     number_subtrees = tree->HowmanySubtrees(true);
     //makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-    cout << "1 step: " << "Makespan " << "still unknown" << " #trees: " << number_subtrees<<endl;
+    cout << "1 step: " << clock() - time << " ";
 
-    int numberUnfeasibleTasks = 0;
+    // int numberUnfeasibleTasks = 0;
 
-    for (Task *task: *tree->getTasks()) {
-        if (task->getFeasibleProcessors()->empty()) {
-            numberUnfeasibleTasks++;
-        }
-    }
+    /* for (Task *task: *tree->getTasks()) {
+         if (task->getFeasibleProcessors()->empty()) {
+             numberUnfeasibleTasks++;
+         }
+     }*/
 
 // cout << "#unfeasible tasks: " << numberUnfeasibleTasks << endl;
-    cout << clock() - time << endl;
+
     time = clock();
 
     try {
@@ -69,8 +69,7 @@ double a2Steps(Tree *tree, OutputPrinter *printer) {
 
         makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
         number_subtrees = tree->HowmanySubtrees(true);
-        cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
-        cout << "2&3 step: " << clock() - time << endl;
+        cout << "2&3 step: " << clock() - time <<endl; //<<" #trees: " << number_subtrees << endl;
     }
     catch (exception e) {
         printer->quietPrint("An error has occurred: ");//+ e.what());  // Not executed
@@ -210,7 +209,7 @@ int main(int argc, char **argv) {
     do {
         OpenFile >> treename;
         //printer->quietPrint(treename);
-       // cout << treename << endl;
+        // cout << treename << endl;
         string extraSlash = input->getWorkingDirectory().back() != '/' ? "/" : "";
         Tree *tree = read_tree((input->getWorkingDirectory() + extraSlash +
                                 treename).c_str());
@@ -258,7 +257,7 @@ int main(int argc, char **argv) {
                 cout << "no solution" << endl;
             }
             // cout<<"makespan "<<makespan<<endl;
-            int num_subtrees = tree->HowmanySubtrees(false);
+            int num_subtrees = tree->HowmanySubtrees(true);
 
             //  makespan = tree->getRoot()->getMakespanCost(true, true);
             // cout<<"makespan "<<makespan<<endl;
@@ -267,7 +266,7 @@ int main(int argc, char **argv) {
             // quietPrint(Cluster::getFixedCluster()->getAverageLoadAndNumberOfUsedProcessors());
             //quietPrint(Cluster::getFixedCluster()->getUsageString());
             //  quietPrint(Cluster::getFixedCluster()->printProcessors());
-            tree_column += to_string(makespan) + "\t"+ to_string(num_subtrees)+"\t";
+            tree_column += to_string(makespan) + "\t" + to_string(num_subtrees) + "\t";
             double processorUtilization = 0;
             for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {
                 if (proc->isBusy) {

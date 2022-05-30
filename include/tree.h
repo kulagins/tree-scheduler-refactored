@@ -766,11 +766,11 @@ public:
         return size;
     }
 
-    vector<Task *> getBrokenTasks() {
-        vector<Task *> broken;
+    vector<Task *> * getBrokenTasks() {
+        vector<Task *> * broken = new vector<Task *>();
 
         for (Task *task: *getTasks()) {
-            if (task->isBroken()) broken.push_back(task);
+            if (task->isBroken()) broken->push_back(task);
         }
         return broken;
     }
@@ -920,6 +920,38 @@ protected:
     vector<Task *> * seqSet;
     vector<Task *> * parallelRoots;
     double makespan;
+
+public:
+   SeqSet(Tree * tree, double makespan){
+       Task * root = tree->getRoot();
+       this->seqSet = root->tasksInSubtreeRootedHere();
+       this->parallelRoots = tree->getBrokenTasks();
+       this->makespan = makespan;
+    }
+
+    string print(){
+       string result = "";
+       result+="Size of SeqSet: "+ to_string(seqSet->size())+ ",\t Number of Subtrees: "+ to_string(parallelRoots->size())
+               +",\t Makespan: "+ to_string(makespan);
+       return result;
+   }
+    string printDetailed(){
+        string result = "";
+        result+="Size of SeqSet: "+ to_string(seqSet->size())+ ",\t Number of Subtrees: "+ to_string(parallelRoots->size())
+                +",\t Makespan: "+ to_string(makespan);
+        throw "not implemented!";
+        return result;
+    }
+
+   void implementSeqSet(Tree* tree){
+       for(Task * task: *tree->getTasks()){
+           task->restoreEdge();
+       }
+       for(Task * task: *parallelRoots){
+           task->breakEdge();
+       }
+
+   }
 };
 
 #endif

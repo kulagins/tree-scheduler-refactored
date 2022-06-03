@@ -2268,6 +2268,81 @@ string growSeqSetWhileImprovesMakespanAllowWorse(list<Task *> &seqSet, Tree *tre
     return optimalSeqSet.print();
 }
 
+string growSeqSetWhileImprovesMakespanWorseAlongChains(list<Task *> &seqSet, Tree *tree) {
+
+    int cntrAdditionToSS = 0;
+    int cntTries = 0;
+    Task *root = tree->getRoot();
+    list<Task *> frontier;
+
+
+    for (Task *task: *tree->getTasks()) {
+        if (task->isBroken()) {
+            frontier.push_back(task);
+        }
+    }
+    frontier.sort(cmp_Mem_nodecreasing);
+
+    double minMakespan = assignToBestProcessors(tree);
+    tree->cleanAssignedAndReassignFeasible();
+    SeqSet optimalSeqSet = SeqSet(tree, minMakespan);
+
+    int maxNumberChildren = 0;
+    while (!frontier.empty()) {
+        tree->cleanAssignedAndReassignFeasible();
+        // cout<<"try add new"<<endl;
+        Task *potentialAddition = frontier.front();
+        frontier.pop_front();
+
+        if (maxNumberChildren < potentialAddition->getChildren()->size())
+            maxNumberChildren = potentialAddition->getChildren()->size();
+
+        if (!potentialAddition->isRoot()) potentialAddition->restoreEdge();
+
+        while(potentialAddition->getChildren()->size()==1){
+            cout<<"go along linear chain"<<endl;
+            potentialAddition = potentialAddition->getChildren()->at(0);
+        }
+
+        for (Task *child: *potentialAddition->getChildren()) {
+            child->breakEdge();
+        }
+        cout.precision(20);
+
+        double potentialMakespan = assignToBestProcessors(tree);
+        cout << "potential: " << potentialMakespan << ", current min: " << " " << minMakespan << " equals? "
+             << (potentialMakespan == minMakespan ? "y" : "n");// << endl;
+        cntTries++;
+
+        if (potentialMakespan <= minMakespan) {
+            cout << " add!" << endl;
+            cntrAdditionToSS++;
+            minMakespan = potentialMakespan;
+            //no breaking back the edge, we accept this improvement
+            // instead add children of newly added task
+            for (Task *child: *potentialAddition->getChildren()) {
+                auto it = upper_bound(frontier.begin(), frontier.end(), child,
+                                      cmp_Mem_nodecreasing);
+                frontier.insert(it, child);
+            }
+        } else {
+            // cout << " no add!" << endl;
+            potentialAddition->breakEdge();
+            for (Task *child: *potentialAddition->getChildren()) {
+                child->restoreEdge();
+            }
+            assignToBestProcessors(tree);
+            // no adding children
+        }
+
+        // cout << "#trees " << tree->HowmanySubtrees(false) << " added " << cntrAdditionToSS << endl;
+    }
+    // cout << "tried " << cntTries << " added to SS " << cntrAdditionToSS << " max # children " << maxNumberChildren
+    //<< endl;
+    return "tried " + to_string(cntTries) + " added to SS " + to_string(cntrAdditionToSS);
+}
+
+
 void growSeqSetWithUnfeasible(Task *task, list<Task *> &seqSet, Task *treeRoot) {
     if (task->getFeasibleProcessors()->empty()) { // && (buildParallelRootsFromSequentialSet(treeRoot, seqSet)).size() <
         //Cluster::getFixedCluster()->getNumberProcessors() - 1) {
@@ -2292,6 +2367,7 @@ string seqSetAndFeasSets(Tree *tree) {
     }
     //result = growSeqSetWhileImprovesMakespan2(sequentialSet, tree);
     result = growSeqSetWhileImprovesMakespanAllowWorse(sequentialSet, tree);
+    result = growSeqSetWhileImprovesMakespanWorseAlongChains(sequentialSet, tree);
     return result;
 
 }

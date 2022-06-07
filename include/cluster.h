@@ -89,7 +89,7 @@ public:
 
     void setAssignedTask(Task *assignedTask);
 
-    void freeProcessorIfAvailable(Task *task);
+
 };
 
 class Cluster {
@@ -148,7 +148,7 @@ public:
         }
 
         if (!BW_inside) {
-            initHomogeneousBandwidth(memories->size(), 500);
+            initHomogeneousBandwidth(memories->size(), 1000);
         } else {
             initHeterogeneousBandwidth(groupSizes, BW_inside, BW_outside);
         }

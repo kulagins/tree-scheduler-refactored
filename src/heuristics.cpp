@@ -628,8 +628,12 @@ bool estimateMSOld(Tree *tree, Tree *Qtree, Task *&smallestNode, double memory_s
 
 void freeProcessorIfAvailable(Task *task) {
     if (task->getAssignedProcessor() != NULL) {
-        task->getAssignedProcessor()->setAssignedTask(NULL);
+        task->getAssignedProcessor()->setAssignedTask(nullptr);
+        task->getAssignedProcessor()->isBusy = false;
+        task->getAssignedProcessor()->setOccupiedMemorySize(0);
+        task->getAssignedProcessor()->setAssignedTaskId(-1);
         task->setAssignedProcessor(NULL);
+
     }
 }
 
@@ -2176,7 +2180,7 @@ string growSeqSetWhileImprovesMakespan2(list<Task *> &seqSet, Tree *tree) {
 
         double potentialMakespan = assignToBestProcessors(tree);
         cout << "potential: " << potentialMakespan << ", current min: " << " " << minMakespan << " equals? "
-            << (potentialMakespan == minMakespan ? "y" : "n");// << endl;
+             << (potentialMakespan == minMakespan ? "y" : "n");// << endl;
         cntTries++;
 
         if (potentialMakespan <= minMakespan) {
@@ -2191,7 +2195,7 @@ string growSeqSetWhileImprovesMakespan2(list<Task *> &seqSet, Tree *tree) {
                 frontier.insert(it, child);
             }
         } else {
-           // cout << " no add!" << endl;
+            // cout << " no add!" << endl;
             potentialAddition->breakEdge();
             for (Task *child: *potentialAddition->getChildren()) {
                 child->restoreEdge();
@@ -2241,7 +2245,7 @@ string growSeqSetWhileImprovesMakespanAllowWorse(list<Task *> &seqSet, Tree *tre
         cout.precision(20);
 
         double potentialMakespan = assignToBestProcessors(tree);
-         // cout << "potential: " << potentialMakespan << ", current min: " << " " << minMakespan << " equals? "
+        // cout << "potential: " << potentialMakespan << ", current min: " << " " << minMakespan << " equals? "
         //     << (potentialMakespan == minMakespan ? "y" : "n") << endl;
         cntTries++;
         for (Task *child: *potentialAddition->getChildren()) {
@@ -2287,35 +2291,37 @@ string growSeqSetWhileImprovesMakespanWorseAlongChains(list<Task *> &seqSet, Tre
     tree->cleanAssignedAndReassignFeasible();
     SeqSet optimalSeqSet = SeqSet(tree, minMakespan);
 
-    int maxNumberChildren = 0;
+    int maxLengthOfChain = 0;
     while (!frontier.empty()) {
+       // cout << "num free proc 4 " << Cluster::getFixedCluster()->getNumberFreeProcessors() << endl;
         tree->cleanAssignedAndReassignFeasible();
+       // cout << "num free proc 5 " << Cluster::getFixedCluster()->getNumberFreeProcessors() << endl;
         // cout<<"try add new"<<endl;
         Task *potentialAddition = frontier.front();
         frontier.pop_front();
+        int lengthOfChain = 0;
 
-        if (maxNumberChildren < potentialAddition->getChildren()->size())
-            maxNumberChildren = potentialAddition->getChildren()->size();
-
-        if (!potentialAddition->isRoot()) potentialAddition->restoreEdge();
-
-        while(potentialAddition->getChildren()->size()==1){
-            cout<<"go along linear chain"<<endl;
+        while (potentialAddition->getChildren()->size() == 1) {
+            //  cout<<"go along linear chain"<<endl;
+            lengthOfChain++;
+            potentialAddition->restoreEdge();
             potentialAddition = potentialAddition->getChildren()->at(0);
         }
+        if (lengthOfChain > maxLengthOfChain) maxLengthOfChain = lengthOfChain;
+        if (!potentialAddition->isRoot()) potentialAddition->restoreEdge();
 
         for (Task *child: *potentialAddition->getChildren()) {
             child->breakEdge();
         }
-        cout.precision(20);
 
         double potentialMakespan = assignToBestProcessors(tree);
-        cout << "potential: " << potentialMakespan << ", current min: " << " " << minMakespan << " equals? "
-             << (potentialMakespan == minMakespan ? "y" : "n");// << endl;
+          cout << "potential: " << potentialMakespan << ", current min: " << " " << minMakespan << " equals? "
+               << (potentialMakespan == minMakespan ? "y" : "n");// << endl;
+      //  cout << "num free proc 1 " << Cluster::getFixedCluster()->getNumberFreeProcessors() << endl;
         cntTries++;
 
         if (potentialMakespan <= minMakespan) {
-            cout << " add!" << endl;
+            //cout << " add!" << endl;
             cntrAdditionToSS++;
             minMakespan = potentialMakespan;
             //no breaking back the edge, we accept this improvement
@@ -2326,18 +2332,21 @@ string growSeqSetWhileImprovesMakespanWorseAlongChains(list<Task *> &seqSet, Tre
                 frontier.insert(it, child);
             }
         } else {
+            tree->cleanAssignedAndReassignFeasible();
             // cout << " no add!" << endl;
             potentialAddition->breakEdge();
             for (Task *child: *potentialAddition->getChildren()) {
                 child->restoreEdge();
             }
+          //  cout << "num free proc 2 " << Cluster::getFixedCluster()->getNumberFreeProcessors() << endl;
             assignToBestProcessors(tree);
+         //   cout << "num free proc 3 " << Cluster::getFixedCluster()->getNumberFreeProcessors() << endl;
             // no adding children
         }
 
         // cout << "#trees " << tree->HowmanySubtrees(false) << " added " << cntrAdditionToSS << endl;
     }
-    // cout << "tried " << cntTries << " added to SS " << cntrAdditionToSS << " max # children " << maxNumberChildren
+    // cout << "tried " << cntTries << " added to SS " << cntrAdditionToSS << " max # children " << maxLengthOfChain
     //<< endl;
     return "tried " + to_string(cntTries) + " added to SS " + to_string(cntrAdditionToSS);
 }
@@ -2354,6 +2363,8 @@ void growSeqSetWithUnfeasible(Task *task, list<Task *> &seqSet, Task *treeRoot) 
 }
 
 string seqSetAndFeasSets(Tree *tree) {
+    cout << "CLUST BW " << Cluster::getFixedCluster()->getHomogeneousBandwidth() << endl;
+    tree->cleanAssignedAndReassignFeasible();
     string result = "";
     list<Task *> sequentialSet;
     sequentialSet.clear();
@@ -2366,7 +2377,7 @@ string seqSetAndFeasSets(Tree *tree) {
         throw "too many parallel roots after growing SeqSet: ";// + to_string(parallelRoots.size());
     }
     //result = growSeqSetWhileImprovesMakespan2(sequentialSet, tree);
-    result = growSeqSetWhileImprovesMakespanAllowWorse(sequentialSet, tree);
+    // result = growSeqSetWhileImprovesMakespanAllowWorse(sequentialSet, tree);
     result = growSeqSetWhileImprovesMakespanWorseAlongChains(sequentialSet, tree);
     return result;
 

@@ -54,7 +54,7 @@ typedef enum {
 } io_method_t;
 
 double u_wseconds(void);
-
+void freeProcessorIfAvailable(Task *task);
 class Task {
 protected:
     bool cost_computed;
@@ -296,14 +296,15 @@ public :
     vector<Processor *> *getFeasibleProcessors() {
         return this->feasibleProcessors;
     }
+
     int getLabel() const {
         return label;
     }
 
-  /*  vector<Processor *> *getFeasibleProcessors(){
-        return &this->feasibleProcessors;
-    }
-*/
+    /*  vector<Processor *> *getFeasibleProcessors(){
+          return &this->feasibleProcessors;
+      }
+  */
     //Todo: sort?
     void addFeasibleProcessor(Processor *proc) {
         auto position_it = find(feasibleProcessors->begin(), feasibleProcessors->end(), proc);
@@ -515,9 +516,9 @@ public :
 
     void precomputeMinMems(Tree *tree);
 
-    void updateTMax(){
-        if(this->feasibleProcessors->size() == 0){
-             //cout<<"Task" << to_string(this->getId()) << " has 0 feasible processors during iterations. "<<Cluster::getFixedCluster()->getNumberFreeProcessors() <<" are still free.";
+    void updateTMax() {
+        if (this->feasibleProcessors->size() == 0) {
+            //cout<<"Task" << to_string(this->getId()) << " has 0 feasible processors during iterations. "<<Cluster::getFixedCluster()->getNumberFreeProcessors() <<" are still free.";
             throw "No Schedule Possible";
         }
         if (this->feasibleProcessors->size() == 1) this->tMax = DBL_MAX;
@@ -766,8 +767,8 @@ public:
         return size;
     }
 
-    vector<Task *> * getBrokenTasks() {
-        vector<Task *> * broken = new vector<Task *>();
+    vector<Task *> *getBrokenTasks() {
+        vector<Task *> *broken = new vector<Task *>();
 
         for (Task *task: *getTasks()) {
             if (task->isBroken()) broken->push_back(task);
@@ -861,9 +862,9 @@ public:
     void clearComputedValues();
 
     void cleanAssignedAndReassignFeasible() {
-        for (Task *task: * tasks) {
+        for (Task *task: *tasks) {
             task->assignFeasibleProcessorsToSubtree(task->getMinMemUnderlying());
-            task->setAssignedProcessor(NULL);
+            freeProcessorIfAvailable(task);
         }
     }
 
@@ -915,53 +916,56 @@ double getWeightSurplusFromSmallestNodes(list<Task *> &parallelRoots, int limit)
 int *
 copyScheduleBackwards(schedule_traversal *schedule_f);
 
-class SeqSet{
+class SeqSet {
 protected:
-    vector<Task *> * seqSet;
-    vector<Task *> * parallelRoots;
+    vector<Task *> *seqSet;
+    vector<Task *> *parallelRoots;
     double makespan;
     int numberSteps;
 
 public:
-   SeqSet(Tree * tree, double makespan){
-       Task * root = tree->getRoot();
-       this->seqSet = root->tasksInSubtreeRootedHere();
-       this->parallelRoots = tree->getBrokenTasks();
-       this->makespan = makespan;
-       numberSteps =0;
-    }
-
-    SeqSet(Tree * tree, double makespan, int steps){
-        Task * root = tree->getRoot();
+    SeqSet(Tree *tree, double makespan) {
+        Task *root = tree->getRoot();
         this->seqSet = root->tasksInSubtreeRootedHere();
         this->parallelRoots = tree->getBrokenTasks();
         this->makespan = makespan;
-        numberSteps =steps;
+        numberSteps = 0;
     }
 
-    string print(){
-       string result = "";
-       result+="Size of SeqSet: "+ to_string(seqSet->size())+ ",\t Number of Subtrees: "+ to_string(parallelRoots->size())
-               +",\t Makespan: "+ to_string(makespan)+",\t Steps: "+ to_string(numberSteps);
-       return result;
-   }
-    string printDetailed(){
+    SeqSet(Tree *tree, double makespan, int steps) {
+        Task *root = tree->getRoot();
+        this->seqSet = root->tasksInSubtreeRootedHere();
+        this->parallelRoots = tree->getBrokenTasks();
+        this->makespan = makespan;
+        numberSteps = steps;
+    }
+
+    string print() {
         string result = "";
-        result+="Size of SeqSet: "+ to_string(seqSet->size())+ ",\t Number of Subtrees: "+ to_string(parallelRoots->size())
-                +",\t Makespan: "+ to_string(makespan);
+        result += "Size of SeqSet: " + to_string(seqSet->size()) + ",\t Number of Subtrees: " +
+                  to_string(parallelRoots->size())
+                  + ",\t Makespan: " + to_string(makespan) + ",\t Steps: " + to_string(numberSteps);
+        return result;
+    }
+
+    string printDetailed() {
+        string result = "";
+        result += "Size of SeqSet: " + to_string(seqSet->size()) + ",\t Number of Subtrees: " +
+                  to_string(parallelRoots->size())
+                  + ",\t Makespan: " + to_string(makespan);
         throw "not implemented!";
         return result;
     }
 
-   void implementSeqSet(Tree* tree){
-       for(Task * task: *tree->getTasks()){
-           task->restoreEdge();
-       }
-       for(Task * task: *parallelRoots){
-           task->breakEdge();
-       }
+    void implementSeqSet(Tree *tree) {
+        for (Task *task: *tree->getTasks()) {
+            task->restoreEdge();
+        }
+        for (Task *task: *parallelRoots) {
+            task->breakEdge();
+        }
 
-   }
+    }
 };
 
 #endif

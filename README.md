@@ -44,18 +44,34 @@ Depending on the `clustering-mode`, the `memory` and `speed` values are interpre
 The `cluster-file-path` can be called in two diffrent variants: either this is the path to a single JSON-File which contains the description for a cluster, or it is the path to a txt-File which then contains the paths to multiple Clusters, seperated by newlines. The base-path of each of this cluster is the directory where the txt-File ist stored.
 
 ### How to run
+
+#### ./main trees-directory trees-list clusters-list clustering-mode run-a1 verbosity choose-subtree choose-task choose-subtree-assign
+
 The executable requires the following input parameters:
 
-- `clustering-mode` : How many processors exist, how much memory does a processor have. For more information, please refer to the Cluster-Description, explained above.
+- `clustering-mode` : Static clustering (memories are fixed) vs tree-dependent (memory given to each tree is individual)
   - `clustering-mode = 0`: the clustering-mode is dependent on the tree instance.
   - `clustering-mode = 1`: the clustering-mode is static.
-- `build-small-clusters`: has yet to be implemented
+- `run-a1`: 
+  - `run-a1 = 0`: do not run A1 code (run A2)
+  - `run-a1 = 1`: run A1 code
 - `verbosity`: Should all of the debugging output be printed when the program runs
+- `choose-subtree`: how we choose multi-level subtree to cut
+  - `choose-subtree = LMW`: Largest M<sub>i</sub> * W<sub>i</sub> of the subtree
+  - `choose-subtree = CP`: First (unprocessed) subtree on the critical path
+- `choose-task`: how we choose the task *within the chosen subtree* to cut his children
+  - `choose-task = EX`: Exhaustive, try cutting all tasks and shoose the one with best makespan
+  - `choose-task = FFT`: First from top that gives an improvement
+  - `choose-task = M`: Task on the middle level that gives the best makespan
+- `choose-subtree-assign`: how we choose the subtree to assign best processors
+  - `choose-subtree-assign = LW`: Largest W<sub>i</sub> of the subtree
+  - `choose-subtree-assign = MD`: Maximum number of descendants
+  - `choose-subtree-assign = CP`: First (unprocessed) subtree on the critical path
 
 
 The basic call is then 
 ```Shell
-./main trees-directory trees-list cluster-file-path clustering-mode build-small-clusters verbosity
+./main trees-directory trees-list clusters-list clustering-mode run-a1 verbosity choose-subtree choose-task choose-subtree-assign
 ```
 
 There are a range of pre-written scripts to run the experiments on given data. You can find them in the `runscripts`-directory. They can be called from the root directory using

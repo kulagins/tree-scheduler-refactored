@@ -22,13 +22,49 @@
 #include "../include/OutputPrinter.h"
 #include "../include/tree.h"
 #include "../include/lib-io-tree-minmem.h"
+#include "include/inputParser.h"
+#include "include/tree.h"
+#include "include/lib-io-tree-minmem.h"
+#include "include/OutputPrinter.h"
+
+
+/*
+ * ### How to run
+
+#### ./main trees-directory trees-list clusters-list clustering-mode run-a1 verbosity choose-subtree choose-task choose-subtree-assign
+
+The executable requires the following input parameters:
+
+- `clustering-mode` : Static clustering (memories are fixed) vs tree-dependent (memory given to each tree is individual)
+  - `clustering-mode = 0`: the clustering-mode is dependent on the tree instance.
+  - `clustering-mode = 1`: the clustering-mode is static.
+- `run-a1`:
+  - `run-a1 = 0`: do not run A1 code (run A2)
+  - `run-a1 = 1`: run A1 code
+- `verbosity`: Should all of the debugging output be printed when the program runs
+- `choose-subtree`: how we choose multi-level subtree to cut
+  - `choose-subtree = LMW`: Largest M<sub>i</sub> * W<sub>i</sub> of the subtree
+  - `choose-subtree = CP`: First (unprocessed) subtree on the critical path
+- `choose-task`: how we choose the task *within the chosen subtree* to cut his children
+  - `choose-task = EX`: Exhaustive, try cutting all tasks and shoose the one with best makespan
+  - `choose-task = FFT`: First from top that gives an improvement
+  - `choose-task = M`: Task on the middle level that gives the best makespan
+- `choose-subtree-assign`: how we choose the subtree to assign best processors
+  - `choose-subtree-assign = LW`: Largest W<sub>i</sub> of the subtree
+  - `choose-subtree-assign = MD`: Maximum number of descendants
+  - `choose-subtree-assign = CP`: First (unprocessed) subtree on the critical path
+ *
+ */
 
 void
 buildTreeDependentCluster(InputParser *input, Tree *tree);
 
+void buildStaticCluster(InputParser *input, ifstream &OpenFilePreliminary, string &treename,
+                        double maxoutd, double minMem);
+
 OutputPrinter printer;
 
-string a2Steps(Tree *tree, OutputPrinter *printer, double & makespan) {
+string a2Steps(Tree *tree, OutputPrinter *printer, double &makespan, InputParser *pParser) {
     unsigned int number_subtrees = 0;
 
     clock_t time;
@@ -43,33 +79,16 @@ string a2Steps(Tree *tree, OutputPrinter *printer, double & makespan) {
     tree->getRoot()->precomputeMinMems(tree);
     number_subtrees = tree->HowmanySubtrees(true);
     //makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-    string result = "1 step: " + to_string(clock() - time)+ " ";
+    string result = "1 step: " + to_string(clock() - time) + " ";
 
-    // int numberUnfeasibleTasks = 0;
-
-    /* for (Task *task: *tree->getTasks()) {
-         if (task->getFeasibleProcessors()->empty()) {
-             numberUnfeasibleTasks++;
-         }
-     }*/
-
-// cout << "#unfeasible tasks: " << numberUnfeasibleTasks << endl;
 
     time = clock();
 
     try {
-         result += seqSetAndFeasSets(tree);
-
-//        number_subtrees = tree->HowmanySubtrees(true);
-        //      makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-        //    cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
-
-        //  cout<<"2 step: "<<clock()-time<<endl;
-        //time = clock();
-
+        result += seqSetAndFeasSets(tree);
         makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
         number_subtrees = tree->HowmanySubtrees(true);
-        result+=  " 2&3 step: " + to_string( clock() - time)+ " " ; //<<" #trees: " << number_subtrees << endl;
+        result += " 2&3 step: " + to_string(clock() - time) + " "; //<<" #trees: " << number_subtrees << endl;
     }
     catch (exception e) {
         printer->quietPrint("An error has occurred: ");//+ e.what());  // Not executed
@@ -88,7 +107,7 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
     unsigned int number_subtrees = 0;
     unsigned long sequentialLen;
     unsigned int num_processors = Cluster::getFixedCluster()->getNumberProcessors();
-    list < Task * > parallelSubtrees;
+    list<Task *> parallelSubtrees;
     double makespan;
     // for counting how many subtrees produced, twolevel is set as false
     makespan = tree->ASAP();
@@ -167,33 +186,7 @@ int main(int argc, char **argv) {
 
 
     if (input->getClusteringMode() == staticClustering) {
-        double maxMinMem = 0, maxMaxoutD = 0, sum_edges = 0, sum_weights = 0, maxEdgesToMakespanWeights = 0;
-        do {
-
-            OpenFilePreliminary >> treename;
-            Tree *tree = read_tree((input->getWorkingDirectory() + treename).c_str());
-
-            maxoutd = MaxOutDegree(tree, true);
-            if (maxoutd > maxMaxoutD) maxMaxoutD = maxoutd;
-
-            schedule_traversal *schedule_f = new schedule_traversal();
-            MinMem(tree, maxoutd, minMem, *schedule_f, true);
-            delete schedule_f;
-
-            if (minMem > maxMinMem) {
-                maxMinMem = minMem;
-                for (Task *task: *tree->getTasks()) {
-                    sum_edges += task->getEdgeWeight();
-                    sum_weights += task->getMakespanWeight();
-                }
-                maxEdgesToMakespanWeights = sum_edges / sum_weights;
-            }
-            delete tree;
-
-        } while (OpenFilePreliminary.good());
-        OpenFilePreliminary.close();
-
-        input->setClusterFromFile(1);
+        buildStaticCluster(input, OpenFilePreliminary, treename, maxoutd, minMem);
     }
 
     string header_column = "treename\t";
@@ -243,8 +236,8 @@ int main(int argc, char **argv) {
             }
 
             time = clock();
-          //  makespan = input->getRunA1() ? threeSteps(tree, printer) : a2Steps(tree, printer);
-             string result = a2Steps(tree, printer, makespan);
+            //  makespan = input->getRunA1() ? threeSteps(tree, printer) : a2Steps(tree, printer);
+            string result = a2Steps(tree, printer, makespan, input);
             //maxoutd = MaxOutDegree(tree, true);
 
             //schedule_traversal *schedule_f = new schedule_traversal();
@@ -258,16 +251,8 @@ int main(int argc, char **argv) {
                 cout << "no solution" << endl;
             }
             // cout<<"makespan "<<makespan<<endl;
-            int num_subtrees = tree->HowmanySubtrees(true);
 
-            //  makespan = tree->getRoot()->getMakespanCost(true, true);
-            // cout<<"makespan "<<makespan<<endl;
-            //quietPrint("&& " + treename + " " + to_string(makespan) + " " + to_string(time));
-            // quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
-            // quietPrint(Cluster::getFixedCluster()->getAverageLoadAndNumberOfUsedProcessors());
-            //quietPrint(Cluster::getFixedCluster()->getUsageString());
-            //  quietPrint(Cluster::getFixedCluster()->printProcessors());
-            tree_column += to_string(makespan) + "\t" + to_string(num_subtrees) + "\t"+ result;
+            tree_column += to_string(makespan) + "\t" + to_string(tree->HowmanySubtrees(true)) + "\t" + result;
             double processorUtilization = 0;
             for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {
                 if (proc->isBusy) {
@@ -290,6 +275,37 @@ int main(int argc, char **argv) {
     cout << treesToRerun << endl;
     exit(EXIT_SUCCESS);
 
+}
+
+void buildStaticCluster(InputParser *input, ifstream &OpenFilePreliminary, string &treename,
+                        double maxoutd, double minMem) {
+    double maxMinMem = 0, maxMaxoutD = 0, sum_edges = 0, sum_weights = 0, maxEdgesToMakespanWeights = 0;
+    do {
+
+        OpenFilePreliminary >> treename;
+        Tree *tree = read_tree((input->getWorkingDirectory() + treename).c_str());
+
+        maxoutd = MaxOutDegree(tree, true);
+        if (maxoutd > maxMaxoutD) maxMaxoutD = maxoutd;
+
+        schedule_traversal *schedule_f = new schedule_traversal();
+        MinMem(tree, maxoutd, minMem, *schedule_f, true);
+        delete schedule_f;
+
+        if (minMem > maxMinMem) {
+            maxMinMem = minMem;
+            for (Task *task: *tree->getTasks()) {
+                sum_edges += task->getEdgeWeight();
+                sum_weights += task->getMakespanWeight();
+            }
+            maxEdgesToMakespanWeights = sum_edges / sum_weights;
+        }
+        delete tree;
+
+    } while (OpenFilePreliminary.good());
+    OpenFilePreliminary.close();
+
+    input->setClusterFromFile(1);
 }
 
 void

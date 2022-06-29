@@ -32,4 +32,10 @@ string seqSetAndFeasSets(Tree * tree);
 double assignToBestProcessors(Tree *tree);
 void removeProcessorFromAllFeasSets(Processor * processor, Tree * tree);
 
+string partitionHeuristics(Tree * tree, string chooseSubtree, string chooseNode);
+
+void CutTaskWithMaxImprovement(Tree *tree);
+
+vector<Task*> criticalPath(Tree * tree);
+
 #endif /* heuristics_h */

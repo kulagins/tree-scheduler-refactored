@@ -24,6 +24,9 @@ protected:
     ClusteringModes clusteringMode;
     vector<string> *clusterList;
     vector<string>::iterator clusterIterator;
+    string chooseSubtree;
+    string chooseNode;
+    string assignChooseSubtree;
 
 protected:
     bool runA1;
@@ -61,6 +64,16 @@ public:
 
         this->runA1 = (bool) atoi((argv[5]));
         this->verbose = (bool) atoi((argv[6]));
+        if (argc > 6) {
+            this->chooseSubtree = argv[7];
+            this->chooseNode = argv[8];
+            this->assignChooseSubtree = argv[9];
+        } else {
+            this->chooseSubtree = "a";
+            this->chooseNode = "a";
+            this->assignChooseSubtree = "a";
+        }
+
 
     }
 
@@ -92,7 +105,23 @@ public:
         return runA1;
     }
 
-/*
+
+    const string &getChooseSubtree() const {
+        return chooseSubtree;
+    }
+
+
+    const string &getPathToTree() const {
+        return pathToTree;
+    }
+
+
+    const string &getChooseNode() const {
+        return chooseNode;
+    }
+
+
+    /*
     void setClusterFromFile(double normedMemory){
         cout <<this->getPathToCluster()<<endl;
         ifstream inputFile(this->getPathToCluster());
@@ -126,7 +155,7 @@ public:
     void setClusterFromFile(double normedMemory, double shrinkingFactor = 1) {
         ifstream inputFile(this->getPathToCluster());
         json clusterDescription;
-        if(!inputFile.is_open()){
+        if (!inputFile.is_open()) {
             throw "Could not open cluster file!";
         }
         inputFile >> clusterDescription;

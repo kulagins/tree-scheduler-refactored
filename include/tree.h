@@ -54,7 +54,9 @@ typedef enum {
 } io_method_t;
 
 double u_wseconds(void);
+
 void freeProcessorIfAvailable(Task *task);
+
 class Task {
 protected:
     bool cost_computed;
@@ -507,6 +509,7 @@ public :
         this->~Task();
     }
 
+
     double Sequence();
 
     double SplitSubtrees(bool twolevel, list<Task *> &parallelRoots, unsigned long &sequentialLength, int limit);
@@ -572,6 +575,30 @@ public :
         }
         return result;
 
+    }
+
+
+    vector<Task *> breakNBiggestChildren(int n) {
+        vector<Task *> newlyBroken;
+
+        struct {
+            bool operator()(Task *a, Task *b) const {
+                return a->getMakespanWeight() < b->getMakespanWeight();
+            }
+        } weightLess;
+        std::sort(this->getChildren()->begin(), this->getChildren()->end(), weightLess);
+        int border = n < this->getChildren()->size() ? n : this->getChildren()->size();
+        for (int i = 0; i < border; i++) {
+            (this->getChildren()->at(i))->breakEdge();
+            newlyBroken.push_back(this->getChildren()->at(i));
+        }
+        return newlyBroken;
+    }
+
+    void restoreBrokenChildren() {
+        for (Task *child: *this->getChildren()) {
+            child->restoreEdge();
+        }
     }
 };
 

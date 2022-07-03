@@ -64,6 +64,40 @@ void buildStaticCluster(InputParser *input, ifstream &OpenFilePreliminary, strin
 
 OutputPrinter printer;
 
+string a2MultiLevel(Tree *tree, OutputPrinter *printer, double &makespan, InputParser *pParser) {
+    unsigned int number_subtrees = 0;
+
+    clock_t time;
+    time = clock();
+
+    tree->getRoot()->precomputeMinMems(tree);
+    string result = "0 step: " + to_string(clock() - time) + " ";
+
+
+    time = clock();
+
+    try {
+        makespan = partitionHeuristics(tree, pParser->getChooseSubtree(), pParser->getChooseNode(),
+                                      pParser->getAssignChooseSubtree());
+       double makespan1 = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+        assert(makespan==makespan1);
+
+        number_subtrees = tree->HowmanySubtrees(true);
+        result += " 2&3 step: " + to_string(clock() - time) + " "+" #trees: " + to_string(number_subtrees) + "\n";
+    }
+    catch (exception e) {
+        printer->quietPrint("An error has occurred: ");
+        printer->quietPrint(e.what());
+    }
+    catch (const char *str) {
+        printer->quietPrint(str);
+        printer->quietPrint("No solution"); //<< str << endl;
+        makespan = -1;
+    }
+    return result;
+
+}
+
 string a2Steps(Tree *tree, OutputPrinter *printer, double &makespan, InputParser *pParser) {
     unsigned int number_subtrees = 0;
 
@@ -237,7 +271,7 @@ int main(int argc, char **argv) {
 
             time = clock();
             //  makespan = input->getRunA1() ? threeSteps(tree, printer) : a2Steps(tree, printer);
-            string result = a2Steps(tree, printer, makespan, input);
+            string result = a2MultiLevel(tree, printer, makespan, input);
             //maxoutd = MaxOutDegree(tree, true);
 
             //schedule_traversal *schedule_f = new schedule_traversal();

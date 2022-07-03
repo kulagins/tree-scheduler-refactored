@@ -120,6 +120,9 @@ public:
         return chooseNode;
     }
 
+    const string &getAssignChooseSubtree() const {
+        return chooseSubtree;
+    }
 
     /*
     void setClusterFromFile(double normedMemory){

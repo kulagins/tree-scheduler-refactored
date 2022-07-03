@@ -588,6 +588,9 @@ public :
         } weightLess;
         std::sort(this->getChildren()->begin(), this->getChildren()->end(), weightLess);
         int border = n < this->getChildren()->size() ? n : this->getChildren()->size();
+        //if (n < this->getChildren()->size()) {
+        //    cout << "n smaller" << n << " " << this->getChildren()->size() << endl;
+        //}
         for (int i = 0; i < border; i++) {
             (this->getChildren()->at(i))->breakEdge();
             newlyBroken.push_back(this->getChildren()->at(i));
@@ -599,6 +602,13 @@ public :
         for (Task *child: *this->getChildren()) {
             child->restoreEdge();
         }
+    }
+
+    bool isAnyChildBroken() {
+        for (Task *child: *this->getChildren()) {
+            if (child->isBroken()) return true;
+        }
+        return false;
     }
 };
 

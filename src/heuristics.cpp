@@ -2470,6 +2470,8 @@ void assignCorrespondingTreeTasks(Tree *tree, Tree *qTree) {
 }
 
 double assignToBestProcessors(Tree *tree, string chooseSubtreeAssign) {
+    clock_t time;
+    time = clock();
     Tree *qTree = tree->BuildQtree();
     Tree *qTree1 = tree->BuildQtree();
     //qTree->getRoot()->precomputeMinMems(qTree);
@@ -2499,6 +2501,8 @@ double assignToBestProcessors(Tree *tree, string chooseSubtreeAssign) {
     assignCorrespondingTreeTasks(tree, qTree);
     double resultingMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
     delete qTree;
+
+    timeForAssignment += (clock() - time);
     return resultingMakespan;
 }
 
@@ -2588,8 +2592,12 @@ void chooseAssignSubtree(string parser, vector<Task *> &candidates) {
 }
 
 
-double
+string
 partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode, string assignSubtreeChoiceCode) {
+    timeForAssignment = 0;
+    string result = "";
+    clock_t time;
+    time = clock();
     tree->cleanAssignedAndReassignFeasible();
 
     CutTaskWithMaxImprovement(tree, assignSubtreeChoiceCode);
@@ -2598,6 +2606,8 @@ partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
     assert(Cluster::getFixedCluster()->getNumberFreeProcessors() ==
            Cluster::getFixedCluster()->getNumberProcessors());
 
+    result += to_string(clock() - time) + " ";
+    time = clock();
 
     vector<Task *> subtreeCandidates = *tree->getBrokenTasks();
 
@@ -2625,11 +2635,11 @@ partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
         } else {
             subtreeCandidates.erase(find(subtreeCandidates.begin(), subtreeCandidates.end(), subtree));
         }
-        cout<< tree->HowmanySubtrees(true)<<" ";
-        tree->HowmanySubtrees(false);
+        // cout << tree->HowmanySubtrees(true) << " ";
+        // tree->HowmanySubtrees(false);
     }
-
-    return assignToBestProcessors(tree, assignSubtreeChoiceCode);
+    result += to_string(clock() - time) + " ";
+    return result + to_string(timeForAssignment) + to_string(assignToBestProcessors(tree, assignSubtreeChoiceCode));
 }
 
 

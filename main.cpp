@@ -71,19 +71,21 @@ string a2MultiLevel(Tree *tree, OutputPrinter *printer, double &makespan, InputP
     time = clock();
 
     tree->getRoot()->precomputeMinMems(tree);
-    string result = "0 step: " + to_string(clock() - time) + " ";
+    string result = /*"0 step: " +*/ to_string(clock() - time) + " ";
 
 
     time = clock();
 
     try {
-        makespan = partitionHeuristics(tree, pParser->getChooseSubtree(), pParser->getChooseNode(),
+        result += partitionHeuristics(tree, pParser->getChooseSubtree(), pParser->getChooseNode(),
                                       pParser->getAssignChooseSubtree());
-       double makespan1 = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-        assert(makespan==makespan1);
+        // double makespan1 = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+        // assert(makespan==makespan1);
 
         number_subtrees = tree->HowmanySubtrees(true);
-        result += " 2&3 step: " + to_string(clock() - time) + " "+" #trees: " + to_string(number_subtrees) + "\n";
+        result +=/* " 2&3 step: " + */
+               // to_string(clock() - time) + " "/*+" #trees: "*/+
+            " "+   to_string(number_subtrees) + "\n";
     }
     catch (exception e) {
         printer->quietPrint("An error has occurred: ");
@@ -285,7 +287,7 @@ int main(int argc, char **argv) {
                 cout << "no solution" << endl;
             }
             // cout<<"makespan "<<makespan<<endl;
-
+            makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
             tree_column += to_string(makespan) + "\t" + to_string(tree->HowmanySubtrees(true)) + "\t" + result;
             double processorUtilization = 0;
             for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {

@@ -16,6 +16,7 @@
 template<class T, class U>
 void GetTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest);
 
+static double timeForAssignment = 0;
 
 int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcessor);
 
@@ -34,15 +35,15 @@ double assignToBestProcessors(Tree *tree, string assignSubtreeChoiceCode = "N");
 
 void removeProcessorFromAllFeasSets(Processor *processor, Tree *tree);
 
-double partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode, string assignSubtreeChoiceCode);
+string partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode, string assignSubtreeChoiceCode);
 
 Task *chooseSubtree(string subtreeChoiceCode, vector<Task *> subtrees);
 
-Task * chooseNode(Task *root, Tree *tree, string nodeChoiceCode, string assignSubtreeChoiceCode);
+Task *chooseNode(Task *root, Tree *tree, string nodeChoiceCode, string assignSubtreeChoiceCode);
 
 void chooseAssignSubtree(string assignSubtreeChoiceCode, vector<Task *> &candidates);
 
-Task *findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, double initMS=-1);
+Task *findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, double initMS = -1);
 
 void CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode);
 

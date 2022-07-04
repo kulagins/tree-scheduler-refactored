@@ -56,7 +56,7 @@ main: main.cpp heuristicsnoclean cluster.o
 	$(CPP) $(INCLUDES) $(DEFS) $(CFLAGS) $< $(LIBS) $(LDADD) -o ${BIN_PATH}/$@
 
 mainfast: main.cpp heuristicsnoclean cluster.o
-	$(CPP) $(INCLUDES) $(DEFS) $(CFLAGS_FAST) $< $(LIBS) $(LDADD) -o ${BIN_PATH}/$@
+	$(CPP) $(INCLUDES) $(DEFS) $(CFLAGS_FAST) $< $(LIBS) $(LDADD) -o ${BIN_PATH}/main
 
 test: test/test.cpp heuristicsnoclean cluster.o
 	$(CPP) $(INCLUDES) $(DEFS) $(CFLAGS) $< $(LIBS) $(LDADD) -o ${BIN_PATH}/$@

@@ -37,16 +37,17 @@ void removeProcessorFromAllFeasSets(Processor *processor, Tree *tree);
 
 string partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode, string assignSubtreeChoiceCode);
 
-Task *chooseSubtree(string subtreeChoiceCode, vector<Task *> subtrees);
+Task *chooseSubtree(string subtreeChoiceCode, Tree * tree, vector<Task*> candidates);
 
 Task *chooseNode(Task *root, Tree *tree, string nodeChoiceCode, string assignSubtreeChoiceCode);
 
-void chooseAssignSubtree(string assignSubtreeChoiceCode, vector<Task *> &candidates);
+void chooseAssignSubtree(string assignSubtreeChoiceCode, Tree * tree);
 
 Task *findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, double initMS = -1);
 
 void CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode);
 
 vector<Task *> criticalPath(Tree *tree);
+vector<Task *> buildCriticalPath(Task* root);
 
 #endif /* heuristics_h */

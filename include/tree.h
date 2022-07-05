@@ -792,6 +792,10 @@ public:
         return tasks;
     }
 
+    void setTasks(vector<Task *> *c) {
+        this->tasks = c;
+    }
+
     static void setOriginalTree(Tree *origTree) {
         Tree::originalTree = origTree;
     }

@@ -288,7 +288,7 @@ int main(int argc, char **argv) {
             }
             // cout<<"makespan "<<makespan<<endl;
             makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-            tree_column += to_string(makespan) + "\t" + to_string(tree->HowmanySubtrees(true)) + "\t" + result;
+            tree_column += " "+to_string(makespan) + "\t" + to_string(tree->HowmanySubtrees(true)) + "\t" + result;
             double processorUtilization = 0;
             for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {
                 if (proc->isBusy) {

@@ -16,6 +16,7 @@
 #include "../include/cluster.h"
 //INFO: paths are necessary for Clion. In case of problems please ping Svetlana.
 #include "../include/lib-io-tree-minmem.h"
+#include <bits/stdc++.h>
 /*#include "../include/inputParser.h" */
 
 //#include <omp.h>
@@ -1180,6 +1181,33 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
     }
 
     return MSdecreased;
+}
+
+vector<Task *> buildCriticalPath(Task *root) {
+    vector<Task *> CriticalPath;
+    Task *largestNode;
+    vector<Task *> *Children;
+    double temp;
+
+    CriticalPath.clear();
+    CriticalPath.push_back(root);
+    root->getMakespanCost(true, true);         //update critical path
+    largestNode = root;
+    Children = root->getChildren();
+    //cout<<"critical path (subtres' roots){1 ";
+    while (!Children->empty()) { //initialize critical path
+        temp = largestNode->getParallelPart();
+        for (vector<Task *>::iterator iter = Children->begin(); iter != Children->end(); ++iter) {
+            if ((*iter)->getMakespanCost(true, false) == temp) {
+                largestNode = (*iter);
+                break;
+            }
+        }
+        //cout<<largestNode->getOtherSideId()<<" ";
+        CriticalPath.push_back(largestNode);
+        Children = largestNode->getChildren();
+    }
+    return CriticalPath;
 }
 
 double Tree::SplitAgainV2(unsigned int processor_number, unsigned int num_subtrees, std::map<int, int> &taskToPrc,
@@ -2482,11 +2510,10 @@ double assignToBestProcessors(Tree *tree, string chooseSubtreeAssign) {
         task->setOtherSideId(qTree1->getTask(task->getId())->getOtherSideId());
     }
 
-    vector<Task *> candidates = *qTree->getTasks();
-    chooseAssignSubtree(chooseSubtreeAssign, candidates);
+    chooseAssignSubtree(chooseSubtreeAssign, qTree);
     //std::for_each(candidates.begin(), candidates.end(), [](Task *n) { cout << n->getId() << ", "; });
     // cout << endl;
-    for (Task *task: candidates) {
+    for (Task *task: *qTree->getTasks()) {
         if (task->getFeasibleProcessors()->empty()) {
             string exception = "Task" + to_string(task->getId()) + " has 0 feasible processors at beginning.";
             throw exception;
@@ -2513,7 +2540,7 @@ void removeProcessorFromAllFeasSets(Processor *processor, Tree *tree) {
     }
 }
 
-Task *chooseSubtree(string subtreeChoiceCode, vector<Task *> subtrees) {
+Task *chooseSubtree(string subtreeChoiceCode, Tree *tree, vector<Task *> candidates) {
 
 
     bool (*CP)(Task *, Task *, vector<Task *>) = [](Task *a, Task *b, vector<Task *> criticalPath) {
@@ -2523,23 +2550,57 @@ Task *chooseSubtree(string subtreeChoiceCode, vector<Task *> subtrees) {
     };
 
 
+    int initialSize = candidates.size();
     if (subtreeChoiceCode == "LMW") {
-        std::sort(subtrees.begin(), subtrees.end(), [](Task *a, Task *b) {
+        std::sort(candidates.begin(), candidates.end(), [](Task *a, Task *b) {
             return (a->getNodeWeight() * a->getMakespanWeight() > b->getNodeWeight() * b->getMakespanWeight());
         });
-    } else throw std::runtime_error("not implemented");
-    return subtrees.front();
+    } else if (subtreeChoiceCode == "CP") {
+        Tree *qtree = tree->BuildQtree();
+        vector<Task *> candidatesCP = *qtree->getTasks();
+        vector<Task *> CriticalPath = buildCriticalPath(qtree->getRoot());
+        vector<Task *> notOnCP;
+        // std::set_difference(candidates.begin(), candidates.end(),
+        //                     CriticalPath.begin(), CriticalPath.end(),
+        //                    std::back_inserter(notOnCP));
+
+        std::set_difference(candidatesCP.begin(), candidatesCP.end(),
+                            CriticalPath.begin(), CriticalPath.end(),
+                            std::inserter(notOnCP, notOnCP.begin()),
+                            [](auto &a, auto &b) { return a->getId() < b->getId(); });
+        vector<Task *> candidates1;
+        candidates1.insert(candidates1.end(), CriticalPath.begin(), CriticalPath.end());
+        candidates1.insert(candidates1.end(), notOnCP.begin(), notOnCP.end());
+
+
+        auto candidatesContainOtherSideId = [candidates](Task *i) {
+            for (Task *task: candidates) {
+                if (task->getId() == i->getOtherSideId()) {
+                    return true;
+                }
+            }
+            return false;
+        };
+        Task *firstThatIsInCandidates = *std::find_if(candidates1.begin(), candidates1.end(),
+                                                      candidatesContainOtherSideId);
+
+
+        return tree->getTask(firstThatIsInCandidates->getOtherSideId());
+    } else
+        throw std::runtime_error("not implemented");
+    return candidates.front();
 
 
 }
 
-bool isTaskCandidate(Task *task, Tree *subtree, string nodeChoiceCode) {
-    bool (*ex)(Task *, Task *) = [](Task *a, Task *b) {
-        return a->getId() < b->getId();
+/*bool isTaskCandidate(Task *task, Tree *subtree, string nodeChoiceCode) {
+
+    bool (*ex)(Task *) = [](Task *a) {
+        return !a->isAnyChildBroken();
     };
 
-    bool (*fft)(Task *, Task *) = [](Task *a, Task *b) {
-        return a->getId() < b->getId();
+    bool (*fft)(Task *, Tree *) = [](Task *a, Tree *subtree) {
+        return a->getId();
     };
 
     bool (*m)(Task *) = [](Task *a) {
@@ -2549,11 +2610,40 @@ bool isTaskCandidate(Task *task, Tree *subtree, string nodeChoiceCode) {
     if (nodeChoiceCode == "M") {
         throw std::runtime_error("not implemented");
     } else if (nodeChoiceCode == "FFT") {
-        throw std::runtime_error("not implemented");
+        Task *first
+        for ()
     } else if (nodeChoiceCode == "EX") {
-        return !task->isAnyChildBroken();
+        return ex(task);
     }
 
+} */
+
+queue<pair<Task *, int> > buildLevels(Task *root) {
+    if (!root)
+        throw std::runtime_error("no root");
+
+    // queue to hold tree node with level
+    queue<pair<Task *, int> > q;
+    queue<pair<Task *, int> > q1;
+
+    q.push({root, 1}); // let root node be at level 1
+    q1.push({root, 1}); // let root node be at level 1
+
+    pair<Task *, int> p;
+
+    // Do level Order Traversal of tree
+    while (!q.empty()) {
+        p = q.front();
+        q.pop();
+
+        for (Task *child: *p.first->getChildren()) {
+            q.push({child, p.second + 1});
+            q1.push({root, 1});
+        }
+
+    }
+
+    return q1;
 }
 
 Task *chooseNode(Task *root, Tree *tree, string nodeChoiceCode, string assignSubtreeChoiceCode) {
@@ -2563,30 +2653,91 @@ Task *chooseNode(Task *root, Tree *tree, string nodeChoiceCode, string assignSub
     Tree *subtree = BuildSubtree(tree, root);
 
     vector<Task *> candidates;
-    for (Task *task: *tasksInSubtree) {
-        if (isTaskCandidate(task, subtree, nodeChoiceCode)) {
-            candidates.push_back(task);
+
+    if (nodeChoiceCode == "M") {
+        vector<Task *> tasksOnMiddleLayer;
+        queue<pair<Task *, int> > q = buildLevels(subtree->getRoot());
+        assert(q.size() == subtree->getSize());
+        int maxLayer = q.back().second;
+        int lowerBound = maxLayer / 2;
+        int upperBound = maxLayer / 2;
+
+        /* std::copy_if(q.front(), q.back(), std::back_inserter(tasksOnMiddleLayer),
+                      [&lowerBound, &upperBound](pair<Task *, int> i) {
+                          return i.second <= upperBound && i.second >= lowerBound && i.first->getChildren()->size() >= 2;
+                      });
+
+         while (tasksOnMiddleLayer.empty()) {
+             lowerBound--;
+             upperBound++;
+             std::copy_if(q.front(), q.back(), std::back_inserter(tasksOnMiddleLayer),
+                          [&lowerBound, &upperBound](pair<Task *, int> i) {
+                              return i.second <= upperBound && i.second >= lowerBound &&
+                                     i.first->getChildren()->size() >= 2;
+                          });
+
+         }  */
+
+    } else if (nodeChoiceCode == "FFT") {
+        for (Task *task: *subtree->getTasks()) {
+            if (task->getChildren()->size() >= 2) {
+                candidates.push_back(task);
+                break;
+            }
         }
+    } else if (nodeChoiceCode == "EX") {
+        std::copy_if(subtree->getTasks()->begin(), subtree->getTasks()->end(), std::back_inserter(candidates),
+                     [](Task *i) {
+                         return !i->isAnyChildBroken();
+                     });
     }
-    Task *best = findBestCutAmong(tree, candidates, assignSubtreeChoiceCode);
+
+    Task *best = findBestCutAmong(tree, candidates, assignSubtreeChoiceCode, numeric_limits<double>::infinity());
     return best;
 
 
 }
 
-void chooseAssignSubtree(string parser, vector<Task *> &candidates) {
+void chooseAssignSubtree(string parser, Tree *tree) {
 
-    bool (*MW)(Task *, Task *) = [](Task *a, Task *b) {
-        return a->getMakespanCost(true, false) < b->getMakespanCost(true, false);
+    bool (*maxWi)(Task *, Task *) = [](Task *a, Task *b) {
+        return a->getMakespanCost(false, true) < b->getMakespanCost(false, true);
     };
 
-    //if (parser->getChooseSubtree() == "MW") return MW;
-    //else if (parser->getChooseSubtree() == "MD") throw std::runtime_error("not implemented");
-    // else if (parser->getChooseSubtree() == "CP") throw std::runtime_error("not implemented");
-    //else
-    // std::for_each(candidates.begin(), candidates.end(), [](Task *n) { cout << n->getId() << ", "; });
-    //cout << endl;
-    sort(candidates.begin(), candidates.end(), MW);
+    bool (*maxDesc)(Task *, Task *) = [](Task *a, Task *b) {
+        return a->getChildren()->size() < b->getChildren()->size();
+    };
+    vector<Task *> candidates = *tree->getTasks();
+    int initialSize = tree->getTasks()->size();
+    if (parser == "LMW") sort(candidates.begin(), candidates.end(), maxWi);
+    else if (parser == "MD") sort(candidates.begin(), candidates.end(), maxDesc);
+    else if (parser == "CP") {
+
+        vector<Task *> CriticalPath = buildCriticalPath(tree->getRoot());
+        vector<Task *> notOnCP;
+        std::set_difference(candidates.begin(), candidates.end(),
+                            CriticalPath.begin(), CriticalPath.end(),
+                            std::inserter(notOnCP, notOnCP.begin()),
+                            [](auto &a, auto &b) { return a->getId() < b->getId(); }
+
+        );
+        //std::back_inserter(notOnCP));
+        candidates.clear();
+        candidates.insert(candidates.end(), CriticalPath.begin(), CriticalPath.end());
+        candidates.insert(candidates.end(), notOnCP.begin(), notOnCP.end());
+
+        assert(candidates.size() == initialSize);
+        assert(tree->getTasks()->size() == initialSize);
+    } else
+        throw std::runtime_error("not implemented");
+
+    tree->setTasks(new vector<Task *>());
+    for (Task *task: candidates) {
+        tree->addTask(task);
+    }
+
+    assert(candidates.size() == initialSize);
+    assert(tree->getTasks()->size() == initialSize);
     //std::for_each(candidates.begin(), candidates.end(), [](Task *n) { cout << n->getId() << ", "; });
     // cout << endl;
 }
@@ -2613,9 +2764,8 @@ partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
 
     while (!subtreeCandidates.empty() && Cluster::getFixedCluster()->getNumberFreeProcessors() != 0) {
         //qtree->getRoot()->precomputeMinMems(qtree);
-        Task *subtree = chooseSubtree(subtreeChoiceCode, subtreeCandidates);
-        Task *bestTask = chooseNode(subtree, tree, nodeChoiceCode,
-                                    assignSubtreeChoiceCode);
+        Task *subtree = chooseSubtree(subtreeChoiceCode, tree, subtreeCandidates);
+        Task *bestTask = chooseNode(subtree, tree, nodeChoiceCode, assignSubtreeChoiceCode);
         if (bestTask != NULL) {
             vector<Task *> freshlyBroken = bestTask->breakNBiggestChildren(
                     Cluster::getFixedCluster()->getNumberFreeProcessors());
@@ -2623,8 +2773,7 @@ partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
             if (currentMakespan <= minMakespan) {
                 minMakespan = currentMakespan;
                 for (Task *candidate: freshlyBroken) {
-                    vector<Task *> children = *candidate->tasksInSubtreeRootedHere();
-                    if (children.size() > 2) {
+                    if (candidate->getChildren()->size() > 2) {
                         subtreeCandidates.push_back(candidate);
                     }
                 }
@@ -2633,20 +2782,25 @@ partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
                 subtreeCandidates.erase(find(subtreeCandidates.begin(), subtreeCandidates.end(), subtree));
             }
         } else {
-            subtreeCandidates.erase(find(subtreeCandidates.begin(), subtreeCandidates.end(), subtree));
+            const vector<Task *>::iterator &position = find(subtreeCandidates.begin(), subtreeCandidates.end(),
+                                                            subtree);
+            subtreeCandidates.erase(position);
         }
         // cout << tree->HowmanySubtrees(true) << " ";
         // tree->HowmanySubtrees(false);
     }
     result += to_string(clock() - time) + " ";
-    return result + to_string(timeForAssignment) + to_string(assignToBestProcessors(tree, assignSubtreeChoiceCode));
+    return result + to_string(timeForAssignment) + to_string(assignToBestProcessors(tree, assignSubtreeChoiceCode)) +
+           " ";
+    // delete subtreeCandidates;
 }
 
 
 void CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode) {
     Task *taskMinMakespan = findBestCutAmong(tree, *tree->getTasks(), assignSubtreeChoiceCode);
     taskMinMakespan != nullptr ? taskMinMakespan->breakNBiggestChildren(
-            Cluster::getFixedCluster()->getNumberFreeProcessors()) : throw std::runtime_error(
+            Cluster::getFixedCluster()->getNumberFreeProcessors()) :
+    throw std::runtime_error(
             "Found no Task that would reduce makespan");
 }
 

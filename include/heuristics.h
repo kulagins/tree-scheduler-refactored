@@ -45,7 +45,7 @@ void chooseAssignSubtree(string assignSubtreeChoiceCode, Tree * tree);
 
 Task *findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, double initMS = -1);
 
-void CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode);
+Task * CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode);
 
 vector<Task *> criticalPath(Tree *tree);
 vector<Task *> buildCriticalPath(Task* root);

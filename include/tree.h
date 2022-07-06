@@ -521,7 +521,8 @@ public :
 
     void updateTMax() {
         if (this->feasibleProcessors->size() == 0) {
-            //cout<<"Task" << to_string(this->getId()) << " has 0 feasible processors during iterations. "<<Cluster::getFixedCluster()->getNumberFreeProcessors() <<" are still free.";
+            //cout << "Task" << to_string(this->getId()) << " has 0 feasible processors during iterations. "
+          //       << Cluster::getFixedCluster()->getNumberFreeProcessors() << " are still free.";
             throw "No Schedule Possible";
         }
         if (this->feasibleProcessors->size() == 1) this->tMax = DBL_MAX;
@@ -539,6 +540,8 @@ public :
 
     // Asserts that feasibleProcessors is ordered!
     Processor *getFastestFeasibleProcessor() {
+        sort(feasibleProcessors->begin(), feasibleProcessors->end(),
+             [](Processor *a, Processor *b) { return a->getProcessorSpeed() > b->getProcessorSpeed(); });
         return feasibleProcessors->front();
     }
 
@@ -907,6 +910,16 @@ public:
             task->assignFeasibleProcessorsToSubtree(task->getMinMemUnderlying());
             freeProcessorIfAvailable(task);
         }
+        for (Processor *item: Cluster::getFixedCluster()->getProcessors()) {
+            if (item->isBusy) {
+                item->isBusy = false;
+                item->setAssignedTaskId(-1);
+                item->setAssignedTask(NULL);
+                item->setOccupiedMemorySize(0);
+            }
+        }
+        assert(Cluster::getFixedCluster()->getNumberProcessors() ==
+               Cluster::getFixedCluster()->getNumberFreeProcessors());
     }
 
 };

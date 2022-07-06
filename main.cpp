@@ -287,6 +287,7 @@ int main(int argc, char **argv) {
                 cout << "no solution" << endl;
             }
             // cout<<"makespan "<<makespan<<endl;
+
             makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
             tree_column += " "+to_string(makespan) + "\t" + to_string(tree->HowmanySubtrees(true)) + "\t" + result;
             double processorUtilization = 0;

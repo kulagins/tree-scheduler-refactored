@@ -47,6 +47,8 @@ Task *findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtr
 
 Task * CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode);
 
+void SiftInfTmaxUpPreserveOrder(vector<Task *> *taskHeap);
+
 vector<Task *> criticalPath(Tree *tree);
 vector<Task *> buildCriticalPath(Task* root);
 

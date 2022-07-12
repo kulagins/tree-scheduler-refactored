@@ -900,14 +900,14 @@ Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, double c
                 leaf = false;
             }
             double memoryRequired;
-            if (CheckMemory == true) {
+            if (CheckMemory) {
                 memoryCheckPass = this->MemoryEnough((*smallest)->getParent(), (*smallest), leaf, memory_size,
                                                      memoryRequired);
             } else {
                 memoryCheckPass = true;
             }
 
-            if (memoryCheckPass == false) {
+            if (!memoryCheckPass) {
                 if ((*secondSmallest)->isLeaf()) {
                     leaf = true;
                 } else {
@@ -916,7 +916,7 @@ Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, double c
 
                 memoryCheckPass = this->MemoryEnough((*secondSmallest)->getParent(), *secondSmallest, leaf,
                                                      memory_size, memoryRequired);
-                if (memoryCheckPass == true) {
+                if (memoryCheckPass) {
                     currentNode = *secondSmallest;
                     DeadBreak = false;
                 } else {
@@ -926,16 +926,16 @@ Tree::MergeV2(unsigned int num_subtrees, unsigned int processor_number, double c
                 currentNode = *smallest;
                 DeadBreak = false;
             }
-        } while ((memoryCheckPass == false) && (!Llist.empty()));
+        } while (!memoryCheckPass && (!Llist.empty()));
 
 
-        if (DeadBreak == true && firstTime == true) {
+        if (DeadBreak && firstTime) {
             Llist.clear();
             firstTime = false;
             goto CheckOnCritical;
         }
 
-        if (DeadBreak == true) {
+        if (DeadBreak) {
             delete Qtreeobj;
             return -1; //which means failure
         }
@@ -2159,22 +2159,43 @@ void distributeProcessors(Tree *qTree) {
             taskHeap->push_back(task);
         }
     }
-    make_heap(taskHeap->begin(), taskHeap->end(), TMaxHeap());
-
+    // make_heap(taskHeap->begin(), taskHeap->end(), TMaxHeap());
+    SiftInfTmaxUpPreserveOrder(taskHeap);
     while (taskHeap->size() > 0) {
-        pop_heap(taskHeap->begin(), taskHeap->end(), TMaxHeap());
-        Task *task = taskHeap->back();
-        taskHeap->pop_back();
+        // pop_heap(taskHeap->begin(), taskHeap->end(), TMaxHeap());
+        //TODO CHECK!
+        Task *task = taskHeap->front();
+        taskHeap->erase(taskHeap->begin());
+        // taskHeap->pop_back();
         Processor *pFast = task->getFastestFeasibleProcessor();
         pFast->assignTask(task);
         for (int i = 0; i < taskHeap->size(); i++) {
             taskHeap->at(i)->deleteFeasible(pFast);
             taskHeap->at(i)->updateTMax();
-            TMaxHeap::siftUp(taskHeap, i);
+            SiftInfTmaxUpPreserveOrder(taskHeap);
         }
+        SiftInfTmaxUpPreserveOrder(taskHeap);
 
     }
     delete taskHeap;
+}
+
+void SiftInfTmaxUpPreserveOrder(vector<Task *> *taskHeap) {
+    vector<Task *> withTMaxInf;
+    int init_size = taskHeap->size();
+    for (const auto &item: *taskHeap) {
+        if (item->getTMax() == DBL_MAX)
+            withTMaxInf.push_back(item);
+    }
+    vector<Task *> others;
+    set_difference(taskHeap->begin(), taskHeap->end(),
+                   withTMaxInf.begin(), withTMaxInf.end(),
+                   inserter(others, others.begin()));
+    //std::back_inserter(notOnCP));
+    taskHeap->clear();
+    taskHeap->insert(taskHeap->end(), withTMaxInf.begin(), withTMaxInf.end());
+    taskHeap->insert(taskHeap->end(), others.begin(), others.end());
+    assert(taskHeap->size() == init_size);
 }
 
 string growSeqSetWhileImprovesMakespan2(list<Task *> &seqSet, Tree *tree) {
@@ -2488,17 +2509,24 @@ string seqSetAndFeasSets(Tree *tree) {
 }
 
 void assignCorrespondingTreeTasks(Tree *tree, Tree *qTree) {
-    for (Task *task: *qTree->getTasks()) {
-        vector<Task *> *allTasksInSubtree = tree->getTask(task->getOtherSideId())->tasksInSubtreeRootedHere();
+    for (const auto &item: *tree->getTasks()) {
+        assert(item->getAssignedProcessor() == NULL);
+    }
+    for (Task *qTask: *qTree->getTasks()) {
+        Task *taskInTree = tree->getTask(qTask->getOtherSideId());
+        vector<Task *> *allTasksInSubtree = taskInTree->tasksInSubtreeRootedHere();
         for (Task *taskInSubtree: *allTasksInSubtree) {
-            taskInSubtree->setAssignedProcessor(task->getAssignedProcessor());
+            taskInSubtree->setAssignedProcessor(qTask->getAssignedProcessor());
         }
+    }
+    for (const auto &item: *tree->getTasks()) {
+        assert(item->getAssignedProcessor() != NULL);
     }
 }
 
 double assignToBestProcessors(Tree *tree, string chooseSubtreeAssign) {
     tree->cleanAssignedAndReassignFeasible();
-   for (Processor *item: Cluster::getFixedCluster()->getProcessors()) {
+    for (Processor *item: Cluster::getFixedCluster()->getProcessors()) {
         if (item->isBusy) {
             item->isBusy = false;
             item->setAssignedTaskId(-1);
@@ -2626,33 +2654,59 @@ Task *chooseSubtree(string subtreeChoiceCode, Tree *tree, vector<Task *> candida
     }
 
 } */
+vector<pair<int, vector<Task *>>> levelOrder(Task *root) {
+    if (root == NULL)
+        throw std::runtime_error("no root");;
+    queue<Task *> parent_queue, child_queue;
+    vector<pair<int, vector<Task *>>> tasksAndLevels;
+    parent_queue.push(root);
 
-queue<pair<Task *, int> > buildLevels(Task *root) {
-    if (!root)
-        throw std::runtime_error("no root");
+    // Level 0 corresponds to the top of the tree i.e at the root level
+    int level = 0;
 
-    // queue to hold tree node with level
-    queue<pair<Task *, int> > q;
-    queue<pair<Task *, int> > q1;
 
-    q.push({root, 1}); // let root node be at level 1
-    q1.push({root, 1}); // let root node be at level 1
-
-    pair<Task *, int> p;
-
-    // Do level Order Traversal of tree
-    while (!q.empty()) {
-        p = q.front();
-        q.pop();
-
-        for (Task *child: *p.first->getChildren()) {
-            q.push({child, p.second + 1});
-            q1.push({root, 1});
+    while (!parent_queue.empty() or !child_queue.empty()) {
+        if (!parent_queue.empty()) {
+            // cout << "Level " << level << ": ";
+            tasksAndLevels.push_back({level, vector<Task *>()});
         }
 
-    }
+        while (!parent_queue.empty()) {
+            Task *node = parent_queue.front();
+            parent_queue.pop();
+            // cout << node->getId() << " ";
+            tasksAndLevels.back().second.push_back(node);
 
-    return q1;
+            for (Task *child: *node->getChildren()) {
+                if (!child->isBroken())
+                    child_queue.push(child);
+            }
+        }
+        // cout << endl;
+        level++;
+
+        if (!child_queue.empty()) {
+            //  cout << "Level " << level << ": ";
+            tasksAndLevels.push_back({level, vector<Task *>()});
+        }
+
+
+        while (!child_queue.empty()) {
+            Task *node = child_queue.front();
+            child_queue.pop();
+            // cout << node->getId() << " ";
+            tasksAndLevels.back().second.push_back(node);
+
+            for (Task *child: *node->getChildren()) {
+                if (!child->isBroken())
+                    parent_queue.push(child);
+            }
+
+        }
+        //  cout << endl;
+        level++;
+    }
+    return tasksAndLevels;
 }
 
 Task *chooseNode(Task *root, Tree *tree, string nodeChoiceCode, string assignSubtreeChoiceCode) {
@@ -2664,28 +2718,37 @@ Task *chooseNode(Task *root, Tree *tree, string nodeChoiceCode, string assignSub
     vector<Task *> candidates;
 
     if (nodeChoiceCode == "M") {
-        vector<Task *> tasksOnMiddleLayer;
-        queue<pair<Task *, int> > q = buildLevels(subtree->getRoot());
-        assert(q.size() == subtree->getSize());
-        int maxLayer = q.back().second;
+        vector<Task *> eligibleTasks;
+        vector<pair<int, vector<Task *>>> tasksAndLevels = levelOrder(subtree->getRoot());
+        double maxLayer = tasksAndLevels.back().first;
+        int middleLayer = ceil(maxLayer / 2);
         int lowerBound = maxLayer / 2;
-        int upperBound = maxLayer / 2;
+        int upperBound = ceil(maxLayer / 2);
 
-        /* std::copy_if(q.front(), q.back(), std::back_inserter(tasksOnMiddleLayer),
-                      [&lowerBound, &upperBound](pair<Task *, int> i) {
-                          return i.second <= upperBound && i.second >= lowerBound && i.first->getChildren()->size() >= 2;
-                      });
+        for (const auto &item: tasksAndLevels) {
+            if (item.first == middleLayer) {
+                for (const auto &item1: item.second) {
+                    if (item1->getChildren()->size() >= 2)
+                        eligibleTasks.push_back(item1);
+                }
+            }
+        }
 
-         while (tasksOnMiddleLayer.empty()) {
-             lowerBound--;
-             upperBound++;
-             std::copy_if(q.front(), q.back(), std::back_inserter(tasksOnMiddleLayer),
-                          [&lowerBound, &upperBound](pair<Task *, int> i) {
-                              return i.second <= upperBound && i.second >= lowerBound &&
-                                     i.first->getChildren()->size() >= 2;
-                          });
 
-         }  */
+        while (eligibleTasks.empty() && lowerBound >= 0) {
+            lowerBound--;
+            upperBound++;
+            for (const auto &item: tasksAndLevels) {
+                if (item.first <= upperBound && item.first >= lowerBound) {
+                    for (const auto &item1: item.second) {
+                        if (item1->getChildren()->size() >= 2)
+                            eligibleTasks.push_back(item1);
+                    }
+                }
+            }
+
+        }
+        candidates = eligibleTasks;
 
     } else if (nodeChoiceCode == "FFT") {
         for (Task *task: *subtree->getTasks()) {
@@ -2763,6 +2826,12 @@ partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
     Task *taskFromFirstCut = CutTaskWithMaxImprovement(tree, assignSubtreeChoiceCode);
     double minMakespan = assignToBestProcessors(tree, assignSubtreeChoiceCode);
     if (taskFromFirstCut == nullptr) return "no cutting brings improvement";
+//    for (const auto &item: *tree->getTasks()) {
+//       if (item->isBroken()) {
+//          cout << "task " << item->getId() << " to proc with mem " << item->getAssignedProcessor()->getMemorySize()
+//              << " and speed " << item->getAssignedProcessorSpeed() << endl;
+//    }
+//   }
     tree->cleanAssignedAndReassignFeasible();
     assert(Cluster::getFixedCluster()->getNumberFreeProcessors() ==
            Cluster::getFixedCluster()->getNumberProcessors());
@@ -2781,10 +2850,17 @@ partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
             vector<Task *> freshlyBroken = bestTask->breakNBiggestChildren(
                     Cluster::getFixedCluster()->getNumberFreeProcessors());
             double currentMakespan = assignToBestProcessors(tree, assignSubtreeChoiceCode);
-           // cout << "curr " << currentMakespan << " min " << minMakespan << "w #trees: " << tree->HowmanySubtrees(true)
-            //     << endl;
+//            for (const auto &item: *tree->getTasks()) {
+//                if (item->isBroken()) {
+//                    cout << "task " << item->getId() << " to proc with mem "
+//                         << item->getAssignedProcessor()->getMemorySize()
+//                         << " and speed " << item->getAssignedProcessorSpeed() << endl;
+ //               }
+//            }
+            cout << "curr " << currentMakespan << " min " << minMakespan << "w #trees: " << tree->HowmanySubtrees(true)
+                 << endl;
             if (currentMakespan <= minMakespan) {
-            //    cout << "1" << endl;
+                //    cout << "1" << endl;
                 //cout << "smaller!" << endl;
                 minMakespan = currentMakespan;
                 for (Task *candidate: freshlyBroken) {
@@ -2793,13 +2869,13 @@ partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
                     }
                 }
             } else {
-             //   cout << "2" << endl;
+                //   cout << "2" << endl;
                 bestTask->restoreBrokenChildren();
                 subtreeCandidates.erase(find(subtreeCandidates.begin(), subtreeCandidates.end(), subtree));
 
             }
         } else {
-          //  cout << "3" << endl;
+            //  cout << "3" << endl;
             const vector<Task *>::iterator &position = find(subtreeCandidates.begin(), subtreeCandidates.end(),
                                                             subtree);
             subtreeCandidates.erase(position);

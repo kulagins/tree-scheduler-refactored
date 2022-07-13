@@ -2,14 +2,14 @@ instances:
   - repo: local
     items:
      - name: 'trees'
-     - name: 'random_trees/random'
-     - name: 'random_trees/3_children'
-     - name: 'random_trees/20_children'
-     - name: 'random_trees/all_large'
-     - name: 'random_trees/all_small'
-     - name: 'random_trees/large_edge_weights'
-     - name: 'random_trees/large_makespan_weights'
-     - name: 'random_trees/large_node_weights'        
+     - name: 'random'
+     - name: '3_children'
+     - name: '20_children'
+     - name: 'all_large'
+     - name: 'all_small'
+     - name: 'large_edge_weights'
+     - name: 'large_makespan_weights'
+     - name: 'large_node_weights'        
 instdir: "data"
 
 
@@ -34,7 +34,7 @@ experiments:
     args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'CP']
     stdout: out 
     
-   - name: LMW-M-MW
+  - name: LMW-M-MW
     args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'MW']
     stdout: out 
   - name: LMW-M-MD
@@ -65,7 +65,7 @@ experiments:
     args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'CP']
     stdout: out 
     
-   - name: CP-M-MW
+  - name: CP-M-MW
     args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'MW']
     stdout: out 
   - name: CP-M-MD

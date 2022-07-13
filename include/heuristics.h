@@ -39,7 +39,7 @@ string partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoi
 
 Task *chooseSubtree(string subtreeChoiceCode, Tree * tree, vector<Task*> candidates);
 
-Task *chooseNode(Task *root, Tree *tree, string nodeChoiceCode, string assignSubtreeChoiceCode);
+Task *chooseTask(Task *root, Tree *tree, string nodeChoiceCode, string assignSubtreeChoiceCode);
 
 void chooseAssignSubtree(string assignSubtreeChoiceCode, Tree * tree);
 

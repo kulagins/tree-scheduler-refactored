@@ -2,14 +2,14 @@ instances:
   - repo: local
     items:
      - name: 'trees'
-     # - 'random_trees/random'
-     # - 'random_trees/3_children'
-     # - 'random_trees/20_children'
-     # - 'random_trees/all_large'
-     # - 'random_trees/all_small'
-     # - 'random_trees/large_edge_weights'
-     # - 'random_trees/large_makespan_weights'
-     # - 'random_trees/large_node_weights'        
+     - name: 'random_trees/random'
+     - name: 'random_trees/3_children'
+     - name: 'random_trees/20_children'
+     - name: 'random_trees/all_large'
+     - name: 'random_trees/all_small'
+     - name: 'random_trees/large_edge_weights'
+     - name: 'random_trees/large_makespan_weights'
+     - name: 'random_trees/large_node_weights'        
 instdir: "data"
 
 
@@ -17,7 +17,62 @@ experiments:
   - name: LMW-EX-MW
     args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'EX', 'MW']
     stdout: out 
-  - name:  LMW-FFT-MW
+  - name: LMW-EX-MD
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'EX', 'MD']
+    stdout: out
+  - name: LMW-EX-CP
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'EX', 'CP']
+    stdout: out 
+    
+  - name: LMW-FFT-MW
     args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'MW']
     stdout: out 
+  - name: LMW-FFT-MD
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'MD']
+    stdout: out
+  - name: LMW-FFT-CP
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'CP']
+    stdout: out 
+    
+   - name: LMW-M-MW
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'MW']
+    stdout: out 
+  - name: LMW-M-MD
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'MD']
+    stdout: out
+  - name: LMW-M-CP
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'CP']
+    stdout: out 
+    
   
+  - name: CP-EX-MW
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'EX', 'MW']
+    stdout: out 
+  - name: CP-EX-MD
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'EX', 'MD']
+    stdout: out
+  - name: CP-EX-CP
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'EX', 'CP']
+    stdout: out 
+    
+  - name: CP-FFT-MW
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'MW']
+    stdout: out 
+  - name: CP-FFT-MD
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'MD']
+    stdout: out
+  - name: CP-FFT-CP
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'CP']
+    stdout: out 
+    
+   - name: CP-M-MW
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'MW']
+    stdout: out 
+  - name: CP-M-MD
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'MD']
+    stdout: out
+  - name: CP-M-CP
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'CP']
+    stdout: out 
+    
+

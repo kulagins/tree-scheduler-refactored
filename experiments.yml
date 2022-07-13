@@ -1,37 +1,23 @@
 instances:
   - repo: local
     items:
-      - 'clusterList_single_small.txt'
-instdir: "clusters"
+     - name: 'trees'
+     # - 'random_trees/random'
+     # - 'random_trees/3_children'
+     # - 'random_trees/20_children'
+     # - 'random_trees/all_large'
+     # - 'random_trees/all_small'
+     # - 'random_trees/large_edge_weights'
+     # - 'random_trees/large_makespan_weights'
+     # - 'random_trees/large_node_weights'        
+instdir: "data"
 
 
 experiments:
-  - name: real
-    args: ['./main', '@BASE_DIR@/data/trees','treesList.txt', '@BASE_DIR@/clusters/@INSTANCE@', '0','0','0']
+  - name: LMW-EX-MW
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'EX', 'MW']
     stdout: out 
-  - name: random
-    args: ['./main', '@BASE_DIR@/data/random_trees/random','treesList.txt', '@BASE_DIR@/clusters/@INSTANCE@', '0','0','0']
+  - name:  LMW-FFT-MW
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'MW']
     stdout: out 
-  - name: 3_children
-    args: ['./main', '@BASE_DIR@/data/random_trees/3_children','treesList.txt', '@BASE_DIR@/clusters/@INSTANCE@', '0','0','0']
-    stdout: out 
-  - name: 20_children
-    args: ['./main', '@BASE_DIR@/data/random_trees/20_children/','treesList.txt', '@BASE_DIR@/clusters/@INSTANCE@', '0','0','0']
-    stdout: out
-  - name: all_large
-    args: ['./main', '@BASE_DIR@/data/random_trees/all_large/','treesList.txt', '@BASE_DIR@/clusters/@INSTANCE@', '0','0','0']
-    stdout: out
-  - name: all_small
-    args: ['./main', '@BASE_DIR@/data/random_trees/all_small/','treesList.txt', '@BASE_DIR@/clusters/@INSTANCE@', '0','0','0']
-    stdout: out
-  - name: large_edge_weights
-    args: ['./main', '@BASE_DIR@/data/random_trees/large_edge_weights/','treesList.txt', '@BASE_DIR@/clusters/@INSTANCE@', '0','0','0']
-    stdout: out
-  - name: large_ms_weights
-    args: ['./main', '@BASE_DIR@/real_Trees/random_trees/large_makespan_weights/','treesList.txt', '@BASE_DIR@/clusters/@INSTANCE@', '0','0','0']
-    stdout: out
-  - name: large_node_weights
-    args: ['./main', '@BASE_DIR@/real_Trees/random_trees/large_node_weights/','treesList.txt', '@BASE_DIR@/clusters/@INSTANCE@', '0','0','0']
-    stdout: out
   
-

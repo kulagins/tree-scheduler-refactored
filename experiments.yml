@@ -2,77 +2,98 @@ instances:
   - repo: local
     items:
      - name: 'trees'
+       files: []
      - name: 'random'
+       files: []
      - name: '3_children'
+       files: []
      - name: '20_children'
+       files: []
      - name: 'all_large'
+       files: []
      - name: 'all_small'
+       files: []
      - name: 'large_edge_weights'
+       files: []
      - name: 'large_makespan_weights'
+       files: []
      - name: 'large_node_weights'        
+       files: []
 instdir: "data"
 
 
 experiments:
   - name: LMW-EX-MW
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'EX', 'MW']
-    stdout: out 
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'EX', 'MW']
+    stdout: out
+    num_threads: 24 
   - name: LMW-EX-MD
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'EX', 'MD']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'EX', 'MD']
     stdout: out
+    num_threads: 24
   - name: LMW-EX-CP
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'EX', 'CP']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'EX', 'CP']
     stdout: out 
-    
+    num_threads: 24
   - name: LMW-FFT-MW
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'MW']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'MW']
     stdout: out 
+    num_threads: 24
   - name: LMW-FFT-MD
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'MD']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'MD']
     stdout: out
+    num_threads: 24
   - name: LMW-FFT-CP
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'CP']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'CP']
     stdout: out 
-    
+    num_threads: 24
   - name: LMW-M-MW
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'MW']
-    stdout: out 
-  - name: LMW-M-MD
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'MD']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'MW']
     stdout: out
+    num_threads: 24 
+  - name: LMW-M-MD
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'MD']
+    stdout: out
+    num_threads: 24
   - name: LMW-M-CP
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'CP']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'CP']
     stdout: out 
-    
+    num_threads: 24
   
   - name: CP-EX-MW
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'EX', 'MW']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'EX', 'MW']
     stdout: out 
+    num_threads: 24
   - name: CP-EX-MD
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'EX', 'MD']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'EX', 'MD']
     stdout: out
+    num_threads: 24
   - name: CP-EX-CP
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'EX', 'CP']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'EX', 'CP']
     stdout: out 
-    
+    num_threads: 24
   - name: CP-FFT-MW
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'MW']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'MW']
     stdout: out 
+    num_threads: 24
   - name: CP-FFT-MD
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'MD']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'MD']
     stdout: out
+    num_threads: 24
   - name: CP-FFT-CP
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'CP']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'CP']
     stdout: out 
-    
+    num_threads: 24
   - name: CP-M-MW
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'MW']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'MW']
     stdout: out 
+    num_threads: 24
   - name: CP-M-MD
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'MD']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'MD']
     stdout: out
+    num_threads: 24
   - name: CP-M-CP
-    args: ['./main', '@INSTANCE@/','treesListSmall.txt', '@BASE_DIR@/clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'CP']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'CP']
     stdout: out 
-    
+    num_threads: 24
 

@@ -1,17 +1,6 @@
-/work/kulagins/scheduler-a2/data/large_makespan_weights/
-treename	clusters/36-proc/36proc_0,5-1-1,5-3.json	
-size_2000/random_tree_1	 1202.944093	1	1928367 no cutting brings improvement 1
-
-size_2000/random_tree_2	 1408.490552	1	2366255 no cutting brings improvement 1
-
-first cut ready
+size_2000/random_tree_1	 1202.944093	1	1928367 0 0 0 1202.944093 1
+size_2000/random_tree_2	 1408.490552	1	2366255 0 0 0 1408.490552 1
 size_2000/random_tree_3	 1143.486944	8	7515921 64246413 1244298 2198456.000000 1143.486944  8
-
-first cut ready
 size_2000/random_tree_4	 1133.704238	6	2106074 63692977 1372484 2182194.000000 1133.704238  6
-
-size_2000/random_tree_5	 1339.278342	1	6077493 no cutting brings improvement 1
-
-size_2000/random_tree_5	 1339.278342	1	6078242 no cutting brings improvement 1
-
-
+size_2000/random_tree_5	 1339.278342	1	6077493 0 0 0 1339.278342 1
+size_2000/random_tree_5	 1339.278342	1	6078242 0 0 0 1339.278342 1

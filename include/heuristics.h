@@ -42,6 +42,7 @@ Task *chooseSubtree(string subtreeChoiceCode, Tree * tree, vector<Task*> candida
 Task *chooseTask(Task *root, Tree *tree, string nodeChoiceCode, string assignSubtreeChoiceCode);
 
 void chooseAssignSubtree(string assignSubtreeChoiceCode, Tree * tree);
+void assignCorrespondingTreeTasks(Tree *tree, Tree *qTree);
 
 Task *findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, double initMS = -1);
 

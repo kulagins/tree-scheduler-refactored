@@ -71,7 +71,7 @@ string a2MultiLevel(Tree *tree, OutputPrinter *printer, double &makespan, InputP
     time = clock();
 
     tree->getRoot()->precomputeMinMems(tree);
-    string result = /*"0 step: " +*/ to_string(clock() - time) + " ";
+    string result = /*"0 step: " +*/ to_string((clock() - time) / CLOCKS_PER_SEC) + " ";
 
 
     time = clock();
@@ -202,6 +202,18 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
         makespan = tree->SplitAgain();
         // SplitAgainOld(tree, num_processors, tree->HowmanySubtrees(true));
     }
+    for (const auto &item: *tree->getBrokenTasks()) {
+        assert(item->getAssignedProcessor() != NULL);
+    }
+    for (Task *brokenTask: *tree->getBrokenTasks()) {
+        vector<Task *> *allTasksInSubtree = brokenTask->tasksInSubtreeRootedHere();
+        for (Task *taskInSubtree: *allTasksInSubtree) {
+            taskInSubtree->setAssignedProcessor(brokenTask->getAssignedProcessor());
+        }
+    }
+    for (const auto &item: *tree->getTasks()) {
+        assert(item->getAssignedProcessor() != NULL);
+    }
     return makespan;
 }
 
@@ -274,6 +286,7 @@ int main(int argc, char **argv) {
             time = clock();
             //  makespan = input->getRunA1() ? threeSteps(tree, printer) : a2Steps(tree, printer);
             string result = a2MultiLevel(tree, printer, makespan, input);
+            //makespan = threeSteps(tree, printer);
             //maxoutd = MaxOutDegree(tree, true);
 
             //schedule_traversal *schedule_f = new schedule_traversal();
@@ -289,7 +302,9 @@ int main(int argc, char **argv) {
             // cout<<"makespan "<<makespan<<endl;
 
             makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-            tree_column += " "+to_string(makespan) + "\t" + to_string(tree->HowmanySubtrees(true)) + "\t" + result;
+            tree_column += " " + to_string(makespan) + "\t" + to_string(tree->HowmanySubtrees(true)) + "\t" +
+                          // to_string(time )+ " " + to_string(CLOCKS_PER_SEC);
+            result;
             /*for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {
                 if (proc->isBusy) {
                     cout<<proc->getMemorySize()<<" "<<proc->getAssignedTaskId()<<endl;

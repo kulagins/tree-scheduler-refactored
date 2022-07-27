@@ -202,12 +202,12 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
         makespan = tree->SplitAgain();
         // SplitAgainOld(tree, num_processors, tree->HowmanySubtrees(true));
     }
-    for (const auto &item: *tree->getBrokenTasks()) {
+    for (const auto &item: tree->getBrokenTasks()) {
         assert(item->getAssignedProcessor() != NULL);
     }
-    for (Task *brokenTask: *tree->getBrokenTasks()) {
-        vector<Task *> *allTasksInSubtree = brokenTask->tasksInSubtreeRootedHere();
-        for (Task *taskInSubtree: *allTasksInSubtree) {
+    for (Task *brokenTask: tree->getBrokenTasks()) {
+        vector<Task *> allTasksInSubtree = brokenTask->tasksInSubtreeRootedHere();
+        for (Task *taskInSubtree: allTasksInSubtree) {
             taskInSubtree->setAssignedProcessor(brokenTask->getAssignedProcessor());
         }
     }
@@ -247,10 +247,11 @@ int main(int argc, char **argv) {
     double processorUtilizationOverall = 0;
     int numTrees = 0;
     std::vector<int> brokenEdges;
-    do {
+    while (OpenFile.good()) {
         OpenFile >> treename;
+        if( OpenFile.eof() ) break;
         //printer->quietPrint(treename);
-        // cout << treename << endl;
+        //cout << treename << endl;
         string extraSlash = input->getWorkingDirectory().back() != '/' ? "/" : "";
         Tree *tree = read_tree((input->getWorkingDirectory() + extraSlash +
                                 treename).c_str());
@@ -327,7 +328,7 @@ int main(int argc, char **argv) {
         delete untouchedTree;
         Cluster::getFixedCluster()->clean();
         input->resetClusterIterator();
-    } while (OpenFile.good());
+    } ;
     OpenFile.close();
     processorUtilizationOverall /= numTrees;
     //quietPrint("proc util "+ to_string(processorUtilizationOverall));

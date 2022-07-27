@@ -556,9 +556,9 @@ public :
 
     double computeMinMemUnderlying(Tree *tree);
 
-    vector<Task *> *tasksInSubtreeRootedHere() {
-        vector<Task *> *result = new vector<Task *>();
-        result->push_back(this);
+    vector<Task *> tasksInSubtreeRootedHere() {
+        vector<Task *> result;
+        result.push_back(this);
         vector<Task *> candidates;
         for (Task *child: *this->getChildren()) {
             if (!child->isBroken())
@@ -569,7 +569,7 @@ public :
             Task *candidate = candidates.back();
             candidates.pop_back();
 
-            result->push_back(candidate);
+            result.push_back(candidate);
             for (Task *child: *candidate->getChildren()) {
                 if (!child->isBroken())
                     candidates.push_back(child);
@@ -811,11 +811,11 @@ public:
         return size;
     }
 
-    vector<Task *> *getBrokenTasks() {
-        vector<Task *> *broken = new vector<Task *>();
+    vector<Task *> getBrokenTasks() {
+        vector<Task *> broken;
 
         for (Task *task: *getTasks()) {
-            if (task->isBroken()) broken->push_back(task);
+            if (task->isBroken()) broken.push_back(task);
         }
         return broken;
     }
@@ -972,8 +972,8 @@ copyScheduleBackwards(schedule_traversal *schedule_f);
 
 class SeqSet {
 protected:
-    vector<Task *> *seqSet;
-    vector<Task *> *parallelRoots;
+    vector<Task *> seqSet;
+    vector<Task *> parallelRoots;
     double makespan;
     int numberSteps;
 
@@ -996,16 +996,16 @@ public:
 
     string print() {
         string result = "";
-        result += "Size of SeqSet: " + to_string(seqSet->size()) + ",\t Number of Subtrees: " +
-                  to_string(parallelRoots->size())
+        result += "Size of SeqSet: " + to_string(seqSet.size()) + ",\t Number of Subtrees: " +
+                  to_string(parallelRoots.size())
                   + ",\t Makespan: " + to_string(makespan) + ",\t Steps: " + to_string(numberSteps);
         return result;
     }
 
     string printDetailed() {
         string result = "";
-        result += "Size of SeqSet: " + to_string(seqSet->size()) + ",\t Number of Subtrees: " +
-                  to_string(parallelRoots->size())
+        result += "Size of SeqSet: " + to_string(seqSet.size()) + ",\t Number of Subtrees: " +
+                  to_string(parallelRoots.size())
                   + ",\t Makespan: " + to_string(makespan);
         throw "not implemented!";
         return result;
@@ -1015,7 +1015,7 @@ public:
         for (Task *task: *tree->getTasks()) {
             task->restoreEdge();
         }
-        for (Task *task: *parallelRoots) {
+        for (Task *task: parallelRoots) {
             task->breakEdge();
         }
 

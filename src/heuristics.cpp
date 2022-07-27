@@ -2806,6 +2806,13 @@ Task *chooseTask(Task *root, Tree *tree, string nodeChoiceCode, string assignSub
                      [](Task *i) {
                          return !i->isAnyChildBroken();
                      });
+    } else if (nodeChoiceCode == "FFTM") {
+        int desiredSize = subtree->getTasks()->size() / 5;
+        for (Task *task: *subtree->getTasks()) {
+            if (task->getChildren()->size() >= 2 && candidates.size()< desiredSize) {
+                candidates.push_back(tree->getTask(task->getOtherSideId()));
+            }
+        }
     }
 
     Task *best = findBestCutAmong(tree, candidates, assignSubtreeChoiceCode, numeric_limits<double>::infinity());
@@ -2868,7 +2875,7 @@ partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
     time = clock();
     tree->cleanAssignedAndReassignFeasible();
 
-    Task *taskFromFirstCut = CutTaskWithMaxImprovement(tree, assignSubtreeChoiceCode);
+    Task *taskFromFirstCut = CutTaskWithMaxImprovementHeuristicChoice(tree, assignSubtreeChoiceCode);
     double minMakespan = assignToBestProcessors(tree, assignSubtreeChoiceCode);
     if (taskFromFirstCut == nullptr) return "0 0 0 " + to_string(minMakespan);
     /*  for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {
@@ -2956,8 +2963,27 @@ partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
 }
 
 
+Task *CutTaskWithMaxImprovementHeuristicChoice(Tree *tree, string assignSubtreeChoiceCode) {
+    vector<Task *> candidates;
+    Task *bestFFT = chooseTask(tree->getRoot(), tree, "FFT", assignSubtreeChoiceCode);
+    Task *bestMiddle = chooseTask(tree->getRoot(), tree, "M", assignSubtreeChoiceCode);
+
+    Task *taskMinMakespan = findBestCutAmong(tree, {bestFFT, bestMiddle}, assignSubtreeChoiceCode);
+    if (taskMinMakespan != nullptr) {
+        taskMinMakespan->breakNBiggestChildren(
+                Cluster::getFixedCluster()->getNumberFreeProcessors());
+    }
+
+    return taskMinMakespan;
+
+}
+
 Task *CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode) {
-    Task *taskMinMakespan = findBestCutAmong(tree, *tree->getTasks(), assignSubtreeChoiceCode);
+    vector<Task *> candidates;
+    std::copy_if(tree->getTasks()->begin(), tree->getTasks()->end(), std::back_inserter(candidates), [](Task *i) {
+        return i->getChildren()->size() >= 2;
+    });
+    Task *taskMinMakespan = findBestCutAmong(tree, candidates, assignSubtreeChoiceCode);
     if (taskMinMakespan != nullptr) {
         taskMinMakespan->breakNBiggestChildren(
                 Cluster::getFixedCluster()->getNumberFreeProcessors());

@@ -93,10 +93,10 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
     }
     nodeIdCounter = 2;
 
-    vector<Task *> * brokenTasksWithoutRoot = getBrokenTasks();
-    brokenTasksWithoutRoot->erase(brokenTasksWithoutRoot->begin());
+    vector<Task *> brokenTasksWithoutRoot = getBrokenTasks();
+    brokenTasksWithoutRoot.erase(brokenTasksWithoutRoot.begin());
 
-    for (Task *brokenTask: *brokenTasksWithoutRoot) {
+    for (Task *brokenTask: brokenTasksWithoutRoot) {
         parent = brokenTask->getParent();
         while (parent != nullptr && !parent->isBroken()) {
             parent = parent->getParent();

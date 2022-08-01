@@ -170,7 +170,7 @@ public :
         __root = false;
         assignedProcessor = nullptr;
         feasibleProcessors = new vector<Processor *>();
-        minMemUnderlying = 0;
+        minMemUnderlying = otherTask.minMemUnderlying;
     }
 
     ~Task() {
@@ -517,12 +517,12 @@ public :
     list<Task *> fillParallelRootsUntilBestMakespan(vector<double> &makespansOfSplittings,
                                                     unsigned long stepsUntilMinimalMakespan) const;
 
-    void precomputeMinMems(Tree *tree);
+    void precomputeMinMems(Tree *tree, bool greedy = false);
 
     void updateTMax() {
         if (this->feasibleProcessors->size() == 0) {
             //cout << "Task" << to_string(this->getId()) << " has 0 feasible processors during iterations. "
-          //       << Cluster::getFixedCluster()->getNumberFreeProcessors() << " are still free.";
+            //       << Cluster::getFixedCluster()->getNumberFreeProcessors() << " are still free.";
             throw "No Schedule Possible";
         }
         if (this->feasibleProcessors->size() == 1) this->tMax = DBL_MAX;
@@ -554,7 +554,7 @@ public :
 
     void assignFeasibleProcessorsToSubtree(double minMem);
 
-    double computeMinMemUnderlying(Tree *tree);
+    double computeMinMemUnderlying(Tree *tree, bool greedy);
 
     vector<Task *> tasksInSubtreeRootedHere() {
         vector<Task *> result;

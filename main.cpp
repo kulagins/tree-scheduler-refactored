@@ -62,6 +62,8 @@ buildTreeDependentCluster(InputParser *input, Tree *tree);
 void buildStaticCluster(InputParser *input, ifstream &OpenFilePreliminary, string &treename,
                         double maxoutd, double minMem);
 
+double computeProcesorUtilization(double processorUtilizationOverall);
+
 OutputPrinter printer;
 
 string a2MultiLevel(Tree *tree, OutputPrinter *printer, double &makespan, InputParser *pParser) {
@@ -70,8 +72,9 @@ string a2MultiLevel(Tree *tree, OutputPrinter *printer, double &makespan, InputP
     clock_t time;
     time = clock();
 
-    tree->getRoot()->precomputeMinMems(tree);
+    tree->getRoot()->precomputeMinMems(tree, true);
     string result = /*"0 step: " +*/ to_string((clock() - time) / CLOCKS_PER_SEC) + " ";
+    //result += to_string(tree->getRoot()->getMinMemUnderlying());
 
 
     time = clock();
@@ -83,8 +86,8 @@ string a2MultiLevel(Tree *tree, OutputPrinter *printer, double &makespan, InputP
         // assert(makespan==makespan1);
 
         number_subtrees = tree->HowmanySubtrees(true);
-        result +=/* " 2&3 step: " + */
-               // to_string(clock() - time) + " "/*+" #trees: "*/+
+        result +=
+               // to_string(clock() - time) + " "+
             " "+   to_string(number_subtrees) + "\n";
     }
     catch (exception e) {
@@ -313,14 +316,7 @@ int main(int argc, char **argv) {
                 else cout<<proc->getMemorySize()<<" free"<<endl;
             }*/
 
-            double processorUtilization = 0;
-            for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {
-                if (proc->isBusy) {
-                    processorUtilization++;
-                }
-            }
-            processorUtilization /= Cluster::getFixedCluster()->getProcessors().size();
-            processorUtilizationOverall += processorUtilization;
+            processorUtilizationOverall = computeProcesorUtilization(processorUtilizationOverall);
             tree->clearComputedValues();
         } while (input->nextCluster());
         printer->quietPrint(tree_column);
@@ -335,6 +331,18 @@ int main(int argc, char **argv) {
     cout << treesToRerun << endl;
     exit(EXIT_SUCCESS);
 
+}
+
+double computeProcesorUtilization(double processorUtilizationOverall) {
+    double processorUtilization = 0;
+    for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {
+        if (proc->isBusy) {
+            processorUtilization++;
+        }
+    }
+    processorUtilization /= Cluster::getFixedCluster()->getProcessors().size();
+    processorUtilizationOverall += processorUtilization;
+    return processorUtilizationOverall;
 }
 
 void buildStaticCluster(InputParser *input, ifstream &OpenFilePreliminary, string &treename,

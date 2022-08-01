@@ -125,8 +125,8 @@ void explore(Task *node, double available_memory, list<Task *> *L_init, schedule
             Mpeak = (*current_node)->Mpeak + available_memory - (*current_node)->Mavail;
         }
     }
-   // if (cut_value > 0)
-   //     cout << "Task: " << node->getId() << " CV: " << cut_value << endl;
+    // if (cut_value > 0)
+    //     cout << "Task: " << node->getId() << " CV: " << cut_value << endl;
     delete candidates;
     return;
 }
@@ -154,5 +154,33 @@ void MinMem(Tree *tree, double MaxOutDeg, double &Required_memory, schedule_trav
         explore(root, Required_memory, &L, &Schedule, M, L, Schedule, Mpeak, quiet, 0);
 
 
+    }
+
+}
+
+void GreedyMinMem(Tree *tree, double &Required_memory) {
+   //cout << "start computing greedy MM for root " << tree->getRoot()->getOtherSideId() << endl;
+    vector<Task *> tasksWithoutMinMem;
+    for (const auto &item: *tree->getTasks()) {
+        if (item->getMinMemUnderlying() == 0) {
+            tasksWithoutMinMem.push_back(item);
+        }
+    }
+
+    for (auto it = tasksWithoutMinMem.rbegin(); it != tasksWithoutMinMem.rend(); it++) {
+        vector<Task *> *children = (*it)->getChildren();
+        double maxMemReqFromChildren = 0;
+        for (const auto &child: *children) {
+            assert(child->getMinMemUnderlying() != 0);
+            double memReqFromChild = child->getEdgeWeight() + child->getMinMemUnderlying();
+            if (memReqFromChild > maxMemReqFromChildren) {
+                maxMemReqFromChildren = memReqFromChild;
+            }
+        }
+        Required_memory = maxMemReqFromChildren
+              + (*it)->getNodeWeight();
+               // + (*it)->getEdgeWeight();
+       // cout<<"result "<<Required_memory<<endl;
+       // (*it)->setMinMemUnderlying(memReqForTask);
     }
 }

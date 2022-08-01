@@ -49,7 +49,7 @@ double u_wseconds(void) {
 // BUilds quotient tree for the whole original tree
 Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for space side
     root->breakEdge();
-   // root->getMakespanCostWithSpeeds(true, true); //update
+    // root->getMakespanCostWithSpeeds(true, true); //update
 
     Task *copy;
     Task *parent;
@@ -60,7 +60,7 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
     rootCopy->setMakespanWeight(root->getSequentialPart());
     rootCopy->setAssignedProcessor(root->getAssignedProcessor());
     rootCopy->setMinMemUnderlying(root->getMinMemUnderlying());
-    for (Processor *feasible: * root->getFeasibleProcessors()) {
+    for (Processor *feasible: *root->getFeasibleProcessors()) {
         rootCopy->addFeasibleProcessor(feasible);
     }
 
@@ -84,7 +84,7 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
                 copy->setAssignedProcessor(currentNode->getAssignedProcessor());
             }
             copy->setMinMemUnderlying(currentNode->getMinMemUnderlying());
-            for (Processor *feasible: * currentNode->getFeasibleProcessors()) {
+            for (Processor *feasible: *currentNode->getFeasibleProcessors()) {
                 copy->addFeasibleProcessor(feasible);
             }
             tasksInQtree->push_back(copy);
@@ -1337,6 +1337,7 @@ Tree *BuildSubtree(Tree *tree, Task *subtreeRoot) {
                 child->setOtherSideId(idInSubtree);
                 copy->setOtherSideId(child->getId());
 
+
                 tasksInNewSubtree->push_back(copy);
 
                 //add as child to the copied parent, whose counterpart we are currently exploring
@@ -1403,7 +1404,10 @@ double Tree::avgMSWeight() {
 }
 
 
-void Task::precomputeMinMems(Tree *tree) {
+void Task::precomputeMinMems(Tree *tree, bool greedy) {
+
+
+    //cout << "compute greedy? " << (greedy ? "yes" : "no") << endl;
     //cout<<"precomputing minMems on "<<endl;
     // cout<<this->getId()<<endl;
     bool unaccessible = false;
@@ -1414,42 +1418,37 @@ void Task::precomputeMinMems(Tree *tree) {
         return;
     }
 
-    /* if (tree->getTaskMaxMakespan() == NULL ||
-         (tree->getTaskMaxMakespan() != NULL &&
-          this->getMakespanCost(true, false) > tree->getTaskMaxMakespan()->getMakespanCost(true, false))) {
-         tree->setTaskMaxMakespan(this);
-     }
-     if (tree->getTaskMaxMemRequirement() == NULL ||
-         (tree->getTaskMaxMemRequirement() != NULL &&
-         this->getNodeWeight() > tree->getTaskMaxMemRequirement()->getNodeWeight())) {
-         tree->setTaskMaxMemRequirement(this);
-     }
-     */
-
     for (Task *child: *this->getChildren()) {
-        child->precomputeMinMems(tree);
+        //for the upper half of the tree, compute greedily
+        bool shouldComputeGreedy= child->getId() < tree->getSize() / 2;
+      //  cout << "compute for child w id " << child->getId() << endl;
+        child->precomputeMinMems(tree, shouldComputeGreedy);
         if (child->getFeasibleProcessors()->empty()) {
             //cout << "child has no feasible, no computing parent" << endl;
-            unaccessible = true;
+           // unaccessible = true;
         }
     }
 
+    //if called with greedy, do so
+    //if at least one child doesn't have feasible processors, also no need to waste time computing exact minMem.
+    double minMem = computeMinMemUnderlying(tree, greedy);
+    assignFeasibleProcessorsToSubtree(minMem);
 
-    if (!unaccessible) {
-        double minMem = computeMinMemUnderlying(tree);
-        assignFeasibleProcessorsToSubtree( minMem);
-        //else do nothing, if at least one child has no feasible processors, than the parent doesn't too
-    }
+
 }
 
-double Task::computeMinMemUnderlying(Tree *tree) {
-    schedule_traversal *schedule_f = new schedule_traversal();
-    Tree *subtree = BuildSubtree(tree, this);
+double Task::computeMinMemUnderlying(Tree *tree, bool greedy) {
     double minMem;
-    double maxoutd = MaxOutDegree(subtree, true);
-    MinMem(subtree, maxoutd, minMem, *schedule_f, true);
-    delete schedule_f;
-    delete subtree;
+    Tree *subtree = BuildSubtree(tree, this);
+    if (!greedy) {
+        schedule_traversal *schedule_f = new schedule_traversal();
+        double maxoutd = MaxOutDegree(subtree, true);
+        MinMem(subtree, maxoutd, minMem, *schedule_f, true);
+        delete schedule_f;
+        delete subtree;
+    } else {
+        GreedyMinMem(subtree, minMem);
+    }
     setMinMemUnderlying(minMem);
     return minMem;
 }

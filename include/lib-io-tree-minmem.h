@@ -46,115 +46,13 @@ struct iter_node_t{
   iter_node_t * pPrev;
 };
 
-class MinMemDLL {
-  protected:
-  iter_node_t * pSentinel;
-    bool custom_sentinel;
-    uint64_t ui_size;
-  public:
-    MinMemDLL(){
-      pSentinel = new iter_node_t;
-      pSentinel->pNext = pSentinel;
-      pSentinel->pPrev = pSentinel;
-      custom_sentinel = false;
-      ui_size = 0;
-    };
-    MinMemDLL(iter_node_t * pSentinel){
-      this->pSentinel = pSentinel;
-      pSentinel->pNext = pSentinel;
-      pSentinel->pPrev = pSentinel;
-      custom_sentinel = true;
-      ui_size = 0;
-    };
 
-    ~MinMemDLL(){
-      if(!custom_sentinel){
-        delete pSentinel;
-      }
-    };
+void MinMem(Tree *tree, double MaxOutDeg, double &Required_memory, schedule_traversal &Schedule,
+            int quiet);//added by Changjiang
 
+void MinMemArray(int N, int root, double *nwghts, double *ewghts, int *chstart, int *children, double MaxOutDeg,
+                 double &Required_memory, int *Schedule, int quiet, int &count);
 
-    void clear(){
-      pSentinel->pNext = pSentinel;
-      pSentinel->pPrev = pSentinel;
-      ui_size = 0;
-    }
-
-void push_back(iter_node_t * pNewNode){
-      pSentinel->pPrev->pNext = pNewNode;
-      pNewNode->pPrev = pSentinel->pPrev;
-      pNewNode->pNext = pSentinel;
-      pSentinel->pPrev = pNewNode;
-      ui_size++;
-    };
-
-
-void insert_after(iter_node_t * pInsertAfterNode, iter_node_t * pNewNode){
-      pInsertAfterNode->pNext->pPrev = pNewNode;
-      pNewNode->pNext = pInsertAfterNode->pNext;
-      pNewNode->pPrev = pInsertAfterNode;
-      pInsertAfterNode->pNext = pNewNode;
-      ui_size++;
-    };
-
-
-
-void erase(iter_node_t * pOldNode){
-      pOldNode->pPrev->pNext = pOldNode->pNext;
-      pOldNode->pNext->pPrev = pOldNode->pPrev;
-      ui_size--;
-    };
-
-    void splice(iter_node_t * pNewLast,uint64_t removed_elements){
-      if(removed_elements>0){	
-        pSentinel->pPrev = pNewLast;
-        pNewLast->pNext = pSentinel;
-
-        ui_size-= removed_elements;
-      }
-    };
-
-    uint64_t splice(iter_node_t * pNewLast,iter_node_t * pLastRemoved){
-      iter_node_t * pCurNode = pNewLast->pNext;
-      uint64_t ui_removed_count = 1;
-      while(pCurNode != this->end() && pCurNode !=pLastRemoved){pCurNode = pCurNode->pNext; ui_removed_count++;}
-
-      pNewLast->pNext = pLastRemoved->pNext;
-      pLastRemoved->pNext->pPrev = pNewLast;
-
-
-      ui_size-= ui_removed_count;
-      return ui_removed_count;
-    };
-
-
-void splice(iter_node_t * pNewLast,iter_node_t * pLastRemoved, uint64_t removed_elements){
-      if(removed_elements>0){
-        pNewLast->pNext = pLastRemoved->pNext;
-        pLastRemoved->pNext->pPrev = pNewLast;
-
-        ui_size-= removed_elements;
-      }
-    };
-
-    iter_node_t * begin(){
-      return pSentinel->pNext;
-    };
-    iter_node_t * last(){
-      return pSentinel->pPrev;
-    };
-    iter_node_t * end(){
-      return pSentinel;
-    };
-
-uint64_t size(){
-      return ui_size;
-    };
-};
-
-        
-void MinMem(Tree * tree, double MaxOutDeg, double & Required_memory, schedule_traversal & Schedule, int quiet);//added by Changjiang
-
-void MinMemArray(int N,int root, double * nwghts, double * ewghts, int * chstart, int * children,double MaxOutDeg, double & Required_memory, int * Schedule, int quiet, int & count);
+void GreedyMinMem(Tree *tree, double &Required_memory);
 
 #endif

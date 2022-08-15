@@ -2233,20 +2233,27 @@ void distributeProcessorsOld(Tree *qTree) {
 }
 
 void SiftInfTmaxUpPreserveOrder(vector<Task *> *taskHeap) {
-    vector<Task *> withTMaxInf;
     int init_size = taskHeap->size();
-    for (const auto &item: *taskHeap) {
-        if (item->getTMax() == DBL_MAX)
-            withTMaxInf.push_back(item);
+    if (init_size != 0 && init_size != 1) {
+
+        vector<Task *> withTMaxInf;
+        for (const auto &item: *taskHeap) {
+            if (item->getTMax() == DBL_MAX)
+                withTMaxInf.push_back(item);
+        }
+
+        vector<Task *> others;
+        set_difference(taskHeap->begin(), taskHeap->end(),
+                       withTMaxInf.begin(), withTMaxInf.end(),
+                //inserter(others, others.begin())
+                       std::back_inserter(others),
+                       [](auto &a, auto &b) { return a->getId() < b->getId(); });
+
+        taskHeap->clear();
+        taskHeap->insert(taskHeap->end(), withTMaxInf.begin(), withTMaxInf.end());
+        taskHeap->insert(taskHeap->end(), others.begin(), others.end());
     }
-    vector<Task *> others;
-    set_difference(taskHeap->begin(), taskHeap->end(),
-                   withTMaxInf.begin(), withTMaxInf.end(),
-                   inserter(others, others.begin()));
-    //std::back_inserter(notOnCP));
-    taskHeap->clear();
-    taskHeap->insert(taskHeap->end(), withTMaxInf.begin(), withTMaxInf.end());
-    taskHeap->insert(taskHeap->end(), others.begin(), others.end());
+
     assert(taskHeap->size() == init_size);
 }
 
@@ -2634,7 +2641,7 @@ void removeProcessorFromAllFeasSets(Processor *processor, Tree *tree) {
 }
 
 Task *chooseSubtree(string subtreeChoiceCode, Tree *tree, vector<Task *> candidates) {
-    cout << "choose subtree" << endl;
+    // cout << "choose subtree" << endl;
     int initialSize = candidates.size();
     if (subtreeChoiceCode == "LMW") {
         std::sort(candidates.begin(), candidates.end(), [](Task *a, Task *b) {
@@ -2646,11 +2653,11 @@ Task *chooseSubtree(string subtreeChoiceCode, Tree *tree, vector<Task *> candida
         vector<Task *> CriticalPath = buildCriticalPath(qtree->getRoot());
 
         auto candidatesContainOtherSideId = [candidates](Task *i) {
-            cout << "i: " << i->getId() << " " << i->getOtherSideId() << endl;
+            //cout << "i: " << i->getId() << " " << i->getOtherSideId() << endl;
             for (Task *task: candidates) {
-                cout << "task: " << task->getId() << " " << task->getOtherSideId() << endl;
+                //  cout << "task: " << task->getId() << " " << task->getOtherSideId() << endl;
                 if (task->getId() == i->getOtherSideId()) {
-                    cout << "yes" << endl;
+                    // cout << "yes" << endl;
                     return true;
                 }
             }
@@ -2743,7 +2750,7 @@ vector<pair<int, vector<Task *>>> levelOrder(Task *root) {
 }
 
 Task *chooseTask(Task *root, Tree *tree, string nodeChoiceCode, string assignSubtreeChoiceCode) {
-    cout << "choose task" << endl;
+    //cout << "choose task" << endl;
     Tree *subtree = BuildSubtree(tree, root);
 
     vector<Task *> candidates;

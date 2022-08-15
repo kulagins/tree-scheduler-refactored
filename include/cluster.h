@@ -60,8 +60,9 @@ public:
         assignedTaskId = -1;
     }
 
+    //TODO impelement
     ~Processor() {
-      //  if (assignedTask != nullptr) delete assignedTask;
+        //  if (assignedTask != nullptr) delete assignedTask;
     }
 
     double getMemorySize() const {
@@ -88,7 +89,6 @@ public:
     void setAssignedTaskId(int assignedTaskId);
 
     void setAssignedTask(Task *assignedTask);
-
 
 };
 
@@ -195,7 +195,7 @@ public:
 
     unsigned int getNumberFreeProcessors() {
         int res = count_if(this->processors.begin(), this->processors.end(),
-                           [](const Processor* i) { return !i->isBusy; });
+                           [](const Processor *i) { return !i->isBusy; });
         return res;
     }
 
@@ -380,6 +380,10 @@ public:
     Processor *findSmallestFittingProcessorForMerge(Task *currentQNode, const Tree *tree, double requiredMemory);
 
     bool areAllUnassigned(Task *currentQNode, const Tree *tree);
+
+    void freeAllBusyProcessors();
+    void sortProcessorsByMemSize();
 };
+
 
 #endif

@@ -49,7 +49,7 @@ double u_wseconds(void) {
 // BUilds quotient tree for the whole original tree
 Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for space side
     root->breakEdge();
-    // root->getMakespanCostWithSpeeds(true, true); //update
+    //root->getMakespanCostWithSpeeds(true, true); //update
 
     Task *copy;
     Task *parent;
@@ -1406,38 +1406,39 @@ double Tree::avgMSWeight() {
 
 void Task::precomputeMinMems(Tree *tree, bool greedy) {
 
-
     //cout << "compute greedy? " << (greedy ? "yes" : "no") << endl;
-    //cout<<"precomputing minMems on "<<endl;
-    // cout<<this->getId()<<endl;
+
     bool unaccessible = false;
     if (this->getMinMemUnderlying() != 0) {
-        //   cout << "already computed for " << this->getId() << " " << this->getMinMemUnderlying() << endl;
+        return;
     }
     if (this == NULL) {
         return;
     }
 
     for (Task *child: *this->getChildren()) {
-        //for the upper half of the tree, compute greedily
-        bool shouldComputeGreedy= child->getId() < tree->getSize() / 2;
-      //  cout << "compute for child w id " << child->getId() << endl;
+        //option: for the upper half of the tree, compute greedily
+        bool shouldComputeGreedy = false;//child->getId() < tree->getSize() / 2;
         child->precomputeMinMems(tree, shouldComputeGreedy);
         if (child->getFeasibleProcessors()->empty()) {
-            //cout << "child has no feasible, no computing parent" << endl;
-           // unaccessible = true;
+            // unaccessible = true;
         }
     }
 
     //if called with greedy, do so
-    //if at least one child doesn't have feasible processors, also no need to waste time computing exact minMem.
-    double minMem = computeMinMemUnderlying(tree, greedy);
-    assignFeasibleProcessorsToSubtree(minMem);
-
-
+    //option: if at least one child doesn't have feasible processors, also no need to waste time computing exact minMem.
+    computeMinMemUnderlyingAndAssignFeasible(tree, greedy);
 }
 
-double Task::computeMinMemUnderlying(Tree *tree, bool greedy) {
+double Task::computeMinMemUnderlyingAndAssignFeasible(Tree *tree, bool greedy) {
+  //  if (this->needsRecomputeMemReq)
+  //      cout << "needs recompute " << endl;
+    //cout<<"compute MMU for task"<< this->getId()<<endl;
+    if (!this->needsRecomputeMemReq && this->getMinMemUnderlying() != 0) {
+        return this->getMinMemUnderlying();
+    }
+
+    tree->numberTasksWMinMem++;
     double minMem;
     Tree *subtree = BuildSubtree(tree, this);
     if (!greedy) {
@@ -1449,12 +1450,18 @@ double Task::computeMinMemUnderlying(Tree *tree, bool greedy) {
     } else {
         GreedyMinMem(subtree, minMem);
     }
+  //  if (this->needsRecomputeMemReq)//(this->getMinMemUnderlying() != minMem && this->getMinMemUnderlying() != 0)
+  //      cout << "computed MMU for task" << this->getId() << "MMU was" << this->getMinMemUnderlying() <<
+  //           "MMU is now" << minMem << endl;
+    if (this->getMinMemUnderlying() != minMem && this->getMinMemUnderlying() != 0 && !this->needsRecomputeMemReq)
+        cout << "no needsREcompute, but memreq changed" << endl;
     setMinMemUnderlying(minMem);
+    assignFeasibleProcessorsToSubtree(minMem);
+    needsRecomputeMemReq = false;
     return minMem;
 }
 
 void Task::assignFeasibleProcessorsToSubtree(double minMem) {
-    //TODO improve by sorting procs and only taking biggest
     for (Processor *processor: Cluster::getFixedCluster()->getProcessors()) {
         if (!processor->isBusy && processor->getMemorySize() >= minMem) {
             addFeasibleProcessor(processor);

@@ -86,6 +86,7 @@ public :
     unsigned int Ci;
     double Mpeak;
     double Mavail;
+    bool needsRecomputeMemReq;
 
     Task() {
         id = 0;
@@ -298,6 +299,11 @@ public :
     vector<Processor *> *getFeasibleProcessors() {
         return this->feasibleProcessors;
     }
+
+   void setFeasibleProcessors( vector<Processor *> * v) {
+         this->feasibleProcessors = v;
+    }
+
 
     int getLabel() const {
         return label;
@@ -523,7 +529,8 @@ public :
         if (this->feasibleProcessors->size() == 0) {
             //cout << "Task" << to_string(this->getId()) << " has 0 feasible processors during iterations. "
             //       << Cluster::getFixedCluster()->getNumberFreeProcessors() << " are still free.";
-            throw "No Schedule Possible";
+            cout<<"no schedule possible!"<<endl;
+            throw std::runtime_error("No Schedule Possible");
         }
         if (this->feasibleProcessors->size() == 1) this->tMax = DBL_MAX;
         else {
@@ -554,7 +561,7 @@ public :
 
     void assignFeasibleProcessorsToSubtree(double minMem);
 
-    double computeMinMemUnderlying(Tree *tree, bool greedy);
+    double computeMinMemUnderlyingAndAssignFeasible(Tree *tree, bool greedy );
 
     vector<Task *> tasksInSubtreeRootedHere() {
         vector<Task *> result;
@@ -580,20 +587,10 @@ public :
 
     }
 
-
     vector<Task *> breakNBiggestChildren(int n) {
         vector<Task *> newlyBroken;
-
-        struct {
-            bool operator()(Task *a, Task *b) const {
-                return a->getMakespanWeight() < b->getMakespanWeight();
-            }
-        } weightLess;
-        std::sort(this->getChildren()->begin(), this->getChildren()->end(), weightLess);
         int border = n < this->getChildren()->size() ? n : this->getChildren()->size();
-        //if (n < this->getChildren()->size()) {
-        //    cout << "n smaller" << n << " " << this->getChildren()->size() << endl;
-        //}
+
         for (int i = 0; i < border; i++) {
             (this->getChildren()->at(i))->breakEdge();
             newlyBroken.push_back(this->getChildren()->at(i));
@@ -630,6 +627,7 @@ protected:
 
 
 public:
+    int numberTasksWMinMem;
 
     Tree() {
         root_count = 0;
@@ -639,6 +637,7 @@ public:
         size = 0;
         taskMaxMakespan = NULL;
         taskMaxMemRequirement = NULL;
+        numberTasksWMinMem=0;
     }
 
     Tree(int N, int *prnts, double *nwghts, double *ewghts, double *mswghts) {
@@ -664,6 +663,7 @@ public:
         }
 
         size = getTasks()->size();
+        numberTasksWMinMem=0;
     }
 
     Tree(vector<Task *> *nodes, Task *root, Tree *originalTree) {
@@ -678,6 +678,7 @@ public:
         this->originalTree = originalTree;
         taskMaxMakespan = NULL;
         taskMaxMemRequirement = NULL;
+        numberTasksWMinMem=0;
     }
 
 
@@ -907,19 +908,13 @@ public:
 
     void cleanAssignedAndReassignFeasible() {
         for (Task *task: *tasks) {
+            task->setFeasibleProcessors( new vector<Processor *>());
             task->assignFeasibleProcessorsToSubtree(task->getMinMemUnderlying());
             freeProcessorIfAvailable(task);
         }
-        for (Processor *item: Cluster::getFixedCluster()->getProcessors()) {
-            if (item->isBusy) {
-                item->isBusy = false;
-                item->setAssignedTaskId(-1);
-                item->setAssignedTask(NULL);
-                item->setOccupiedMemorySize(0);
-            }
-        }
         assert(Cluster::getFixedCluster()->getNumberProcessors() ==
                Cluster::getFixedCluster()->getNumberFreeProcessors());
+        // Cluster::getFixedCluster()->freeAllBusyProcessors();
     }
 
 };

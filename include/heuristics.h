@@ -31,11 +31,14 @@ void distributeProcessors(Tree *qTree);
 
 string seqSetAndFeasSets(Tree *tree);
 
-double assignToBestProcessors(Tree *tree, string assignSubtreeChoiceCode = "N");
+double assignToBestProcessors(Tree *tree,  vector<Task *> newlyBroken, string assignSubtreeChoiceCode = "N");
 
 void removeProcessorFromAllFeasSets(Processor *processor, Tree *tree);
 
 string partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode, string assignSubtreeChoiceCode);
+string
+partitionHeuristicsNoPreprocessing(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
+                                   string assignSubtreeChoiceCode);
 
 Task *chooseSubtree(string subtreeChoiceCode, Tree * tree, vector<Task*> candidates);
 
@@ -48,7 +51,7 @@ Task *findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtr
 
 Task * CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode);
 
-Task * CutTaskWithMaxImprovementHeuristicChoice(Tree *tree, string assignSubtreeChoiceCode);
+double CutTaskWithMaxImprovementHeuristicChoice(Tree *tree, string assignSubtreeChoiceCode);
 
 void SiftInfTmaxUpPreserveOrder(vector<Task *> *taskHeap);
 

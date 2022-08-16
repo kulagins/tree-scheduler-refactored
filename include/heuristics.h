@@ -17,6 +17,9 @@ template<class T, class U>
 void GetTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest);
 
 static double timeForAssignment = 0;
+static double timeChooseNode = 0;
+static double timeChooseTree = 0;
+static double timeBestCutInNodeChoice = 0;
 
 int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcessor);
 

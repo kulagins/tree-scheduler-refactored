@@ -1431,12 +1431,15 @@ void Task::precomputeMinMems(Tree *tree, bool greedy) {
 }
 
 double Task::computeMinMemUnderlyingAndAssignFeasible(Tree *tree, bool greedy) {
-  //  if (this->needsRecomputeMemReq)
-  //      cout << "needs recompute " << endl;
+    //cout<<"recompute mm on task "<<this->getId()<<" was "<<this->getMinMemUnderlying()<<endl;
+    //  if (this->needsRecomputeMemReq)
+    //      cout << "needs recompute " << endl;
     //cout<<"compute MMU for task"<< this->getId()<<endl;
     if (!this->needsRecomputeMemReq && this->getMinMemUnderlying() != 0) {
         return this->getMinMemUnderlying();
     }
+   // if (this->isRoot())
+   //     greedy = true;
 
     tree->numberTasksWMinMem++;
     double minMem;
@@ -1450,14 +1453,15 @@ double Task::computeMinMemUnderlyingAndAssignFeasible(Tree *tree, bool greedy) {
     } else {
         GreedyMinMem(subtree, minMem);
     }
-  //  if (this->needsRecomputeMemReq)//(this->getMinMemUnderlying() != minMem && this->getMinMemUnderlying() != 0)
-  //      cout << "computed MMU for task" << this->getId() << "MMU was" << this->getMinMemUnderlying() <<
-  //           "MMU is now" << minMem << endl;
+    //  if (this->needsRecomputeMemReq)//(this->getMinMemUnderlying() != minMem && this->getMinMemUnderlying() != 0)
+    //      cout << "computed MMU for task" << this->getId() << "MMU was" << this->getMinMemUnderlying() <<
+    //           "MMU is now" << minMem << endl;
     if (this->getMinMemUnderlying() != minMem && this->getMinMemUnderlying() != 0 && !this->needsRecomputeMemReq)
-        cout << "no needsREcompute, but memreq changed" << endl;
+        cout << "no needsRecompute, but memreq changed" << endl;
     setMinMemUnderlying(minMem);
     assignFeasibleProcessorsToSubtree(minMem);
     needsRecomputeMemReq = false;
+   // cout<<"now "<<minMem<<endl;
     return minMem;
 }
 

@@ -90,9 +90,9 @@ string a2MultiLevel(Tree *tree, OutputPrinter *printer, double &makespan, InputP
                                       pParser->getAssignChooseSubtree());
         cout << "tasks computed MM " << tree->numberTasksWMinMem << endl;
         number_subtrees = tree->HowmanySubtrees(true);
-        result +=
+       // result +=
                 // to_string(clock() - time) + " "+
-                " " + to_string(number_subtrees) + "\n";
+     //           " " + to_string(number_subtrees) + "\n";
     }
     catch (exception e) {
         printer->quietPrint("An error has occurred: ");

@@ -2585,7 +2585,7 @@ void assignCorrespondingTreeTasks(Tree *tree, Tree *qTree) {
 
 double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string chooseSubtreeAssign) {
     tree->cleanAssignedAndReassignFeasible();
-    //clear cluster?
+
     assert(Cluster::getFixedCluster()->getNumberProcessors() == Cluster::getFixedCluster()->getNumberFreeProcessors());
     clock_t time;
     time = clock();
@@ -2595,22 +2595,23 @@ double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string cho
         while (parent != nullptr && !parent->isBroken()) {
             parent = parent->getParent();
         }
-        if (parent != nullptr)
+        if (parent != nullptr){
+            if (parent->getMinMemUnderlying() != 0) {
+                //cout << " needs to recompute minMem on " << parent->getId() << ", ";
+            }
             parent->needsRecomputeMemReq = true;
+        }
     }
     for (auto &item: tree->getBrokenTasks()) {
         item->computeMinMemUnderlyingAndAssignFeasible(tree, false);
-
-    }
-    for (auto &item: tree->getBrokenTasks()) {
         assert(item->getMinMemUnderlying() != 0);
-    }
 
+    }
     Tree *qTree = tree->BuildQtree();
 
     for (Task *task: *qTree->getTasks()) {
         if (task->getFeasibleProcessors()->empty()) {
-            string exception = "Task" + to_string(task->getId()) + " has 0 feasible processors at beginning.";
+            string exception = "Task" + to_string(task->getOtherSideId()) + " has 0 feasible processors at beginning.";
             throw exception;
         }
     }
@@ -2618,9 +2619,11 @@ double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string cho
         distributeProcessors(qTree);
     }
     catch (const char *str) {
+        cout << "cught exception 1, return max" << endl;
         return std::numeric_limits<int>::max();
     }
     catch (exception e) {
+        cout << "cught exception 2, return max" << endl;
         return std::numeric_limits<int>::max();
     }
 
@@ -2642,6 +2645,8 @@ void removeProcessorFromAllFeasSets(Processor *processor, Tree *tree) {
 
 Task *chooseSubtree(string subtreeChoiceCode, Tree *tree, vector<Task *> candidates) {
     // cout << "choose subtree" << endl;
+    clock_t time;
+    time = clock();
     int initialSize = candidates.size();
     if (subtreeChoiceCode == "LMW") {
         std::sort(candidates.begin(), candidates.end(), [](Task *a, Task *b) {
@@ -2688,9 +2693,13 @@ Task *chooseSubtree(string subtreeChoiceCode, Tree *tree, vector<Task *> candida
 
         Task *correspondingTaskInTree = tree->getTask(firstThatIsInCandidates->getOtherSideId());
         delete qtree;
+        timeChooseTree += (clock() - time);
         return correspondingTaskInTree;
-    } else
+    } else {
+        timeChooseTree += (clock() - time);
         throw std::runtime_error("not implemented");
+    }
+
 
 }
 
@@ -2750,6 +2759,8 @@ vector<pair<int, vector<Task *>>> levelOrder(Task *root) {
 }
 
 Task *chooseTask(Task *root, Tree *tree, string nodeChoiceCode, string assignSubtreeChoiceCode) {
+    clock_t time;
+    time = clock();
     //cout << "choose task" << endl;
     Tree *subtree = BuildSubtree(tree, root);
 
@@ -2809,7 +2820,10 @@ Task *chooseTask(Task *root, Tree *tree, string nodeChoiceCode, string assignSub
         }
     }
 
+    timeChooseNode += (clock() - time);
+    time = clock();
     Task *best = findBestCutAmong(tree, candidates, assignSubtreeChoiceCode, numeric_limits<double>::infinity());
+    timeBestCutInNodeChoice += (clock() - time);
     delete subtree;
     return best;
 
@@ -2864,13 +2878,13 @@ void chooseAssignSubtree(string parser, Tree *tree) {
 string
 partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode, string assignSubtreeChoiceCode) {
     timeForAssignment = 0;
-    string result = "";
+    string result = "times: ";
     clock_t time;
     time = clock();
     //tree->cleanAssignedAndReassignFeasible();
     // Cluster::getFixedCluster()->sortProcessorsByMemSize();
     Cluster::getFixedCluster()->freeAllBusyProcessors();
-
+    tree->getRoot()->computeMinMemUnderlyingAndAssignFeasible(tree, false);
 
     double minMakespan = CutTaskWithMaxImprovementHeuristicChoice(tree, assignSubtreeChoiceCode);
 
@@ -2942,9 +2956,11 @@ partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
         }
     }
     double makespan = assignToBestProcessors(tree, {}, assignSubtreeChoiceCode);
-    result += to_string((clock() - time) / CLOCKS_PER_SEC) + " ";
-    return result + to_string(timeForAssignment / CLOCKS_PER_SEC) + " " +
-           to_string(assignToBestProcessors(tree, {}, assignSubtreeChoiceCode)) +
+    result +=to_string((clock() - time) / CLOCKS_PER_SEC) + " ";
+    return  result + to_string(timeForAssignment / CLOCKS_PER_SEC) + " " + to_string(timeChooseTree/ CLOCKS_PER_SEC) + " " +
+           to_string(timeChooseNode/ CLOCKS_PER_SEC)
+           + " " + to_string(timeBestCutInNodeChoice/ CLOCKS_PER_SEC) +
+          // to_string(assignToBestProcessors(tree, {}, assignSubtreeChoiceCode)) +
            " ";
     // delete subtreeCandidates;
 }

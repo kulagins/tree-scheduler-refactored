@@ -159,7 +159,7 @@ void MinMem(Tree *tree, double MaxOutDeg, double &Required_memory, schedule_trav
 }
 
 void GreedyMinMem(Tree *tree, double &Required_memory) {
-   //cout << "start computing greedy MM for root " << tree->getRoot()->getOtherSideId() << endl;
+    //cout << "start computing greedy MM for root " << tree->getRoot()->getOtherSideId() << endl;
     vector<Task *> tasksWithoutMinMem;
     for (const auto &item: *tree->getTasks()) {
         if (item->getMinMemUnderlying() == 0) {
@@ -171,16 +171,22 @@ void GreedyMinMem(Tree *tree, double &Required_memory) {
         vector<Task *> *children = (*it)->getChildren();
         double maxMemReqFromChildren = 0;
         for (const auto &child: *children) {
-            assert(child->getMinMemUnderlying() != 0);
-            double memReqFromChild = child->getEdgeWeight() + child->getMinMemUnderlying();
+            double minMemUnderlyingFromChild = child->getMinMemUnderlying();
+            if (minMemUnderlyingFromChild == 0) {
+                cout << "child has no MM" << endl;
+                Tree *subtree = BuildSubtree(tree, child);
+                GreedyMinMem(subtree, minMemUnderlyingFromChild);
+                delete subtree;
+            }
+            double memReqFromChild = child->getEdgeWeight() + minMemUnderlyingFromChild;
             if (memReqFromChild > maxMemReqFromChildren) {
                 maxMemReqFromChildren = memReqFromChild;
             }
         }
         Required_memory = maxMemReqFromChildren
-              + (*it)->getNodeWeight();
-               // + (*it)->getEdgeWeight();
-       // cout<<"result "<<Required_memory<<endl;
-       // (*it)->setMinMemUnderlying(memReqForTask);
+                          + (*it)->getNodeWeight();
+        // + (*it)->getEdgeWeight();
+        // cout<<"result "<<Required_memory<<endl;
+        // (*it)->setMinMemUnderlying(memReqForTask);
     }
 }

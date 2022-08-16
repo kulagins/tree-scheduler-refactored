@@ -14,3 +14,4 @@ lib/heuristics.a
 main
 test/cluster_unittest
 test/distributeProcessors_unittest
+output/*

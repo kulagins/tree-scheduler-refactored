@@ -24,76 +24,76 @@ instdir: "data"
 
 experiments:
   - name: LMW-FFTM-MW
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFTM', 'MW']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFTM', 'MW']
     stdout: out
     num_threads: 24 
   - name: LMW-FFTM-MD
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFTM', 'MD']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFTM', 'MD']
     stdout: out
     num_threads: 24
   - name: LMW-FFTM-CP
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFTM', 'CP']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFTM', 'CP']
     stdout: out 
     num_threads: 24
   - name: LMW-FFT-MW
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'MW']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'MW']
     stdout: out 
     num_threads: 24
   - name: LMW-FFT-MD
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'MD']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'MD']
     stdout: out
     num_threads: 24
   - name: LMW-FFT-CP
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'CP']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'CP']
     stdout: out 
     num_threads: 24
   - name: LMW-M-MW
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'MW']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'MW']
     stdout: out
     num_threads: 24 
   - name: LMW-M-MD
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'MD']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'MD']
     stdout: out
     num_threads: 24
   - name: LMW-M-CP
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'CP']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'CP']
     stdout: out 
     num_threads: 24
   
   - name: CP-FFTM-MW
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFTM', 'MW']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFTM', 'MW']
     stdout: out 
     num_threads: 24
   - name: CP-FFTM-MD
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFTM', 'MD']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFTM', 'MD']
     stdout: out
     num_threads: 24
   - name: CP-FFTM-CP
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFTM', 'CP']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFTM', 'CP']
     stdout: out 
     num_threads: 24
   - name: CP-FFT-MW
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'MW']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'MW']
     stdout: out 
     num_threads: 24
   - name: CP-FFT-MD
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'MD']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'MD']
     stdout: out
     num_threads: 24
   - name: CP-FFT-CP
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'CP']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'CP']
     stdout: out 
     num_threads: 24
   - name: CP-M-MW
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'MW']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'MW']
     stdout: out 
     num_threads: 24
   - name: CP-M-MD
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'MD']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'MD']
     stdout: out
     num_threads: 24
   - name: CP-M-CP
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'CP']
+    args: ['./main', '@INSTANCE@/','treesListSmall.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'CP']
     stdout: out 
     num_threads: 24
 

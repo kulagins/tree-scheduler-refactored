@@ -529,7 +529,6 @@ public :
         if (this->feasibleProcessors->size() == 0) {
             //cout << "Task" << to_string(this->getId()) << " has 0 feasible processors during iterations. "
             //       << Cluster::getFixedCluster()->getNumberFreeProcessors() << " are still free.";
-            cout<<"no schedule possible!"<<endl;
             throw std::runtime_error("No Schedule Possible");
         }
         if (this->feasibleProcessors->size() == 1) this->tMax = DBL_MAX;

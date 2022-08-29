@@ -46,11 +46,12 @@ partitionHeuristicsNoPreprocessing(Tree *tree, string subtreeChoiceCode, string 
 Task *chooseSubtree(string subtreeChoiceCode, Tree * tree, vector<Task*> candidates);
 
 Task *chooseTask(Task *root, Tree *tree, string nodeChoiceCode, string assignSubtreeChoiceCode);
+vector<Task *> buildCandidatesForNode(Tree *tree, const string &nodeChoiceCode, Task* root);
 
 void chooseAssignSubtree(string assignSubtreeChoiceCode, Tree * tree);
 void assignCorrespondingTreeTasks(Tree *tree, Tree *qTree);
 
-Task *findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, double initMS = -1);
+pair<Task *, double >findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, double initMS = -1);
 
 Task * CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode);
 

@@ -1457,7 +1457,7 @@ double Task::computeMinMemUnderlyingAndAssignFeasible(Tree *tree, bool greedy) {
     //      cout << "computed MMU for task" << this->getId() << "MMU was" << this->getMinMemUnderlying() <<
     //           "MMU is now" << minMem << endl;
     if (this->getMinMemUnderlying() != minMem && this->getMinMemUnderlying() != 0 && !this->needsRecomputeMemReq)
-        cout << "no needsRecompute, but memreq changed" << endl;
+        cout << "no needsRecompute, but memreq changed on task "<<this->getId() << endl;
     setMinMemUnderlying(minMem);
     assignFeasibleProcessorsToSubtree(minMem);
     needsRecomputeMemReq = false;
@@ -1466,6 +1466,7 @@ double Task::computeMinMemUnderlyingAndAssignFeasible(Tree *tree, bool greedy) {
 }
 
 void Task::assignFeasibleProcessorsToSubtree(double minMem) {
+    this->setFeasibleProcessors(new vector<Processor *>());
     for (Processor *processor: Cluster::getFixedCluster()->getProcessors()) {
         if (!processor->isBusy && processor->getMemorySize() >= minMem) {
             addFeasibleProcessor(processor);

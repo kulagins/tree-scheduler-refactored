@@ -19,8 +19,8 @@ PEDANTIC_PARANOID_FREAK =       -O2 -Wshadow -Wcast-align \
 REASONABLY_CAREFUL_DUDE =	-Wall
 NO_PRAYER_FOR_THE_WICKED =	-w -O0
 WARNINGS = $(REASONABLY_CAREFUL_DUDE)
-CFLAGS_FAST = $(WARNINGS) -O2 -DNOASSERT -std=c++14 -Xpreprocessor -fopenmp
-CFLAGS = $(WARNINGS) -g -O0 -pg -DNOASSERT -std=c++14 -Xpreprocessor -fopenmp
+CFLAGS_FAST = $(WARNINGS) -O2 -DNOASSERT -std=c++14 -Xpreprocessor -fopenmp  #-c
+CFLAGS = $(WARNINGS) -g -O0 -pg -DNOASSERT -std=c++14 -Xpreprocessor -fopenmp #-c
 INCLUDES = -I${INC_PATH}
 DEFS = 
 LDADD =
@@ -42,7 +42,16 @@ lib-io-tree-minmem.o: src/lib-io-tree-minmem.cpp include/lib-io-tree-minmem.h li
 lib-io-tree.o: src/lib-io-tree.cpp include/lib-io-tree.h lib-io-tree-minmem.o lib-io-tree-utils.o
 	$(CPP) $(INCLUDES) $(DEFS) $(CFLAGS) -o ${OBJ_PATH}/$@ -c $< -fPIC
 
-heuristics.o: src/heuristics.cpp include/heuristics.h lib-io-tree-minmem.o  lib-io-tree.o cluster.o
+heuristics-a2.o: src/heuristics-a2.cpp include/heuristics.h lib-io-tree-minmem.o  lib-io-tree.o cluster.o
+	$(CPP) $(INCLUDES) $(DEFS) $(CFLAGS) -o ${OBJ_PATH}/$@ -c $< -fPIC
+
+heuristics-seq-set.o: src/heuristics-a2-growSeqSetAndOtherFirstIdeas.cpp include/heuristics.h lib-io-tree-minmem.o  lib-io-tree.o cluster.o
+	$(CPP) $(INCLUDES) $(DEFS) $(CFLAGS) -o ${OBJ_PATH}/$@ -c $< -fPIC
+
+heuristics-max-heap.o: src/tMaxHeap.cpp include/heuristics.h lib-io-tree-minmem.o  lib-io-tree.o cluster.o
+	$(CPP) $(INCLUDES) $(DEFS) $(CFLAGS) -o ${OBJ_PATH}/$@ -c $< -fPIC
+
+heuristics.o: src/heuristics.cpp include/heuristics.h lib-io-tree-minmem.o  lib-io-tree.o cluster.o heuristics-a2.o heuristics-seq-set.o heuristics-max-heap.o
 	$(CPP) $(INCLUDES) $(DEFS) $(CFLAGS) -o ${OBJ_PATH}/$@ -c $< -fPIC
 
 heuristics:heuristics.o

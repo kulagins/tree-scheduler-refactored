@@ -19,6 +19,7 @@
 #include "../include/lib-io-tree.h"
 #include "../include/lib-io-tree-minmem.h"
 #include "../include/lib-io-tree-free-methods.h"
+#include "../include/heuristics.h"
 #include <sys/time.h>
 #include <algorithm>
 
@@ -36,6 +37,8 @@ bool sort_sche(node_sche a, node_sche b) {
 bool sort_ew(node_ew a, node_ew b) {
     return (a.second > b.second);
 }
+bool cmp_asap(Task *a, Task *b) { return (a->getMakespanCost(false, false) < b->getMakespanCost(false, false)); };
+
 
 double u_wseconds(void) {
     struct timeval tp;
@@ -1484,6 +1487,85 @@ void Tree::clearComputedValues() {
         setTaskMaxMemRequirement(NULL);
         setTaskMaxMakespan(NULL);
     }
+}
+
+
+int *
+copyScheduleBackwards(schedule_traversal *schedule_f) {
+
+    list<int>::iterator ite_sche = schedule_f->begin();
+    int *schedule_copy = new int[schedule_f->size() + 1];
+    for (unsigned int i = schedule_f->size(); i >= 1; --i) {
+        schedule_copy[i] = *ite_sche;
+        advance(ite_sche, 1);
+    }
+    schedule_copy[0] = schedule_f->size() + 1;
+
+    return schedule_copy;
+}
+
+
+double Tree::ASAP() {
+    unsigned int num_processors = Cluster::getFixedCluster()->getProcessors().size();
+    list<Task *> PriorityQue;
+    vector<Task *> BrokenEdges;
+    unsigned long step_minimumMS = 0;
+    double minimumMS = this->getRoot()->getMakespanCost(true, true);
+    //cout<<"Excuting sequentially, makespan "<<minimumMS<<endl;
+    double temp;
+    Task *LargestNode;
+    list<Task *>::iterator node_position;
+
+    vector<Task *> *children = this->getRoot()->getChildren();
+    while (children->size() == 1) { //avoid the linear chain
+        children = children->front()->getChildren();
+    }
+
+    PriorityQue.insert(PriorityQue.end(), children->begin(), children->end());
+
+    while (num_processors > 1) { //Breaking an edge a time
+        if (PriorityQue.empty()) { //when having more processors than nodes
+            break;
+        }
+
+        if (PriorityQue.size() == 1) {
+            LargestNode = PriorityQue.front();
+        } else {
+            LargestNode = *max_element(PriorityQue.begin(), PriorityQue.end(),
+                                       cmp_asap); //computation weight, no communication
+        }
+
+        node_position = find(PriorityQue.begin(), PriorityQue.end(), LargestNode);
+        PriorityQue.erase(node_position);
+
+        if (LargestNode->getParent()->getChildren()->size() > 1) {
+            LargestNode->breakEdge(); //break edge
+            BrokenEdges.push_back(LargestNode);
+            temp = this->getRoot()->getMakespanCost(true, true);
+            //cout<<"Break edge "<<LargestNode->getId()<<", makespan now: "<<temp;
+            num_processors--;
+            if (temp < minimumMS) {
+                minimumMS = temp;
+                step_minimumMS = BrokenEdges.size();
+                //cout<<", makespan decreased";
+            }
+            //cout<<endl;
+        }
+        //cout<<"   pop up node "<<LargestNode->getId()<<endl;
+        children = LargestNode->getChildren();
+        PriorityQue.insert(PriorityQue.end(), children->begin(), children->end());
+    }
+
+    //cout<<"resotre edge ";
+    unsigned long restore_index = BrokenEdges.size();
+    while (restore_index > step_minimumMS) {
+        BrokenEdges[restore_index - 1]->restoreEdge();
+        //cout<<BrokenEdges[restore_index-1]->getId()<<" ";
+        restore_index--;
+    }
+    //cout<<endl;
+
+    return minimumMS;
 }
 
 #endif

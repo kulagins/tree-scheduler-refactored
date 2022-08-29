@@ -10,16 +10,24 @@
 #define heuristics_h
 
 #include "lib-io-tree.h"
-//#include "lib-io-tree-minmem.h"
-//#include "cluster.h"
 
 template<class T, class U>
-void GetTwoLargestElementTypetwo(T container, U &Largest, U &secondLargest);
 
-static double timeForAssignment = 0;
-static double timeChooseNode = 0;
-static double timeChooseTree = 0;
-static double timeBestCutInNodeChoice = 0;
+ extern double timeForAssignment;
+extern double timeChooseNode;
+extern double timeChooseTree;
+extern double timeBestCutInNodeChoice;
+
+bool cmp_noincreasing(Task *a, Task *b);
+
+bool cmp_nodecreasing(Task *a, Task *b);
+
+bool cmp_noIn_noCommu(Task *a, Task *b);
+
+bool cmp_Mem_nodecreasing(Task *a, Task *b);
+
+bool cmp_asap(Task *a, Task *b);
+
 
 int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcessor);
 
@@ -28,38 +36,41 @@ int MemoryCheckHomp(Tree *tree, io_method_t method, double processor_memory_size
 //void
 //MemoryCheckA2(Tree *tree, Cluster *cluster, io_method_t method, bool skipBig);
 
-void SetBandwidth(double CCR, unsigned long tree_size, double *ewghts, double *timewghts);
-
 void distributeProcessors(Tree *qTree);
 
 string seqSetAndFeasSets(Tree *tree);
 
-double assignToBestProcessors(Tree *tree,  vector<Task *> newlyBroken, string assignSubtreeChoiceCode = "N");
+double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string assignSubtreeChoiceCode = "N");
 
 void removeProcessorFromAllFeasSets(Processor *processor, Tree *tree);
 
 string partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode, string assignSubtreeChoiceCode);
+
 string
 partitionHeuristicsNoPreprocessing(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
                                    string assignSubtreeChoiceCode);
 
-Task *chooseSubtree(string subtreeChoiceCode, Tree * tree, vector<Task*> candidates);
+Task *chooseSubtree(string subtreeChoiceCode, Tree *tree, vector<Task *> candidates);
 
 Task *chooseTask(Task *root, Tree *tree, string nodeChoiceCode, string assignSubtreeChoiceCode);
-vector<Task *> buildCandidatesForNode(Tree *tree, const string &nodeChoiceCode, Task* root);
 
-void chooseAssignSubtree(string assignSubtreeChoiceCode, Tree * tree);
+vector<Task *> buildCandidatesForNode(Tree *tree, const string &nodeChoiceCode, Task *root);
+
+void chooseAssignSubtree(string assignSubtreeChoiceCode, Tree *tree);
+
 void assignCorrespondingTreeTasks(Tree *tree, Tree *qTree);
 
-pair<Task *, double >findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, double initMS = -1);
+pair<Task *, double>
+findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, double initMS = -1);
 
-Task * CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode);
+Task *CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode);
 
 double CutTaskWithMaxImprovementHeuristicChoice(Tree *tree, string assignSubtreeChoiceCode);
 
 void SiftInfTmaxUpPreserveOrder(vector<Task *> *taskHeap);
 
 vector<Task *> criticalPath(Tree *tree);
-vector<Task *> buildCriticalPath(Task* root);
+
+vector<Task *> buildCriticalPath(Task *root);
 
 #endif /* heuristics_h */

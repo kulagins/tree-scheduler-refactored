@@ -17,11 +17,11 @@
 #include "OutputPrinter.h"
 
 #include <lib-io-tree-minmem.h>
-#include "../include/heuristics.h"
-#include "../include/inputParser.h"
-#include "../include/OutputPrinter.h"
-#include "../include/tree.h"
-#include "../include/lib-io-tree-minmem.h"
+#include "include/heuristics.h"
+#include "include/inputParser.h"
+#include "include/OutputPrinter.h"
+#include "include/tree.h"
+#include "include/lib-io-tree-minmem.h"
 #include "include/inputParser.h"
 #include "include/tree.h"
 #include "include/lib-io-tree-minmem.h"

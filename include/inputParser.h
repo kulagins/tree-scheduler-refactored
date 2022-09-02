@@ -11,7 +11,6 @@
 #include "cluster.h"
 
 
-
 using json = nlohmann::json;
 using namespace std;
 
@@ -27,6 +26,7 @@ protected:
     string chooseSubtree;
     string chooseNode;
     string assignChooseSubtree;
+    int cutWhat;
 
 protected:
     bool runA1;
@@ -68,10 +68,12 @@ public:
             this->chooseSubtree = argv[7];
             this->chooseNode = argv[8];
             this->assignChooseSubtree = argv[9];
+            this->cutWhat = atoi(argv[10]);
         } else {
             this->chooseSubtree = "a";
             this->chooseNode = "a";
             this->assignChooseSubtree = "a";
+            this->cutWhat = 0;
         }
 
 
@@ -122,6 +124,10 @@ public:
 
     const string &getAssignChooseSubtree() const {
         return chooseSubtree;
+    }
+
+    const int &getCutWhat() const {
+        return cutWhat;
     }
 
     /*

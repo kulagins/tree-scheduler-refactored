@@ -38,7 +38,7 @@ double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string ass
 
 void removeProcessorFromAllFeasSets(Processor *processor, Tree *tree);
 
-string partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode, string assignSubtreeChoiceCode,  bool cutAllTreeAtOnce);
+string partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode, string assignSubtreeChoiceCode,  int cutWhat);
 
 string
 partitionHeuristicsNoPreprocessing(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
@@ -68,7 +68,7 @@ vector<Task *> criticalPath(Tree *tree);
 vector<Task *> buildCriticalPath(Task *root);
 
 void cutSingleNodePerSubtreeUntilBestMakespan(Tree *tree, string &subtreeChoiceCode, string &nodeChoiceCode,
-                                              string &assignSubtreeChoiceCode, double &minMakespan);
+                                              string &assignSubtreeChoiceCode, double &minMakespan, bool cutMultiple);
 
 void cutSingleNodeInAllSubtreesSimultaneously(Tree *tree, string &subtreeChoiceCode, string &nodeChoiceCode,
                                               string &assignSubtreeChoiceCode, double &minMakespan);

@@ -34,32 +34,43 @@ void distributeProcessors(Tree *qTree);
 
 string seqSetAndFeasSets(Tree *tree);
 
-double assignToBestProcessors(Tree *tree,  vector<Task *> newlyBroken, string assignSubtreeChoiceCode = "N");
+double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string assignSubtreeChoiceCode = "N");
 
 void removeProcessorFromAllFeasSets(Processor *processor, Tree *tree);
 
-string partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode, string assignSubtreeChoiceCode);
+string partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode, string assignSubtreeChoiceCode,  bool cutAllTreeAtOnce);
+
 string
 partitionHeuristicsNoPreprocessing(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
                                    string assignSubtreeChoiceCode);
 
-Task *chooseSubtree(string subtreeChoiceCode, Tree * tree, vector<Task*> candidates);
+Task *chooseSubtree(string subtreeChoiceCode, Tree *tree, vector<Task *> candidates);
 
 Task *chooseTask(Task *root, Tree *tree, string nodeChoiceCode, string assignSubtreeChoiceCode);
-vector<Task *> buildCandidatesForNode(Tree *tree, const string &nodeChoiceCode, Task* root);
 
-void chooseAssignSubtree(string assignSubtreeChoiceCode, Tree * tree);
+vector<Task *> buildCandidatesForNode(Tree *tree, const string &nodeChoiceCode, Task *root);
+
+void chooseAssignSubtree(string assignSubtreeChoiceCode, Tree *tree);
+
 void assignCorrespondingTreeTasks(Tree *tree, Tree *qTree);
 
-pair<Task *, double >findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, double initMS = -1);
+pair<Task *, double>
+findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, double initMS = -1);
 
-Task * CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode);
+Task *CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode);
 
 double CutTaskWithMaxImprovementHeuristicChoice(Tree *tree, string assignSubtreeChoiceCode);
 
 void SiftInfTmaxUpPreserveOrder(vector<Task *> *taskHeap);
 
 vector<Task *> criticalPath(Tree *tree);
-vector<Task *> buildCriticalPath(Task* root);
+
+vector<Task *> buildCriticalPath(Task *root);
+
+void cutSingleNodePerSubtreeUntilBestMakespan(Tree *tree, string &subtreeChoiceCode, string &nodeChoiceCode,
+                                              string &assignSubtreeChoiceCode, double &minMakespan);
+
+void cutSingleNodeInAllSubtreesSimultaneously(Tree *tree, string &subtreeChoiceCode, string &nodeChoiceCode,
+                                              string &assignSubtreeChoiceCode, double &minMakespan);
 
 #endif /* heuristics_h */

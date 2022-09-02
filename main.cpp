@@ -87,7 +87,7 @@ string a2MultiLevel(Tree *tree, OutputPrinter *printer, double &makespan, InputP
 
     try {
         result += partitionHeuristics(tree, pParser->getChooseSubtree(), pParser->getChooseNode(),
-                                      pParser->getAssignChooseSubtree());
+                                      pParser->getAssignChooseSubtree(), false);
         cout << "tasks computed MM " << tree->numberTasksWMinMem << endl;
         number_subtrees = tree->HowmanySubtrees(true);
        // result +=

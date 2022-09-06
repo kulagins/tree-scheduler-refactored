@@ -591,8 +591,10 @@ public :
         int border = n < this->getChildren()->size() ? n : this->getChildren()->size();
 
         for (int i = 0; i < border; i++) {
-            (this->getChildren()->at(i))->breakEdge();
-            newlyBroken.push_back(this->getChildren()->at(i));
+            if(!this->getChildren()->at(i)->isBroken()){
+                (this->getChildren()->at(i))->breakEdge();
+                newlyBroken.push_back(this->getChildren()->at(i));
+            }
         }
         return newlyBroken;
     }

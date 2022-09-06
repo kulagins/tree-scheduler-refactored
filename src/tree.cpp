@@ -1436,6 +1436,7 @@ double Task::computeMinMemUnderlyingAndAssignFeasible(Tree *tree, bool greedy) {
     //      cout << "needs recompute " << endl;
     //cout<<"compute MMU for task"<< this->getId()<<endl;
     if (!this->needsRecomputeMemReq && this->getMinMemUnderlying() != 0) {
+        assignFeasibleProcessorsToSubtree(this->getMinMemUnderlying());
         return this->getMinMemUnderlying();
     }
    // if (this->isRoot())

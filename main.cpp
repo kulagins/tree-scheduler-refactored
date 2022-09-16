@@ -120,7 +120,6 @@ string a2Steps(Tree *tree, OutputPrinter *printer, double &makespan, InputParser
      delete schedule_f;
      */
     tree->getRoot()->precomputeMinMems(tree);
-    number_subtrees = tree->HowmanySubtrees(true);
     //makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
     string result = "1 step: " + to_string(clock() - time) + " ";
 

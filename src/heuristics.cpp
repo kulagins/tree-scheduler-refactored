@@ -2588,16 +2588,17 @@ double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string cho
             parent = parent->getParent();
         }
         if (parent != nullptr) {
-            if (parent->getMinMemUnderlying() != 0) {
-                //cout << " needs to recompute minMem on " << parent->getId() << ", ";
+            if(!parent->isBroken()){
+                parent = parent->getParent();
             }
+            assert(parent->isBroken() == true);
             parent->needsRecomputeMemReq = true;
         }
     }
+
     for (auto &item: tree->getBrokenTasks()) {
         item->computeMinMemUnderlyingAndAssignFeasible(tree, false);
         assert(item->getMinMemUnderlying() != 0);
-
     }
     Tree *qTree = tree->BuildQtree();
 

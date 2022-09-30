@@ -8,20 +8,9 @@
 #include <math.h>
 #include <algorithm>
 #include <stdlib.h>
-#include <lib-io-tree.h>
-//
 
-//#include "../include/cluster.h"
 
-#include <inputParser.h>
-#include "OutputPrinter.h"
-
-#include <lib-io-tree-minmem.h>
 #include "../include/heuristics.h"
-#include "../include/inputParser.h"
-#include "../include/OutputPrinter.h"
-#include "../include/tree.h"
-#include "../include/lib-io-tree-minmem.h"
 #include "include/inputParser.h"
 #include "include/tree.h"
 #include "include/lib-io-tree-minmem.h"
@@ -65,6 +54,44 @@ void buildStaticCluster(InputParser *input, ifstream &OpenFilePreliminary, strin
 double computeProcesorUtilization(double processorUtilizationOverall);
 
 OutputPrinter printer;
+string a2WithNewMinMem(Tree *tree, OutputPrinter *printer, double &makespan, InputParser *pParser) {
+
+    string result = "";
+
+    double maxout, requiredMemorySize;
+    schedule_traversal *schedule_f = new schedule_traversal();
+    maxout = MaxOutDegree(tree, true);
+    MinMem(tree, maxout, requiredMemorySize, *schedule_f, true);
+    cout << tree->getSize() << " " << requiredMemorySize << endl;
+
+    cout << "before-before" << endl;
+    for (const auto &item: *schedule_f) {
+        cout << item << " ";
+    }
+
+    tree->mergeLinearChains();
+
+    schedule_f = new schedule_traversal();
+    maxout = MaxOutDegree(tree, true);
+    MinMem(tree, maxout, requiredMemorySize, *schedule_f, true);
+    cout << tree->getSize() << " " << requiredMemorySize << endl;
+
+
+    try {
+        //     result += partitionHeuristics(tree, pParser->getChooseSubtree(), pParser->getChooseNode(),
+        //                                   pParser->getAssignChooseSubtree(), pParser->getCutWhat());
+        //    cout << "tasks computed MM " << tree->numberTasksWMinMem << endl;
+
+    }
+    catch (const char *str) {
+        printer->quietPrint(str);
+        printer->quietPrint("No solution"); //<< str << endl;
+        makespan = -1;
+    }
+    return result;
+
+}
+
 
 string a2MultiLevel(Tree *tree, OutputPrinter *printer, double &makespan, InputParser *pParser) {
     unsigned int number_subtrees = 0;
@@ -90,9 +117,9 @@ string a2MultiLevel(Tree *tree, OutputPrinter *printer, double &makespan, InputP
                                       pParser->getAssignChooseSubtree(), pParser->getCutWhat());
         cout << "tasks computed MM " << tree->numberTasksWMinMem << endl;
         number_subtrees = tree->HowmanySubtrees(true);
-       // result +=
-                // to_string(clock() - time) + " "+
-     //           " " + to_string(number_subtrees) + "\n";
+        // result +=
+        // to_string(clock() - time) + " "+
+        //           " " + to_string(number_subtrees) + "\n";
     }
     catch (exception e) {
         printer->quietPrint("An error has occurred: ");
@@ -267,7 +294,8 @@ int main(int argc, char **argv) {
             continue;
         }
         Tree *untouchedTree = read_tree((input->getWorkingDirectory() + "/" + treename).c_str());
-        Tree::setOriginalTree(untouchedTree);
+        veryOriginalTree = untouchedTree;
+        //Tree::setOriginalTree(untouchedTree);
         tree->getRoot()->breakEdge();
         numTrees++;
         //  const vector<double> fanouts = maxAndAvgFanout(tree);
@@ -292,7 +320,8 @@ int main(int argc, char **argv) {
 
             time = clock();
             //  makespan = input->getRunA1() ? threeSteps(tree, printer) : a2Steps(tree, printer);
-            string result = a2MultiLevel(tree, printer, makespan, input);
+            //string result = a2MultiLevel(tree, printer, makespan, input);
+            string result = a2WithNewMinMem(tree, printer, makespan, input);
             //makespan = threeSteps(tree, printer);
             //maxoutd = MaxOutDegree(tree, true);
 
@@ -308,7 +337,7 @@ int main(int argc, char **argv) {
             }
             // cout<<"makespan "<<makespan<<endl;
 
-            makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+            makespan = 0;// = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
             tree_column += " " + to_string(makespan) + "\t" + to_string(tree->HowmanySubtrees(true)) + "\t" +
                            // to_string(time )+ " " + to_string(CLOCKS_PER_SEC);
                            result;

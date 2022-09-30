@@ -2588,7 +2588,7 @@ double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string cho
             parent = parent->getParent();
         }
         if (parent != nullptr) {
-            if(!parent->isBroken()){
+            if (!parent->isBroken()) {
                 parent = parent->getParent();
             }
             assert(parent->isBroken() == true);
@@ -2925,20 +2925,13 @@ partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
     }
     double makespan = assignToBestProcessors(tree, {}, assignSubtreeChoiceCode);
     result += to_string((clock() - time) / CLOCKS_PER_SEC) + " ";
-   /* return result + to_string(timeForAssignment / CLOCKS_PER_SEC) + " " + to_string(timeChooseTree / CLOCKS_PER_SEC) +
-           " " +
-           to_string(timeChooseNode / CLOCKS_PER_SEC)
-           + " " + to_string(timeBestCutInNodeChoice / CLOCKS_PER_SEC) +
-           // to_string(assignToBestProcessors(tree, {}, assignSubtreeChoiceCode)) +
-           " "; */
-   return result;
-    // delete subtreeCandidates;
+    return result;
 }
 
 void cutSingleNodePerSubtreeUntilBestMakespan(Tree *tree, string &subtreeChoiceCode, string &nodeChoiceCode,
                                               string &assignSubtreeChoiceCode, double &minMakespan, bool cutMultiple) {
     vector<Task *> subtreeCandidates = tree->getBrokenTasks();
-   // tree->HowmanySubtrees(false);
+    // tree->HowmanySubtrees(false);
     while (!subtreeCandidates.empty() && Cluster::getFixedCluster()->getNumberFreeProcessors() != 0) {
 
         Task *subtree = chooseSubtree(subtreeChoiceCode, tree, subtreeCandidates);
@@ -2948,7 +2941,7 @@ void cutSingleNodePerSubtreeUntilBestMakespan(Tree *tree, string &subtreeChoiceC
             int initialNumberCutEdges = tree->HowmanySubtrees(true);
             int firstCandidatePosition = rand() % candidateNodes.size();
             int secondCandidatePosition = rand() % candidateNodes.size();
-          //  cout << "f cand pos " << firstCandidatePosition << " sec cand pos " << secondCandidatePosition << endl;
+            //  cout << "f cand pos " << firstCandidatePosition << " sec cand pos " << secondCandidatePosition << endl;
             if (secondCandidatePosition == firstCandidatePosition) {
                 for (int i = 0; i < candidateNodes.size(); i++) {
                     if (i != firstCandidatePosition) {
@@ -2968,7 +2961,7 @@ void cutSingleNodePerSubtreeUntilBestMakespan(Tree *tree, string &subtreeChoiceC
             double currentMakespan = assignToBestProcessors(tree, freshlyBroken, assignSubtreeChoiceCode);
             if (currentMakespan <= minMakespan) {
                 //    cout << "1" << endl;
-               // cout << "smaller!" << currentMakespan << endl;
+                // cout << "smaller!" << currentMakespan << endl;
                 minMakespan = currentMakespan;
                 for (Task *candidate: freshlyBroken) {
                     if (candidate->getChildren()->size() >= 2) {
@@ -3013,7 +3006,7 @@ void cutSingleNodePerSubtreeUntilBestMakespan(Tree *tree, string &subtreeChoiceC
 
             }
         }
-     //   tree->HowmanySubtrees(false);
+        //   tree->HowmanySubtrees(false);
         //   cout << "candidate ready, # trees " << tree->HowmanySubtrees(false) << "  candidates: "
         //  << subtreeCandidates.size() << endl;
         // tree->HowmanySubtrees(false);
@@ -3125,9 +3118,77 @@ findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoi
                 minMakespan = currentMakespan;
                 taskMinMakespan = task;
             }
-            tree->cleanAssignedAndReassignFeasible();
             task->restoreBrokenChildren();
+            tree->cleanAssignedAndReassignFeasible();
+
         }
     }
     return make_pair(taskMinMakespan, minMakespan);
+}
+
+void Tree::mergeLinearChains() {
+    Task *currentToBeExplored;
+    list<Task *> toBeExplored;
+
+    toBeExplored.push_back(this->getRoot());
+
+    while (!toBeExplored.empty()) {
+        currentToBeExplored = toBeExplored.front();
+        toBeExplored.pop_front();
+        // cout << currentToBeExplored->getId() << " w #ch " << currentToBeExplored->getChildren()->size() << endl;
+        if (currentToBeExplored->getChildren()->size() == 1) {
+            double maxout, requiredMemorySize, requiredMemorySize1;
+            schedule_traversal *schedule_f, *schedule_f1;
+
+            /*  schedule_f = new schedule_traversal();
+              maxout = MaxOutDegree(this, true);
+              MinMem(this, maxout, requiredMemorySize, *schedule_f, true);
+              //cout << this->getSize() << " " << requiredMemorySize << " " << currentToBeExplored->getId() << endl;
+              int child_id = currentToBeExplored->getChildren()->at(0)->getId();
+*/
+            mergeTaskToOnlyChild(currentToBeExplored);
+            toBeExplored.push_back(currentToBeExplored);
+
+            /*        schedule_f1 = new schedule_traversal();
+                    maxout = MaxOutDegree(this, true);
+                    MinMem(this, maxout, requiredMemorySize1, *schedule_f1, true);
+
+                    if (requiredMemorySize1 != requiredMemorySize) {
+                        cout << currentToBeExplored->getId()  << " "<< child_id<<endl;
+                        cout << "before" << endl;
+                        for (const auto &item: *schedule_f) {
+                            cout << item << " ";
+                        }
+                        cout << endl;
+
+                        cout << "after" << endl;
+                        for (const auto &item: *schedule_f1) {
+                            cout << item << " ";
+                        }
+                        cout << endl;
+                    }
+    */
+
+        } else {
+            toBeExplored.insert(toBeExplored.end(), currentToBeExplored->getChildren()->begin(),
+                                currentToBeExplored->getChildren()->end());
+        }
+    }
+
+    for (const auto &item: *this->getTasks()) {
+        assert(item->getChildren()->size() > 1 || item->getChildren()->size() == 0);
+    }
+
+    this->renumberAllTasks();
+}
+
+void Tree::renumberAllTasks() {
+    int currentIdByOrder = 1;
+    for (const auto &item: *this->getTasks()) {
+        item->setId(currentIdByOrder);
+        for (const auto &child: *item->getChildren()) {
+            child->setParentId(item->getId());
+        }
+        currentIdByOrder++;
+    }
 }

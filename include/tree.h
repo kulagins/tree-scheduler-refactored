@@ -57,6 +57,8 @@ double u_wseconds(void);
 
 void freeProcessorIfAvailable(Task *task);
 
+extern Tree *veryOriginalTree;
+
 class Task {
 protected:
     bool cost_computed;
@@ -256,6 +258,11 @@ public :
         return cost;
     }
 
+    void setCost(double costToSet) {
+        cost = costToSet;
+        cost_computed = true;
+    }
+
     void setParentId(unsigned int pparent_id) {
         parent_id = pparent_id;
     }
@@ -300,8 +307,8 @@ public :
         return this->feasibleProcessors;
     }
 
-   void setFeasibleProcessors( vector<Processor *> * v) {
-         this->feasibleProcessors = v;
+    void setFeasibleProcessors(vector<Processor *> *v) {
+        this->feasibleProcessors = v;
     }
 
 
@@ -560,7 +567,7 @@ public :
 
     void assignFeasibleProcessorsToSubtree(double minMem);
 
-    double computeMinMemUnderlyingAndAssignFeasible(Tree *tree, bool greedy );
+    double computeMinMemUnderlyingAndAssignFeasible(Tree *tree, bool greedy);
 
     vector<Task *> tasksInSubtreeRootedHere() {
         vector<Task *> result;
@@ -591,7 +598,7 @@ public :
         int border = n < this->getChildren()->size() ? n : this->getChildren()->size();
 
         for (int i = 0; i < border; i++) {
-            if(!this->getChildren()->at(i)->isBroken()){
+            if (!this->getChildren()->at(i)->isBroken()) {
                 (this->getChildren()->at(i))->breakEdge();
                 newlyBroken.push_back(this->getChildren()->at(i));
             }
@@ -611,6 +618,8 @@ public :
         }
         return false;
     }
+
+
 };
 
 
@@ -638,7 +647,7 @@ public:
         size = 0;
         taskMaxMakespan = NULL;
         taskMaxMemRequirement = NULL;
-        numberTasksWMinMem=0;
+        numberTasksWMinMem = 0;
     }
 
     Tree(int N, int *prnts, double *nwghts, double *ewghts, double *mswghts) {
@@ -664,7 +673,7 @@ public:
         }
 
         size = getTasks()->size();
-        numberTasksWMinMem=0;
+        numberTasksWMinMem = 0;
     }
 
     Tree(vector<Task *> *nodes, Task *root, Tree *originalTree) {
@@ -679,7 +688,7 @@ public:
         this->originalTree = originalTree;
         taskMaxMakespan = NULL;
         taskMaxMemRequirement = NULL;
-        numberTasksWMinMem=0;
+        numberTasksWMinMem = 0;
     }
 
 
@@ -695,10 +704,12 @@ public:
     }
 
 
-    void Print(ostream &out) const {
+    void Print(ostream &out, int border=1) const {
         out << tasks->size() << endl;
-
+        int maxOut = 0;
         for (vector<Task *>::iterator iter = tasks->begin(); iter != tasks->end(); iter++) {
+            maxOut++;
+            if (maxOut > tasks->size()/border) break;
             out << (*iter)->getId() << ", parent: " << max((unsigned int) 0, (*iter)->getParentId()/*+1-offset_id*/)
                 << " " << (*iter)->getNodeWeight()
                 << " "
@@ -744,6 +755,17 @@ public:
         size++;
     }
 
+    void removeTask(int id) {
+        auto iterator = std::find_if(tasks->begin(), tasks->end(),
+                                     [id](Task *task) { return task->getId() == id; });
+        tasks->erase(iterator);
+
+        iterator = std::find_if(tasks->begin(), tasks->end(), [id](Task *task) { return task->getId() == id; });
+        assert(iterator ==
+               tasks->end());
+        size--;
+    }
+
     void addRoot(Task *newNode) {
         root_count++;
         assert(root_count == 1);
@@ -775,17 +797,19 @@ public:
     }
 
     Task *getTask(unsigned int node_id) const {
-        Task *task = tasks->at(node_id == 0 ? 0 : node_id - 1);
-        if (task->getId() == node_id) {
-            return task;
-        } else {
-            for (Task *taskSequential: *this->getTasks()) {
-                if (taskSequential->getId() == node_id) {
-                    return taskSequential;
-                }
+        if (node_id < tasks->size()) {
+            Task *task = tasks->at(node_id == 0 ? 0 : node_id - 1);
+            if (task->getId() == node_id) {
+                return task;
             }
-            throw runtime_error("Task not found for id " + to_string(node_id));
         }
+
+        for (Task *taskSequential: *this->getTasks()) {
+            if (taskSequential->getId() == node_id) {
+                return taskSequential;
+            }
+        }
+        throw runtime_error("Task not found for id " + to_string(node_id));
     }
 
     Task *getTaskByPos(unsigned int node_idx) const {
@@ -909,7 +933,7 @@ public:
 
     void cleanAssignedAndReassignFeasible() {
         for (Task *task: *tasks) {
-            task->setFeasibleProcessors( new vector<Processor *>());
+            task->setFeasibleProcessors(new vector<Processor *>());
             task->assignFeasibleProcessorsToSubtree(task->getMinMemUnderlying());
             freeProcessorIfAvailable(task);
         }
@@ -917,6 +941,13 @@ public:
                Cluster::getFixedCluster()->getNumberFreeProcessors());
         // Cluster::getFixedCluster()->freeAllBusyProcessors();
     }
+
+    void mergeTaskToOnlyChild(Task *mergeRoot);
+
+
+    void mergeLinearChains();
+
+    void renumberAllTasks();
 
 };
 

@@ -29,6 +29,8 @@ using namespace std;
 
 Tree *Tree::originalTree = NULL;
 
+Tree *veryOriginalTree = NULL;
+
 bool sort_sche(node_sche a, node_sche b) {
     return (a.second > b.second);
 }
@@ -113,7 +115,7 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
     }
 
     Tree *Qtreeobj = new Tree(tasksInQtree, rootCopy,
-                              this->getOriginalTree()); //Qtree only reprents makespan, not memory consumption
+                              Tree::getOriginalTree()); //Qtree only reprents makespan, not memory consumption
 
     for (unsigned int i = 1; i <= HowmanySubtrees(true); i++) {
         Qtreeobj->getTask(i)->breakEdge();
@@ -1241,12 +1243,11 @@ IOCounterWithVariableMem(Tree *tree, int *schedule,
 double MaxOutDegree(Tree *tree, int quiet) {
     double max_out = 0;
     double max_j = 0;
-    for (unsigned int j = 1; j <= tree->getTasks()->size(); j++) {
-        ////cout<<j<<endl;
-        double cur_out = tree->getTask(j)->getCost();
+    for (const auto &item: *tree->getTasks()) {
+        double cur_out = item->getCost();
         if (cur_out >= max_out) {
             max_out = cur_out;
-            max_j = tree->getTask(j)->getId();
+            max_j = item->getId();
         }
     }
     if (!quiet) {
@@ -1439,8 +1440,8 @@ double Task::computeMinMemUnderlyingAndAssignFeasible(Tree *tree, bool greedy) {
         assignFeasibleProcessorsToSubtree(this->getMinMemUnderlying());
         return this->getMinMemUnderlying();
     }
-   // if (this->isRoot())
-   //     greedy = true;
+    // if (this->isRoot())
+    //     greedy = true;
 
     tree->numberTasksWMinMem++;
     double minMem;
@@ -1458,11 +1459,11 @@ double Task::computeMinMemUnderlyingAndAssignFeasible(Tree *tree, bool greedy) {
     //      cout << "computed MMU for task" << this->getId() << "MMU was" << this->getMinMemUnderlying() <<
     //           "MMU is now" << minMem << endl;
     if (this->getMinMemUnderlying() != minMem && this->getMinMemUnderlying() != 0 && !this->needsRecomputeMemReq)
-        cout << "no needsRecompute, but memreq changed on task "<<this->getId() << endl;
+        cout << "no needsRecompute, but memreq changed on task " << this->getId() << endl;
     setMinMemUnderlying(minMem);
     assignFeasibleProcessorsToSubtree(minMem);
     needsRecomputeMemReq = false;
-   // cout<<"now "<<minMem<<endl;
+    // cout<<"now "<<minMem<<endl;
     return minMem;
 }
 
@@ -1486,5 +1487,25 @@ void Tree::clearComputedValues() {
         setTaskMaxMakespan(NULL);
     }
 }
+
+void Tree::mergeTaskToOnlyChild(Task *mergeRoot) {
+    assert(mergeRoot->getChildren()->size() == 1);
+    Task *&onlyChild = mergeRoot->getChildren()->at(0);
+
+   // cout<<"merge child "<<onlyChild->getId()<<" to parent "<<mergeRoot->getId()<<endl;
+
+    double nodeWEight = max(mergeRoot->getNodeWeight() + onlyChild->getEdgeWeight(),
+                            onlyChild->getEdgeWeight() + onlyChild->getNodeWeight());
+    double cost = max(mergeRoot->getCost(), onlyChild->getCost());
+
+    mergeRoot->setNodeWeight(nodeWEight);
+    mergeRoot->setCost(cost);
+    for (const auto &item: *mergeRoot->getChildren()) {
+        this->removeTask(item->getId());
+        item->mergeToParent();
+    }
+
+}
+
 
 #endif

@@ -81,7 +81,7 @@ protected:
     Processor *assignedProcessor;
     vector<Processor *> *feasibleProcessors;
     double minMemUnderlying;
-
+    int level;
     double tMax;
 
 public :
@@ -103,6 +103,7 @@ public :
         feasibleProcessors = new vector<Processor *>();
         minMemUnderlying = 0;
         tMax = 0;
+        level = -1;
     }
 
     Task(double nw, double ew, double mw, bool root = false) {
@@ -127,6 +128,7 @@ public :
         feasibleProcessors = new vector<Processor *>();
         minMemUnderlying = 0;
         tMax = 0;
+        level = -1;
     }
 
     Task(unsigned int pparent_id, double nw, double ew, double mw) {
@@ -147,6 +149,7 @@ public :
         feasibleProcessors = new vector<Processor *>();
         tMax = 0;
         minMemUnderlying = 0;
+        level = -1;
     }
 
     Task(const Task &otherTask, const unsigned int newId, Task *newParent)
@@ -174,6 +177,7 @@ public :
         assignedProcessor = nullptr;
         feasibleProcessors = new vector<Processor *>();
         minMemUnderlying = otherTask.minMemUnderlying;
+        level = -1;
     }
 
     ~Task() {
@@ -263,6 +267,10 @@ public :
         cost_computed = true;
     }
 
+    void setCostComputed(bool compute) {
+        this->cost_computed = compute;
+    }
+
     void setParentId(unsigned int pparent_id) {
         parent_id = pparent_id;
     }
@@ -334,6 +342,14 @@ public :
 
     double getMinMemUnderlying() {
         return this->minMemUnderlying;
+    }
+
+    int getLevel() {
+        return this->level;
+    }
+
+    void setLevel(int newLevel) {
+        this->level = newLevel;
     }
 
     void Print(ostream &out) const {
@@ -638,6 +654,7 @@ protected:
 
 public:
     int numberTasksWMinMem;
+    int deepestLevel;
 
     Tree() {
         root_count = 0;
@@ -648,6 +665,7 @@ public:
         taskMaxMakespan = NULL;
         taskMaxMemRequirement = NULL;
         numberTasksWMinMem = 0;
+        deepestLevel = -1;
     }
 
     Tree(int N, int *prnts, double *nwghts, double *ewghts, double *mswghts) {
@@ -674,6 +692,7 @@ public:
 
         size = getTasks()->size();
         numberTasksWMinMem = 0;
+        deepestLevel = -1;
     }
 
     Tree(vector<Task *> *nodes, Task *root, Tree *originalTree) {
@@ -689,6 +708,7 @@ public:
         taskMaxMakespan = NULL;
         taskMaxMemRequirement = NULL;
         numberTasksWMinMem = 0;
+        deepestLevel = -1;
     }
 
 
@@ -704,12 +724,12 @@ public:
     }
 
 
-    void Print(ostream &out, int border=1) const {
+    void Print(ostream &out, int border = 1) const {
         out << tasks->size() << endl;
         int maxOut = 0;
         for (vector<Task *>::iterator iter = tasks->begin(); iter != tasks->end(); iter++) {
             maxOut++;
-            if (maxOut > tasks->size()/border) break;
+            if (maxOut > tasks->size() / border) break;
             out << (*iter)->getId() << ", parent: " << max((unsigned int) 0, (*iter)->getParentId()/*+1-offset_id*/)
                 << " " << (*iter)->getNodeWeight()
                 << " "
@@ -944,10 +964,13 @@ public:
 
     void mergeTaskToOnlyChild(Task *mergeRoot);
 
+    void mergeTaskToAllChildren(Task *mergeRoot);
 
     void mergeLinearChains();
 
     void renumberAllTasks();
+
+    void levelsToTasks();
 
 };
 

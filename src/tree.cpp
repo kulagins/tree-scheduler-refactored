@@ -14,6 +14,7 @@
 #include <cmath>
 #include <sstream>
 #include <vector>
+#include <queue>
 
 #include "../include/tree.h"
 #include "../include/lib-io-tree.h"
@@ -1419,8 +1420,8 @@ void Task::precomputeMinMems(Tree *tree, bool greedy) {
 
     for (Task *child: *this->getChildren()) {
         //option: for the upper half of the tree, compute greedily
-        bool shouldComputeGreedy = false;//child->getId() < tree->getSize() / 2;
-        child->precomputeMinMems(tree, shouldComputeGreedy);
+        bool shouldComputeGreedy = greedy && (child->getId() < tree->getSize() / 2);
+        child->precomputeMinMems(tree, greedy);
         if (child->getFeasibleProcessors()->empty()) {
             // unaccessible = true;
         }
@@ -1492,7 +1493,7 @@ void Tree::mergeTaskToOnlyChild(Task *mergeRoot) {
     assert(mergeRoot->getChildren()->size() == 1);
     Task *&onlyChild = mergeRoot->getChildren()->at(0);
 
-   // cout<<"merge child "<<onlyChild->getId()<<" to parent "<<mergeRoot->getId()<<endl;
+    // cout<<"merge child "<<onlyChild->getId()<<" to parent "<<mergeRoot->getId()<<endl;
 
     double nodeWEight = max(mergeRoot->getNodeWeight() + onlyChild->getEdgeWeight(),
                             onlyChild->getEdgeWeight() + onlyChild->getNodeWeight());
@@ -1504,6 +1505,80 @@ void Tree::mergeTaskToOnlyChild(Task *mergeRoot) {
         this->removeTask(item->getId());
         item->mergeToParent();
     }
+
+}
+
+void Tree::mergeTaskToAllChildren(Task *mergeRoot) {
+
+    // cout<<"merge child "<<onlyChild->getId()<<" to parent "<<mergeRoot->getId()<<endl;
+    double maxCost = mergeRoot->getCost();
+    double nodeWeight = mergeRoot->getNodeWeight();
+    for (const auto &item: *mergeRoot->getChildren()) {
+        if (item->getCost() > maxCost) maxCost = item->getCost();
+        nodeWeight += item->getEdgeWeight();
+    }
+
+    mergeRoot->setNodeWeight(nodeWeight);
+    mergeRoot->setCost(maxCost);
+
+    while (mergeRoot->getChildren()->size() != 0) {
+        Task *item = mergeRoot->getChildren()->front();
+        //cout << "merge " << item->getId() << " to parent " << item->getParent()->getId() << endl;
+        this->removeTask(item->getId());
+        item->mergeToParent();
+    }
+
+
+}
+
+void Tree::levelsToTasks() {
+    if (root == NULL)
+        throw std::runtime_error("no root");;
+    std::queue<Task *> parent_queue, child_queue;
+    parent_queue.push(root);
+
+    // Level 0 corresponds to the top of the tree i.e at the root level
+    int level = 0;
+
+    int deepestUsedLevel;
+    while (!parent_queue.empty() or !child_queue.empty()) {
+
+        while (!parent_queue.empty()) {
+            Task *node = parent_queue.front();
+            parent_queue.pop();
+            // cout << node->getId() << " ";
+            node->setLevel(level);
+            deepestUsedLevel = level;
+            for (Task *child: *node->getChildren()) {
+                if (!child->isBroken())
+                    child_queue.push(child);
+            }
+        }
+        // cout << endl;
+        level++;
+
+        while (!child_queue.empty()) {
+            Task *node = child_queue.front();
+            child_queue.pop();
+// cout << node->getId() << " ";
+            node->setLevel(level);
+            deepestUsedLevel = level;
+            for (Task *child: *node->getChildren()) {
+                if (!child->isBroken())
+                    parent_queue.push(child);
+            }
+
+        }
+        //  cout << endl;
+        level++;
+    }
+    this->deepestLevel = deepestUsedLevel;
+    int maxLevelInTree = 0;
+    for (const auto &item: *getTasks()) {
+        assert(item->getLevel() != -1);
+        if (item->getLevel() > maxLevelInTree) maxLevelInTree = item->getLevel();
+    }
+    assert(maxLevelInTree == this->deepestLevel);
 
 }
 

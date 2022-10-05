@@ -55,4 +55,7 @@ void MinMemArray(int N, int root, double *nwghts, double *ewghts, int *chstart, 
 
 void GreedyMinMem(Tree *tree, double &Required_memory);
 
+
+void MinMem3Level(Tree *tree, double &Required_memory);
+
 #endif

@@ -54,28 +54,39 @@ void buildStaticCluster(InputParser *input, ifstream &OpenFilePreliminary, strin
 double computeProcesorUtilization(double processorUtilizationOverall);
 
 OutputPrinter printer;
+
 string a2WithNewMinMem(Tree *tree, OutputPrinter *printer, double &makespan, InputParser *pParser) {
 
     string result = "";
 
+    clock_t time;
+
+    time = clock();
     double maxout, requiredMemorySize;
     schedule_traversal *schedule_f = new schedule_traversal();
     maxout = MaxOutDegree(tree, true);
     MinMem(tree, maxout, requiredMemorySize, *schedule_f, true);
-    cout << tree->getSize() << " " << requiredMemorySize << endl;
+    cout << tree->getSize() << " " << requiredMemorySize << " " <<(clock()-time)<< endl;
 
-    cout << "before-before" << endl;
-    for (const auto &item: *schedule_f) {
-        cout << item << " ";
-    }
 
     tree->mergeLinearChains();
+    tree->levelsToTasks();
 
+    time = clock();
     schedule_f = new schedule_traversal();
     maxout = MaxOutDegree(tree, true);
     MinMem(tree, maxout, requiredMemorySize, *schedule_f, true);
-    cout << tree->getSize() << " " << requiredMemorySize << endl;
+    cout << tree->getSize() << " " << requiredMemorySize << " " <<(clock()-time)<< endl;
 
+    time = clock();
+    double reqMem = 0;
+    MinMem3Level(tree, reqMem);
+    cout<<reqMem<< " " <<(clock()-time)<<endl;
+
+    time = clock();
+    reqMem = 0;
+    tree->getRoot()->precomputeMinMems(tree, true);
+    cout<<tree->getRoot()->getMinMemUnderlying()<< " " <<(clock()-time)<<endl;
 
     try {
         //     result += partitionHeuristics(tree, pParser->getChooseSubtree(), pParser->getChooseNode(),

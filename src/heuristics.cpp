@@ -3137,38 +3137,8 @@ void Tree::mergeLinearChains() {
         toBeExplored.pop_front();
         // cout << currentToBeExplored->getId() << " w #ch " << currentToBeExplored->getChildren()->size() << endl;
         if (currentToBeExplored->getChildren()->size() == 1) {
-            double maxout, requiredMemorySize, requiredMemorySize1;
-            schedule_traversal *schedule_f, *schedule_f1;
-
-            /*  schedule_f = new schedule_traversal();
-              maxout = MaxOutDegree(this, true);
-              MinMem(this, maxout, requiredMemorySize, *schedule_f, true);
-              //cout << this->getSize() << " " << requiredMemorySize << " " << currentToBeExplored->getId() << endl;
-              int child_id = currentToBeExplored->getChildren()->at(0)->getId();
-*/
             mergeTaskToOnlyChild(currentToBeExplored);
             toBeExplored.push_back(currentToBeExplored);
-
-            /*        schedule_f1 = new schedule_traversal();
-                    maxout = MaxOutDegree(this, true);
-                    MinMem(this, maxout, requiredMemorySize1, *schedule_f1, true);
-
-                    if (requiredMemorySize1 != requiredMemorySize) {
-                        cout << currentToBeExplored->getId()  << " "<< child_id<<endl;
-                        cout << "before" << endl;
-                        for (const auto &item: *schedule_f) {
-                            cout << item << " ";
-                        }
-                        cout << endl;
-
-                        cout << "after" << endl;
-                        for (const auto &item: *schedule_f1) {
-                            cout << item << " ";
-                        }
-                        cout << endl;
-                    }
-    */
-
         } else {
             toBeExplored.insert(toBeExplored.end(), currentToBeExplored->getChildren()->begin(),
                                 currentToBeExplored->getChildren()->end());
@@ -3178,8 +3148,8 @@ void Tree::mergeLinearChains() {
     for (const auto &item: *this->getTasks()) {
         assert(item->getChildren()->size() > 1 || item->getChildren()->size() == 0);
     }
-
-    this->renumberAllTasks();
+    //TODO RENUMBER HERE OR NOT?
+   // this->renumberAllTasks();
 }
 
 void Tree::renumberAllTasks() {

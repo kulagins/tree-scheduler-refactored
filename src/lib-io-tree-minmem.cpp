@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
+#include <set>
 #include <sys/time.h>
 #include <sys/resource.h>
 
@@ -21,6 +22,9 @@
 
 #include "../include/lib-io-tree.h"
 #include "../include/lib-io-tree-minmem.h"
+
+void fillLowestAndThreeUpperLevels(Tree *treeToBeChanged, vector<Task *> &lowestLevel,
+                                   set<Task *> &firstLevel, set<Task *> &secondLevel, set<Task *> &thirdLevel);
 
 void explore(Task *node, double available_memory, list<Task *> *L_init, schedule_traversal *S_init, double &cut_value,
              list<Task *> &min_sub_cut, schedule_traversal &sub_schedule, double &Mpeak, int quiet, int depth) {
@@ -173,7 +177,7 @@ void GreedyMinMem(Tree *tree, double &Required_memory) {
         for (const auto &child: *children) {
             double minMemUnderlyingFromChild = child->getMinMemUnderlying();
             if (minMemUnderlyingFromChild == 0) {
-                cout << "child has no MM" << endl;
+                //cout << "child has no MM" << endl;
                 Tree *subtree = BuildSubtree(tree, child);
                 GreedyMinMem(subtree, minMemUnderlyingFromChild);
                 delete subtree;
@@ -188,5 +192,99 @@ void GreedyMinMem(Tree *tree, double &Required_memory) {
         // + (*it)->getEdgeWeight();
         // cout<<"result "<<Required_memory<<endl;
         // (*it)->setMinMemUnderlying(memReqForTask);
+    }
+}
+
+
+void MinMem3Level(Tree *tree, double &Required_memory) {
+    int originalTreeSize = tree->getSize();
+    Tree *treeToBeChanged = BuildSubtree(tree, tree->getRoot());
+    assert(treeToBeChanged->getSize() == tree->getSize());
+    assert(treeToBeChanged->getTasks()->at(0)->getMakespanWeight() == tree->getTasks()->at(0)->getMakespanWeight());
+    treeToBeChanged->levelsToTasks();
+
+    vector<Task *> lowestLevel;
+    std::set<Task *> firstLevel, secondLevel, thirdLevel;
+
+    fillLowestAndThreeUpperLevels(treeToBeChanged, lowestLevel, firstLevel, secondLevel, thirdLevel);
+
+
+    while (!thirdLevel.empty()) {
+
+        for (auto &item: firstLevel) {
+            treeToBeChanged->mergeTaskToAllChildren(item);
+        }
+        treeToBeChanged->deepestLevel--;
+        //compute MinMems for third level nodes
+        for (const auto &item: thirdLevel) {
+            item->setCostComputed(false);
+            double maxout, requiredMemorySize;
+            schedule_traversal *schedule_f = new schedule_traversal();
+            Tree *subtree = BuildSubtree(treeToBeChanged, item);
+
+            maxout = MaxOutDegree(subtree, true);
+            MinMem(subtree, maxout, requiredMemorySize, *schedule_f, true);
+            delete subtree;
+            delete schedule_f;
+
+            item->setMinMemUnderlying(requiredMemorySize);
+            item->setCost(requiredMemorySize);
+        }
+        fillLowestAndThreeUpperLevels(treeToBeChanged, lowestLevel, firstLevel, secondLevel, thirdLevel);
+
+    }
+
+    if (!secondLevel.empty()) {
+        for (auto &item: secondLevel) {
+            item->setCostComputed(false);
+            double maxout, requiredMemorySize;
+            schedule_traversal *schedule_f = new schedule_traversal();
+            Tree *subtree = BuildSubtree(treeToBeChanged, item);
+            maxout = MaxOutDegree(subtree, true);
+            MinMem(subtree, maxout, requiredMemorySize, *schedule_f, true);
+            delete subtree;
+            delete schedule_f;
+            item->setMinMemUnderlying(requiredMemorySize);
+        }
+    }
+    assert(tree->getSize() == originalTreeSize);
+    Required_memory = treeToBeChanged->getRoot()->getMinMemUnderlying();
+}
+
+void fillLowestAndThreeUpperLevels(Tree *treeToBeChanged, vector<Task *> &lowestLevel,
+                                   set<Task *> &firstLevel, set<Task *> &secondLevel, set<Task *> &thirdLevel) {
+    int deepesLevelInTree = treeToBeChanged->deepestLevel;
+    lowestLevel.resize(0);
+    firstLevel.clear();
+    secondLevel.clear();
+    thirdLevel.clear();
+
+    //fill lowest level with leaves that are on the lowest level
+    copy_if(treeToBeChanged->getTasks()->begin(), treeToBeChanged->getTasks()->end(),
+            back_inserter(lowestLevel), [deepesLevelInTree](Task *a) {
+                return a->getLevel() == deepesLevelInTree && a->getChildren()->size() == 0;
+            });
+
+
+    // first level are parents of leaves (to be merged)
+    for (const auto &item: lowestLevel) {
+        if (item->getParent() != NULL) {
+            firstLevel.insert(item->getParent());
+        }
+
+    }
+
+    //second, intermediate level - parents of first
+    for (const auto &item: firstLevel) {
+        if (item->getParent() != NULL) {
+            secondLevel.insert(item->getParent());
+        }
+    }
+
+    //third leve, MinMem is to be computed
+    for (const auto &item: secondLevel) {
+        if (item->getParent() != NULL) {
+            thirdLevel.insert(item->getParent());
+        }
     }
 }

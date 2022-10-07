@@ -74,8 +74,8 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
 
     Task *currentNode;
     int nodeIdCounter = 2;
-    for (unsigned int i = 2; i <= this->getSize(); ++i) {
-        currentNode = this->getTask(i);
+    //for (unsigned int i = 2; i <= this->getSize(); ++i) {
+    for (const auto &currentNode: *this->getTasks()) {
         if (currentNode->isBroken() && !currentNode->isRoot()) {
             //   cout <<"cpy "<<currentNode->getId()<<" osideid "<<nodeIdCounter<<endl;
             copy = new Task(*currentNode, nodeIdCounter, nullptr);
@@ -1433,46 +1433,39 @@ void Task::precomputeMinMems(Tree *tree, bool greedy) {
 }
 
 double Task::computeMinMemUnderlyingAndAssignFeasible(Tree *tree, bool greedy) {
-    //cout<<"recompute mm on task "<<this->getId()<<" was "<<this->getMinMemUnderlying()<<endl;
-    //  if (this->needsRecomputeMemReq)
-    //      cout << "needs recompute " << endl;
-    //cout<<"compute MMU for task"<< this->getId()<<endl;
+
     if (!this->needsRecomputeMemReq && this->getMinMemUnderlying() != 0) {
         assignFeasibleProcessorsToSubtree(this->getMinMemUnderlying());
         return this->getMinMemUnderlying();
     }
-    // if (this->isRoot())
-    //     greedy = true;
 
     tree->numberTasksWMinMem++;
     double minMem;
+
     Tree *subtree = BuildSubtree(tree, this);
     if (!greedy) {
+        //TODO: here min3Level
         schedule_traversal *schedule_f = new schedule_traversal();
         double maxoutd = MaxOutDegree(subtree, true);
         MinMem(subtree, maxoutd, minMem, *schedule_f, true);
         delete schedule_f;
         delete subtree;
+        // MinMem3Level(subtree, minMem);
     } else {
         GreedyMinMem(subtree, minMem);
     }
-    //  if (this->needsRecomputeMemReq)//(this->getMinMemUnderlying() != minMem && this->getMinMemUnderlying() != 0)
-    //      cout << "computed MMU for task" << this->getId() << "MMU was" << this->getMinMemUnderlying() <<
-    //           "MMU is now" << minMem << endl;
-    if (this->getMinMemUnderlying() != minMem && this->getMinMemUnderlying() != 0 && !this->needsRecomputeMemReq)
-        cout << "no needsRecompute, but memreq changed on task " << this->getId() << endl;
     setMinMemUnderlying(minMem);
+    assert(this->getMinMemUnderlying() != 0);
     assignFeasibleProcessorsToSubtree(minMem);
     needsRecomputeMemReq = false;
-    // cout<<"now "<<minMem<<endl;
     return minMem;
 }
 
 void Task::assignFeasibleProcessorsToSubtree(double minMem) {
-    this->setFeasibleProcessors(new vector<Processor *>());
+    this->setFeasibleProcessors(new set<Processor *, FastestProcessor>());
     for (Processor *processor: Cluster::getFixedCluster()->getProcessors()) {
         if (!processor->isBusy && processor->getMemorySize() >= minMem) {
-            addFeasibleProcessor(processor);
+            this->addFeasibleProcessor(processor);
         }
     }
 

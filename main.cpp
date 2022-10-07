@@ -72,7 +72,7 @@ string a2WithNewMinMem(Tree *tree, OutputPrinter *printer, double &makespan, Inp
     tree->mergeLinearChains();
     tree->levelsToTasks();
 
-    time = clock();
+  /*  time = clock();
     schedule_f = new schedule_traversal();
     maxout = MaxOutDegree(tree, true);
     MinMem(tree, maxout, requiredMemorySize, *schedule_f, true);
@@ -87,10 +87,11 @@ string a2WithNewMinMem(Tree *tree, OutputPrinter *printer, double &makespan, Inp
     reqMem = 0;
     tree->getRoot()->precomputeMinMems(tree, true);
     cout<<tree->getRoot()->getMinMemUnderlying()<< " " <<(clock()-time)<<endl;
+    */
 
     try {
-        //     result += partitionHeuristics(tree, pParser->getChooseSubtree(), pParser->getChooseNode(),
-        //                                   pParser->getAssignChooseSubtree(), pParser->getCutWhat());
+             result += partitionHeuristics(tree, pParser->getChooseSubtree(), pParser->getChooseNode(),
+                                           pParser->getAssignChooseSubtree(), pParser->getCutWhat());
         //    cout << "tasks computed MM " << tree->numberTasksWMinMem << endl;
 
     }

@@ -30,7 +30,7 @@ int MemoryCheckHomp(Tree *tree, io_method_t method, double processor_memory_size
 
 void SetBandwidth(double CCR, unsigned long tree_size, double *ewghts, double *timewghts);
 
-void distributeProcessors(Tree *qTree);
+void distributeProcessors(Tree *qTree, string chooseSubtreeAssign);
 
 string seqSetAndFeasSets(Tree *tree);
 
@@ -59,7 +59,7 @@ findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoi
 
 Task *CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode);
 
-double CutTaskWithMaxImprovementHeuristicChoice(Tree *tree, string assignSubtreeChoiceCode);
+double FirstCutSomeNodes(Tree *tree, string assignSubtreeChoiceCode);
 
 void SiftInfTmaxUpPreserveOrder(vector<Task *> *taskHeap);
 

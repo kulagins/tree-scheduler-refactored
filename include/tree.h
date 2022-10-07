@@ -15,6 +15,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <list>
+#include <set>
 
 #include <vector>
 #include <forward_list>
@@ -59,6 +60,12 @@ void freeProcessorIfAvailable(Task *task);
 
 extern Tree *veryOriginalTree;
 
+struct FastestProcessor {
+    bool operator()(Processor *a, const Processor *b) const {
+        return a->getProcessorSpeed() >= b->getProcessorSpeed();
+    }
+};
+
 class Task {
 protected:
     bool cost_computed;
@@ -79,7 +86,7 @@ protected:
     unsigned int Qtree_id;
     bool __root{};
     Processor *assignedProcessor;
-    vector<Processor *> *feasibleProcessors;
+    set<Processor *, FastestProcessor> *feasibleProcessors;
     double minMemUnderlying;
     int level;
     double tMax;
@@ -100,7 +107,7 @@ public :
         children = new vector<Task *>();
         assignedProcessor = nullptr;
         Qtree_id = 0;
-        feasibleProcessors = new vector<Processor *>();
+        feasibleProcessors = new set<Processor *, FastestProcessor>();
         minMemUnderlying = 0;
         tMax = 0;
         level = -1;
@@ -125,7 +132,7 @@ public :
         } else {
             this->__root = false;
         }
-        feasibleProcessors = new vector<Processor *>();
+        feasibleProcessors = new set<Processor *, FastestProcessor>();
         minMemUnderlying = 0;
         tMax = 0;
         level = -1;
@@ -146,7 +153,7 @@ public :
         makespan_nocommu = mw;
         parent_id = pparent_id;
         Qtree_id = 0;
-        feasibleProcessors = new vector<Processor *>();
+        feasibleProcessors = new set<Processor *, FastestProcessor>();
         tMax = 0;
         minMemUnderlying = 0;
         level = -1;
@@ -175,7 +182,7 @@ public :
         children = new vector<Task *>();
         __root = false;
         assignedProcessor = nullptr;
-        feasibleProcessors = new vector<Processor *>();
+        feasibleProcessors = new set<Processor *, FastestProcessor>();
         minMemUnderlying = otherTask.minMemUnderlying;
         level = -1;
     }
@@ -311,11 +318,11 @@ public :
         return id;
     }
 
-    vector<Processor *> *getFeasibleProcessors() {
+    set<Processor *, FastestProcessor> *getFeasibleProcessors() {
         return this->feasibleProcessors;
     }
 
-    void setFeasibleProcessors(vector<Processor *> *v) {
+    void setFeasibleProcessors(set<Processor *, FastestProcessor> *v) {
         this->feasibleProcessors = v;
     }
 
@@ -330,10 +337,8 @@ public :
   */
     //Todo: sort?
     void addFeasibleProcessor(Processor *proc) {
-        auto position_it = find(feasibleProcessors->begin(), feasibleProcessors->end(), proc);
-        if (position_it == feasibleProcessors->end()) {
-            this->feasibleProcessors->push_back(proc);
-        }
+        this->feasibleProcessors->insert(proc);
+        //throw "TODO";
     }
 
     void setMinMemUnderlying(double minMem) {
@@ -550,8 +555,6 @@ public :
 
     void updateTMax() {
         if (this->feasibleProcessors->size() == 0) {
-            //cout << "Task" << to_string(this->getId()) << " has 0 feasible processors during iterations. "
-            //       << Cluster::getFixedCluster()->getNumberFreeProcessors() << " are still free.";
             throw std::runtime_error("No Schedule Possible");
         }
         if (this->feasibleProcessors->size() == 1) this->tMax = DBL_MAX;
@@ -569,9 +572,11 @@ public :
 
     // Asserts that feasibleProcessors is ordered!
     Processor *getFastestFeasibleProcessor() {
-        sort(feasibleProcessors->begin(), feasibleProcessors->end(),
-             [](Processor *a, Processor *b) { return a->getProcessorSpeed() > b->getProcessorSpeed(); });
-        return feasibleProcessors->front();
+        //sort(feasibleProcessors->begin(), feasibleProcessors->end(),
+        //     [](Processor *a, Processor *b) { return a->getProcessorSpeed() > b->getProcessorSpeed(); });
+        assert((*feasibleProcessors->begin())->getProcessorSpeed() >=
+               (*feasibleProcessors->end().operator--())->getProcessorSpeed());
+        return *feasibleProcessors->begin();
     }
 
     void deleteFeasible(Processor *proc) {
@@ -953,7 +958,7 @@ public:
 
     void cleanAssignedAndReassignFeasible() {
         for (Task *task: *tasks) {
-            task->setFeasibleProcessors(new vector<Processor *>());
+            task->setFeasibleProcessors(new set<Processor *, FastestProcessor>());
             task->assignFeasibleProcessorsToSubtree(task->getMinMemUnderlying());
             freeProcessorIfAvailable(task);
         }

@@ -197,6 +197,11 @@ void GreedyMinMem(Tree *tree, double &Required_memory) {
 
 
 void MinMem3Level(Tree *tree, double &Required_memory) {
+
+    Task *root = tree->getRoot();
+    if (root->getChildren()->size() == 0) {
+        root->setMinMemUnderlying(root->getCost());
+    }
     int originalTreeSize = tree->getSize();
     Tree *treeToBeChanged = BuildSubtree(tree, tree->getRoot());
     assert(treeToBeChanged->getSize() == tree->getSize());
@@ -208,9 +213,15 @@ void MinMem3Level(Tree *tree, double &Required_memory) {
 
     fillLowestAndThreeUpperLevels(treeToBeChanged, lowestLevel, firstLevel, secondLevel, thirdLevel);
 
-
+    if (secondLevel.empty()) {
+        double maxCost = root->getCost();
+        for (const auto &item: *root->getChildren()) {
+            if (item->getCost() > maxCost) maxCost = item->getCost();
+        }
+        root->setMinMemUnderlying(maxCost);
+        treeToBeChanged->getRoot()->setMinMemUnderlying(maxCost);
+    }
     while (!thirdLevel.empty()) {
-
         for (auto &item: firstLevel) {
             treeToBeChanged->mergeTaskToAllChildren(item);
         }
@@ -248,6 +259,7 @@ void MinMem3Level(Tree *tree, double &Required_memory) {
         }
     }
     assert(tree->getSize() == originalTreeSize);
+    assert(treeToBeChanged->getRoot()->getMinMemUnderlying() != 0);
     Required_memory = treeToBeChanged->getRoot()->getMinMemUnderlying();
 }
 

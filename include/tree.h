@@ -183,11 +183,16 @@ public :
         __root = false;
         assignedProcessor = nullptr;
         feasibleProcessors = new set<Processor *, FastestProcessor>();
+        for (Processor *p: *otherTask.feasibleProcessors) {
+            feasibleProcessors->insert(p);
+        }
         minMemUnderlying = otherTask.minMemUnderlying;
         level = -1;
     }
 
     ~Task() {
+        this->feasibleProcessors->clear();
+        delete feasibleProcessors;
         for (vector<Task *>::iterator iter = children->begin(); iter != children->end(); iter++) {
             delete *iter;
         }
@@ -323,6 +328,7 @@ public :
     }
 
     void setFeasibleProcessors(set<Processor *, FastestProcessor> *v) {
+        this->feasibleProcessors->clear();
         this->feasibleProcessors = v;
     }
 
@@ -958,7 +964,7 @@ public:
 
     void cleanAssignedAndReassignFeasible() {
         for (Task *task: *tasks) {
-            task->setFeasibleProcessors(new set<Processor *, FastestProcessor>());
+            task->getFeasibleProcessors()->clear();
             task->assignFeasibleProcessorsToSubtree(task->getMinMemUnderlying());
             freeProcessorIfAvailable(task);
         }

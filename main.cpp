@@ -58,41 +58,17 @@ OutputPrinter printer;
 string a2WithNewMinMem(Tree *tree, OutputPrinter *printer, double &makespan, InputParser *pParser) {
 
     string result = "";
-
     clock_t time;
-
     time = clock();
-    double maxout, requiredMemorySize;
-    schedule_traversal *schedule_f = new schedule_traversal();
-    maxout = MaxOutDegree(tree, true);
-    MinMem(tree, maxout, requiredMemorySize, *schedule_f, true);
-    cout << tree->getSize() << " " << requiredMemorySize << " " <<(clock()-time)<< endl;
-
 
     tree->mergeLinearChains();
     tree->levelsToTasks();
-
-  /*  time = clock();
-    schedule_f = new schedule_traversal();
-    maxout = MaxOutDegree(tree, true);
-    MinMem(tree, maxout, requiredMemorySize, *schedule_f, true);
-    cout << tree->getSize() << " " << requiredMemorySize << " " <<(clock()-time)<< endl;
-
-    time = clock();
-    double reqMem = 0;
-    MinMem3Level(tree, reqMem);
-    cout<<reqMem<< " " <<(clock()-time)<<endl;
-
-    time = clock();
-    reqMem = 0;
-    tree->getRoot()->precomputeMinMems(tree, true);
-    cout<<tree->getRoot()->getMinMemUnderlying()<< " " <<(clock()-time)<<endl;
-    */
+    tree->getRoot()->precomputeMinMems(tree, false);
+    result += "reprocessing: "+ to_string((clock() - time)/CLOCKS_PER_SEC);
 
     try {
-             result += partitionHeuristics(tree, pParser->getChooseSubtree(), pParser->getChooseNode(),
-                                           pParser->getAssignChooseSubtree(), pParser->getCutWhat());
-        //    cout << "tasks computed MM " << tree->numberTasksWMinMem << endl;
+        result += partitionHeuristics(tree, pParser->getChooseSubtree(), pParser->getChooseNode(),
+                                      pParser->getAssignChooseSubtree(), pParser->getCutWhat());
 
     }
     catch (const char *str) {
@@ -349,7 +325,7 @@ int main(int argc, char **argv) {
             }
             // cout<<"makespan "<<makespan<<endl;
 
-            makespan = 0;// = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+            makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
             tree_column += " " + to_string(makespan) + "\t" + to_string(tree->HowmanySubtrees(true)) + "\t" +
                            // to_string(time )+ " " + to_string(CLOCKS_PER_SEC);
                            result;
@@ -365,7 +341,7 @@ int main(int argc, char **argv) {
         } while (input->nextCluster());
         printer->quietPrint(tree_column);
         delete tree;
-        delete untouchedTree;
+        delete veryOriginalTree;
         Cluster::getFixedCluster()->clean();
         input->resetClusterIterator();
     };

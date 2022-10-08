@@ -205,13 +205,17 @@ void MinMem3Level(Tree *tree, double &Required_memory) {
     int originalTreeSize = tree->getSize();
     Tree *treeToBeChanged = BuildSubtree(tree, tree->getRoot());
     assert(treeToBeChanged->getSize() == tree->getSize());
-    assert(treeToBeChanged->getTasks()->at(0)->getMakespanWeight() == tree->getTasks()->at(0)->getMakespanWeight());
     treeToBeChanged->levelsToTasks();
 
     vector<Task *> lowestLevel;
     std::set<Task *> firstLevel, secondLevel, thirdLevel;
 
     fillLowestAndThreeUpperLevels(treeToBeChanged, lowestLevel, firstLevel, secondLevel, thirdLevel);
+
+    for (const auto &item: lowestLevel) {
+        cout << "assign to " << item->getOtherSideId();
+        tree->getTask(item->getOtherSideId())->setMinMemUnderlying(item->getCost());
+    }
 
     if (secondLevel.empty()) {
         double maxCost = root->getCost();
@@ -223,12 +227,16 @@ void MinMem3Level(Tree *tree, double &Required_memory) {
     }
     while (!thirdLevel.empty()) {
         for (auto &item: firstLevel) {
+            int originalOtherSideId = item->getOtherSideId();
             treeToBeChanged->mergeTaskToAllChildren(item);
+            cout << "assign to " << item->getOtherSideId();
+           // tree->getTask(item->getOtherSideId())->setMinMemUnderlying(item->getCost());
         }
         treeToBeChanged->deepestLevel--;
         //compute MinMems for third level nodes
         for (const auto &item: thirdLevel) {
             item->setCostComputed(false);
+            int originalOtherSideId = item->getOtherSideId();
             double maxout, requiredMemorySize;
             schedule_traversal *schedule_f = new schedule_traversal();
             Tree *subtree = BuildSubtree(treeToBeChanged, item);
@@ -237,17 +245,19 @@ void MinMem3Level(Tree *tree, double &Required_memory) {
             MinMem(subtree, maxout, requiredMemorySize, *schedule_f, true);
             delete subtree;
             delete schedule_f;
-
+            item->setOtherSideId(originalOtherSideId);
             item->setMinMemUnderlying(requiredMemorySize);
             item->setCost(requiredMemorySize);
+            cout << "assign to " << originalOtherSideId;
+            tree->getTask(item->getOtherSideId())->setMinMemUnderlying(requiredMemorySize);
         }
         fillLowestAndThreeUpperLevels(treeToBeChanged, lowestLevel, firstLevel, secondLevel, thirdLevel);
-
     }
 
     if (!secondLevel.empty()) {
         for (auto &item: secondLevel) {
             item->setCostComputed(false);
+            int originalOtherSideId = item->getOtherSideId();
             double maxout, requiredMemorySize;
             schedule_traversal *schedule_f = new schedule_traversal();
             Tree *subtree = BuildSubtree(treeToBeChanged, item);
@@ -255,7 +265,10 @@ void MinMem3Level(Tree *tree, double &Required_memory) {
             MinMem(subtree, maxout, requiredMemorySize, *schedule_f, true);
             delete subtree;
             delete schedule_f;
+            cout << "assign to " << originalOtherSideId;
+            item->setOtherSideId(originalOtherSideId);
             item->setMinMemUnderlying(requiredMemorySize);
+            tree->getTask(item->getOtherSideId())->setMinMemUnderlying(requiredMemorySize);
         }
     }
     assert(tree->getSize() == originalTreeSize);

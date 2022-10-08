@@ -1462,7 +1462,7 @@ double Task::computeMinMemUnderlyingAndAssignFeasible(Tree *tree, bool greedy) {
 }
 
 void Task::assignFeasibleProcessorsToSubtree(double minMem) {
-    this->setFeasibleProcessors(new set<Processor *, FastestProcessor>());
+    this->getFeasibleProcessors()->clear();
     for (Processor *processor: Cluster::getFixedCluster()->getProcessors()) {
         if (!processor->isBusy && processor->getMemorySize() >= minMem) {
             this->addFeasibleProcessor(processor);

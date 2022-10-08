@@ -213,11 +213,6 @@ public :
     }
 
     void addChild(Task *pchild) {
-        //   cout << "add child " << pchild->getId() << " with parent " << pchild->getParentId() <<" to "<< this->getId()<< " and children ";
-        //    for(Task* child: *pchild->getChildren()){
-        //       cout<<child->getId()<<" ";
-        //   }
-        //   cout<<endl;
         this->children->push_back(pchild);
         cost_computed = false;
     }
@@ -329,7 +324,10 @@ public :
 
     void setFeasibleProcessors(set<Processor *, FastestProcessor> *v) {
         this->feasibleProcessors->clear();
-        this->feasibleProcessors = v;
+        for (const auto &item: *v) {
+            this->feasibleProcessors->insert(item);
+        }
+
     }
 
 
@@ -715,7 +713,7 @@ public:
         setRootId(root->getId());
         this->tasks = nodes;
         this->size = nodes->size();
-        this->originalTree = originalTree;
+        Tree::originalTree = originalTree;
         taskMaxMakespan = NULL;
         taskMaxMemRequirement = NULL;
         numberTasksWMinMem = 0;

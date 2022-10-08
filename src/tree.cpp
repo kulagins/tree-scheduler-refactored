@@ -1443,6 +1443,10 @@ double Task::computeMinMemUnderlyingAndAssignFeasible(Tree *tree, bool greedy) {
     double minMem;
 
     Tree *subtree = BuildSubtree(tree, this);
+
+    for (const auto &item: *subtree->getTasks()) {
+        item->setCostComputed(true);
+    }
     if (!greedy) {
         //TODO: here min3Level
         schedule_traversal *schedule_f = new schedule_traversal();

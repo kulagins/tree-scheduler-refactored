@@ -2649,8 +2649,14 @@ double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string cho
 
     for (Task *task: *qTree->getTasks()) {
         if (task->getFeasibleProcessors()->empty()) {
-            string exception = "Task" + to_string(task->getOtherSideId()) + " has 0 feasible processors at beginning.";
-            throw exception;
+            tree->getTask(task->getOtherSideId())->needsRecomputeMemReq = true;
+            tree->getTask(task->getOtherSideId())->computeMinMemUnderlyingAndAssignFeasible(tree, false);
+            task->setFeasibleProcessors(tree->getTask(task->getOtherSideId())->getFeasibleProcessors());
+            if (task->getFeasibleProcessors()->empty()) {
+                string exception =
+                        "Task" + to_string(task->getOtherSideId()) + " has 0 feasible processors at beginning.";
+                throw exception;
+            }
         }
     }
     try {
@@ -2984,7 +2990,7 @@ void cutSingleNodePerSubtreeUntilBestMakespan(Tree *tree, string &subtreeChoiceC
         numberAvailableProcessors =
                 Cluster::getFixedCluster()->getNumberProcessors() - tree->HowmanySubtrees(true);
         Task *subtree = chooseSubtree(subtreeChoiceCode, tree, subtreeCandidates);
-        //cout << "choosen subtree " << subtree->getId() << ", cand size " << subtreeCandidates.size() << endl;
+        cout << "choosen subtree " << subtree->getId() << ", cand size " << subtreeCandidates.size() << endl;
         Task *bestTask = chooseTask(subtree, tree, nodeChoiceCode, assignSubtreeChoiceCode);
         if (bestTask != NULL) {
             vector<Task *> freshlyBroken = bestTask->breakNBiggestChildren(
@@ -3102,7 +3108,7 @@ findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoi
 
     double minMakespan = initMS == -1 ? assignToBestProcessors(tree, {}, assignSubtreeChoiceCode) : initMS;
     Task *taskMinMakespan = nullptr;
-    //cout << "\t task candidates size " << candidates.size() << endl;
+    cout << "\t task candidates size " << candidates.size() << endl;
     for (Task *task: candidates) {
         //cout << "\t try task " << task->getId() << endl;
         task = tree->getTask(task->getId());

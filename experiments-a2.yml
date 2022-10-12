@@ -1,0 +1,59 @@
+instances:
+  - repo: local
+    items:
+     - name: 'trees'
+       files: []
+     - name: 'random'
+       files: []
+     - name: '3_children'
+       files: []
+     - name: '20_children'
+       files: []
+     - name: 'all_large'
+       files: []
+     - name: 'all_small'
+       files: []
+     - name: 'large_edge_weights'
+       files: []
+     - name: 'large_makespan_weights'
+       files: []
+     - name: 'large_node_weights'        
+       files: []
+instdir: "data"
+
+
+experiments:
+  - name: LMW-FFT-MW-0
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'MW','0']
+    stdout: out 
+    num_threads: 24
+  - name: LMW-FFT-CP-0
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'FFT', 'CP','0']
+    stdout: out 
+    num_threads: 24
+  - name: LMW-M-MW-0
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'MW','0']
+    stdout: out
+    num_threads: 24 
+  - name: LMW-M-MD-0
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'LMW', 'M', 'MD','0']
+    stdout: out
+    num_threads: 24
+
+  - name: CP-FFT-MW-0
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'MW','0']
+    stdout: out 
+    num_threads: 24
+  - name: CP-FFT-MD-0
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'FFT', 'MD','0']
+    stdout: out
+    num_threads: 24
+  - name: CP-M-MD-0
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'MD','0']
+    stdout: out
+    num_threads: 24
+  - name: CP-M-CP-0
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_single_small.txt', '0','0','1', 'CP', 'M', 'CP','0']
+    stdout: out 
+    num_threads: 24
+

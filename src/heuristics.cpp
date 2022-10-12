@@ -1043,7 +1043,7 @@ bool checkRequiredMemSize(Tree *tree, Task *SubtreeRoot) {
     schedule_traversal *schedule_f = new schedule_traversal();
     maxout = MaxOutDegree(subtree, true);
     MinMem(subtree, maxout, requiredMemorySize, *schedule_f, true);
-    delete subtree;
+    //delete subtree;
     return Cluster::getFixedCluster()->smallestFreeProcessorFitting(requiredMemorySize) != nullptr;
 
 }
@@ -1781,7 +1781,6 @@ int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcess
                     subtree, schedule_f,
                     currentnode};
             subtreeRoots.push_back(tuple);
-            delete subtree;
         }
     }
     sort(subtreeRoots.begin(), subtreeRoots.end(),
@@ -1824,7 +1823,8 @@ int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcess
             switch (method) {
                 case FIRST_FIT:
                     try {
-                        IOCounter(get<1>(subtreeRootAndMemReq), schedule_copy, false, true,
+                        Tree *&subtree = get<1>(subtreeRootAndMemReq);
+                        IOCounter(subtree, schedule_copy, false, true,
                                   com_freq, &BrokenEdgesID,
                                   FIRST_FIT);
                     }
@@ -1896,7 +1896,6 @@ int MemoryCheckHomp(Tree *tree, io_method_t method, double processor_memory_size
                     subtree, schedule_f,
                     currentnode};
             subtreeRoots.push_back(tuple);
-            delete subtree;
         }
     }
     unsigned int com_freq;

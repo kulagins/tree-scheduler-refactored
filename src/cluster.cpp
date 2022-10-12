@@ -78,6 +78,9 @@ bool Cluster::hasFreeProcessor() {
 }
 
 Processor *Cluster::getFirstFreeProcessorOrSmallest() {
+    std::sort(this->processors.begin(), this->processors.end(), [](Processor *a, Processor *b) {
+        return (a->getMemorySize() <= b->getMemorySize());
+    });
     for (vector<Processor *>::iterator iter = this->processors.begin(); iter < this->processors.end(); iter++) {
         if (!(*iter)->isBusy)
             return (*iter);

@@ -64,7 +64,7 @@ string a2WithNewMinMem(Tree *tree, OutputPrinter *printer, double &makespan, Inp
     tree->mergeLinearChains();
     tree->levelsToTasks();
     tree->getRoot()->precomputeMinMems(tree, false);
-    result += "reprocessing: "+ to_string((clock() - time)/CLOCKS_PER_SEC);
+    result += "reprocessing: " + to_string((clock() - time) / CLOCKS_PER_SEC);
 
     try {
         result += partitionHeuristics(tree, pParser->getChooseSubtree(), pParser->getChooseNode(),
@@ -223,6 +223,35 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
         makespan = tree->SplitAgain();
         // SplitAgainOld(tree, num_processors, tree->HowmanySubtrees(true));
     }
+
+    for (const auto &item: Cluster::getFixedCluster()->getProcessors()) {
+        if (item->getAssignedTaskId() != -1 && !item->getAssignedTask()->isBroken()) {
+            item->isBusy = false;
+            item->setAssignedTaskId(-1);
+            item->setAssignedTask(NULL);
+            item->setOccupiedMemorySize(0);
+        }
+    }
+
+    for (const auto &item: tree->getBrokenTasks()) {
+        if (item->getAssignedProcessor() == NULL) {
+
+            double maxoutd, minMem;
+            Tree *subtree = BuildSubtree(tree, item);
+            maxoutd = MaxOutDegree(subtree, true);
+            schedule_traversal *schedule_f = new schedule_traversal();
+            MinMem(subtree, maxoutd, minMem, *schedule_f, true);
+
+            delete schedule_f;
+            delete subtree;
+            for (const auto &proc: Cluster::getFixedCluster()->getProcessors()) {
+                if (!proc->isBusy && proc->getMemorySize() >= minMem) {
+                    proc->assignTask(item);
+                    break;
+                }
+            }
+        }
+    }
     for (const auto &item: tree->getBrokenTasks()) {
         assert(item->getAssignedProcessor() != NULL);
     }
@@ -309,7 +338,8 @@ int main(int argc, char **argv) {
             time = clock();
             //  makespan = input->getRunA1() ? threeSteps(tree, printer) : a2Steps(tree, printer);
             //string result = a2MultiLevel(tree, printer, makespan, input);
-            string result = a2WithNewMinMem(tree, printer, makespan, input);
+            string result = input->getRunA1() ? to_string(threeSteps(tree, printer)) : a2WithNewMinMem(tree, printer,
+                                                                                                       makespan, input);
             //makespan = threeSteps(tree, printer);
             //maxoutd = MaxOutDegree(tree, true);
 
@@ -328,7 +358,7 @@ int main(int argc, char **argv) {
             makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
             tree_column += " " + to_string(makespan) + "\t" + to_string(tree->HowmanySubtrees(true)) + "\t" +
                            // to_string(time )+ " " + to_string(CLOCKS_PER_SEC);
-                           result;
+                           result + " "+ to_string(time / CLOCKS_PER_SEC);
             /*for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {
                 if (proc->isBusy) {
                     cout<<proc->getMemorySize()<<" "<<proc->getAssignedTaskId()<<endl;

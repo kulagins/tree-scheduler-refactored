@@ -467,7 +467,7 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, Processor *&proces
     while (feasible == false && list_increase_id.empty() == false) {
         smallest_iter = min_element(list_increase_id.begin(), list_increase_id.end(), cmp_merge_smallest);
         currentQNode = (*smallest_iter).second;
-        cout << "   increase in MS(r) estimated: " << (*smallest_iter).first << endl;
+       // cout << "   increase in MS(r) estimated: " << (*smallest_iter).first << endl;
 
         children = currentQNode->getChildren();
         if (children->empty()) {
@@ -475,7 +475,7 @@ bool estimateMS(Tree *tree, Tree *Qtree, Task *&smallestNode, Processor *&proces
         }
         double requiredMemory = 0;
         requiredMemory = tree->CheckRequiredMemoryIfMerged(currentQNode->getParent(), currentQNode, leaf);
-        cout << "required memory" << requiredMemory << endl;
+        //cout << "required memory " << requiredMemory << endl;
 
         if (Cluster::getFixedCluster()->areAllUnassigned(currentQNode, tree) &&
             Cluster::getFixedCluster()->hasFreeProcessor()) {
@@ -606,7 +606,7 @@ bool estimateMSOld(Tree *tree, Tree *Qtree, Task *&smallestNode, double memory_s
     while (feasible == false && list_increase_id.empty() == false) {
         smallest_iter = min_element(list_increase_id.begin(), list_increase_id.end(), cmp_merge_smallest);
         currentQNode = (*smallest_iter).second;
-        cout << "   increase in MS(r) estimated: " << (*smallest_iter).first << endl;
+        //cout << "   increase in MS(r) estimated: " << (*smallest_iter).first << endl;
 
         children = currentQNode->getChildren();
         if (children->empty()) {
@@ -663,7 +663,7 @@ double Tree::Merge(bool CheckMemory) {
     bool memoryEnough;
 
     while (shortage > 0) { //merge subtree
-        cout << "shortage " << shortage << endl;
+        //cout << "shortage " << shortage << endl;
         temp = Qtreeobj->getRoot()->getMakespanCost(true, true); //initilize ms
         temp = this->getRoot()->getMakespanCost(true, true);     //update ms
 
@@ -1384,12 +1384,12 @@ double Tree::SplitAgain() {
         CriticalPath = buildCriticalPath(Qtreeobj);
         //cout<<"}"<<endl;
 
-        cout << "Idle processor now: " << idleProcessors << endl;
+        //cout << "Idle processor now: " << idleProcessors << endl;
         MSReduced = EstimateDecrease(idleProcessors, this, &CriticalPath, &onLastSubtree, &node_i, &node_j);
 
         if (MSReduced == true) {
             if (onLastSubtree == false) {
-                cout << "cut edge " << node_i->getId() << endl;
+                //cout << "cut edge " << node_i->getId() << endl;
                 node_i->breakEdge(); //C<-C\cup C_k
                 Processor *mostSuitableProcessor = Cluster::getFixedCluster()->getBiggestFreeProcessor();
                 mostSuitableProcessor->assignTask(node_i);
@@ -1438,7 +1438,7 @@ double Tree::SplitAgain() {
                     }
                 }
             } else {
-                cout << "cut edge " << node_i->getId() << " and edge " << node_j->getId() << endl;
+               // cout << "cut edge " << node_i->getId() << " and edge " << node_j->getId() << endl;
                 node_i->breakEdge();//C<-C\cup C_k
                 node_j->breakEdge();//C<-C\cup C_k
                 Processor *mostSuitableProcessor = Cluster::getFixedCluster()->getBiggestFreeProcessor();
@@ -1810,13 +1810,13 @@ int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcess
         mostSuitableProcessor->assignTask(get<3>(subtreeRootAndMemReq));
         currentMemorySize = mostSuitableProcessor->getMemorySize();
 
-        cout << "using proc of memory " << mostSuitableProcessor->getMemorySize() << "for task "
-             << get<3>(subtreeRootAndMemReq)->getId() << endl;
-        cout << "Subtree " << get<3>(subtreeRootAndMemReq)->getId() << " needs memory "
-             << get<0>(subtreeRootAndMemReq)
-             << endl;
+       // cout << "using proc of memory " << mostSuitableProcessor->getMemorySize() << "for task "
+        //     << get<3>(subtreeRootAndMemReq)->getId() << endl;
+        //cout << "Subtree " << get<3>(subtreeRootAndMemReq)->getId() << " needs memory "
+         //    << get<0>(subtreeRootAndMemReq)
+         //    << endl;
         if (get<0>(subtreeRootAndMemReq) > currentMemorySize) {
-            cout << ", larger than what is available: " << currentMemorySize << endl;
+         //   cout << ", larger than what is available: " << currentMemorySize << endl;
 
             int *schedule_copy = copyScheduleBackwards(get<2>(subtreeRootAndMemReq));
 
@@ -2989,7 +2989,7 @@ void cutSingleNodePerSubtreeUntilBestMakespan(Tree *tree, string &subtreeChoiceC
         numberAvailableProcessors =
                 Cluster::getFixedCluster()->getNumberProcessors() - tree->HowmanySubtrees(true);
         Task *subtree = chooseSubtree(subtreeChoiceCode, tree, subtreeCandidates);
-        cout << "choosen subtree " << subtree->getId() << ", cand size " << subtreeCandidates.size() << endl;
+        //cout << "choosen subtree " << subtree->getId() << ", cand size " << subtreeCandidates.size() << endl;
         Task *bestTask = chooseTask(subtree, tree, nodeChoiceCode, assignSubtreeChoiceCode);
         if (bestTask != NULL) {
             vector<Task *> freshlyBroken = bestTask->breakNBiggestChildren(
@@ -3107,7 +3107,7 @@ findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoi
 
     double minMakespan = initMS == -1 ? assignToBestProcessors(tree, {}, assignSubtreeChoiceCode) : initMS;
     Task *taskMinMakespan = nullptr;
-    cout << "\t task candidates size " << candidates.size() << endl;
+    //cout << "\t task candidates size " << candidates.size() << endl;
     for (Task *task: candidates) {
         //cout << "\t try task " << task->getId() << endl;
         task = tree->getTask(task->getId());

@@ -172,9 +172,9 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
     // tree->ImprovedSplit();
 
 
-    cout << "1 step ready " << endl;
+    // cout << "1 step ready " << endl;
     number_subtrees = tree->HowmanySubtrees(true);
-    cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
+    // cout << "Makespan " << makespan << " #trees: " << number_subtrees << endl;
 
     int ret = 0;
     double processorMemorySize = Cluster::getFixedCluster()->getProcessors().at(0)->getMemorySize();
@@ -201,14 +201,14 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
         cout << "unsolvable currently" << endl;
         return -2;
     }
-    cout << "2 step ready " << endl;
+    //  cout << "2 step ready " << endl;
     makespan = tree->getRoot()->getMakespanCost(true, true);
-    number_subtrees = tree->HowmanySubtrees(false);
-    cout << "Makespan " << makespan << " #trees: " << number_subtrees << "weight " << endl;
+    //  number_subtrees = tree->HowmanySubtrees(false);
+    //  cout << "Makespan " << makespan << " #trees: " << number_subtrees << "weight " << endl;
 
 
     if (number_subtrees > num_processors) {
-        cout << "merge" << endl;
+        //cout << "merge" << endl;
         if (Cluster::getFixedCluster()->isMemoryHomogeneous()) {
             printer->quietPrint("run homp");
             // nsigned int num_subtrees, unsigned int processor_number, double const memory_size, bool CheckMemory)
@@ -216,9 +216,9 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
         } else
             makespan = tree->Merge(true);
     } else if (number_subtrees == num_processors) {
-        cout << "nothing" << endl;
+        //cout << "nothing" << endl;
     } else {
-        cout << "splitAgain" << endl;
+        // cout << "splitAgain" << endl;
         //  makespan = tree->SplitAgain();
         makespan = tree->SplitAgain();
         // SplitAgainOld(tree, num_processors, tree->HowmanySubtrees(true));
@@ -253,6 +253,10 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
         }
     }
     for (const auto &item: tree->getBrokenTasks()) {
+        if (item->getAssignedProcessor() == NULL) {
+            Cluster::getFixedCluster()->getBiggestFreeProcessor()->assignTask(item);
+            cout <<"assigning afterwards! "<< item->getId() << " " << Cluster::getFixedCluster()->getNumberFreeProcessors() << endl;
+        }
         assert(item->getAssignedProcessor() != NULL);
     }
     for (Task *brokenTask: tree->getBrokenTasks()) {
@@ -264,7 +268,7 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
     for (const auto &item: *tree->getTasks()) {
         assert(item->getAssignedProcessor() != NULL);
     }
-    return makespan;
+    return 0;
 }
 
 int main(int argc, char **argv) {
@@ -356,9 +360,10 @@ int main(int argc, char **argv) {
             // cout<<"makespan "<<makespan<<endl;
 
             makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+            tree->HowmanySubtreesAndWeights(false);
             tree_column += " " + to_string(makespan) + "\t" + to_string(tree->HowmanySubtrees(true)) + "\t" +
                            // to_string(time )+ " " + to_string(CLOCKS_PER_SEC);
-                           result + " "+ to_string(time / CLOCKS_PER_SEC);
+                           result + " " + to_string(time / CLOCKS_PER_SEC);
             /*for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {
                 if (proc->isBusy) {
                     cout<<proc->getMemorySize()<<" "<<proc->getAssignedTaskId()<<endl;

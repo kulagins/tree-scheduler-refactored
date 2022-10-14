@@ -217,6 +217,40 @@ unsigned int Tree::HowmanySubtrees(bool quiet) {
     return number_subtrees;
 }
 
+unsigned int Tree::HowmanySubtreesAndWeights(bool quiet) {
+    unsigned int number_subtrees = 0;
+    // this->getRoot()->breakEdge();
+    const vector<Task *> *Nodes = this->getTasks();
+    if (quiet == false) {
+        cout << "Broken Edges { ";
+    }
+    for (auto it = Nodes->begin(); it != Nodes->end(); ++it) {
+        if ((*it)->isBroken()) {
+            number_subtrees++;
+            double maxoutd, minMem;
+            Tree *subtree = BuildSubtree(this, (*it));
+            maxoutd = MaxOutDegree(subtree, true);
+            schedule_traversal *schedule_f = new schedule_traversal();
+            MinMem(subtree, maxoutd, minMem, *schedule_f, true);
+
+            for (const auto &item: *subtree->getTasks()){
+                item->setAssignedProcessor((*it)->getAssignedProcessor());
+            }
+            if (quiet == false) {
+                cout << "{ " << (*it)->getId() << ", " << minMem << ", "
+                     << subtree->getRoot()->getMakespanCostWithSpeeds(true, true) << "}, ";
+            }
+            delete schedule_f;
+            delete subtree;
+
+        }
+    }
+    if (quiet == false) {
+        cout << "}" << endl;
+    }
+    return number_subtrees;
+}
+
 bool
 Tree::MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double available_memory_size,
                    double &requiredMemorySize) {

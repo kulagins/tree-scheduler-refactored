@@ -921,6 +921,7 @@ public:
     Tree *BuildQtreeOld();
 
     unsigned int HowmanySubtrees(bool quiet);
+    unsigned int HowmanySubtreesAndWeights(bool quiet);
 
     bool
     MemoryEnough(Task *Qrootone, Task *Qroottwo, bool leaf, double available_memory_size, double &requiredMemorySize);

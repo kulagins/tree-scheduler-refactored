@@ -16,3 +16,4 @@ test/cluster_unittest
 test/distributeProcessors_unittest
 output/*
 output-folders/*
+output*/

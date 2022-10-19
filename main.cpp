@@ -203,7 +203,7 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
     }
     //  cout << "2 step ready " << endl;
     makespan = tree->getRoot()->getMakespanCost(true, true);
-    //  number_subtrees = tree->HowmanySubtrees(false);
+    number_subtrees = tree->HowmanySubtrees(true);
     //  cout << "Makespan " << makespan << " #trees: " << number_subtrees << "weight " << endl;
 
 
@@ -255,7 +255,8 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
     for (const auto &item: tree->getBrokenTasks()) {
         if (item->getAssignedProcessor() == NULL) {
             Cluster::getFixedCluster()->getBiggestFreeProcessor()->assignTask(item);
-            cout <<"assigning afterwards! "<< item->getId() << " " << Cluster::getFixedCluster()->getNumberFreeProcessors() << endl;
+            cout << "assigning afterwards! " << item->getId() << " "
+                 << Cluster::getFixedCluster()->getNumberFreeProcessors() << endl;
         }
         assert(item->getAssignedProcessor() != NULL);
     }

@@ -2116,58 +2116,8 @@ copyScheduleBackwards(schedule_traversal *schedule_f) {
 
     return schedule_copy;
 }
-
-class TMaxHeap {
-public:
-    bool operator()(Task *t1, Task *t2) {
-        return t1->getTMax() < t2->getTMax();
-    }
-
-
-// since we are going over the heap from top to bottom,
-// everything above the idx is already compliant with the heap constraint
-    static void siftUp(vector<Task *> *heap, int idx) {
-        int parent_idx;
-        Task *tmp;
-
-        while (idx > 0) {
-            parent_idx = (int) (idx - 1) / 2;
-            tmp = heap->at(idx);
-            if (heap->at(parent_idx)->getTMax() < heap->at(idx)->getTMax()) {
-                heap->at(idx) = heap->at(parent_idx);
-                heap->at(parent_idx) = tmp;
-                idx = parent_idx;
-            } else {
-                break;
-            }
-
-        }
-
-    }
-
-};
-
-
-void distributeProcessors(Tree *qTree, string chooseSubtreeAssign) {
-    Task *root = qTree->getRoot();
-    if (root->getFeasibleProcessors()->empty()) {
-        throw "No feasible processors";
-    }
-    Processor *pFast = root->getFastestFeasibleProcessor();
-    pFast->assignTask(root);
-    removeProcessorFromAllFeasSets(pFast, qTree);
-
-    auto tasks = qTree->getTasks();
-
-    vector<Task *> *taskHeap = new vector<Task *>();//tasks->size());
-    for (auto task: *tasks) {
-        if (task->getAssignedProcessor() == NULL) {
-            task->updateTMax();
-            taskHeap->push_back(task);
-        }
-    }
-
-    auto compareTasksForHeap = [chooseSubtreeAssign, qTree](Task *t1, Task *t2) -> bool {
+auto comparatorForHeap(string chooseSubtreeAssign, Tree * qTree){
+    return [chooseSubtreeAssign, qTree](Task *t1, Task *t2) -> bool {
         if (t1->getTMax() == DBL_MAX && t2->getTMax() == DBL_MAX) return false;
         else if (t1->getTMax() == DBL_MAX) return false;
         else if (t2->getTMax() == DBL_MAX) return true;
@@ -2193,7 +2143,7 @@ void distributeProcessors(Tree *qTree, string chooseSubtreeAssign) {
                     return t1->getTMax() < t2->getTMax();
                 }
             } else if (chooseSubtreeAssign == "MW") {
-                return t1->getMinMemUnderlying() < t2->getMinMemUnderlying();
+                return t1->getMakespanWeight() < t2->getMakespanWeight();
 
             } else if (chooseSubtreeAssign == "MD") {
                 return t1->getChildren()->size() < t2->getChildren()->size();
@@ -2201,11 +2151,67 @@ void distributeProcessors(Tree *qTree, string chooseSubtreeAssign) {
         }
 
     };
-    make_heap(taskHeap->begin(), taskHeap->end(), compareTasksForHeap);
+}
+
+class TMaxHeap {
+public:
+    bool operator()(Task *t1, Task *t2) {
+        return t1->getTMax() < t2->getTMax();
+    }
+
+
+// since we are going over the heap from top to bottom,
+// everything above the idx is already compliant with the heap constraint
+    static void siftUp(vector<Task *> *heap, int idx, string chooseSubtreeAssign, Tree* qTree) {
+        int parent_idx;
+        Task *tmp;
+
+        while (idx > 0) {
+            parent_idx = (int) (idx - 1) / 2;
+            tmp = heap->at(idx);
+            bool isSmallerByComparator = (comparatorForHeap(chooseSubtreeAssign, qTree))(heap->at(parent_idx),
+                                                                                         heap->at(idx));
+            if (isSmallerByComparator) {
+                heap->at(idx) = heap->at(parent_idx);
+                heap->at(parent_idx) = tmp;
+                idx = parent_idx;
+            } else {
+                break;
+            }
+
+        }
+
+    }
+
+};
+
+
+
+
+void distributeProcessors(Tree *qTree, string codeChoiceSubtree) {
+    Task *root = qTree->getRoot();
+    if (root->getFeasibleProcessors()->empty()) {
+        throw "No feasible processors";
+    }
+    Processor *pFast = root->getFastestFeasibleProcessor();
+    pFast->assignTask(root);
+    removeProcessorFromAllFeasSets(pFast, qTree);
+
+    auto tasks = qTree->getTasks();
+
+    vector<Task *> *taskHeap = new vector<Task *>();//tasks->size());
+    for (auto task: *tasks) {
+        if (task->getAssignedProcessor() == NULL) {
+            task->updateTMax();
+            taskHeap->push_back(task);
+        }
+    }
+
+    make_heap(taskHeap->begin(), taskHeap->end(), comparatorForHeap(codeChoiceSubtree, qTree));
 
     while (taskHeap->size() > 0) {
 
-        pop_heap(taskHeap->begin(), taskHeap->end(), compareTasksForHeap);
+        pop_heap(taskHeap->begin(), taskHeap->end(), comparatorForHeap(codeChoiceSubtree, qTree));
         Task *task = taskHeap->back();
         taskHeap->pop_back();
 
@@ -2215,7 +2221,7 @@ void distributeProcessors(Tree *qTree, string chooseSubtreeAssign) {
             taskHeap->at(i)->deleteFeasible(pFast);
             taskHeap->at(i)->updateTMax();
             //TODO: is sift up corect?
-            TMaxHeap::siftUp(taskHeap, i);
+            TMaxHeap::siftUp(taskHeap, i, codeChoiceSubtree, qTree);
             //SiftInfTmaxUpPreserveOrder(taskHeap);
         }
         //SiftInfTmaxUpPreserveOrder(taskHeap);
@@ -2253,7 +2259,8 @@ void distributeProcessorsOld(Tree *qTree) {
         for (int i = 0; i < taskHeap->size(); i++) {
             taskHeap->at(i)->deleteFeasible(pFast);
             taskHeap->at(i)->updateTMax();
-            TMaxHeap::siftUp(taskHeap, i);
+            //TODO: ALWAYS CP!
+            TMaxHeap::siftUp(taskHeap, i, "CP", qTree);
         }
 
     }
@@ -2618,7 +2625,6 @@ double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string cho
     clock_t time;
     time = clock();
 
-    //TODO: is correct?
     if (newlyBroken.empty()) {
         for (auto &item: tree->getBrokenTasks()) {
             item->needsRecomputeMemReq = true;
@@ -2686,57 +2692,58 @@ Task *chooseSubtree(string subtreeChoiceCode, Tree *tree, vector<Task *> candida
     clock_t time;
     time = clock();
     int initialSize = candidates.size();
+    Tree *qtree = tree->BuildQtree();
+    vector<Task*> candsInQtree;
+    auto candidatesContainOtherSideId = [candidates](Task *i) {
+        //cout << "i: " << i->getId() << " " << i->getOtherSideId() << endl;
+        for (Task *task: candidates) {
+            //  cout << "task: " << task->getId() << " " << task->getOtherSideId() << endl;
+            if (task->getId() == i->getOtherSideId()) {
+                // cout << "yes" << endl;
+                return true;
+            }
+        }
+        return false;
+    };
     if (subtreeChoiceCode == "LMW") {
-        std::sort(candidates.begin(), candidates.end(), [](Task *a, Task *b) {
+        candsInQtree = * qtree->getTasks();
+        std::sort(candsInQtree.begin(), candsInQtree.end(), [](Task *a, Task *b) {
             return (a->getNodeWeight() * a->getMakespanWeight() >= b->getNodeWeight() * b->getMakespanWeight());
         });
-        return candidates.front();
+
     } else if (subtreeChoiceCode == "CP") {
-        Tree *qtree = tree->BuildQtree();
-        vector<Task *> CriticalPath = buildCriticalPath(qtree->getRoot());
-
-        auto candidatesContainOtherSideId = [candidates](Task *i) {
-            //cout << "i: " << i->getId() << " " << i->getOtherSideId() << endl;
-            for (Task *task: candidates) {
-                //  cout << "task: " << task->getId() << " " << task->getOtherSideId() << endl;
-                if (task->getId() == i->getOtherSideId()) {
-                    // cout << "yes" << endl;
-                    return true;
-                }
-            }
-            return false;
-        };
-
-        Task *firstThatIsInCandidates = nullptr;
-
-        if (CriticalPath.size() != 0) {
-            vector<Task *>::iterator iterator = std::find_if(CriticalPath.begin(), CriticalPath.end(),
-
-                                                             candidatesContainOtherSideId);
-            firstThatIsInCandidates =
-                    *iterator;
-            if (iterator == CriticalPath.end()) {
-                //cout << "not found in CP" << endl;
-                firstThatIsInCandidates = *std::find_if(qtree->getTasks()->begin(),
-                                                        qtree->getTasks()->end(),
-                                                        candidatesContainOtherSideId);
-            }
-
-        } else {
-            if (candidates.size() != 0) {
-                //cout << "critical path size 0" << endl;
-            }
-            return candidates.front();
-        }
-
-        Task *correspondingTaskInTree = tree->getTask(firstThatIsInCandidates->getOtherSideId());
-        delete qtree;
-        timeChooseTree += (clock() - time);
-        return correspondingTaskInTree;
+        candsInQtree = buildCriticalPath(qtree->getRoot());
     } else {
-        timeChooseTree += (clock() - time);
         throw std::runtime_error("not implemented");
     }
+
+    Task *firstThatIsInCandidates = nullptr;
+    if (candsInQtree.size() != 0) {
+        vector<Task *>::iterator iterator = std::find_if(candsInQtree.begin(), candsInQtree.end(),
+                                                         candidatesContainOtherSideId);
+        firstThatIsInCandidates =
+                *iterator;
+        if (iterator == candsInQtree.end()) {
+            //nohing on critical path is in candidates - take something that is not on critical path, but still
+            //a candidate
+            //cout << "not found in CP" << endl;
+            firstThatIsInCandidates = *std::find_if(qtree->getTasks()->begin(),
+                                                    qtree->getTasks()->end(),
+                                                    candidatesContainOtherSideId);
+        }
+
+    } else {
+        if (candidates.size() != 0) {
+            //cout << "critical path size 0" << endl;
+        }
+        return candidates.front();
+    }
+
+    Task *correspondingTaskInTree = tree->getTask(firstThatIsInCandidates->getOtherSideId());
+    timeChooseTree += (clock() - time);
+    delete qtree;
+    return correspondingTaskInTree;
+
 
 
 }

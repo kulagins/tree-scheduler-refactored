@@ -233,7 +233,7 @@ unsigned int Tree::HowmanySubtreesAndWeights(bool quiet) {
             schedule_traversal *schedule_f = new schedule_traversal();
             MinMem(subtree, maxoutd, minMem, *schedule_f, true);
 
-            for (const auto &item: *subtree->getTasks()){
+            for (const auto &item: *subtree->getTasks()) {
                 item->setAssignedProcessor((*it)->getAssignedProcessor());
             }
             if (quiet == false) {

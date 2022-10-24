@@ -261,7 +261,7 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
         assert(item->getAssignedProcessor() != NULL);
     }
     for (Task *brokenTask: tree->getBrokenTasks()) {
-        vector<Task *> allTasksInSubtree = brokenTask->tasksInSubtreeRootedHere();
+        vector<Task *> allTasksInSubtree = brokenTask->getTasksInSubtreeRootedHere();
         for (Task *taskInSubtree: allTasksInSubtree) {
             taskInSubtree->setAssignedProcessor(brokenTask->getAssignedProcessor());
         }

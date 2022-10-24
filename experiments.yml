@@ -24,7 +24,7 @@ instdir: "data"
 
 experiments:
   - name: A1-0
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_random.txt', '0','1','1', 'LMW', 'FFT', 'MW','0']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_random.txt', '0','1','1', 'LMW', 'EX', 'MW','0']
     stdout: out 
     num_threads: 24
   - name: LMW-M-MD-0
@@ -32,21 +32,33 @@ experiments:
     stdout: out
     num_threads: 24
   - name: CP-FFT-CP-0
-    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_random.txt', '0','0','1', 'CP', 'FFT', 'MW','0' ]
+    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_random.txt', '0','0','1', 'CP', 'EX', 'MW','0' ]
     stdout: out
     num_threads: 24
 
 
   - name: A1-1
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','1','1', 'LMW', 'FFT', 'MW','0']
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_fat_and_thin.txt', '0','1','1', 'LMW', 'EX', 'MW','0']
     stdout: out
     num_threads: 24
   - name: LMW-M-MD-1
-    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','0','1', 'LMW', 'M', 'MD','0' ]
+    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_fat_and_thin.txt', '0','0','1', 'LMW', 'M', 'MD','0' ]
     stdout: out
     num_threads: 24
   - name: CP-FFT-CP-1
-    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','0','1', 'CP', 'FFT', 'MW','0' ]
+    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_fat_and_thin.txt', '0','0','1', 'CP', 'EX', 'MW','0' ]
     stdout: out
     num_threads: 24
 
+  - name: A1-2
+    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','1','1', 'LMW', 'EX', 'MW','0']
+    stdout: out
+    num_threads: 24
+  - name: LMW-M-MD-2
+    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','0','1', 'LMW', 'M', 'MD','0' ]
+    stdout: out
+    num_threads: 24
+  - name: CP-FFT-CP-2
+    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','0','1', 'CP', 'EX', 'MW','0' ]
+    stdout: out
+    num_threads: 24

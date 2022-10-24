@@ -2162,7 +2162,7 @@ public:
 
 // since we are going over the heap from top to bottom,
 // everything above the idx is already compliant with the heap constraint
-    static void siftUp(vector<Task *> *heap, int idx, string chooseSubtreeAssign, Tree* qTree) {
+    static void siftUp(vector<Task *> *heap, int idx, string chooseSubtreeAssign, Tree *qTree) {
         int parent_idx;
         Task *tmp;
 
@@ -2608,7 +2608,7 @@ void assignCorrespondingTreeTasks(Tree *tree, Tree *qTree) {
     }
     for (Task *qTask: *qTree->getTasks()) {
         Task *taskInTree = tree->getTask(qTask->getOtherSideId());
-        vector<Task *> allTasksInSubtree = taskInTree->tasksInSubtreeRootedHere();
+        vector<Task *> allTasksInSubtree = taskInTree->getTasksInSubtreeRootedHere();
         for (Task *taskInSubtree: allTasksInSubtree) {
             taskInSubtree->setAssignedProcessor(qTask->getAssignedProcessor());
         }
@@ -2693,7 +2693,7 @@ Task *chooseSubtree(string subtreeChoiceCode, Tree *tree, vector<Task *> candida
     time = clock();
     int initialSize = candidates.size();
     Tree *qtree = tree->BuildQtree();
-    vector<Task*> candsInQtree;
+    vector<Task *> candsInQtree;
     auto candidatesContainOtherSideId = [candidates](Task *i) {
         //cout << "i: " << i->getId() << " " << i->getOtherSideId() << endl;
         for (Task *task: candidates) {
@@ -2706,7 +2706,7 @@ Task *chooseSubtree(string subtreeChoiceCode, Tree *tree, vector<Task *> candida
         return false;
     };
     if (subtreeChoiceCode == "LMW") {
-        candsInQtree = * qtree->getTasks();
+        candsInQtree = *qtree->getTasks();
         std::sort(candsInQtree.begin(), candsInQtree.end(), [](Task *a, Task *b) {
             return (a->getNodeWeight() * a->getMakespanWeight() >= b->getNodeWeight() * b->getMakespanWeight());
         });
@@ -2812,7 +2812,7 @@ Task *chooseTask(Task *root, Tree *tree, string nodeChoiceCode, string assignSub
     timeChooseNode += (clock() - time);
     time = clock();
     pair<Task *, double> mins = findBestCutAmong(tree, candidates, assignSubtreeChoiceCode,
-                                                 numeric_limits<double>::infinity());
+                                                 -1);
     timeBestCutInNodeChoice += (clock() - time);
 
     return mins.first;
@@ -2866,10 +2866,13 @@ vector<Task *> buildCandidatesForNode(Tree *tree, const string &nodeChoiceCode, 
             }
         }
     } else if (nodeChoiceCode == "EX") {
-        copy_if(subtree->getTasks()->begin(), subtree->getTasks()->end(), back_inserter(candidates),
-                [](Task *i) {
-                    return !i->isAnyChildBroken();
-                });
+        for (const auto &item: * subtree->getTasks()){
+           Task* taskInRealTree =  tree->getTask(item->getOtherSideId());
+            if(!taskInRealTree->isAnyChildBroken() ){
+                candidates.push_back(taskInRealTree);
+            }
+
+        }
     } else if (nodeChoiceCode == "FFTM") {
         int desiredSize = subtree->getTasks()->size() / 10;
         for (Task *task: *subtree->getTasks()) {
@@ -3118,26 +3121,55 @@ Task *CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode) {
 pair<Task *, double>
 findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, double initMS) {
 
+
     tree->cleanAssignedAndReassignFeasible();
     Cluster::getFixedCluster()->freeAllBusyProcessors();
-
     double minMakespan = initMS == -1 ? assignToBestProcessors(tree, {}, assignSubtreeChoiceCode) : initMS;
+    vector<pair<Task *, double>> candidatesAndMakespanReduction;
+    for (auto &candidate: candidates) {
+        candidate = tree->getTask(candidate->getId());
+        if (candidate->getChildren()->size() >= 2) {
+            vector<Task *> newlyBroken = candidate->breakNBiggestChildren(
+                    Cluster::getFixedCluster()->getNumberFreeProcessors());
+
+            for (auto &item: newlyBroken) {
+                Processor *fastestFreeProcessor = Cluster::getFixedCluster()->getFastestFreeProcessor();
+                fastestFreeProcessor->assignTask(item);
+                vector<Task *> allTasksInSubtree = item->getTasksInSubtreeRootedHere();
+                for (Task *taskInSubtree: allTasksInSubtree) {
+                    taskInSubtree->setAssignedProcessor(fastestFreeProcessor);
+                }
+            }
+
+            double currentMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+            candidatesAndMakespanReduction.push_back(make_pair(candidate, currentMakespan));
+            candidate->restoreBrokenChildren();
+            tree->reassignRootProcessorToSubtree(candidate);
+        }
+
+    }
+
+    std::sort(candidatesAndMakespanReduction.begin(), candidatesAndMakespanReduction.end(),
+              [](const pair<Task *, double> &a, const pair<Task *, double> &b) { return (a.second < b.second); });
+
+
     Task *taskMinMakespan = nullptr;
     //cout << "\t task candidates size " << candidates.size() << endl;
-    for (Task *task: candidates) {
+    for (pair<Task *, double> p: candidatesAndMakespanReduction) {
+        Task *task = p.first;
         //cout << "\t try task " << task->getId() << endl;
         task = tree->getTask(task->getId());
         if (task->getChildren()->size() >= 2 && !task->isAnyChildBroken()) {
             vector<Task *> newlyBroken = task->breakNBiggestChildren(
                     Cluster::getFixedCluster()->getNumberFreeProcessors());
             double currentMakespan = assignToBestProcessors(tree, newlyBroken, assignSubtreeChoiceCode);
+            cout<<"expected ms "<<p.second<<" real ms "<<currentMakespan<<endl;
             if (currentMakespan < minMakespan) {
-                minMakespan = currentMakespan;
-                taskMinMakespan = task;
+                return make_pair(task, currentMakespan);
+            } else {
+                task->restoreBrokenChildren();
+                tree->cleanAssignedAndReassignFeasible();
             }
-            task->restoreBrokenChildren();
-            tree->cleanAssignedAndReassignFeasible();
-
         }
     }
     return make_pair(taskMinMakespan, minMakespan);

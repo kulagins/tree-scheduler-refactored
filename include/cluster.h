@@ -354,6 +354,7 @@ public:
 
 
     Processor *getBiggestFreeProcessor();
+    Processor *getFastestFreeProcessor();
 
     static vector<double> build3LevelMemorySizes(double maxoutd, double minMem, unsigned int num_processors);
 

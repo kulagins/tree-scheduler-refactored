@@ -246,7 +246,7 @@ public :
     }
 
     double getAssignedProcessorSpeed() {
-        if (this->assignedProcessor == NULL) throw "NO PROCESSOR";
+        if (this->assignedProcessor == NULL) return -1;
         else return this->assignedProcessor->getProcessorSpeed();
     }
 
@@ -254,7 +254,7 @@ public :
         if (this->isRoot() != newStatus) {
             __root = !__root;
         } else {
-            throw "Trying to set root to a position that it is alrady in";
+            throw std::runtime_error("Trying to set root to a position that it is alrady in");
         }
     }
 
@@ -430,6 +430,8 @@ public :
     double getMakespanSequentialWithSpeeds(bool updateEnforce, double &MS_parallel) {
 
         double assignedProcSpeed = this->getAssignedProcessorSpeed();
+        if (assignedProcSpeed == -1)
+            throw runtime_error("No processor assigned to " + to_string(this->getId()));
         if ((makespan_computed == true) & (updateEnforce == false)) {
             return MS_sequentialPart;
         }
@@ -477,6 +479,10 @@ public :
         MS_parallelPart = 0;
         MS_sequentialPart = this->getMakespanSequential(updateEnforce,
                                                         MS_parallelPart);//MS_parallelPart will be update here.
+
+       // cout << "on " << this->getId() << "MS P " << MS_parallelPart << " seq " << MS_sequentialPart <<
+
+       //      " ew " << edge_weight << " BW " << Cluster::getFixedCluster()->getHomogeneousBandwidth() << endl;
         makespan_nocommu = MS_sequentialPart + MS_parallelPart;
 
         makespan_computed = true;
@@ -505,6 +511,9 @@ public :
         MS_parallelPart = 0;
         MS_sequentialPart = this->getMakespanSequentialWithSpeeds(updateEnforce,
                                                                   MS_parallelPart);//MS_parallelPart will be update here.
+        //cout << "on " << this->getId() << "MS P " << MS_parallelPart << " seq " << MS_sequentialPart <<
+
+        //     " ew " << edge_weight << " BW " << Cluster::getFixedCluster()->getHomogeneousBandwidth() << endl;
         makespan_nocommu = MS_sequentialPart + MS_parallelPart;
 
         makespan_computed = true;
@@ -594,7 +603,7 @@ public :
 
     double computeMinMemUnderlyingAndAssignFeasible(Tree *tree, bool greedy);
 
-    vector<Task *> tasksInSubtreeRootedHere() {
+    vector<Task *> getTasksInSubtreeRootedHere() {
         vector<Task *> result;
         result.push_back(this);
         vector<Task *> candidates;
@@ -972,6 +981,16 @@ public:
         // Cluster::getFixedCluster()->freeAllBusyProcessors();
     }
 
+    void reassignRootProcessorToSubtree(Task *subtreeRoot) {
+        Processor *processorOfRoot = subtreeRoot->getAssignedProcessor();
+        const vector<Task *> &tasksUnderRoot = subtreeRoot->getTasksInSubtreeRootedHere();
+        for (Task *task: tasksUnderRoot) {
+            freeProcessorIfAvailable(task);
+            task->setAssignedProcessor(processorOfRoot);
+        }
+        processorOfRoot->assignTask(subtreeRoot);
+    }
+
     void mergeTaskToOnlyChild(Task *mergeRoot);
 
     void mergeTaskToAllChildren(Task *mergeRoot);
@@ -1040,7 +1059,7 @@ protected:
 public:
     SeqSet(Tree *tree, double makespan) {
         Task *root = tree->getRoot();
-        this->seqSet = root->tasksInSubtreeRootedHere();
+        this->seqSet = root->getTasksInSubtreeRootedHere();
         this->parallelRoots = tree->getBrokenTasks();
         this->makespan = makespan;
         numberSteps = 0;
@@ -1048,7 +1067,7 @@ public:
 
     SeqSet(Tree *tree, double makespan, int steps) {
         Task *root = tree->getRoot();
-        this->seqSet = root->tasksInSubtreeRootedHere();
+        this->seqSet = root->getTasksInSubtreeRootedHere();
         this->parallelRoots = tree->getBrokenTasks();
         this->makespan = makespan;
         numberSteps = steps;

@@ -68,6 +68,16 @@ Processor *Cluster::getBiggestFreeProcessor() {
     throw std::out_of_range("No free processor available anymore!");
 }
 
+Processor *Cluster::getFastestFreeProcessor() {
+    sort(this->processors.begin(), this->processors.end(),
+         [](Processor *lhs, Processor *rhs) { return lhs->getProcessorSpeed() > rhs->getProcessorSpeed(); });
+    for (vector<Processor *>::iterator iter = this->processors.begin(); iter < this->processors.end(); iter++) {
+        if (!(*iter)->isBusy)
+            return (*iter);
+    }
+    throw std::out_of_range("No free processor available anymore!");
+}
+
 //todo rewrite with flag
 bool Cluster::hasFreeProcessor() {
     for (vector<Processor *>::iterator iter = this->processors.begin(); iter < this->processors.end(); iter++) {

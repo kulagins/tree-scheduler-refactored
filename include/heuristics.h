@@ -59,7 +59,7 @@ findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoi
 
 Task *CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode);
 
-double FirstCutSomeNodes(Tree *tree, string assignSubtreeChoiceCode);
+double FirstCutSomeNodes(Tree *tree, string chooseNodeCode, string assignSubtreeChoiceCode);
 
 void SiftInfTmaxUpPreserveOrder(vector<Task *> *taskHeap);
 

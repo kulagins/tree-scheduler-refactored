@@ -2942,7 +2942,7 @@ partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
 
     tree->getRoot()->computeMinMemUnderlyingAndAssignFeasible(tree, false);
 
-    double minMakespan = FirstCutSomeNodes(tree, assignSubtreeChoiceCode);
+    double minMakespan = FirstCutSomeNodes(tree, nodeChoiceCode, assignSubtreeChoiceCode);
 
     if (minMakespan == std::numeric_limits<int>::max()) return "0 0 0 " + to_string(minMakespan);
 
@@ -3081,14 +3081,18 @@ void cutSingleNodeInAllSubtreesSimultaneously(Tree *tree, string &subtreeChoiceC
 
 }
 
-double FirstCutSomeNodes(Tree *tree, string assignSubtreeChoiceCode) {
+double FirstCutSomeNodes(Tree *tree, string chooseNodeCode, string assignSubtreeChoiceCode) {
+    vector<Task *> candidates;
+    if(chooseNodeCode=="EX"){
+        std::copy(tree->getTasks()->begin(), tree->getTasks()->end(), back_inserter(candidates));
+    } else{
+        vector<Task *> bestFFT = buildCandidatesForNode(tree, "FFT", tree->getRoot());
+        vector<Task *> bestMiddle = buildCandidatesForNode(tree, "M", tree->getRoot());
 
-    vector<Task *> bestFFT = buildCandidatesForNode(tree, "FFT", tree->getRoot());
-    vector<Task *> bestMiddle = buildCandidatesForNode(tree, "M", tree->getRoot());
-
-    vector<Task *> candidates(bestFFT);
-    candidates.insert(candidates.end(), bestMiddle.begin(), bestMiddle.end());
-    assert(candidates.size() == bestMiddle.size() + bestFFT.size());
+        candidates.insert(candidates.end(), bestFFT.begin(), bestFFT.end());
+        candidates.insert(candidates.end(), bestMiddle.begin(), bestMiddle.end());
+        assert(candidates.size() == bestMiddle.size() + bestFFT.size());
+    }
 
     pair<Task *, double> mins = findBestCutAmong(tree, candidates, assignSubtreeChoiceCode);
 

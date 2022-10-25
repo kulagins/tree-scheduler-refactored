@@ -23,18 +23,18 @@ instdir: "data"
 
 
 experiments:
-  - name: A1-0
-    args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_random.txt', '0','1','1', 'LMW', 'EX', 'MW','0']
-    stdout: out 
-    num_threads: 24
-  - name: LMW-M-MD-0
-    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_random.txt', '0','0','1', 'LMW', 'M', 'MD','0' ]
-    stdout: out
-    num_threads: 24
-  - name: CP-FFT-CP-0
-    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_random.txt', '0','0','1', 'CP', 'EX', 'MW','0' ]
-    stdout: out
-    num_threads: 24
+  #- name: A1-0
+  #  args: ['./main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_random.txt', '0','1','1', 'LMW', 'EX', 'MW','0']
+  #  stdout: out
+  #  num_threads: 24
+  #- name: LMW-M-MD-0
+  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_random.txt', '0','0','1', 'LMW', 'M', 'MD','0' ]
+  #  stdout: out
+  #  num_threads: 24
+  #- name: CP-FFT-CP-0
+  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_random.txt', '0','0','1', 'CP', 'EX', 'MW','0' ]
+  #  stdout: out
+  #  num_threads: 24
 
 
   - name: A1-1

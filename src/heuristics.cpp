@@ -3098,7 +3098,7 @@ double FirstCutSomeNodes(Tree *tree, string assignSubtreeChoiceCode) {
                 Cluster::getFixedCluster()->getNumberFreeProcessors());
     }
     double computedMs = assignToBestProcessors(tree, newlyBroken, assignSubtreeChoiceCode);
-    assert(computedMs == mins.second);
+    assert(abs(computedMs - mins.second) < 0.1);
     return computedMs;
 }
 
@@ -3163,7 +3163,8 @@ findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoi
             vector<Task *> newlyBroken = task->breakNBiggestChildren(
                     Cluster::getFixedCluster()->getNumberFreeProcessors());
             double currentMakespan = assignToBestProcessors(tree, newlyBroken, assignSubtreeChoiceCode);
-            cout<<"expected ms "<<p.second<<" real ms "<<currentMakespan<<endl;
+            cout << "expected ms " << p.second << " real ms " << currentMakespan << " on task " << task->getId()
+                 << endl;
             if (currentMakespan < minMakespan) {
                 return make_pair(task, currentMakespan);
             } else {

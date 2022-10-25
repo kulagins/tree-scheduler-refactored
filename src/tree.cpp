@@ -63,9 +63,6 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
     rootCopy->setMakespanWeight(root->getSequentialPart());
     rootCopy->setAssignedProcessor(root->getAssignedProcessor());
     rootCopy->setMinMemUnderlying(root->getMinMemUnderlying());
-    for (Processor *feasible: *root->getFeasibleProcessors()) {
-        rootCopy->addFeasibleProcessor(feasible);
-    }
 
     //rootCopy->toggleRootStatus(true);
     tasksInQtree->push_back(rootCopy);
@@ -87,9 +84,6 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
                 copy->setAssignedProcessor(currentNode->getAssignedProcessor());
             }
             copy->setMinMemUnderlying(currentNode->getMinMemUnderlying());
-            for (Processor *feasible: *currentNode->getFeasibleProcessors()) {
-                copy->addFeasibleProcessor(feasible);
-            }
             tasksInQtree->push_back(copy);
             nodeIdCounter++;
         }

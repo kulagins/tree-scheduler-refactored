@@ -628,6 +628,10 @@ public :
     }
 
     vector<Task *> breakNBiggestChildren(int n) {
+        std::sort(this->getChildren()->begin(), this->getChildren()->end(), [](Task *a, Task *b) {
+            return a->getMakespanCost(true, true) > b->getMakespanCost(true, true);
+        });
+
         vector<Task *> newlyBroken;
         int border = n < this->getChildren()->size() ? n : this->getChildren()->size();
 

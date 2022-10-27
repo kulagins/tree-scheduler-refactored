@@ -62,8 +62,6 @@ string a2WithNewMinMem(Tree *tree, OutputPrinter *printer, double &makespan, Inp
     time = clock();
 
     tree->mergeLinearChains();
-    tree->levelsToTasks();
-    tree->getRoot()->precomputeMinMems(tree, false);
     result += "reprocessing: " + to_string((clock() - time) / CLOCKS_PER_SEC);
 
     try {

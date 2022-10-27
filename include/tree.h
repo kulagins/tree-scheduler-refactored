@@ -629,7 +629,7 @@ public :
 
     vector<Task *> breakNBiggestChildren(int n) {
         std::sort(this->getChildren()->begin(), this->getChildren()->end(), [](Task *a, Task *b) {
-            return a->getMakespanCost(true, true) > b->getMakespanCost(true, true);
+            return a->getMakespanCost(true, false) > b->getMakespanCost(true, false);
         });
 
         vector<Task *> newlyBroken;
@@ -975,14 +975,14 @@ public:
     void clearComputedValues();
 
     void cleanAssignedAndReassignFeasible() {
-        for (Task *task: *tasks) {
+        for (Task *task: getBrokenTasks()) {
             task->getFeasibleProcessors()->clear();
             task->assignFeasibleProcessorsToSubtree(task->getMinMemUnderlying());
             freeProcessorIfAvailable(task);
         }
         assert(Cluster::getFixedCluster()->getNumberProcessors() ==
                Cluster::getFixedCluster()->getNumberFreeProcessors());
-        // Cluster::getFixedCluster()->freeAllBusyProcessors();
+
     }
 
     void reassignRootProcessorToSubtree(Task *subtreeRoot) {

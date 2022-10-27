@@ -65,8 +65,6 @@ void SiftInfTmaxUpPreserveOrder(vector<Task *> *taskHeap);
 
 vector<Task *> criticalPath(Tree *tree);
 
-vector<Task *> buildCriticalPath(Task *root);
-
 void cutSingleNodePerSubtreeUntilBestMakespan(Tree *tree, string &subtreeChoiceCode, string &nodeChoiceCode,
                                               string &assignSubtreeChoiceCode, double &minMakespan, bool cutMultiple);
 

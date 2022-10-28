@@ -189,7 +189,7 @@ int main(int argc, char **argv) {
         //tree->getTaskByPos(345)->breakEdge();
         //  makespan = tree->getRoot()->getMakespanCost(true, true);
         // cout<<"makespan "<<makespan<<endl;
-        quietPrint("&& " + treename + " " + to_string(makespan) + " " + to_string(time));
+        quietPrint("&& " + treename + " " + to_string(makespan) + " " + to_string(time/CLOCKS_PER_SEC));
         // quietPrint(Cluster::getFixedCluster()->getPrettyClusterString());
         double processorUtilization =0;
         for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {

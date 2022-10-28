@@ -1,0 +1,33 @@
+instances:
+- repo: local
+  items:
+    - name: 'trees'
+      files: []
+    - name: 'old_trees'
+      files: []
+    - name: '3_children'
+      files: []
+    - name: '20_children'
+      files: []
+    - name: 'all_large'
+      files: []
+    - name: 'all_small'
+      files: []
+    - name: 'large_edge_weights'
+      files: []
+    - name: 'large_makespan_weights'
+      files: []
+    - name: 'large_node_weights'
+      files: []
+instdir: "data"
+
+
+experiments:
+  - name: A1-f
+    args: [ './main', './real_Trees/random_trees/@INSTANCE@/','treesList.txt', './clusters/36-proc/36proc_0,5-1-1,5-3.json', '0','0','1' ]
+    stdout: out
+    num_threads: 24
+  - name: A1-b
+    args: [ './main', './real_Trees/random_trees/@INSTANCE@/','treesList.txt', './clusters/36-proc/36proc_0,5-1-1,5-3.json', '0','0','1' ]
+    stdout: out
+    num_threads: 24

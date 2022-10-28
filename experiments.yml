@@ -28,6 +28,6 @@ experiments:
     stdout: out
     num_threads: 24
   - name: A1-b
-    args: [ './main', './real_Trees/random_trees/@INSTANCE@/','treesList.txt', './clusters/36-proc/36proc_0,5-1-1,5-3.json', '0','0','1' ]
+    args: [ './main', './real_Trees/random_trees/@INSTANCE@/','treesList.txt', './clusters/36-proc/36proc_bad_and_good.json', '0','0','1' ]
     stdout: out
     num_threads: 24

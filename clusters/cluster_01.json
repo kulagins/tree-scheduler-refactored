@@ -2,14 +2,25 @@
     "groups":
     [
         {
-            "number": 12,
+            "number": 2,
             "memory": 12050,
-            "speed": 1
+            "speed": 1,
+            "BandwInside": 3,
+            "BandwOutside": 1
         },
         {
-            "number": 20,
+            "number": 3,
             "memory": 44560,
-            "speed": 5
+            "speed": 5,
+            "BandwInside": 10,
+            "BandwOutside": 1
+        },
+        {
+            "number": 2,
+            "memory": 44560,
+            "speed": 5,
+            "BandwInside": 7,
+            "BandwOutside": 2
         }
     ]
 }

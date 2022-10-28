@@ -480,9 +480,9 @@ public :
         MS_sequentialPart = this->getMakespanSequential(updateEnforce,
                                                         MS_parallelPart);//MS_parallelPart will be update here.
 
-       // cout << "on " << this->getId() << "MS P " << MS_parallelPart << " seq " << MS_sequentialPart <<
+        // cout << "on " << this->getId() << "MS P " << MS_parallelPart << " seq " << MS_sequentialPart <<
 
-       //      " ew " << edge_weight << " BW " << Cluster::getFixedCluster()->getHomogeneousBandwidth() << endl;
+        //      " ew " << edge_weight << " BW " << Cluster::getFixedCluster()->getHomogeneousBandwidth() << endl;
         makespan_nocommu = MS_sequentialPart + MS_parallelPart;
 
         makespan_computed = true;
@@ -934,6 +934,7 @@ public:
     Tree *BuildQtreeOld();
 
     unsigned int HowmanySubtrees(bool quiet);
+
     unsigned int HowmanySubtreesAndWeights(bool quiet);
 
     bool
@@ -980,8 +981,10 @@ public:
             task->assignFeasibleProcessorsToSubtree(task->getMinMemUnderlying());
             freeProcessorIfAvailable(task);
         }
-        assert(Cluster::getFixedCluster()->getNumberProcessors() ==
-               Cluster::getFixedCluster()->getNumberFreeProcessors());
+        if (Cluster::getFixedCluster()->getNumberProcessors() !=
+            Cluster::getFixedCluster()->getNumberFreeProcessors()) {
+            Cluster::getFixedCluster()->freeAllBusyProcessors();
+        }
 
     }
 

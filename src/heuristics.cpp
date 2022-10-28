@@ -2602,7 +2602,7 @@ string seqSetAndFeasSets(Tree *tree) {
 
 }
 
-void assignCorrespondingTreeTasks(Tree *tree, Tree *qTree) {
+void assignAllCorrespondingTreeTasks(Tree *tree, Tree *qTree) {
     for (Task *qTask: *qTree->getTasks()) {
         Task *taskInTree = tree->getTask(qTask->getOtherSideId());
         vector<Task *> allTasksInSubtree = taskInTree->getTasksInSubtreeRootedHere();
@@ -2668,10 +2668,12 @@ double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string cho
         Cluster::getFixedCluster()->freeAllBusyProcessors();
         return numeric_limits<double>::infinity();
     }
-    assignCorrespondingTreeTasks(tree, qTree);
-    double resultingMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+    assignAllCorrespondingTreeTasks(tree, qTree);
+    double resultingMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, false);
+    //TODO HERE: no assigning all tree tasks, return ms of qtree
+   // double resultingMakespan1 = qTree->getRoot()->getMakespanCostWithSpeeds(true, false);
+   // assert(resultingMakespan == resultingMakespan1);
     delete qTree;
-    //  delete qTree1;
 
     timeForAssignment += (clock() - time);
     return resultingMakespan;
@@ -2971,14 +2973,7 @@ partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
     }
 
     tree->cleanAssignedAndReassignFeasible();
-    for (Processor *item: Cluster::getFixedCluster()->getProcessors()) {
-        if (item->isBusy) {
-            item->isBusy = false;
-            item->setAssignedTaskId(-1);
-            item->setAssignedTask(NULL);
-            item->setOccupiedMemorySize(0);
-        }
-    }
+    Cluster::getFixedCluster()->freeAllBusyProcessors();
     double makespan = assignToBestProcessors(tree, {}, assignSubtreeChoiceCode);
     if (minMakespan != makespan) {
         cout << "MS wrong " << minMakespan << " " << makespan << endl;

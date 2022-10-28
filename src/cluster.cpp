@@ -261,6 +261,9 @@ Processor *Cluster::findSmallestFittingProcessorForMerge(Task *currentQNode, con
 void Cluster::freeAllBusyProcessors() {
     for (Processor *item: this->getProcessors()) {
         if (item->isBusy) {
+            if(item->getAssignedTask()!=NULL){
+                item->getAssignedTask()->setAssignedProcessor(NULL);
+            }
             item->isBusy = false;
             item->setAssignedTaskId(-1);
             item->setAssignedTask(NULL);

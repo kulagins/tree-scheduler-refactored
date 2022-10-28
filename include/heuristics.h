@@ -52,7 +52,7 @@ vector<Task *> buildCandidatesForNode(Tree *tree, const string &nodeChoiceCode, 
 
 void chooseAssignSubtree(string assignSubtreeChoiceCode, Tree *tree);
 
-void assignCorrespondingTreeTasks(Tree *tree, Tree *qTree);
+void assignAllCorrespondingTreeTasks(Tree *tree, Tree *qTree);
 
 pair<Task *, double>
 findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, double initMS = -1);

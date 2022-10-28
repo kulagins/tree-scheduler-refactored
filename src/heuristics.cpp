@@ -3133,7 +3133,7 @@ Task *CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode) {
 
 pair<Task *, double>
 findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode) {
-    double initialMakespan =  assignToBestProcessors(tree, {}, assignSubtreeChoiceCode);
+    double initialMakespan = assignToBestProcessors(tree, {}, assignSubtreeChoiceCode);
     vector<pair<Task *, double>> candidatesAndMakespanReduction;
 
     buildExpectedMakespanForCandidates(tree, candidates, candidatesAndMakespanReduction);
@@ -3142,22 +3142,26 @@ findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoi
 
     Task *taskMinMakespan = nullptr;
     //cout << "\t task candidates size " << candidates.size() << endl;
+    double previousMS = numeric_limits<double>::infinity();
     for (pair<Task *, double> p: candidatesAndMakespanReduction) {
+        double currentMakespan;
         Task *task = p.first;
         if (task->getChildren()->size() >= 2 && !task->isAnyChildBroken()) {
             vector<Task *> newlyBroken = task->breakNBiggestChildren(
                     Cluster::getFixedCluster()->getNumberFreeProcessors());
-            double currentMakespan = assignToBestProcessors(tree, newlyBroken, assignSubtreeChoiceCode);
+            currentMakespan = assignToBestProcessors(tree, newlyBroken, assignSubtreeChoiceCode);
             cout << "expected ms " << p.second << " real ms " << currentMakespan << " on task " << task->getId()
                  << endl;
+            tree->cleanAssignedAndReassignFeasible();
+            task->restoreBrokenChildren();
             if (currentMakespan < initialMakespan) {
                 return make_pair(task, currentMakespan);
-            } else {
-                tree->cleanAssignedAndReassignFeasible();
-                task->restoreBrokenChildren();
             }
-            if (currentMakespan == initialMakespan) {
-                return make_pair(taskMinMakespan, initialMakespan);
+
+            if (previousMS == numeric_limits<double>::infinity()) {
+                previousMS = currentMakespan;
+            } else {
+                return make_pair(task, currentMakespan);
             }
         }
     }

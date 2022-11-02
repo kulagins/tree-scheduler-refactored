@@ -55,7 +55,7 @@ void chooseAssignSubtree(string assignSubtreeChoiceCode, Tree *tree);
 void assignAllCorrespondingTreeTasks(Tree *tree, Tree *qTree);
 
 pair<Task *, double>
-findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode);
+findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, bool cont=false);
 
 Task *CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode);
 
@@ -72,6 +72,6 @@ void cutSingleNodeInAllSubtreesSimultaneously(Tree *tree, string &subtreeChoiceC
                                               string &assignSubtreeChoiceCode, double &minMakespan);
 
 void buildExpectedMakespanForCandidates(Tree *tree, vector<Task *> &candidates,
-                                        vector<pair<Task *, double>> &candidatesAndMakespanReduction);
+                                        vector<pair<Task *, double>> &candidatesAndMakespanReduction, bool quiet = true);
 
 #endif /* heuristics_h */

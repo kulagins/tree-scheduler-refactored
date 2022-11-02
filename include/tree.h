@@ -929,7 +929,7 @@ public:
 
     }
 
-    Tree *BuildQtree();
+    Tree *BuildQtree(bool sumMakespans =false);
 
     Tree *BuildQtreeOld();
 
@@ -996,6 +996,21 @@ public:
             task->setAssignedProcessor(processorOfRoot);
         }
         processorOfRoot->assignTask(subtreeRoot);
+    }
+
+    Task* findNextBrokenParent(Task* child) {
+        Task *parent = child->getParent();
+        while (parent != nullptr && !parent->isBroken()) {
+            parent = parent->getParent();
+        }
+        if (parent != nullptr) {
+            if (!parent->isBroken()) {
+                parent = parent->getParent();
+            }
+            assert(parent->isBroken() == true);
+            return parent;
+        }
+        return parent;
     }
 
     void mergeTaskToOnlyChild(Task *mergeRoot);

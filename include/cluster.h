@@ -384,6 +384,7 @@ public:
 
     void freeAllBusyProcessors();
     void sortProcessorsByMemSize();
+    void sortProcessorsByProcSpeed();
 };
 
 

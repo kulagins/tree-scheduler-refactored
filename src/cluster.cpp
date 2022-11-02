@@ -69,8 +69,7 @@ Processor *Cluster::getBiggestFreeProcessor() {
 }
 
 Processor *Cluster::getFastestFreeProcessor() {
-    sort(this->processors.begin(), this->processors.end(),
-         [](Processor *lhs, Processor *rhs) { return lhs->getProcessorSpeed() > rhs->getProcessorSpeed(); });
+//todo make sure they are not resorted
     for (vector<Processor *>::iterator iter = this->processors.begin(); iter < this->processors.end(); iter++) {
         if (!(*iter)->isBusy)
             return (*iter);
@@ -104,6 +103,10 @@ void Processor::assignTask(Task *taskToBeAssigned) {
         this->assignedTaskId = taskToBeAssigned->getId();
         taskToBeAssigned->setAssignedProcessor(this);
         this->isBusy = true;
+    } else{
+        this->assignedTask = NULL;
+        this->assignedTaskId = -1;
+        this->isBusy = false;
     }
 }
 
@@ -261,7 +264,7 @@ Processor *Cluster::findSmallestFittingProcessorForMerge(Task *currentQNode, con
 void Cluster::freeAllBusyProcessors() {
     for (Processor *item: this->getProcessors()) {
         if (item->isBusy) {
-            if(item->getAssignedTask()!=NULL){
+            if (item->getAssignedTask() != NULL) {
                 item->getAssignedTask()->setAssignedProcessor(NULL);
             }
             item->isBusy = false;
@@ -283,5 +286,13 @@ void Cluster::sortProcessorsByMemSize() {
     std::sort(this->processors.begin(), this->processors.end(), cmp_processors_memsize);
     assert(this->getProcessors().at(0)->getMemorySize() >
            this->getProcessors().at(this->getNumberProcessors() - 1)->getMemorySize());
+
+}
+
+void Cluster::sortProcessorsByProcSpeed() {
+    sort(this->processors.begin(), this->processors.end(),
+         [](Processor *lhs, Processor *rhs) { return lhs->getProcessorSpeed() > rhs->getProcessorSpeed(); });
+    assert(this->getProcessors().at(0)->getProcessorSpeed() >
+           this->getProcessors().at(this->getNumberProcessors() - 1)->getProcessorSpeed());
 
 }

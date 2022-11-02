@@ -50,9 +50,9 @@ double u_wseconds(void) {
 
 
 // BUilds quotient tree for the whole original tree
-Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for space side
+Tree *Tree::BuildQtree(bool sumMakespans) { //Qtree is for makespan side, so do not use it for space side
     root->breakEdge();
-    //root->getMakespanCostWithSpeeds(true, true); //update
+    if(sumMakespans) root->getMakespanCostWithSpeeds(true, true); //update
 
     Task *copy;
     Task *parent;
@@ -60,7 +60,12 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
     auto *tasksInQtree = new vector<Task *>();
     rootCopy = new Task(*root, 1, nullptr);
     rootCopy->setNodeWeight(root->getSequentialPart());
-    rootCopy->setMakespanWeight(root->getSequentialPart());
+    if(sumMakespans){
+        rootCopy->setMakespanWeight(root->getSequentialPart()+root->getParallelPart());
+    } else{
+        rootCopy->setMakespanWeight(root->getSequentialPart());
+    }
+
     rootCopy->setAssignedProcessor(root->getAssignedProcessor());
     rootCopy->setMinMemUnderlying(root->getMinMemUnderlying());
 
@@ -77,7 +82,11 @@ Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for sp
             //   cout <<"cpy "<<currentNode->getId()<<" osideid "<<nodeIdCounter<<endl;
             copy = new Task(*currentNode, nodeIdCounter, nullptr);
             copy->setNodeWeight(currentNode->getSequentialPart());
-            copy->setMakespanWeight(currentNode->getSequentialPart());
+            if(sumMakespans){
+                copy->setMakespanWeight(currentNode->getSequentialPart()+currentNode->getParallelPart());
+            } else{
+                copy->setMakespanWeight(currentNode->getSequentialPart());
+            }
             currentNode->setOtherSideId(nodeIdCounter);
             copy->setOtherSideId(currentNode->getId());
             if (currentNode->getAssignedProcessor() != NULL) {
@@ -149,13 +158,13 @@ Tree *Tree::BuildQtreeOld() { //Qtree is for makespan side, so do not use it for
     root->setOtherSideId(1);
 
     Task *currentNode;
-    for (unsigned int i = 2; i <= tree_size; ++i) {
-        currentNode = this->getTask(i);
-        if (currentNode->isBroken()) {
+   // for (unsigned int i = 2; i <= tree_size; ++i) {
+    for ( auto &currentNode:* this->getTasks()){
+        if (currentNode->isBroken() && !currentNode->isRoot()) {
             //  cout << "broken node " << currentNode->getId() << " " << currentNode->getSequentialPart() << " i " << i
             //        << " j " << j << endl;
             currentNode->setOtherSideId(j); //corresponding node's ID on Qtree
-            brokenEdges[j] = i;
+            brokenEdges[j] = currentNode->getId();
             timewghts[j] = currentNode->getSequentialPart();
             ewghts[j] = currentNode->getEdgeWeight();
             ++j;
@@ -214,30 +223,21 @@ unsigned int Tree::HowmanySubtrees(bool quiet) {
 unsigned int Tree::HowmanySubtreesAndWeights(bool quiet) {
     unsigned int number_subtrees = 0;
     // this->getRoot()->breakEdge();
-    const vector<Task *> *Nodes = this->getTasks();
+    const vector<Task *> Nodes = this->getBrokenTasks();
     if (quiet == false) {
         cout << "Broken Edges { ";
     }
-    for (auto it = Nodes->begin(); it != Nodes->end(); ++it) {
-        if ((*it)->isBroken()) {
+    for (auto it = Nodes.begin(); it != Nodes.end(); ++it) {
             number_subtrees++;
-            double maxoutd, minMem;
             Tree *subtree = BuildSubtree(this, (*it));
-            maxoutd = MaxOutDegree(subtree, true);
-            schedule_traversal *schedule_f = new schedule_traversal();
-            MinMem(subtree, maxoutd, minMem, *schedule_f, true);
-
             for (const auto &item: *subtree->getTasks()) {
                 item->setAssignedProcessor((*it)->getAssignedProcessor());
             }
             if (quiet == false) {
-                cout << "{ " << (*it)->getId() << ", " << minMem << ", "
-                     << subtree->getRoot()->getMakespanCostWithSpeeds(true, true) << "}, ";
+                cout << "{ " << (*it)->getId() << ", " << (*it)->getMinMemUnderlying() << ", "
+                     << subtree->getRoot()->getMakespanCostWithSpeeds(true, true) << ", "<< subtree->getRoot()->getAssignedProcessorSpeed()<<"}, ";
             }
-            delete schedule_f;
             delete subtree;
-
-        }
     }
     if (quiet == false) {
         cout << "}" << endl;
@@ -1472,14 +1472,16 @@ double Task::computeMinMemUnderlyingAndAssignFeasible(Tree *tree, bool greedy) {
 
     Tree *subtree = BuildSubtree(tree, this);
 
-    for (const auto &item: *subtree->getTasks()) {
-        item->setCostComputed(true);
-    }
+   // for (const auto &item: *subtree->getTasks()) {
+ //       item->setCostComputed(true);
+  //  }
     if (!greedy) {
         //TODO: here min3Level
         schedule_traversal *schedule_f = new schedule_traversal();
         double maxoutd = MaxOutDegree(subtree, true);
+        cout<<"maxoutd "<<maxoutd<<endl;
         MinMem(subtree, maxoutd, minMem, *schedule_f, true);
+        cout<<"mm "<<minMem<<endl;
         delete schedule_f;
         delete subtree;
         // MinMem3Level(subtree, minMem);

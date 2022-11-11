@@ -3158,17 +3158,36 @@ Task *CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode) {
 pair<Task *, double>
 findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, bool cont) {
     double initialMakespan = assignToBestProcessors(tree, {}, assignSubtreeChoiceCode);
-    vector<pair<Task *, double>> candidatesAndMakespanReduction;
+    vector<pair<Task *, double>> candidatesAndMakespanReduction, candidatesWithMinMakespan, candidatesWithFeasibleMS, finalSetCandidates;
 
     buildExpectedMakespanForCandidates(tree, candidates, candidatesAndMakespanReduction, !cont);
     std::sort(candidatesAndMakespanReduction.begin(), candidatesAndMakespanReduction.end(),
               [](const pair<Task *, double> &a, const pair<Task *, double> &b) { return (a.second < b.second); });
+    if (candidatesAndMakespanReduction.size() > 0) {
+        double minExpectedMS = candidatesAndMakespanReduction.begin()->second;
 
+
+        copy_if(candidatesAndMakespanReduction.begin(), candidatesAndMakespanReduction.end(),
+                back_inserter(candidatesWithMinMakespan), [minExpectedMS](pair<Task *, double> a) {
+                    return abs(a.second - minExpectedMS) == 0;
+                });
+
+        for (auto &item: candidatesWithMinMakespan) {
+            double mem = item.first->computeMinMemUnderlyingAndAssignFeasible(tree, false);
+            if (mem <= item.first->getAssignedProcessor()->getMemorySize()) {
+                candidatesWithFeasibleMS.push_back(item);
+            }
+        }
+    }
+
+    if (!candidatesWithFeasibleMS.empty()) {
+        finalSetCandidates = candidatesWithFeasibleMS;
+    } else finalSetCandidates = candidatesAndMakespanReduction;
     Task *taskMinMakespan = nullptr;
     double minMS = initialMakespan;
     //cout << "\t task candidates size " << candidates.size() << endl;
     double previousMS = numeric_limits<double>::infinity();
-    for (pair<Task *, double> p: candidatesAndMakespanReduction) {
+    for (pair<Task *, double> p: finalSetCandidates) {
         double currentMakespan;
         Task *task = p.first;
         if (task->getParent()->getChildren()->size() >= 2 && !task->isAnyChildBroken()) {

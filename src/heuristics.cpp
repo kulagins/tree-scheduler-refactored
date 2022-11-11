@@ -2650,9 +2650,10 @@ double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string cho
 
     for (Task *task: *qTree->getTasks()) {
         if (task->getFeasibleProcessors()->empty()) {
-            tree->getTask(task->getOtherSideId())->needsRecomputeMemReq = true;
-            tree->getTask(task->getOtherSideId())->computeMinMemUnderlyingAndAssignFeasible(tree, false);
-            task->setFeasibleProcessors(tree->getTask(task->getOtherSideId())->getFeasibleProcessors());
+            Task *correspondingTaskInTree = tree->getTask(task->getOtherSideId());
+            correspondingTaskInTree->needsRecomputeMemReq = true;
+            correspondingTaskInTree->computeMinMemUnderlyingAndAssignFeasible(tree, false);
+            task->setFeasibleProcessors(correspondingTaskInTree->getFeasibleProcessors());
             if (task->getFeasibleProcessors()->empty()) {
                 string exception =
                         "Task" + to_string(task->getOtherSideId()) + " has 0 feasible processors at beginning.";
@@ -2707,7 +2708,7 @@ Task *chooseSubtree(string subtreeChoiceCode, Tree *tree, vector<Task *> candida
         candsInQtree = *qtree->getTasks();
         std::sort(candsInQtree.begin(), candsInQtree.end(), [tree](Task *a, Task *b) {
             return (a->getMinMemUnderlying() * a->getMakespanWeight() >
-                    b->getMinMemUnderlying() * a->getMakespanWeight());
+                    b->getMinMemUnderlying() * b->getMakespanWeight());
         });
 
     } else if (subtreeChoiceCode == "CP") {

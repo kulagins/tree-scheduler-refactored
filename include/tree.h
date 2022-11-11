@@ -756,10 +756,11 @@ public:
                 << " " << (*iter)->getNodeWeight()
                 << " "
                 << (*iter)->getEdgeWeight() << "; " << endl;
-            out << "children: " << (*iter)->getChildren()->size() << endl;
-            for (Task *child: *(*iter)->getChildren()) {
-                out << "\t" << child->getId() << endl;
-            }
+            out<<"Assigned to: "<<(*iter)->getAssignedProcessorSpeed()<<endl;
+          //  out << "children: " << (*iter)->getChildren()->size() << endl;
+           // for (Task *child: *(*iter)->getChildren()) {
+          //      out << "\t" << child->getId() << endl;
+          //  }
 
         }
         cout << endl;
@@ -990,12 +991,11 @@ public:
 
     void reassignRootProcessorToSubtree(Task *subtreeRoot) {
         Processor *processorOfRoot = subtreeRoot->getAssignedProcessor();
-        const vector<Task *> &tasksUnderRoot = subtreeRoot->getTasksInSubtreeRootedHere();
+        vector<Task *> tasksUnderRoot = subtreeRoot->getTasksInSubtreeRootedHere();
         for (Task *task: tasksUnderRoot) {
-            freeProcessorIfAvailable(task);
             task->setAssignedProcessor(processorOfRoot);
         }
-        processorOfRoot->assignTask(subtreeRoot);
+       // processorOfRoot->assignTask(subtreeRoot);
     }
 
     Task* findNextBrokenParent(Task* child) {

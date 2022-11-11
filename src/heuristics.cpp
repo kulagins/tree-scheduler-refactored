@@ -3057,10 +3057,14 @@ void cutSingleNodePerSubtreeUntilBestMakespan(Tree *tree, string &subtreeChoiceC
             const vector<Task *>::iterator &position = find(subtreeCandidates.begin(), subtreeCandidates.end(),
                                                             subtree);
             subtreeCandidates.erase(position);
+            assignToBestProcessors(tree, {}, assignSubtreeChoiceCode);
         }
         numberAvailableProcessors =
                 Cluster::getFixedCluster()->getNumberProcessors() - tree->HowmanySubtrees(true);
-        tree->HowmanySubtreesAndWeights(false);
+        if (bestTask != NULL)
+            tree->HowmanySubtreesAndWeights(false);
+        else
+            cout << "No assignment, because no best task" << endl;
     }
 
 }

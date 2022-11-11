@@ -273,6 +273,14 @@ public:
         }
     }
 
+    void printBusyProcessors() {
+        for (vector<Processor *>::iterator iter = this->processors.begin(); iter < processors.end(); iter++) {
+            if((*iter)->isBusy)
+                cout << "Processor with memory " << (*iter)->getMemorySize() << ", speed " << (*iter)->getProcessorSpeed()
+                     << " assigned " << (*iter)->getAssignedTaskId() << endl;
+        }
+    }
+
     void printInfo() {
         double cumulativeMemory = 0;
         for (vector<Processor *>::iterator iter = this->processors.begin(); iter < processors.end(); iter++) {

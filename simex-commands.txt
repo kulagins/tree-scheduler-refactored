@@ -1,0 +1,5 @@
+simex experiments purge -f --all
+simex experiments launch --launcher local-cluster
+simex experiments list
+ simex queue show
+

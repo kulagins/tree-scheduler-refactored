@@ -17,3 +17,9 @@ test/distributeProcessors_unittest
 output/*
 output-folders/*
 output*/
+auxesAndOthr
+slurm*
+valgrind*
+callgrin*
+analysis*
+.ipynb_checkpoints/*

@@ -2628,18 +2628,12 @@ double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string cho
     }
 
     for (auto &item: newlyBroken) {
+        Task* parent = item->findNextBrokenParent();
         item->needsRecomputeMemReq = true;
-        Task *parent = item->getParent();
-        while (parent != nullptr && !parent->isBroken()) {
-            parent = parent->getParent();
-        }
-        if (parent != nullptr) {
-            if (!parent->isBroken()) {
-                parent = parent->getParent();
-            }
-            assert(parent->isBroken() == true);
-            parent->needsRecomputeMemReq = true;
-        }
+       if (parent != nullptr){
+           parent->needsRecomputeMemReq = true;
+       }
+
     }
 
     for (auto &item: tree->getBrokenTasks()) {
@@ -3165,16 +3159,14 @@ findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoi
               [](const pair<Task *, double> &a, const pair<Task *, double> &b) { return (a.second < b.second); });
     if (candidatesAndMakespanReduction.size() > 0) {
         double minExpectedMS = candidatesAndMakespanReduction.begin()->second;
-
-
         copy_if(candidatesAndMakespanReduction.begin(), candidatesAndMakespanReduction.end(),
                 back_inserter(candidatesWithMinMakespan), [minExpectedMS](pair<Task *, double> a) {
                     return abs(a.second - minExpectedMS) == 0;
                 });
-
+        Processor *fastestFreeProcessor = Cluster::getFixedCluster()->getFastestFreeProcessor();
         for (auto &item: candidatesWithMinMakespan) {
             double mem = item.first->computeMinMemUnderlyingAndAssignFeasible(tree, false);
-            if (mem <= item.first->getAssignedProcessor()->getMemorySize()) {
+            if (mem <= fastestFreeProcessor->getMemorySize()) {
                 candidatesWithFeasibleMS.push_back(item);
             }
         }
@@ -3238,7 +3230,7 @@ void buildExpectedMakespanForCandidates(Tree *tree, vector<Task *> &candidates,
         }
     }
     double initMS = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-
+    Processor *fastestFreeProcessor = Cluster::getFixedCluster()->getFastestFreeProcessor();
     for (auto &candidate: candidates) {
         candidate = tree->getTask(candidate->getId());
         double currentMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
@@ -3247,7 +3239,6 @@ void buildExpectedMakespanForCandidates(Tree *tree, vector<Task *> &candidates,
             Processor *initProcessorOfCandidate = candidate->getAssignedProcessor();
             candidate->breakEdge();
 
-            Processor *fastestFreeProcessor = Cluster::getFixedCluster()->getFastestFreeProcessor();
             fastestFreeProcessor->assignTask(candidate);
             vector<Task *> allTasksInSubtree = candidate->getTasksInSubtreeRootedHere();
             for (Task *taskInSubtree: allTasksInSubtree) {

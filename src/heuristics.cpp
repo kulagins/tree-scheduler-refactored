@@ -3231,12 +3231,12 @@ void buildExpectedMakespanForCandidates(Tree *tree, vector<Task *> &candidates,
             initAssignment.push_back(make_pair(proc->getAssignedTask(), proc));
         }
     }
-    double initMS = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+  //  double initMS = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
     Processor *fastestFreeProcessor = Cluster::getFixedCluster()->getFastestFreeProcessor();
     for (auto &candidate: candidates) {
         candidate = tree->getTask(candidate->getId());
-        double currentMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-        assert(currentMakespan == initMS);
+      //  double currentMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+    //    assert(currentMakespan == initMS);
         if (!candidate->isBroken() && candidate->getParent()->getChildren()->size() >= 2) {
             Processor *initProcessorOfCandidate = candidate->getAssignedProcessor();
             candidate->breakEdge();
@@ -3248,7 +3248,7 @@ void buildExpectedMakespanForCandidates(Tree *tree, vector<Task *> &candidates,
             }
 
             //TODO: improve by giving rpoc speed to children
-            currentMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+            double currentMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
           //  if (currentMakespan < initMS) {
                 candidatesAndMakespanReduction.push_back(make_pair(candidate, currentMakespan));
 

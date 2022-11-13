@@ -74,6 +74,10 @@ string a2WithNewMinMem(Tree *tree, OutputPrinter *printer, double &makespan, Inp
         printer->quietPrint("No solution"); //<< str << endl;
         makespan = -1;
     }
+    catch(...){
+        printer->quietPrint("No solution"); //<< str << endl;
+        makespan = -1;
+    }
     return result;
 
 }

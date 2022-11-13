@@ -1182,7 +1182,7 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
     return MSdecreased;
 }
 
-vector<Task *> buildCriticalPath(Task *root) {
+vector<Task *> buildCriticalPath(Task *root , bool speeds = false) {
     vector<Task *> CriticalPath;
     Task *largestNode;
     vector<Task *> *Children;
@@ -1190,7 +1190,12 @@ vector<Task *> buildCriticalPath(Task *root) {
 
     CriticalPath.clear();
     CriticalPath.push_back(root);
-    root->getMakespanCost(true, true);         //update critical path
+    if(speeds){
+         root->getMakespanCostWithSpeeds(true, true);
+    }
+    else {
+        root->getMakespanCost(true, true);         //update critical path
+    }
     largestNode = root;
     Children = root->getChildren();
     //cout<<"critical path (subtres' roots){1 ";
@@ -2125,6 +2130,7 @@ auto comparatorForHeap(string chooseSubtreeAssign, Tree *qTree) {
         else {
             //to infinity values in tmax; compare upon condition
             if (chooseSubtreeAssign == "CP") {
+                //TODO doesnt work with true, aka cannot compute ms with speeds just goes further
                 vector<Task *> CriticalPath = buildCriticalPath(qTree->getRoot());
                 int idt1 = t1->getId();
                 const vector<Task *>::iterator &iteratort1 = std::find_if(CriticalPath.begin(), CriticalPath.end(),
@@ -2641,7 +2647,7 @@ double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string cho
         item->computeMinMemUnderlyingAndAssignFeasible(tree, false);
         assert(item->getMinMemUnderlying() != 0);
     }
-    Tree *qTree = tree->BuildQtree();
+    Tree *qTree = tree->BuildQtree(true);
 
     for (Task *task: *qTree->getTasks()) {
         if (task->getFeasibleProcessors()->empty()) {
@@ -2707,7 +2713,7 @@ Task *chooseSubtree(string subtreeChoiceCode, Tree *tree, vector<Task *> candida
         });
 
     } else if (subtreeChoiceCode == "CP") {
-        candsInQtree = buildCriticalPath(qtree->getRoot());
+        candsInQtree = buildCriticalPath(qtree->getRoot(), true);
     } else {
         throw std::runtime_error("not implemented");
     }
@@ -3057,8 +3063,14 @@ void cutSingleNodePerSubtreeUntilBestMakespan(Tree *tree, string &subtreeChoiceC
         }
         numberAvailableProcessors =
                 Cluster::getFixedCluster()->getNumberProcessors() - tree->HowmanySubtrees(true);
-        if (bestTask != NULL)
-            tree->HowmanySubtreesAndWeights(false);
+        if (bestTask != NULL) {
+            try {
+                tree->HowmanySubtreesAndWeights(false);
+            }
+            catch (...) {
+                cout << "no trees printable" << endl;
+            }
+        }
         else
             cout << "No assignment, because no best task" << endl;
     }
@@ -3153,6 +3165,11 @@ Task *CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode) {
 pair<Task *, double>
 findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, bool cont) {
     double initialMakespan = assignToBestProcessors(tree, {}, assignSubtreeChoiceCode);
+    if(initialMakespan==numeric_limits<double>::infinity()){
+        cout<<"init ms inf!"<<endl;
+        return make_pair(nullptr, numeric_limits<double>::infinity());
+    }
+
     vector<pair<Task *, double>> candidatesAndMakespanReduction, candidatesWithMinMakespan, candidatesWithFeasibleMS;
 
     buildExpectedMakespanForCandidates(tree, candidates, candidatesAndMakespanReduction, !cont);
@@ -3246,11 +3263,18 @@ void buildExpectedMakespanForCandidates(Tree *tree, vector<Task *> &candidates,
             for (Task *taskInSubtree: allTasksInSubtree) {
                 taskInSubtree->setAssignedProcessor(fastestFreeProcessor);
             }
-
+            double currentMakespan;
             //TODO: improve by giving rpoc speed to children
-            double currentMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-          //  if (currentMakespan < initMS) {
+            try {
+                currentMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
                 candidatesAndMakespanReduction.push_back(make_pair(candidate, currentMakespan));
+            }
+            catch(...){
+                Cluster::getFixedCluster()->printBusyProcessors();
+                candidatesAndMakespanReduction.push_back(make_pair(candidate, numeric_limits<int>::infinity()));
+            }
+          //  if (currentMakespan < initMS) {
+
 
           //  }
             restoreInitialAssignmentOfProcessors(initAssignment);

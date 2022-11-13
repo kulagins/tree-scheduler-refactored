@@ -53,8 +53,11 @@ double u_wseconds(void) {
 //TODO remove sumMS
 Tree *Tree::BuildQtree(bool sumMakespans) { //Qtree is for makespan side, so do not use it for space side
     root->breakEdge();
-    if(sumMakespans) root->getMakespanCostWithSpeeds(true, true); //update
-
+    try {
+        if (sumMakespans) root->getMakespanCostWithSpeeds(true, true); //update
+    } catch(...){
+        root->getMakespanCost(true, true);
+    }
     Task *copy;
     Task *parent;
     Task *rootCopy;

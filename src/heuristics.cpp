@@ -2629,13 +2629,14 @@ double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string cho
 
     for (auto &item: newlyBroken) {
         Task* parent = item->findNextBrokenParent();
+    //TODO item selbst nracuht keine Nuebrechnung?
         item->needsRecomputeMemReq = true;
        if (parent != nullptr){
            parent->needsRecomputeMemReq = true;
        }
 
     }
-
+    //TODO dont d this for those who don't need recompute
     for (auto &item: tree->getBrokenTasks()) {
         item->computeMinMemUnderlyingAndAssignFeasible(tree, false);
         assert(item->getMinMemUnderlying() != 0);
@@ -3152,7 +3153,7 @@ Task *CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode) {
 pair<Task *, double>
 findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, bool cont) {
     double initialMakespan = assignToBestProcessors(tree, {}, assignSubtreeChoiceCode);
-    vector<pair<Task *, double>> candidatesAndMakespanReduction, candidatesWithMinMakespan, candidatesWithFeasibleMS, finalSetCandidates;
+    vector<pair<Task *, double>> candidatesAndMakespanReduction, candidatesWithMinMakespan, candidatesWithFeasibleMS;
 
     buildExpectedMakespanForCandidates(tree, candidates, candidatesAndMakespanReduction, !cont);
     std::sort(candidatesAndMakespanReduction.begin(), candidatesAndMakespanReduction.end(),
@@ -3173,13 +3174,14 @@ findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoi
     }
 
     if (!candidatesWithFeasibleMS.empty()) {
-        finalSetCandidates = candidatesWithFeasibleMS;
-    } else finalSetCandidates = candidatesAndMakespanReduction;
+        cout<<"feasible ms found! on "<<candidatesWithFeasibleMS.begin()->first->getId()<<"w MS "<<candidatesWithFeasibleMS.begin()->second<<endl;
+        return  * candidatesWithFeasibleMS.begin();
+    }
     Task *taskMinMakespan = nullptr;
     double minMS = initialMakespan;
     //cout << "\t task candidates size " << candidates.size() << endl;
     double previousMS = numeric_limits<double>::infinity();
-    for (pair<Task *, double> p: finalSetCandidates) {
+    for (pair<Task *, double> p: candidatesAndMakespanReduction) {
         double currentMakespan;
         Task *task = p.first;
         if (task->getParent()->getChildren()->size() >= 2 && !task->isAnyChildBroken()) {
@@ -3247,10 +3249,10 @@ void buildExpectedMakespanForCandidates(Tree *tree, vector<Task *> &candidates,
 
             //TODO: improve by giving rpoc speed to children
             currentMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-            if (currentMakespan < initMS) {
+          //  if (currentMakespan < initMS) {
                 candidatesAndMakespanReduction.push_back(make_pair(candidate, currentMakespan));
 
-            }
+          //  }
             restoreInitialAssignmentOfProcessors(initAssignment);
             candidate->setAssignedProcessor(initProcessorOfCandidate);
             tree->reassignRootProcessorToSubtree(candidate);

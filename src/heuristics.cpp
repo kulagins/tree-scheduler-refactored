@@ -1182,7 +1182,7 @@ EstimateDecrease(int idleP, Tree *tree, vector<Task *> *criticalPath, bool *last
     return MSdecreased;
 }
 
-vector<Task *> buildCriticalPath(Task *root , bool speeds = false) {
+vector<Task *> buildCriticalPath(Task *root) {
     vector<Task *> CriticalPath;
     Task *largestNode;
     vector<Task *> *Children;
@@ -1190,12 +1190,6 @@ vector<Task *> buildCriticalPath(Task *root , bool speeds = false) {
 
     CriticalPath.clear();
     CriticalPath.push_back(root);
-    if(speeds){
-         root->getMakespanCostWithSpeeds(true, true);
-    }
-    else {
-        root->getMakespanCost(true, true);         //update critical path
-    }
     largestNode = root;
     Children = root->getChildren();
     //cout<<"critical path (subtres' roots){1 ";
@@ -2130,7 +2124,6 @@ auto comparatorForHeap(string chooseSubtreeAssign, Tree *qTree) {
         else {
             //to infinity values in tmax; compare upon condition
             if (chooseSubtreeAssign == "CP") {
-                //TODO doesnt work with true, aka cannot compute ms with speeds just goes further
                 vector<Task *> CriticalPath = buildCriticalPath(qTree->getRoot());
                 int idt1 = t1->getId();
                 const vector<Task *>::iterator &iteratort1 = std::find_if(CriticalPath.begin(), CriticalPath.end(),
@@ -2647,7 +2640,7 @@ double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string cho
         item->computeMinMemUnderlyingAndAssignFeasible(tree, false);
         assert(item->getMinMemUnderlying() != 0);
     }
-    Tree *qTree = tree->BuildQtree(true);
+    Tree *qTree = tree->BuildQtree();
 
     for (Task *task: *qTree->getTasks()) {
         if (task->getFeasibleProcessors()->empty()) {
@@ -2692,7 +2685,7 @@ Task *chooseSubtree(string subtreeChoiceCode, Tree *tree, vector<Task *> candida
     clock_t time;
     time = clock();
     int initialSize = candidates.size();
-    Tree *qtree = tree->BuildQtree(true);
+    Tree *qtree = tree->BuildQtree();
     vector<Task *> candsInQtree;
     auto candidatesContainOtherSideId = [candidates](Task *i) {
         //cout << "i: " << i->getId() << " " << i->getOtherSideId() << endl;
@@ -2713,7 +2706,7 @@ Task *chooseSubtree(string subtreeChoiceCode, Tree *tree, vector<Task *> candida
         });
 
     } else if (subtreeChoiceCode == "CP") {
-        candsInQtree = buildCriticalPath(qtree->getRoot(), true);
+        candsInQtree = buildCriticalPath(qtree->getRoot());
     } else {
         throw std::runtime_error("not implemented");
     }
@@ -3033,6 +3026,8 @@ void cutSingleNodePerSubtreeUntilBestMakespan(Tree *tree, string &subtreeChoiceC
     }
 
     while (!subtreeCandidates.empty() && numberAvailableProcessors != 0) {
+        tree->getRoot()->getMakespanCostWithSpeeds(true, true);// update the makespan of the tree
+
         numberAvailableProcessors =
                 Cluster::getFixedCluster()->getNumberProcessors() - tree->HowmanySubtrees(true);
         Task *subtree = chooseSubtree(subtreeChoiceCode, tree, subtreeCandidates);
@@ -3165,11 +3160,6 @@ Task *CutTaskWithMaxImprovement(Tree *tree, string assignSubtreeChoiceCode) {
 pair<Task *, double>
 findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoiceCode, bool cont) {
     double initialMakespan = assignToBestProcessors(tree, {}, assignSubtreeChoiceCode);
-    if(initialMakespan==numeric_limits<double>::infinity()){
-        cout<<"init ms inf!"<<endl;
-        return make_pair(nullptr, numeric_limits<double>::infinity());
-    }
-
     vector<pair<Task *, double>> candidatesAndMakespanReduction, candidatesWithMinMakespan, candidatesWithFeasibleMS;
 
     buildExpectedMakespanForCandidates(tree, candidates, candidatesAndMakespanReduction, !cont);
@@ -3179,7 +3169,7 @@ findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoi
         double minExpectedMS = candidatesAndMakespanReduction.begin()->second;
         copy_if(candidatesAndMakespanReduction.begin(), candidatesAndMakespanReduction.end(),
                 back_inserter(candidatesWithMinMakespan), [minExpectedMS](pair<Task *, double> a) {
-                    return abs(a.second - minExpectedMS) == 0;
+                    return a.second == minExpectedMS;
                 });
         Processor *fastestFreeProcessor = Cluster::getFixedCluster()->getFastestFreeProcessor();
         for (auto &item: candidatesWithMinMakespan) {
@@ -3252,8 +3242,6 @@ void buildExpectedMakespanForCandidates(Tree *tree, vector<Task *> &candidates,
     Processor *fastestFreeProcessor = Cluster::getFixedCluster()->getFastestFreeProcessor();
     for (auto &candidate: candidates) {
         candidate = tree->getTask(candidate->getId());
-      //  double currentMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-    //    assert(currentMakespan == initMS);
         if (!candidate->isBroken() && candidate->getParent()->getChildren()->size() >= 2) {
             Processor *initProcessorOfCandidate = candidate->getAssignedProcessor();
             candidate->breakEdge();

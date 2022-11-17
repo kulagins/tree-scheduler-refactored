@@ -51,10 +51,10 @@ double u_wseconds(void) {
 
 // BUilds quotient tree for the whole original tree
 //TODO remove sumMS
-Tree *Tree::BuildQtree(bool sumMakespans) { //Qtree is for makespan side, so do not use it for space side
+Tree *Tree::BuildQtree() { //Qtree is for makespan side, so do not use it for space side
     root->breakEdge();
     try {
-        if (sumMakespans) root->getMakespanCostWithSpeeds(true, true); //update
+        root->getMakespanCostWithSpeeds(true, true); //update
     } catch(...){
         root->getMakespanCost(true, true);
     }

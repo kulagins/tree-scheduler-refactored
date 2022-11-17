@@ -944,7 +944,7 @@ public:
 
     }
 
-    Tree *BuildQtree(bool sumMakespans =false);
+    Tree *BuildQtree();
 
     Tree *BuildQtreeOld();
 

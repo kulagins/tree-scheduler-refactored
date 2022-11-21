@@ -23,12 +23,28 @@ instdir: "data"
 
 
 experiments:
-  - name: A1-f
+  - name: A1&AsC-f
+    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_fat_and_thin.txt', '0','1','1', 'LMW', 'EX', 'CP','0' ]
+    stdout: out
+    num_threads: 24
+  - name: A1&AsW-f
     args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_fat_and_thin.txt', '0','1','1', 'LMW', 'EX', 'MW','0' ]
     stdout: out
     num_threads: 24
-  - name: A1-b
+  - name: A1&AsD-f
+    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_fat_and_thin.txt', '0','1','1', 'LMW', 'EX', 'MD','0' ]
+    stdout: out
+    num_threads: 24
+  - name: A1&AsC-b
+    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','1','1', 'LMW', 'EX', 'CP','0' ]
+    stdout: out
+    num_threads: 24
+  - name: A1&AsW-b
     args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','1','1', 'LMW', 'EX', 'MW','0' ]
+    stdout: out
+    num_threads: 24
+  - name: A1&AsD-b
+    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','1','1', 'LMW', 'EX', 'MD','0' ]
     stdout: out
     num_threads: 24
   #- name: LXW-f

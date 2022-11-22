@@ -2994,6 +2994,24 @@ void updateMakespanOnAllParentsUntilCut(Task *newlyBroken) {
 
 }
 
+void Task::uncomputeMakespanUpUntiRoot() {
+
+    this->setMakespanUncomputed();
+    Task *parent = this->getParent();
+    while (parent != nullptr && !parent->isBroken()) {
+        parent->setMakespanUncomputed();
+        parent = parent->getParent();
+    }
+    if (parent != nullptr) {
+        if (!parent->isBroken()) {
+            parent->setMakespanUncomputed();
+            parent = parent->getParent();
+        }
+        assert(parent->isBroken() == true);
+    }
+
+}
+
 double computMMForSubtree(Task *subtreeRoot, Tree *tree) {
     double maxoutd, mm;
     Tree *subtree = BuildSubtree(tree, subtreeRoot);
@@ -3263,4 +3281,71 @@ void Tree::renumberAllTasks() {
         }
         currentIdByOrder++;
     }
+}
+
+double swapUntilBest(Tree *tree) {
+    Tree *qtree = tree->BuildQtree();
+
+    vector<Task *> brokenTasks = tree->getBrokenTasks();
+    vector<Swap *> swaps;//pow(brokenTasks.size(), 2) / 2);
+
+    for (int i = 0; i < brokenTasks.size(); i++) {
+
+        Tree *subtree = BuildSubtree(tree, brokenTasks.at(i));
+        double maxoutD = MaxOutDegree(subtree, true), memory_required;
+        schedule_traversal *schedule_f = new schedule_traversal();
+        MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
+        brokenTasks.at(i)->setMinMemUnderlying(memory_required);
+        delete schedule_f;
+        delete subtree;
+    }
+
+    for (int i = 0; i < brokenTasks.size(); i++) {
+
+        for (int j = i + 1; j < brokenTasks.size(); j++) {
+            Swap *swap = new Swap(brokenTasks.at(i), brokenTasks.at(j));
+            swaps.push_back(swap);
+        }
+
+    }
+
+ /*  auto it = swaps.begin();
+    while(it != swaps.end()) {
+
+        if(!(*it)->isFeasible()) {
+            it = swaps.erase(it);
+        } else {
+            it++;
+        }
+    } */
+    while(true){
+        cout<<"next round"<<endl;
+        double initMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+        for (auto &swap: swaps) {
+            if(swap->isFeasible()){
+                double makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+                swap->executeSwap();
+                double makespan1 = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+                //   cout << makespan << " " << makespan1 << endl;
+
+                swap->setMakespan(makespan1);
+                swap->executeSwap();
+
+                double makespan2 = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+                //cout<<makespan<<" "<<initMakespan<< " "<<makespan2<<endl;
+                assert(makespan == makespan2);
+            }
+            else {swap->setMakespan( numeric_limits<double>::infinity());}
+
+        }
+
+        std::sort(swaps.begin(), swaps.end(), [](Swap *s1, Swap *s2) { return s1->getMakespan() < s2->getMakespan(); });
+
+        if((*swaps.begin())->getMakespan()<initMakespan){
+            (*swaps.begin())->executeSwap();
+        }
+        else return initMakespan;
+    }
+   return -1;
+
 }

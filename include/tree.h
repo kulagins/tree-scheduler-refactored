@@ -669,7 +669,7 @@ public :
         return false;
     }
 
-
+    void uncomputeMakespanUpUntiRoot();
 };
 
 
@@ -1120,6 +1120,77 @@ public:
         }
 
     }
+};
+
+class Swap {
+private:
+    Task *firstTask;
+    Task *secondTask;
+    double resultingMakespan;
+
+public:
+    Swap(Task *f, Task *s) {
+        firstTask = f;
+        secondTask = s;
+        resultingMakespan = -1;
+    }
+
+    Swap(Task *f, Task *s, double ms) {
+        firstTask = f;
+        secondTask = s;
+        resultingMakespan = ms;
+    }
+
+    void setMakespan(double ms) {
+        resultingMakespan = ms;
+    }
+
+    Task *getFirstTask() {
+        return firstTask;
+    }
+
+    double getMakespan() {
+        return resultingMakespan;
+    }
+
+    Task *getSecondTask() {
+        return secondTask;
+    }
+
+    void executeSwap() {
+        //cout<<"swap: task "<<firstTask->getId()<<" on "<<firstTask->getAssignedProcessorSpeed()<<", "
+       // << secondTask->getId()<<" on "<<secondTask->getAssignedProcessorSpeed()<<endl;
+        Processor *firstProcessor = firstTask->getAssignedProcessor();
+        Processor *secondProcessor = secondTask->getAssignedProcessor();
+        firstProcessor->assignTask(secondTask);
+        secondProcessor->assignTask(firstTask);
+
+        firstTask->uncomputeMakespanUpUntiRoot();
+        secondTask->uncomputeMakespanUpUntiRoot();
+
+        if(firstTask->getMinMemUnderlying()> firstTask->getAssignedProcessor()->getMemorySize()){
+            cout<<"first task "<< firstTask->getId() <<" on proc with mem "<<firstTask->getAssignedProcessor()->getMemorySize()<<endl;
+            cout<<" after swap: task "<<firstTask->getId()<<" on "<<firstTask->getAssignedProcessorSpeed()<<", "
+             << secondTask->getId()<<" on "<<secondTask->getAssignedProcessorSpeed()<<endl;
+        }
+        if(secondTask->getMinMemUnderlying()> secondTask->getAssignedProcessor()->getMemorySize()){
+            cout<<"secondTask task "<< secondTask->getId() <<" on proc with mem "<<secondTask->getAssignedProcessor()->getMemorySize()<<endl;
+            cout<<" after swap: task "<<firstTask->getId()<<" on "<<firstTask->getAssignedProcessorSpeed()<<", "
+                << secondTask->getId()<<" on "<<secondTask->getAssignedProcessorSpeed()<<endl;
+        }
+    //    cout<<"end: task "<<firstTask->getId()<<" on "<<firstTask->getAssignedProcessorSpeed()<<", "
+      //      << secondTask->getId()<<" on "<<secondTask->getAssignedProcessorSpeed()<<endl;
+    }
+
+    bool isFeasible() {
+
+        Processor *firstProcessor = firstTask->getAssignedProcessor();
+        Processor *secondProcessor = secondTask->getAssignedProcessor();
+
+        return firstProcessor->getMemorySize()>= secondTask->getMinMemUnderlying() &&
+         secondProcessor->getMemorySize()>=firstTask->getMinMemUnderlying();
+    }
+
 };
 
 #endif

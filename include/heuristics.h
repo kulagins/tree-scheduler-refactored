@@ -72,4 +72,6 @@ void cutSingleNodePerSubtreeUntilBestMakespan(Tree *tree, string &subtreeChoiceC
 void buildExpectedMakespanForCandidates(Tree *tree, vector<Task *> &candidates,
                                         vector<pair<Task *, double>> &candidatesAndMakespanReduction, bool quiet = true);
 
+double swapUntilBest(Tree* tree);
+
 #endif /* heuristics_h */

@@ -192,7 +192,7 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
     for (const auto &item: *tree->getTasks()) {
         assert(item->getAssignedProcessor() != NULL);
     }
-    return 0;
+    return tree->getRoot()->getMakespanCost(true, true);
 }
 
 int main(int argc, char **argv) {
@@ -257,27 +257,54 @@ int main(int argc, char **argv) {
             }
 
             time = clock();
-            //  makespan = input->getRunA1() ? threeSteps(tree, printer) : a2Steps(tree, printer);
-            //string result = a2MultiLevel(tree, printer, makespan, input);
-            string result = input->getRunA1() ? to_string(threeSteps(tree, printer)) : a2WithNewMinMem(tree, printer,
-                                                                                                       makespan, input);
-            //makespan = threeSteps(tree, printer);
-            //maxoutd = MaxOutDegree(tree, true);
 
-            //schedule_traversal *schedule_f = new schedule_traversal();
-            //MinMem(tree, maxoutd, minMem, *schedule_f, true);
-            //delete schedule_f;
+            makespan = threeSteps(tree, printer);
 
-            //makespan = (maxoutd/(minMem+maxoutd))*100;
+            bool hasFaults = false;
+            for (const auto &item: tree->getBrokenTasks()) {
+                Tree *subtree = BuildSubtree(tree, item);
+                double maxoutD = MaxOutDegree(subtree, true), memory_required;
+                schedule_traversal *schedule_f = new schedule_traversal();
+                MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
+
+                if (memory_required > item->getAssignedProcessor()->getMemorySize()) {
+                    hasFaults = true;
+                    cout << "initially bad on " << item->getId()<<endl;
+                }
+            }
+            if (hasFaults) {
+                printer->quietPrint("initial solution is unfeasible!");
+            }
+            Tree *qtree = tree->BuildQtree();
+            assignAllCorrespondingTreeTasks(tree, qtree);
+            makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+
+            double makespan1 = swapUntilBest(tree);
+            if (makespan1 == numeric_limits<double>::infinity()) {
+                printer->quietPrint("No MS");
+                makespan1 = makespan;
+            }
+
+            string result = to_string(makespan1);
+
             time = clock() - time;
 
             if (makespan == -1) {
                 cout << "no solution" << endl;
             }
-            // cout<<"makespan "<<makespan<<endl;
 
-            makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-            tree->HowmanySubtreesAndWeights(false);
+            for (const auto &item: tree->getBrokenTasks()) {
+                Tree *subtree = BuildSubtree(tree, item);
+                double maxoutD = MaxOutDegree(subtree, true), memory_required;
+                schedule_traversal *schedule_f = new schedule_traversal();
+                MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
+
+                if (memory_required > item->getAssignedProcessor()->getMemorySize()) {
+                    cout <<"bad on "<< item->getId() << endl;
+                }
+            }
+
+            //tree->HowmanySubtreesAndWeights(false);
             tree_column += " " + to_string(makespan) + "\t" + to_string(tree->HowmanySubtrees(true)) + "\t" +
                            // to_string(time )+ " " + to_string(CLOCKS_PER_SEC);
                            result + " " + to_string(time / CLOCKS_PER_SEC);

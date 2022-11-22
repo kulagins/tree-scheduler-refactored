@@ -427,16 +427,12 @@ public :
         return MS_sequentialPart;
     }
 
-    double getMakespanSequentialWithSpeeds(bool updateEnforce, double &MS_parallel) {
-
-        double assignedProcSpeed = this->getAssignedProcessorSpeed();
-        if (assignedProcSpeed == -1)
-            throw runtime_error("No processor assigned to " + to_string(this->getId()));
+    double getMakespanSequentialWithSpeeds(bool updateEnforce, double &MS_parallel, double processorSpeed) {
         if ((makespan_computed == true) & (updateEnforce == false)) {
             return MS_sequentialPart;
         }
 
-        MS_sequentialPart = MS_weight / assignedProcSpeed;
+        MS_sequentialPart = MS_weight / processorSpeed;
         MS_parallelPart = 0;
         double temp;
         for (Task *child: *this->getChildren()) {
@@ -447,7 +443,7 @@ public :
                     MS_parallelPart = temp;
                 }
             } else {
-                MS_sequentialPart += child->getMakespanSequentialWithSpeeds(updateEnforce, MS_parallelPart);
+                MS_sequentialPart += child->getMakespanSequentialWithSpeeds(updateEnforce, MS_parallelPart, processorSpeed);
                 if (updateEnforce == true) {
                     child->updateMakespanCost();
                 }
@@ -498,7 +494,9 @@ public :
 
     double getMakespanCostWithSpeeds(bool commulication = false, bool updateEnforce = false) {
         if (!(Cluster::getFixedCluster())->isBandwidthHomogeneous()) throw "Cluster not homogeneous";
-        // double assignedRootProcessorSpeed = this->getAssignedProcessorSpeed();
+         double assignedProcessorSpeed = this->getAssignedProcessorSpeed();
+        if (assignedProcessorSpeed == -1)
+            throw runtime_error("No processor assigned to " + to_string(this->getId()));
 
         if ((makespan_computed == true) & (updateEnforce == false)) {
             if (commulication == true) {
@@ -510,7 +508,7 @@ public :
 
         MS_parallelPart = 0;
         MS_sequentialPart = this->getMakespanSequentialWithSpeeds(updateEnforce,
-                                                                  MS_parallelPart);//MS_parallelPart will be update here.
+                                                                  MS_parallelPart, assignedProcessorSpeed);//MS_parallelPart will be update here.
         //cout << "on " << this->getId() << "MS P " << MS_parallelPart << " seq " << MS_sequentialPart <<
 
         //     " ew " << edge_weight << " BW " << Cluster::getFixedCluster()->getHomogeneousBandwidth() << endl;

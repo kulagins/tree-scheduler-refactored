@@ -68,8 +68,6 @@ vector<Task *> criticalPath(Tree *tree);
 void cutSingleNodePerSubtreeUntilBestMakespan(Tree *tree, string &subtreeChoiceCode, string &nodeChoiceCode,
                                               string &assignSubtreeChoiceCode, double &minMakespan, bool cutMultiple);
 
-void cutSingleNodeInAllSubtreesSimultaneously(Tree *tree, string &subtreeChoiceCode, string &nodeChoiceCode,
-                                              string &assignSubtreeChoiceCode, double &minMakespan);
 
 void buildExpectedMakespanForCandidates(Tree *tree, vector<Task *> &candidates,
                                         vector<pair<Task *, double>> &candidatesAndMakespanReduction, bool quiet = true);

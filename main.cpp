@@ -82,85 +82,6 @@ string a2WithNewMinMem(Tree *tree, OutputPrinter *printer, double &makespan, Inp
 
 }
 
-
-string a2MultiLevel(Tree *tree, OutputPrinter *printer, double &makespan, InputParser *pParser) {
-    unsigned int number_subtrees = 0;
-
-    clock_t time;
-    //tree->getRoot()->precomputeMinMems(tree, false);
-    string result = "";
-
-
-    struct {
-        bool operator()(Task *a, Task *b) const {
-            return a->getMakespanWeight() >= b->getMakespanWeight();
-        }
-    } weightLess;
-
-    for (const auto &item: *tree->getTasks()) {
-        std::sort(item->getChildren()->begin(), item->getChildren()->end(), weightLess);
-    }
-
-
-    try {
-        result += partitionHeuristics(tree, pParser->getChooseSubtree(), pParser->getChooseNode(),
-                                      pParser->getAssignChooseSubtree(), pParser->getCutWhat());
-        cout << "tasks computed MM " << tree->numberTasksWMinMem << endl;
-        number_subtrees = tree->HowmanySubtrees(true);
-        // result +=
-        // to_string(clock() - time) + " "+
-        //           " " + to_string(number_subtrees) + "\n";
-    }
-    catch (exception e) {
-        printer->quietPrint("An error has occurred: ");
-        printer->quietPrint(e.what());
-    }
-    catch (const char *str) {
-        printer->quietPrint(str);
-        printer->quietPrint("No solution"); //<< str << endl;
-        makespan = -1;
-    }
-    return result;
-
-}
-
-string a2Steps(Tree *tree, OutputPrinter *printer, double &makespan, InputParser *pParser) {
-    unsigned int number_subtrees = 0;
-
-    clock_t time;
-    time = clock();
-
-    /* double maxoutd = MaxOutDegree(tree, true);
-     double minMem;
-     schedule_traversal *schedule_f = new schedule_traversal();
-     MinMem(tree, maxoutd, minMem, *schedule_f, true);
-     delete schedule_f;
-     */
-    tree->getRoot()->precomputeMinMems(tree);
-    //makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-    string result = "1 step: " + to_string(clock() - time) + " ";
-
-
-    time = clock();
-
-    try {
-        result += seqSetAndFeasSets(tree);
-        makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-        number_subtrees = tree->HowmanySubtrees(true);
-        result += " 2&3 step: " + to_string(clock() - time) + " "; //<<" #trees: " << number_subtrees << endl;
-    }
-    catch (exception e) {
-        printer->quietPrint("An error has occurred: ");//+ e.what());  // Not executed
-    }
-    catch (const char *str) {
-        printer->quietPrint(str);
-        printer->quietPrint("No solution"); //<< str << endl;
-        makespan = -1;
-    }
-    return result;
-
-}
-
 double threeSteps(Tree *tree, OutputPrinter *printer) {
     string stage2 = "FirstFit";
     unsigned int number_subtrees = 0;
@@ -319,15 +240,8 @@ int main(int argc, char **argv) {
         }
         Tree *untouchedTree = read_tree((input->getWorkingDirectory() + "/" + treename).c_str());
         veryOriginalTree = untouchedTree;
-        //Tree::setOriginalTree(untouchedTree);
         tree->getRoot()->breakEdge();
         numTrees++;
-        //  const vector<double> fanouts = maxAndAvgFanout(tree);
-        //   cout << treename << " Fanout: Max: " << fanouts[0] << ",  Avg: " << fanouts[1] <<
-        //      " Max depth " << maxDepth(tree->getRoot()) << " num leaves " << tree->numberOfLeaves()
-        //       << " #tasks: " << tree->getSize() << endl;
-
-
 
         string tree_column = treename + "\t";
         do {

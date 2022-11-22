@@ -2954,14 +2954,6 @@ partitionHeuristics(Tree *tree, string subtreeChoiceCode, string nodeChoiceCode,
             cutSingleNodePerSubtreeUntilBestMakespan(tree, subtreeChoiceCode, nodeChoiceCode, assignSubtreeChoiceCode,
                                                      minMakespan, false);
             break;
-        case 1:
-            cutSingleNodeInAllSubtreesSimultaneously(tree, subtreeChoiceCode, nodeChoiceCode, assignSubtreeChoiceCode,
-                                                     minMakespan);
-            break;
-        case 2:
-            cutSingleNodePerSubtreeUntilBestMakespan(tree, subtreeChoiceCode, nodeChoiceCode, assignSubtreeChoiceCode,
-                                                     minMakespan, true);
-            break;
         default:
             throw std::runtime_error("no partitioning method");
     }
@@ -3069,50 +3061,6 @@ void cutSingleNodePerSubtreeUntilBestMakespan(Tree *tree, string &subtreeChoiceC
         else
             cout << "No assignment, because no best task" << endl;
     }
-
-}
-
-void cutSingleNodeInAllSubtreesSimultaneously(Tree *tree, string &subtreeChoiceCode, string &nodeChoiceCode,
-                                              string &assignSubtreeChoiceCode, double &minMakespan) {
-    vector<Task *> subtreeCandidates = tree->getBrokenTasks();
-    double currentMakespan = minMakespan;
-    vector<Task *> freshlyBroken;
-    vector<pair<Task *, vector<Task *>>> subtreesAndTheirCandidateNodes;
-    for (auto &item: tree->getBrokenTasks()) {
-        vector<Task *> candidates = buildCandidatesForNode(tree, nodeChoiceCode, item);
-        subtreesAndTheirCandidateNodes.push_back(make_pair(item, candidates));
-    }
-
-    do {
-        freshlyBroken.resize(0);
-        for (auto &item: subtreesAndTheirCandidateNodes) {
-            if (item.second.size() != 0) {
-                vector<Task *> newBrokenChildren = item.second.at(0)->breakNBiggestChildren(
-                        Cluster::getFixedCluster()->getNumberProcessors() - tree->HowmanySubtrees(true));
-                freshlyBroken.insert(freshlyBroken.end(), newBrokenChildren.begin(), newBrokenChildren.end());
-                item.second.erase(item.second.begin());
-            }
-        }
-        if (freshlyBroken.size() == 0) return;
-
-        currentMakespan = assignToBestProcessors(tree, freshlyBroken, assignSubtreeChoiceCode);
-        if (currentMakespan < minMakespan) {
-            for (auto &newlyCutSubtreeRoot: freshlyBroken) {
-                auto iterator = std::find_if(subtreesAndTheirCandidateNodes.begin(),
-                                             subtreesAndTheirCandidateNodes.end(),
-                                             [newlyCutSubtreeRoot](const pair<Task *, vector<Task *>> pair) {
-                                                 return pair.first->getId() == newlyCutSubtreeRoot->getId();
-                                             });
-                assert(iterator == subtreesAndTheirCandidateNodes.end());
-                vector<Task *> candidates = buildCandidatesForNode(tree, nodeChoiceCode, newlyCutSubtreeRoot);
-                subtreesAndTheirCandidateNodes.push_back(make_pair(newlyCutSubtreeRoot, candidates));
-            }
-        } else {
-            for (auto &freshlyBrokenTask: freshlyBroken) {
-                freshlyBrokenTask->restoreEdge();
-            }
-        }
-    } while (true);
 
 }
 

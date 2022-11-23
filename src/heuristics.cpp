@@ -1851,7 +1851,42 @@ int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcess
             }
         }
         //cout<<endl;
-        Cluster::getFixedCluster()->assignTasksForIds(tree);
+        for (Processor *p: Cluster::getFixedCluster()->getProcessors()) {
+            int assignedId = p->getAssignedTaskId();
+            if (assignedId != -1 && p->getAssignedTask() == nullptr) {
+                bool isAlreadyAssigned = false;
+                for (Processor *p1: Cluster::getFixedCluster()->getProcessors()) {
+                    if (p1->getAssignedTask() != nullptr && p1->getAssignedTask()->getId() == assignedId) {
+                        isAlreadyAssigned = true;
+                    }
+                }
+                if (!isAlreadyAssigned) {
+                    Task *taskCorrespondingToId = tree->getTask(assignedId);
+                   // cout << "assigning from id " << assignedId << endl;
+                    Tree *subtree = BuildSubtree(tree, taskCorrespondingToId);
+                    double maxoutD = MaxOutDegree(subtree, true), memory_required;
+                    schedule_traversal *schedule_f = new schedule_traversal();
+                    MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
+
+
+                    p->assignTask(taskCorrespondingToId);
+
+                    if (p->getMemorySize() < memory_required) {
+                        //cout << "too much cut off, add as root " << assignedId << endl;
+                        tuple<double, Tree *, schedule_traversal *, Task *> tuple{
+                                memory_required,
+                                subtree, schedule_f,
+                                taskCorrespondingToId};
+                        subtreeRoots.push_back(tuple);
+                    }
+                } else {
+                  //  cout << "hba!" << endl;
+                    p->isBusy = false;
+                    p->setAssignedTaskId(-1);
+                }
+
+            }
+        }
         // cout << "deleting" << endl;
         //  delete get<1>(subtreeRootAndMemReq);
         //   delete get<2>(subtreeRootAndMemReq);

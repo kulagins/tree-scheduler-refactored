@@ -139,15 +139,6 @@ void Processor::setOccupiedMemorySize(double occupiedMemorySize) {
     Processor::occupiedMemorySize = occupiedMemorySize;
 }
 
-void Cluster::assignTasksForIds(Tree *tree) {
-    for (Processor *p: getProcessors()) {
-        if (p->getAssignedTaskId() != -1 && p->getAssignedTask() == nullptr) {
-            p->assignTask(tree->getTask(p->getAssignedTaskId()));
-        }
-    }
-
-}
-
 string Cluster::getUsageString() {
     string out = "Used memory per processor \n";
     out += "Processor number; Memory Size; Makespan weight of assigned node; Cost of assigned node; Makespan cost of assigned node; Usage percentage \n";

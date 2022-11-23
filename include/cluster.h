@@ -374,8 +374,6 @@ public:
 
     bool hasFreeProcessor();
 
-    void assignTasksForIds(Tree *tree);
-
     static vector<double> buildNLevelMemorySizes(vector<double> memories, vector<unsigned int> processorGroupSizes);
 
     string getUsageString();

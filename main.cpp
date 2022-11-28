@@ -155,6 +155,43 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
             item->setOccupiedMemorySize(0);
         }
     }
+
+    for (const auto &item: tree->getBrokenTasks()) {
+        if (item->getAssignedProcessor() == NULL) {
+
+            double maxoutd, minMem;
+            Tree *subtree = BuildSubtree(tree, item);
+            maxoutd = MaxOutDegree(subtree, true);
+            schedule_traversal *schedule_f = new schedule_traversal();
+            MinMem(subtree, maxoutd, minMem, *schedule_f, true);
+
+            delete schedule_f;
+            delete subtree;
+            for (const auto &proc: Cluster::getFixedCluster()->getProcessors()) {
+                if (!proc->isBusy && proc->getMemorySize() >= minMem) {
+                    proc->assignTask(item);
+                    break;
+                }
+            }
+        }
+    }
+    for (const auto &item: tree->getBrokenTasks()) {
+        if (item->getAssignedProcessor() == NULL) {
+            Cluster::getFixedCluster()->getBiggestFreeProcessor()->assignTask(item);
+            cout << "assigning afterwards! " << item->getId() << " "
+                 << Cluster::getFixedCluster()->getNumberFreeProcessors() << endl;
+        }
+        assert(item->getAssignedProcessor() != NULL);
+    }
+    for (Task *brokenTask: tree->getBrokenTasks()) {
+        vector<Task *> allTasksInSubtree = brokenTask->getTasksInSubtreeRootedHere();
+        for (Task *taskInSubtree: allTasksInSubtree) {
+            taskInSubtree->setAssignedProcessor(brokenTask->getAssignedProcessor());
+        }
+    }
+    for (const auto &item: *tree->getTasks()) {
+        assert(item->getAssignedProcessor() != NULL);
+    }
     return tree->getRoot()->getMakespanCost(true, true);
 }
 

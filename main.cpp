@@ -74,7 +74,7 @@ string a2WithNewMinMem(Tree *tree, OutputPrinter *printer, double &makespan, Inp
         printer->quietPrint("No solution"); //<< str << endl;
         makespan = -1;
     }
-    catch(...){
+    catch (...) {
         printer->quietPrint("No solution"); //<< str << endl;
         makespan = -1;
     }
@@ -208,7 +208,7 @@ int main(int argc, char **argv) {
     string treename;
 
     double makespan, maxoutd, minMem;
-    clock_t time;
+    clock_t time, time1;
 
 
     if (input->getClusteringMode() == staticClustering) {
@@ -260,25 +260,11 @@ int main(int argc, char **argv) {
 
             makespan = threeSteps(tree, printer);
 
-            bool hasFaults = false;
-            for (const auto &item: tree->getBrokenTasks()) {
-                Tree *subtree = BuildSubtree(tree, item);
-                double maxoutD = MaxOutDegree(subtree, true), memory_required;
-                schedule_traversal *schedule_f = new schedule_traversal();
-                MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
-
-                if (memory_required > item->getAssignedProcessor()->getMemorySize()) {
-                    hasFaults = true;
-                    cout << "initially bad on " << item->getId()<< "mem "<<memory_required<<" vs available "<<item->getAssignedProcessor()->getMemorySize()<<endl;
-                }
-            }
-            if (hasFaults) {
-                printer->quietPrint("initial solution is unfeasible!");
-            }
             Tree *qtree = tree->BuildQtree();
             assignAllCorrespondingTreeTasks(tree, qtree);
             makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-
+            time = (clock() - time) / CLOCKS_PER_SEC;
+            time1 = clock();
             double makespan1 = swapUntilBest(tree);
             if (makespan1 == numeric_limits<double>::infinity()) {
                 printer->quietPrint("No MS");
@@ -287,27 +273,17 @@ int main(int argc, char **argv) {
 
             string result = to_string(makespan1);
 
-            time = clock() - time;
+            time1 = (clock() - time1)/CLOCKS_PER_SEC;
 
             if (makespan == -1) {
                 cout << "no solution" << endl;
             }
 
-            for (const auto &item: tree->getBrokenTasks()) {
-                Tree *subtree = BuildSubtree(tree, item);
-                double maxoutD = MaxOutDegree(subtree, true), memory_required;
-                schedule_traversal *schedule_f = new schedule_traversal();
-                MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
-
-                if (memory_required > item->getAssignedProcessor()->getMemorySize()) {
-                    cout <<"bad on "<< item->getId() << endl;
-                }
-            }
 
             //tree->HowmanySubtreesAndWeights(false);
             tree_column += " " + to_string(makespan) + "\t" + to_string(tree->HowmanySubtrees(true)) + "\t" +
                            // to_string(time )+ " " + to_string(CLOCKS_PER_SEC);
-                           result + " " + to_string(time / CLOCKS_PER_SEC);
+                           result + " " + to_string(time ) + " "+ to_string(time1);
             /*for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {
                 if (proc->isBusy) {
                     cout<<proc->getMemorySize()<<" "<<proc->getAssignedTaskId()<<endl;

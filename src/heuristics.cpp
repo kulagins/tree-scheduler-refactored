@@ -3358,7 +3358,7 @@ double swapUntilBest(Tree *tree) {
         double initMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
         for (auto &swap: swaps) {
             if(swap->isFeasible()){
-                double makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+               // double makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
                 swap->executeSwap();
                 double makespan1 = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
                 //   cout << makespan << " " << makespan1 << endl;
@@ -3366,9 +3366,9 @@ double swapUntilBest(Tree *tree) {
                 swap->setMakespan(makespan1);
                 swap->executeSwap();
 
-                double makespan2 = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+               // double makespan2 = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
                 //cout<<makespan<<" "<<initMakespan<< " "<<makespan2<<endl;
-                assert(makespan == makespan2);
+              //  assert(makespan == makespan2);
             }
             else {swap->setMakespan( numeric_limits<double>::infinity());}
 

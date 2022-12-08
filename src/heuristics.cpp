@@ -3354,7 +3354,7 @@ double swapUntilBest(Tree *tree) {
         }
     } */
     while(true){
-        cout<<"next round"<<endl;
+        //cout<<"next round"<<endl;
         double initMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
         for (auto &swap: swaps) {
             if(swap->isFeasible()){

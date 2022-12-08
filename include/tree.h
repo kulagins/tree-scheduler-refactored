@@ -1168,16 +1168,6 @@ public:
         firstTask->uncomputeMakespanUpUntiRoot();
         secondTask->uncomputeMakespanUpUntiRoot();
 
-        if(firstTask->getMinMemUnderlying()> firstTask->getAssignedProcessor()->getMemorySize()){
-            cout<<"first task "<< firstTask->getId() <<" on proc with mem "<<firstTask->getAssignedProcessor()->getMemorySize()<<endl;
-            cout<<" after swap: task "<<firstTask->getId()<<" on "<<firstTask->getAssignedProcessorSpeed()<<", "
-             << secondTask->getId()<<" on "<<secondTask->getAssignedProcessorSpeed()<<endl;
-        }
-        if(secondTask->getMinMemUnderlying()> secondTask->getAssignedProcessor()->getMemorySize()){
-            cout<<"secondTask task "<< secondTask->getId() <<" on proc with mem "<<secondTask->getAssignedProcessor()->getMemorySize()<<endl;
-            cout<<" after swap: task "<<firstTask->getId()<<" on "<<firstTask->getAssignedProcessorSpeed()<<", "
-                << secondTask->getId()<<" on "<<secondTask->getAssignedProcessorSpeed()<<endl;
-        }
     //    cout<<"end: task "<<firstTask->getId()<<" on "<<firstTask->getAssignedProcessorSpeed()<<", "
       //      << secondTask->getId()<<" on "<<secondTask->getAssignedProcessorSpeed()<<endl;
     }

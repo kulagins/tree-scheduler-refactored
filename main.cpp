@@ -192,7 +192,9 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
     for (const auto &item: *tree->getTasks()) {
         assert(item->getAssignedProcessor() != NULL);
     }
-    return tree->getRoot()->getMakespanCost(true, true);
+    double d = tree->getRoot()->getMakespanCost(true, true);
+    cout<<"hetp1 "<<d<<endl;
+    return d;
 }
 
 int main(int argc, char **argv) {

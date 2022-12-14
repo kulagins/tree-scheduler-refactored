@@ -23,85 +23,15 @@ instdir: "real_Trees/random_trees"
 
 
 experiments:
-  - name: Swaps-f
-    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/36-proc/36proc_0,5-1-1,5-3.json', '0','1', '0' ]
+  - name: ML
+    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/36-proc/hom-27proc-1.json', '0','1', '0' ]
     stdout: out
     num_threads: 24
-  - name: Swaps-b
-    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/36-proc/36proc_0,5-1-1,5-3.json', '0','1','0' ]
+  - name: SM
+    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/36-proc/hom-18proc-1,5.json', '0','1','0' ]
     stdout: out
     num_threads: 24
-  #- name: LXW-f
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_fat_and_thin.txt', '0','0','1', 'LMW', 'EX', 'MW','0' ]
-  #  stdout: out
-  #  num_threads: 24
-  #- name: LXC-f
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_fat_and_thin.txt', '0','0','1', 'LMW', 'EX', 'CP','0' ]
-  #  stdout: out
-  #  num_threads: 24
-  #- name: LMW-f
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_fat_and_thin.txt', '0','0','1', 'LMW', 'M', 'MW','0' ]
-  #  stdout: out
-  #  num_threads: 24
-  #- name: LMD-f
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_fat_and_thin.txt', '0','0','1', 'LMW', 'M', 'MD','0' ]
-  #  stdout: out
-  #  num_threads: 24
-  #- name: CXW-f
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_fat_and_thin.txt', '0','0','1', 'CP', 'EX', 'MW','0' ]
-  #  stdout: out
-  #  num_threads: 24
-  #- name: CXD-f
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_fat_and_thin.txt', '0','0','1', 'CP', 'EX', 'MD','0' ]
-  #  stdout: out
-  #  num_threads: 24
-  #- name: CMD-f
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_fat_and_thin.txt', '0','0','1', 'CP', 'M', 'MD','0' ]
-  #  stdout: out
-  #  num_threads: 24
-  #- name: CMC-f
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_fat_and_thin.txt', '0','0','1', 'CP', 'M', 'CP','0' ]
-  #  stdout: out
-  #  num_threads: 24
-  #- name: CXC-f
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_fat_and_thin.txt', '0','0','1', 'CP', 'EX', 'CP','0' ]
-  #  stdout: out
-  #  num_threads: 24
-
-
-  #- name: LXW-b
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','0','1', 'LMW', 'EX', 'MW','0' ]
-  #  stdout: out
-  #  num_threads: 24
-  #- name: LXC-b
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','0','1', 'LMW', 'EX', 'CP','0' ]
-  #  stdout: out
-  #  num_threads: 24
-  #- name: LMW-b
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','0','1', 'LMW', 'M', 'MW','0' ]
-  #  stdout: out
-  #  num_threads: 24
-  #- name: LMD-b
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','0','1', 'LMW', 'M', 'MD','0' ]
-  #  stdout: out
-  #  num_threads: 24
-  #- name: CXW-b
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','0','1', 'CP', 'EX', 'MW','0' ]
-  #  stdout: out
-  #  num_threads: 24
-  #- name: CXD-b
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','0','1', 'CP', 'EX', 'MD','0' ]
-  #  stdout: out
-  #  num_threads: 24
-  #- name: CMD-b
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','0','1', 'CP', 'M', 'MD','0' ]
-  #  stdout: out
-  #  num_threads: 24
-  #- name: CMC-b
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','0','1', 'CP', 'M', 'CP','0' ]
-  #  stdout: out
-  #  num_threads: 24
-  #- name: CXC-b
-  #  args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/clusterList_bad_and_good.txt', '0','0','1', 'CP', 'EX', 'CP','0' ]
-  #  stdout: out
-  #  num_threads: 24
+  - name: FF
+    args: [ './main', '@INSTANCE@/','treesList.txt', 'clusters/36-proc/hom-9proc-3.json', '0','1','0' ]
+    stdout: out
+    num_threads: 24

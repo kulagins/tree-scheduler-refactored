@@ -59,7 +59,7 @@ double u_wseconds(void);
 void freeProcessorIfAvailable(Task *task);
 
 extern Tree *veryOriginalTree;
-
+extern bool f;
 struct FastestProcessor {
     bool operator()(Processor *a, const Processor *b) const {
         return a->getProcessorSpeed() >= b->getProcessorSpeed();

@@ -31,7 +31,7 @@ using namespace std;
 Tree *Tree::originalTree = NULL;
 
 Tree *veryOriginalTree = NULL;
-
+bool f = false;
 bool sort_sche(node_sche a, node_sche b) {
     return (a.second > b.second);
 }
@@ -320,6 +320,7 @@ double Task::Sequence() {
 
 Tree *read_tree(const char *filename) {
     // cout <<"reading "<< filename << endl;
+    f=false;
     ifstream OpenFile(filename);
     string line;
     stringstream line_stream;

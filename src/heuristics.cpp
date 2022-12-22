@@ -713,7 +713,7 @@ double Tree::Merge(bool CheckMemory) {
             break;
         }
     }
-
+    f=true;
     if (shortage > 0) { //failure
         temp = -1;
     } else {
@@ -782,6 +782,7 @@ Tree::MergeOld(unsigned int num_subtrees, unsigned int processor_number, double 
         }
     }
 
+    f= true;
     if (shortage > 0) {//failure
         temp = -1;
     } else {
@@ -1480,7 +1481,7 @@ double Tree::SplitAgain() {
     }
     //  cout<<"qtree after> "<<endl;
     //   Qtreeobj->Print(cout);
-
+    f=true;
     delete Qtreeobj;
 
     MS_now = this->getRoot()->getMakespanCost(true, true);
@@ -2219,6 +2220,54 @@ public:
     }
 
 };
+void aiff(Tree *tree){
+    if(!f) return;
+    for (const auto &item: Cluster::getFixedCluster()->getProcessors()) {
+        if (item->getAssignedTaskId() != -1 && !item->getAssignedTask()->isBroken()) {
+            item->isBusy = false;
+            item->setAssignedTaskId(-1);
+            item->setAssignedTask(NULL);
+            item->setOccupiedMemorySize(0);
+        }
+    }
+
+    for (const auto &item: tree->getBrokenTasks()) {
+        if (item->getAssignedProcessor() == NULL) {
+
+            double maxoutd, minMem;
+            Tree *subtree = BuildSubtree(tree, item);
+            maxoutd = MaxOutDegree(subtree, true);
+            schedule_traversal *schedule_f = new schedule_traversal();
+            MinMem(subtree, maxoutd, minMem, *schedule_f, true);
+
+            delete schedule_f;
+            delete subtree;
+            for (const auto &proc: Cluster::getFixedCluster()->getProcessors()) {
+                if (!proc->isBusy && proc->getMemorySize() >= minMem) {
+                    proc->assignTask(item);
+                    break;
+                }
+            }
+        }
+    }
+    for (const auto &item: tree->getBrokenTasks()) {
+        if (item->getAssignedProcessor() == NULL) {
+            Cluster::getFixedCluster()->getBiggestFreeProcessor()->assignTask(item);
+            cout << "assigning afterwards! " << item->getId() << " "
+                 << Cluster::getFixedCluster()->getNumberFreeProcessors() << endl;
+        }
+        assert(item->getAssignedProcessor() != NULL);
+    }
+    for (Task *brokenTask: tree->getBrokenTasks()) {
+        vector<Task *> allTasksInSubtree = brokenTask->getTasksInSubtreeRootedHere();
+        for (Task *taskInSubtree: allTasksInSubtree) {
+            taskInSubtree->setAssignedProcessor(brokenTask->getAssignedProcessor());
+        }
+    }
+    for (const auto &item: *tree->getTasks()) {
+        assert(item->getAssignedProcessor() != NULL);
+    }
+}
 
 void distributeProcessors(Tree *qTree, string codeChoiceSubtree) {
     Task *root = qTree->getRoot();
@@ -2635,6 +2684,8 @@ string seqSetAndFeasSets(Tree *tree) {
 }
 
 void assignAllCorrespondingTreeTasks(Tree *tree, Tree *qTree) {
+    aiff(tree);
+    qTree = tree->BuildQtree();
     for (Task *qTask: *qTree->getTasks()) {
         Task *taskInTree = tree->getTask(qTask->getOtherSideId());
         qTask->getAssignedProcessor()->assignTask(taskInTree);

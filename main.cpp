@@ -20,8 +20,8 @@
 /*
  * ### How to run
 
-#### ./main trees-directory trees-list clusters-list clustering-mode run-a1 verbosity choose-subtree choose-task choose-subtree-assign
-
+#### ./main trees-directory trees-list clusters-list clustering-mode run-a1 verbosity choose-subtree choose-task choose-subtree-assign cut-property
+./data/3_children/ treesList.txt ./clusters/clusterList_fat_and_thin.txt 0 1 1 CP M CP 0
 The executable requires the following input parameters:
 
 - `clustering-mode` : Static clustering (memories are fixed) vs tree-dependent (memory given to each tree is individual)
@@ -31,6 +31,7 @@ The executable requires the following input parameters:
   - `run-a1 = 0`: do not run A1 code (run A2)
   - `run-a1 = 1`: run A1 code
 - `verbosity`: Should all of the debugging output be printed when the program runs
+   further parameters are unused
 - `choose-subtree`: how we choose multi-level subtree to cut
   - `choose-subtree = LMW`: Largest M<sub>i</sub> * W<sub>i</sub> of the subtree
   - `choose-subtree = CP`: First (unprocessed) subtree on the critical path
@@ -42,6 +43,7 @@ The executable requires the following input parameters:
   - `choose-subtree-assign = LW`: Largest W<sub>i</sub> of the subtree
   - `choose-subtree-assign = MD`: Maximum number of descendants
   - `choose-subtree-assign = CP`: First (unprocessed) subtree on the critical path
+  -cut-property = unused
  *
  */
 

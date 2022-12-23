@@ -28,18 +28,22 @@ The executable requires the following input parameters:
   - `clustering-mode = 0`: the clustering-mode is dependent on the tree instance.
   - `clustering-mode = 1`: the clustering-mode is static.
 - `run-a1`:
+ currently unused
   - `run-a1 = 0`: do not run A1 code (run A2)
   - `run-a1 = 1`: run A1 code
 - `verbosity`: Should all of the debugging output be printed when the program runs
    further parameters are unused
 - `choose-subtree`: how we choose multi-level subtree to cut
+ currently unused
   - `choose-subtree = LMW`: Largest M<sub>i</sub> * W<sub>i</sub> of the subtree
   - `choose-subtree = CP`: First (unprocessed) subtree on the critical path
 - `choose-task`: how we choose the task *within the chosen subtree* to cut his children
+  currently unused
   - `choose-task = EX`: Exhaustive, try cutting all tasks and shoose the one with best makespan
   - `choose-task = FFT`: First from top that gives an improvement
   - `choose-task = M`: Task on the middle level that gives the best makespan
 - `choose-subtree-assign`: how we choose the subtree to assign best processors
+  currently unused
   - `choose-subtree-assign = LW`: Largest W<sub>i</sub> of the subtree
   - `choose-subtree-assign = MD`: Maximum number of descendants
   - `choose-subtree-assign = CP`: First (unprocessed) subtree on the critical path
@@ -151,6 +155,7 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
     }
 
     double d = tree->getRoot()->getMakespanCost(true, true);
+    cout<<"HetPart1, ignoring speeds: "<<d<<endl;
     return d;
 }
 
@@ -175,10 +180,10 @@ int main(int argc, char **argv) {
     }
 
     string header_column = "treename\t";
-    do {
-        header_column += input->getPathToCluster() + "\t";
-    } while (input->nextCluster());
-
+   // do {
+  //      header_column += input->getPathToCluster() + "\t";
+   // } while (input->nextCluster());
+    header_column+="\t HetPart1(w speeds) #subtrees HetPart2 TimeHetPart1 TimeHetPart2(swaps)";
     input->resetClusterIterator();
     printer->quietPrint(header_column);
     double processorUtilizationOverall = 0;

@@ -155,7 +155,6 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
     }
 
     double d = tree->getRoot()->getMakespanCost(true, true);
-    cout<<"HetPart1, ignoring speeds: "<<d<<endl;
     return d;
 }
 

@@ -2220,8 +2220,7 @@ public:
     }
 
 };
-void aiff(Tree *tree){
-    if(!f) return;
+void checkTree(Tree *tree){
     for (const auto &item: Cluster::getFixedCluster()->getProcessors()) {
         if (item->getAssignedTaskId() != -1 && !item->getAssignedTask()->isBroken()) {
             item->isBusy = false;
@@ -2253,8 +2252,6 @@ void aiff(Tree *tree){
     for (const auto &item: tree->getBrokenTasks()) {
         if (item->getAssignedProcessor() == NULL) {
             Cluster::getFixedCluster()->getBiggestFreeProcessor()->assignTask(item);
-            cout << "assigning afterwards! " << item->getId() << " "
-                 << Cluster::getFixedCluster()->getNumberFreeProcessors() << endl;
         }
         assert(item->getAssignedProcessor() != NULL);
     }
@@ -2684,8 +2681,9 @@ string seqSetAndFeasSets(Tree *tree) {
 }
 
 void assignAllCorrespondingTreeTasks(Tree *tree, Tree *qTree) {
-    aiff(tree);
+    checkTree(tree);
     qTree = tree->BuildQtree();
+
     for (Task *qTask: *qTree->getTasks()) {
         Task *taskInTree = tree->getTask(qTask->getOtherSideId());
         qTask->getAssignedProcessor()->assignTask(taskInTree);

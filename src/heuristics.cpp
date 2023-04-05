@@ -11,6 +11,7 @@
 #include <list>
 #include <algorithm>
 #include <tuple>
+#include <random>
 #include "../include/heuristics.h"
 #include "../include/lib-io-tree-free-methods.h"
 #include "../include/cluster.h"
@@ -1881,7 +1882,7 @@ int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcess
                         subtreeRoots.push_back(tuple);
                     }
                 } else {
-                  //  cout << "hba!" << endl;
+                    //  cout << "hba!" << endl;
                     p->isBusy = false;
                     p->setAssignedTaskId(-1);
                 }
@@ -3368,40 +3369,17 @@ void Tree::renumberAllTasks() {
 }
 
 double swapUntilBest(Tree *tree) {
-    Tree *qtree = tree->BuildQtree();
 
-    vector<Task *> brokenTasks = tree->getBrokenTasks();
-    vector<Swap *> swaps;//pow(brokenTasks.size(), 2) / 2);
+    vector<Swap *> swaps;
+    for (int i = 0; i < tree->getBrokenTasks().size(); i++) {
 
-    for (int i = 0; i < brokenTasks.size(); i++) {
-
-        Tree *subtree = BuildSubtree(tree, brokenTasks.at(i));
-        double maxoutD = MaxOutDegree(subtree, true), memory_required;
-        schedule_traversal *schedule_f = new schedule_traversal();
-        MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
-        brokenTasks.at(i)->setMinMemUnderlying(memory_required);
-        delete schedule_f;
-        delete subtree;
-    }
-
-    for (int i = 0; i < brokenTasks.size(); i++) {
-
-        for (int j = i + 1; j < brokenTasks.size(); j++) {
-            Swap *swap = new Swap(brokenTasks.at(i), brokenTasks.at(j));
+        for (int j = i + 1; j < tree->getBrokenTasks().size(); j++) {
+            Swap *swap = new Swap(tree->getBrokenTasks().at(i), tree->getBrokenTasks().at(j));
             swaps.push_back(swap);
         }
 
     }
 
- /*  auto it = swaps.begin();
-    while(it != swaps.end()) {
-
-        if(!(*it)->isFeasible()) {
-            it = swaps.erase(it);
-        } else {
-            it++;
-        }
-    } */
     while(true){
         //cout<<"next round"<<endl;
         double initMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
@@ -3425,11 +3403,73 @@ double swapUntilBest(Tree *tree) {
 
         std::sort(swaps.begin(), swaps.end(), [](Swap *s1, Swap *s2) { return s1->getMakespan() < s2->getMakespan(); });
 
-        if((*swaps.begin())->getMakespan()<initMakespan){
+        if ((*swaps.begin())->getMakespan() < initMakespan) {
             (*swaps.begin())->executeSwap();
-        }
-        else return initMakespan;
+        } else return initMakespan;
     }
-   return -1;
+    return -1;
 
+}
+
+void perturbAssignments(Tree *tree) {
+    vector<Task *> tasksToPerturb;
+    vector<Task *> brokenTasks = tree->getBrokenTasks();
+    auto gen = std::bind(std::uniform_int_distribution<>(0, 1), std::default_random_engine());
+
+    for (int i = 0; i < brokenTasks.size(); i++) {
+        bool b = gen();
+        if (b) {
+            tasksToPerturb.push_back(brokenTasks.at(i));
+        }
+    }
+
+
+    while (!tasksToPerturb.empty()) {
+        Task * taskToPerturb = tasksToPerturb.back();
+        tasksToPerturb.pop_back();
+        //cout<<"swapping "<<taskToPerturb->getId()<<endl;
+        for (const auto &item: tasksToPerturb)   {
+           // cout<<"with "<<item->getId()<<"? ";
+            Swap *swap = new Swap(taskToPerturb, item);
+
+            if (swap->isFeasible()) {
+                swap->executeSwap();
+                tasksToPerturb.erase(std::remove(tasksToPerturb.begin(), tasksToPerturb.end(), item), tasksToPerturb.end());
+                break;
+            }
+        }
+
+    }
+}
+
+
+void prepareBrokenTasks(Tree *tree) {
+
+    Tree *qtree = tree->BuildQtree();
+
+    for (int i = 0; i < tree->getBrokenTasks().size(); i++) {
+        Tree *subtree = BuildSubtree(tree, tree->getBrokenTasks().at(i));
+        double maxoutD = MaxOutDegree(subtree, true), memory_required;
+        schedule_traversal *schedule_f = new schedule_traversal();
+        MinMem(subtree, maxoutD, memory_required, *schedule_f, true);
+        tree->getBrokenTasks().at(i)->setMinMemUnderlying(memory_required);
+        delete schedule_f;
+        delete subtree;
+    }
+}
+
+double swapWithPerturbation(Tree *tree) {
+
+    prepareBrokenTasks(tree);
+    double minMakespan = swapUntilBest(tree);
+    double makespanFromThisPerturbation = minMakespan;
+    do{
+       cout<<"perturb again "<<makespanFromThisPerturbation<<endl;
+       minMakespan = makespanFromThisPerturbation;
+       perturbAssignments(tree);
+       makespanFromThisPerturbation = swapUntilBest(tree);
+
+    }while(makespanFromThisPerturbation< minMakespan);
+
+    return minMakespan;
 }

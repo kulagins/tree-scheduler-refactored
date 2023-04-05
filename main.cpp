@@ -228,7 +228,7 @@ int main(int argc, char **argv) {
             makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
             time = (clock() - time) / CLOCKS_PER_SEC;
             time1 = clock();
-            double makespan1 = swapUntilBest(tree);
+            double makespan1 = swapWithPerturbation(tree);
             if (makespan1 == numeric_limits<double>::infinity()) {
                 printer->quietPrint("No MS");
                 makespan1 = makespan;
@@ -241,7 +241,6 @@ int main(int argc, char **argv) {
             if (makespan == -1) {
                 cout << "no solution" << endl;
             }
-
 
             //tree->HowmanySubtreesAndWeights(false);
             tree_column += " " + to_string(makespan) + "\t" + to_string(tree->HowmanySubtrees(true)) + "\t" +

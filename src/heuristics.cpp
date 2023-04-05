@@ -3458,13 +3458,13 @@ void prepareBrokenTasks(Tree *tree) {
     }
 }
 
-double swapWithPerturbation(Tree *tree) {
+double swapWithPerturbation(Tree *tree, int& numPerturbations) {
 
     prepareBrokenTasks(tree);
     double minMakespan = swapUntilBest(tree);
     double makespanFromThisPerturbation = minMakespan;
     do{
-       cout<<"perturb again "<<makespanFromThisPerturbation<<endl;
+       numPerturbations++;
        minMakespan = makespanFromThisPerturbation;
        perturbAssignments(tree);
        makespanFromThisPerturbation = swapUntilBest(tree);

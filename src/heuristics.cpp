@@ -714,7 +714,7 @@ double Tree::Merge(bool CheckMemory) {
             break;
         }
     }
-    f=true;
+    f = true;
     if (shortage > 0) { //failure
         temp = -1;
     } else {
@@ -783,7 +783,7 @@ Tree::MergeOld(unsigned int num_subtrees, unsigned int processor_number, double 
         }
     }
 
-    f= true;
+    f = true;
     if (shortage > 0) {//failure
         temp = -1;
     } else {
@@ -1482,7 +1482,7 @@ double Tree::SplitAgain() {
     }
     //  cout<<"qtree after> "<<endl;
     //   Qtreeobj->Print(cout);
-    f=true;
+    f = true;
     delete Qtreeobj;
 
     MS_now = this->getRoot()->getMakespanCost(true, true);
@@ -1864,7 +1864,7 @@ int MemoryCheck(Tree *tree, io_method_t method, bool useMinimalAvailableProvcess
                 }
                 if (!isAlreadyAssigned) {
                     Task *taskCorrespondingToId = tree->getTask(assignedId);
-                   // cout << "assigning from id " << assignedId << endl;
+                    // cout << "assigning from id " << assignedId << endl;
                     Tree *subtree = BuildSubtree(tree, taskCorrespondingToId);
                     double maxoutD = MaxOutDegree(subtree, true), memory_required;
                     schedule_traversal *schedule_f = new schedule_traversal();
@@ -2221,7 +2221,8 @@ public:
     }
 
 };
-void checkTree(Tree *tree){
+
+void checkTree(Tree *tree) {
     for (const auto &item: Cluster::getFixedCluster()->getProcessors()) {
         if (item->getAssignedTaskId() != -1 && !item->getAssignedTask()->isBroken()) {
             item->isBusy = false;
@@ -2712,12 +2713,12 @@ double assignToBestProcessors(Tree *tree, vector<Task *> newlyBroken, string cho
     }
 
     for (auto &item: newlyBroken) {
-        Task* parent = item->findNextBrokenParent();
-    //TODO item selbst nracuht keine Nuebrechnung?
+        Task *parent = item->findNextBrokenParent();
+        //TODO item selbst nracuht keine Nuebrechnung?
         item->needsRecomputeMemReq = true;
-       if (parent != nullptr){
-           parent->needsRecomputeMemReq = true;
-       }
+        if (parent != nullptr) {
+            parent->needsRecomputeMemReq = true;
+        }
 
     }
     //TODO dont d this for those who don't need recompute
@@ -3160,8 +3161,7 @@ void cutSingleNodePerSubtreeUntilBestMakespan(Tree *tree, string &subtreeChoiceC
             catch (...) {
                 cout << "no trees printable" << endl;
             }
-        }
-        else
+        } else
             cout << "No assignment, because no best task" << endl;
     }
 
@@ -3232,8 +3232,9 @@ findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoi
     }
 
     if (!candidatesWithFeasibleMS.empty()) {
-        cout<<"feasible ms found! on "<<candidatesWithFeasibleMS.begin()->first->getId()<<"w MS "<<candidatesWithFeasibleMS.begin()->second<<endl;
-        return  * candidatesWithFeasibleMS.begin();
+        cout << "feasible ms found! on " << candidatesWithFeasibleMS.begin()->first->getId() << "w MS "
+             << candidatesWithFeasibleMS.begin()->second << endl;
+        return *candidatesWithFeasibleMS.begin();
     }
     Task *taskMinMakespan = nullptr;
     double minMS = initialMakespan;
@@ -3245,10 +3246,11 @@ findBestCutAmong(Tree *tree, vector<Task *> candidates, string assignSubtreeChoi
         if (task->getParent()->getChildren()->size() >= 2 && !task->isAnyChildBroken()) {
             task->breakEdge();
             currentMakespan = assignToBestProcessors(tree, {task}, assignSubtreeChoiceCode);
-            if (currentMakespan < p.second){
+            if (currentMakespan < p.second) {
                 cout << "expected ms " << p.second << " bigger than real ms " << currentMakespan << " on task "
                      << task->getId()
-                     << endl;}
+                     << endl;
+            }
             tree->cleanAssignedAndReassignFeasible();
             task->restoreEdge();
             if (currentMakespan < minMS) {
@@ -3289,7 +3291,7 @@ void buildExpectedMakespanForCandidates(Tree *tree, vector<Task *> &candidates,
             initAssignment.push_back(make_pair(proc->getAssignedTask(), proc));
         }
     }
-  //  double initMS = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+    //  double initMS = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
     Processor *fastestFreeProcessor = Cluster::getFixedCluster()->getFastestFreeProcessor();
     for (auto &candidate: candidates) {
         candidate = tree->getTask(candidate->getId());
@@ -3308,14 +3310,14 @@ void buildExpectedMakespanForCandidates(Tree *tree, vector<Task *> &candidates,
                 currentMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
                 candidatesAndMakespanReduction.push_back(make_pair(candidate, currentMakespan));
             }
-            catch(...){
+            catch (...) {
                 Cluster::getFixedCluster()->printBusyProcessors();
                 candidatesAndMakespanReduction.push_back(make_pair(candidate, numeric_limits<int>::infinity()));
             }
-          //  if (currentMakespan < initMS) {
+            //  if (currentMakespan < initMS) {
 
 
-          //  }
+            //  }
             restoreInitialAssignmentOfProcessors(initAssignment);
             candidate->setAssignedProcessor(initProcessorOfCandidate);
             tree->reassignRootProcessorToSubtree(candidate);
@@ -3380,12 +3382,12 @@ double swapUntilBest(Tree *tree) {
 
     }
 
-    while(true){
+    while (true) {
         //cout<<"next round"<<endl;
         double initMakespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
         for (auto &swap: swaps) {
-            if(swap->isFeasible()){
-               // double makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+            if (swap->isFeasible()) {
+                // double makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
                 swap->executeSwap();
                 double makespan1 = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
                 //   cout << makespan << " " << makespan1 << endl;
@@ -3393,11 +3395,10 @@ double swapUntilBest(Tree *tree) {
                 swap->setMakespan(makespan1);
                 swap->executeSwap();
 
-               // double makespan2 = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
+                // double makespan2 = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
                 //cout<<makespan<<" "<<initMakespan<< " "<<makespan2<<endl;
-              //  assert(makespan == makespan2);
-            }
-            else {swap->setMakespan( numeric_limits<double>::infinity());}
+                //  assert(makespan == makespan2);
+            } else { swap->setMakespan(numeric_limits<double>::infinity()); }
 
         }
 
@@ -3425,16 +3426,17 @@ void perturbAssignments(Tree *tree) {
 
 
     while (!tasksToPerturb.empty()) {
-        Task * taskToPerturb = tasksToPerturb.back();
+        Task *taskToPerturb = tasksToPerturb.back();
         tasksToPerturb.pop_back();
         //cout<<"swapping "<<taskToPerturb->getId()<<endl;
-        for (const auto &item: tasksToPerturb)   {
-           // cout<<"with "<<item->getId()<<"? ";
+        for (const auto &item: tasksToPerturb) {
+            // cout<<"with "<<item->getId()<<"? ";
             Swap *swap = new Swap(taskToPerturb, item);
 
             if (swap->isFeasible()) {
                 swap->executeSwap();
-                tasksToPerturb.erase(std::remove(tasksToPerturb.begin(), tasksToPerturb.end(), item), tasksToPerturb.end());
+                tasksToPerturb.erase(std::remove(tasksToPerturb.begin(), tasksToPerturb.end(), item),
+                                     tasksToPerturb.end());
                 break;
             }
         }
@@ -3442,6 +3444,34 @@ void perturbAssignments(Tree *tree) {
     }
 }
 
+void perturb2(Tree *tree) {
+
+    auto gen = std::bind(std::uniform_int_distribution<>(0, tree->getBrokenTasks().size()-1),
+                         std::default_random_engine());
+
+    int numberPerturbations = 0;
+
+
+    while (numberPerturbations < tree->getBrokenTasks().size() / 2) {
+
+        int genInt = gen();
+
+        Task *task1 = tree->getBrokenTasks().at(genInt);
+        cout<<"swap "<< task1->getId()<<" and ";
+        genInt= gen();
+        Task *task2 = tree->getBrokenTasks().at(genInt);
+        cout<<task2->getId()<<endl;
+        if (task1->getId() != task2->getId()) {
+            Swap *swap = new Swap(task1, task2);
+
+            if (swap->isFeasible()) {
+                swap->executeSwap();
+                numberPerturbations++;
+            }
+        }
+
+    }
+}
 
 void prepareBrokenTasks(Tree *tree) {
 
@@ -3458,18 +3488,19 @@ void prepareBrokenTasks(Tree *tree) {
     }
 }
 
-double swapWithPerturbation(Tree *tree, int& numPerturbations) {
+double swapWithPerturbation(Tree *tree, int &numPerturbations) {
 
     prepareBrokenTasks(tree);
     double minMakespan = swapUntilBest(tree);
     double makespanFromThisPerturbation = minMakespan;
-    do{
-       numPerturbations++;
-       minMakespan = makespanFromThisPerturbation;
-       perturbAssignments(tree);
-       makespanFromThisPerturbation = swapUntilBest(tree);
+    do {
+        numPerturbations++;
+        minMakespan = makespanFromThisPerturbation;
+       // perturbAssignments(tree);
+        perturb2(tree);
+        makespanFromThisPerturbation = swapUntilBest(tree);
 
-    }while(makespanFromThisPerturbation< minMakespan);
+    } while (makespanFromThisPerturbation < minMakespan);
 
     return minMakespan;
 }

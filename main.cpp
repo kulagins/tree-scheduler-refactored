@@ -218,6 +218,7 @@ int main(int argc, char **argv) {
                 printer->quietPrint(str); //<< str << endl
                 continue;
             }
+            double CLOCKS_PER_MS = CLOCKS_PER_SEC/1000;
 
             time = clock();
 
@@ -226,7 +227,7 @@ int main(int argc, char **argv) {
             Tree *qtree = tree->BuildQtree();
             assignAllCorrespondingTreeTasks(tree, qtree);
             makespan = tree->getRoot()->getMakespanCostWithSpeeds(true, true);
-            time = (clock() - time) / CLOCKS_PER_SEC;
+            time = (clock() - time) / CLOCKS_PER_MS;
             time1 = clock();
             double makespan1 = swapWithPerturbation(tree);
             if (makespan1 == numeric_limits<double>::infinity()) {
@@ -236,7 +237,7 @@ int main(int argc, char **argv) {
 
             string result = to_string(makespan1);
 
-            time1 = (clock() - time1)/CLOCKS_PER_SEC;
+            time1 = (clock() - time1)/CLOCKS_PER_MS;
 
             if (makespan == -1) {
                 cout << "no solution" << endl;

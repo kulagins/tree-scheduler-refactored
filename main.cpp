@@ -97,6 +97,7 @@ double threeSteps(Tree *tree, OutputPrinter *printer) {
     double makespan;
     // for counting how many subtrees produced, twolevel is set as false
     makespan = tree->ASAP();
+    //Alternatives
     tree->getRoot()->SplitSubtrees(false, parallelSubtrees, sequentialLen, -1);
     // tree->ImprovedSplit();
 
@@ -233,11 +234,15 @@ int main(int argc, char **argv) {
             double makespan1Swap = simpleSwap(tree);
             time1 = (clock() - time1)/CLOCKS_PER_MS;
             time2 = clock();
-            double makespanPerturb = swapWithPerturbation(tree, numPerturbations, makespan1Swap);
-            if (makespanPerturb == numeric_limits<double>::infinity()) {
-                printer->quietPrint("No MS");
-                makespanPerturb = makespan;
+            double makespanPerturb = makespan1Swap;
+            if(!input->getSkipPartB()){
+              makespanPerturb = swapWithPerturbation(tree, numPerturbations, makespan1Swap);
+                if (makespanPerturb == numeric_limits<double>::infinity()) {
+                    printer->quietPrint("No MS");
+                    makespanPerturb = makespan;
+                }
             }
+
             time2 = (clock() - time2)/CLOCKS_PER_MS;
 
             if (makespan == -1) {

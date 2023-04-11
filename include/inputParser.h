@@ -31,6 +31,7 @@ protected:
 protected:
     bool runA1;
     bool verbose;
+    bool skipPartB;
 public:
 
     InputParser(int argc, char **argv) {
@@ -64,11 +65,12 @@ public:
 
         this->runA1 = (bool) atoi((argv[5]));
         this->verbose = (bool) atoi((argv[6]));
-        if (argc > 6) {
-            this->chooseSubtree = argv[7];
-            this->chooseNode = argv[8];
-            this->assignChooseSubtree = argv[9];
-            this->cutWhat = atoi(argv[10]);
+        this->skipPartB = (bool) atoi((argv[7]));
+        if (argc > 7) {
+            this->chooseSubtree = argv[8];
+            this->chooseNode = argv[9];
+            this->assignChooseSubtree = argv[10];
+            this->cutWhat = atoi(argv[11]);
         } else {
             this->chooseSubtree = "a";
             this->chooseNode = "a";
@@ -106,6 +108,12 @@ public:
     bool getRunA1() {
         return runA1;
     }
+
+
+    bool getSkipPartB() {
+        return skipPartB;
+    }
+
 
 
     const string &getChooseSubtree() const {

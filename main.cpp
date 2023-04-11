@@ -171,7 +171,7 @@ int main(int argc, char **argv) {
     string treename;
 
     double makespan, maxoutd, minMem;
-    clock_t time, time1;
+    clock_t time, time1, time2;
 
 
     if (input->getClusteringMode() == staticClustering) {
@@ -231,15 +231,14 @@ int main(int argc, char **argv) {
             time1 = clock();
             int numPerturbations=0;
             double makespan1Swap = simpleSwap(tree);
+            time1 = (clock() - time1)/CLOCKS_PER_MS;
+            time2 = clock();
             double makespanPerturb = swapWithPerturbation(tree, numPerturbations, makespan1Swap);
             if (makespanPerturb == numeric_limits<double>::infinity()) {
                 printer->quietPrint("No MS");
                 makespanPerturb = makespan;
             }
-
-
-
-            time1 = (clock() - time1)/CLOCKS_PER_MS;
+            time2 = (clock() - time2)/CLOCKS_PER_MS;
 
             if (makespan == -1) {
                 cout << "no solution" << endl;
@@ -248,7 +247,9 @@ int main(int argc, char **argv) {
             //tree->HowmanySubtreesAndWeights(false);
             tree_column += " " + to_string(makespan) + "\t" + to_string(tree->HowmanySubtrees(true)) + "\t" +
                            // to_string(time )+ " " + to_string(CLOCKS_PER_SEC);
-                           to_string(makespan1Swap) + " " + to_string(makespanPerturb) +" " + to_string(time ) + " "+ to_string(time1) + " "+ to_string(numPerturbations);
+                           to_string(makespan1Swap) + " " + to_string(makespanPerturb) +" " + to_string(time ) + " "+ to_string(time1)
+                           + " " + to_string(time2) +
+                           + " "+ to_string(numPerturbations);
             /*for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {
                 if (proc->isBusy) {
                     cout<<proc->getMemorySize()<<" "<<proc->getAssignedTaskId()<<endl;

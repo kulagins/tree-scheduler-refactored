@@ -3457,10 +3457,10 @@ void perturb2(Tree *tree) {
         int genInt = gen();
 
         Task *task1 = tree->getBrokenTasks().at(genInt);
-        cout<<"swap "<< task1->getId()<<" and ";
+        //cout<<"swap "<< task1->getId()<<" and ";
         genInt= gen();
         Task *task2 = tree->getBrokenTasks().at(genInt);
-        cout<<task2->getId()<<endl;
+        //cout<<task2->getId()<<endl;
         if (task1->getId() != task2->getId()) {
             Swap *swap = new Swap(task1, task2);
 
@@ -3493,14 +3493,17 @@ double swapWithPerturbation(Tree *tree, int &numPerturbations) {
     prepareBrokenTasks(tree);
     double minMakespan = swapUntilBest(tree);
     double makespanFromThisPerturbation = minMakespan;
+    cout<<minMakespan<<" ";
+    int i=5;
     do {
         numPerturbations++;
         minMakespan = makespanFromThisPerturbation;
        // perturbAssignments(tree);
         perturb2(tree);
         makespanFromThisPerturbation = swapUntilBest(tree);
-
-    } while (makespanFromThisPerturbation < minMakespan);
+        i--;
+    } while// (makespanFromThisPerturbation < minMakespan);
+            (i>0);
 
     return minMakespan;
 }

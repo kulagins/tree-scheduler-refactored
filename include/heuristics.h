@@ -73,8 +73,9 @@ void buildExpectedMakespanForCandidates(Tree *tree, vector<Task *> &candidates,
                                         vector<pair<Task *, double>> &candidatesAndMakespanReduction, bool quiet = true);
 
 double swapUntilBest(Tree* tree);
-double swapWithPerturbation(Tree* tree, int &numPerturbations);
+double swapWithPerturbation(Tree* tree, int &numPerturbations, double initMS);
 void perturbAssignments(Tree *tree);
 void prepareBrokenTasks(Tree *tree);
+double simpleSwap(Tree *);
 
 #endif /* heuristics_h */

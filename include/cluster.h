@@ -101,7 +101,7 @@ protected:
     vector<Processor *> processors;
     vector<vector<double>> bandwidths;
     static Cluster *fixedCluster;
-
+    int maxSpeed = -1;
 public:
     Cluster() {
         this->memoryHomogeneous = this->processorHomogeneous = this->bandwidthHomogenenous = true;
@@ -359,6 +359,14 @@ public:
     static Cluster *getFixedCluster() {
         return Cluster::fixedCluster;
     }
+    int getMaxSpeed(){
+        if(maxSpeed==-1){
+            sortProcessorsByProcSpeed();
+            maxSpeed = processors.at(0)->getProcessorSpeed();
+        }
+        return maxSpeed;
+    }
+
 
 
     Processor *getBiggestFreeProcessor();

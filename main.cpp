@@ -230,13 +230,14 @@ int main(int argc, char **argv) {
             time = (clock() - time) / CLOCKS_PER_MS;
             time1 = clock();
             int numPerturbations=0;
-            double makespan1 = swapWithPerturbation(tree, numPerturbations);
-            if (makespan1 == numeric_limits<double>::infinity()) {
+            double makespan1Swap = simpleSwap(tree);
+            double makespanPerturb = swapWithPerturbation(tree, numPerturbations, makespan1Swap);
+            if (makespanPerturb == numeric_limits<double>::infinity()) {
                 printer->quietPrint("No MS");
-                makespan1 = makespan;
+                makespanPerturb = makespan;
             }
 
-            string result = to_string(makespan1);
+
 
             time1 = (clock() - time1)/CLOCKS_PER_MS;
 
@@ -247,7 +248,7 @@ int main(int argc, char **argv) {
             //tree->HowmanySubtreesAndWeights(false);
             tree_column += " " + to_string(makespan) + "\t" + to_string(tree->HowmanySubtrees(true)) + "\t" +
                            // to_string(time )+ " " + to_string(CLOCKS_PER_SEC);
-                           result + " " + to_string(time ) + " "+ to_string(time1) + " "+ to_string(numPerturbations);
+                           to_string(makespan1Swap) + " " + to_string(makespanPerturb) +" " + to_string(time ) + " "+ to_string(time1) + " "+ to_string(numPerturbations);
             /*for (Processor *proc: (Cluster::getFixedCluster()->getProcessors())) {
                 if (proc->isBusy) {
                     cout<<proc->getMemorySize()<<" "<<proc->getAssignedTaskId()<<endl;

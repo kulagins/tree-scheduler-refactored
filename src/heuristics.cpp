@@ -3473,6 +3473,89 @@ void perturb2(Tree *tree) {
     }
 }
 
+void perturb3(Tree *tree) {
+
+    vector<Swap *> swaps;
+    map<int, vector<Swap *>> swapCounters;
+    vector<Task *> brokenTasks = tree->getBrokenTasks();
+
+    for (int i = 0; i < brokenTasks.size(); i++) {
+        swapCounters.insert(pair<int, int>(brokenTasks.at(i)->getId(), 0));
+    }
+
+    for (int i = 0; i < brokenTasks.size(); i++) {
+        Task *task1 = brokenTasks.at(i);
+        for (int j = i + 1; j < brokenTasks.size(); j++) {
+            Task *task2 = brokenTasks.at(j);
+            Swap *swap = new Swap(task1, task2);
+            if (swap->isFeasible() && task1->getAssignedProcessorSpeed() != task2->getAssignedProcessorSpeed()) {
+                swaps.push_back(swap);
+                swapCounters[task1->getId()].emplace_back(swap);
+                swapCounters[task2->getId()].emplace_back(swap);
+            }
+        }
+    }
+    cout << "number of possible swaps: " << swaps.size() << endl;
+
+    auto it = swapCounters.cbegin();
+    while (it != swapCounters.cend()) {
+        if (it->second.size() == 0) {
+            // supported in C++11
+            it = swapCounters.erase(it);
+        } else {
+            ++it;
+        }
+    }
+
+    vector<pair<int, vector<Swap *>>> A;
+    for (auto &it: swapCounters) {
+        A.push_back(it);
+    }
+    sort(A.begin(), A.end(),
+         [](pair<int, vector<Swap *>> a, pair<int, vector<Swap *>> b) { return a.second.size() < b.second.size(); });
+    int reallyExecutedSwaps = 0;
+    int maxSpeed = Cluster::getFixedCluster()->getMaxSpeed();
+    for (auto &idAndPotentialSwaps: A) {
+        bool swapExecutedForThisTask = false;
+        vector<Swap *> potentialSwaps = idAndPotentialSwaps.second;
+        for (auto &potentialSwap: potentialSwaps ) {
+            if (potentialSwap != NULL && !swapExecutedForThisTask &&
+                potentialSwap->getFirstTask()->getAssignedProcessorSpeed() != potentialSwap->getSecondTask()->getAssignedProcessorSpeed()
+                && (potentialSwap->getFirstTask()->getAssignedProcessorSpeed()==maxSpeed|| potentialSwap->getSecondTask()->getAssignedProcessorSpeed()==maxSpeed)) {
+                potentialSwap->executeSwap();
+                reallyExecutedSwaps++;
+            //    cout<<"swap: task "<<potentialSwap->getFirstTask()->getId()<<" on "<<potentialSwap->getFirstTask()->getAssignedProcessorSpeed()<<", "
+            //      << potentialSwap->getSecondTask()->getId()<<" on "<<potentialSwap->getSecondTask()->getAssignedProcessorSpeed()<<endl;
+                potentialSwap = NULL;
+                swapExecutedForThisTask=true;
+            } else if (swapExecutedForThisTask) {
+                potentialSwap = NULL;
+            }
+        }
+    }
+
+    for (auto &idAndPotentialSwaps: A) {
+        bool swapExecutedForThisTask = false;
+        vector<Swap *> potentialSwaps = idAndPotentialSwaps.second;
+
+        for (auto &potentialSwap: potentialSwaps ) {
+            if (potentialSwap != NULL && !swapExecutedForThisTask &&
+                    potentialSwap->getFirstTask()->getAssignedProcessorSpeed() != potentialSwap->getSecondTask()->getAssignedProcessorSpeed()) {
+                potentialSwap->executeSwap();
+                reallyExecutedSwaps++;
+               // cout<<"swap: task "<<potentialSwap->getFirstTask()->getId()<<" on "<<potentialSwap->getFirstTask()->getAssignedProcessorSpeed()<<", "
+               //  << potentialSwap->getSecondTask()->getId()<<" on "<<potentialSwap->getSecondTask()->getAssignedProcessorSpeed()<<endl;
+                potentialSwap = NULL;
+                swapExecutedForThisTask=true;
+            } else if (swapExecutedForThisTask) {
+                potentialSwap = NULL;
+            }
+        }
+    }
+
+    cout << "really executed swaps " << reallyExecutedSwaps << endl;
+}
+
 void prepareBrokenTasks(Tree *tree) {
 
     Tree *qtree = tree->BuildQtree();
@@ -3487,23 +3570,26 @@ void prepareBrokenTasks(Tree *tree) {
         delete subtree;
     }
 }
-
-double swapWithPerturbation(Tree *tree, int &numPerturbations) {
-
+double simpleSwap(Tree* tree){
     prepareBrokenTasks(tree);
     double minMakespan = swapUntilBest(tree);
+    return minMakespan;
+}
+double swapWithPerturbation(Tree *tree, int &numPerturbations, double initMS) {
+
+    double minMakespan = initMS;
     double makespanFromThisPerturbation = minMakespan;
-    cout<<minMakespan<<" ";
-    int i=5;
+    cout << minMakespan << " ";
+    int i = 5;
     do {
         numPerturbations++;
         minMakespan = makespanFromThisPerturbation;
-       // perturbAssignments(tree);
-        perturb2(tree);
+        // perturbAssignments(tree);
+        perturb3(tree);
         makespanFromThisPerturbation = swapUntilBest(tree);
         i--;
-    } while// (makespanFromThisPerturbation < minMakespan);
-            (i>0);
+    } while (makespanFromThisPerturbation < minMakespan);
+           // (i > 0);
 
     return minMakespan;
 }

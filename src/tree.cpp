@@ -1347,8 +1347,7 @@ Tree *BuildSubtree(Tree *tree, Task *subtreeRoot) {
     //original subtreeRoot knows that copy, whose id is 1
     subtreeRoot->setOtherSideId(1);
     //copy knows the id of the original subtreeRoot
-    int oSId = subtreeRoot->getOtherSideId()!=0? subtreeRoot->getOtherSideId(): subtreeRoot->getId();
-    copy->setOtherSideId(oSId);
+    copy->setOtherSideId(subtreeRoot->getId());
     //the children of subtreeRoot need to be explored
     toBeExplored.emplace_back(subtreeRoot, copy);
 
@@ -1363,8 +1362,9 @@ Tree *BuildSubtree(Tree *tree, Task *subtreeRoot) {
                 idInSubtree++;
                 copy = new Task(*child, idInSubtree, currentToBeExplored.second);
                 child->setOtherSideId(idInSubtree);
-                int oSIdC = child->getOtherSideId()!=0? child->getOtherSideId(): child->getId();
-                copy->setOtherSideId(oSIdC);
+                copy->setOtherSideId(child->getId());
+
+
                 tasksInNewSubtree->push_back(copy);
 
                 //add as child to the copied parent, whose counterpart we are currently exploring
